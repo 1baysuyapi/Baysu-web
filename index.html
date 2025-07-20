@@ -13,102 +13,87 @@
       --green: #28a745;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { background-color: var(--white); color: var(--dark); line-height: 1.6; }
+    body { background: var(--white); color: var(--dark); line-height: 1.6; }
     header { background: var(--dark); color: var(--white); padding: 20px; text-align: center; }
-    nav { background: var(--primary); display: flex; justify-content: center; gap: 20px; padding: 10px; }
-    nav a { color: var(--white); text-decoration: none; font-weight: bold; }
+    nav { background: var(--primary); display: flex; justify-content: center; gap: 20px; padding: 10px; position: relative; }
+    nav a, .dropdown span { color: var(--white); text-decoration: none; font-weight: bold; cursor: pointer; }
     section { padding: 40px 20px; }
     .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url('https://source.unsplash.com/1600x400/?pipes,irrigation') no-repeat center/cover; color: var(--white); text-align: center; padding: 100px 20px; }
     .services { background: var(--green); color: var(--white); }
     footer { background: var(--red); color: var(--white); text-align: center; padding: 20px; }
     .container { max-width: 1000px; margin: auto; }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>BAYSU YAPI VE SULAMA MALZEMELERİ</h1>
-    <p>Sulama, Tesisat, Hırdavat, PVC, PPRC</p>
-  </header>
-  <nav>
-    <a href="#hakkimizda">Hakkımızda</a>
-    <a href="#hizmetler">Hizmetler</a>
-    <a href="senkron-ornek.html">Senkron</a> <!-- 🔹 Eklenen bağlantı -->
-    <a href="#iletisim">İletişim</a>
-  </nav>
-  <section class="hero">
-    <h2>Profesyonel Çözümler, Güvenilir Hizmet</h2>
-    <p>Ankara'da sulama ve yapı malzemelerinde uzman tedarikçiniz</p>
-  </section>
-  <section id="hakkimizda" class="container">
-    <h2>Hakkımızda</h2>
-    <p>Baysu Yapı ve Sulama Malzemeleri, Ankara merkezli olarak faaliyet göstermekte olup, PVC, PPRC, sulama sistemleri, tesisat ve hırdavat alanlarında kaliteli ve uygun fiyatlı ürünler sunmaktadır.</p>
-  </section>
-  <section id="hizmetler" class="services">
-    <div class="container">
-      <h2>Hizmetlerimiz</h2>
-      <ul>
-        <li>PVC ve PPRC Boru Sistemleri</li>
-        <li>Tarım Sulama Sistemleri</li>
-        <li>Ev ve Bahçe Tesisat Çözümleri</li>
-        <li>Hırdavat ve İnşaat Malzemeleri</li>
-      </ul>
-    </div>
-  </section>
-  <section id="iletisim" class="container">
-    <h2>İletişim</h2>
-    <p><strong>Telefon:</strong> 0553 397 36 03</p>
-    <p><strong>E-posta:</strong> ebayrakci75@gmail.com</p>
-    <p><strong>Konum:</strong> Ankara, Türkiye</p>
-  </section>
-  <footer>
-    <p>&copy; 2025 BAYSU YAPI VE SULAMA MALZEMELERİ - Tüm hakları saklıdır.</p>
-  </footer>
-</body>
-                                                                             </html><!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BAYSU YAPI VE SULAMA MALZEMELERİ</title>
-  <style>
-    :root {
-      --primary: #007BFF;
-      --dark: #000;
-      --red: #e60000;
-      --white: #fff;
-      --green: #28a745;
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { background-color: var(--white); color: var(--dark); line-height: 1.6; }
-    header { background: var(--dark); color: var(--white); padding: 20px; text-align: center; }
-    nav { background: var(--primary); display: flex; justify-content: center; gap: 20px; padding: 10px; }
-    nav a { color: var(--white); text-decoration: none; font-weight: bold; }
-    section { padding: 40px 20px; }
-    .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url('https://source.unsplash.com/1600x400/?pipes,irrigation') no-repeat center/cover; color: var(--white); text-align: center; padding: 100px 20px; }
-    .services { background: var(--green); color: var(--white); }
-    footer { background: var(--red); color: var(--white); text-align: center; padding: 20px; }
-    .container { max-width: 1000px; margin: auto; }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 200px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      padding-top: 60px;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.9);
+    }
+    .lightbox img {
+      margin: auto;
+      display: block;
+      max-width: 80%;
+      max-height: 80%;
+    }
+    .lightbox:target { display: block; }
   </style>
 </head>
 <body>
+
   <header>
     <h1>BAYSU YAPI VE SULAMA MALZEMELERİ</h1>
     <p>Sulama, Tesisat, Hırdavat, PVC, PPRC</p>
   </header>
+
   <nav>
     <a href="#hakkimizda">Hakkımızda</a>
     <a href="#hizmetler">Hizmetler</a>
-    <a href="senkron-ornek.html">Senkron</a> <!-- 🔹 Eklenen bağlantı -->
+    <div class="dropdown">
+      <span>Ürünlerimiz ▾</span>
+      <div class="dropdown-content">
+        <a href="#mavi-disi-kaplin">Mavi Dişi Kaplin</a>
+        <!-- Diğer ürün başlıkları buraya eklenecek -->
+      </div>
+    </div>
     <a href="#iletisim">İletişim</a>
   </nav>
+
   <section class="hero">
     <h2>Profesyonel Çözümler, Güvenilir Hizmet</h2>
     <p>Ankara'da sulama ve yapı malzemelerinde uzman tedarikçiniz</p>
   </section>
+
   <section id="hakkimizda" class="container">
     <h2>Hakkımızda</h2>
     <p>Baysu Yapı ve Sulama Malzemeleri, Ankara merkezli olarak faaliyet göstermekte olup, PVC, PPRC, sulama sistemleri, tesisat ve hırdavat alanlarında kaliteli ve uygun fiyatlı ürünler sunmaktadır.</p>
   </section>
+
   <section id="hizmetler" class="services">
     <div class="container">
       <h2>Hizmetlerimiz</h2>
@@ -120,14 +105,34 @@
       </ul>
     </div>
   </section>
+
+  <section id="mavi-disi-kaplin" class="container">
+    <h2 style="color: var(--primary); text-align:center">Mavi Dişi Kaplin</h2>
+    <div style="text-align:center">
+      <a href="#img1"><img src="https://via.placeholder.com/200x200?text=Mavi+Dişi+Kaplin" alt="Mavi Dişi Kaplin"></a>
+      <h3>Ölçüler:</h3>
+      <ul style="list-style:none; padding:0;">
+        <li>20x1/2"</li>
+        <li>25x3/4"</li>
+        <li>32x1"</li>
+        <li>40x1 1/4"</li>
+        <li>50x1 1/2"</li>
+        <li>63x2"</li>
+      </ul>
+    </div>
+    <div id="img1" class="lightbox"><a href="#"><img src="https://via.placeholder.com/800x800?text=Mavi+Dişi+Kaplin"></a></div>
+  </section>
+
   <section id="iletisim" class="container">
     <h2>İletişim</h2>
     <p><strong>Telefon:</strong> 0553 397 36 03</p>
-    <p><strong>E-posta:</strong> ebayrakci75@gmail.com</p>
+    <p><strong>E‑posta:</strong> ebayrakci75@gmail.com</p>
     <p><strong>Konum:</strong> Ankara, Türkiye</p>
   </section>
+
   <footer>
     <p>&copy; 2025 BAYSU YAPI VE SULAMA MALZEMELERİ - Tüm hakları saklıdır.</p>
   </footer>
+
 </body>
-      </hdml>
+</html>
