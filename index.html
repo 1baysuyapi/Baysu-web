@@ -30,43 +30,44 @@
     nav {
       background: var(--primary);
       padding: 10px;
+      text-align: center;
     }
-    nav ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    nav li {
-      position: relative;
-      margin: 0 10px;
-    }
-    nav a {
-      color: var(--white);
-      text-decoration: none;
+    .menu-toggle {
+      cursor: pointer;
       font-weight: bold;
-      padding: 8px 12px;
-      display: block;
+      color: var(--white);
+      padding: 10px;
+      display: inline-block;
     }
-    nav li ul {
+    .menu-list {
       display: none;
-      position: absolute;
-      top: 35px;
-      left: 0;
-      background: var(--primary);
-      padding: 0;
-      z-index: 1000;
+      background: var(--white);
+      color: var(--dark);
+      text-align: left;
+      padding: 20px;
+      border-top: 2px solid var(--primary);
     }
-    nav li:hover ul {
+    .menu-category {
+      margin-bottom: 10px;
+    }
+    .menu-category button {
+      background: none;
+      border: none;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      color: var(--primary);
+    }
+    .submenu {
+      display: none;
+      margin-left: 20px;
+      margin-top: 5px;
+    }
+    .submenu a {
       display: block;
-    }
-    nav li ul li {
-      white-space: nowrap;
-      position: relative;
-    }
-    nav li ul li ul {
-      left: 100%;
-      top: 0;
+      text-decoration: none;
+      color: var(--dark);
+      margin-bottom: 5px;
     }
     section {
       padding: 40px 20px;
@@ -100,65 +101,55 @@
   <header>
     <h1>BAYSU YAPI VE SULAMA MALZEMELERİ</h1>
     <p>Sulama, Tesisat, Hırdavat, PVC, PPRC</p>
-  </header>
-  <nav>
-    <ul>
-      <li>
-        <a href="#">Ürünlerimiz +</a>
-        <ul>
-          <li>
-            <a href="#">Mavi Seri</a>
-            <ul>
-              <li><a href="mavi-disi-kaplin.html" target="_blank">Dişi Kaplin</a></li>
-              <li><a href="mavi-erkek-kaplin.html" target="_blank">Erkek Kaplin</a></li>
-              <li><a href="mavi-dirsek.html" target="_blank">Dirsek</a></li>
-              <li><a href="mavi-manson.html" target="_blank">Manşon</a></li>
-              <li><a href="mavi-tapa.html" target="_blank">Tapa</a></li>
-              <li><a href="mavi-reduksiyon.html" target="_blank">Redüksiyon</a></li>
-              <li><a href="mavi-te.html" target="_blank">Te</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Siyah Seri</a>
-            <ul>
-              <li><a href="siyah-disi-kaplin.html" target="_blank">Dişi Kaplin</a></li>
-              <li><a href="siyah-erkek-kaplin.html" target="_blank">Erkek Kaplin</a></li>
-              <li><a href="siyah-dirsek.html" target="_blank">Dirsek</a></li>
-              <li><a href="siyah-manson.html" target="_blank">Manşon</a></li>
-              <li><a href="siyah-tapa.html" target="_blank">Tapa</a></li>
-              <li><a href="siyah-reduksiyon.html" target="_blank">Redüksiyon</a></li>
-              <li><a href="siyah-te.html" target="_blank">Te</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Kilitli Bağlantı Parçaları</a></li>
-          <li><a href="#">Dişli Sulama Ek Parçaları</a></li>
-          <li><a href="#">Priz Kolyeler</a></li>
-          <li><a href="#">Nipelli Seri</a></li>
-          <li><a href="#">Vanalar</a></li>
-          <li><a href="#">Vana Kutuları</a></li>
-          <li><a href="#">Damlama Ek Parçaları</a></li>
-          <li><a href="#">Yedek Parçalar</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-  <section>
+  </header>  <nav>
+    <div class="menu-toggle" onclick="toggleMenu()">Ürünlerimiz +</div>
+    <div class="menu-list" id="menuList">
+      <div class="menu-category">
+        <button onclick="toggleSubmenu('mavi')">▶️ Mavi Seri</button>
+        <div class="submenu" id="submenu-mavi">
+          <a href="mavi-disi-kaplin.html" target="_blank">Dişi Kaplin</a>
+          <a href="mavi-erkek-kaplin.html" target="_blank">Erkek Kaplin</a>
+        </div>
+      </div>
+      <div class="menu-category">
+        <button onclick="toggleSubmenu('siyah')">▶️ Siyah Seri</button>
+        <div class="submenu" id="submenu-siyah">
+          <a href="siyah-manson.html" target="_blank">Manşon</a>
+          <a href="siyah-disi-kaplin.html" target="_blank">Dişi Kaplin</a>
+        </div>
+      </div>
+      <div class="menu-category">
+        <button onclick="toggleSubmenu('kilitli')">▶️ Kilitli Bağlantı Parçaları</button>
+        <div class="submenu" id="submenu-kilitli">
+          <a href="#">Kilitli Dirsek</a>
+          <a href="#">Kilitli T</a>
+        </div>
+      </div>
+    </div>
+  </nav>  <section>
     <h2>Hoş Geldiniz</h2>
     <p>Ankara’da sulama ve yapı malzemelerinde uzman tedarikçiniz.</p>
-  </section>
-  <section>
+  </section>  <section>
     <h2>Hakkımızda</h2>
     <p>Baysu Yapı ve Sulama Malzemeleri, PVC, PPRC, sulama sistemleri, tesisat ve hırdavat alanlarında kaliteli ürünleri uygun fiyatlarla sunar.</p>
-  </section>
-  <section>
+  </section>  <section>
     <h2>İletişim</h2>
     <p><strong>Telefon:</strong> 0553 397 36 03</p>
     <p><strong>E-posta:</strong> ebayrakci75@gmail.com</p>
     <p><strong>Adres:</strong> Ankara, Türkiye</p>
-  </section>
-  <footer>
+  </section>  <footer>
     <p>&copy; 2025 BAYSU YAPI VE SULAMA MALZEMELERİ - Tüm hakları saklıdır.</p>
-  </footer>
-  <a href="https://wa.me/905533973603" class="whatsapp-button" target="_blank">💬</a>
-</body>
+  </footer><a href="https://wa.me/905533973603" class="whatsapp-button" target="_blank">💬</a>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menuList");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById("submenu-" + id);
+      submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+    }
+  </script></body>
   </html>
