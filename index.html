@@ -1,0 +1,258 @@
+<!DOCTYPE html><html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baysu Yapı ve Sulama Malzemeleri</title>
+  <style>
+    :root {
+      --primary: #007bff;
+      --dark: #000;
+      --white: #fff;
+      --green: #28a745;
+      --red: #e60000;
+      --gray: #f4f4f4;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: var(--white);
+      color: var(--dark);
+    }
+    header {
+      background: var(--dark);
+      color: var(--white);
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: var(--primary);
+      padding: 10px;
+    }
+    nav .menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    nav .menu a,
+    .dropdown span {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: var(--white);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      top: 40px;
+      left: 0;
+      min-width: 200px;
+      z-index: 1000;
+    }
+    .dropdown-content a {
+      color: var(--dark);
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url('https://source.unsplash.com/1600x400/?irrigation') no-repeat center/cover;
+      color: var(--white);
+      text-align: center;
+      padding: 100px 20px;
+    }
+    section {
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+    .product-block {
+      margin-bottom: 40px;
+    }
+    .product-block img {
+      max-width: 200px;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .product-section {
+      background: var(--gray);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    footer {
+      background: var(--red);
+      color: var(--white);
+      text-align: center;
+      padding: 20px;
+    }
+    .whatsapp-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      text-decoration: none;
+      z-index: 1000;
+    }
+    @media(max-width: 768px) {
+      nav .menu {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav .menu a, .dropdown span {
+        margin: 5px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BAYSU YAPI VE SULAMA MALZEMELERİ</h1>
+    <p>Sulama, Tesisat, Hırdavat, PVC, PPRC</p>
+  </header>
+  <nav>
+    <div class="menu">
+      <a href="#hakkimizda">Hakkımızda</a>
+      <a href="#hizmetler">Hizmetler</a>
+      <div class="dropdown">
+        <span>Ürünlerimiz ▾</span>
+        <div class="dropdown-content">
+          <a href="#manson" target="_blank">Manşon</a>
+          <a href="#kaplin" target="_blank">Kaplin</a>
+          <a href="#tapa" target="_blank">Tapa</a>
+        </div>
+      </div>
+      <a href="#iletisim">İletişim</a>
+    </div>
+  </nav>  <section class="hero">
+    <h2>Profesyonel Çözümler, Güvenilir Hizmet</h2>
+    <p>Ankara'da sulama ve yapı malzemelerinde uzman tedarikçiniz</p>
+  </section>  <section id="manson" class="container">
+    <h2>Manşon</h2>
+    <div class="product-block">
+      <div class="product-section">
+        <h3>🔵 Mavi Manşon</h3>
+        <img src="https://via.placeholder.com/200x200?text=Mavi+Man%C5%9Fon" alt="Mavi Manşon" />
+        <ul>
+          <li>20 mm</li>
+          <li>25 mm</li>
+          <li>32 mm</li>
+          <li>40 mm</li>
+          <li>50 mm</li>
+          <li>63 mm</li>
+        </ul>
+      </div>
+      <div class="product-section">
+        <h3>⚫ Siyah Manşon</h3>
+        <img src="https://via.placeholder.com/200x200?text=Siyah+Man%C5%9Fon" alt="Siyah Manşon" />
+        <ul>
+          <li>20 mm</li>
+          <li>25 mm</li>
+          <li>32 mm</li>
+          <li>40 mm</li>
+          <li>50 mm</li>
+          <li>63 mm</li>
+        </ul>
+      </div>
+    </div>
+  </section>  <section id="kaplin" class="container">
+    <h2>Kaplin</h2>
+    <div class="product-block">
+      <div class="product-section">
+        <h3>🔵 Mavi Kaplin</h3>
+        <img src="https://via.placeholder.com/200x200?text=Mavi+Kaplin" alt="Mavi Kaplin" />
+        <ul>
+          <li>20 mm</li>
+          <li>25 mm</li>
+          <li>32 mm</li>
+          <li>40 mm</li>
+          <li>50 mm</li>
+          <li>63 mm</li>
+        </ul>
+      </div>
+      <div class="product-section">
+        <h3>⚫ Siyah Kaplin</h3>
+        <img src="https://via.placeholder.com/200x200?text=Siyah+Kaplin" alt="Siyah Kaplin" />
+        <ul>
+          <li>20 mm</li>
+          <li>25 mm</li>
+          <li>32 mm</li>
+          <li>40 mm</li>
+          <li>50 mm</li>
+          <li>63 mm</li>
+        </ul>
+      </div>
+    </div>
+  </section>  <section id="tapa" class="container">
+    <h2>Tapa</h2>
+    <div class="product-block">
+      <div class="product-section">
+        <h3>🔵 Mavi Tapa</h3>
+        <img src="https://via.placeholder.com/200x200?text=Mavi+Tapa" alt="Mavi Tapa" />
+        <ul>
+          <li>20 mm</li>
+          <li>25 mm</li>
+          <li>32 mm</li>
+          <li>40 mm</li>
+          <li>50 mm</li>
+          <li>63 mm</li>
+        </ul>
+      </div>
+      <div class="product-section">
+        <h3>⚫ Siyah Tapa</h3>
+        <img src="https://via.placeholder.com/200x200?text=Siyah+Tapa" alt="Siyah Tapa" />
+        <ul>
+          <li>20 mm</li>
+          <li>25 mm</li>
+          <li>32 mm</li>
+          <li>40 mm</li>
+          <li>50 mm</li>
+          <li>63 mm</li>
+        </ul>
+      </div>
+    </div>
+  </section>  <section id="hakkimizda" class="container">
+    <h2>Hakkımızda</h2>
+    <p>Baysu Yapı ve Sulama Malzemeleri, Ankara merkezli olarak faaliyet göstermekte olup, PVC, PPRC, sulama sistemleri, tesisat ve hırdavat alanlarında kaliteli ve uygun fiyatlı ürünler sunmaktadır.</p>
+  </section>  <section id="hizmetler" class="container">
+    <h2>Hizmetlerimiz</h2>
+    <ul>
+      <li>PVC ve PPRC Boru Sistemleri</li>
+      <li>Tarım Sulama Sistemleri</li>
+      <li>Ev ve Bahçe Tesisat Çözümleri</li>
+      <li>Hırdavat ve İnşaat Malzemeleri</li>
+    </ul>
+  </section>  <section id="iletisim" class="container">
+    <h2>İletişim</h2>
+    <p><strong>Telefon:</strong> 0553 397 36 03</p>
+    <p><strong>E‑posta:</strong> ebayrakci75@gmail.com</p>
+    <p><strong>Konum:</strong> Ankara, Türkiye</p>
+  </section>  <footer>
+    <p>&copy; 2025 BAYSU YAPI VE SULAMA MALZEMELERİ - Tüm hakları saklıdır.</p>
+  </footer><a href="https://wa.me/905533973603" class="whatsapp-button" target="_blank">💬</a>
+
+</body>
+    </html>
