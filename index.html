@@ -1,7 +1,8 @@
-<!DOCTYPE html><html lang="tr">
+<!DOCTYPE html>
+<html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BAYSU YAPI VE SULAMA MALZEMELERİ</title>
   <style>
     :root {
@@ -11,9 +12,7 @@
       --red: #e60000;
     }
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
       font-family: Arial, sans-serif;
     }
     body {
@@ -101,7 +100,9 @@
   <header>
     <h1>BAYSU YAPI VE SULAMA MALZEMELERİ</h1>
     <p>Sulama, Tesisat, Hırdavat, PVC, PPRC</p>
-  </header>  <nav>
+  </header>
+
+  <nav>
     <div class="menu-toggle" onclick="toggleMenu()">Ürünlerimiz +</div>
     <div class="menu-list" id="menuList">
       <div class="menu-category">
@@ -121,25 +122,41 @@
       <div class="menu-category">
         <button onclick="toggleSubmenu('kilitli')">▶️ Kilitli Bağlantı Parçaları</button>
         <div class="submenu" id="submenu-kilitli">
-          <a href="#">Kilitli Dirsek</a>
-          <a href="#">Kilitli T</a>
+          <a href="kilitli-dirsek.html" target="_blank">Kilitli Dirsek</a>
+          <a href="#" target="_blank">Kilitli T</a>
+        </div>
+      </div>
+      <div class="menu-category">
+        <button onclick="toggleSubmenu('damlama')">▶️ Damlama Ek Parçaları</button>
+        <div class="submenu" id="submenu-damlama">
+          <a href="damlama-mini-vana.html" target="_blank">Mini Vana</a>
         </div>
       </div>
     </div>
-  </nav>  <section>
+  </nav>
+
+  <section>
     <h2>Hoş Geldiniz</h2>
     <p>Ankara’da sulama ve yapı malzemelerinde uzman tedarikçiniz.</p>
-  </section>  <section>
+  </section>
+
+  <section>
     <h2>Hakkımızda</h2>
     <p>Baysu Yapı ve Sulama Malzemeleri, PVC, PPRC, sulama sistemleri, tesisat ve hırdavat alanlarında kaliteli ürünleri uygun fiyatlarla sunar.</p>
-  </section>  <section>
+  </section>
+
+  <section>
     <h2>İletişim</h2>
     <p><strong>Telefon:</strong> 0553 397 36 03</p>
     <p><strong>E-posta:</strong> ebayrakci75@gmail.com</p>
     <p><strong>Adres:</strong> Ankara, Türkiye</p>
-  </section>  <footer>
+  </section>
+
+  <footer>
     <p>&copy; 2025 BAYSU YAPI VE SULAMA MALZEMELERİ - Tüm hakları saklıdır.</p>
-  </footer><a href="https://wa.me/905533973603" class="whatsapp-button" target="_blank">💬</a>
+  </footer>
+
+  <a href="https://wa.me/905533973603" class="whatsapp-button" target="_blank">💬</a>
 
   <script>
     function toggleMenu() {
@@ -151,5 +168,6 @@
       const submenu = document.getElementById("submenu-" + id);
       submenu.style.display = submenu.style.display === "block" ? "none" : "block";
     }
-  </script></body>
-  </html>
+  </script>
+</body>
+        </html>
