@@ -60,6 +60,11 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Çoklu sütun */
             gap: 10px;
             padding: 20px;
+
+            /* Mobil Menü Kaydırma Düzeltmesi */
+            max-height: 80vh; /* Ekran yüksekliğinin %80'i kadar bir maksimum yükseklik */
+            overflow-y: auto; /* İçerik taşarsa dikey kaydırma çubuğu göster */
+            -webkit-overflow-scrolling: touch; /* iOS cihazlarda daha akıcı kaydırma */
         }
 
         .menu-list.active { /* JavaScript ile aktif edildiğinde */
@@ -175,15 +180,15 @@
             background-color: #25D366; /* WhatsApp yeşili */
             color: white;
             border-radius: 50%; /* Dairesel şekil */
-            width: 60px; /* Genişlik */
-            height: 60px; /* Yükseklik */
+            width: 70px; /* Genişlik artırıldı */
+            height: 70px; /* Yükseklik artırıldı */
             display: flex;
             justify-content: center;
             align-items: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge */
             transition: transform 0.3s ease-in-out; /* Fare üzerine gelince animasyon */
             text-decoration: none; /* Alt çizgiyi kaldır */
-            font-size: 35px; /* İkon boyutu */
+            font-size: 40px; /* İkon boyutu artırıldı */
         }
 
         .whatsapp-button:hover {
@@ -208,11 +213,11 @@
                 font-size: 1em;
             }
             .whatsapp-button { /* Mobil cihazlarda daha küçük yapabiliriz */
-                width: 50px;
-                height: 50px;
+                width: 60px; /* Mobil genişlik artırıldı */
+                height: 60px; /* Mobil yükseklik artırıldı */
                 bottom: 15px;
                 right: 15px;
-                font-size: 30px; /* İkon boyutu */
+                font-size: 35px; /* Mobil ikon boyutu artırıldı */
             }
         }
     </style>
