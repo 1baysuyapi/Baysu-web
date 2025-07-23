@@ -75,7 +75,7 @@
             color: var(--dark);
         }
         .menu-list {
-            display: none; /* JavaScript ile açılacak */
+            display: none; /* SAYFA YÜKLENDİĞİNDE GİZLİ BAŞLAYACAK! */
             background: var(--white);
             color: var(--dark);
             text-align: left;
@@ -88,8 +88,8 @@
             z-index: 999;
             max-height: 80vh; /* Çok uzun menüler için kaydırma çubuğu */
             overflow-y: auto;
-            /* YENİ: Grid yapısı için */
-            display: grid;
+            /* Grid yapısı için */
+            /* Display özelliği JS tarafından değiştirilecek, başlangıçta none olacak */
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* 180px minimum genişlik, sığdıkça 1fr eşit yayılma */
             gap: 20px; /* Sütunlar arası boşluk */
         }
@@ -446,7 +446,7 @@
         function toggleMenu() {
             const menu = document.getElementById("menuList");
             // Menü açıkken kapat, kapalıyken aç
-            if (menu.style.display === "grid") { /* Grid olarak açtığımız için kontrolü de grid üzerinden yapıyoruz */
+            if (window.getComputedStyle(menu).display === "grid") { /* Geçerli stilini alarak daha güvenli kontrol */
                 menu.style.display = "none";
             } else {
                 menu.style.display = "grid"; /* Menüyü grid olarak göster */
@@ -455,7 +455,6 @@
 
         // Bu menü yapısında alt menüleri tek tek açma/kapama mantığına gerek kalmıyor
         // Çünkü tüm ürünler aynı anda görünüyor.
-        // toggleSubmenu fonksiyonunu kaldırdık veya boş bıraktık.
         function toggleSubmenu(id) {
             // Bu fonksiyon artık kullanılmıyor, menü direkt açılıyor.
             console.log("Alt menü tıklaması algılandı ancak bu menü yapısında alt menü gizleme/gösterme yok.");
