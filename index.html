@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Anasayfa</title>
-    
     <style>
         /* Genel CSS */
         body {
@@ -102,22 +101,22 @@
             color: #33ffff; /* Vurgu rengi */
         }
         
-        /* İçerik Bölümleri (Hakkımızda vb.) */
-        .content-section { /* product-section yerine content-section kullandık */
+        /* Hakkımızda ve Diğer İçerik Bölümleri */
+        .content-section {
             padding: 40px 20px;
-            max-width: 900px; /* main ile aynı genişlikte */
+            max-width: 900px;
             margin: 20px auto;
             background-color: white;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             border-radius: 8px;
-            text-align: left; /* İçeriği sola hizala */
+            text-align: left;
         }
 
         .content-section h2 {
             font-size: 28px;
             color: #004797;
             margin-bottom: 20px;
-            text-align: center; /* Başlığı ortala */
+            text-align: center;
         }
 
         .content-section p {
@@ -127,7 +126,6 @@
             margin-bottom: 15px;
         }
 
-        /* Bu stil, eğer content-section içinde bir görsel olursa kullanılabilir */
         .content-section img {
             max-width: 320px;
             width: 100%;
@@ -135,15 +133,14 @@
             margin-bottom: 30px;
             border: 1px solid #ddd;
             box-shadow: 0 0 5px rgba(0,0,0,0.1);
-            display: block; /* Resmi ortalamak için */
+            display: block;
             margin-left: auto;
             margin-right: auto;
         }
 
-
         /* İletişim Bölümü */
         .contact {
-            background: #e9e9e9; /* Açık gri */
+            background: #e9e9e9;
             padding: 30px 20px;
             margin-top: 40px;
             text-align: center;
@@ -159,29 +156,72 @@
         }
 
         footer {
-            background: #000; /* Siyah */
+            background: #000;
             color: #fff;
             padding: 20px;
             margin-top: 60px;
             font-size: 14px;
         }
 
-        /* Responsive */
+        /* WhatsApp Butonu Stilleri */
+        .whatsapp-button {
+            position: fixed; /* Ekranın belirli bir yerinde sabit kalmasını sağlar */
+            bottom: 20px; /* Alttan 20px boşluk */
+            right: 20px; /* Sağdan 20px boşluk */
+            z-index: 1000; /* Diğer elementlerin üzerinde görünmesini sağlar */
+            background-color: #25D366; /* WhatsApp yeşili */
+            color: white;
+            border-radius: 50%; /* Dairesel şekil */
+            width: 60px; /* Genişlik */
+            height: 60px; /* Yükseklik */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge */
+            transition: transform 0.3s ease-in-out; /* Fare üzerine gelince animasyon */
+            text-decoration: none; /* Alt çizgiyi kaldır */
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1); /* Fare üzerine gelince hafifçe büyüt */
+        }
+
+        .whatsapp-button img {
+            width: 35px; /* WhatsApp logosunun boyutu */
+            height: 35px;
+            /* Resmin kendi içindeki border, shadow gibi stillerini temizliyoruz */
+            border: none;
+            box-shadow: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Responsive Düzenlemeler */
         @media (max-width: 768px) {
             .menu-list {
-                grid-template-columns: 1fr; /* Mobil cihazlarda tek sütun */
+                grid-template-columns: 1fr;
             }
             .menu-category {
                 margin-bottom: 10px;
             }
-            .content-section { /* Responsive için ekleme */
+            .content-section {
                 padding: 20px 15px;
             }
-            .content-section h2 { /* Responsive için ekleme */
+            .content-section h2 {
                 font-size: 24px;
             }
-            .content-section p { /* Responsive için ekleme */
+            .content-section p {
                 font-size: 1em;
+            }
+            .whatsapp-button { /* Mobil cihazlarda daha küçük yapabiliriz */
+                width: 50px;
+                height: 50px;
+                bottom: 15px;
+                right: 15px;
+            }
+            .whatsapp-button img {
+                width: 30px;
+                height: 30px;
             }
         }
     </style>
@@ -317,7 +357,7 @@
         function toggleMenu() {
             const menu = document.getElementById("menuList");
             menu.classList.toggle("active");
-            // Menü açıldığında ekranın üstüne kaydır (mobil deneyim için)
+            // Scroll to the top of the menu when opened for better UX on mobile
             if (menu.classList.contains("active")) {
                 menu.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
@@ -342,6 +382,10 @@
     <footer>
         &copy; 2025 BAYSU YAPI VE SULAMA MALZEMELERİ - Tüm hakları saklıdır.
     </footer>
+
+    <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." class="whatsapp-button" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1200px-WhatsApp.svg.png" alt="WhatsApp">
+    </a>
 
 </body>
 </html>
