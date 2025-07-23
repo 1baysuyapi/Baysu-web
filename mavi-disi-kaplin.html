@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>BAYSU YAPI VE SULAMA MALZEMELERİ</title>
+    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Anasayfa</title>
     <style>
         /* Genel CSS */
         body {
@@ -101,26 +101,34 @@
             color: #33ffff; /* Vurgu rengi */
         }
         
-        /* Product Section (if any on index.html) */
-        .product-section {
+        /* Hakkımızda ve Diğer İçerik Bölümleri */
+        /* Önceden 'product-section' olarak adlandırılan bölümü genel 'content-section' olarak güncelledik */
+        .content-section {
             padding: 40px 20px;
-            max-width: 960px;
+            max-width: 900px; /* Genişlik sabiti */
             margin: 20px auto;
             background-color: white;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             border-radius: 8px;
-            text-align: left; /* Left align content for better readability */
+            text-align: left; /* Metni sola hizala */
         }
 
-        .product-section h2 {
+        .content-section h2 {
             font-size: 28px;
             color: #004797;
             margin-bottom: 20px;
-            text-align: center; /* Center section title */
+            text-align: center; /* Başlığı ortala */
         }
-        
-        /* Bu stil sadece ana sayfada ürün resmi varsa geçerli */
-        .product-section img {
+
+        .content-section p {
+            font-size: 1.1em;
+            color: #333;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        /* Bu stil, eğer content-section içinde bir görsel olursa kullanılabilir */
+        .content-section img {
             max-width: 320px;
             width: 100%;
             height: auto;
@@ -157,13 +165,22 @@
             font-size: 14px;
         }
 
-        /* Responsive */
+        /* Responsive Düzenlemeler */
         @media (max-width: 768px) {
             .menu-list {
                 grid-template-columns: 1fr; /* Mobil cihazlarda tek sütun */
             }
             .menu-category {
                 margin-bottom: 10px;
+            }
+            .content-section { /* Responsive için ekleme */
+                padding: 20px 15px;
+            }
+            .content-section h2 { /* Responsive için ekleme */
+                font-size: 24px;
+            }
+            .content-section p { /* Responsive için ekleme */
+                font-size: 1em;
             }
         }
     </style>
@@ -306,10 +323,11 @@
         }
     </script>
 
-    <section class="product-section">
-        <h2>BAYSU YAPI VE SULAMA MALZEMELERİ</h2>
-        <p>Ankara'da Güvenilir Sulama, Tesisat, Hırdavat, PVC ve PPRC Çözümleri</p>
-        </section>
+    <section class="content-section">
+        <h2>Hakkımızda</h2>
+        <p>BAYSU YAPI VE SULAMA MALZEMELERİ olarak, **2018 yılında başladığımız yolculuğumuzda** Ankara ve çevresindeki müşterilerimize kaliteli sulama, tesisat, hırdavat, PVC ve PPRC çözümleri sunmaktayız. Geniş ürün yelpazemiz ve uzman kadromuzla projelerinize değer katıyoruz.</p>
+        <p>Amacımız, suyun verimli kullanımı ve sürdürülebilir tarım için en uygun ürünleri, rekabetçi fiyatlarla sizlere ulaştırmaktır.</p>
+    </section>
 
     <section class="contact">
         <h3>İletişim</h3>
