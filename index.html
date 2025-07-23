@@ -15,6 +15,7 @@
             --accent: #FFD700; /* Vurgu rengi (altın sarısı) */
             --text-light: #555; /* Açık gri metinler için */
             --footer-bg: #000; /* Koyu ayaklık rengi */
+            --menu-border-color: #e0e0e0; /* Menü içi ayırıcılar için */
         }
         * {
             margin: 0; padding: 0; box-sizing: border-box;
@@ -87,52 +88,66 @@
             z-index: 999;
             max-height: 80vh; /* Çok uzun menüler için kaydırma çubuğu */
             overflow-y: auto;
+            /* YENİ: Grid yapısı için */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* 180px minimum genişlik, sığdıkça 1fr eşit yayılma */
+            gap: 20px; /* Sütunlar arası boşluk */
         }
-        .menu-category {
-            margin-bottom: 18px;
-            border-bottom: 1px dashed #eee; /* Kategori ayırıcı */
-            padding-bottom: 10px;
+        /* Eski menu-category ve submenu stillerini geçersiz kılıyoruz veya kaldırıyoruz */
+        .menu-category { /* Bu artık direkt bir menü sütunu olacak */
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+            border-right: 1px solid var(--menu-border-color); /* Sütunlar arası dikey çizgi */
+            padding-right: 20px;
         }
         .menu-category:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
+            border-right: none; /* Son sütunda çizgi olmasın */
         }
-        .menu-category button {
-            background: none;
-            border: none;
-            font-size: 1.2em;
-            font-weight: 600; /* Kalınlık artırıldı */
-            cursor: pointer;
+        .menu-category h3 { /* Görseldeki kategori başlıkları için */
+            font-size: 1.1em;
+            font-weight: 700; /* Daha kalın */
             color: var(--primary);
-            padding: 8px 0;
-            width: 100%;
-            text-align: left;
-            transition: color 0.3s ease;
+            margin-bottom: 15px;
+            white-space: nowrap; /* Başlıklar tek satırda kalsın */
         }
-        .menu-category button:hover {
-            color: var(--secondary);
+        .menu-category ul {
+            list-style: none; /* Liste işaretlerini kaldır */
         }
-        .submenu {
-            display: none;
-            margin-left: 25px;
-            margin-top: 10px;
-            border-left: 3px solid var(--secondary); /* Alt menü ayırıcı */
-            padding-left: 15px;
+        .menu-category ul li {
+            margin-bottom: 8px;
         }
-        .submenu a {
+        .menu-category ul li a {
             display: block;
             text-decoration: none;
             color: var(--text-light);
-            margin-bottom: 8px;
             transition: color 0.3s ease, transform 0.2s ease;
-            font-size: 1em;
-            padding: 3px 0;
+            font-size: 0.95em;
+            padding: 2px 0;
+            white-space: nowrap; /* Ürün isimleri tek satırda kalsın */
         }
-        .submenu a:hover {
+        .menu-category ul li a:hover {
             color: var(--primary);
-            transform: translateX(5px); /* Hafif kaydırma efekti */
+            transform: translateX(3px); /* Hafif kaydırma efekti */
         }
+
+        /* Responsive menü açıldığında tek sütun olması için */
+        @media (max-width: 768px) {
+            .menu-list {
+                grid-template-columns: 1fr; /* Tek sütuna düşür */
+                padding: 15px;
+            }
+            .menu-category {
+                border-right: none;
+                border-bottom: 1px solid var(--menu-border-color); /* Mobil görünümde yatay çizgi */
+                padding-bottom: 15px;
+                padding-right: 0;
+            }
+            .menu-category:last-child {
+                border-bottom: none;
+            }
+        }
+
 
         /* Genel Bölümler (Section) */
         section {
@@ -241,7 +256,7 @@
             transform: scale(1.1) rotate(5deg); /* Hafif büyüme ve dönme */
         }
 
-        /* Responsive Ayarlamalar */
+        /* Responsive Ayarlamalar (Genel) */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2em;
@@ -278,32 +293,107 @@
         <div class="menu-toggle" onclick="toggleMenu()">Ürünlerimiz +</div>
         <div class="menu-list" id="menuList">
             <div class="menu-category">
-                <button onclick="toggleSubmenu('mavi')">▶️ Mavi Seri</button>
-                <div class="submenu" id="submenu-mavi">
-                    <a href="mavi-disi-kaplin.html" target="_blank">Dişi Kaplin</a>
-                    <a href="mavi-erkek-kaplin.html" target="_blank">Erkek Kaplin</a>
-                </div>
+                <h3>Mavi Seri</h3>
+                <ul>
+                    <li><a href="mavi-disi-kaplin.html" target="_blank">Dişi Kaplin</a></li>
+                    <li><a href="mavi-erkek-kaplin.html" target="_blank">Erkek Kaplin</a></li>
+                    <li><a href="#" target="_blank">Dirsek</a></li> <li><a href="#" target="_blank">Dişi Dirsek</a></li> <li><a href="#" target="_blank">Erkek Dirsek</a></li> <li><a href="#" target="_blank">Manşon</a></li> <li><a href="#" target="_blank">Tapa</a></li> </ul>
             </div>
+
             <div class="menu-category">
-                <button onclick="toggleSubmenu('siyah')">▶️ Siyah Seri</button>
-                <div class="submenu" id="submenu-siyah">
-                    <a href="siyah-manson.html" target="_blank">Manşon</a>
-                    <a href="siyah-disi-kaplin.html" target="_blank">Dişi Kaplin</a>
-                </div>
+                <h3>Siyah Seri</h3>
+                <ul>
+                    <li><a href="#" target="_blank">Dişi Kaplin</a></li>
+                    <li><a href="#" target="_blank">Erkek Kaplin</a></li>
+                    <li><a href="#" target="_blank">Dirsek</a></li>
+                    <li><a href="#" target="_blank">Dişi Dirsek</a></li>
+                    <li><li><a href="#" target="_blank">Erkek Dirsek</a></li>
+                    <li><a href="siyah-manson.html" target="_blank">Manşon</a></li>
+                    <li><a href="#" target="_blank">Tapa</a></li>
+                </ul>
             </div>
+
             <div class="menu-category">
-                <button onclick="toggleSubmenu('kilitli')">▶️ Kilitli Bağlantı Parçaları</button>
-                <div class="submenu" id="submenu-kilitli">
-                    <a href="kilitli-dirsek.html" target="_blank">Kilitli Dirsek</a>
-                    <a href="#" target="_blank">Kilitli T</a>
-                </div>
+                <h3>Kilitli Bağlantı Parçaları</h3>
+                <ul>
+                    <li><a href="#" target="_blank">Kilitli Bağlantı Erkek Adaptör</a></li>
+                    <li><a href="kilitli-dirsek.html" target="_blank">Kilitli Bağlantı Erkek Dirsek</a></li>
+                    <li><a href="#" target="_blank">Kilitli Bağlantı Dirsek</a></li>
+                    <li><a href="#" target="_blank">Kilitli Bağlantı Redüksiyon Dirsek</a></li>
+                    <li><a href="#" target="_blank">Kilitli Bağlantı TE</a></li>
+                    <li><a href="#" target="_blank">Kilitli Bağlantı Erkek TE</a></li>
+                </ul>
             </div>
+
             <div class="menu-category">
-                <button onclick="toggleSubmenu('damlama')">▶️ Damlama Ek Parçaları</button>
-                <div class="submenu" id="submenu-damlama">
-                    <a href="damlama-mini-vana.html" target="_blank">Mini Vana</a>
-                </div>
+                <h3>Dişli Sulama Ek Parçaları</h3>
+                <ul>
+                    <li><a href="#" target="_blank">Dişli Dişi Dirsek</a></li>
+                    <li><a href="#" target="_blank">Dişli Dişi Nipel</a></li>
+                    <li><a href="#" target="_blank">Dişli Dişi Redüksiyon Dirsek</a></li>
+                    <li><a href="#" target="_blank">Erkek Dişli Kör Tapa</a></li>
+                </ul>
             </div>
+
+            <div class="menu-category">
+                <h3>Priz Kolyeler</h3>
+                <ul>
+                    <li><a href="#" target="_blank">Priz Kolye</a></li>
+                    <li><a href="#" target="_blank">Dişi Nipelli Priz Kolye</a></li>
+                    <li><a href="#" target="_blank">Erkek Nipelli Priz Kolye</a></li>
+                    <li><a href="#" target="_blank">Kızaklı Priz Kolye</a></li>
+                    <li><a href="#" target="_blank">Çift Çıkışlı Priz Kolye</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h3>Nipelli Seri</h3>
+                <ul>
+                    <li><a href="#" target="_blank">Dişi Nipelli Priz Kolye</a></li>
+                    <li><a href="#" target="_blank">Erkek Nipelli Priz Kolye</a></li>
+                    <li><a href="#" target="_blank">Nipelli Erkek TE</a></li>
+                    <li><a href="#" target="_blank">Nipelli Dişi Dirsek</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h3>Vanalar</h3>
+                <ul>
+                    <li><a href="#" target="_blank">Dişi Dişi Vana</a></li>
+                    <li><a href="#" target="_blank">Erkek Dişi Vana</a></li>
+                    <li><a href="#" target="_blank">Kaplin Dişi Vana</a></li>
+                    <li><a href="#" target="_blank">Kaplin Erkek Vana</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h3>Vana Kutuları</h3>
+                <ul>
+                    <li><a href="#" target="_blank">6" Vana Kutusu</a></li>
+                    <li><a href="#" target="_blank">10" Vana Kutusu</a></li>
+                    <li><a href="#" target="_blank">12" Vana Kutusu</a></li>
+                    <li><a href="#" target="_blank">14" Vana Kutusu</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h3>Damlama Ek Parçaları</h3>
+                <ul>
+                    <li><a href="damlama-mini-vana.html" target="_blank">Çıkış Mini Vana</a></li>
+                    <li><a href="#" target="_blank">Debi Ayarlı Damlatıcı Geniş Boşaltım</a></li>
+                    <li><a href="#" target="_blank">Debi Ayarlı Damlatıcı Yeşil</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h3>Yedek Parçalar</h3>
+                <ul>
+                    <li><a href="#" target="_blank">Kaplin Sıkma Anahtarı</a></li>
+                    <li><a href="#" target="_blank">Pah Açma Aparatı</a></li>
+                    <li><a href="#" target="_blank">Abot Üstü Kaplin Dağıtıcı</a></li>
+                </ul>
+            </div>
+            
             </div>
     </nav>
 
@@ -350,18 +440,20 @@
     <script>
         function toggleMenu() {
             const menu = document.getElementById("menuList");
-            menu.style.display = menu.style.display === "block" ? "none" : "block";
+            // Menü açıkken kapat, kapalıyken aç
+            if (menu.style.display === "grid") { /* Grid olarak açtığımız için kontrolü de grid üzerinden yapıyoruz */
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "grid"; /* Menüyü grid olarak göster */
+            }
         }
 
+        // Bu menü yapısında alt menüleri tek tek açma/kapama mantığına gerek kalmıyor
+        // Çünkü tüm ürünler aynı anda görünüyor.
+        // toggleSubmenu fonksiyonunu kaldırdık veya boş bıraktık.
         function toggleSubmenu(id) {
-            const submenu = document.getElementById("submenu-" + id);
-            // Tüm alt menüleri kapat (sadece tıklanan açık kalsın)
-            document.querySelectorAll('.submenu').forEach(sub => {
-                if (sub.id !== submenu.id) {
-                    sub.style.display = 'none';
-                }
-            });
-            submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+            // Bu fonksiyon artık kullanılmıyor, menü direkt açılıyor.
+            console.log("Alt menü tıklaması algılandı ancak bu menü yapısında alt menü gizleme/gösterme yok.");
         }
     </script>
 </body>
