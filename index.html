@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Anasayfa</title>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
@@ -27,23 +27,24 @@
             display: flex; /* İçeriği ortalamak için flexbox */
             justify-content: center; /* Yatayda ortala */
             align-items: center; /* Dikeyde ortala */
-            min-height: 100px; /* Header'ın minimum yüksekliği, görselin rahat sığması için */
+            min-height: 100px; /* Header'ın minimum yüksekliği */
+            max-height: 200px; /* Header'ın maksimum yüksekliği (görselin orantısına göre ayarlanabilir) */
         }
 
-        /* RESİM BOYUTU VE GÖRSELİN TAMAMINI GÖSTERME AYARLARI BURADA BAŞLIYOR */
+        /* RESİM BOYUTU VE GÖRSELİN TAMAMINI GÖSTERME AYARLARI (YÖNTEM 1) BURADA BAŞLIYOR */
         header img {
-            width: auto; /* Genişliği otomatik ayarla, orantıyı koru */
-            max-width: 400px; /* Maksimum genişlik, görselin çok büyümesini engeller */
-            height: auto; /* Yüksekliği orantılı olarak ayarlar */
-            max-height: 90px; /* MAKSİMUM YÜKSEKLİK (öncekine göre biraz artırıldı) */
-            min-height: 60px; /* MİNİMUM YÜKSEKLİK (öncekine göre biraz artırıldı) */
+            width: 100%; /* Genişliği header alanının %100'ü yap */
+            max-width: none; /* Maksimum genişlik sınırlamasını kaldır */
+            height: auto; /* Yüksekliği orantılı ayarla */
+            max-height: 100%; /* Maksimum yükseklik header alanının %100'ü */
+            min-height: auto; /* Minimum yüksekliği otomatik yap */
             display: block; /* Altındaki boşluğu kaldırır */
             margin: 0 auto; /* Yatayda ortalar */
-            object-fit: contain; /* Resmin tamamını alanı içine sığdırır, kırpmaz */
+            object-fit: scale-down; /* Görsel büyükse sığdır, küçükse olduğu gibi göster */
             object-position: center; /* Resmi alanda ortalar */
         }
-        /* RESİM BOYUTU VE GÖRSELİN TAMAMINI GÖSTERME AYARLARI BURADA BİTİYOR */
-        
+        /* RESİM BOYUTU VE GÖRSELİN TAMAMINI GÖSTERME AYARLARI (YÖNTEM 1) BURADA BİTİYOR */
+
         /* Önceki h1, h2, p stilleri artık resim kullanıldığı için gereksiz */
         header h1, header h2, header p {
             display: none; /* Bu başlıkları gizledik, yerine görsel gelecek */
@@ -189,7 +190,7 @@
             border-radius: 5px;
             padding: 10px;
             /* Her liste varsayılan olarak gizli, JS ile gösterilecek */
-            display: none; 
+            display: none;
         }
 
         .product-list li {
@@ -208,7 +209,7 @@
             text-decoration: underline;
             color: #33ffff;
         }
-        
+
         /* Hakkımızda ve Diğer İçerik Bölümleri */
         .content-section {
             padding: 40px 20px;
@@ -294,7 +295,7 @@
         .whatsapp-button:hover {
             transform: scale(1.1); /* Fare üzerine gelince hafifçe büyüt */
         }
-        
+
         /* Responsive Düzenlemeler */
         @media (max-width: 768px) {
             .main-menu-container {
@@ -326,11 +327,12 @@
             /* Header görseli için mobil ayarlamalar */
             header {
                 min-height: 80px; /* Mobil header minimum yüksekliği */
+                max-height: 150px; /* Mobil header maksimum yüksekliği */
             }
             header img {
-                max-width: 300px; /* Mobil için maksimum genişlik */
-                max-height: 70px; /* MOBİL İÇİN MAKSİMUM YÜKSEKLİK */
-                min-height: 50px; /* MOBİL İÇİN MİNİMUM YÜKSEKLİK */
+                max-width: 100%; /* Mobil için maksimum genişlik */
+                max-height: 100%; /* Mobil için maksimum yükseklik */
+                min-height: auto;
             }
 
             .whatsapp-button { /* Mobil cihazlarda daha küçük yapabiliriz */
@@ -351,7 +353,7 @@
 
     <nav>
         <div class="menu-toggle" onclick="toggleMainMenu()">Ürünlerimiz +</div>
-        
+
         <div class="main-menu-container" id="mainMenuContainer">
             <div class="menu-content">
                 <div class="primary-category-column">
@@ -481,7 +483,7 @@
             if (!mainMenuContainer.classList.contains("active")) {
                 document.getElementById('secondaryCategoriesColumn').classList.remove('active');
                 document.getElementById('tertiaryProductsColumn').classList.remove('active');
-                
+
                 document.querySelectorAll('.primary-category-item.active').forEach(item => item.classList.remove('active'));
                 document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
                 document.querySelectorAll('.product-list').forEach(list => list.style.display = 'none'); // Tüm ürün listelerini gizle
@@ -516,7 +518,7 @@
         // Üçüncü sütunu (alt ürünleri) açıp kapatan fonksiyon (Ana Kategoriler için)
         function toggleTertiaryMenu(clickedItem, categoryId) {
             const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
-            
+
             // Tüm secondary-category-item'lardan 'active' sınıfını kaldır
             document.querySelectorAll('.secondary-category-item').forEach(item => {
                 if (item !== clickedItem) { // Tıklanan öğe hariç
@@ -537,7 +539,7 @@
                 // Kategoriye özgü ürün listesini göster
                 const productListToShow = document.getElementById(categoryId + '-products');
                 if (productListToShow) {
-                    productListToShow.style.display = 'block'; 
+                    productListToShow.style.display = 'block';
                 }
             } else {
                 tertiaryColumn.classList.remove('active'); // Üçüncü sütunu gizle
