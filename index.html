@@ -26,6 +26,21 @@
 
         header h1 {
             margin-bottom: 5px;
+            font-size: 3em; /* BAYSU için büyük boyut */
+            line-height: 1.1;
+        }
+
+        header h2 {
+            margin-bottom: 5px;
+            font-size: 1.8em; /* YAPI VE SULAMA MALZEMELERİ için orta boyut */
+            line-height: 1.2;
+            font-weight: normal;
+        }
+
+        header p {
+            font-size: 1em; /* Açıklama için küçük boyut */
+            line-height: 1.5;
+            margin-top: 0;
         }
 
         /* Navigasyon Stilleri */
@@ -76,6 +91,7 @@
             background-color: #004797; /* Kategori arkaplanı */
             border-radius: 5px;
             color: white;
+            cursor: pointer; /* Add pointer cursor to indicate clickability */
         }
 
         .menu-category h3 {
@@ -107,6 +123,23 @@
         .menu-category a:hover {
             text-decoration: underline;
             color: #33ffff; /* Vurgu rengi */
+        }
+
+        /* Submenu specific styles */
+        .menu-category .submenu {
+            display: none; /* Submenus are hidden by default */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-top: 10px; /* Space between category title and submenu items */
+        }
+
+        .menu-category .submenu.active {
+            display: block; /* Show submenu when active */
+        }
+
+        .menu-category .submenu li {
+            margin-bottom: 3px;
         }
         
         /* Hakkımızda ve Diğer İçerik Bölümleri */
@@ -219,26 +252,47 @@
                 right: 15px;
                 font-size: 35px; /* Mobil ikon boyutu artırıldı */
             }
+            header h1 {
+                font-size: 2.5em; /* Mobil için daha küçük BAYSU */
+            }
+            header h2 {
+                font-size: 1.5em; /* Mobil için daha küçük YAPI VE SULAMA MALZEMELERİ */
+            }
+            header p {
+                font-size: 0.9em; /* Mobil için daha küçük açıklama */
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>BAYSU YAPI VE SULAMA MALZEMELERİ</h1>
+        <h1>BAYSU</h1>
+        <h2>YAPI VE SULAMA MALZEMELERİ</h2>
         <p>Ankara'da Güvenilir Sulama, Tesisat, Hırdavat, PVC ve PPRC Çözümleri</p>
     </header>
 
     <nav>
         <div class="menu-toggle" onclick="toggleMenu()">Ürünlerimiz +</div>
         <div class="menu-list" id="menuList">
+            <div class="menu-category" onclick="toggleSubMenu(event)">
+                <h3>KAPLİNLER</h3>
+                <ul class="submenu">
+                    <li><a href="mavi-disi-kaplin.html" target="_blank">Mavi Seri Dişi Kaplin</a></li>
+                    <li><a href="mavi-erkek-kaplin.html" target="_blank">Mavi Seri Erkek Kaplin</a></li>
+                    <li><a href="mavi-dirsek-kaplin.html" target="_blank">Mavi Seri Dirsek Kaplin</a></li>
+                    <li><a href="siyah-disi-kaplin.html" target="_blank">Siyah Seri Dişi Kaplin</a></li>
+                    <li><a href="#" target="_blank">Siyah Seri Erkek Kaplin</a></li>
+                    <li><a href="#" target="_blank">Kilitli Bağlantı Erkek Adaptör</a></li>
+                    <li><a href="#" target="_blank">Abot Üstü Kaplin Dağıtıcı</a></li>
+                    <li><a href="#" target="_blank">Kaplin Sıkma Anahtarı</a></li>
+                </ul>
+            </div>
+
             <div class="menu-category">
                 <h3>Mavi Seri</h3>
                 <ul>
-                    <li><a href="mavi-disi-kaplin.html" target="_blank">Dişi Kaplin</a></li>
-                    <li><a href="mavi-erkek-kaplin.html" target="_blank">Erkek Kaplin</a></li>
-                    <li><a href="mavi-dirsek-kaplin.html" target="_blank">Dirsek Kaplin</a></li>
-                    <li><a href="mavi-disi-dirsek.html" target="_blank">Dişi Dirsek</a></li
+                    <li><a href="mavi-disi-dirsek.html" target="_blank">Dişi Dirsek</a></li>
                     <li><a href="mavi-erkek-dirsek.html" target="_blank">Erkek Dirsek</a></li>
                     <li><a href="mavi-manson.html" target="_blank">Manşon</a></li>
                     <li><a href="mavi-tapa.html" target="_blank">Tapa</a></li>
@@ -253,14 +307,12 @@
             <div class="menu-category">
                 <h3>Siyah Seri</h3>
                 <ul>
-                    <li><a href="siyah-disi-kaplin.html" target="_blank">Dişi Kaplin</a></li>
-                    <li><a href="#" target="_blank">Erkek Kaplin</a></li>
                     <li><a href="siyah-dirsek.html" target="_blank">Dirsek</a></li>
                     <li><a href="#" target="_blank">Dişi Dirsek</a></li>
                     <li><a href="#" target="_blank">Erkek Dirsek</a></li>
                     <li><a href="siyah-manson.html" target="_blank">Manşon</a></li>
-                    <li><a href="#" target="_blank">Tapa</a></li
-                    <li><a href="#" target="_blank">Te</a></li
+                    <li><a href="#" target="_blank">Tapa</a></li>
+                    <li><a href="#" target="_blank">Te</a></li>
                     <li><a href="#" target="_blank">Erkek Te</a></li>
                     <li><a href="#" target="_blank">Dişi Te</a></li>
                     <li><a href="#" target="_blank">Redüksiyon Te</a></li>
@@ -271,7 +323,6 @@
             <div class="menu-category">
                 <h3>Kilitli Bağlantı Parçaları</h3>
                 <ul>
-                    <li><a href="#" target="_blank">Kilitli Bağlantı Erkek Adaptör</a></li>
                     <li><a href="#" target="_blank">Kilitli Bağlantı Erkek Dirsek</a></li>
                     <li><a href="#" target="_blank">Kilitli Bağlantı Dirsek</a></li>
                     <li><a href="#" target="_blank">Kilitli Bağlantı Redüksiyon Dirsek</a></li>
@@ -343,9 +394,7 @@
             <div class="menu-category">
                 <h3>Yedek Parçalar</h3>
                 <ul>
-                    <li><a href="#" target="_blank">Kaplin Sıkma Anahtarı</a></li>
                     <li><a href="#" target="_blank">Pah Açma Aparatı</a></li>
-                    <li><a href="#" target="_blank">Abot Üstü Kaplin Dağıtıcı</a></li>
                 </ul>
             </div>
         </div>
@@ -357,6 +406,22 @@
             menu.classList.toggle("active");
             if (menu.classList.contains("active")) {
                 menu.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function toggleSubMenu(event) {
+            const clickedCategory = event.currentTarget;
+            const submenu = clickedCategory.querySelector('.submenu');
+            
+            // Close other open submenus
+            document.querySelectorAll('.menu-category .submenu.active').forEach(openSubmenu => {
+                if (openSubmenu !== submenu) {
+                    openSubmenu.classList.remove('active');
+                }
+            });
+
+            if (submenu) {
+                submenu.classList.toggle('active');
             }
         }
     </script>
