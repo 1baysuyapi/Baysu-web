@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Anasayfa</title>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
@@ -26,12 +26,12 @@
             display: flex; /* İçeriği ortalamak için flexbox */
             justify-content: center; /* Yatayda ortala */
             align-items: center; /* Dikeyde ortala */
-            min-height: 120px; /* Header'ın minimum yüksekliği artırıldı */
-            max-height: 250px; /* Header'ın maksimum yüksekliği artırıldı */
+            min-height: 100px; /* Header'ın minimum yüksekliği azaltıldı */
+            max-height: 200px; /* Header'ın maksimum yüksekliği azaltıldı */
             background-color: #003366; /* Header arka plan rengi eklendi (isteğe bağlı) */
         }
 
-        /* RESİM BOYUTU VE GÖRSELİN TAMAMINI GÖSTERME AYARLARI BURADA BAŞLIYOR */
+        /* RESİM BOYUTU VE KONUM AYARLARI BURADA BAŞLIYOR */
         header img {
             width: auto; /* Genişliği otomatik ayarla */
             max-width: 90%; /* Header'ın genişliğinin %90'ını kapla */
@@ -40,10 +40,10 @@
             display: block; /* Altındaki boşluğu kaldırır */
             margin: 0 auto; /* Yatayda ortalar */
             object-fit: contain; /* Resmin tamamını alanı içine sığdırır, kırpmaz */
-            object-position: center; /* Resmi alanda ortalar */
+            object-position: top center; /* Resmi yukarıya ve ortaya hizala */
         }
-        /* RESİM BOYUTU VE GÖRSELİN TAMAMINI GÖSTERME AYARLARI BURADA BİTİYOR */
-        
+        /* RESİM BOYUTU VE KONUM AYARLARI BURADA BİTİYOR */
+
         /* Önceki h1, h2, p stilleri artık resim kullanıldığı için gereksiz */
         header h1, header h2, header p {
             display: none; /* Bu başlıkları gizledik, yerine görsel gelecek */
@@ -189,7 +189,7 @@
             border-radius: 5px;
             padding: 10px;
             /* Her liste varsayılan olarak gizli, JS ile gösterilecek */
-            display: none; 
+            display: none;
         }
 
         .product-list li {
@@ -208,7 +208,7 @@
             text-decoration: underline;
             color: #33ffff;
         }
-        
+
         /* Hakkımızda ve Diğer İçerik Bölümleri */
         .content-section {
             padding: 40px 20px;
@@ -294,7 +294,7 @@
         .whatsapp-button:hover {
             transform: scale(1.1); /* Fare üzerine gelince hafifçe büyüt */
         }
-        
+
         /* Responsive Düzenlemeler */
         @media (max-width: 768px) {
             .main-menu-container {
@@ -325,8 +325,8 @@
 
             /* Header görseli için mobil ayarlamalar */
             header {
-                min-height: 100px; /* Mobil header minimum yüksekliği */
-                max-height: 200px; /* Mobil header maksimum yüksekliği */
+                min-height: 80px; /* Mobil header minimum yüksekliği */
+                max-height: 150px; /* Mobil header maksimum yüksekliği */
             }
             header img {
                 max-width: 95%; /* Mobil için maksimum genişlik */
@@ -351,7 +351,7 @@
 
     <nav>
         <div class="menu-toggle" onclick="toggleMainMenu()">Ürünlerimiz +</div>
-        
+
         <div class="main-menu-container" id="mainMenuContainer">
             <div class="menu-content">
                 <div class="primary-category-column">
@@ -481,7 +481,7 @@
             if (!mainMenuContainer.classList.contains("active")) {
                 document.getElementById('secondaryCategoriesColumn').classList.remove('active');
                 document.getElementById('tertiaryProductsColumn').classList.remove('active');
-                
+
                 document.querySelectorAll('.primary-category-item.active').forEach(item => item.classList.remove('active'));
                 document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
                 document.querySelectorAll('.product-list').forEach(list => list.style.display = 'none'); // Tüm ürün listelerini gizle
@@ -516,7 +516,7 @@
         // Üçüncü sütunu (alt ürünleri) açıp kapatan fonksiyon (Ana Kategoriler için)
         function toggleTertiaryMenu(clickedItem, categoryId) {
             const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
-            
+
             // Tüm secondary-category-item'lardan 'active' sınıfını kaldır
             document.querySelectorAll('.secondary-category-item').forEach(item => {
                 if (item !== clickedItem) { // Tıklanan öğe hariç
@@ -537,7 +537,7 @@
                 // Kategoriye özgü ürün listesini göster
                 const productListToShow = document.getElementById(categoryId + '-products');
                 if (productListToShow) {
-                    productListToShow.style.display = 'block'; 
+                    productListToShow.style.display = 'block';
                 }
             } else {
                 tertiaryColumn.classList.remove('active'); // Üçüncü sütunu gizle
