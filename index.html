@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Anasayfa</title>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         /* Genel CSS */
@@ -19,28 +19,25 @@
         }
 
         header {
-            background: linear-gradient(to right, #004797, #33ffff); /* Mavi gradient */
+            /* header için arka plan gradyanını kaldırdık, görselin kendi arkaplanı olacak */
             color: #fff;
-            padding: 30px 10px 10px;
+            padding: 0; /* İç dolguyu sıfırladık, görsel tam oturacak */
+            position: relative; /* Resmi ortalamak için */
+            overflow: hidden; /* Görselin taşmasını engelle */
+            height: auto; /* Yüksekliği içeriğe göre ayarla */
         }
 
-        header h1 {
-            margin-bottom: 5px;
-            font-size: 3em; /* BAYSU için büyük boyut */
-            line-height: 1.1;
+        header img {
+            width: 100%; /* Görseli tam genişlikte yap */
+            height: auto; /* Oranı koru */
+            display: block; /* Altındaki boşluğu kaldır */
+            margin-bottom: -5px; /* Alt boşluk oluşursa kaldırmak için */
+            /* Eğer çok büyük gelirse max-width kullanabilirsin: max-width: 900px; margin: 0 auto; */
         }
-
-        header h2 {
-            margin-bottom: 5px;
-            font-size: 1.8em; /* YAPI VE SULAMA MALZEMELERİ için orta boyut */
-            line-height: 1.2;
-            font-weight: normal;
-        }
-
-        header p {
-            font-size: 1em; /* Açıklama için küçük boyut */
-            line-height: 1.5;
-            margin-top: 0;
+        
+        /* Önceki h1, h2, p stilleri artık resim kullanıldığı için gereksiz ama dilerseniz başka bir yerde kullanabilirsiniz */
+        header h1, header h2, header p {
+            display: none; /* Bu başlıkları gizledik, yerine görsel gelecek */
         }
 
         /* Navigasyon Stilleri */
@@ -182,6 +179,8 @@
             background-color: #0056b3;
             border-radius: 5px;
             padding: 10px;
+            /* Her liste varsayılan olarak gizli, JS ile gösterilecek */
+            display: none; 
         }
 
         .product-list li {
@@ -315,15 +314,12 @@
                 margin-bottom: 5px;
             }
 
-            header h1 {
-                font-size: 2.5em; /* Mobil için daha küçük BAYSU */
+            /* Header görseli için mobil ayarlamalar */
+            header img {
+                width: 100%;
+                height: auto;
             }
-            header h2 {
-                font-size: 1.5em; /* Mobil için daha küçük YAPI VE SULAMA MALZEMELERİ */
-            }
-            header p {
-                font-size: 0.9em; /* Mobil için daha küçük açıklama */
-            }
+
             .whatsapp-button { /* Mobil cihazlarda daha küçük yapabiliriz */
                 width: 60px;
                 height: 60px;
@@ -337,10 +333,8 @@
 <body>
 
     <header>
-        <h1>BAYSU</h1>
-        <h2>YAPI VE SULAMA MALZEMELERİ</h2>
-        <p>Ankara'da Güvenilir Sulama, Tesisat, Hırdavat, PVC ve PPRC Çözümleri</p>
-    </header>
+        <img src="WhatsApp Image 2025-07-25 at 22.26.24.jpeg" alt="BAYSU YAPI VE SULAMA MALZEMELERİ">
+        </header>
 
     <nav>
         <div class="menu-toggle" onclick="toggleMainMenu()">Ürünlerimiz +</div>
@@ -386,7 +380,8 @@
                     </div>
                 </div>
 
-                <ul class="product-list" id="mavi-seri-products">
+                <div class="tertiary-products-column" id="tertiaryProductsColumn">
+                    <ul class="product-list" id="mavi-seri-products">
                         <li><a href="mavi-seri-disi-kaplin.html" target="_blank">Mavi Seri Dişi Kaplin</a></li>
                         <li><a href="mavi-seri-erkek-kaplin.html" target="_blank">Mavi Seri Erkek Kaplin</a></li>
                         <li><a href="mavi-seri-dirsek-kaplin.html" target="_blank">Mavi Seri Dirsek Kaplin</a></li>
@@ -398,8 +393,7 @@
                         <li><a href="mavi-seri-disi-te.html" target="_blank">Mavi Seri Dişi Te</a></li>
                         <li><a href="mavi-seri-reduksiyon-te.html" target="_blank">Mavi Seri Redüksiyon Te</a></li>
                         <li><a href="mavi-seri-reduksiyon.html" target="_blank">Mavi Seri Redüksiyon</a></li>
-                        <li><a href="mavi-seri-te.html" target="_blank">Mavi Seri Te</a></li> </ul>
-                
+                        <li><a href="mavi-seri-te.html" target="_blank">Mavi Seri Te</a></li>
                     </ul>
                     <ul class="product-list" id="siyah-seri-products">
                         <li><a href="siyah-dirsek.html" target="_blank">Siyah Seri Dirsek</a></li>
@@ -489,6 +483,13 @@
             // KAPLİNLER öğesinin aktif/pasif durumunu değiştir
             const isActive = clickedItem.classList.toggle('active');
 
+            // Tüm primary-category-item'lardan 'active' sınıfını kaldır
+            document.querySelectorAll('.primary-category-item').forEach(item => {
+                if (item !== clickedItem) { // Tıklanan öğe hariç
+                    item.classList.remove('active');
+                }
+            });
+
             if (isActive) {
                 secondaryColumn.classList.add('active'); // İkinci sütunu göster
             } else {
@@ -520,7 +521,11 @@
 
             if (isActive) {
                 tertiaryColumn.classList.add('active'); // Üçüncü sütunu göster
-                document.getElementById(categoryId + '-products').style.display = 'block'; // İlgili ürün listesini göster
+                // Kategoriye özgü ürün listesini göster
+                const productListToShow = document.getElementById(categoryId + '-products');
+                if (productListToShow) {
+                    productListToShow.style.display = 'block'; 
+                }
             } else {
                 tertiaryColumn.classList.remove('active'); // Üçüncü sütunu gizle
             }
