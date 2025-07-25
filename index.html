@@ -13,31 +13,33 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f4f4f4; /* Koyu gri tonu */
+            background: #f4f4f4;
             color: #222;
             text-align: center;
         }
 
         header {
             color: #fff;
-            padding: 0; /* İç dolguyu sıfırladık */
+            padding: 0;
             position: relative;
-            overflow: hidden; /* Görselin taşmasını engelle, kırpma burada gerçekleşecek */
-            display: flex; /* İçeriği ortalamak için flexbox */
-            justify-content: center; /* Yatayda ortala */
-            align-items: center; /* Dikeyde ortala (object-position ile manuel ayarladığımız için etkisi azalır) */
-            min-height: 100px; /* Header'ın minimum yüksekliği - logo yüksekliğine göre ayarlanacak */
-            max-height: 150px; /* Header'ın maksimum yüksekliği - logo yüksekliğine göre ayarlanacak */
-            background-color: #003366; /* Header arka plan rengi eklendi (isteğe bağlı) */
+            overflow: hidden; /* Görselin taşmasını engeller, kırpma için önemli */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Dikeyde yukarı hizala */
+            background-color: #003366; /* Header arka plan rengi (görsel yüklenmezse görünür) */
+            
+            /* Logo alanının yüksekliği: Bu değerleri kendi logonuzun yüksekliğine göre ayarlayın */
+            min-height: 130px; /* Logo metninin tamamının görünmesi için minimum yükseklik */
+            max-height: 130px; /* Logo metninin tamamının görünmesi için maksimum yükseklik (min ile aynı yaparak sabitleriz) */
         }
 
         /* RESİM BOYUTU VE KONUM AYARLARI BURADA BAŞLIYOR */
         header img {
-            width: 100%; /* Header genişliğini tamamen kapla */
-            height: 100%; /* Header yüksekliğini tamamen kapla */
-            display: block; /* Altındaki boşluğu kaldırır */
-            object-fit: cover; /* Resmi alanı kaplayacak şekilde büyüt ve taşan kısımları kırp */
-            object-position: top center; /* Resmin üst kısmını header'ın üstüne hizala ve yatayda ortala */
+            display: block;
+            width: 100%; /* Header'ın genişliğini tamamen kapla */
+            height: 100%; /* Header'ın yüksekliğini tamamen kapla */
+            object-fit: cover; /* Resmi alanı kaplayacak şekilde büyütür ve taşan kısımları kırpar */
+            object-position: top center; /* Resmin üst kısmını header'ın tepesine yapıştırır ve yatayda ortalar */
         }
         /* RESİM BOYUTU VE KONUM AYARLARI BURADA BİTİYOR */
 
@@ -50,7 +52,7 @@
         nav {
             background: #003366; /* Daha koyu mavi */
             padding: 10px 0;
-            position: relative; /* Menü içeriği için referans noktası */
+            position: relative;
             z-index: 1000;
         }
 
@@ -61,8 +63,8 @@
             font-size: 18px;
             cursor: pointer;
             padding: 10px 20px;
-            display: block; /* Tam genişlikte buton */
-            text-align: center; /* Butonu ortaya hizala */
+            display: block;
+            text-align: center;
         }
 
         /* Ana Menü Kapsayıcı (Ürünlerimiz + ile açılan) */
@@ -87,19 +89,19 @@
         /* Menü İçeriği - Flexbox ile sütunları yönet */
         .menu-content {
             display: flex;
-            justify-content: flex-start; /* İçerikleri soldan başla */
-            align-items: flex-start; /* İçerikleri yukarıdan başla */
-            max-height: 80vh; /* Ekran yüksekliğinin %80'i */
-            overflow-y: auto; /* Dikey kaydırma */
-            overflow-x: hidden; /* Yatay kaydırmayı gizle */
+            justify-content: flex-start;
+            align-items: flex-start;
+            max-height: 80vh;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
 
         /* İlk Sütun: KAPLİNLER */
         .primary-category-column {
-            flex-shrink: 0; /* Küçülmesini engelle */
-            width: 200px; /* Sabit genişlik */
+            flex-shrink: 0;
+            width: 200px;
             padding: 10px;
-            border-right: 1px solid rgba(255,255,255,0.1); /* Ayırıcı çizgi */
+            border-right: 1px solid rgba(255,255,255,0.1);
             box-sizing: border-box;
         }
 
@@ -117,7 +119,7 @@
 
         .primary-category-item:hover,
         .primary-category-item.active {
-            background-color: #0056b3; /* Aktif/Hover rengi */
+            background-color: #0056b3;
         }
 
         .primary-category-item .arrow-icon {
@@ -125,20 +127,20 @@
         }
 
         .primary-category-item.active .arrow-icon {
-            transform: rotate(90deg); /* Aktifken oku çevir */
+            transform: rotate(90deg);
         }
 
         /* İkinci Sütun: Tüm Ana Kategoriler (KAPLİNLER'den açılan) */
         .secondary-categories-column {
-            flex-grow: 1; /* Kalan alanı kapla */
+            flex-grow: 1;
             padding: 10px;
-            display: none; /* Varsayılan olarak gizli */
-            border-right: 1px solid rgba(255,255,255,0.1); /* Ayırıcı çizgi */
+            display: none;
+            border-right: 1px solid rgba(255,255,255,0.1);
             box-sizing: border-box;
         }
 
         .secondary-categories-column.active {
-            display: block; /* Aktif olduğunda göster */
+            display: block;
         }
 
         .secondary-category-item {
@@ -170,12 +172,12 @@
         .tertiary-products-column {
             flex-grow: 1;
             padding: 10px;
-            display: none; /* Varsayılan olarak gizli */
+            display: none;
             box-sizing: border-box;
         }
 
         .tertiary-products-column.active {
-            display: block; /* Aktif olduğunda göster */
+            display: block;
         }
 
         .product-list {
@@ -185,7 +187,6 @@
             background-color: #0056b3;
             border-radius: 5px;
             padding: 10px;
-            /* Her liste varsayılan olarak gizli, JS ile gösterilecek */
             display: none;
         }
 
@@ -270,50 +271,49 @@
 
         /* WhatsApp Butonu Stilleri */
         .whatsapp-button {
-            position: fixed; /* Ekranın belirli bir yerinde sabit kalmasını sağlar */
-            bottom: 20px; /* Alttan 20px boşluk */
-            right: 20px; /* Sağdan 20px boşluk */
-            z-index: 1000; /* Diğer elementlerin üzerinde görünmesini sağlar */
-            background-color: #25D366; /* WhatsApp yeşili */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #25D366;
             color: white;
-            border-radius: 50%; /* Dairesel şekil */
-            width: 70px; /* Genişlik artırıldı */
-            height: 70px; /* Yükseklik artırıldı */
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge */
-            transition: transform 0.3s ease-in-out; /* Fare üzerine gelince animasyon */
-            text-decoration: none; /* Alt çizgiyi kaldır */
-            font-size: 40px; /* İkon boyutu artırıldı */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            text-decoration: none;
+            font-size: 40px;
         }
 
         .whatsapp-button:hover {
-            transform: scale(1.1); /* Fare üzerine gelince hafifçe büyüt */
+            transform: scale(1.1);
         }
 
         /* Responsive Düzenlemeler */
         @media (max-width: 768px) {
             .main-menu-container {
                 padding: 5px;
-                /* Mobil için menüyü tam genişlikte tut, kaydırma çubukları gelsin */
                 max-height: 80vh;
                 overflow-y: auto;
             }
             .menu-content {
-                flex-direction: column; /* Sütunları alt alta sırala */
+                flex-direction: column;
             }
             .primary-category-column,
             .secondary-categories-column,
             .tertiary-products-column {
-                width: 100%; /* Tam genişlik */
-                border-right: none; /* Mobil görünümde ayırıcı çizgi yok */
+                width: 100%;
+                border-right: none;
                 padding: 5px;
-                margin-bottom: 10px; /* Altlarına boşluk ekle */
+                margin-bottom: 10px;
             }
             .secondary-categories-column.active,
             .tertiary-products-column.active {
-                display: block; /* Mobil'de de aktifse göster */
+                display: block;
             }
             .primary-category-item,
             .secondary-category-item {
@@ -322,15 +322,18 @@
 
             /* Header görseli için mobil ayarlamalar */
             header {
-                min-height: 80px; /* Mobil header minimum yüksekliği */
-                max-height: 120px; /* Mobil header maksimum yüksekliği */
+                /* Mobil header yüksekliği: Kendi logonuzun mobil görünümüne göre ayarlayın */
+                min-height: 80px; /* Örneğin, 80px deneyin */
+                max-height: 80px; /* Aynı değeri verin */
             }
             header img {
-                max-width: 100%; /* Mobil için maksimum genişlik */
-                height: 100%; /* Mobil için maksimum yükseklik */
+                max-width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: top center;
             }
 
-            .whatsapp-button { /* Mobil cihazlarda daha küçük yapabiliriz */
+            .whatsapp-button {
                 width: 60px;
                 height: 60px;
                 bottom: 15px;
