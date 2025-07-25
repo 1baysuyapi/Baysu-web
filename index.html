@@ -60,9 +60,13 @@
             cursor: pointer;
             padding: 10px 20px;
             display: inline-block;
+            text-align: center; /* Butonu ortaya hizala */
+            width: 100%; /* Mobil görünümde tam genişlik */
+            box-sizing: border-box; /* Padding'i genişliğe dahil et */
         }
 
-        .menu-list {
+        /* Ana Kategori Listesi */
+        .main-menu-list {
             display: none; /* Varsayılan olarak gizli */
             background: #003366; /* Açılan menü arkaplanı */
             padding: 10px 0;
@@ -72,74 +76,79 @@
             width: 100%;
             left: 0;
             z-index: 999;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Çoklu sütun */
-            gap: 10px;
-            padding: 20px;
+            /* Ana kategori listesi tek sütun olsun */
+            display: grid; /* Grid'i gizlerken blok olarak kullanmak için */
+            grid-template-columns: 1fr; /* Tek sütun */
+            gap: 5px; /* Kategoriler arası boşluk */
+            padding: 10px 20px;
 
-            /* Mobil Menü Kaydırma Düzeltmesi */
             max-height: 80vh; /* Ekran yüksekliğinin %80'i kadar bir maksimum yükseklik */
             overflow-y: auto; /* İçerik taşarsa dikey kaydırma çubuğu göster */
             -webkit-overflow-scrolling: touch; /* iOS cihazlarda daha akıcı kaydırma */
         }
 
-        .menu-list.active { /* JavaScript ile aktif edildiğinde */
-            display: grid;
+        .main-menu-list.active { /* JavaScript ile aktif edildiğinde */
+            display: grid; /* Tekrar grid olarak göster */
         }
 
-        .menu-category {
-            padding: 10px;
+        /* Ana kategori öğeleri */
+        .main-category-item {
             background-color: #004797; /* Kategori arkaplanı */
             border-radius: 5px;
             color: white;
-            cursor: pointer; /* Add pointer cursor to indicate clickability */
+            padding: 10px;
+            cursor: pointer;
+            position: relative; /* Alt menüleri konumlandırmak için */
+            z-index: 1001; /* Üstte kalmasını sağla */
         }
 
-        .menu-category h3 {
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1.2em;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            padding-bottom: 5px;
-        }
-
-        .menu-category ul {
-            list-style: none;
-            padding: 0;
+        .main-category-item h3 {
             margin: 0;
+            font-size: 1.2em;
+            padding-right: 20px; /* Ok ikonu için boşluk */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .menu-category li {
+        .main-category-item h3 .arrow-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .main-category-item.open h3 .arrow-icon {
+            transform: rotate(90deg); /* Açıkken oku çevir */
+        }
+
+        /* Alt menüler (ürün listeleri) */
+        .sub-menu-list {
+            display: none; /* Varsayılan olarak gizli */
+            list-style: none;
+            padding: 10px 0 0 15px; /* Biraz girinti */
+            margin: 0;
+            background-color: #0056b3; /* Alt menü arkaplanı */
+            border-radius: 0 0 5px 5px;
+            margin-top: 5px; /* Ana kategori ile aralık */
+        }
+
+        .sub-menu-list.active {
+            display: block; /* Aktif olduğunda göster */
+        }
+
+        .sub-menu-list li {
             margin-bottom: 5px;
         }
 
-        .menu-category a {
+        .sub-menu-list a {
             color: white;
             text-decoration: none;
-            font-size: 0.95em;
+            font-size: 0.9em;
             display: block;
             padding: 3px 0;
         }
 
-        .menu-category a:hover {
+        .sub-menu-list a:hover {
             text-decoration: underline;
-            color: #33ffff; /* Vurgu rengi */
-        }
-
-        /* Submenu specific styles */
-        .menu-category .submenu {
-            display: none; /* Submenus are hidden by default */
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            margin-top: 10px; /* Space between category title and submenu items */
-        }
-
-        .menu-category .submenu.active {
-            display: block; /* Show submenu when active */
-        }
-
-        .menu-category .submenu li {
-            margin-bottom: 3px;
+            color: #33ffff;
         }
         
         /* Hakkımızda ve Diğer İçerik Bölümleri */
@@ -230,11 +239,12 @@
         
         /* Responsive Düzenlemeler */
         @media (max-width: 768px) {
-            .menu-list {
+            .main-menu-list {
                 grid-template-columns: 1fr;
+                padding: 10px;
             }
-            .menu-category {
-                margin-bottom: 10px;
+            .main-category-item {
+                margin-bottom: 5px;
             }
             .content-section {
                 padding: 20px 15px;
@@ -273,11 +283,12 @@
     </header>
 
     <nav>
-        <div class="menu-toggle" onclick="toggleMenu()">Ürünlerimiz +</div>
-        <div class="menu-list" id="menuList">
-            <div class="menu-category" onclick="toggleSubMenu(event)">
-                <h3>KAPLİNLER</h3>
-                <ul class="submenu">
+        <div class="menu-toggle" onclick="toggleMainMenu()">Ürünlerimiz +</div>
+        
+        <div class="main-menu-list" id="mainMenuList">
+
+            <div class="main-category-item" onclick="toggleSubMenu(this)">
+                <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3> <ul class="sub-menu-list">
                     <li><a href="mavi-disi-kaplin.html" target="_blank">Mavi Seri Dişi Kaplin</a></li>
                     <li><a href="mavi-erkek-kaplin.html" target="_blank">Mavi Seri Erkek Kaplin</a></li>
                     <li><a href="mavi-dirsek-kaplin.html" target="_blank">Mavi Seri Dirsek Kaplin</a></li>
@@ -289,9 +300,9 @@
                 </ul>
             </div>
 
-            <div class="menu-category">
-                <h3>Mavi Seri</h3>
-                <ul>
+            <div class="main-category-item" onclick="toggleSubMenu(this)">
+                <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
+                <ul class="sub-menu-list">
                     <li><a href="mavi-disi-dirsek.html" target="_blank">Dişi Dirsek</a></li>
                     <li><a href="mavi-erkek-dirsek.html" target="_blank">Erkek Dirsek</a></li>
                     <li><a href="mavi-manson.html" target="_blank">Manşon</a></li>
@@ -304,9 +315,9 @@
                 </ul>
             </div>
 
-            <div class="menu-category">
-                <h3>Siyah Seri</h3>
-                <ul>
+            <div class="main-category-item" onclick="toggleSubMenu(this)">
+                <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
+                <ul class="sub-menu-list">
                     <li><a href="siyah-dirsek.html" target="_blank">Dirsek</a></li>
                     <li><a href="#" target="_blank">Dişi Dirsek</a></li>
                     <li><a href="#" target="_blank">Erkek Dirsek</a></li>
@@ -320,9 +331,9 @@
                 </ul>
             </div>
 
-            <div class="menu-category">
-                <h3>Kilitli Bağlantı Parçaları</h3>
-                <ul>
+            <div class="main-category-item" onclick="toggleSubMenu(this)">
+                <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                <ul class="sub-menu-list">
                     <li><a href="#" target="_blank">Kilitli Bağlantı Erkek Dirsek</a></li>
                     <li><a href="#" target="_blank">Kilitli Bağlantı Dirsek</a></li>
                     <li><a href="#" target="_blank">Kilitli Bağlantı Redüksiyon Dirsek</a></li>
@@ -331,9 +342,9 @@
                 </ul>
             </div>
 
-            <div class="menu-category">
-                <h3>Dişli Sulama Ek Parçaları</h3>
-                <ul>
+            <div class="main-category-item" onclick="toggleSubMenu(this)">
+                <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                <ul class="sub-menu-list">
                     <li><a href="#" target="_blank">Dişli Dişi Dirsek</a></li>
                     <li><a href="#" target="_blank">Dişli Dişi Nipel</a></li>
                     <li><a href="#" target="_blank">Dişli Dişi Redüksiyon Dirsek</a></li>
@@ -341,9 +352,9 @@
                 </ul>
             </div>
 
-            <div class="menu-category">
-                <h3>Priz Kolyeler</h3>
-                <ul>
+            <div class="main-category-item" onclick="toggleSubMenu(this)">
+                <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
+                <ul class="sub-menu-list">
                     <li><a href="#" target="_blank">Priz Kolye</a></li>
                     <li><a href="#" target="_blank">Dişi Nipelli Priz Kolye</a></li>
                     <li><a href="#" target="_blank">Erkek Nipelli Priz Kolye</a></li>
@@ -352,9 +363,9 @@
                 </ul>
             </div>
 
-            <div class="menu-category">
-                <h3>Nipelli Seri</h3>
-                <ul>
+            <div class="main-category-item" onclick="toggleSubMenu(this)">
+                <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
+                <ul class="sub-menu-list">
                     <li><a href="#" target="_blank">Dişi Nipelli Priz Kolye</a></li>
                     <li><a href="#" target="_blank">Erkek Nipelli Priz Kolye</a></li>
                     <li><a href="#" target="_blank">Nipelli Erkek TE</a></li>
@@ -362,9 +373,9 @@
                 </ul>
             </div>
 
-            <div class="menu-category">
-                <h3>Vanalar</h3>
-                <ul>
+            <div class="main-category-item" onclick="toggleSubMenu(this)">
+                <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
+                <ul class="sub-menu-list">
                     <li><a href="#" target="_blank">Dişi Dişi Vana</a></li>
                     <li><a href="#" target="_blank">Erkek Dişi Vana</a></li>
                     <li><a href="#" target="_blank">Kaplin Dişi Vana</a></li>
@@ -372,9 +383,9 @@
                 </ul>
             </div>
 
-            <div class="menu-category">
-                <h3>Vana Kutuları</h3>
-                <ul>
+            <div class="main-category-item" onclick="toggleSubMenu(this)">
+                <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
+                <ul class="sub-menu-list">
                     <li><a href="#" target="_blank">6" Vana Kutusu</a></li>
                     <li><a href="#" target="_blank">10" Vana Kutusu</a></li>
                     <li><a href="#" target="_blank">12" Vana Kutusu</a></li>
@@ -382,48 +393,80 @@
                 </ul>
             </div>
 
-            <div class="menu-category">
-                <h3>Damlama Ek Parçaları</h3>
-                <ul>
+            <div class="main-category-item" onclick="toggleSubMenu(this)">
+                <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                <ul class="sub-menu-list">
                     <li><a href="damlama-mini-vana.html" target="_blank">Çıkış Mini Vana</a></li>
                     <li><a href="#" target="_blank">Debi Ayarlı Damlatıcı Geniş Boşaltım</a></li>
                     <li><a href="#" target="_blank">Debi Ayarlı Damlatıcı Yeşil</a></li>
                 </ul>
             </div>
 
-            <div class="menu-category">
-                <h3>Yedek Parçalar</h3>
-                <ul>
+            <div class="main-category-item" onclick="toggleSubMenu(this)">
+                <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
+                <ul class="sub-menu-list">
                     <li><a href="#" target="_blank">Pah Açma Aparatı</a></li>
                 </ul>
             </div>
+            
         </div>
     </nav>
 
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById("menuList");
-            menu.classList.toggle("active");
-            if (menu.classList.contains("active")) {
-                menu.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Ana menüyü açıp kapatan fonksiyon ("Ürünlerimiz +" butonu için)
+        function toggleMainMenu() {
+            const mainMenuList = document.getElementById("mainMenuList");
+            mainMenuList.classList.toggle("active");
+            if (mainMenuList.classList.contains("active")) {
+                mainMenuList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            // Ana menü kapanırken tüm alt menüleri de kapat
+            if (!mainMenuList.classList.contains("active")) {
+                document.querySelectorAll('.sub-menu-list.active').forEach(subMenu => {
+                    subMenu.classList.remove('active');
+                    subMenu.closest('.main-category-item').classList.remove('open');
+                });
             }
         }
 
-        function toggleSubMenu(event) {
-            const clickedCategory = event.currentTarget;
-            const submenu = clickedCategory.querySelector('.submenu');
+        // Alt menüyü açıp kapatan fonksiyon (ana kategori başlıkları için)
+        function toggleSubMenu(clickedCategoryItem) {
+            const subMenu = clickedCategoryItem.querySelector('.sub-menu-list');
             
-            // Close other open submenus
-            document.querySelectorAll('.menu-category .submenu.active').forEach(openSubmenu => {
-                if (openSubmenu !== submenu) {
-                    openSubmenu.classList.remove('active');
+            // Tıklanan dışındaki diğer tüm açık alt menüleri kapat
+            document.querySelectorAll('.sub-menu-list.active').forEach(openSubMenu => {
+                if (openSubMenu !== subMenu) {
+                    openSubMenu.classList.remove('active');
+                    openSubMenu.closest('.main-category-item').classList.remove('open');
                 }
             });
 
-            if (submenu) {
-                submenu.classList.toggle('active');
+            // Tıklanan alt menüyü aç/kapat
+            if (subMenu) {
+                subMenu.classList.toggle('active');
+                clickedCategoryItem.classList.toggle('open'); // Ok ikonunu döndürmek için
             }
         }
+
+        // Menü dışına tıklanınca ana menüyü kapatma
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainMenuList = document.getElementById('mainMenuList');
+
+            // Eğer tıklanan yer menü toggle butonu veya menünün kendisi değilse
+            if (!nav.contains(event.target) && !menuToggle.contains(event.target)) {
+                if (mainMenuList.classList.contains('active')) {
+                    mainMenuList.classList.remove('active');
+                    // Tüm açık alt menüleri de kapat
+                    document.querySelectorAll('.sub-menu-list.active').forEach(subMenu => {
+                        subMenu.classList.remove('active');
+                        subMenu.closest('.main-category-item').classList.remove('open');
+                    });
+                }
+            }
+        });
+
     </script>
 
     <main>
