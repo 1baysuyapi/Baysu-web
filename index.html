@@ -29,8 +29,8 @@
             background-color: #003366; /* Header arka plan rengi (görsel yüklenmezse görünür) */
             
             /* Logo alanının yüksekliği: Burayı biraz daha büyüttük */
-            min-height: 220px; /* Önceki 180px yerine 220px */
-            max-height: 220px; /* min ile aynı yaparak sabit yükseklik sağlarız */
+            min-height: 250px; /* Önceki 220px yerine 250px */
+            max-height: 250px; /* min ile aynı yaparak sabit yükseklik sağlarız */
         }
 
         /* RESİM BOYUTU VE KONUM AYARLARI BURADA BAŞLIYOR */
@@ -39,7 +39,7 @@
             width: 100%; /* Header'ın genişliğini tamamen kapla */
             height: 100%; /* Header'ın yüksekliğini tamamen kapla */
             object-fit: contain; /* Resmi alanı içine sığdırır, orantısını korur, boşluklar oluşabilir */
-            object-position: 30% center; /* Resmin üst kısmını header'ın tepesinden %30 aşağı kaydırır ve yatayda ortalar */
+            object-position: 40% center; /* Resmin üst kısmını header'ın tepesinden %40 aşağı kaydırır ve yatayda ortalar */
         }
         /* RESİM BOYUTU VE KONUM AYARLARI BURADA BİTİYOR */
 
@@ -322,12 +322,12 @@
 
             /* Header görseli için mobil ayarlamalar */
             header {
-                min-height: 120px; /* Mobil için de biraz yükseklik artışı */
-                max-height: 120px; 
+                min-height: 150px; /* Mobil için de biraz daha yükseklik artışı */
+                max-height: 150px; 
             }
             header img {
                 object-fit: contain; /* Mobil görünümde de contain kullanıyoruz */
-                object-position: 30% center; /* Mobil görünümde de aynı ayarı uygulayabilirsiniz */
+                object-position: 40% center; /* Mobil görünümde de aynı ayarı uygulayabilirsiniz */
             }
 
             .whatsapp-button {
