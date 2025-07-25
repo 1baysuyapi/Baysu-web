@@ -22,25 +22,22 @@
             color: #fff;
             padding: 0; /* İç dolguyu sıfırladık */
             position: relative;
-            overflow: hidden; /* Görselin taşmasını engelle */
+            overflow: hidden; /* Görselin taşmasını engelle, kırpma burada gerçekleşecek */
             display: flex; /* İçeriği ortalamak için flexbox */
             justify-content: center; /* Yatayda ortala */
-            align-items: center; /* Dikeyde ortala */
-            min-height: 120px; /* Header'ın minimum yüksekliği ayarlandı */
-            max-height: 250px; /* Header'ın maksimum yüksekliği ayarlandı */
+            align-items: center; /* Dikeyde ortala (object-position ile manuel ayarladığımız için etkisi azalır) */
+            min-height: 100px; /* Header'ın minimum yüksekliği - logo yüksekliğine göre ayarlanacak */
+            max-height: 150px; /* Header'ın maksimum yüksekliği - logo yüksekliğine göre ayarlanacak */
             background-color: #003366; /* Header arka plan rengi eklendi (isteğe bağlı) */
         }
 
         /* RESİM BOYUTU VE KONUM AYARLARI BURADA BAŞLIYOR */
         header img {
-            width: auto; /* Genişliği otomatik ayarla */
-            max-width: 100%; /* Header'ın genişliğinin %100'ünü kapla */
-            height: auto; /* Yüksekliği orantılı ayarla */
-            max-height: 100%; /* Header'ın yüksekliğinin %100'ünü kapla */
+            width: 100%; /* Header genişliğini tamamen kapla */
+            height: 100%; /* Header yüksekliğini tamamen kapla */
             display: block; /* Altındaki boşluğu kaldırır */
-            margin: 0 auto; /* Yatayda ortalar */
-            object-fit: contain; /* Resmin tamamını alanı içine sığdırır, kırpmaz */
-            object-position: top 0% center; /* Resmi en üste ve ortaya hizala */
+            object-fit: cover; /* Resmi alanı kaplayacak şekilde büyüt ve taşan kısımları kırp */
+            object-position: top center; /* Resmin üst kısmını header'ın üstüne hizala ve yatayda ortala */
         }
         /* RESİM BOYUTU VE KONUM AYARLARI BURADA BİTİYOR */
 
@@ -326,11 +323,11 @@
             /* Header görseli için mobil ayarlamalar */
             header {
                 min-height: 80px; /* Mobil header minimum yüksekliği */
-                max-height: 150px; /* Mobil header maksimum yüksekliği */
+                max-height: 120px; /* Mobil header maksimum yüksekliği */
             }
             header img {
-                max-width: 95%; /* Mobil için maksimum genişlik */
-                max-height: 100%; /* Mobil için maksimum yükseklik */
+                max-width: 100%; /* Mobil için maksimum genişlik */
+                height: 100%; /* Mobil için maksimum yükseklik */
             }
 
             .whatsapp-button { /* Mobil cihazlarda daha küçük yapabiliriz */
