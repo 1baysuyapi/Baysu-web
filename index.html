@@ -28,9 +28,9 @@
             align-items: flex-start; /* Dikeyde yukarı hizala */
             background-color: #003366; /* Header arka plan rengi (görsel yüklenmezse görünür) */
             
-            /* Logo alanının yüksekliği: Burayı büyüttük */
-            min-height: 180px; /* Örneğin, 180px denedik */
-            max-height: 180px; /* min ile aynı yaparak sabit yükseklik sağlarız */
+            /* Logo alanının yüksekliği: Burayı biraz daha büyüttük */
+            min-height: 220px; /* Önceki 180px yerine 220px */
+            max-height: 220px; /* min ile aynı yaparak sabit yükseklik sağlarız */
         }
 
         /* RESİM BOYUTU VE KONUM AYARLARI BURADA BAŞLIYOR */
@@ -38,8 +38,8 @@
             display: block;
             width: 100%; /* Header'ın genişliğini tamamen kapla */
             height: 100%; /* Header'ın yüksekliğini tamamen kapla */
-            object-fit: cover; /* Resmi alanı kaplayacak şekilde büyütür ve taşan kısımları kırpar */
-            object-position: 50% center; /* Resmin dikeyde %50 (ortası) ve yatayda ortası */
+            object-fit: contain; /* Resmi alanı içine sığdırır, orantısını korur, boşluklar oluşabilir */
+            object-position: 30% center; /* Resmin üst kısmını header'ın tepesinden %30 aşağı kaydırır ve yatayda ortalar */
         }
         /* RESİM BOYUTU VE KONUM AYARLARI BURADA BİTİYOR */
 
@@ -322,15 +322,12 @@
 
             /* Header görseli için mobil ayarlamalar */
             header {
-                /* Mobil header yüksekliği: Kendi logonuzun mobil görünümüne göre ayarlayın */
-                min-height: 100px; /* Örneğin, 100px denedik */
-                max-height: 100px; /* Aynı değeri verin */
+                min-height: 120px; /* Mobil için de biraz yükseklik artışı */
+                max-height: 120px; 
             }
             header img {
-                max-width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: 50% center; /* Mobil görünümde de aynı ayarı uygulayabilirsiniz */
+                object-fit: contain; /* Mobil görünümde de contain kullanıyoruz */
+                object-position: 30% center; /* Mobil görünümde de aynı ayarı uygulayabilirsiniz */
             }
 
             .whatsapp-button {
