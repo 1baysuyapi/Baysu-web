@@ -26,16 +26,18 @@
             height: auto; /* Yüksekliği içeriğe göre ayarla */
         }
 
-        /* RESİM BOYUTU İÇİN YAPILAN DÜZENLEME BURADA BAŞLIYOR */
+        /* RESİM BOYUTU İÇİN GÜNCELLENEN DÜZENLEME BURADA BAŞLIYOR */
         header img {
             width: 100%; /* Görseli bulunduğu alanın genişliğine göre ayarlar */
-            max-width: 900px; /* Görselin maksimum genişliğini 900 piksel olarak sınırlar */
+            max-width: 1400px; /* Maksimum genişliği artırıldı */
             height: auto; /* Yüksekliği orantılı olarak ayarlar */
+            max-height: 180px; /* Maksimum yükseklik azaltıldı */
+            min-height: 120px; /* Minimum yükseklik azaltıldı */
             display: block; /* Altındaki boşluğu kaldırır */
             margin: 0 auto -5px; /* Yatayda ortalar ve alttaki küçük boşluğu giderir */
-            object-fit: contain; /* Görselin en boy oranını koruyarak tamamını gösterir */
+            object-fit: cover; /* Resmi alanı tam kaplayacak şekilde kırpar (boşluk kalmaz) */
         }
-        /* RESİM BOYUTU İÇİN YAPILAN DÜZENLEME BURADA BİTİYOR */
+        /* RESİM BOYUTU İÇİN GÜNCELLENEN DÜZENLEME BURADA BİTİYOR */
         
         /* Önceki h1, h2, p stilleri artık resim kullanıldığı için gereksiz */
         header h1, header h2, header p {
@@ -320,8 +322,9 @@
             header img {
                 width: 100%;
                 height: auto;
-                /* Mobil için de maksimum genişlik ayarlayabiliriz, örneğin */
-                /* max-width: 500px; */ 
+                max-width: 700px; /* Mobil için de maksimum genişlik ayarlayabiliriz */
+                max-height: 150px; /* Mobil için maksimum yükseklik */
+                min-height: 100px; /* Mobil için minimum yükseklik */
             }
 
             .whatsapp-button { /* Mobil cihazlarda daha küçük yapabiliriz */
