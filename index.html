@@ -28,26 +28,18 @@
             align-items: flex-start; /* Dikeyde yukarı hizala */
             background-color: #003366; /* Header arka plan rengi (görsel yüklenmezse görünür) */
             
-            /* Logo alanının yüksekliği: Burada resmin tam oturması için yeterli yükseklik verilmeli */
-            min-height: 250px; /* Görselin boyutuyla orantılı olarak ayarlanabilir */
+            /* Logo alanının yüksekliği: Burayı biraz daha büyüttük */
+            min-height: 250px; /* Önceki 220px yerine 250px */
             max-height: 250px; /* min ile aynı yaparak sabit yükseklik sağlarız */
         }
 
         /* RESİM BOYUTU VE KONUM AYARLARI BURADA BAŞLIYOR */
-        header a { /* Header içindeki link (logoyu saran) */
-            display: block; /* Tamamen tıklanabilir alan için */
-            width: 100%;
-            height: 100%;
-            text-decoration: none; /* Linkin alt çizgisini kaldırır */
-        }
-
         header img {
             display: block;
             width: 100%; /* Header'ın genişliğini tamamen kapla */
             height: 100%; /* Header'ın yüksekliğini tamamen kapla */
-            object-fit: cover; /* Resmi alanı doldurur, orantısını korur, kenarlardan kırpabilir */
+            object-fit: contain; /* Resmi alanı içine sığdırır, orantısını korur, boşluklar oluşabilir */
             object-position: 40% center; /* Resmin üst kısmını header'ın tepesinden %40 aşağı kaydırır ve yatayda ortalar */
-            /* Eğer resmin tamamı görünmezse object-fit: contain; deneyebilirsiniz */
         }
         /* RESİM BOYUTU VE KONUM AYARLARI BURADA BİTİYOR */
 
@@ -215,25 +207,6 @@
             color: #33ffff;
         }
 
-        /* Yeni Anasayfa menü öğesi stili */
-        .anasayfa-menu-item {
-            background-color: #ffcc00; /* Anasayfa için farklı bir renk */
-            border-radius: 5px;
-            color: #003366; /* Metin rengi */
-            padding: 10px;
-            cursor: pointer;
-            margin-top: 10px; /* Diğer kategorilerden ayırmak için */
-            text-align: center;
-            font-weight: bold;
-            display: block; /* Linkin tam kutuyu kaplaması için */
-            text-decoration: none; /* Alt çizgiyi kaldır */
-        }
-
-        .anasayfa-menu-item:hover {
-            background-color: #e6b800; /* Hover rengi */
-        }
-
-
         /* Hakkımızda ve Diğer İçerik Bölümleri */
         .content-section {
             padding: 40px 20px;
@@ -353,7 +326,7 @@
                 max-height: 150px; 
             }
             header img {
-                object-fit: cover; /* Mobil görünümde de cover kullanıyoruz */
+                object-fit: contain; /* Mobil görünümde de contain kullanıyoruz */
                 object-position: 40% center; /* Mobil görünümde de aynı ayarı uygulayabilirsiniz */
             }
 
@@ -370,9 +343,7 @@
 <body>
 
     <header>
-        <a href="index.html"> 
-            <img src="WhatsApp Image 2025-07-25 at 23.57.21.jpeg" alt="BAYSU YAPI VE SULAMA MALZEMELERİ">
-        </a>
+        <img src="WhatsApp Image 2025-07-25 at 22.26.24.jpeg" alt="BAYSU YAPI VE SULAMA MALZEMELERİ">
     </header>
 
     <nav>
@@ -384,9 +355,6 @@
                     <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
                         <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <a href="index.html" class="anasayfa-menu-item" onclick="closeAllMenusAndGoHome(event)">
-                        ANASAYFA
-                    </a>
                 </div>
 
                 <div class="secondary-categories-column" id="secondaryCategoriesColumn">
@@ -522,15 +490,15 @@
             const secondaryColumn = document.getElementById('secondaryCategoriesColumn');
             const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
 
-            // Tüm primary-category-item'lardan 'active' sınıfını kaldır (sadece tıklanan aktif kalsın veya kapansın)
+            // KAPLİNLER öğesinin aktif/pasif durumunu değiştir
+            const isActive = clickedItem.classList.toggle('active');
+
+            // Tüm primary-category-item'lardan 'active' sınıfını kaldır
             document.querySelectorAll('.primary-category-item').forEach(item => {
                 if (item !== clickedItem) { // Tıklanan öğe hariç
                     item.classList.remove('active');
                 }
             });
-
-            // KAPLİNLER öğesinin aktif/pasif durumunu değiştir
-            const isActive = clickedItem.classList.toggle('active');
 
             if (isActive) {
                 secondaryColumn.classList.add('active'); // İkinci sütunu göster
@@ -591,19 +559,6 @@
                 }
             }
         });
-
-        // Anasayfa linkine tıklandığında menüyü kapatıp ana sayfaya gitme fonksiyonu
-        function closeAllMenusAndGoHome(event) {
-            const mainMenuContainer = document.getElementById("mainMenuContainer");
-            mainMenuContainer.classList.remove("active"); // Menüyü kapat
-            document.getElementById('secondaryCategoriesColumn').classList.remove('active');
-            document.getElementById('tertiaryProductsColumn').classList.remove('active');
-            document.querySelectorAll('.primary-category-item.active').forEach(item => item.classList.remove('active'));
-            document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
-            document.querySelectorAll('.product-list').forEach(list => list.style.display = 'none');
-            // Yönlendirme zaten href tarafından yapılacağı için ek bir yönlendirme kodu eklemeye gerek yok.
-            // event.preventDefault(); // Bu satırı kaldırdık, çünkü linkin normal çalışmasını istiyoruz.
-        }
 
     </script>
 
