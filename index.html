@@ -19,7 +19,6 @@
         }
 
         header {
-            /* header için arka plan gradyanını kaldırdık, görselin kendi arkaplanı olacak */
             color: #fff;
             padding: 0; /* İç dolguyu sıfırladık, görsel tam oturacak */
             position: relative; /* Resmi ortalamak için */
@@ -27,13 +26,16 @@
             height: auto; /* Yüksekliği içeriğe göre ayarla */
         }
 
+        /* RESİM BOYUTU İÇİN YAPILAN DÜZENLEME BURADA BAŞLIYOR */
         header img {
-            width: 100%; /* Görseli tam genişlikte yap */
-            height: auto; /* Oranı koru */
-            display: block; /* Altındaki boşluğu kaldır */
-            margin-bottom: -5px; /* Alt boşluk oluşursa kaldırmak için */
-            /* Eğer çok büyük gelirse max-width kullanabilirsin: max-width: 900px; margin: 0 auto; */
+            width: 100%; /* Görseli bulunduğu alanın genişliğine göre ayarlar */
+            max-width: 900px; /* Görselin maksimum genişliğini 900 piksel olarak sınırlar */
+            height: auto; /* Yüksekliği orantılı olarak ayarlar */
+            display: block; /* Altındaki boşluğu kaldırır */
+            margin: 0 auto -5px; /* Yatayda ortalar ve alttaki küçük boşluğu giderir */
+            object-fit: contain; /* Görselin en boy oranını koruyarak tamamını gösterir */
         }
+        /* RESİM BOYUTU İÇİN YAPILAN DÜZENLEME BURADA BİTİYOR */
         
         /* Önceki h1, h2, p stilleri artık resim kullanıldığı için gereksiz */
         header h1, header h2, header p {
@@ -318,6 +320,8 @@
             header img {
                 width: 100%;
                 height: auto;
+                /* Mobil için de maksimum genişlik ayarlayabiliriz, örneğin */
+                /* max-width: 500px; */ 
             }
 
             .whatsapp-button { /* Mobil cihazlarda daha küçük yapabiliriz */
