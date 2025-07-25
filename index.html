@@ -27,21 +27,22 @@
             display: flex; /* İçeriği ortalamak için flexbox */
             justify-content: center; /* Yatayda ortala */
             align-items: center; /* Dikeyde ortala */
+            min-height: 100px; /* Header'ın minimum yüksekliği, görselin rahat sığması için */
         }
 
-        /* RESİM BOYUTU İÇİN GÜNCELLENEN DÜZENLEME BURADA BAŞLIYOR */
+        /* RESİM BOYUTU VE GÖRSELİN TAMAMINI GÖSTERME AYARLARI BURADA BAŞLIYOR */
         header img {
-            width: auto; /* Genişliği içeriğe göre ayarla, orantıyı koru */
-            max-width: 300px; /* Maksimum genişlik belirlendi (daha küçük) */
+            width: auto; /* Genişliği otomatik ayarla, orantıyı koru */
+            max-width: 400px; /* Maksimum genişlik, görselin çok büyümesini engeller */
             height: auto; /* Yüksekliği orantılı olarak ayarlar */
-            max-height: 80px; /* MAKSİMUM YÜKSEKLİK KÜÇÜLTÜLDÜ */
-            min-height: 50px; /* MİNİMUM YÜKSEKLİK KÜÇÜLTÜLDÜ */
+            max-height: 90px; /* MAKSİMUM YÜKSEKLİK (öncekine göre biraz artırıldı) */
+            min-height: 60px; /* MİNİMUM YÜKSEKLİK (öncekine göre biraz artırıldı) */
             display: block; /* Altındaki boşluğu kaldırır */
-            margin: 10px auto; /* Üst ve alt boşluk eklendi, yatayda ortala */
+            margin: 0 auto; /* Yatayda ortalar */
             object-fit: contain; /* Resmin tamamını alanı içine sığdırır, kırpmaz */
-            /* object-position: 0% 15%; /* Bu artık object-fit: contain ile çok gerekli değil, resim zaten sığdırılacak */
+            object-position: center; /* Resmi alanda ortalar */
         }
-        /* RESİM BOYUTU İÇİN GÜNCELLENEN DÜZENLEME BURADA BİTİYOR */
+        /* RESİM BOYUTU VE GÖRSELİN TAMAMINI GÖSTERME AYARLARI BURADA BİTİYOR */
         
         /* Önceki h1, h2, p stilleri artık resim kullanıldığı için gereksiz */
         header h1, header h2, header p {
@@ -323,10 +324,13 @@
             }
 
             /* Header görseli için mobil ayarlamalar */
+            header {
+                min-height: 80px; /* Mobil header minimum yüksekliği */
+            }
             header img {
-                max-width: 250px; /* Mobil için maksimum genişlik */
-                max-height: 60px; /* MOBİL İÇİN MAKSİMUM YÜKSEKLİK KÜÇÜLTÜLDÜ */
-                min-height: 40px; /* MOBİL İÇİN MİNİMUM YÜKSEKLİK KÜÇÜLTÜLDÜ */
+                max-width: 300px; /* Mobil için maksimum genişlik */
+                max-height: 70px; /* MOBİL İÇİN MAKSİMUM YÜKSEKLİK */
+                min-height: 50px; /* MOBİL İÇİN MİNİMUM YÜKSEKLİK */
             }
 
             .whatsapp-button { /* Mobil cihazlarda daha küçük yapabiliriz */
