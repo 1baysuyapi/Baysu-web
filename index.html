@@ -22,35 +22,30 @@
             color: #fff;
             padding: 0;
             position: relative;
-            overflow: hidden; /* Görselin taşmasını engeller, kırpma için önemli */
+            overflow: hidden;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Dikeyde yukarı hizala */
-            background-color: #003366; /* Header arka plan rengi (görsel yüklenmezse görünür) */
-            
-            /* Logo alanının yüksekliği: Burayı biraz daha büyüttük */
-            min-height: 250px; /* Önceki 220px yerine 250px */
-            max-height: 250px; /* min ile aynı yaparak sabit yükseklik sağlarız */
+            align-items: flex-start;
+            background-color: #003366;
+            min-height: 250px;
+            max-height: 250px;
         }
 
-        /* RESİM BOYUTU VE KONUM AYARLARI BURADA BAŞLIYOR */
         header img {
             display: block;
-            width: 100%; /* Header'ın genişliğini tamamen kapla */
-            height: 100%; /* Header'ın yüksekliğini tamamen kapla */
-            object-fit: contain; /* Resmi alanı içine sığdırır, orantısını korur, boşluklar oluşabilir */
-            object-position: 40% center; /* Resmin üst kısmını header'ın tepesinden %40 aşağı kaydırır ve yatayda ortalar */
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: 40% center;
         }
-        /* RESİM BOYUTU VE KONUM AYARLARI BURADA BİTİYOR */
 
-        /* Önceki h1, h2, p stilleri artık resim kullanıldığı için gereksiz */
         header h1, header h2, header p {
-            display: none; /* Bu başlıkları gizledik, yerine görsel gelecek */
+            display: none;
         }
 
         /* Navigasyon Stilleri */
         nav {
-            background: #003366; /* Daha koyu mavi */
+            background: #003366;
             padding: 10px 0;
             position: relative;
             z-index: 1000;
@@ -67,11 +62,10 @@
             text-align: center;
         }
 
-        /* Ana Menü Kapsayıcı (Ürünlerimiz + ile açılan) */
         .main-menu-container {
-            display: none; /* Varsayılan olarak gizli */
+            display: none;
             position: absolute;
-            top: 100%; /* Navigasyonun hemen altında */
+            top: 100%;
             left: 0;
             width: 100%;
             background: #003366;
@@ -83,10 +77,9 @@
         }
 
         .main-menu-container.active {
-            display: block; /* Aktif olduğunda göster */
+            display: block;
         }
 
-        /* Menü İçeriği - Flexbox ile sütunları yönet */
         .menu-content {
             display: flex;
             justify-content: flex-start;
@@ -96,7 +89,6 @@
             overflow-x: hidden;
         }
 
-        /* İlk Sütun: KAPLİNLER */
         .primary-category-column {
             flex-shrink: 0;
             width: 200px;
@@ -130,7 +122,6 @@
             transform: rotate(90deg);
         }
 
-        /* İkinci Sütun: Tüm Ana Kategoriler (KAPLİNLER'den açılan) */
         .secondary-categories-column {
             flex-grow: 1;
             padding: 10px;
@@ -168,7 +159,6 @@
             transform: rotate(90deg);
         }
 
-        /* Üçüncü Sütun: Alt Ürün Listeleri (Ana Kategorilerden açılan) */
         .tertiary-products-column {
             flex-grow: 1;
             padding: 10px;
@@ -322,12 +312,12 @@
 
             /* Header görseli için mobil ayarlamalar */
             header {
-                min-height: 150px; /* Mobil için de biraz daha yükseklik artışı */
+                min-height: 150px;
                 max-height: 150px; 
             }
             header img {
-                object-fit: contain; /* Mobil görünümde de contain kullanıyoruz */
-                object-position: 40% center; /* Mobil görünümde de aynı ayarı uygulayabilirsiniz */
+                object-fit: contain;
+                object-position: 40% center;
             }
 
             .whatsapp-button {
@@ -339,10 +329,6 @@
             }
         }
     </style>
-
-    <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum." class="whatsapp-button" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
 </head>
 <body>
 
@@ -473,6 +459,39 @@
     </nav>
 
     <script>
+        // WhatsApp Butonunu dinamik olarak ekleyen fonksiyon
+        function addWhatsAppButton() {
+            // Buton zaten varsa tekrar ekleme
+            if (document.querySelector('.whatsapp-button')) {
+                return;
+            }
+
+            const whatsappLink = document.createElement('a');
+            whatsappLink.href = "https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum.";
+            whatsappLink.className = "whatsapp-button";
+            whatsappLink.target = "_blank";
+
+            const whatsappIcon = document.createElement('i');
+            whatsappIcon.className = "fab fa-whatsapp";
+
+            whatsappLink.appendChild(whatsappIcon);
+            document.body.appendChild(whatsappLink);
+
+            // Font Awesome'ın yeni eklenen ikonu tanıması için gerekirse bu fonksiyonu çağırabilirsiniz.
+            // Ancak genellikle dinamik eklemelerde Font Awesome otomatik olarak tanır.
+            // window.FontAwesome.dom.i2svg(); // Eğer Font Awesome SVG tabanlıysa ve ikonlar görünmezse bu satırı etkinleştirin.
+        }
+
+        // Sayfa yüklendiğinde butonu ekle
+        document.addEventListener('DOMContentLoaded', addWhatsAppButton);
+
+        // Eğer siteniz SPA ise (yani URL değişse bile sayfa tam yenilenmiyorsa)
+        // URL veya içerik değiştiğinde butonu tekrar eklemek için bir gözlemci kullanabiliriz.
+        // Bu, sitenizin nasıl çalıştığına bağlı olarak ekleme gerektirebilir.
+        // Örneğin, bir router kullanıyorsanız router'ın "route change" olayını dinleyebilirsiniz.
+        // Ya da MutationObserver ile body'deki değişiklikleri izleyebilirsiniz (daha genel ama potansiyel olarak yoğun).
+        // Şimdilik en basit haliyle, butonu her DOMContentLoaded'da ekledik.
+
         // Ana menüyü açıp kapatan fonksiyon ("Ürünlerimiz +" butonu için)
         function toggleMainMenu() {
             const mainMenuContainer = document.getElementById("mainMenuContainer");
