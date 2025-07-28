@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Mavi Seri Dirsek Kaplin</title>
+    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Mavi Seri Tapa</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -254,16 +254,17 @@
 
         /* Ölçü Tablosu Stilleri */
         .table-container {
-            overflow-x: auto;
-            margin-bottom: 20px;
             display: flex;
             justify-content: center;
+            gap: 20px; /* Tablolar arası boşluk */
+            flex-wrap: wrap; /* Küçük ekranlarda alt alta gelmeleri için */
         }
 
         .measurement-table {
-            width: 80%;
+            width: 45%; /* İki tablo yan yana duracak şekilde ayarlandı */
+            min-width: 250px; /* Minimum genişlik */
             border-collapse: collapse;
-            margin: 0 auto;
+            margin: 0; /* İç marjin sıfırlandı */
         }
 
         .measurement-table th, .measurement-table td {
@@ -380,8 +381,12 @@
             .product-detail-container h3 {
                 font-size: 20px;
             }
+            .table-container {
+                flex-direction: column; /* Küçük ekranlarda tablolar alt alta */
+                gap: 10px;
+            }
             .measurement-table {
-                width: 95%;
+                width: 95%; /* Küçük ekranlarda tam genişlik */
             }
             .measurement-table th, .measurement-table td {
                 padding: 10px;
@@ -640,9 +645,9 @@
 
     <main>
         <section class="product-detail-container">
-            <h2>Mavi Seri Dirsek Kaplin</h2>
-            <img src="mavi-dirsek-kaplin.png" alt="Mavi Seri Dirsek Kaplin" class="product-image">
-            <p>Mavi Seri Dirsek Kaplin, sulama ve tesisat sistemlerinde boruların 90 derece açıyla güvenli bir şekilde birleştirilmesi için tasarlanmıştır. Yüksek kaliteli, UV dayanıklı polipropilen malzemeden üretilmiş olup, uzun ömürlü ve sızdırmaz bir bağlantı sağlar. Kolay montajı sayesinde hızlı ve pratik çözümler sunar.</p>
+            <h2>Mavi Seri Tapa</h2>
+            <img src="mavi-tapa.png" alt="Mavi Seri Tapa" class="product-image">
+            <p>Mavi Seri Tapa, sulama ve tesisat sistemlerinde boru hatlarının ucunu veya istenmeyen açıklıkları güvenli bir şekilde kapatmak için kullanılır. Sızdırmaz ve dayanıklı yapısıyla uzun ömürlü bir çözüm sunar. Kolay montajı sayesinde hızlı ve pratik bir kullanım sağlar.</p>
 
             <h3>Ürün Ölçüleri:</h3>
             <div class="table-container">
@@ -658,11 +663,21 @@
                         <tr><td>32 mm</td></tr> 
                         <tr><td>40 mm</td></tr> 
                         <tr><td>50 mm</td></tr> 
+                    </tbody>
+                </table>
+
+                <table class="measurement-table">
+                    <thead>
+                        <tr>
+                            <th>Ölçüler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         <tr><td>63 mm</td></tr> 
                         <tr><td>75 mm</td></tr> 
                         <tr><td>90 mm</td></tr> 
                         <tr><td>110 mm</td></tr>
-                    </tbody>
+                        <tr><td></td></tr> </tbody>
                 </table>
             </div>
 
