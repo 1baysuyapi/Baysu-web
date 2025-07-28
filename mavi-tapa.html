@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Mavi Manşon</title>
+    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Mavi Seri Dirsek Kaplin</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -13,13 +13,12 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f4f4f4; /* Koyu gri tonu */
+            background: #f4f4f4;
             color: #222;
             text-align: center;
         }
 
         header {
-            /* header görseli için */
             color: #fff;
             padding: 0;
             position: relative;
@@ -41,10 +40,9 @@
         }
 
         header h1, header h2, header p {
-            display: none; /* Metin başlıklarını gizle, görseli kullan */
+            display: none;
         }
 
-        /* Responsive Header düzenlemesi (ürün sayfalarına özel) */
         @media (max-width: 768px) {
             header {
                 min-height: 150px;
@@ -58,7 +56,7 @@
 
         /* Navigasyon Stilleri */
         nav {
-            background: #003366; /* Daha koyu mavi */
+            background: #003366;
             padding: 10px 0;
             position: sticky;
             top: 0;
@@ -76,7 +74,7 @@
         }
 
         .main-menu-container {
-            display: none; /* Varsayılan olarak gizli */
+            display: none;
             background: #003366;
             position: absolute;
             width: 100%;
@@ -89,24 +87,24 @@
         }
 
         .main-menu-container.active {
-            display: block; /* JavaScript ile aktif edildiğinde göster */
+            display: block;
         }
 
         .menu-content {
             display: flex;
             justify-content: space-between;
             padding: 20px;
-            gap: 20px; /* Sütunlar arası boşluk */
+            gap: 20px;
         }
 
         .primary-category-column,
         .secondary-categories-column,
         .tertiary-products-column {
-            flex: 1; /* Eşit genişlikte sütunlar */
-            min-width: 200px; /* Minimum genişlik */
-            max-height: 70vh; /* Kendi içinde kaydırılabilir olmalı */
+            flex: 1;
+            min-width: 200px;
+            max-height: 70vh;
             overflow-y: auto;
-            border-right: 1px solid rgba(255, 255, 255, 0.1); /* Sütun ayırıcı */
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
             padding-right: 15px;
         }
 
@@ -115,10 +113,9 @@
             border-left: none;
         }
         .tertiary-products-column {
-            border-right: none; /* Son sütunda ayırıcı olmasın */
+            border-right: none;
         }
 
-        /* Başlık stili */
         .primary-category-item h3,
         .secondary-category-item h3 {
             color: white;
@@ -140,7 +137,7 @@
 
         .primary-category-item.active h3,
         .secondary-category-item.active h3 {
-            background-color: #0056b3; /* Aktif olduğunda koyu */
+            background-color: #0056b3;
         }
 
         .arrow-icon {
@@ -148,28 +145,28 @@
         }
 
         .secondary-categories-column {
-            display: none; /* Varsayılan olarak gizli */
+            display: none;
         }
         .secondary-categories-column.active {
-            display: block; /* Aktif olduğunda göster */
+            display: block;
         }
 
         .tertiary-products-column {
-            display: none; /* Varsayılan olarak gizli */
+            display: none;
         }
         .tertiary-products-column.active {
-            display: block; /* Aktif olduğunda göster */
+            display: block;
         }
 
         .product-list {
             list-style: none;
             padding: 0;
             margin: 0;
-            display: none; /* Varsayılan olarak gizli */
+            display: none;
         }
 
         .product-list.active {
-            display: block; /* Aktif kategoriye ait liste gösterilsin */
+            display: block;
         }
 
         .product-list li a {
@@ -186,10 +183,9 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* Responsive Menü */
         @media (max-width: 768px) {
             .menu-content {
-                flex-direction: column; /* Mobil görünümde dikey sırala */
+                flex-direction: column;
                 gap: 10px;
             }
 
@@ -198,9 +194,9 @@
             .tertiary-products-column {
                 border-right: none;
                 padding-right: 0;
-                min-width: unset; /* Mobil için min-width'i sıfırla */
-                max-height: unset; /* Mobil için max-height'i sıfırla */
-                overflow-y: visible; /* Mobil görünümde kaydırma çubuğu olmasın */
+                min-width: unset;
+                max-height: unset;
+                overflow-y: visible;
             }
 
             .secondary-categories-column.active {
@@ -211,10 +207,10 @@
                 display: block;
             }
         }
-        
-        /* Hakkımızda ve Diğer İçerik Bölümleri (Bu sayfa için de geçerli) */
-        .content-section {
-            padding: 40px 20px;
+
+        /* Ürün Detay Sayfası Stilleri */
+        .product-detail-container {
+            padding: 20px;
             max-width: 900px;
             margin: 20px auto;
             background-color: white;
@@ -223,85 +219,97 @@
             text-align: left;
         }
 
-        .content-section h2 {
-            font-size: 28px;
+        .product-detail-container h2 {
+            font-size: 32px;
             color: #004797;
             margin-bottom: 20px;
             text-align: center;
         }
 
-        .content-section p {
-            font-size: 1.1em;
-            color: #333;
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-
-        /* Ürüne özel görsel */
         .product-image {
-            max-width: 400px; /* Ürün görseli için daha büyük boyut */
+            max-width: 400px;
             width: 100%;
             height: auto;
-            margin: 0 auto 30px auto; /* Ortala ve alttan boşluk */
-            border: 1px solid #ddd;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
             display: block;
+            margin: 0 auto 30px auto;
+            border: 1px solid #eee;
+            box-shadow: 0 0 5px rgba(0,0,0,0.08);
+        }
+
+        .product-detail-container p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .product-detail-container h3 {
+            font-size: 24px;
+            color: #004797;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            text-align: center;
         }
 
         /* Ölçü Tablosu Stilleri */
-        .measurement-table {
-            width: 100%;
-            border-collapse: collapse;
+        .table-container {
+            overflow-x: auto;
             margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
         }
+
+        .measurement-table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
         .measurement-table th, .measurement-table td {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 12px;
             text-align: center;
-            vertical-align: top; /* İçeriği üste hizala */
+            vertical-align: top;
+            font-size: 1em;
         }
+
         .measurement-table th {
             background-color: #004797;
             color: white;
             font-weight: bold;
         }
-        .measurement-table tr:nth-child(even) {
-            background-color: #f2f2f2; /* Her ikinci satıra farklı renk */
-        }
-        .measurement-table ul { /* Tablo içindeki listeler için */
-            list-style: none; /* Madde işaretini kaldır */
-            padding: 0;
-            margin: 0;
-        }
-        .measurement-table li {
-            padding: 2px 0;
+
+        .measurement-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
         }
 
         /* Ürün Navigasyon Okları Stilleri */
+        .product-nav-arrows-container {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
         .product-nav-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: #004797;
             color: white;
-            padding: 10px 15px;
+            padding: 12px 20px;
             text-decoration: none;
-            font-size: 24px;
+            font-size: 18px;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .product-nav-arrow:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .prev-product {
-            left: 10px; /* Görselin soluna hizala */
-        }
-
-        .next-product {
-            right: 10px; /* Görselin sağına hizala */
+            background-color: #0056b3;
+            transform: translateY(-2px);
         }
 
         /* İletişim Bölümü */
@@ -331,58 +339,64 @@
 
         /* WhatsApp Butonu Stilleri */
         .whatsapp-button {
-            position: fixed; /* Ekranın belirli bir yerinde sabit kalmasını sağlar */
-            bottom: 20px; /* Alttan 20px boşluk */
-            right: 20px; /* Sağdan 20px boşluk */
-            z-index: 1000; /* Diğer elementlerin üzerinde görünmesini sağlar */
-            background-color: #25D366; /* WhatsApp yeşili */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #25D366;
             color: white;
-            border-radius: 50%; /* Dairesel şekil */
-            width: 70px; /* Genişlik artırıldı */
-            height: 70px; /* Yükseklik artırıldı */
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge */
-            transition: transform 0.3s ease-in-out; /* Fare üzerine gelince animasyon */
-            text-decoration: none; /* Alt çizgiyi kaldır */
-            font-size: 40px; /* İkon boyutu artırıldı */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            text-decoration: none;
+            font-size: 40px;
         }
 
         .whatsapp-button:hover {
-            transform: scale(1.1); /* Fare üzerine gelince hafifçe büyüt */
+            transform: scale(1.1);
         }
         
         /* Responsive Düzenlemeler */
         @media (max-width: 768px) {
-            .whatsapp-button { /* Mobil cihazlarda daha küçük yapabiliriz */
-                width: 60px; /* Mobil genişlik artırıldı */
-                height: 60px; /* Mobil yükseklik artırıldı */
-                bottom: 15px;
-                right: 15px;
-                font-size: 35px; /* Mobil ikon boyutu artırıldı */
+            .product-detail-container {
+                padding: 15px;
+                margin: 15px auto;
             }
-            /* Mobil cihazlarda tablo sığmazsa yatay kaydırma */
-            .table-container {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
+            .product-image {
+                max-width: 80%;
+                margin-bottom: 20px;
+            }
+            .product-detail-container h2 {
+                font-size: 28px;
+            }
+            .product-detail-container p {
+                font-size: 1em;
+            }
+            .product-detail-container h3 {
+                font-size: 20px;
             }
             .measurement-table {
-                min-width: 300px; /* Küçük ekranlarda tablonun küçülmemesi için minimum genişlik */
+                width: 95%;
             }
-            /* Mobil için okları küçültme ve konumlandırma */
+            .measurement-table th, .measurement-table td {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+            .whatsapp-button {
+                width: 60px;
+                height: 60px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 35px;
+            }
             .product-nav-arrow {
-                padding: 8px 12px;
-                font-size: 20px;
-                top: 60%; /* Mobil cihazlarda daha aşağıya konumlandır */
-            }
-
-            .prev-product {
-                left: 5px;
-            }
-
-            .next-product {
-                right: 5px;
+                padding: 10px 15px;
+                font-size: 16px;
             }
         }
     </style>
@@ -518,7 +532,6 @@
     </nav>
 
     <script>
-        // WhatsApp Butonunu dinamik olarak ekleyen fonksiyon
         function addWhatsAppButton() {
             if (document.querySelector('.whatsapp-button')) {
                 return;
@@ -534,31 +547,26 @@
         }
         document.addEventListener('DOMContentLoaded', addWhatsAppButton);
 
-        // Ana menüyü açıp kapatan fonksiyon ("Ürünlerimiz +" butonu için)
         function toggleMainMenu() {
             const mainMenuContainer = document.getElementById("mainMenuContainer");
             mainMenuContainer.classList.toggle("active");
 
-            // Ana menü kapanırken tüm alt menüleri ve aktif durumları sıfırla
             if (!mainMenuContainer.classList.contains("active")) {
                 document.getElementById('secondaryCategoriesColumn').classList.remove('active');
                 document.getElementById('tertiaryProductsColumn').classList.remove('active');
 
                 document.querySelectorAll('.primary-category-item.active').forEach(item => item.classList.remove('active'));
                 document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
-                document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active')); // Tüm ürün listelerini gizle
+                document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
             } else {
-                // Menü açıldığında, menü container'ını görünür alana kaydır
                 mainMenuContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
-        // İkinci sütunu (ana kategorileri) açıp kapatan fonksiyon (KAPLİNLER için)
         function toggleSecondaryMenu(clickedItem) {
             const secondaryColumn = document.getElementById('secondaryCategoriesColumn');
             const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
 
-            // Tüm primary-category-item'lardan 'active' sınıfını kaldır
             document.querySelectorAll('.primary-category-item').forEach(item => {
                 if (item !== clickedItem) {
                     item.classList.remove('active');
@@ -567,10 +575,8 @@
 
             const isActive = clickedItem.classList.toggle('active');
 
-            // Secondary Column'u göster/gizle
             secondaryColumn.classList.toggle('active', isActive);
 
-            // Eğer secondaryColumn kapatılıyorsa tertiaryColumn'u ve tüm ürün listelerini gizle
             if (!isActive) {
                 tertiaryColumn.classList.remove('active');
                 document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
@@ -578,44 +584,35 @@
             } else {
                 secondaryColumn.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
-            // Secondary menü açıldığında tertiary'yi ve ürün listelerini sıfırla
             tertiaryColumn.classList.remove('active');
             document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
             document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
         }
 
-        // Üçüncü sütunu (alt ürünleri) açıp kapatan fonksiyon (Ana Kategoriler için)
         function toggleTertiaryMenu(clickedItem, categoryId) {
             const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
 
-            // Tüm secondary-category-item'lardan 'active' sınıfını kaldır
             document.querySelectorAll('.secondary-category-item').forEach(item => {
                 if (item !== clickedItem) {
                     item.classList.remove('active');
                 }
             });
 
-            // Tüm ürün listelerini gizle
             document.querySelectorAll('.product-list').forEach(list => {
                 list.classList.remove('active');
             });
 
-            // Tıklanan öğenin aktif/pasif durumunu değiştir
             const isActive = clickedItem.classList.toggle('active');
 
-            // Tertiary Column'u göster/gizle
             tertiaryColumn.classList.toggle('active', isActive);
 
             if (isActive) {
-                // Kategoriye özgü ürün listesini göster
                 const productListToShow = document.getElementById(categoryId + '-products');
                 if (productListToShow) {
-                    productListToShow.classList.add('active'); // CSS ile görünür yap
-                    // Üçüncü sütun açıldığında, onu görünür alana kaydır
+                    productListToShow.classList.add('active');
                     tertiaryColumn.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             } else {
-                // Tertiary Column kapanıyorsa içindeki ürün listesini de gizle
                 const productListToHide = document.getElementById(categoryId + '-products');
                 if (productListToHide) {
                     productListToHide.classList.remove('active');
@@ -623,7 +620,6 @@
             }
         }
 
-        // Menü dışına tıklanınca ana menüyü kapatma
         document.addEventListener('click', function(event) {
             const nav = document.querySelector('nav');
             const mainMenuContainer = document.getElementById('mainMenuContainer');
@@ -643,20 +639,10 @@
     </script>
 
     <main>
-        <section class="content-section">
-            <h2>Mavi Manşon</h2>
-            
-            <div style="position: relative; text-align: center;">
-                <img src="mavi-manson.png" alt="Mavi Manşon Görseli" class="product-image">
-                <a href="mavi-erkek-dirsek.html" class="product-nav-arrow prev-product" title="Önceki Ürün">
-                    &#10094; 
-                </a>
-                <a href="mavi-tapa.html" class="product-nav-arrow next-product" title="Sonraki Ürün">
-                    &#10095;
-                </a>
-            </div>
-            
-            <p>Mavi Manşon, sulama ve tesisat sistemlerinde boruların düz bir hat üzerinde birbirine bağlanması için kullanılan temel bir ek parçadır. Sızdırmaz ve dayanıklı yapısıyla güvenilir bağlantılar sağlar. Kolay montajı sayesinde hızlı ve pratik çözümler sunar.</p>
+        <section class="product-detail-container">
+            <h2>Mavi Seri Dirsek Kaplin</h2>
+            <img src="mavi-dirsek-kaplin.png" alt="Mavi Seri Dirsek Kaplin" class="product-image">
+            <p>Mavi Seri Dirsek Kaplin, sulama ve tesisat sistemlerinde boruların 90 derece açıyla güvenli bir şekilde birleştirilmesi için tasarlanmıştır. Yüksek kaliteli, UV dayanıklı polipropilen malzemeden üretilmiş olup, uzun ömürlü ve sızdırmaz bir bağlantı sağlar. Kolay montajı sayesinde hızlı ve pratik çözümler sunar.</p>
 
             <h3>Ürün Ölçüleri:</h3>
             <div class="table-container">
@@ -664,15 +650,18 @@
                     <thead>
                         <tr>
                             <th>Ölçüler</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>20 mm</td><td>63 mm</td></tr> 
-                        <tr><td>25 mm</td><td>75 mm</td></tr> 
-                        <tr><td>32 mm</td><td>90 mm</td></tr> 
-                        <tr><td>40 mm</td><td>110 mm</td></tr> 
-                        <tr><td>50 mm</td><td></td></tr> 
+                        <tr><td>20 mm</td></tr> 
+                        <tr><td>25 mm</td></tr> 
+                        <tr><td>32 mm</td></tr> 
+                        <tr><td>40 mm</td></tr> 
+                        <tr><td>50 mm</td></tr> 
+                        <tr><td>63 mm</td></tr> 
+                        <tr><td>75 mm</td></tr> 
+                        <tr><td>90 mm</td></tr> 
+                        <tr><td>110 mm</td></tr>
                     </tbody>
                 </table>
             </div>
