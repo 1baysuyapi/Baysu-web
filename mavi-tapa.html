@@ -254,17 +254,17 @@
 
         /* Ölçü Tablosu Stilleri */
         .table-container {
+            overflow-x: auto;
+            margin-bottom: 20px;
             display: flex;
             justify-content: center;
-            gap: 20px; /* Tablolar arası boşluk */
-            flex-wrap: wrap; /* Küçük ekranlarda alt alta gelmeleri için */
         }
 
         .measurement-table {
-            width: 45%; /* İki tablo yan yana duracak şekilde ayarlandı */
-            min-width: 250px; /* Minimum genişlik */
+            width: 80%; /* Genişliği düşürüldü, daha merkezi durması için */
+            max-width: 500px; /* Maksimum genişlik eklendi */
             border-collapse: collapse;
-            margin: 0; /* İç marjin sıfırlandı */
+            margin: 0 auto;
         }
 
         .measurement-table th, .measurement-table td {
@@ -380,10 +380,6 @@
             }
             .product-detail-container h3 {
                 font-size: 20px;
-            }
-            .table-container {
-                flex-direction: column; /* Küçük ekranlarda tablolar alt alta */
-                gap: 10px;
             }
             .measurement-table {
                 width: 95%; /* Küçük ekranlarda tam genişlik */
@@ -655,29 +651,15 @@
                     <thead>
                         <tr>
                             <th>Ölçüler</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>20 mm</td></tr> 
-                        <tr><td>25 mm</td></tr> 
-                        <tr><td>32 mm</td></tr> 
-                        <tr><td>40 mm</td></tr> 
-                        <tr><td>50 mm</td></tr> 
-                    </tbody>
-                </table>
-
-                <table class="measurement-table">
-                    <thead>
-                        <tr>
                             <th>Ölçüler</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>63 mm</td></tr> 
-                        <tr><td>75 mm</td></tr> 
-                        <tr><td>90 mm</td></tr> 
-                        <tr><td>110 mm</td></tr>
-                        <tr><td></td></tr> </tbody>
+                        <tr><td>20 mm</td><td>63 mm</td></tr> 
+                        <tr><td>25 mm</td><td>75 mm</td></tr> 
+                        <tr><td>32 mm</td><td>90 mm</td></tr> 
+                        <tr><td>40 mm</td><td>110 mm</td></tr> 
+                        <tr><td>50 mm</td><td></td></tr> </tbody>
                 </table>
             </div>
 
