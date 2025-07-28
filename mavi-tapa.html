@@ -2,21 +2,17 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Mavi Seri Tapa</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - [Ürün Adı Buraya Gelecek]</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
-        /* Genel CSS */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f4f4f4;
-            color: #222;
-            text-align: center;
-        }
+        /* YUKARIDA VERİLEN GENEL CSS KODLARINI BURAYA YAPIŞTIRIN */
+        /* Bu alanda sadece ürün sayfasına özgü ek CSS'ler olmalı */
 
         header {
+            /* header görseli için */
             color: #fff;
             padding: 0;
             position: relative;
@@ -38,28 +34,22 @@
         }
 
         header h1, header h2, header p {
-            display: none;
+            display: none; /* Metin başlıklarını gizle, görseli kullan */
         }
 
-        /* Navigasyon Stilleri (basit bir geri dönüş butonu için) */
-        nav {
-            background: #003366;
-            padding: 10px 0;
-            text-align: left;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-            padding: 10px 20px;
-            display: inline-block;
-        }
-        nav a:hover {
-            background-color: #0056b3;
+        /* Responsive Header düzenlemesi (ürün sayfalarına özel) */
+        @media (max-width: 768px) {
+            header {
+                min-height: 150px;
+                max-height: 150px;
+            }
+            header img {
+                object-fit: contain;
+                object-position: 40% center;
+            }
         }
 
-        /* Ürün Detay Bölümü */
+        /* Product Detail Section - bu isimleri tutarlı kullanın */
         .product-detail-section {
             padding: 40px 20px;
             max-width: 900px;
@@ -71,22 +61,10 @@
         }
 
         .product-detail-section h2 {
-            font-size: 32px;
+            font-size: 28px;
             color: #004797;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             text-align: center;
-        }
-
-        .product-detail-section .product-image {
-            max-width: 400px;
-            width: 100%;
-            height: auto;
-            margin-bottom: 30px;
-            border: 1px solid #ddd;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .product-detail-section p {
@@ -94,6 +72,90 @@
             color: #333;
             line-height: 1.7;
             margin-bottom: 15px;
+        }
+
+        /* Ürüne özel görsel */
+        .product-image {
+            max-width: 400px; /* Ürün görseli için daha büyük boyut */
+            width: 100%;
+            height: auto;
+            margin: 0 auto 30px auto; /* Ortala ve alttan boşluk */
+            border: 1px solid #ddd;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        /* Ölçü Tablosu Stilleri */
+        .measurement-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .measurement-table th, .measurement-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            vertical-align: top; /* İçeriği üste hizala */
+        }
+        .measurement-table th {
+            background-color: #004797;
+            color: white;
+            font-weight: bold;
+        }
+        .measurement-table tr:nth-child(even) {
+            background-color: #f2f2f2; /* Her ikinci satıra farklı renk */
+        }
+        .measurement-table ul { /* Tablo içindeki listeler için */
+            list-style: none; /* Madde işaretini kaldır */
+            padding: 0;
+            margin: 0;
+        }
+        .measurement-table li {
+            padding: 2px 0;
+        }
+
+        /* Ürün Navigasyon Okları Stilleri */
+        .product-nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-nav-arrow:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .prev-product {
+            left: 10px; /* Görselin soluna hizala */
+        }
+
+        .next-product {
+            right: 10px; /* Görselin sağına hizala */
+        }
+
+        /* Mobil için okları küçültme ve konumlandırma */
+        @media (max-width: 768px) {
+            .product-nav-arrow {
+                padding: 8px 12px;
+                font-size: 20px;
+                top: 60%; /* Mobil cihazlarda daha aşağıya konumlandır */
+            }
+
+            .prev-product {
+                left: 5px;
+            }
+
+            .next-product {
+                right: 5px;
+            }
         }
 
         /* İletişim Bölümü */
@@ -123,53 +185,26 @@
 
         /* WhatsApp Butonu Stilleri */
         .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background-color: #25D366;
+            position: fixed; /* Ekranın belirli bir yerinde sabit kalmasını sağlar */
+            bottom: 20px; /* Alttan 20px boşluk */
+            right: 20px; /* Sağdan 20px boşluk */
+            z-index: 1000; /* Diğer elementlerin üzerinde görünmesini sağlar */
+            background-color: #25D366; /* WhatsApp yeşili */
             color: white;
-            border-radius: 50%;
-            width: 70px;
-            height: 70px;
+            border-radius: 50%; /* Dairesel şekil */
+            width: 70px; /* Genişlik artırıldı */
+            height: 70px; /* Yükseklik artırıldı */
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease-in-out;
-            text-decoration: none;
-            font-size: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge */
+            transition: transform 0.3s ease-in-out; /* Fare üzerine gelince animasyon */
+            text-decoration: none; /* Alt çizgiyi kaldır */
+            font-size: 40px; /* İkon boyutu artırıldı */
         }
 
         .whatsapp-button:hover {
-            transform: scale(1.1);
-        }
-
-        /* Responsive Düzenlemeler */
-        @media (max-width: 768px) {
-            header {
-                min-height: 150px;
-                max-height: 150px;
-            }
-            header img {
-                object-fit: contain;
-                object-position: 40% center;
-            }
-
-            .whatsapp-button {
-                width: 60px;
-                height: 60px;
-                bottom: 15px;
-                right: 15px;
-                font-size: 35px;
-            }
-
-            .product-detail-section h2 {
-                font-size: 26px;
-            }
-            .product-detail-section p {
-                font-size: 1em;
-            }
+            transform: scale(1.1); /* Fare üzerine gelince hafifçe büyüt */
         }
     </style>
 </head>
@@ -180,13 +215,143 @@
     </header>
 
     <nav>
-        <a href="index.html">Ana Sayfaya Geri Dön</a>
+        <div class="menu-toggle" onclick="toggleMainMenu()">Ürünlerimiz +</div>
+
+        <div class="main-menu-container" id="mainMenuContainer">
+            <div class="menu-content">
+                <div class="primary-category-column">
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                        <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                </div>
+
+                <div class="secondary-categories-column" id="secondaryCategoriesColumn">
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'mavi-seri')">
+                        <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'siyah-seri')">
+                        <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'kilitli-baglanti')">
+                        <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'disli-sulama')">
+                        <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'priz-kolyeler')">
+                        <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'nipelli-seri')">
+                        <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'vanalar')">
+                        <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'vana-kutulari')">
+                        <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'damlama-ek')">
+                        <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'yedek-parcalar')">
+                        <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                </div>
+
+                <div class="tertiary-products-column" id="tertiaryProductsColumn">
+                    <ul class="product-list" id="mavi-seri-products">
+                        <li><a href="mavi-disi-kaplin.html" target="_blank">Mavi Seri Dişi Kaplin</a></li>
+                        <li><a href="mavi-erkek-kaplin.html" target="_blank">Mavi Seri Erkek Kaplin</a></li>
+                        <li><a href="mavi-dirsek-kaplin.html" target="_blank">Mavi Seri Dirsek Kaplin</a></li>
+                        <li><a href="mavi-disi-dirsek.html" target="_blank">Mavi Seri Dişi Dirsek</a></li>
+                        <li><a href="mavi-erkek-dirsek.html" target="_blank">Mavi Seri Erkek Dirsek</a></li>
+                        <li><a href="mavi-tapa.html" target="_blank">Mavi Seri Manşon</a></li>
+                        <li><a href="mavi-tapa.html" target="_blank">Mavi Seri Tapa</a></li>
+                        <li><a href="mavi-erkek-te.html" target="_blank">Mavi Seri Erkek Te</a></li>
+                        <li><a href="mavi-disi-te.html" target="_blank">Mavi Seri Dişi Te</a></li>
+                        <li><a href="mavi-reduksiyon-te.html" target="_blank">Mavi Seri Redüksiyon Te</a></li>
+                        <li><a href="mavi-reduksiyon.html" target="_blank">Mavi Seri Redüksiyon</a></li>
+                        <li><a href="mavi-te.html" target="_blank">Mavi Seri Te</a></li>
+                    </ul>
+                    <ul class="product-list" id="siyah-seri-products">
+                        <li><a href="siyah-disi.html" target="_blank">Siyah Seri Dişi</a></li>
+                        <li><a href="siyah-erkek-kaplin.html" target="_blank">Siyah Seri Erkek Kaplin</a></li>
+                        <li><a href="siyah-dirsek.html" target="_blank">Siyah Seri Dirsek Kaplin</a></li>
+                        <li><a href="siyah-disi-dirsek.html" target="_blank">Siyah Seri Dişi Dirsek</a></li>
+                        <li><a href="siyah-erkek-dirsek.html" target="_blank">Siyah Seri Erkek Dirsek</a></li>
+                        <li><a href="siyah-manson.html" target="_blank">Siyah Seri Manşon</a></li>
+                        <li><a href="siyah-tapa.html" target="_blank">Siyah Seri Tapa</a></li>
+                        <li><a href="siyah-erkek-te.html" target="_blank">Siyah Seri Erkek Te</a></li>
+                        <li><a href="siyah-disi-te.html" target="_blank">Siyah Seri Dişi Te</a></li>
+                        <li><a href="siyah-reduksiyon-te.html" target="_blank">Siyah Seri Redüksiyon Te</a></li>
+                        <li><a href="siyah-reduksiyon.html" target="_blank">Siyah Seri Redüksiyon</a></li>
+                        <li><a href="siyah-te.html" target="_blank">Siyah Seri Te</a></li>
+                    </ul>
+                    <ul class="product-list" id="kilitli-baglanti-products">
+                        <li><a href="kilitli-erkek-dirsek.html" target="_blank">Kilitli Bağlantı Erkek Dirsek</a></li>
+                        <li><a href="kilitli-dirsek.html" target="_blank">Kilitli Bağlantı Dirsek</a></li>
+                        <li><a href="kilitli-reduksiyon-dirsek.html" target="_blank">Kilitli Bağlantı Redüksiyon Dirsek</a></li>
+                        <li><a href="kilitli-te.html" target="_blank">Kilitli Bağlantı TE</a></li>
+                        <li><a href="kilitli-erkek-te.html" target="_blank">Kilitli Bağlantı Erkek TE</a></li>
+                    </ul>
+                    <ul class="product-list" id="disli-sulama-products">
+                        <li><a href="disli-disi-dirsek.html" target="_blank">Dişli Dişi Dirsek</a></li>
+                        <li><a href="disli-disi-nipel.html" target="_blank">Dişli Dişi Nipel</a></li>
+                        <li><a href="disli-disi-reduksiyon-dirsek.html" target="_blank">Dişli Dişi Redüksiyon Dirsek</a></li>
+                        <li><a href="erkek-disli-kor-tapa.html" target="_blank">Erkek Dişli Kör Tapa</a></li>
+                    </ul>
+                    <ul class="product-list" id="priz-kolyeler-products">
+                        <li><a href="priz-kolye.html" target="_blank">Priz Kolye</a></li>
+                        <li><a href="disi-nipelli-priz-kolye.html" target="_blank">Dişi Nipelli Priz Kolye</a></li>
+                        <li><a href="erkek-nipelli-priz-kolye.html" target="_blank">Erkek Nipelli Priz Kolye</a></li>
+                        <li><a href="kizakli-priz-kolye.html" target="_blank">Kızaklı Priz Kolye</a></li>
+                        <li><a href="cift-cikisli-priz-kolye.html" target="_blank">Çift Çıkışlı Priz Kolye</a></li>
+                    </ul>
+                    <ul class="product-list" id="nipelli-seri-products">
+                        <li><a href="nipelli-disi-priz-kolye.html" target="_blank">Dişi Nipelli Priz Kolye</a></li>
+                        <li><a href="nipelli-erkek-priz-kolye.html" target="_blank">Erkek Nipelli Priz Kolye</a></li>
+                        <li><a href="nipelli-erkek-te.html" target="_blank">Nipelli Erkek TE</a></li>
+                        <li><a href="nipelli-disi-dirsek.html" target="_blank">Nipelli Dişi Dirsek</a></li>
+                    </ul>
+                    <ul class="product-list" id="vanalar-products">
+                        <li><a href="disi-disi-vana.html" target="_blank">Dişi Dişi Vana</a></li>
+                        <li><a href="erkek-disi-vana.html" target="_blank">Erkek Dişi Vana</a></li>
+                        <li><a href="kaplin-disi-vana.html" target="_blank">Kaplin Dişi Vana</a></li>
+                        <li><a href="kaplin-erkek-vana.html" target="_blank">Kaplin Erkek Vana</a></li>
+                    </ul>
+                    <ul class="product-list" id="vana-kutulari-products">
+                        <li><a href="6-inc-vana-kutusu.html" target="_blank">6" Vana Kutusu</a></li>
+                        <li><a href="10-inc-vana-kutusu.html" target="_blank">10" Vana Kutusu</a></li>
+                        <li><a href="12-inc-vana-kutusu.html" target="_blank">12" Vana Kutusu</a></li>
+                        <li><a href="14-inc-vana-kutusu.html" target="_blank">14" Vana Kutusu</a></li>
+                    </ul>
+                    <ul class="product-list" id="damlama-ek-products">
+                        <li><a href="mini-vana.html" target="_blank">Çıkış Mini Vana</a></li>
+                        <li><a href="debi-ayarli-damlatci-genis-bosaltim.html" target="_blank">Debi Ayarlı Damlatıcı Geniş Boşaltım</a></li>
+                        <li><a href="debi-ayarli-damlatci-yesil.html" target="_blank">Debi Ayarlı Damlatıcı Yeşil</a></li>
+                    </ul>
+                    <ul class="product-list" id="yedek-parcalar-products">
+                        <li><a href="pah-acma-aparati.html" target="_blank">Pah Açma Aparatı</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </nav>
 
     <main>
         <section class="product-detail-section">
             <h2>Mavi Seri Tapa</h2>
-            <img src="mavi-tapa.png" alt="Mavi Seri Tapa" class="product-image">
+            
+            <div style="position: relative; text-align: center;">
+                <img src="mavi-tapa.png" alt="Mavi Seri Tapa Görseli" class="product-image">
+                <a href="mavi-manson.html" class="product-nav-arrow prev-product" title="Önceki Ürün">
+                    &#10094; 
+                </a>
+                <a href="mavi-erkek-te.html" class="product-nav-arrow next-product" title="Sonraki Ürün">
+                    &#10095;
+                </a>
+            </div>
+            
             <p><strong>Baysu Yapı ve Sulama Malzemeleri'nden Mavi Seri Tapa</strong>, modern sulama ve tesisat sistemlerinizde güvenli ve sızdırmaz bir kapanış sağlamak üzere özel olarak tasarlanmıştır. Yüksek kaliteli mavi renkli UV dayanıklı polipropilen malzemeden üretilmiş olup, uzun ömürlü kullanım sunar.</p>
             <p>Kolay montaj özelliği sayesinde hızlıca uygulanabilir ve boru hatlarınızdaki akışı güvenle kesmenizi sağlar. Kimyasallara ve dış etkenlere karşı dayanıklılığı ile tarlalarda, bahçelerde ve endüstriyel uygulamalarda ideal bir çözümdür.</p>
             <h3>Özellikleri:</h3>
@@ -213,29 +378,9 @@
         &copy; 2025 BAYSU YAPI VE SULAMA MALZEMELERİ - Tüm hakları saklıdır.
     </footer>
 
-    <script>
-        // WhatsApp Butonunu dinamik olarak ekleyen fonksiyon
-        function addWhatsAppButton() {
-            // Buton zaten varsa tekrar ekleme
-            if (document.querySelector('.whatsapp-button')) {
-                return;
-            }
-
-            const whatsappLink = document.createElement('a');
-            whatsappLink.href = "https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum.";
-            whatsappLink.className = "whatsapp-button";
-            whatsappLink.target = "_blank";
-
-            const whatsappIcon = document.createElement('i');
-            whatsappIcon.className = "fab fa-whatsapp";
-
-            whatsappLink.appendChild(whatsappIcon);
-            document.body.appendChild(whatsappLink);
-        }
-
-        // Sayfa yüklendiğinde butonu ekle
-        document.addEventListener('DOMContentLoaded', addWhatsAppButton);
-    </script>
+    <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
 </body>
 </html>
