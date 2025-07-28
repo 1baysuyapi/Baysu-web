@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Anasayfa</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         /* Genel CSS */
@@ -71,7 +71,6 @@
             background: #003366;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             padding: 10px 0;
-            text-align: left;
             box-sizing: border-box;
             z-index: 999;
         }
@@ -313,7 +312,7 @@
             /* Header görseli için mobil ayarlamalar */
             header {
                 min-height: 150px;
-                max-height: 150px; 
+                max-height: 150px;
             }
             header img {
                 object-fit: contain;
@@ -388,7 +387,7 @@
                         <li><a href="mavi-disi-dirsek.html" target="_blank">Mavi Seri Dişi Dirsek</a></li>
                         <li><a href="mavi-erkek-dirsek.html" target="_blank">Mavi Seri Erkek Dirsek</a></li>
                         <li><a href="mavi-manson.html" target="_blank">Mavi Seri Manşon</a></li>
-                        <li><a href="mavi-tapa.html" target="_blank">Mavi Seri Tapa</a></li
+                        <li><a href="mavi-tapa.html" target="_blank">Mavi Seri Tapa</a></li>
                         <li><a href="mavi-erkek-te.html" target="_blank">Mavi Seri Erkek Te</a></li>
                         <li><a href="mavi-disi-te.html" target="_blank">Mavi Seri Dişi Te</a></li>
                         <li><a href="mavi-reduksiyon-te.html" target="_blank">Mavi Seri Redüksiyon Te</a></li>
@@ -406,8 +405,8 @@
                         <li><a href="siyah-erkek-te.html" target="_blank">Siyah Seri Erkek Te</a></li>
                         <li><a href="siyah-disi-te.html" target="_blank">Siyah Seri Dişi Te</a></li>
                         <li><a href="siyah-reduksiyon-te.html" target="_blank">Siyah Seri Redüksiyon Te</a></li>
-                        <li><a href="siyah-reduksiyon.html" target="_blank">Siyah Seri Redüksiyon</a></li
-                        <li><a href="siyah-te.html" target="_blank">Siyah Seri Te</a></li
+                        <li><a href="siyah-reduksiyon.html" target="_blank">Siyah Seri Redüksiyon</a></li>
+                        <li><a href="siyah-te.html" target="_blank">Siyah Seri Te</a></li>
                     </ul>
                     <ul class="product-list" id="kilitli-baglanti-products">
                         <li><a href="kilitli-erkek-dirsek.html" target="_blank">Kilitli Bağlantı Erkek Dirsek</a></li>
@@ -478,21 +477,10 @@
 
             whatsappLink.appendChild(whatsappIcon);
             document.body.appendChild(whatsappLink);
-
-            // Font Awesome'ın yeni eklenen ikonu tanıması için gerekirse bu fonksiyonu çağırabilirsiniz.
-            // Ancak genellikle dinamik eklemelerde Font Awesome otomatik olarak tanır.
-            // window.FontAwesome.dom.i2svg(); // Eğer Font Awesome SVG tabanlıysa ve ikonlar görünmezse bu satırı etkinleştirin.
         }
 
         // Sayfa yüklendiğinde butonu ekle
         document.addEventListener('DOMContentLoaded', addWhatsAppButton);
-
-        // Eğer siteniz SPA ise (yani URL değişse bile sayfa tam yenilenmiyorsa)
-        // URL veya içerik değiştiğinde butonu tekrar eklemek için bir gözlemci kullanabiliriz.
-        // Bu, sitenizin nasıl çalıştığına bağlı olarak ekleme gerektirebilir.
-        // Örneğin, bir router kullanıyorsanız router'ın "route change" olayını dinleyebilirsiniz.
-        // Ya da MutationObserver ile body'deki değişiklikleri izleyebilirsiniz (daha genel ama potansiyel olarak yoğun).
-        // Şimdilik en basit haliyle, butonu her DOMContentLoaded'da ekledik.
 
         // Ana menüyü açıp kapatan fonksiyon ("Ürünlerimiz +" butonu için)
         function toggleMainMenu() {
@@ -507,6 +495,10 @@
                 document.querySelectorAll('.primary-category-item.active').forEach(item => item.classList.remove('active'));
                 document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
                 document.querySelectorAll('.product-list').forEach(list => list.style.display = 'none'); // Tüm ürün listelerini gizle
+            } else {
+                // Menü açıldığında, menü container'ını görünür alana kaydır
+                // Mobil cihazlarda menünün alta kaymasını engeller.
+                mainMenuContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
@@ -515,9 +507,6 @@
             const secondaryColumn = document.getElementById('secondaryCategoriesColumn');
             const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
 
-            // KAPLİNLER öğesinin aktif/pasif durumunu değiştir
-            const isActive = clickedItem.classList.toggle('active');
-
             // Tüm primary-category-item'lardan 'active' sınıfını kaldır
             document.querySelectorAll('.primary-category-item').forEach(item => {
                 if (item !== clickedItem) { // Tıklanan öğe hariç
@@ -525,13 +514,20 @@
                 }
             });
 
-            if (isActive) {
-                secondaryColumn.classList.add('active'); // İkinci sütunu göster
-            } else {
-                secondaryColumn.classList.remove('active'); // İkinci sütunu gizle
-                tertiaryColumn.classList.remove('active'); // Üçüncü sütunu da gizle
+            // KAPLİNLER öğesinin aktif/pasif durumunu değiştir
+            const isActive = clickedItem.classList.toggle('active');
+
+            // Secondary Column'u göster/gizle
+            secondaryColumn.classList.toggle('active', isActive);
+
+            // Eğer secondaryColumn kapatılıyorsa tertiaryColumn'u ve tüm ürün listelerini gizle
+            if (!isActive) {
+                tertiaryColumn.classList.remove('active');
                 document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
                 document.querySelectorAll('.product-list').forEach(list => list.style.display = 'none');
+            } else {
+                // Secondary Column açıldığında, onu görünür alana kaydır
+                secondaryColumn.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
@@ -554,15 +550,23 @@
             // Tıklanan öğenin aktif/pasif durumunu değiştir
             const isActive = clickedItem.classList.toggle('active');
 
+            // Tertiary Column'u göster/gizle
+            tertiaryColumn.classList.toggle('active', isActive);
+
             if (isActive) {
-                tertiaryColumn.classList.add('active'); // Üçüncü sütunu göster
                 // Kategoriye özgü ürün listesini göster
                 const productListToShow = document.getElementById(categoryId + '-products');
                 if (productListToShow) {
                     productListToShow.style.display = 'block';
+                    // Üçüncü sütun açıldığında, onu görünür alana kaydır
+                    tertiaryColumn.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             } else {
-                tertiaryColumn.classList.remove('active'); // Üçüncü sütunu gizle
+                // Tertiary Column kapanıyorsa içindeki ürün listesini de gizle
+                const productListToHide = document.getElementById(categoryId + '-products');
+                if (productListToHide) {
+                    productListToHide.style.display = 'none';
+                }
             }
         }
 
