@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - [Ürün Adı Buraya Gelecek]</title>
+    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Mavi Seri Tapa</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -49,113 +49,131 @@
             }
         }
 
-        /* Product Detail Section - bu isimleri tutarlı kullanın */
-        .product-detail-section {
-            padding: 40px 20px;
-            max-width: 900px;
+        /* Yeni Ürün Varyantı Stilleri */
+        .product-list-container {
+            padding: 20px;
+            max-width: 1200px; /* Daha geniş bir kapsayıcı */
             margin: 20px auto;
             background-color: white;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             border-radius: 8px;
-            text-align: left;
+            text-align: center; /* Başlıklar ve genel içerik için */
         }
 
-        .product-detail-section h2 {
-            font-size: 28px;
+        .product-list-container h2 {
+            font-size: 32px;
             color: #004797;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             text-align: center;
         }
 
-        .product-detail-section p {
-            font-size: 1.1em;
-            color: #333;
-            line-height: 1.7;
-            margin-bottom: 15px;
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 300px'ten küçük olmayacak, sığana kadar */
+            gap: 20px;
+            justify-content: center;
         }
 
-        /* Ürüne özel görsel */
-        .product-image {
-            max-width: 400px; /* Ürün görseli için daha büyük boyut */
+        .product-variant {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: left;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* İçerikleri dikeyde yayar */
+        }
+
+        .product-variant h3 {
+            font-size: 22px;
+            color: #004797;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .product-variant-image {
+            max-width: 250px; /* Her varyant için daha küçük görsel */
             width: 100%;
             height: auto;
-            margin: 0 auto 30px auto; /* Ortala ve alttan boşluk */
-            border: 1px solid #ddd;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            margin: 0 auto 20px auto;
+            border: 1px solid #eee;
+            box-shadow: 0 0 3px rgba(0,0,0,0.05);
             display: block;
         }
 
-        /* Ölçü Tablosu Stilleri */
-        .measurement-table {
+        .product-variant p {
+            font-size: 1em;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .product-variant ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        .product-variant ul li {
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .product-variant strong {
+            color: #003366;
+        }
+
+        /* Ölçü Tablosu Stilleri (Her bir varyantın altında olacak) */
+        .variant-measurement-table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin-top: 15px;
         }
-        .measurement-table th, .measurement-table td {
-            border: 1px solid #ddd;
+        .variant-measurement-table th, .variant-measurement-table td {
+            border: 1px solid #e0e0e0;
             padding: 8px;
             text-align: center;
-            vertical-align: top; /* İçeriği üste hizala */
+            vertical-align: top;
+            font-size: 0.9em;
         }
-        .measurement-table th {
+        .variant-measurement-table th {
             background-color: #004797;
             color: white;
             font-weight: bold;
         }
-        .measurement-table tr:nth-child(even) {
-            background-color: #f2f2f2; /* Her ikinci satıra farklı renk */
-        }
-        .measurement-table ul { /* Tablo içindeki listeler için */
-            list-style: none; /* Madde işaretini kaldır */
-            padding: 0;
-            margin: 0;
-        }
-        .measurement-table li {
-            padding: 2px 0;
+        .variant-measurement-table tr:nth-child(even) {
+            background-color: #f5f5f5;
         }
 
-        /* Ürün Navigasyon Okları Stilleri */
+        /* Ürün Navigasyon Okları Stilleri - Artık tek ürün değil, ana sayfa için */
+        .product-nav-arrows-container {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px; /* Yanlardan boşluk */
+        }
+
         .product-nav-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: #004797;
             color: white;
-            padding: 10px 15px;
+            padding: 12px 20px;
             text-decoration: none;
-            font-size: 24px;
+            font-size: 18px;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .product-nav-arrow:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .prev-product {
-            left: 10px; /* Görselin soluna hizala */
-        }
-
-        .next-product {
-            right: 10px; /* Görselin sağına hizala */
-        }
-
-        /* Mobil için okları küçültme ve konumlandırma */
-        @media (max-width: 768px) {
-            .product-nav-arrow {
-                padding: 8px 12px;
-                font-size: 20px;
-                top: 60%; /* Mobil cihazlarda daha aşağıya konumlandır */
-            }
-
-            .prev-product {
-                left: 5px;
-            }
-
-            .next-product {
-                right: 5px;
-            }
+            background-color: #0056b3;
+            transform: translateY(-2px);
         }
 
         /* İletişim Bölümü */
@@ -205,6 +223,27 @@
 
         .whatsapp-button:hover {
             transform: scale(1.1); /* Fare üzerine gelince hafifçe büyüt */
+        }
+        
+        /* Responsive Düzenlemeler */
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr; /* Mobil cihazlarda tek sütun */
+            }
+            .product-variant {
+                margin-bottom: 15px; /* Mobil cihazlarda varyantlar arası boşluk */
+            }
+            .whatsapp-button { /* Mobil cihazlarda daha küçük yapabiliriz */
+                width: 60px;
+                height: 60px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 35px;
+            }
+            .product-nav-arrow {
+                padding: 10px 15px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -265,7 +304,7 @@
                         <li><a href="mavi-dirsek-kaplin.html" target="_blank">Mavi Seri Dirsek Kaplin</a></li>
                         <li><a href="mavi-disi-dirsek.html" target="_blank">Mavi Seri Dişi Dirsek</a></li>
                         <li><a href="mavi-erkek-dirsek.html" target="_blank">Mavi Seri Erkek Dirsek</a></li>
-                        <li><a href="mavi-tapa.html" target="_blank">Mavi Seri Manşon</a></li>
+                        <li><a href="mavi-manson.html" target="_blank">Mavi Seri Manşon</a></li>
                         <li><a href="mavi-tapa.html" target="_blank">Mavi Seri Tapa</a></li>
                         <li><a href="mavi-erkek-te.html" target="_blank">Mavi Seri Erkek Te</a></li>
                         <li><a href="mavi-disi-te.html" target="_blank">Mavi Seri Dişi Te</a></li>
@@ -338,32 +377,237 @@
         </div>
     </nav>
 
+    <script>
+        // WhatsApp Butonunu dinamik olarak ekleyen fonksiyon
+        function addWhatsAppButton() {
+            if (document.querySelector('.whatsapp-button')) {
+                return;
+            }
+            const whatsappLink = document.createElement('a');
+            whatsappLink.href = "https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum.";
+            whatsappLink.className = "whatsapp-button";
+            whatsappLink.target = "_blank";
+            const whatsappIcon = document.createElement('i');
+            whatsappIcon.className = "fab fa-whatsapp";
+            whatsappLink.appendChild(whatsappIcon);
+            document.body.appendChild(whatsappLink);
+        }
+        document.addEventListener('DOMContentLoaded', addWhatsAppButton);
+
+        // Ana menüyü açıp kapatan fonksiyon ("Ürünlerimiz +" butonu için)
+        function toggleMainMenu() {
+            const mainMenuContainer = document.getElementById("mainMenuContainer");
+            mainMenuContainer.classList.toggle("active");
+
+            // Ana menü kapanırken tüm alt menüleri ve aktif durumları sıfırla
+            if (!mainMenuContainer.classList.contains("active")) {
+                document.getElementById('secondaryCategoriesColumn').classList.remove('active');
+                document.getElementById('tertiaryProductsColumn').classList.remove('active');
+
+                document.querySelectorAll('.primary-category-item.active').forEach(item => item.classList.remove('active'));
+                document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
+                document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active')); // Tüm ürün listelerini gizle
+            } else {
+                // Menü açıldığında, menü container'ını görünür alana kaydır
+                mainMenuContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // İkinci sütunu (ana kategorileri) açıp kapatan fonksiyon (KAPLİNLER için)
+        function toggleSecondaryMenu(clickedItem) {
+            const secondaryColumn = document.getElementById('secondaryCategoriesColumn');
+            const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
+
+            // Tüm primary-category-item'lardan 'active' sınıfını kaldır
+            document.querySelectorAll('.primary-category-item').forEach(item => {
+                if (item !== clickedItem) {
+                    item.classList.remove('active');
+                }
+            });
+
+            const isActive = clickedItem.classList.toggle('active');
+
+            // Secondary Column'u göster/gizle
+            secondaryColumn.classList.toggle('active', isActive);
+
+            // Eğer secondaryColumn kapatılıyorsa tertiaryColumn'u ve tüm ürün listelerini gizle
+            if (!isActive) {
+                tertiaryColumn.classList.remove('active');
+                document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
+                document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
+            } else {
+                secondaryColumn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            // Secondary menü açıldığında tertiary'yi ve ürün listelerini sıfırla
+            tertiaryColumn.classList.remove('active');
+            document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
+        }
+
+        // Üçüncü sütunu (alt ürünleri) açıp kapatan fonksiyon (Ana Kategoriler için)
+        function toggleTertiaryMenu(clickedItem, categoryId) {
+            const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
+
+            // Tüm secondary-category-item'lardan 'active' sınıfını kaldır
+            document.querySelectorAll('.secondary-category-item').forEach(item => {
+                if (item !== clickedItem) {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Tüm ürün listelerini gizle
+            document.querySelectorAll('.product-list').forEach(list => {
+                list.classList.remove('active');
+            });
+
+            // Tıklanan öğenin aktif/pasif durumunu değiştir
+            const isActive = clickedItem.classList.toggle('active');
+
+            // Tertiary Column'u göster/gizle
+            tertiaryColumn.classList.toggle('active', isActive);
+
+            if (isActive) {
+                // Kategoriye özgü ürün listesini göster
+                const productListToShow = document.getElementById(categoryId + '-products');
+                if (productListToShow) {
+                    productListToShow.classList.add('active'); // CSS ile görünür yap
+                    // Üçüncü sütun açıldığında, onu görünür alana kaydır
+                    tertiaryColumn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            } else {
+                // Tertiary Column kapanıyorsa içindeki ürün listesini de gizle
+                const productListToHide = document.getElementById(categoryId + '-products');
+                if (productListToHide) {
+                    productListToHide.classList.remove('active');
+                }
+            }
+        }
+
+        // Menü dışına tıklanınca ana menüyü kapatma
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const mainMenuContainer = document.getElementById('mainMenuContainer');
+            const menuToggle = document.querySelector('.menu-toggle');
+
+            if (!nav.contains(event.target) && !menuToggle.contains(event.target)) {
+                if (mainMenuContainer.classList.contains('active')) {
+                    mainMenuContainer.classList.remove('active');
+                    document.getElementById('secondaryCategoriesColumn').classList.remove('active');
+                    document.getElementById('tertiaryProductsColumn').classList.remove('active');
+                    document.querySelectorAll('.primary-category-item.active').forEach(item => item.classList.remove('active'));
+                    document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
+                    document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
+                }
+            }
+        });
+    </script>
+
     <main>
-        <section class="product-detail-section">
+        <section class="product-list-container">
             <h2>Mavi Seri Tapa</h2>
             
-            <div style="position: relative; text-align: center;">
-                <img src="mavi-tapa.png" alt="Mavi Seri Tapa Görseli" class="product-image">
+            <div class="product-grid">
+                <div class="product-variant">
+                    <h3>20mm (1/2") Mavi Seri Tapa</h3>
+                    <img src="mavi-tapa-20mm.png" alt="20mm Mavi Seri Tapa" class="product-variant-image">
+                    <p>20mm (1/2") çapındaki borular için özel olarak tasarlanmış **Mavi Seri Tapa**, sulama sistemlerinizde güvenli bir kapanış sağlar.</p>
+                    <ul>
+                        <li><strong>Malzeme:</strong> UV Dayanıklı Polipropilen</li>
+                        <li><strong>Renk:</strong> Mavi</li>
+                        <li><strong>Kullanım Alanı:</strong> Genel Sulama, Tarım</li>
+                        <li><strong>Dayanım:</strong> Yüksek basınca ve dış etkenlere dayanıklı</li>
+                    </ul>
+                    <table class="variant-measurement-table">
+                        <thead>
+                            <tr>
+                                <th>Çap (DN)</th>
+                                <th>Boyut (İnç)</th>
+                                <th>Kod</th>
+                                <th>Koli Adedi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>20</td>
+                                <td>1/2"</td>
+                                <td>MST001</td>
+                                <td>500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="product-variant">
+                    <h3>25mm (3/4") Mavi Seri Tapa</h3>
+                    <img src="mavi-tapa-25mm.png" alt="25mm Mavi Seri Tapa" class="product-variant-image">
+                    <p>25mm (3/4") çapındaki borular için ideal olan bu **Mavi Seri Tapa**, mükemmel sızdırmazlık ve uzun ömürlü performans sunar.</p>
+                    <ul>
+                        <li><strong>Malzeme:</strong> UV Dayanıklı Polipropilen</li>
+                        <li><strong>Renk:</strong> Mavi</li>
+                        <li><strong>Kullanım Alanı:</strong> Bahçe ve Peyzaj Sulamaları</li>
+                        <li><strong>Dayanım:</strong> Kimyasal ve UV ışınlarına karşı dirençli</li>
+                    </ul>
+                    <table class="variant-measurement-table">
+                        <thead>
+                            <tr>
+                                <th>Çap (DN)</th>
+                                <th>Boyut (İnç)</th>
+                                <th>Kod</th>
+                                <th>Koli Adedi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>25</td>
+                                <td>3/4"</td>
+                                <td>MST002</td>
+                                <td>400</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="product-variant">
+                    <h3>32mm (1") Mavi Seri Tapa</h3>
+                    <img src="mavi-tapa-32mm.png" alt="32mm Mavi Seri Tapa" class="product-variant-image">
+                    <p>32mm (1") çapındaki tesisatlar için tasarlanan bu **Mavi Seri Tapa**, kolay montajı ve sağlam yapısıyla öne çıkar.</p>
+                    <ul>
+                        <li><strong>Malzeme:</strong> UV Dayanıklı Polipropilen</li>
+                        <li><strong>Renk:</strong> Mavi</li>
+                        <li><strong>Kullanım Alanı:</strong> Endüstriyel ve Geniş Alan Sulamaları</li>
+                        <li><strong>Dayanım:</strong> Yüksek basınca ve darbelere dayanıklı</li>
+                    </ul>
+                    <table class="variant-measurement-table">
+                        <thead>
+                            <tr>
+                                <th>Çap (DN)</th>
+                                <th>Boyut (İnç)</th>
+                                <th>Kod</th>
+                                <th>Koli Adedi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>32</td>
+                                <td>1"</td>
+                                <td>MST003</td>
+                                <td>300</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                </div>
+
+            <div class="product-nav-arrows-container">
                 <a href="mavi-manson.html" class="product-nav-arrow prev-product" title="Önceki Ürün">
-                    &#10094; 
+                    &#10094; Mavi Seri Manşon
                 </a>
                 <a href="mavi-erkek-te.html" class="product-nav-arrow next-product" title="Sonraki Ürün">
-                    &#10095;
+                    Mavi Seri Erkek Te &#10095;
                 </a>
             </div>
-            
-            <p><strong>Baysu Yapı ve Sulama Malzemeleri'nden Mavi Seri Tapa</strong>, modern sulama ve tesisat sistemlerinizde güvenli ve sızdırmaz bir kapanış sağlamak üzere özel olarak tasarlanmıştır. Yüksek kaliteli mavi renkli UV dayanıklı polipropilen malzemeden üretilmiş olup, uzun ömürlü kullanım sunar.</p>
-            <p>Kolay montaj özelliği sayesinde hızlıca uygulanabilir ve boru hatlarınızdaki akışı güvenle kesmenizi sağlar. Kimyasallara ve dış etkenlere karşı dayanıklılığı ile tarlalarda, bahçelerde ve endüstriyel uygulamalarda ideal bir çözümdür.</p>
-            <h3>Özellikleri:</h3>
-            <ul>
-                <li><strong>Malzeme:</strong> Yüksek Kaliteli UV Dayanıklı Polipropilen</li>
-                <li><strong>Renk:</strong> Mavi</li>
-                <li><strong>Kullanım Alanı:</strong> Sulama sistemleri, tarımsal uygulamalar, endüstriyel tesisat</li>
-                <li><strong>Dayanım:</strong> Yüksek basınç, kimyasal ve UV ışınlarına karşı dirençli</li>
-                <li><strong>Montaj:</strong> Hızlı ve kolay kurulum</li>
-                <li><strong>Sızdırmazlık:</strong> Mükemmel sızdırmazlık performansı</li>
-            </ul>
-            <p>Farklı çap seçenekleri için lütfen bizimle iletişime geçin.</p>
+
         </section>
     </main>
 
