@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Mavi Seri Tapa</title>
+    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Mavi Seri Dişi Kaplin</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -81,9 +81,9 @@
             left: 0;
             z-index: 999;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            max-height: 80vh; 
-            overflow-y: auto; 
-            -webkit-overflow-scrolling: touch; 
+            max-height: 80vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .main-menu-container.active {
@@ -261,8 +261,8 @@
         }
 
         .measurement-table {
-            width: 80%; /* Genişliği düşürüldü, daha merkezi durması için */
-            max-width: 500px; /* Maksimum genişlik eklendi */
+            width: 80%;
+            max-width: 500px;
             border-collapse: collapse;
             margin: 0 auto;
         }
@@ -382,7 +382,7 @@
                 font-size: 20px;
             }
             .measurement-table {
-                width: 95%; /* Küçük ekranlarda tam genişlik */
+                width: 95%;
             }
             .measurement-table th, .measurement-table td {
                 padding: 10px;
@@ -414,46 +414,49 @@
         <div class="main-menu-container" id="mainMenuContainer">
             <div class="menu-content">
                 <div class="primary-category-column">
-                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this, 'kaplinler')">
                         <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                </div>
-
-                <div class="secondary-categories-column" id="secondaryCategoriesColumn">
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'mavi-seri')">
+                    <div class="primary-category-item active" onclick="toggleSecondaryMenu(this, 'mavi-seri')">
                         <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'siyah-seri')">
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this, 'siyah-seri')">
                         <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'kilitli-baglanti')">
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this, 'kilitli-baglanti')">
                         <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'disli-sulama')">
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this, 'disli-sulama')">
                         <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'priz-kolyeler')">
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this, 'priz-kolyeler')">
                         <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'nipelli-seri')">
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this, 'nipelli-seri')">
                         <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'vanalar')">
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this, 'vanalar')">
                         <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'vana-kutulari')">
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this, 'vana-kutulari')">
                         <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'damlama-ek')">
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this, 'damlama-ek')">
                         <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'yedek-parcalar')">
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this, 'yedek-parcalar')">
                         <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                 </div>
 
-                <div class="tertiary-products-column" id="tertiaryProductsColumn">
-                    <ul class="product-list" id="mavi-seri-products">
+                <div class="secondary-categories-column active" id="secondaryCategoriesColumn">
+                    <div class="secondary-category-item active" data-primary-category="mavi-seri" data-tertiary-target="mavi-seri-products" onclick="toggleTertiaryMenu(this, 'mavi-seri-products')">
+                        <h3>Mavi Seri Ürünleri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    </div>
+
+                <div class="tertiary-products-column active" id="tertiaryProductsColumn">
+                    <ul class="product-list active" id="mavi-seri-products">
                         <li><a href="mavi-disi-kaplin.html" target="_blank">Mavi Seri Dişi Kaplin</a></li>
                         <li><a href="mavi-erkek-kaplin.html" target="_blank">Mavi Seri Erkek Kaplin</a></li>
                         <li><a href="mavi-dirsek-kaplin.html" target="_blank">Mavi Seri Dirsek Kaplin</a></li>
@@ -466,6 +469,15 @@
                         <li><a href="mavi-reduksiyon-te.html" target="_blank">Mavi Seri Redüksiyon Te</a></li>
                         <li><a href="mavi-reduksiyon.html" target="_blank">Mavi Seri Redüksiyon</a></li>
                         <li><a href="mavi-te.html" target="_blank">Mavi Seri Te</a></li>
+                    </ul>
+
+                    <ul class="product-list" id="kaplinler-products">
+                        <li><a href="mavi-disi-kaplin.html" target="_blank">Dişi Kaplin</a></li>
+                        <li><a href="mavi-erkek-kaplin.html" target="_blank">Erkek Kaplin</a></li>
+                        <li><a href="mavi-dirsek-kaplin.html" target="_blank">Dirsek Kaplin</a></li>
+                        <li><a href="siyah-disi-kaplin.html" target="_blank">Siyah Seri Dişi</a></li>
+                        <li><a href="siyah-erkek-kaplin.html" target="_blank">Siyah Seri Erkek Kaplin</a></li>
+                        <li><a href="siyah-dirsek.html" target="_blank">Siyah Seri Dirsek Kaplin</a></li>
                     </ul>
                     <ul class="product-list" id="siyah-seri-products">
                         <li><a href="siyah-disi-kaplin.html" target="_blank">Siyah Seri Dişi</a></li>
@@ -564,7 +576,7 @@
             }
         }
 
-        function toggleSecondaryMenu(clickedItem) {
+        function toggleSecondaryMenu(clickedItem, categoryId) {
             const secondaryColumn = document.getElementById('secondaryCategoriesColumn');
             const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
 
@@ -576,18 +588,37 @@
 
             const isActive = clickedItem.classList.toggle('active');
 
-            secondaryColumn.classList.toggle('active', isActive);
+            // Tüm ikincil kategori öğelerini gizle
+            document.querySelectorAll('.secondary-category-item').forEach(secItem => {
+                secItem.style.display = 'none';
+                secItem.classList.remove('active'); // Aktifliğini de kaldır
+            });
+            
+            // Sadece tıklanan birincil kategoriye ait ikincil kategorileri göster
+            const relevantSecondaryCategories = document.querySelectorAll(`.secondary-category-item[data-primary-category="${categoryId}"]`);
+            if (relevantSecondaryCategories.length > 0) {
+                relevantSecondaryCategories.forEach(secItem => secItem.style.display = 'block');
+                secondaryColumn.classList.add('active');
 
-            if (!isActive) {
-                tertiaryColumn.classList.remove('active');
-                document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
-                document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
+                // İlk ikincil kategoriyi otomatik seç ve ürünlerini göster
+                relevantSecondaryCategories[0].classList.add('active');
+                toggleTertiaryMenu(relevantSecondaryCategories[0], relevantSecondaryCategories[0].dataset.tertiaryTarget);
+
             } else {
-                secondaryColumn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Eğer alt kategori yoksa ikincil ve üçüncül sütunları gizle
+                secondaryColumn.classList.remove('active');
+                tertiaryColumn.classList.remove('active');
+                document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
             }
-            tertiaryColumn.classList.remove('active');
-            document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
-            document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
+
+            // Eğer ana kategori tıklamasıyla menü açılıyorsa, ikinci ve üçüncü sütunları da göster
+            if (isActive) {
+                secondaryColumn.classList.add('active');
+                tertiaryColumn.classList.add('active'); // Tertiary'yi de aktif et ki ürün listeleri gözüksün
+            } else {
+                secondaryColumn.classList.remove('active');
+                tertiaryColumn.classList.remove('active');
+            }
         }
 
         function toggleTertiaryMenu(clickedItem, categoryId) {
@@ -621,6 +652,22 @@
             }
         }
 
+        document.addEventListener('DOMContentLoaded', function() {
+            // İlk açılışta "Mavi Seri" kategorisini aktif hale getir ve ürünlerini göster
+            const initialPrimaryCategory = document.querySelector('.primary-category-item[onclick*="mavi-seri"]');
+            if (initialPrimaryCategory) {
+                initialPrimaryCategory.classList.add('active'); // Mavi Seri'yi aktif yap
+                toggleSecondaryMenu(initialPrimaryCategory, 'mavi-seri'); 
+                
+                // Mavi Seri altında Mavi Seri Ürünleri alt kategorisini seç
+                const maviSeriUrunleriSecondary = document.querySelector('.secondary-category-item[data-primary-category="mavi-seri"][data-tertiary-target="mavi-seri-products"]');
+                if (maviSeriUrunleriSecondary) {
+                    maviSeriUrunleriSecondary.classList.add('active'); // Bu alt kategoriyi aktif yap
+                    toggleTertiaryMenu(maviSeriUrunleriSecondary, 'mavi-seri-products');
+                }
+            }
+        });
+
         document.addEventListener('click', function(event) {
             const nav = document.querySelector('nav');
             const mainMenuContainer = document.getElementById('mainMenuContainer');
@@ -641,9 +688,11 @@
 
     <main>
         <section class="product-detail-container">
-            <h2>Mavi Seri Tapa</h2>
-            <img src="mavi-tapa.png" alt="Mavi Seri Tapa" class="product-image">
-            <p>Mavi Seri Tapa, sulama ve tesisat sistemlerinde boru hatlarının ucunu veya istenmeyen açıklıkları güvenli bir şekilde kapatmak için kullanılır. Sızdırmaz ve dayanıklı yapısıyla uzun ömürlü bir çözüm sunar. Kolay montajı sayesinde hızlı ve pratik bir kullanım sağlar.</p>
+            <h2>Mavi Seri Dişi Kaplin</h2>
+            <img src="mavi-disi-kaplin.png" alt="Mavi Seri Dişi Kaplin" class="product-image">
+            <p>Mavi Seri Dişi Kaplin, özellikle polietilen boruların birleştirilmesi için tasarlanmış yüksek performanslı bir bağlantı elemanıdır. Sızdırmazlık ve dayanıklılık konusunda üstün özellikler sunarak uzun ömürlü ve güvenilir bir bağlantı sağlar. Tarımsal sulama sistemleri, endüstriyel tesisatlar ve konut uygulamaları gibi geniş bir kullanım alanına sahiptir.</p>
+            
+            <p>Kolay montaj özelliği sayesinde hızlı ve pratik kurulum imkanı sunar, bu da işçilik ve zaman maliyetlerini düşürür. Mavi Seri Dişi Kaplin, zorlu çalışma koşullarına ve yüksek basınca karşı dirençli yapısıyla, sistemlerinizin sorunsuz çalışmasına katkıda bulunur.</p>
 
             <h3>Ürün Ölçüleri:</h3>
             <div class="table-container">
@@ -655,11 +704,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>20 mm</td><td>63 mm</td></tr> 
-                        <tr><td>25 mm</td><td>75 mm</td></tr> 
-                        <tr><td>32 mm</td><td>90 mm</td></tr> 
-                        <tr><td>40 mm</td><td>110 mm</td></tr> 
-                        <tr><td>50 mm</td><td></td></tr> </tbody>
+                        <tr><td>20 mm</td><td>63 mm</td></tr>
+                        <tr><td>25 mm</td><td>75 mm</td></tr>
+                        <tr><td>32 mm</td><td>90 mm</td></tr>
+                        <tr><td>40 mm</td><td>110 mm</td></tr>
+                        <tr><td>50 mm</td><td></td></tr>
+                    </tbody>
                 </table>
             </div>
 
