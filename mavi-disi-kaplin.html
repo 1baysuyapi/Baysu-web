@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Mavi Dişi Kaplin</title>
+    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Mavi Seri Dişi Kaplin</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -13,26 +13,50 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f4f4f4; /* Koyu gri tonu */
+            background: #f4f4f4;
             color: #222;
             text-align: center;
         }
 
         header {
-            background: linear-gradient(to right, #004797, #33ffff); /* Mavi gradient */
             color: #fff;
-            padding: 30px 10px 10px;
-            position: relative; /* Navigasyon okları için */
-            overflow: hidden; /* Kenar taşmalarını gizle */
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background-color: #003366;
+            min-height: 250px;
+            max-height: 250px;
         }
 
-        header h1 {
-            margin-bottom: 5px;
+        header img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: 40% center;
+        }
+
+        header h1, header h2, header p {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                min-height: 150px;
+                max-height: 150px;
+            }
+            header img {
+                object-fit: contain;
+                object-position: 40% center;
+            }
         }
 
         /* Navigasyon Stilleri */
         nav {
-            background: #003366; /* Daha koyu mavi */
+            background: #003366;
             padding: 10px 0;
             position: sticky;
             top: 0;
@@ -49,44 +73,47 @@
             display: inline-block;
         }
 
-        /* Yeni Menü Yapısı Stilleri (Tapa sayfasından kopyalandı ve düzenlendi) */
         .main-menu-container {
-            display: none; /* Varsayılan olarak gizli */
-            background: #003366; /* Açılan menü arkaplanı */
+            display: none;
+            background: #003366;
             position: absolute;
             width: 100%;
             left: 0;
             z-index: 999;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            max-height: 80vh; /* Ekran yüksekliğinin %80'i kadar bir maksimum yükseklik */
-            overflow-y: auto; /* İçerik taşarsa dikey kaydırma çubuğu göster */
-            -webkit-overflow-scrolling: touch; /* iOS cihazlarda daha akıcı kaydırma */
+            max-height: 80vh; 
+            overflow-y: auto; 
+            -webkit-overflow-scrolling: touch; 
         }
 
-        .main-menu-container.active { /* JavaScript ile aktif edildiğinde */
-            display: flex; /* Flexbox ile sütunları yan yana sırala */
+        .main-menu-container.active {
+            display: block;
+        }
+
+        .menu-content {
+            display: flex;
             justify-content: space-between;
             padding: 20px;
-            gap: 20px; /* Sütunlar arası boşluk */
+            gap: 20px;
         }
 
         .primary-category-column,
         .secondary-categories-column,
         .tertiary-products-column {
-            flex: 1; /* Eşit genişlikte sütunlar */
-            min-width: 200px; /* Minimum genişlik */
-            max-height: 70vh; /* Maksimum yükseklik */
-            overflow-y: auto; /* Dikey kaydırma */
-            border-right: 1px solid rgba(255, 255, 255, 0.1); /* Sütun ayırıcı çizgi */
+            flex: 1;
+            min-width: 200px;
+            max-height: 70vh;
+            overflow-y: auto;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
             padding-right: 15px;
         }
 
         .primary-category-column {
-            padding-left: 0; /* İlk sütun için sol boşluk yok */
-            border-left: none; /* İlk sütun için sol çizgi yok */
+            padding-left: 0;
+            border-left: none;
         }
         .tertiary-products-column {
-            border-right: none; /* Son sütun için sağ çizgi yok */
+            border-right: none;
         }
 
         .primary-category-item h3,
@@ -118,28 +145,28 @@
         }
 
         .secondary-categories-column {
-            display: none; /* Varsayılan olarak gizli */
+            display: none;
         }
         .secondary-categories-column.active {
-            display: block; /* Aktif olduğunda göster */
+            display: block;
         }
 
         .tertiary-products-column {
-            display: none; /* Varsayılan olarak gizli */
+            display: none;
         }
         .tertiary-products-column.active {
-            display: block; /* Aktif olduğunda göster */
+            display: block;
         }
 
         .product-list {
             list-style: none;
             padding: 0;
             margin: 0;
-            display: none; /* Varsayılan olarak gizli */
+            display: none;
         }
 
         .product-list.active {
-            display: block; /* Aktif olduğunda göster */
+            display: block;
         }
 
         .product-list li a {
@@ -157,30 +184,33 @@
         }
 
         @media (max-width: 768px) {
-            .main-menu-container.active {
-                flex-direction: column; /* Mobil görünümde sütunları alta alta sırala */
+            .menu-content {
+                flex-direction: column;
                 gap: 10px;
             }
 
             .primary-category-column,
             .secondary-categories-column,
             .tertiary-products-column {
-                border-right: none; /* Mobil görünümde çizgi yok */
+                border-right: none;
                 padding-right: 0;
                 min-width: unset;
                 max-height: unset;
-                overflow-y: visible; /* Mobil görünümde kaydırma yok */
+                overflow-y: visible;
             }
 
-            .secondary-categories-column.active,
+            .secondary-categories-column.active {
+                display: block;
+            }
+
             .tertiary-products-column.active {
-                display: block; /* Mobil görünümde alt kategoriler ve ürünler hep görünür */
+                display: block;
             }
         }
 
-        /* Ürün Detay Sayfası Stilleri (Mevcut) */
-        .content-section {
-            padding: 40px 20px;
+        /* Ürün Detay Sayfası Stilleri */
+        .product-detail-container {
+            padding: 20px;
             max-width: 900px;
             margin: 20px auto;
             background-color: white;
@@ -189,37 +219,45 @@
             text-align: left;
         }
 
-        .content-section h2 {
-            font-size: 28px;
+        .product-detail-container h2 {
+            font-size: 32px;
             color: #004797;
             margin-bottom: 20px;
             text-align: center;
         }
 
-        .content-section p {
-            font-size: 1.1em;
-            color: #333;
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-
-        /* Ürüne özel görsel */
         .product-image {
-            max-width: 400px; /* Ürün görseli için daha büyük boyut */
+            max-width: 400px;
             width: 100%;
             height: auto;
-            margin: 0 auto 30px auto; /* Ortala ve alttan boşluk */
-            border: 1px solid #ddd;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
             display: block;
+            margin: 0 auto 30px auto;
+            border: 1px solid #eee;
+            box-shadow: 0 0 5px rgba(0,0,0,0.08);
+        }
+
+        .product-detail-container p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .product-detail-container h3 {
+            font-size: 24px;
+            color: #004797;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            text-align: center;
         }
 
         /* Ölçü Tablosu Stilleri */
         .table-container {
-            overflow-x: auto; /* Tablo genişliği taşarsa kaydırma çubuğu ekle */
+            overflow-x: auto;
             margin-bottom: 20px;
-            display: flex; /* Tabloyu ortalamak için */
-            justify-content: center; /* Tabloyu yatayda ortala */
+            display: flex;
+            justify-content: center;
         }
 
         .measurement-table {
@@ -228,23 +266,26 @@
             border-collapse: collapse;
             margin: 0 auto;
         }
+
         .measurement-table th, .measurement-table td {
             border: 1px solid #ddd;
-            padding: 12px; /* Dikey padding artırıldı */
+            padding: 12px;
             text-align: center;
-            vertical-align: top; /* İçeriği üste hizala */
-            font-size: 1em; /* Yazı boyutu ayarlandı */
+            vertical-align: top;
+            font-size: 1em;
         }
+
         .measurement-table th {
             background-color: #004797;
             color: white;
             font-weight: bold;
         }
+
         .measurement-table tbody tr:nth-child(even) {
-            background-color: #f9f9f9; /* Her ikinci satıra farklı renk */
+            background-color: #f9f9f9;
         }
 
-        /* Ürün Navigasyon Okları Stilleri (Mevcut) */
+        /* Ürün Navigasyon Okları Stilleri */
         .product-nav-arrows-container {
             margin-top: 40px;
             display: flex;
@@ -299,75 +340,64 @@
 
         /* WhatsApp Butonu Stilleri */
         .whatsapp-button {
-            position: fixed; /* Ekranın belirli bir yerinde sabit kalmasını sağlar */
-            bottom: 20px; /* Alttan 20px boşluk */
-            right: 20px; /* Sağdan 20px boşluk */
-            z-index: 1000; /* Diğer elementlerin üzerinde görünmesini sağlar */
-            background-color: #25D366; /* WhatsApp yeşili */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #25D366;
             color: white;
-            border-radius: 50%; /* Dairesel şekil */
-            width: 70px; /* Genişlik artırıldı */
-            height: 70px; /* Yükseklik artırıldı */
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge */
-            transition: transform 0.3s ease-in-out; /* Fare üzerine gelince animasyon */
-            text-decoration: none; /* Alt çizgiyi kaldır */
-            font-size: 40px; /* İkon boyutu artırıldı */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            text-decoration: none;
+            font-size: 40px;
         }
 
         .whatsapp-button:hover {
-            transform: scale(1.1); /* Fare üzerine gelince hafifçe büyüt */
+            transform: scale(1.1);
         }
         
         /* Responsive Düzenlemeler */
         @media (max-width: 768px) {
-            header {
-                min-height: 150px;
-                max-height: 150px;
+            .product-detail-container {
+                padding: 15px;
+                margin: 15px auto;
             }
-            header img {
-                object-fit: contain;
-                object-position: 40% center;
+            .product-image {
+                max-width: 80%;
+                margin-bottom: 20px;
             }
-            .content-section {
-                padding: 20px 15px;
+            .product-detail-container h2 {
+                font-size: 28px;
             }
-            .content-section h2 {
-                font-size: 24px;
-            }
-            .content-section p {
+            .product-detail-container p {
                 font-size: 1em;
             }
-            .whatsapp-button { /* Mobil cihazlarda daha küçük yapabiliriz */
-                width: 60px; /* Mobil genişlik artırıldı */
-                height: 60px; /* Mobil yükseklik artırıldı */
-                bottom: 15px;
-                right: 15px;
-                font-size: 35px; /* Mobil ikon boyutu artırıldı */
-            }
-            /* Mobil cihazlarda tablo sığmazsa yatay kaydırma */
-            .table-container {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
+            .product-detail-container h3 {
+                font-size: 20px;
             }
             .measurement-table {
-                min-width: 300px; /* Küçük ekranlarda tablonun küçülmemesi için minimum genişlik */
+                width: 95%; /* Küçük ekranlarda tam genişlik */
             }
-            /* Mobil için okları küçültme ve konumlandırma */
+            .measurement-table th, .measurement-table td {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+            .whatsapp-button {
+                width: 60px;
+                height: 60px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 35px;
+            }
             .product-nav-arrow {
-                padding: 8px 12px;
-                font-size: 20px;
-                top: 60%; /* Mobil cihazlarda daha aşağıya konumlandır */
-            }
-
-            .prev-product {
-                left: 5px;
-            }
-
-            .next-product {
-                right: 5px;
+                padding: 10px 15px;
+                font-size: 16px;
             }
         }
     </style>
@@ -375,378 +405,277 @@
 <body>
 
     <header>
-        <h1>BAYSU YAPI VE SULAMA MALZEMELERİ</h1>
-        <p>Ankara'da Güvenilir Sulama, Tesisat, Hırdavat, PVC ve PPRC Çözümleri</p>
+        <img src="WhatsApp Image 2025-07-25 at 22.26.24.jpeg" alt="BAYSU YAPI VE SULAMA MALZEMELERİ">
     </header>
 
     <nav>
-        <div class="menu-toggle" onclick="toggleMenu()">Ürünlerimiz +</div>
-        <div class="main-menu-container" id="menuList">
-            <div class="primary-category-column">
-                <div class="primary-category-item active" data-category="kaplinler">
-                    <h3>KAPLİNLER <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="primary-category-item" data-category="mavi-seri">
-                    <h3>Mavi Seri <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="primary-category-item" data-category="siyah-seri">
-                    <h3>Siyah Seri <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="primary-category-item" data-category="kilitli-baglanti-parcalari">
-                    <h3>Kilitli Bağlantı Parçaları <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="primary-category-item" data-category="disli-sulama-ek-parcalari">
-                    <h3>Dişli Sulama Ek Parçaları <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="primary-category-item" data-category="priz-kolyeler">
-                    <h3>Priz Kolyeler <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="primary-category-item" data-category="nipelli-seri">
-                    <h3>Nipelli Seri <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="primary-category-item" data-category="vanalar">
-                    <h3>Vanalar <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="primary-category-item" data-category="vana-kutulari">
-                    <h3>Vana Kutuları <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="primary-category-item" data-category="damlama-ek-parcalari">
-                    <h3>Damlama Ek Parçaları <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="primary-category-item" data-category="yedek-parcalar">
-                    <h3>Yedek Parçalar <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-            </div>
+        <div class="menu-toggle" onclick="toggleMainMenu()">Ürünlerimiz +</div>
 
-            <div class="secondary-categories-column active" id="secondary-categories-column">
-                <div class="secondary-category-item" data-parent-category="kaplinler" data-secondary-category="mavi-kaplinler">
-                    <h3>Mavi Kaplinler <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="secondary-category-item" data-parent-category="kaplinler" data-secondary-category="siyah-kaplinler">
-                    <h3>Siyah Kaplinler <i class="fas fa-chevron-right arrow-icon"></i></h3>
+        <div class="main-menu-container" id="mainMenuContainer">
+            <div class="menu-content">
+                <div class="primary-category-column">
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                        <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                     <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                        <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                        <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                        <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                        <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                        <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                        <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                        <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                        <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                        <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                        <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
                 </div>
 
-                <div class="secondary-category-item" data-parent-category="mavi-seri" data-secondary-category="mavi-dirsekler" style="display: none;">
-                    <h3>Mavi Dirsekler <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="secondary-category-item" data-parent-category="mavi-seri" data-secondary-category="mavi-teler" style="display: none;">
-                    <h3>Mavi T'ler <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="secondary-category-item" data-parent-category="mavi-seri" data-secondary-category="mavi-rediksiyonlar" style="display: none;">
-                    <h3>Mavi Redüksiyonlar <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="secondary-category-item" data-parent-category="mavi-seri" data-secondary-category="mavi-mansonlar" style="display: none;">
-                    <h3>Mavi Manşonlar <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="secondary-category-item" data-parent-category="mavi-seri" data-secondary-category="mavi-tapalar" style="display: none;">
-                    <h3>Mavi Tapalar <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-
-                <div class="secondary-category-item" data-parent-category="siyah-seri" data-secondary-category="siyah-dirsekler" style="display: none;">
-                    <h3>Siyah Dirsekler <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="secondary-category-item" data-parent-category="siyah-seri" data-secondary-category="siyah-teler" style="display: none;">
-                    <h3>Siyah T'ler <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="secondary-category-item" data-parent-category="siyah-seri" data-secondary-category="siyah-rediksiyonlar" style="display: none;">
-                    <h3>Siyah Redüksiyonlar <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="secondary-category-item" data-parent-category="siyah-seri" data-secondary-category="siyah-mansonlar" style="display: none;">
-                    <h3>Siyah Manşonlar <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="secondary-category-item" data-parent-category="siyah-seri" data-secondary-category="siyah-tapalar" style="display: none;">
-                    <h3>Siyah Tapalar <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-
-                <div class="secondary-category-item" data-parent-category="kilitli-baglanti-parcalari" data-secondary-category="kilitli-adaptorler" style="display: none;">
-                    <h3>Kilitli Adaptörler <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="secondary-category-item" data-parent-category="kilitli-baglanti-parcalari" data-secondary-category="kilitli-dirsekler" style="display: none;">
-                    <h3>Kilitli Dirsekler <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="secondary-category-item" data-parent-category="kilitli-baglanti-parcalari" data-secondary-category="kilitli-teler" style="display: none;">
-                    <h3>Kilitli T'ler <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                
-                <div class="secondary-category-item" data-parent-category="disli-sulama-ek-parcalari" data-secondary-category="disli-disi-dirsek" style="display: none;">
-                    <h3>Dişli Dişi Dirsek <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="secondary-category-item" data-parent-category="disli-sulama-ek-parcalari" data-secondary-category="disli-nipel" style="display: none;">
-                    <h3>Dişli Nipel <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="secondary-category-item" data-parent-category="disli-sulama-ek-parcalari" data-secondary-category="disli-kor-tapa" style="display: none;">
-                    <h3>Dişli Kör Tapa <i class="fas fa-chevron-right arrow-icon"></i></h3>
+                <div class="secondary-categories-column" id="secondaryCategoriesColumn">
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'mavi-seri')">
+                        <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'siyah-seri')">
+                        <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'kilitli-baglanti')">
+                        <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'disli-sulama')">
+                        <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'priz-kolyeler')">
+                        <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'nipelli-seri')">
+                        <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'vanalar')">
+                        <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'vana-kutulari')">
+                        <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'damlama-ek')">
+                        <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'yedek-parcalar')">
+                        <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
                 </div>
 
-                <div class="secondary-category-item" data-parent-category="priz-kolyeler" data-secondary-category="priz-kolye-tipleri" style="display: none;">
-                    <h3>Priz Kolye Tipleri <i class="fas fa-chevron-right arrow-icon"></i></h3>
+                <div class="tertiary-products-column" id="tertiaryProductsColumn">
+                    <ul class="product-list" id="mavi-seri-products">
+                        <li><a href="mavi-disi-kaplin.html" target="_blank">Mavi Seri Dişi Kaplin</a></li>
+                        <li><a href="mavi-erkek-kaplin.html" target="_blank">Mavi Seri Erkek Kaplin</a></li>
+                        <li><a href="mavi-dirsek-kaplin.html" target="_blank">Mavi Seri Dirsek Kaplin</a></li>
+                        <li><a href="mavi-disi-dirsek.html" target="_blank">Mavi Seri Dişi Dirsek</a></li>
+                        <li><a href="mavi-erkek-dirsek.html" target="_blank">Mavi Seri Erkek Dirsek</a></li>
+                        <li><a href="mavi-manson.html" target="_blank">Mavi Seri Manşon</a></li>
+                        <li><a href="mavi-tapa.html" target="_blank">Mavi Seri Tapa</a></li>
+                        <li><a href="mavi-erkek-te.html" target="_blank">Mavi Seri Erkek Te</a></li>
+                        <li><a href="mavi-disi-te.html" target="_blank">Mavi Seri Dişi Te</a></li>
+                        <li><a href="mavi-reduksiyon-te.html" target="_blank">Mavi Seri Redüksiyon Te</a></li>
+                        <li><a href="mavi-reduksiyon.html" target="_blank">Mavi Seri Redüksiyon</a></li>
+                        <li><a href="mavi-te.html" target="_blank">Mavi Seri Te</a></li>
+                    </ul>
+                    <ul class="product-list" id="siyah-seri-products">
+                        <li><a href="siyah-disi-kaplin.html" target="_blank">Siyah Seri Dişi</a></li>
+                        <li><a href="siyah-erkek-kaplin.html" target="_blank">Siyah Seri Erkek Kaplin</a></li>
+                        <li><a href="siyah-dirsek.html" target="_blank">Siyah Seri Dirsek Kaplin</a></li>
+                        <li><a href="siyah-disi-dirsek.html" target="_blank">Siyah Seri Dişi Dirsek</a></li>
+                        <li><a href="siyah-erkek-dirsek.html" target="_blank">Siyah Seri Erkek Dirsek</a></li>
+                        <li><a href="siyah-manson.html" target="_blank">Siyah Seri Manşon</a></li>
+                        <li><a href="siyah-tapa.html" target="_blank">Siyah Seri Tapa</a></li>
+                        <li><a href="siyah-erkek-te.html" target="_blank">Siyah Seri Erkek Te</a></li>
+                        <li><a href="siyah-disi-te.html" target="_blank">Siyah Seri Dişi Te</a></li>
+                        <li><a href="siyah-reduksiyon-te.html" target="_blank">Siyah Seri Redüksiyon Te</a></li>
+                        <li><a href="siyah-reduksiyon.html" target="_blank">Siyah Seri Redüksiyon</a></li>
+                        <li><a href="siyah-te.html" target="_blank">Siyah Seri Te</a></li>
+                    </ul>
+                    <ul class="product-list" id="kilitli-baglanti-products">
+                        <li><a href="kilitli-erkek-dirsek.html" target="_blank">Kilitli Bağlantı Erkek Dirsek</a></li>
+                        <li><a href="kilitli-dirsek.html" target="_blank">Kilitli Bağlantı Dirsek</a></li>
+                        <li><a href="kilitli-reduksiyon-dirsek.html" target="_blank">Kilitli Bağlantı Redüksiyon Dirsek</a></li>
+                        <li><a href="kilitli-te.html" target="_blank">Kilitli Bağlantı TE</a></li>
+                        <li><a href="kilitli-erkek-te.html" target="_blank">Kilitli Bağlantı Erkek TE</a></li>
+                    </ul>
+                    <ul class="product-list" id="disli-sulama-products">
+                        <li><a href="disli-disi-dirsek.html" target="_blank">Dişli Dişi Dirsek</a></li>
+                        <li><a href="disli-disi-nipel.html" target="_blank">Dişli Dişi Nipel</a></li>
+                        <li><a href="disli-disi-reduksiyon-dirsek.html" target="_blank">Dişli Dişi Redüksiyon Dirsek</a></li>
+                        <li><a href="erkek-disli-kor-tapa.html" target="_blank">Erkek Dişli Kör Tapa</a></li>
+                    </ul>
+                    <ul class="product-list" id="priz-kolyeler-products">
+                        <li><a href="priz-kolye.html" target="_blank">Priz Kolye</a></li>
+                        <li><a href="disi-nipelli-priz-kolye.html" target="_blank">Dişi Nipelli Priz Kolye</a></li>
+                        <li><a href="erkek-nipelli-priz-kolye.html" target="_blank">Erkek Nipelli Priz Kolye</a></li>
+                        <li><a href="kizakli-priz-kolye.html" target="_blank">Kızaklı Priz Kolye</a></li>
+                        <li><a href="cift-cikisli-priz-kolye.html" target="_blank">Çift Çıkışlı Priz Kolye</a></li>
+                    </ul>
+                    <ul class="product-list" id="nipelli-seri-products">
+                        <li><a href="nipelli-disi-priz-kolye.html" target="_blank">Dişi Nipelli Priz Kolye</a></li>
+                        <li><a href="nipelli-erkek-priz-kolye.html" target="_blank">Erkek Nipelli Priz Kolye</a></li>
+                        <li><a href="nipelli-erkek-te.html" target="_blank">Nipelli Erkek TE</a></li>
+                        <li><a href="nipelli-disi-dirsek.html" target="_blank">Nipelli Dişi Dirsek</a></li>
+                    </ul>
+                    <ul class="product-list" id="vanalar-products">
+                        <li><a href="disi-disi-vana.html" target="_blank">Dişi Dişi Vana</a></li>
+                        <li><a href="erkek-disi-vana.html" target="_blank">Erkek Dişi Vana</a></li>
+                        <li><a href="kaplin-disi-vana.html" target="_blank">Kaplin Dişi Vana</a></li>
+                        <li><a href="kaplin-erkek-vana.html" target="_blank">Kaplin Erkek Vana</a></li>
+                    </ul>
+                    <ul class="product-list" id="vana-kutulari-products">
+                        <li><a href="6-inc-vana-kutusu.html" target="_blank">6" Vana Kutusu</a></li>
+                        <li><a href="10-inc-vana-kutusu.html" target="_blank">10" Vana Kutusu</a></li>
+                        <li><a href="12-inc-vana-kutusu.html" target="_blank">12" Vana Kutusu</a></li>
+                        <li><a href="14-inc-vana-kutusu.html" target="_blank">14" Vana Kutusu</a></li>
+                    </ul>
+                    <ul class="product-list" id="damlama-ek-products">
+                        <li><a href="mini-vana.html" target="_blank">Çıkış Mini Vana</a></li>
+                        <li><a href="debi-ayarli-damlatci-genis-bosaltim.html" target="_blank">Debi Ayarlı Damlatıcı Geniş Boşaltım</a></li>
+                        <li><a href="debi-ayarli-damlatci-yesil.html" target="_blank">Debi Ayarlı Damlatıcı Yeşil</a></li>
+                    </ul>
+                    <ul class="product-list" id="yedek-parcalar-products">
+                        <li><a href="pah-acma-aparati.html" target="_blank">Pah Açma Aparatı</a></li>
+                    </ul>
                 </div>
-
-                <div class="secondary-category-item" data-parent-category="nipelli-seri" data-secondary-category="nipelli-priz-kolyeler" style="display: none;">
-                    <h3>Nipelli Priz Kolyeler <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="secondary-category-item" data-parent-category="nipelli-seri" data-secondary-category="nipelli-teler" style="display: none;">
-                    <h3>Nipelli T'ler <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="secondary-category-item" data-parent-category="nipelli-seri" data-secondary-category="nipelli-dirsekler" style="display: none;">
-                    <h3>Nipelli Dirsekler <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                
-                <div class="secondary-category-item" data-parent-category="vanalar" data-secondary-category="vana-cesitleri" style="display: none;">
-                    <h3>Vana Çeşitleri <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-
-                <div class="secondary-category-item" data-parent-category="vana-kutulari" data-secondary-category="vana-kutusu-boyutlari" style="display: none;">
-                    <h3>Vana Kutusu Boyutları <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-
-                <div class="secondary-category-item" data-parent-category="damlama-ek-parcalari" data-secondary-category="damlama-mini-vanalar" style="display: none;">
-                    <h3>Damlama Mini Vanalar <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-                <div class="secondary-category-item" data-parent-category="damlama-ek-parcalari" data-secondary-category="damlaticilar" style="display: none;">
-                    <h3>Damlatıcılar <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-
-                <div class="secondary-category-item" data-parent-category="yedek-parcalar" data-secondary-category="yedek-parca-cesitleri" style="display: none;">
-                    <h3>Yedek Parça Çeşitleri <i class="fas fa-chevron-right arrow-icon"></i></h3>
-                </div>
-            </div>
-
-            <div class="tertiary-products-column active" id="tertiary-products-column">
-                <ul class="product-list active" data-secondary-category="mavi-kaplinler">
-                    <li><a href="mavi-disi-kaplin.html" target="_blank">Dişi Kaplin</a></li>
-                    <li><a href="mavi-erkek-kaplin.html" target="_blank">Erkek Kaplin</a></li>
-                    <li><a href="mavi-dirsek-kaplin.html" target="_blank">Dirsek Kaplin</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="siyah-kaplinler">
-                    <li><a href="siyah-disi-kaplin.html" target="_blank">Dişi Kaplin</a></li>
-                    <li><a href="#" target="_blank">Erkek Kaplin</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="mavi-dirsekler">
-                    <li><a href="#" target="_blank">Dişi Dirsek</a></li>
-                    <li><a href="mavi-erkek-dirsek.html" target="_blank">Erkek Dirsek</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="mavi-teler">
-                    <li><a href="#" target="_blank">Erkek Te</a></li>
-                    <li><a href="#" target="_blank">Dişi Te</a></li>
-                    <li><a href="#" target="_blank">Redüksiyon Te</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="mavi-rediksiyonlar">
-                    <li><a href="#" target="_blank">Redüksiyon</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="mavi-mansonlar">
-                    <li><a href="#" target="_blank">Manşon</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="mavi-tapalar">
-                    <li><a href="#" target="_blank">Tapa</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="siyah-dirsekler">
-                    <li><a href="siyah-dirsek.html" target="_blank">Dirsek</a></li>
-                    <li><a href="#" target="_blank">Dişi Dirsek</a></li>
-                    <li><a href="#" target="_blank">Erkek Dirsek</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="siyah-teler">
-                    <li><a href="#" target="_blank">Erkek Te</a></li>
-                    <li><a href="#" target="_blank">Dişi Te</a></li>
-                    <li><a href="#" target="_blank">Redüksiyon Te</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="siyah-rediksiyonlar">
-                    <li><a href="#" target="_blank">Redüksiyon</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="siyah-mansonlar">
-                    <li><a href="siyah-manson.html" target="_blank">Manşon</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="siyah-tapalar">
-                    <li><a href="#" target="_blank">Tapa</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="kilitli-adaptorler">
-                    <li><a href="#" target="_blank">Kilitli Bağlantı Erkek Adaptör</a></li>
-                </ul>
-                <ul class="product-list" data-secondary-category="kilitli-dirsekler">
-                    <li><a href="#" target="_blank">Kilitli Bağlantı Erkek Dirsek</a></li>
-                    <li><a href="#" target="_blank">Kilitli Bağlantı Dirsek</a></li>
-                    <li><a href="#" target="_blank">Kilitli Bağlantı Redüksiyon Dirsek</a></li>
-                </ul>
-                <ul class="product-list" data-secondary-category="kilitli-teler">
-                    <li><a href="#" target="_blank">Kilitli Bağlantı TE</a></li>
-                    <li><a href="#" target="_blank">Kilitli Bağlantı Erkek TE</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="disli-disi-dirsek">
-                    <li><a href="#" target="_blank">Dişli Dişi Dirsek</a></li>
-                    <li><a href="#" target="_blank">Dişli Dişi Redüksiyon Dirsek</a></li>
-                </ul>
-                <ul class="product-list" data-secondary-category="disli-nipel">
-                    <li><a href="#" target="_blank">Dişli Dişi Nipel</a></li>
-                </ul>
-                <ul class="product-list" data-secondary-category="disli-kor-tapa">
-                    <li><a href="#" target="_blank">Erkek Dişli Kör Tapa</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="priz-kolye-tipleri">
-                    <li><a href="#" target="_blank">Priz Kolye</a></li>
-                    <li><a href="#" target="_blank">Dişi Nipelli Priz Kolye</a></li>
-                    <li><a href="#" target="_blank">Erkek Nipelli Priz Kolye</a></li>
-                    <li><a href="#" target="_blank">Kızaklı Priz Kolye</a></li>
-                    <li><a href="#" target="_blank">Çift Çıkışlı Priz Kolye</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="nipelli-priz-kolyeler">
-                    <li><a href="#" target="_blank">Dişi Nipelli Priz Kolye</a></li>
-                    <li><a href="#" target="_blank">Erkek Nipelli Priz Kolye</a></li>
-                </ul>
-                <ul class="product-list" data-secondary-category="nipelli-teler">
-                    <li><a href="#" target="_blank">Nipelli Erkek TE</a></li>
-                </ul>
-                <ul class="product-list" data-secondary-category="nipelli-dirsekler">
-                    <li><a href="#" target="_blank">Nipelli Dişi Dirsek</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="vana-cesitleri">
-                    <li><a href="#" target="_blank">Dişi Dişi Vana</a></li>
-                    <li><a href="#" target="_blank">Erkek Dişi Vana</a></li>
-                    <li><a href="#" target="_blank">Kaplin Dişi Vana</a></li>
-                    <li><a href="#" target="_blank">Kaplin Erkek Vana</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="vana-kutusu-boyutlari">
-                    <li><a href="#" target="_blank">6" Vana Kutusu</a></li>
-                    <li><a href="#" target="_blank">10" Vana Kutusu</a></li>
-                    <li><a href="#" target="_blank">12" Vana Kutusu</a></li>
-                    <li><a href="#" target="_blank">14" Vana Kutusu</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="damlama-mini-vanalar">
-                    <li><a href="damlama-mini-vana.html" target="_blank">Çıkış Mini Vana</a></li>
-                </ul>
-                <ul class="product-list" data-secondary-category="damlaticilar">
-                    <li><a href="#" target="_blank">Debi Ayarlı Damlatıcı Geniş Boşaltım</a></li>
-                    <li><a href="#" target="_blank">Debi Ayarlı Damlatıcı Yeşil</a></li>
-                </ul>
-
-                <ul class="product-list" data-secondary-category="yedek-parca-cesitleri">
-                    <li><a href="#" target="_blank">Kaplin Sıkma Anahtarı</a></li>
-                    <li><a href="#" target="_blank">Pah Açma Aparatı</a></li>
-                    <li><a href="#" target="_blank">Abot Üstü Kaplin Dağıtıcı</a></li>
-                </ul>
             </div>
         </div>
     </nav>
 
     <script>
-        // Yeni menü JavaScript'i (Tapa sayfasından kopyalandı)
-        function toggleMenu() {
-            const menu = document.getElementById("menuList");
-            menu.classList.toggle("active");
-            if (menu.classList.contains("active")) {
-                menu.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        function addWhatsAppButton() {
+            if (document.querySelector('.whatsapp-button')) {
+                return;
+            }
+            const whatsappLink = document.createElement('a');
+            whatsappLink.href = "https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum.";
+            whatsappLink.className = "whatsapp-button";
+            whatsappLink.target = "_blank";
+            const whatsappIcon = document.createElement('i');
+            whatsappIcon.className = "fab fa-whatsapp";
+            whatsappLink.appendChild(whatsappIcon);
+            document.body.appendChild(whatsappLink);
+        }
+        document.addEventListener('DOMContentLoaded', addWhatsAppButton);
+
+        function toggleMainMenu() {
+            const mainMenuContainer = document.getElementById("mainMenuContainer");
+            mainMenuContainer.classList.toggle("active");
+
+            if (!mainMenuContainer.classList.contains("active")) {
+                document.getElementById('secondaryCategoriesColumn').classList.remove('active');
+                document.getElementById('tertiaryProductsColumn').classList.remove('active');
+
+                document.querySelectorAll('.primary-category-item.active').forEach(item => item.classList.remove('active'));
+                document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
+                document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
+            } else {
+                mainMenuContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const primaryCategories = document.querySelectorAll('.primary-category-item');
-            const secondaryCategoriesColumn = document.getElementById('secondary-categories-column');
-            const tertiaryProductsColumn = document.getElementById('tertiary-products-column');
+        function toggleSecondaryMenu(clickedItem) {
+            const secondaryColumn = document.getElementById('secondaryCategoriesColumn');
+            const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
 
-            primaryCategories.forEach(item => {
-                item.addEventListener('click', function() {
-                    // Tüm birincil kategorilerin "active" sınıfını kaldır
-                    primaryCategories.forEach(p => p.classList.remove('active'));
-                    // Tıklanan birincil kategoriye "active" sınıfını ekle
-                    this.classList.add('active');
-
-                    const selectedCategory = this.dataset.category;
-
-                    // Tüm ikincil kategorileri gizle
-                    document.querySelectorAll('.secondary-category-item').forEach(sec => {
-                        sec.style.display = 'none';
-                        sec.classList.remove('active'); // Aktifliğini de kaldır
-                    });
-
-                    // Seçilen birincil kategoriye ait ikincil kategorileri göster
-                    const relevantSecondaryCategories = document.querySelectorAll(`.secondary-category-item[data-parent-category="${selectedCategory}"]`);
-                    if (relevantSecondaryCategories.length > 0) {
-                        secondaryCategoriesColumn.classList.add('active');
-                        relevantSecondaryCategories.forEach(sec => sec.style.display = 'block');
-                        
-                        // İlk ikincil kategoriyi otomatik olarak seç ve ürünlerini göster
-                        relevantSecondaryCategories[0].classList.add('active');
-                        const initialSecondaryCategory = relevantSecondaryCategories[0].dataset.secondaryCategory;
-                        showProductsForSecondaryCategory(initialSecondaryCategory);
-
-                    } else {
-                        // Eğer ikincil kategori yoksa, ikincil sütunu gizle ve tüm ürün listelerini gizle
-                        secondaryCategoriesColumn.classList.remove('active');
-                        tertiaryProductsColumn.classList.remove('active');
-                        document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
-                    }
-                });
+            document.querySelectorAll('.primary-category-item').forEach(item => {
+                if (item !== clickedItem) {
+                    item.classList.remove('active');
+                }
             });
+
+            const isActive = clickedItem.classList.toggle('active');
+
+            secondaryColumn.classList.toggle('active', isActive);
+
+            if (!isActive) {
+                tertiaryColumn.classList.remove('active');
+                document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
+                document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
+            } else {
+                secondaryColumn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            tertiaryColumn.classList.remove('active');
+            document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
+        }
+
+        function toggleTertiaryMenu(clickedItem, categoryId) {
+            const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
 
             document.querySelectorAll('.secondary-category-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    // Aynı ana kategorideki tüm ikincil kategorilerin "active" sınıfını kaldır
-                    const parentCategory = this.dataset.parentCategory;
-                    document.querySelectorAll(`.secondary-category-item[data-parent-category="${parentCategory}"]`).forEach(sec => {
-                        sec.classList.remove('active');
-                    });
-                    // Tıklanan ikincil kategoriye "active" sınıfını ekle
-                    this.classList.add('active');
-
-                    const selectedSecondaryCategory = this.dataset.secondaryCategory;
-                    showProductsForSecondaryCategory(selectedSecondaryCategory);
-                });
+                if (item !== clickedItem) {
+                    item.classList.remove('active');
+                }
             });
 
-            function showProductsForSecondaryCategory(secondaryCategory) {
-                // Tüm ürün listelerini gizle
-                document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
-                
-                // Seçilen ikincil kategoriye ait ürün listesini göster
-                const productList = document.querySelector(`.product-list[data-secondary-category="${secondaryCategory}"]`);
-                if (productList) {
-                    tertiaryProductsColumn.classList.add('active');
-                    productList.classList.add('active');
-                } else {
-                    tertiaryProductsColumn.classList.remove('active');
+            document.querySelectorAll('.product-list').forEach(list => {
+                list.classList.remove('active');
+            });
+
+            const isActive = clickedItem.classList.toggle('active');
+
+            tertiaryColumn.classList.toggle('active', isActive);
+
+            if (isActive) {
+                const productListToShow = document.getElementById(categoryId + '-products');
+                if (productListToShow) {
+                    productListToShow.classList.add('active');
+                    tertiaryColumn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            } else {
+                const productListToHide = document.getElementById(categoryId + '-products');
+                if (productListToHide) {
+                    productListToHide.classList.remove('active');
                 }
             }
+        }
 
-            // Sayfa yüklendiğinde varsayılan olarak "KAPLİNLER" ve ilk alt kategorisinin ürünlerini göster
-            const defaultPrimaryCategory = document.querySelector('.primary-category-item[data-category="kaplinler"]');
-            if (defaultPrimaryCategory) {
-                defaultPrimaryCategory.click(); // Tıklama olayını tetikleyerek menüyü başlat
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const mainMenuContainer = document.getElementById('mainMenuContainer');
+            const menuToggle = document.querySelector('.menu-toggle');
+
+            if (!nav.contains(event.target) && !menuToggle.contains(event.target)) {
+                if (mainMenuContainer.classList.contains('active')) {
+                    mainMenuContainer.classList.remove('active');
+                    document.getElementById('secondaryCategoriesColumn').classList.remove('active');
+                    document.getElementById('tertiaryProductsColumn').classList.remove('active');
+                    document.querySelectorAll('.primary-category-item.active').forEach(item => item.classList.remove('active'));
+                    document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
+                    document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
+                }
             }
         });
     </script>
 
     <main>
-        <section class="content-section">
-            <h2>Mavi Dişi Kaplin</h2>
+        <section class="product-detail-container">
+            <h2>Mavi Seri Dişi Kaplin</h2>
+            <img src="mavi-disi-kaplin.png" alt="Mavi Seri Dişi Kaplin" class="product-image">
+            <p>Mavi Seri Dişi Kaplin, özellikle polietilen boruların birleştirilmesi için tasarlanmış yüksek performanslı bir bağlantı elemanıdır. Sızdırmazlık ve dayanıklılık konusunda üstün özellikler sunarak uzun ömürlü ve güvenilir bir bağlantı sağlar. Tarımsal sulama sistemleri, endüstriyel tesisatlar ve konut uygulamaları gibi geniş bir kullanım alanına sahiptir.</p>
             
-            <div style="position: relative; text-align: center;">
-                <img src="mavidisi.png" alt="Mavi Dişi Kaplin Görseli" class="product-image">
-                <a href="mavi-erkek-kaplin.html" class="product-nav-arrow prev-product" title="Önceki Ürün">
-                    &#10094; 
-                </a>
-                <a href="mavi-erkek-kaplin.html" class="product-nav-arrow next-product" title="Sonraki Ürün">
-                    &#10095;
-                </a>
-            </div>
-            
-            <p>Mavi Dişi Kaplin, sulama ve tesisat sistemlerinizde güvenilir bağlantı çözümleri sunar. Yüksek kaliteli malzemeden üretilmiştir ve uzun ömürlü kullanım için tasarlanmıştır. Kolay montajı sayesinde zamandan tasarruf etmenizi sağlar.</p> 
+            <p>Kolay montaj özelliği sayesinde hızlı ve pratik kurulum imkanı sunar, bu da işçilik ve zaman maliyetlerini düşürür. Mavi Seri Dişi Kaplin, zorlu çalışma koşullarına ve yüksek basınca karşı dirençli yapısıyla, sistemlerinizin sorunsuz çalışmasına katkıda bulunur.</p>
 
             <h3>Ürün Ölçüleri:</h3>
             <div class="table-container">
@@ -754,26 +683,15 @@
                     <thead>
                         <tr>
                             <th>Ölçüler</th>
-                            <th></th>
+                            <th>Ölçüler</th>
                         </tr>
                     </thead>
-                    <tbody> 
-                        <tr><td>20x1/2”</td><td>50x2”</td></tr> 
-                        <tr><td>20x3/4”</td><td>63x1 1/4”</td></tr> 
-                        <tr><td>20x1”</td><td>63x1 1/2”</td></tr> 
-                        <tr><td>25x1/2”</td><td>63x2”</td></tr> 
-                        <tr><td>25x3/4”</td><td>63x2 1/2”</td></tr> 
-                        <tr><td>25x1”</td><td>75x2”</td></tr> 
-                        <tr><td>32x1/2”</td><td>75x2 1/2”</td></tr> 
-                        <tr><td>32x3/4”</td><td>75x3”</td></tr> 
-                        <tr><td>32x1”</td><td>90x2”</td></tr> 
-                        <tr><td>40x3/4”</td><td>90x2 1/2”</td></tr> 
-                        <tr><td>40x1”</td><td>90x3”</td></tr> 
-                        <tr><td>40x1 1/4”</td><td>90x4”</td></tr> 
-                        <tr><td>50x1”</td><td>110x2”</td></tr> 
-                        <tr><td>50x1 1/4”</td><td>110x2 1/2”</td></tr> 
-                        <tr><td>50x1 1/2”</td><td>110x3”</td></tr>
-                        <tr><td></td><td>110x4”</td></tr>
+                    <tbody>
+                        <tr><td>20 mm</td><td>63 mm</td></tr>
+                        <tr><td>25 mm</td><td>75 mm</td></tr>
+                        <tr><td>32 mm</td><td>90 mm</td></tr>
+                        <tr><td>40 mm</td><td>110 mm</td></tr>
+                        <tr><td>50 mm</td><td></td></tr>
                     </tbody>
                 </table>
             </div>
