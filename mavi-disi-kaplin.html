@@ -144,16 +144,14 @@
             transition: transform 0.3s ease;
         }
 
-        .secondary-categories-column {
-            display: none;
-        }
-        .secondary-categories-column.active {
-            display: block;
+        /* Başlangıçta ikincil ve üçüncül sütunlar gizli */
+        .secondary-categories-column,
+        .tertiary-products-column {
+            display: none; 
         }
 
-        .tertiary-products-column {
-            display: none;
-        }
+        /* Aktif olduğunda göster */
+        .secondary-categories-column.active,
         .tertiary-products-column.active {
             display: block;
         }
@@ -162,10 +160,19 @@
             list-style: none;
             padding: 0;
             margin: 0;
-            display: none;
+            display: none; /* Ürün listeleri başlangıçta gizli */
         }
 
         .product-list.active {
+            display: block;
+        }
+        
+        /* Alt menü içerikleri başlangıçta gizli olacak */
+        .sub-menu-content {
+            display: none; 
+        }
+        /* Alt menü içeriği aktif olduğunda göster */
+        .sub-menu-content.active {
             display: block;
         }
 
@@ -199,10 +206,8 @@
                 overflow-y: visible;
             }
 
-            .secondary-categories-column.active {
-                display: block;
-            }
-
+            /* Mobil görünümde de aktif olan sütunları göster */
+            .secondary-categories-column.active,
             .tertiary-products-column.active {
                 display: block;
             }
@@ -304,9 +309,13 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            display: flex; /* İçeriği ortalamak için */
+            justify-content: center; /* İçeriği yatayda ortalamak için */
+            align-items: center; /* İçeriği dikeyde ortalamak için */
+            width: 50px; /* Sadece ok için sabit genişlik */
+            height: 50px; /* Sadece ok için sabit yükseklik */
+            font-size: 24px; /* Ok boyutu */
+            box-sizing: border-box; /* Padding dahil genişlik/yükseklik */
         }
 
         .product-nav-arrow:hover {
@@ -397,8 +406,10 @@
                 font-size: 35px;
             }
             .product-nav-arrow {
-                padding: 10px 15px;
-                font-size: 16px;
+                width: 40px; /* Küçük ekranlarda ok boyutu */
+                height: 40px;
+                font-size: 20px;
+                padding: 8px; /* Oranları korumak için padding düşürüldü */
             }
         }
     </style>
@@ -418,34 +429,34 @@
                     <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'kaplinler-sub-menu')">
                         <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'mavi-seri-sub-menu')">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'mavi-seri-products')">
                         <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'siyah-seri-sub-menu')">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'siyah-seri-products')">
                         <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'kilitli-baglanti-sub-menu')">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'kilitli-baglanti-products')">
                         <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'disli-sulama-sub-menu')">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'disli-sulama-products')">
                         <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'priz-kolyeler-sub-menu')">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'priz-kolyeler-products')">
                         <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'nipelli-seri-sub-menu')">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'nipelli-seri-products')">
                         <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'vanalar-sub-menu')">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'vanalar-products')">
                         <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'vana-kutulari-sub-menu')">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'vana-kutulari-products')">
                         <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'damlama-ek-sub-menu')">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'damlama-ek-products')">
                         <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'yedek-parcalar-sub-menu')">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'yedek-parcalar-products')">
                         <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                 </div>
@@ -459,59 +470,7 @@
                             <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
                         </div>
                     </div>
-                    
-                    <div id="mavi-seri-sub-menu" class="sub-menu-content">
-                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'mavi-seri-products')">
-                            <h3>Mavi Seri Ürünleri <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
                     </div>
-                    <div id="siyah-seri-sub-menu" class="sub-menu-content">
-                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'siyah-seri-products')">
-                            <h3>Siyah Seri Ürünleri <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                    </div>
-                     <div id="kilitli-baglanti-sub-menu" class="sub-menu-content">
-                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'kilitli-baglanti-products')">
-                            <h3>Kilitli Bağlantı Ürünleri <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                    </div>
-                    <div id="disli-sulama-sub-menu" class="sub-menu-content">
-                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'disli-sulama-products')">
-                            <h3>Dişli Sulama Ürünleri <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                    </div>
-                    <div id="priz-kolyeler-sub-menu" class="sub-menu-content">
-                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'priz-kolyeler-products')">
-                            <h3>Priz Kolyeler Ürünleri <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                    </div>
-                    <div id="nipelli-seri-sub-menu" class="sub-menu-content">
-                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'nipelli-seri-products')">
-                            <h3>Nipelli Seri Ürünleri <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                    </div>
-                    <div id="vanalar-sub-menu" class="sub-menu-content">
-                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'vanalar-products')">
-                            <h3>Vanalar Ürünleri <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                    </div>
-                    <div id="vana-kutulari-sub-menu" class="sub-menu-content">
-                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'vana-kutulari-products')">
-                            <h3>Vana Kutuları Ürünleri <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                    </div>
-                    <div id="damlama-ek-sub-menu" class="sub-menu-content">
-                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'damlama-ek-products')">
-                            <h3>Damlama Ek Parçaları Ürünleri <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                    </div>
-                    <div id="yedek-parcalar-sub-menu" class="sub-menu-content">
-                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'yedek-parcalar-products')">
-                            <h3>Yedek Parçalar Ürünleri <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                    </div>
-
-                </div>
 
                 <div class="tertiary-products-column" id="tertiaryProductsColumn">
                     <ul class="product-list" id="mavi-seri-products">
@@ -624,7 +583,7 @@
                 if (arrow) arrow.style.transform = 'rotate(0deg)';
             });
             document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
-            document.querySelectorAll('.sub-menu-content').forEach(content => content.style.display = 'none'); // Alt menü içeriklerini gizle
+            document.querySelectorAll('.sub-menu-content').forEach(content => content.classList.remove('active')); // Alt menü içeriklerini gizle
         }
 
         function toggleMainMenu() {
@@ -638,7 +597,8 @@
             }
         }
 
-        function togglePrimaryCategory(clickedItem, targetSubMenuId) {
+        // Birincil kategoriye tıklandığında çalışır
+        function togglePrimaryCategory(clickedItem, targetContentId) {
             const secondaryColumn = document.getElementById('secondaryCategoriesColumn');
             const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
 
@@ -660,7 +620,7 @@
                 if (arrow) arrow.style.transform = 'rotate(0deg)';
             });
             document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
-            document.querySelectorAll('.sub-menu-content').forEach(content => content.style.display = 'none'); // Alt menü içeriklerini gizle
+            document.querySelectorAll('.sub-menu-content').forEach(content => content.classList.remove('active')); // Tüm alt menü içeriklerini gizle
 
             // Eğer tıklanan öğe daha önce aktif değil idiyse, şimdi aktif yap
             if (!wasActive) {
@@ -670,17 +630,24 @@
                     clickedArrow.style.transform = 'rotate(90deg)';
                 }
 
-                // Hedef alt menüyü göster
-                const targetSubMenu = document.getElementById(targetSubMenuId);
-                if (targetSubMenu) {
-                    secondaryColumn.classList.add('active');
-                    targetSubMenu.style.display = 'block';
-                    secondaryColumn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const targetContent = document.getElementById(targetContentId);
+                if (targetContent) {
+                    // Eğer hedef içerik bir ürün listesi ise (örn: mavi-seri-products), direkt üçüncül sütunu aç
+                    if (targetContentId.endsWith('-products')) {
+                        tertiaryColumn.classList.add('active');
+                        targetContent.classList.add('active');
+                        tertiaryColumn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else { // Eğer hedef içerik bir alt menü ise (örn: kaplinler-sub-menu), ikincil sütunu aç
+                        secondaryColumn.classList.add('active');
+                        targetContent.classList.add('active'); // Sadece ilgili alt menü içeriğini aktif yap
+                        secondaryColumn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
                 }
             }
         }
 
 
+        // İkincil kategoriye tıklandığında çalışır (Sadece "KAPLİNLER" altındaki Mavi Seri ve Siyah Seri gibi durumlar için geçerli)
         function toggleTertiaryMenu(clickedItem, categoryId) {
             const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
 
@@ -732,9 +699,8 @@
 
         // Sonraki Ürün butonuna tıklandığında çalışacak fonksiyon
         function goToNextProduct() {
-            // Buraya bir sonraki ürün sayfasının URL'sini veya dinamik bir mantık ekleyebilirsiniz.
-            // Örnek olarak şimdilik sabit bir URL verelim:
-            window.location.href = "sonraki-urun-sayfasi.html"; // Bu URL'yi gerçek bir sonraki ürün sayfanızla değiştirin.
+            // "Mavi Seri Dişi Kaplin" sayfasından "Mavi Seri Erkek Kaplin" sayfasına yönlendir
+            window.location.href = "mavi-erkek-kaplin.html"; 
         }
     </script>
 
@@ -778,7 +744,7 @@
             <p>Ürün hakkında daha detaylı bilgi almak veya sipariş vermek için bizimle iletişime geçebilirsiniz.</p>
 
             <div class="product-nav-arrows-container">
-                <a href="#" class="product-nav-arrow" onclick="goToNextProduct()">Sonraki Ürün <i class="fas fa-arrow-right"></i></a>
+                <a href="#" class="product-nav-arrow" onclick="goToNextProduct()"><i class="fas fa-arrow-right"></i></a>
             </div>
         </section>
     </main>
