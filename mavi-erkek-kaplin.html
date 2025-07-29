@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Mavi Erkek Kaplin</title>
+    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Tüm Ürünlerimiz</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -13,13 +13,13 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f4f4f4; /* Koyu gri tonu */
+            background: #f4f4f4;
             color: #222;
             text-align: center;
         }
 
         header {
-            background: linear-gradient(to right, #004797, #33ffff); /* Mavi gradient */
+            background: linear-gradient(to right, #004797, #33ffff);
             color: #fff;
             padding: 30px 10px 10px;
         }
@@ -30,7 +30,7 @@
 
         /* Navigasyon Stilleri */
         nav {
-            background: #003366; /* Daha koyu mavi */
+            background: #003366;
             padding: 10px 0;
             position: sticky;
             top: 0;
@@ -48,188 +48,69 @@
         }
 
         .menu-list {
-            display: none; /* Varsayılan olarak gizli */
-            background: #003366; /* Açılan menü arkaplanı */
-            padding: 10px 0;
-            text-align: left;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            position: absolute; /* Menünün altından açılması için */
-            width: 100%;
-            left: 0;
-            z-index: 999;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Çoklu sütun */
-            gap: 10px;
-            padding: 20px;
-
-            /* Mobil Menü Kaydırma Düzeltmesi */
-            max-height: 80vh; /* Ekran yüksekliğinin %80'i kadar bir maksimum yükseklik */
-            overflow-y: auto; /* İçerik taşarsa dikey kaydırma çubuğu göster */
-            -webkit-overflow-scrolling: touch; /* iOS cihazlarda daha akıcı kaydırma */
+            display: none; /* Varsayılan olarak gizli kalacak çünkü direkt yeni sayfaya yönlendiriyoruz */
         }
 
-        .menu-list.active { /* JavaScript ile aktif edildiğinde */
+        .menu-list.active {
             display: grid;
         }
 
-        .menu-category {
-            padding: 10px;
-            background-color: #004797; /* Kategori arkaplanı */
-            border-radius: 5px;
-            color: white;
+        /* Yeni Ürünler Sayfası İçin Ana İçerik */
+        .products-container {
+            padding: 40px 20px;
+            max-width: 1200px; /* Geniş ekranlar için daha geniş alan */
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ürün kartları için çoklu sütun */
+            gap: 30px; /* Kartlar arası boşluk */
+            text-align: left;
         }
 
-        .menu-category h3 {
+        .product-category-section {
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            grid-column: span 1; /* Her kategori kendi sütununda başlasın */
+        }
+
+        .product-category-section h2 {
+            font-size: 28px;
+            color: #004797;
             margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1.2em;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            padding-bottom: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #004797;
+            padding-bottom: 10px;
         }
 
-        .menu-category ul {
+        .product-list {
             list-style: none;
             padding: 0;
             margin: 0;
         }
 
-        .menu-category li {
-            margin-bottom: 5px;
+        .product-list li {
+            margin-bottom: 10px;
         }
 
-        .menu-category a {
-            color: white;
-            text-decoration: none;
-            font-size: 0.95em;
-            display: block;
-            padding: 3px 0;
-            transition: color 0.2s ease, text-decoration 0.2s ease; /* Yumuşak geçiş */
-        }
-
-        .menu-category a:hover {
-            text-decoration: underline;
-            color: #33ffff; /* Vurgu rengi */
-        }
-        
-        /* Hakkımızda ve Diğer İçerik Bölümleri (Bu sayfa için de geçerli) */
-        .content-section {
-            padding: 40px 20px;
-            max-width: 900px;
-            margin: 20px auto;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            text-align: left;
-        }
-
-        .content-section h2 {
-            font-size: 32px; /* Ürün adı başlığı için boyutu artırıldı */
-            color: #004797;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .content-section p {
-            font-size: 1.1em;
+        .product-list a {
             color: #333;
-            line-height: 1.7;
-            margin-bottom: 15px;
-            text-align: justify; /* Metni iki yana yaslar */
-        }
-
-        /* Ürün Ölçüleri başlığı */
-        .content-section h3 {
-            font-size: 24px;
-            color: #004797;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        /* Ürüne özel görsel ve navigasyon okları için düzenleme */
-        .product-image-container {
-            position: relative; /* Okların konumlandırılması için */
-            max-width: 400px; /* Ürün görseli için daha büyük boyut */
-            margin: 0 auto 30px auto; /* Ortala ve alttan boşluk */
-            text-align: center;
-        }
-
-        .product-image {
-            max-width: 100%; /* Kapsayıcıya uyum sağlasın */
-            height: auto;
-            border: 1px solid #ddd;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-            display: block;
-            margin: 0 auto; /* Resmi ortala */
-        }
-
-        /* Ürün Navigasyon Okları Stilleri */
-        .product-nav-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 10px 15px;
             text-decoration: none;
-            font-size: 24px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            line-height: 1; /* Okların dikey hizalamasını iyileştirir */
+            font-size: 1.1em;
+            display: block;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s ease, color 0.2s ease;
         }
 
-        .product-nav-arrow:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-            transform: translateY(-50%) scale(1.05); /* Hover'da hafif büyüt */
-        }
-
-        .prev-product {
-            left: 10px; /* Görselin soluna hizala */
-        }
-
-        .next-product {
-            right: 10px; /* Görselin sağına hizala */
-        }
-
-
-        /* Ölçü Tablosu Stilleri */
-        .table-container {
-            width: 100%; /* Kapsayıcının tam genişliği */
-            overflow-x: auto; /* Yatay kaydırma çubuğu ekler */
-            margin-bottom: 20px;
-            display: flex; /* İçeriği ortalamak için */
-            justify-content: center; /* İçeriği yatayda ortalar */
-        }
-
-        .measurement-table {
-            width: 80%; /* Tablo genişliği */
-            max-width: 500px; /* Maksimum genişlik */
-            border-collapse: collapse;
-            margin: 0 auto; /* Tabloyu yatayda ortalar */
-        }
-        .measurement-table th, .measurement-table td {
-            border: 1px solid #ddd;
-            padding: 12px; /* Padding artırıldı */
-            text-align: center;
-            vertical-align: top; /* İçeriği üste hizala */
-            font-size: 1em; /* Yazı boyutu standarda çekildi */
-            white-space: nowrap; /* İçeriğin satır atlamasını engeller */
-        }
-        .measurement-table th {
-            background-color: #004797;
-            color: white;
-            font-weight: bold;
-        }
-        .measurement-table tbody tr:nth-child(even) { /* Her ikinci satıra farklı renk */
-            background-color: #f9f9f9;
-        }
-        .measurement-table ul { /* Tablo içindeki listeler için (bu tabloda kullanılmıyor ama genel bir kural) */
-            list-style: none; /* Madde işaretini kaldır */
-            padding: 0;
-            margin: 0;
-        }
-        .measurement-table li {
-            padding: 2px 0;
+        .product-list a:hover {
+            background-color: #e6f7ff;
+            color: #004797;
+            padding-left: 5px; /* Hafif kaydırma efekti */
         }
 
         /* İletişim Bölümü */
@@ -259,84 +140,44 @@
 
         /* WhatsApp Butonu Stilleri */
         .whatsapp-button {
-            position: fixed; /* Ekranın belirli bir yerinde sabit kalmasını sağlar */
-            bottom: 20px; /* Alttan 20px boşluk */
-            right: 20px; /* Sağdan 20px boşluk */
-            z-index: 1000; /* Diğer elementlerin üzerinde görünmesini sağlar */
-            background-color: #25D366; /* WhatsApp yeşili */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #25D366;
             color: white;
-            border-radius: 50%; /* Dairesel şekil */
-            width: 70px; /* Genişlik artırıldı */
-            height: 70px; /* Yükseklik artırıldı */
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge */
-            transition: transform 0.3s ease-in-out; /* Fare üzerine gelince animasyon */
-            text-decoration: none; /* Alt çizgiyi kaldır */
-            font-size: 40px; /* İkon boyutu artırıldı */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            text-decoration: none;
+            font-size: 40px;
         }
 
         .whatsapp-button:hover {
-            transform: scale(1.1); /* Fare üzerine gelince hafifçe büyüt */
+            transform: scale(1.1);
         }
         
         /* Responsive Düzenlemeler */
         @media (max-width: 768px) {
-            .menu-list {
+            .products-container {
                 grid-template-columns: 1fr; /* Mobil için tek sütun */
-            }
-            .menu-category {
-                margin-bottom: 10px;
-            }
-            .content-section {
                 padding: 20px 15px;
-                margin: 15px auto; /* Mobil için margin güncellendi */
+                margin: 15px auto;
             }
-            .content-section h2 {
-                font-size: 24px; /* Mobil için başlık küçültüldü */
-            }
-            .content-section p {
-                font-size: 0.95em; /* Mobil için paragraf boyutu küçültüldü */
-            }
-            /* Mobil cihazlarda tablo sığmazsa yatay kaydırma */
-            .table-container {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            .measurement-table {
-                min-width: 300px; /* Küçük ekranlarda tablonun küçülmemesi için minimum genişlik */
-                width: 95%; /* Mobil için genişliği ayarlandı */
-            }
-            .measurement-table th, .measurement-table td {
-                padding: 8px; /* Mobil için padding küçültüldü */
-                font-size: 0.85em; /* Mobil için yazı boyutu küçültüldü */
-            }
-
-            .whatsapp-button { /* Mobil cihazlarda daha küçük yapabiliriz */
-                width: 60px; /* Mobil genişlik */
-                height: 60px; /* Mobil yükseklik */
-                bottom: 15px;
-                right: 15px;
-                font-size: 35px; /* Mobil ikon boyutu */
-            }
-
-            /* Mobil için okları küçültme ve konumlandırma */
-            .product-image-container {
-                max-width: 95%; /* Mobil için genişlik artırıldı */
+            .product-category-section {
                 margin-bottom: 20px;
             }
-            .product-nav-arrow {
-                padding: 8px 10px; /* Mobil ok padding'i */
-                font-size: 20px; /* Mobil ok boyutu */
-                width: auto; /* Genişlik otomatik */
-                height: auto; /* Yükseklik otomatik */
-            }
-            .prev-product {
-                left: 5px; /* Mobil için daha kenara */
-            }
-            .next-product {
-                right: 5px; /* Mobil için daha kenara */
+            .whatsapp-button {
+                width: 60px;
+                height: 60px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 35px;
             }
         }
     </style>
@@ -349,183 +190,126 @@
     </header>
 
     <nav>
-        <div class="menu-toggle" onclick="toggleMenu()">Ürünlerimiz +</div>
-        <div class="menu-list" id="menuList">
-            <div class="menu-category">
-                <h3>Mavi Seri</h3>
-                <ul>
-                    <li><a href="mavi-disi-kaplin.html" target="_blank">Dişi Kaplin</a></li>
-                    <li><a href="mavi-erkek-kaplin.html" target="_blank">Erkek Kaplin</a></li>
-                    <li><a href="mavi-dirsek-kaplin.html" target="_blank">Dirsek Kaplin</a></li>
-                    <li><a href="#" target="_blank">Dişi Dirsek</a></li>
-                    <li><a href="mavi-erkek-dirsek.html" target="_blank">Erkek Dirsek</a></li>
-                    <li><a href="#" target="_blank">Manşon</a></li>
-                    <li><a href="#" target="_blank">Tapa</a></li>
-                    <li><a href="#" target="_blank">Erkek Te</a></li>
-                    <li><a href="#" target="_blank">Dişi Te</a></li>
-                    <li><a href="#" target="_blank">Redüksiyon Te</a></li>
-                    <li><a href="#" target="_blank">Redüksiyon</a></li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h3>Siyah Seri</h3>
-                <ul>
-                    <li><a href="siyah-disi-kaplin.html" target="_blank">Dişi Kaplin</a></li>
-                    <li><a href="#" target="_blank">Erkek Kaplin</a></li>
-                    <li><a href="siyah-dirsek.html" target="_blank">Dirsek</a></li>
-                    <li><a href="#" target="_blank">Dişi Dirsek</a></li>
-                    <li><a href="#" target="_blank">Erkek Dirsek</a></li>
-                    <li><a href="siyah-manson.html" target="_blank">Manşon</a></li>
-                    <li><a href="#" target="_blank">Tapa</a></li>
-                    <li><a href="#" target="_blank">Erkek Te</a></li>
-                    <li><a href="#" target="_blank">Dişi Te</a></li>
-                    <li><a href="#" target="_blank">Redüksiyon Te</a></li>
-                    <li><a href="#" target="_blank">Redüksiyon</a></li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h3>Kilitli Bağlantı Parçaları</h3>
-                <ul>
-                    <li><a href="#" target="_blank">Kilitli Bağlantı Erkek Adaptör</a></li>
-                    <li><a href="#" target="_blank">Kilitli Bağlantı Erkek Dirsek</a></li>
-                    <li><a href="#" target="_blank">Kilitli Bağlantı Dirsek</a></li>
-                    <li><a href="#" target="_blank">Kilitli Bağlantı Redüksiyon Dirsek</a></li>
-                    <li><a href="#" target="_blank">Kilitli Bağlantı TE</a></li>
-                    <li><a href="#" target="_blank">Kilitli Bağlantı Erkek TE</a></li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h3>Dişli Sulama Ek Parçaları</h3>
-                <ul>
-                    <li><a href="#" target="_blank">Dişli Dişi Dirsek</a></li>
-                    <li><a href="#" target="_blank">Dişli Dişi Nipel</a></li>
-                    <li><a href="#" target="_blank">Dişli Dişi Redüksiyon Dirsek</a></li>
-                    <li><a href="#" target="_blank">Erkek Dişli Kör Tapa</a></li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h3>Priz Kolyeler</h3>
-                <ul>
-                    <li><a href="#" target="_blank">Priz Kolye</a></li>
-                    <li><a href="#" target="_blank">Dişi Nipelli Priz Kolye</a></li>
-                    <li><a href="#" target="_blank">Erkek Nipelli Priz Kolye</a></li>
-                    <li><a href="#" target="_blank">Kızaklı Priz Kolye</a></li>
-                    <li><a href="#" target="_blank">Çift Çıkışlı Priz Kolye</a></li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h3>Nipelli Seri</h3>
-                <ul>
-                    <li><a href="#" target="_blank">Dişi Nipelli Priz Kolye</a></li>
-                    <li><a href="#" target="_blank">Erkek Nipelli Priz Kolye</a></li>
-                    <li><a href="#" target="_blank">Nipelli Erkek TE</a></li>
-                    <li><a href="#" target="_blank">Nipelli Dişi Dirsek</a></li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h3>Vanalar</h3>
-                <ul>
-                    <li><a href="#" target="_blank">Dişi Dişi Vana</a></li>
-                    <li><a href="#" target="_blank">Erkek Dişi Vana</a></li>
-                    <li><a href="#" target="_blank">Kaplin Dişi Vana</a></li>
-                    <li><a href="#" target="_blank">Kaplin Erkek Vana</a></li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h3>Vana Kutuları</h3>
-                <ul>
-                    <li><a href="#" target="_blank">6" Vana Kutusu</a></li>
-                    <li><a href="#" target="_blank">10" Vana Kutusu</a></li>
-                    <li><a href="#" target="_blank">12" Vana Kutusu</a></li>
-                    <li><a href="#" target="_blank">14" Vana Kutusu</a></li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h3>Damlama Ek Parçaları</h3>
-                <ul>
-                    <li><a href="damlama-mini-vana.html" target="_blank">Çıkış Mini Vana</a></li>
-                    <li><a href="#" target="_blank">Debi Ayarlı Damlatıcı Geniş Boşaltım</a></li>
-                    <li><a href="#" target="_blank">Debi Ayarlı Damlatıcı Yeşil</a></li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h3>Yedek Parçalar</h3>
-                <ul>
-                    <li><a href="#" target="_blank">Kaplin Sıkma Anahtarı</a></li>
-                    <li><a href="#" target="_blank">Pah Açma Aparatı</a></li>
-                    <li><a href="#" target="_blank">Abot Üstü Kaplin Dağıtıcı</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById("menuList");
-            menu.classList.toggle("active");
-            if (menu.classList.contains("active")) {
-                // Menü açıldığında, menünün kendisini ekranın üstüne kaydır
-                menu.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }
-    </script>
+        <a href="urunlerimiz.html" class="menu-toggle">Ürünlerimiz</a>
+        </nav>
 
     <main>
-        <section class="content-section">
-            <h2>Mavi Erkek Kaplin</h2>
-            
-            <div class="product-image-container">
-                <img src="mavi-erkek-kaplin.png" alt="Mavi Erkek Kaplin Görseli" class="product-image">
-                <a href="mavi-disi-kaplin.html" class="product-nav-arrow prev-product" title="Önceki Ürün">
-                    &#10094; 
-                </a>
-                <a href="mavi-dirsek-kaplin.html" class="product-nav-arrow next-product" title="Sonraki Ürün">
-                    &#10095;
-                </a>
-            </div>
-            
-            <p>Mavi Erkek Kaplin, sulama ve tesisat sistemlerinde boruları güvenle birleştirmek için tasarlanmıştır. Yüksek dayanıklılığa sahip malzemelerden üretilmiş olup, kolay ve sızdırmaz bağlantı imkanı sunar. Uzun ömürlü kullanımıyla projelerinizde size güven verir.</p>
-
-            <h3>Ürün Ölçüleri:</h3>
-            <div class="table-container">
-                <table class="measurement-table">
-                    <thead>
-                        <tr>
-                            <th>Ölçüler</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>20x1/2”</td><td>50x2”</td></tr> 
-                        <tr><td>20x3/4”</td><td>63x1 1/4”</td></tr> 
-                        <tr><td>20x1”</td><td>63x1 1/2”</td></tr> 
-                        <tr><td>25x1/2”</td><td>63x2”</td></tr> 
-                        <tr><td>25x3/4”</td><td>63x2 1/2”</td></tr> 
-                        <tr><td>25x1”</td><td>75x2”</td></tr> 
-                        <tr><td>32x1/2”</td><td>75x2 1/2”</td></tr> 
-                        <tr><td>32x3/4”</td><td>75x3”</td></tr> 
-                        <tr><td>32x1”</td><td>90x2”</td></tr> 
-                        <tr><td>40x3/4”</td><td>90x2 1/2”</td></tr> 
-                        <tr><td>40x1”</td><td>90x3”</td></tr> 
-                        <tr><td>40x1 1/4”</td><td>90x4”</td></tr> 
-                        <tr><td>50x1”</td><td>110x2”</td></tr> 
-                        <tr><td>50x1 1/4”</td><td>110x2 1/2”</td></tr> 
-                        <tr><td>50x1 1/2”</td><td>110x3”</td></tr>
-                        <tr><td></td><td>110x4”</td></tr> 
-                    </tbody>
-                </table>
+        <section class="products-container">
+            <div class="product-category-section">
+                <h2>Mavi Seri</h2>
+                <ul class="product-list">
+                    <li><a href="mavi-disi-kaplin.html">Dişi Kaplin</a></li>
+                    <li><a href="mavi-erkek-kaplin.html">Erkek Kaplin</a></li>
+                    <li><a href="mavi-dirsek-kaplin.html">Dirsek Kaplin</a></li>
+                    <li><a href="#">Dişi Dirsek</a></li>
+                    <li><a href="mavi-erkek-dirsek.html">Erkek Dirsek</a></li>
+                    <li><a href="#">Manşon</a></li>
+                    <li><a href="#">Tapa</a></li>
+                    <li><a href="#">Erkek Te</a></li>
+                    <li><a href="#">Dişi Te</a></li>
+                    <li><a href="#">Redüksiyon Te</a></li>
+                    <li><a href="#">Redüksiyon</a></li>
+                </ul>
             </div>
 
-            <p>Ürün hakkında daha detaylı bilgi almak veya sipariş vermek için bizimle iletişime geçebilirsiniz.</p>
+            <div class="product-category-section">
+                <h2>Siyah Seri</h2>
+                <ul class="product-list">
+                    <li><a href="siyah-disi-kaplin.html">Dişi Kaplin</a></li>
+                    <li><a href="#">Erkek Kaplin</a></li>
+                    <li><a href="siyah-dirsek.html">Dirsek</a></li>
+                    <li><a href="#">Dişi Dirsek</a></li>
+                    <li><a href="#">Erkek Dirsek</a></li>
+                    <li><a href="siyah-manson.html">Manşon</a></li>
+                    <li><a href="#">Tapa</a></li>
+                    <li><a href="#">Erkek Te</a></li>
+                    <li><a href="#">Dişi Te</a></li>
+                    <li><a href="#">Redüksiyon Te</a></li>
+                    <li><a href="#">Redüksiyon</a></li>
+                </ul>
+            </div>
+
+            <div class="product-category-section">
+                <h2>Kilitli Bağlantı Parçaları</h2>
+                <ul class="product-list">
+                    <li><a href="#">Kilitli Bağlantı Erkek Adaptör</a></li>
+                    <li><a href="#">Kilitli Bağlantı Erkek Dirsek</a></li>
+                    <li><a href="#">Kilitli Bağlantı Dirsek</a></li>
+                    <li><a href="#">Kilitli Bağlantı Redüksiyon Dirsek</a></li>
+                    <li><a href="#">Kilitli Bağlantı TE</a></li>
+                    <li><a href="#">Kilitli Bağlantı Erkek TE</a></li>
+                </ul>
+            </div>
+
+            <div class="product-category-section">
+                <h2>Dişli Sulama Ek Parçaları</h2>
+                <ul class="product-list">
+                    <li><a href="#">Dişli Dişi Dirsek</a></li>
+                    <li><a href="#">Dişli Dişi Nipel</a></li>
+                    <li><a href="#">Dişli Dişi Redüksiyon Dirsek</a></li>
+                    <li><a href="#">Erkek Dişli Kör Tapa</a></li>
+                </ul>
+            </div>
+
+            <div class="product-category-section">
+                <h2>Priz Kolyeler</h2>
+                <ul class="product-list">
+                    <li><a href="#">Priz Kolye</a></li>
+                    <li><a href="#">Dişi Nipelli Priz Kolye</a></li>
+                    <li><a href="#">Erkek Nipelli Priz Kolye</a></li>
+                    <li><a href="#">Kızaklı Priz Kolye</a></li>
+                    <li><a href="#">Çift Çıkışlı Priz Kolye</a></li>
+                </ul>
+            </div>
+
+            <div class="product-category-section">
+                <h2>Nipelli Seri</h2>
+                <ul class="product-list">
+                    <li><a href="#">Dişi Nipelli Priz Kolye</a></li>
+                    <li><a href="#">Erkek Nipelli Priz Kolye</a></li>
+                    <li><a href="#">Nipelli Erkek TE</a></li>
+                    <li><a href="#">Nipelli Dişi Dirsek</a></li>
+                </ul>
+            </div>
+
+            <div class="product-category-section">
+                <h2>Vanalar</h2>
+                <ul class="product-list">
+                    <li><a href="#">Dişi Dişi Vana</a></li>
+                    <li><a href="#">Erkek Dişi Vana</a></li>
+                    <li><a href="#">Kaplin Dişi Vana</a></li>
+                    <li><a href="#">Kaplin Erkek Vana</a></li>
+                </ul>
+            </div>
+
+            <div class="product-category-section">
+                <h2>Vana Kutuları</h2>
+                <ul class="product-list">
+                    <li><a href="#">6" Vana Kutusu</a></li>
+                    <li><a href="#">10" Vana Kutusu</a></li>
+                    <li><a href="#">12" Vana Kutusu</a></li>
+                    <li><a href="#">14" Vana Kutusu</a></li>
+                </ul>
+            </div>
+
+            <div class="product-category-section">
+                <h2>Damlama Ek Parçaları</h2>
+                <ul class="product-list">
+                    <li><a href="damlama-mini-vana.html">Çıkış Mini Vana</a></li>
+                    <li><a href="#">Debi Ayarlı Damlatıcı Geniş Boşaltım</a></li>
+                    <li><a href="#">Debi Ayarlı Damlatıcı Yeşil</a></li>
+                </ul>
+            </div>
+
+            <div class="product-category-section">
+                <h2>Yedek Parçalar</h2>
+                <ul class="product-list">
+                    <li><a href="#">Kaplin Sıkma Anahtarı</a></li>
+                    <li><a href="#">Pah Açma Aparatı</a></li>
+                    <li><a href="#">Abot Üstü Kaplin Dağıtıcı</a></li>
+                </ul>
+            </div>
+
         </section>
     </main>
 
