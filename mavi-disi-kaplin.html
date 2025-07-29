@@ -236,8 +236,6 @@
             position: relative; /* Okun konumlandırılması için */
             max-width: 400px; /* Resmin max genişliği ile aynı */
             margin: 0 auto 30px auto; /* Resmin eski margin değerleri */
-            /* border: 1px solid #eee; Bu border'ı resme taşımayacağız, ok için sorun yaratır */
-            /* box-shadow: 0 0 5px rgba(0,0,0,0.08); Aynı şekilde gölge de resimde kalsın */
         }
 
         .product-image {
@@ -300,17 +298,15 @@
         }
 
         /* Ürün Navigasyon Okları Stilleri */
-        /* Bu container artık resim wrapper'ının içinde olacak ve absolute konumlandırılacak */
         .product-nav-arrows-container {
             position: absolute; /* .product-image-wrapper'a göre konumlandır */
             top: 50%; /* Dikeyde ortaya hizala */
-            right: 10px; /* Resmin sağından 10px içeride */
+            right: 20px; /* Bu değeri artırdık: Resmin sağından 20px içeride */
             transform: translateY(-50%); /* Kendi yüksekliğinin yarısı kadar yukarı kaydırarak dikeyde tam ortala */
             z-index: 10; /* Resmin üzerinde görünmesini sağla */
             display: flex;
-            justify-content: flex-end; /* Sadece bir ok olduğu için önemli değil */
+            justify-content: flex-end;
             align-items: center;
-            /* padding: 0 20px; */ /* Artık bu padding'e gerek yok */
         }
 
         .product-nav-arrow {
@@ -333,8 +329,7 @@
 
         .product-nav-arrow:hover {
             background-color: rgba(0, 0, 0, 0.7); /* Hover'da biraz daha koyu */
-            transform: translateY(-2px); /* Bu transform'u kaldırıp sadece background değiştirebiliriz, veya translateX de kullanabiliriz */
-            /* transform: translateX(5px); Okun hafifçe ileri gitmesini sağlar */
+            transform: translateY(-2px); 
         }
 
         /* İletişim Bölümü */
@@ -392,13 +387,12 @@
                 padding: 15px;
                 margin: 15px auto;
             }
-            .product-image-wrapper { /* Mobil için wrapper genişliği */
+            .product-image-wrapper { 
                 max-width: 80%;
                 margin-bottom: 20px;
             }
             .product-image {
-                /* max-width: 80%; */ /* Artık wrapper kontrol ediyor */
-                margin-bottom: 0; /* Wrapper'a taşındı */
+                margin-bottom: 0;
             }
             .product-detail-container h2 {
                 font-size: 28px;
@@ -410,7 +404,7 @@
                 font-size: 20px;
             }
             .measurement-table {
-                width: 95%; /* Küçük ekranlarda tam genişlik */
+                width: 95%; 
             }
             .measurement-table th, .measurement-table td {
                 padding: 10px;
@@ -424,11 +418,11 @@
                 font-size: 35px;
             }
             .product-nav-arrow {
-                width: 40px; /* Küçük ekranlarda ok boyutu */
+                width: 40px; 
                 height: 40px;
                 font-size: 20px;
-                padding: 8px; /* Oranları korumak için padding düşürüldü */
-                right: 5px; /* Mobil için sağdan biraz daha içeride */
+                padding: 8px; 
+                right: 10px; /* Mobil için sağdan biraz daha içeride */
             }
         }
     </style>
@@ -768,7 +762,7 @@
 
             <p>Ürün hakkında daha detaylı bilgi almak veya sipariş vermek için bizimle iletişime geçebilirsiniz.</p>
 
-            </section>
+        </section>
     </main>
 
     <section class="contact">
