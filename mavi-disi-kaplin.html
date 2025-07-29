@@ -582,14 +582,24 @@
             const mainMenuContainer = document.getElementById("mainMenuContainer");
             mainMenuContainer.classList.toggle("active");
 
+            // Menü kapatıldığında tüm alt menüleri ve aktif sınıfları kapat
             if (!mainMenuContainer.classList.contains("active")) {
                 document.getElementById('secondaryCategoriesColumn').classList.remove('active');
                 document.getElementById('tertiaryProductsColumn').classList.remove('active');
 
-                document.querySelectorAll('.primary-category-item.active').forEach(item => item.classList.remove('active'));
-                document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
+                document.querySelectorAll('.primary-category-item.active').forEach(item => {
+                    item.classList.remove('active');
+                    const arrow = item.querySelector('.arrow-icon');
+                    if (arrow) arrow.style.transform = 'rotate(0deg)';
+                });
+                document.querySelectorAll('.secondary-category-item.active').forEach(item => {
+                    item.classList.remove('active');
+                    const arrow = item.querySelector('.arrow-icon');
+                    if (arrow) arrow.style.transform = 'rotate(0deg)';
+                });
                 document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
             } else {
+                // Menü açıldığında, scroll'u en üste getir
                 mainMenuContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
@@ -598,43 +608,72 @@
             const secondaryColumn = document.getElementById('secondaryCategoriesColumn');
             const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
 
+            // Tüm birincil kategori öğelerinden aktif sınıfı kaldır ve okları sıfırla
             document.querySelectorAll('.primary-category-item').forEach(item => {
                 if (item !== clickedItem) {
                     item.classList.remove('active');
+                    const arrow = item.querySelector('.arrow-icon');
+                    if (arrow) arrow.style.transform = 'rotate(0deg)';
                 }
             });
 
+            // Tıklanan öğenin aktif durumunu değiştir
             const isActive = clickedItem.classList.toggle('active');
+            const clickedArrow = clickedItem.querySelector('.arrow-icon');
+            if (clickedArrow) {
+                clickedArrow.style.transform = isActive ? 'rotate(90deg)' : 'rotate(0deg)';
+            }
 
+            // İkincil sütunu aktif yap veya kapat
             secondaryColumn.classList.toggle('active', isActive);
 
+            // İkincil sütun kapatılırsa, üçüncül sütunu ve tüm alt öğeleri de kapat
             if (!isActive) {
                 tertiaryColumn.classList.remove('active');
-                document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
+                document.querySelectorAll('.secondary-category-item.active').forEach(item => {
+                    item.classList.remove('active');
+                    const arrow = item.querySelector('.arrow-icon');
+                    if (arrow) arrow.style.transform = 'rotate(0deg)';
+                });
                 document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
             } else {
                 secondaryColumn.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
+            // Her tıklamada üçüncül sütunu ve ürün listelerini sıfırla (yeniden açılmak üzere)
             tertiaryColumn.classList.remove('active');
-            document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.secondary-category-item.active').forEach(item => {
+                item.classList.remove('active');
+                const arrow = item.querySelector('.arrow-icon');
+                if (arrow) arrow.style.transform = 'rotate(0deg)';
+            });
             document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
         }
 
         function toggleTertiaryMenu(clickedItem, categoryId) {
             const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
 
+            // Tüm ikincil kategori öğelerinden aktif sınıfı kaldır ve okları sıfırla
             document.querySelectorAll('.secondary-category-item').forEach(item => {
                 if (item !== clickedItem) {
                     item.classList.remove('active');
+                    const arrow = item.querySelector('.arrow-icon');
+                    if (arrow) arrow.style.transform = 'rotate(0deg)';
                 }
             });
 
+            // Tıklanan öğenin aktif durumunu değiştir
+            const isActive = clickedItem.classList.toggle('active');
+            const clickedArrow = clickedItem.querySelector('.arrow-icon');
+            if (clickedArrow) {
+                clickedArrow.style.transform = isActive ? 'rotate(90deg)' : 'rotate(0deg)';
+            }
+
+            // Tüm ürün listelerini kapat
             document.querySelectorAll('.product-list').forEach(list => {
                 list.classList.remove('active');
             });
 
-            const isActive = clickedItem.classList.toggle('active');
-
+            // Üçüncül sütunu aktif yap veya kapat
             tertiaryColumn.classList.toggle('active', isActive);
 
             if (isActive) {
@@ -651,18 +690,28 @@
             }
         }
 
+        // Menü dışına tıklayınca menüyü kapatma
         document.addEventListener('click', function(event) {
             const nav = document.querySelector('nav');
             const mainMenuContainer = document.getElementById('mainMenuContainer');
             const menuToggle = document.querySelector('.menu-toggle');
 
+            // Sadece menü toggle veya menü container dışında bir yere tıklanırsa kapat
             if (!nav.contains(event.target) && !menuToggle.contains(event.target)) {
                 if (mainMenuContainer.classList.contains('active')) {
                     mainMenuContainer.classList.remove('active');
                     document.getElementById('secondaryCategoriesColumn').classList.remove('active');
                     document.getElementById('tertiaryProductsColumn').classList.remove('active');
-                    document.querySelectorAll('.primary-category-item.active').forEach(item => item.classList.remove('active'));
-                    document.querySelectorAll('.secondary-category-item.active').forEach(item => item.classList.remove('active'));
+                    document.querySelectorAll('.primary-category-item.active').forEach(item => {
+                        item.classList.remove('active');
+                        const arrow = item.querySelector('.arrow-icon');
+                        if (arrow) arrow.style.transform = 'rotate(0deg)';
+                    });
+                    document.querySelectorAll('.secondary-category-item.active').forEach(item => {
+                        item.classList.remove('active');
+                        const arrow = item.querySelector('.arrow-icon');
+                        if (arrow) arrow.style.transform = 'rotate(0deg)';
+                    });
                     document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
                 }
             }
@@ -682,28 +731,25 @@
                 <table class="measurement-table">
                     <thead>
                         <tr>
-                            <th>Borudan Dişe Ölçü (Kısım 1)</th>
-                            <th>Borudan Dişe Ölçü (Kısım 2)</th>
+                            <th>Borudan Dişe Ölçü</th>
+                            <th>Borudan Dişe Ölçü</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>20x1/2”</td><td>40x1 1/4”</td></tr>
-                        <tr><td>20x3/4”</td><td>50x1”</td></tr>
-                        <tr><td>20x1”</td><td>50x1 1/4”</td></tr>
-                        <tr><td>25x1/2”</td><td>50x1 1/2”</td></tr>
-                        <tr><td>25x3/4”</td><td>50x2”</td></tr>
-                        <tr><td>25x1”</td><td>63x1 1/4”</td></tr>
-                        <tr><td>32x1/2”</td><td>63x1 1/2”</td></tr>
-                        <tr><td>32x3/4”</td><td>63x2”</td></tr>
-                        <tr><td>32x1”</td><td>63x2 1/2”</td></tr>
-                        <tr><td>40x3/4”</td><td>75x2”</td></tr>
-                        <tr><td>40x1”</td><td>75x2 1/2”</td></tr>
-                        <tr><td></td><td>90x2”</td></tr>
-                        <tr><td></td><td>90x2 1/2”</td></tr>
-                        <tr><td></td><td>90x3”</td></tr>
-                        <tr><td></td><td>110x2”</td></tr>
-                        <tr><td></td><td>110x2 1/2”</td></tr>
-                        <tr><td></td><td>110x3”</td></tr>
+                        <tr><td>20x1/2”</td><td>50x1 1/2”</td></tr>
+                        <tr><td>20x3/4”</td><td>50x2”</td></tr>
+                        <tr><td>20x1”</td><td>63x1 1/4”</td></tr>
+                        <tr><td>25x1/2”</td><td>63x1 1/2”</td></tr>
+                        <tr><td>25x3/4”</td><td>63x2”</td></tr>
+                        <tr><td>25x1”</td><td>63x2 1/2”</td></tr>
+                        <tr><td>32x1/2”</td><td>75x2”</td></tr>
+                        <tr><td>32x3/4”</td><td>75x2 1/2”</td></tr>
+                        <tr><td>32x1”</td><td>90x2”</td></tr>
+                        <tr><td>40x3/4”</td><td>90x2 1/2”</td></tr>
+                        <tr><td>40x1”</td><td>90x3”</td></tr>
+                        <tr><td>40x1 1/4”</td><td>110x2”</td></tr>
+                        <tr><td>50x1”</td><td>110x2 1/2”</td></tr>
+                        <tr><td>50x1 1/4”</td><td>110x3”</td></tr>
                         <tr><td></td><td>110x4”</td></tr>
                     </tbody>
                 </table>
