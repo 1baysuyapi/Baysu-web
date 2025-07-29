@@ -415,72 +415,102 @@
         <div class="main-menu-container" id="mainMenuContainer">
             <div class="menu-content">
                 <div class="primary-category-column">
-                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'kaplinler-sub-menu')">
                         <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                     <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'mavi-seri-sub-menu')">
                         <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'siyah-seri-sub-menu')">
                         <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'kilitli-baglanti-sub-menu')">
                         <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'disli-sulama-sub-menu')">
                         <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'priz-kolyeler-sub-menu')">
                         <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'nipelli-seri-sub-menu')">
                         <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'vanalar-sub-menu')">
                         <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'vana-kutulari-sub-menu')">
                         <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'damlama-ek-sub-menu')">
                         <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" onclick="toggleSecondaryMenu(this)">
+                    <div class="primary-category-item" onclick="togglePrimaryCategory(this, 'yedek-parcalar-sub-menu')">
                         <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                 </div>
 
                 <div class="secondary-categories-column" id="secondaryCategoriesColumn">
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'mavi-seri')">
-                        <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
+                    <div id="kaplinler-sub-menu" class="sub-menu-content">
+                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'mavi-seri')">
+                            <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
+                        </div>
+                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'siyah-seri')">
+                            <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
+                        </div>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'siyah-seri')">
-                        <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
+                    
+                    <div id="mavi-seri-sub-menu" class="sub-menu-content">
+                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'mavi-seri-products')">
+                            <h3>Mavi Seri Ürünleri <span class="arrow-icon">&#9658;</span></h3>
+                        </div>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'kilitli-baglanti')">
-                        <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    <div id="siyah-seri-sub-menu" class="sub-menu-content">
+                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'siyah-seri-products')">
+                            <h3>Siyah Seri Ürünleri <span class="arrow-icon">&#9658;</span></h3>
+                        </div>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'disli-sulama')">
-                        <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                     <div id="kilitli-baglanti-sub-menu" class="sub-menu-content">
+                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'kilitli-baglanti-products')">
+                            <h3>Kilitli Bağlantı Ürünleri <span class="arrow-icon">&#9658;</span></h3>
+                        </div>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'priz-kolyeler')">
-                        <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
+                    <div id="disli-sulama-sub-menu" class="sub-menu-content">
+                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'disli-sulama-products')">
+                            <h3>Dişli Sulama Ürünleri <span class="arrow-icon">&#9658;</span></h3>
+                        </div>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'nipelli-seri')">
-                        <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
+                    <div id="priz-kolyeler-sub-menu" class="sub-menu-content">
+                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'priz-kolyeler-products')">
+                            <h3>Priz Kolyeler Ürünleri <span class="arrow-icon">&#9658;</span></h3>
+                        </div>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'vanalar')">
-                        <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
+                    <div id="nipelli-seri-sub-menu" class="sub-menu-content">
+                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'nipelli-seri-products')">
+                            <h3>Nipelli Seri Ürünleri <span class="arrow-icon">&#9658;</span></h3>
+                        </div>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'vana-kutulari')">
-                        <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
+                    <div id="vanalar-sub-menu" class="sub-menu-content">
+                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'vanalar-products')">
+                            <h3>Vanalar Ürünleri <span class="arrow-icon">&#9658;</span></h3>
+                        </div>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'damlama-ek')">
-                        <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    <div id="vana-kutulari-sub-menu" class="sub-menu-content">
+                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'vana-kutulari-products')">
+                            <h3>Vana Kutuları Ürünleri <span class="arrow-icon">&#9658;</span></h3>
+                        </div>
                     </div>
-                    <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'yedek-parcalar')">
-                        <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
+                    <div id="damlama-ek-sub-menu" class="sub-menu-content">
+                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'damlama-ek-products')">
+                            <h3>Damlama Ek Parçaları Ürünleri <span class="arrow-icon">&#9658;</span></h3>
+                        </div>
                     </div>
+                    <div id="yedek-parcalar-sub-menu" class="sub-menu-content">
+                        <div class="secondary-category-item" onclick="toggleTertiaryMenu(this, 'yedek-parcalar-products')">
+                            <h3>Yedek Parçalar Ürünleri <span class="arrow-icon">&#9658;</span></h3>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="tertiary-products-column" id="tertiaryProductsColumn">
@@ -594,6 +624,7 @@
                 if (arrow) arrow.style.transform = 'rotate(0deg)';
             });
             document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
+            document.querySelectorAll('.sub-menu-content').forEach(content => content.style.display = 'none'); // Alt menü içeriklerini gizle
         }
 
         function toggleMainMenu() {
@@ -607,11 +638,11 @@
             }
         }
 
-        function toggleSecondaryMenu(clickedItem) {
+        function togglePrimaryCategory(clickedItem, targetSubMenuId) {
             const secondaryColumn = document.getElementById('secondaryCategoriesColumn');
             const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
 
-            const wasActive = clickedItem.classList.contains('active'); // Tıklamadan önceki durumu kaydet
+            const wasActive = clickedItem.classList.contains('active');
 
             // Tüm birincil kategori öğelerinden aktif sınıfı kaldır ve okları sıfırla
             document.querySelectorAll('.primary-category-item').forEach(item => {
@@ -629,6 +660,7 @@
                 if (arrow) arrow.style.transform = 'rotate(0deg)';
             });
             document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
+            document.querySelectorAll('.sub-menu-content').forEach(content => content.style.display = 'none'); // Alt menü içeriklerini gizle
 
             // Eğer tıklanan öğe daha önce aktif değil idiyse, şimdi aktif yap
             if (!wasActive) {
@@ -637,15 +669,22 @@
                 if (clickedArrow) {
                     clickedArrow.style.transform = 'rotate(90deg)';
                 }
-                secondaryColumn.classList.add('active');
-                secondaryColumn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                // Hedef alt menüyü göster
+                const targetSubMenu = document.getElementById(targetSubMenuId);
+                if (targetSubMenu) {
+                    secondaryColumn.classList.add('active');
+                    targetSubMenu.style.display = 'block';
+                    secondaryColumn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             }
         }
+
 
         function toggleTertiaryMenu(clickedItem, categoryId) {
             const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
 
-            const wasActive = clickedItem.classList.contains('active'); // Tıklamadan önceki durumu kaydet
+            const wasActive = clickedItem.classList.contains('active');
 
             // Tüm ikincil kategori öğelerinden aktif sınıfı kaldır ve okları sıfırla
             document.querySelectorAll('.secondary-category-item').forEach(item => {
@@ -662,7 +701,6 @@
             // Üçüncül sütunu kapat
             tertiaryColumn.classList.remove('active');
 
-            // Eğer tıklanan öğe daha önce aktif değil idiyse, şimdi aktif yap
             if (!wasActive) {
                 clickedItem.classList.add('active');
                 const clickedArrow = clickedItem.querySelector('.arrow-icon');
@@ -684,7 +722,6 @@
             const mainMenuContainer = document.getElementById('mainMenuContainer');
             const menuToggle = document.querySelector('.menu-toggle');
 
-            // Sadece menü toggle veya menü container dışında bir yere tıklanırsa kapat
             if (!nav.contains(event.target) && !menuToggle.contains(event.target)) {
                 if (mainMenuContainer.classList.contains('active')) {
                     mainMenuContainer.classList.remove('active');
