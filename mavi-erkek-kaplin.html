@@ -19,7 +19,6 @@
         }
 
         header {
-            /* Header eski haline getirildi */
             background: linear-gradient(to right, #004797, #33ffff); /* Mavi gradient */
             color: #fff;
             padding: 30px 10px 10px;
@@ -103,6 +102,7 @@
             font-size: 0.95em;
             display: block;
             padding: 3px 0;
+            transition: color 0.2s ease, text-decoration 0.2s ease; /* Yumuşak geçiş */
         }
 
         .menu-category a:hover {
@@ -284,7 +284,7 @@
         /* Responsive Düzenlemeler */
         @media (max-width: 768px) {
             .menu-list {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Mobil için tek sütun */
             }
             .menu-category {
                 margin-bottom: 10px;
@@ -473,6 +473,7 @@
             const menu = document.getElementById("menuList");
             menu.classList.toggle("active");
             if (menu.classList.contains("active")) {
+                // Menü açıldığında, menünün kendisini ekranın üstüne kaydır
                 menu.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
