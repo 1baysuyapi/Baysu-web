@@ -19,34 +19,14 @@
         }
 
         header {
-            /* Başlık görseli için güncellendi */
-            background-image: url('baysu_logo_buyuk.png'); /* Buraya logonuzun veya başlık görselinizin yolunu ekleyin */
-            background-size: contain; /* Görseli kapsayıcıya sığdırır */
-            background-position: center; /* Görseli ortalar */
-            background-repeat: no-repeat; /* Görselin tekrar etmesini engeller */
-            background-color: #003366; /* Görselin arkasında görünecek bir renk */
+            /* Header eski haline getirildi */
+            background: linear-gradient(to right, #004797, #33ffff); /* Mavi gradient */
             color: #fff;
-            padding: 0; /* Padding kaldırıldı, görsel boyutuna bırakıldı */
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center; /* İçeriği ortalar */
-            min-height: 250px; /* Minimum yükseklik */
-            max-height: 250px; /* Maksimum yükseklik */
+            padding: 30px 10px 10px;
         }
 
-        header h1, header p {
-            display: none; /* Başlık metinleri gizlendi, sadece arka plan görseli görünecek */
-        }
-
-        @media (max-width: 768px) {
-            header {
-                min-height: 150px;
-                max-height: 150px;
-                background-size: contain; /* Mobil için de görseli sığdır */
-                background-position: center; /* Mobil için de görseli ortala */
-            }
+        header h1 {
+            margin-bottom: 5px;
         }
 
         /* Navigasyon Stilleri */
@@ -165,37 +145,65 @@
             text-align: center;
         }
 
-        /* Ürün görseli ve oklar için yeni yapı */
-        .product-image-wrapper {
+        /* Ürüne özel görsel ve navigasyon okları için düzenleme */
+        .product-image-container {
             position: relative; /* Okların konumlandırılması için */
-            max-width: 400px; /* Resmin max genişliği ile aynı */
+            max-width: 400px; /* Ürün görseli için daha büyük boyut */
             margin: 0 auto 30px auto; /* Ortala ve alttan boşluk */
-            display: flex; /* Okları ve resmi yan yana hizalamak için (mobil hariç) */
-            align-items: center; /* Dikeyde ortalamak için */
-            justify-content: center; /* Resmi ortalamak için */
+            text-align: center;
         }
 
         .product-image {
             max-width: 100%; /* Kapsayıcıya uyum sağlasın */
-            width: 100%;
             height: auto;
-            display: block; /* Margin auto için block olmalı */
-            border: 1px solid #eee; /* Resmin kendi border'ı */
-            box-shadow: 0 0 5px rgba(0,0,0,0.08); /* Resmin kendi gölgesi */
-            margin: 0; /* Flexbox ile ortalandığı için buradaki margin'i kaldır */
+            border: 1px solid #ddd;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            display: block;
+            margin: 0 auto; /* Resmi ortala */
         }
+
+        /* Ürün Navigasyon Okları Stilleri */
+        .product-nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            line-height: 1; /* Okların dikey hizalamasını iyileştirir */
+        }
+
+        .product-nav-arrow:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            transform: translateY(-50%) scale(1.05); /* Hover'da hafif büyüt */
+        }
+
+        .prev-product {
+            left: 10px; /* Görselin soluna hizala */
+        }
+
+        .next-product {
+            right: 10px; /* Görselin sağına hizala */
+        }
+
 
         /* Ölçü Tablosu Stilleri */
         .table-container {
+            width: 100%; /* Kapsayıcının tam genişliği */
             overflow-x: auto; /* Yatay kaydırma çubuğu ekler */
             margin-bottom: 20px;
-            display: flex; /* Tabloyu merkezlemek için */
-            justify-content: center; /* Tabloyu merkezlemek için */
+            display: flex; /* İçeriği ortalamak için */
+            justify-content: center; /* İçeriği yatayda ortalar */
         }
 
         .measurement-table {
-            width: 80%; /* Genişliği düşürüldü, daha merkezi durması için */
-            max-width: 500px; /* Maksimum genişlik eklendi */
+            width: 80%; /* Tablo genişliği */
+            max-width: 500px; /* Maksimum genişlik */
             border-collapse: collapse;
             margin: 0 auto; /* Tabloyu yatayda ortalar */
         }
@@ -222,41 +230,6 @@
         }
         .measurement-table li {
             padding: 2px 0;
-        }
-
-        /* Ürün Navigasyon Okları Stilleri */
-        .product-nav-arrows-container {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            display: flex;
-            justify-content: space-between; /* Okları iki yana yaslar */
-            width: 100%; /* Wrapper genişliği kadar */
-            padding: 0; /* Kenarlardan boşluk bırakmamak için 0 */
-            box-sizing: border-box; /* Padding'in genişliğe dahil olması için */
-        }
-
-        .product-nav-arrow {
-            background-color: rgba(0, 0, 0, 0.5); /* Saydam siyah */
-            color: white;
-            padding: 12px 15px; /* Yatayda biraz daha az padding */
-            text-decoration: none;
-            font-size: 18px; /* Ok ikonu boyutu */
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 40px; /* Ok genişliği */
-            height: 40px; /* Ok yüksekliği */
-            box-sizing: border-box;
-        }
-
-        .product-nav-arrow:hover {
-            background-color: rgba(0, 0, 0, 0.7); /* Hover'da biraz daha koyu */
-            transform: translateY(-2px); /* Hafif yukarı hareket */
         }
 
         /* İletişim Bölümü */
@@ -321,10 +294,10 @@
                 margin: 15px auto; /* Mobil için margin güncellendi */
             }
             .content-section h2 {
-                font-size: 28px;
+                font-size: 24px; /* Mobil için başlık küçültüldü */
             }
             .content-section p {
-                font-size: 1em;
+                font-size: 0.95em; /* Mobil için paragraf boyutu küçültüldü */
             }
             /* Mobil cihazlarda tablo sığmazsa yatay kaydırma */
             .table-container {
@@ -336,8 +309,8 @@
                 width: 95%; /* Mobil için genişliği ayarlandı */
             }
             .measurement-table th, .measurement-table td {
-                padding: 10px;
-                font-size: 0.9em;
+                padding: 8px; /* Mobil için padding küçültüldü */
+                font-size: 0.85em; /* Mobil için yazı boyutu küçültüldü */
             }
 
             .whatsapp-button { /* Mobil cihazlarda daha küçük yapabiliriz */
@@ -349,31 +322,21 @@
             }
 
             /* Mobil için okları küçültme ve konumlandırma */
-            .product-image-wrapper { 
-                max-width: 90%; /* Mobil için biraz daha geniş */
+            .product-image-container {
+                max-width: 95%; /* Mobil için genişlik artırıldı */
                 margin-bottom: 20px;
-                display: block; /* Alt alta gelsinler */
-            }
-            .product-image {
-                margin: 0 auto; /* Mobil için ortala */
-            }
-            .product-nav-arrows-container {
-                position: relative; /* Mobil için absolute değil */
-                top: auto;
-                left: auto;
-                transform: none; /* Transform kaldırıldı */
-                width: calc(100% - 20px); /* Kapsayıcının %100'ü kadar, kenar boşlukları düşülerek */
-                padding: 10px; /* Yanlardan boşluk */
-                margin-top: 10px; /* Resimle oklar arasına boşluk */
-                background-color: transparent; /* Arka planı saydam yap */
             }
             .product-nav-arrow {
-                font-size: 20px;
-                width: 35px;
-                height: 35px;
+                padding: 8px 10px; /* Mobil ok padding'i */
+                font-size: 20px; /* Mobil ok boyutu */
+                width: auto; /* Genişlik otomatik */
+                height: auto; /* Yükseklik otomatik */
             }
-            .product-nav-arrow:hover {
-                transform: none; /* Mobil hover efektini kaldır */
+            .prev-product {
+                left: 5px; /* Mobil için daha kenara */
+            }
+            .next-product {
+                right: 5px; /* Mobil için daha kenara */
             }
         }
     </style>
@@ -519,16 +482,14 @@
         <section class="content-section">
             <h2>Mavi Erkek Kaplin</h2>
             
-            <div class="product-image-wrapper">
+            <div class="product-image-container">
                 <img src="mavi-erkek-kaplin.png" alt="Mavi Erkek Kaplin Görseli" class="product-image">
-                <div class="product-nav-arrows-container">
-                    <a href="mavi-disi-kaplin.html" class="product-nav-arrow" title="Önceki Ürün">
-                        &#10094; 
-                    </a>
-                    <a href="mavi-dirsek-kaplin.html" class="product-nav-arrow" title="Sonraki Ürün">
-                        &#10095;
-                    </a>
-                </div>
+                <a href="mavi-disi-kaplin.html" class="product-nav-arrow prev-product" title="Önceki Ürün">
+                    &#10094; 
+                </a>
+                <a href="mavi-dirsek-kaplin.html" class="product-nav-arrow next-product" title="Sonraki Ürün">
+                    &#10095;
+                </a>
             </div>
             
             <p>Mavi Erkek Kaplin, sulama ve tesisat sistemlerinde boruları güvenle birleştirmek için tasarlanmıştır. Yüksek dayanıklılığa sahip malzemelerden üretilmiş olup, kolay ve sızdırmaz bağlantı imkanı sunar. Uzun ömürlü kullanımıyla projelerinizde size güven verir.</p>
