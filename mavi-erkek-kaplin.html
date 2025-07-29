@@ -19,13 +19,34 @@
         }
 
         header {
-            background: linear-gradient(to right, #004797, #33ffff); /* Mavi gradient */
+            /* Başlık görseli için güncellendi */
+            background-image: url('baysu_logo_buyuk.png'); /* Buraya logonuzun veya başlık görselinizin yolunu ekleyin */
+            background-size: contain; /* Görseli kapsayıcıya sığdırır */
+            background-position: center; /* Görseli ortalar */
+            background-repeat: no-repeat; /* Görselin tekrar etmesini engeller */
+            background-color: #003366; /* Görselin arkasında görünecek bir renk */
             color: #fff;
-            padding: 30px 10px 10px;
+            padding: 0; /* Padding kaldırıldı, görsel boyutuna bırakıldı */
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* İçeriği ortalar */
+            min-height: 250px; /* Minimum yükseklik */
+            max-height: 250px; /* Maksimum yükseklik */
         }
 
-        header h1 {
-            margin-bottom: 5px;
+        header h1, header p {
+            display: none; /* Başlık metinleri gizlendi, sadece arka plan görseli görünecek */
+        }
+
+        @media (max-width: 768px) {
+            header {
+                min-height: 150px;
+                max-height: 150px;
+                background-size: contain; /* Mobil için de görseli sığdır */
+                background-position: center; /* Mobil için de görseli ortala */
+            }
         }
 
         /* Navigasyon Stilleri */
@@ -121,7 +142,7 @@
         }
 
         .content-section h2 {
-            font-size: 28px;
+            font-size: 32px; /* Ürün adı başlığı için boyutu artırıldı */
             color: #004797;
             margin-bottom: 20px;
             text-align: center;
@@ -132,40 +153,69 @@
             color: #333;
             line-height: 1.7;
             margin-bottom: 15px;
+            text-align: justify; /* Metni iki yana yaslar */
         }
 
-        /* Ürüne özel görsel */
+        /* Ürün Ölçüleri başlığı */
+        .content-section h3 {
+            font-size: 24px;
+            color: #004797;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Ürün görseli ve oklar için yeni yapı */
+        .product-image-wrapper {
+            position: relative; /* Okların konumlandırılması için */
+            max-width: 400px; /* Resmin max genişliği ile aynı */
+            margin: 0 auto 30px auto; /* Ortala ve alttan boşluk */
+            display: flex; /* Okları ve resmi yan yana hizalamak için (mobil hariç) */
+            align-items: center; /* Dikeyde ortalamak için */
+            justify-content: center; /* Resmi ortalamak için */
+        }
+
         .product-image {
-            max-width: 400px; /* Ürün görseli için daha büyük boyut */
+            max-width: 100%; /* Kapsayıcıya uyum sağlasın */
             width: 100%;
             height: auto;
-            margin: 0 auto 30px auto; /* Ortala ve alttan boşluk */
-            border: 1px solid #ddd;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-            display: block;
+            display: block; /* Margin auto için block olmalı */
+            border: 1px solid #eee; /* Resmin kendi border'ı */
+            box-shadow: 0 0 5px rgba(0,0,0,0.08); /* Resmin kendi gölgesi */
+            margin: 0; /* Flexbox ile ortalandığı için buradaki margin'i kaldır */
         }
 
         /* Ölçü Tablosu Stilleri */
-        .measurement-table {
-            width: 100%;
-            border-collapse: collapse;
+        .table-container {
+            overflow-x: auto; /* Yatay kaydırma çubuğu ekler */
             margin-bottom: 20px;
+            display: flex; /* Tabloyu merkezlemek için */
+            justify-content: center; /* Tabloyu merkezlemek için */
+        }
+
+        .measurement-table {
+            width: 80%; /* Genişliği düşürüldü, daha merkezi durması için */
+            max-width: 500px; /* Maksimum genişlik eklendi */
+            border-collapse: collapse;
+            margin: 0 auto; /* Tabloyu yatayda ortalar */
         }
         .measurement-table th, .measurement-table td {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 12px; /* Padding artırıldı */
             text-align: center;
             vertical-align: top; /* İçeriği üste hizala */
+            font-size: 1em; /* Yazı boyutu standarda çekildi */
+            white-space: nowrap; /* İçeriğin satır atlamasını engeller */
         }
         .measurement-table th {
             background-color: #004797;
             color: white;
             font-weight: bold;
         }
-        .measurement-table tr:nth-child(even) {
-            background-color: #f2f2f2; /* Her ikinci satıra farklı renk */
+        .measurement-table tbody tr:nth-child(even) { /* Her ikinci satıra farklı renk */
+            background-color: #f9f9f9;
         }
-        .measurement-table ul { /* Tablo içindeki listeler için */
+        .measurement-table ul { /* Tablo içindeki listeler için (bu tabloda kullanılmıyor ama genel bir kural) */
             list-style: none; /* Madde işaretini kaldır */
             padding: 0;
             margin: 0;
@@ -175,30 +225,38 @@
         }
 
         /* Ürün Navigasyon Okları Stilleri */
-        .product-nav-arrow {
+        .product-nav-arrows-container {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            display: flex;
+            justify-content: space-between; /* Okları iki yana yaslar */
+            width: 100%; /* Wrapper genişliği kadar */
+            padding: 0; /* Kenarlardan boşluk bırakmamak için 0 */
+            box-sizing: border-box; /* Padding'in genişliğe dahil olması için */
+        }
+
+        .product-nav-arrow {
+            background-color: rgba(0, 0, 0, 0.5); /* Saydam siyah */
             color: white;
-            padding: 10px 15px;
+            padding: 12px 15px; /* Yatayda biraz daha az padding */
             text-decoration: none;
-            font-size: 24px;
+            font-size: 18px; /* Ok ikonu boyutu */
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px; /* Ok genişliği */
+            height: 40px; /* Ok yüksekliği */
+            box-sizing: border-box;
         }
 
         .product-nav-arrow:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .prev-product {
-            left: 10px; /* Görselin soluna hizala */
-        }
-
-        .next-product {
-            right: 10px; /* Görselin sağına hizala */
+            background-color: rgba(0, 0, 0, 0.7); /* Hover'da biraz daha koyu */
+            transform: translateY(-2px); /* Hafif yukarı hareket */
         }
 
         /* İletişim Bölümü */
@@ -260,19 +318,13 @@
             }
             .content-section {
                 padding: 20px 15px;
+                margin: 15px auto; /* Mobil için margin güncellendi */
             }
             .content-section h2 {
-                font-size: 24px;
+                font-size: 28px;
             }
             .content-section p {
                 font-size: 1em;
-            }
-            .whatsapp-button { /* Mobil cihazlarda daha küçük yapabiliriz */
-                width: 60px; /* Mobil genişlik artırıldı */
-                height: 60px; /* Mobil yükseklik artırıldı */
-                bottom: 15px;
-                right: 15px;
-                font-size: 35px; /* Mobil ikon boyutu artırıldı */
             }
             /* Mobil cihazlarda tablo sığmazsa yatay kaydırma */
             .table-container {
@@ -281,20 +333,47 @@
             }
             .measurement-table {
                 min-width: 300px; /* Küçük ekranlarda tablonun küçülmemesi için minimum genişlik */
+                width: 95%; /* Mobil için genişliği ayarlandı */
             }
+            .measurement-table th, .measurement-table td {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+
+            .whatsapp-button { /* Mobil cihazlarda daha küçük yapabiliriz */
+                width: 60px; /* Mobil genişlik */
+                height: 60px; /* Mobil yükseklik */
+                bottom: 15px;
+                right: 15px;
+                font-size: 35px; /* Mobil ikon boyutu */
+            }
+
             /* Mobil için okları küçültme ve konumlandırma */
+            .product-image-wrapper { 
+                max-width: 90%; /* Mobil için biraz daha geniş */
+                margin-bottom: 20px;
+                display: block; /* Alt alta gelsinler */
+            }
+            .product-image {
+                margin: 0 auto; /* Mobil için ortala */
+            }
+            .product-nav-arrows-container {
+                position: relative; /* Mobil için absolute değil */
+                top: auto;
+                left: auto;
+                transform: none; /* Transform kaldırıldı */
+                width: calc(100% - 20px); /* Kapsayıcının %100'ü kadar, kenar boşlukları düşülerek */
+                padding: 10px; /* Yanlardan boşluk */
+                margin-top: 10px; /* Resimle oklar arasına boşluk */
+                background-color: transparent; /* Arka planı saydam yap */
+            }
             .product-nav-arrow {
-                padding: 8px 12px;
                 font-size: 20px;
-                top: 60%; /* Mobil cihazlarda daha aşağıya konumlandır */
+                width: 35px;
+                height: 35px;
             }
-
-            .prev-product {
-                left: 5px;
-            }
-
-            .next-product {
-                right: 5px;
+            .product-nav-arrow:hover {
+                transform: none; /* Mobil hover efektini kaldır */
             }
         }
     </style>
@@ -440,14 +519,16 @@
         <section class="content-section">
             <h2>Mavi Erkek Kaplin</h2>
             
-            <div style="position: relative; text-align: center;">
+            <div class="product-image-wrapper">
                 <img src="mavi-erkek-kaplin.png" alt="Mavi Erkek Kaplin Görseli" class="product-image">
-                <a href="mavi-disi-kaplin.html" class="product-nav-arrow prev-product" title="Önceki Ürün">
-                    &#10094; 
-                </a>
-                <a href="mavi-dirsek-kaplin.html" class="product-nav-arrow next-product" title="Sonraki Ürün">
-                    &#10095;
-                </a>
+                <div class="product-nav-arrows-container">
+                    <a href="mavi-disi-kaplin.html" class="product-nav-arrow" title="Önceki Ürün">
+                        &#10094; 
+                    </a>
+                    <a href="mavi-dirsek-kaplin.html" class="product-nav-arrow" title="Sonraki Ürün">
+                        &#10095;
+                    </a>
+                </div>
             </div>
             
             <p>Mavi Erkek Kaplin, sulama ve tesisat sistemlerinde boruları güvenle birleştirmek için tasarlanmıştır. Yüksek dayanıklılığa sahip malzemelerden üretilmiş olup, kolay ve sızdırmaz bağlantı imkanı sunar. Uzun ömürlü kullanımıyla projelerinizde size güven verir.</p>
