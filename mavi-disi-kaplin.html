@@ -231,14 +231,22 @@
             text-align: center;
         }
 
+        /* Yeni eklenen wrapper için stil */
+        .product-image-wrapper {
+            position: relative; /* Okun konumlandırılması için */
+            max-width: 400px; /* Resmin max genişliği ile aynı */
+            margin: 0 auto 30px auto; /* Resmin eski margin değerleri */
+            /* border: 1px solid #eee; Bu border'ı resme taşımayacağız, ok için sorun yaratır */
+            /* box-shadow: 0 0 5px rgba(0,0,0,0.08); Aynı şekilde gölge de resimde kalsın */
+        }
+
         .product-image {
-            max-width: 400px;
+            max-width: 100%; /* Kapsayıcıya uyum sağlasın */
             width: 100%;
             height: auto;
-            display: block;
-            margin: 0 auto 30px auto;
-            border: 1px solid #eee;
-            box-shadow: 0 0 5px rgba(0,0,0,0.08);
+            display: block; /* Margin auto için block olmalı */
+            border: 1px solid #eee; /* Resmin kendi border'ı */
+            box-shadow: 0 0 5px rgba(0,0,0,0.08); /* Resmin kendi gölgesi */
         }
 
         .product-detail-container p {
@@ -292,16 +300,21 @@
         }
 
         /* Ürün Navigasyon Okları Stilleri */
+        /* Bu container artık resim wrapper'ının içinde olacak ve absolute konumlandırılacak */
         .product-nav-arrows-container {
-            margin-top: 40px;
+            position: absolute; /* .product-image-wrapper'a göre konumlandır */
+            top: 50%; /* Dikeyde ortaya hizala */
+            right: 10px; /* Resmin sağından 10px içeride */
+            transform: translateY(-50%); /* Kendi yüksekliğinin yarısı kadar yukarı kaydırarak dikeyde tam ortala */
+            z-index: 10; /* Resmin üzerinde görünmesini sağla */
             display: flex;
-            justify-content: flex-end; /* Butonu sağa hizala */
+            justify-content: flex-end; /* Sadece bir ok olduğu için önemli değil */
             align-items: center;
-            padding: 0 20px;
+            /* padding: 0 20px; */ /* Artık bu padding'e gerek yok */
         }
 
         .product-nav-arrow {
-            background-color: #004797;
+            background-color: rgba(0, 0, 0, 0.5); /* Saydam siyah */
             color: white;
             padding: 12px 20px;
             text-decoration: none;
@@ -309,18 +322,19 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            display: flex; /* İçeriği ortalamak için */
-            justify-content: center; /* İçeriği yatayda ortalamak için */
-            align-items: center; /* İçeriği dikeyde ortalamak için */
-            width: 50px; /* Sadece ok için sabit genişlik */
-            height: 50px; /* Sadece ok için sabit yükseklik */
-            font-size: 24px; /* Ok boyutu */
-            box-sizing: border-box; /* Padding dahil genişlik/yükseklik */
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            width: 50px; 
+            height: 50px; 
+            font-size: 24px; 
+            box-sizing: border-box; 
         }
 
         .product-nav-arrow:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
+            background-color: rgba(0, 0, 0, 0.7); /* Hover'da biraz daha koyu */
+            transform: translateY(-2px); /* Bu transform'u kaldırıp sadece background değiştirebiliriz, veya translateX de kullanabiliriz */
+            /* transform: translateX(5px); Okun hafifçe ileri gitmesini sağlar */
         }
 
         /* İletişim Bölümü */
@@ -378,9 +392,13 @@
                 padding: 15px;
                 margin: 15px auto;
             }
-            .product-image {
+            .product-image-wrapper { /* Mobil için wrapper genişliği */
                 max-width: 80%;
                 margin-bottom: 20px;
+            }
+            .product-image {
+                /* max-width: 80%; */ /* Artık wrapper kontrol ediyor */
+                margin-bottom: 0; /* Wrapper'a taşındı */
             }
             .product-detail-container h2 {
                 font-size: 28px;
@@ -410,6 +428,7 @@
                 height: 40px;
                 font-size: 20px;
                 padding: 8px; /* Oranları korumak için padding düşürüldü */
+                right: 5px; /* Mobil için sağdan biraz daha içeride */
             }
         }
     </style>
@@ -707,7 +726,13 @@
     <main>
         <section class="product-detail-container">
             <h2>Mavi Seri Dişi Kaplin</h2>
-            <img src="mavidisi.png" alt="Mavi Seri Dişi Kaplin" class="product-image">
+            <div class="product-image-wrapper">
+                <img src="mavidisi.png" alt="Mavi Seri Dişi Kaplin" class="product-image">
+                <div class="product-nav-arrows-container">
+                    <a href="#" class="product-nav-arrow" onclick="goToNextProduct()"><i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
             <p>Mavi Seri Dişi Kaplin, özellikle polietilen boruların birleştirilmesi için tasarlanmış yüksek performanslı bir bağlantı elemanıdır. Sızdırmazlık ve dayanıklılık konusunda üstün özellikler sunarak uzun ömürlü ve güvenilir bir bağlantı sağlar. Tarımsal sulama sistemleri, endüstriyel tesisatlar ve konut uygulamaları gibi geniş bir kullanım alanına sahiptir.</p>
             
             <p>Kolay montaj özelliği sayesinde hızlı ve pratik kurulum imkanı sunar, bu da işçilik ve zaman maliyetlerini düşürür. Mavi Seri Dişi Kaplin, zorlu çalışma koşullarına ve yüksek basınca karşı dirençli yapısıyla, sistemlerinizin sorunsuz çalışmasına katkıda bulunur.</p>
@@ -743,10 +768,7 @@
 
             <p>Ürün hakkında daha detaylı bilgi almak veya sipariş vermek için bizimle iletişime geçebilirsiniz.</p>
 
-            <div class="product-nav-arrows-container">
-                <a href="#" class="product-nav-arrow" onclick="goToNextProduct()"><i class="fas fa-arrow-right"></i></a>
-            </div>
-        </section>
+            </section>
     </main>
 
     <section class="contact">
