@@ -81,9 +81,9 @@
             left: 0;
             z-index: 999;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            max-height: 80vh; 
-            overflow-y: auto; 
-            -webkit-overflow-scrolling: touch; 
+            max-height: 80vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .main-menu-container.active {
@@ -642,7 +642,15 @@
     <main>
         <section class="product-detail-container">
             <h2>Mavi Seri Tapa</h2>
-            <img src="mavi-tapa.png" alt="Mavi Seri Tapa" class="product-image">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+                <a href="mavi-manson.html" style="text-decoration: none; color: #004797; font-size: 30px;">
+                    &#9664;
+                </a>
+                <img src="mavi-tapa.png" alt="Mavi Seri Tapa" class="product-image">
+                <a href="mavi-erkek-te.html" style="text-decoration: none; color: #004797; font-size: 30px;">
+                    &#9654;
+                </a>
+            </div>
             <p>Mavi Seri Tapa, sulama ve tesisat sistemlerinde boru hatlarının ucunu veya istenmeyen açıklıkları güvenli bir şekilde kapatmak için kullanılır. Sızdırmaz ve dayanıklı yapısıyla uzun ömürlü bir çözüm sunar. Kolay montajı sayesinde hızlı ve pratik bir kullanım sağlar.</p>
 
             <h3>Ürün Ölçüleri:</h3>
@@ -655,15 +663,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>20 mm</td><td>63 mm</td></tr> 
-                        <tr><td>25 mm</td><td>75 mm</td></tr> 
-                        <tr><td>32 mm</td><td>90 mm</td></tr> 
-                        <tr><td>40 mm</td><td>110 mm</td></tr> 
-                        <tr><td>50 mm</td><td></td></tr> </tbody>
+                        <tr><td>20 mm</td><td>63 mm</td></tr>
+                        <tr><td>25 mm</td><td>75 mm</td></tr>
+                        <tr><td>32 mm</td><td>90 mm</td></tr>
+                        <tr><td>40 mm</td><td>110 mm</td></tr>
+                        <tr><td>50 mm</td><td></td></tr>
+                    </tbody>
                 </table>
             </div>
 
             <p>Ürün hakkında daha detaylı bilgi almak veya sipariş vermek için bizimle iletişime geçebilirsiniz.</p>
+
+            <div class="product-nav-arrows-container">
+                <a href="mavi-manson.html" class="product-nav-arrow">
+                    <i class="fas fa-chevron-left"></i> Önceki Ürün
+                </a>
+                <a href="mavi-erkek-te.html" class="product-nav-arrow">
+                    Sonraki Ürün <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
         </section>
     </main>
 
