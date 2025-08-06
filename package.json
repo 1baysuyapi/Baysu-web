@@ -1,12 +1,11 @@
 {
-<<<<<<< HEAD
-  "name": "baysu-web",
+  "name": "baysu-web-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Baysu Yapi web application server",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -20,25 +19,9 @@
   },
   "homepage": "https://github.com/1baysuyapi/Baysu-web#readme",
   "dependencies": {
-    "body-parser": "^2.2.0",
-    "cors": "^2.8.5",
-    "express": "^5.1.0"
-  },
-  "devDependencies": {}
-=======
-  "name": "baysu-web-app",
-  "version": "1.0.0",
-  "description": "Baysu Yapi web application server",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "express": "^4.19.2"
   },
-  "author": "",
-  "license": "ISC"
->>>>>>> 0890ca4aea42d5fd0efc2f6d8600e5bba56bee9d
+  "devDependencies": {}
 }
