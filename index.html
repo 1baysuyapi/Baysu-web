@@ -11,28 +11,29 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f4f4f4;
+            background-color: #F5F5DC; /* Arka planı krem rengi yaptık */
             color: #222;
         }
 
         /* YENİ LOGO BÖLÜMÜ */
         .anasayfa-logo {
             width: 100%;
-            height: 100vh; /* Ekran yüksekliğinin tamamı */
-            background-color: #003366; /* Resimle uyumlu daha koyu bir mavi */
+            height: 25vh; /* Yüksekliği küçülttük */
+            background-color: #004797; /* Koyu mavi arka plan */
             display: flex;
             align-items: center;
-            justify-content: center; /* Resmi ortalar */
-            overflow: hidden; /* Taşmayı engeller */
+            justify-content: flex-start; /* Logoyu sola hizaladık */
+            overflow: hidden;
             position: relative;
         }
 
         .anasayfa-logo img {
-            max-width: 80%; /* Ekran genişliğinin %80'i kadar */
-            max-height: 80%; /* Ekran yüksekliğinin %80'i kadar */
-            object-fit: contain; /* Resmin tamamını sığdırır, orantıyı korur */
+            width: 25%; /* Sayfanın çeyreği kadar genişlik */
+            height: 100%;
+            object-fit: cover;
+            object-position: left;
+            margin-left: 0;
             display: block;
-            margin: 0 auto; /* Yatayda ortalar */
         }
 
         /* YENİ HEADER (Arama ve Eylemler) */
@@ -450,11 +451,11 @@
         /* Responsive Düzenlemeler */
         @media (max-width: 768px) {
             .anasayfa-logo {
-                height: 100vh;
+                height: 15vh;
             }
             
             .anasayfa-logo img {
-                width: 80%;
+                width: 50%;
             }
 
             header {
