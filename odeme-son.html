@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Siparişi Tamamla</title>
+    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Ödeme</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Genel CSS */
@@ -515,7 +515,7 @@
                                 <label for="kartNumarasi">Kart Numarası</label>
                             </div>
                             <div class="form-control">
-                                <input type="text" id="sonKullanmaTarihi" placeholder=" ">
+                                <input type="text" id="sonKullanmaTarihi" placeholder=" " maxlength="5">
                                 <label for="sonKullanmaTarihi">Son Kullanma Tarihi (AA/YY)</label>
                             </div>
                             <div class="form-control">
@@ -572,11 +572,11 @@
                 <h2>SEPET ÖZETİ</h2>
                 <div class="summary-row">
                     <span>Ara Toplam</span>
-                    <span>0 TL</span>
+                    <span>150,00 TL</span>
                 </div>
                 <div class="summary-row">
                     <span>KDV</span>
-                    <span>0 TL</span>
+                    <span>27,00 TL</span>
                 </div>
                 <div class="summary-row">
                     <span>Kargo Ücreti</span>
@@ -584,7 +584,7 @@
                 </div>
                 <div class="summary-row">
                     <span>GENEL TOPLAM</span>
-                    <span>0 TL</span>
+                    <span>177,00 TL</span>
                 </div>
                 <div class="secure-badge">
                     <i class="fas fa-lock"></i> Bu site SSL güvencesi altındadır
@@ -628,11 +628,8 @@
 
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
-                    // Tüm tabları ve içerikleri deactive yap
                     tabs.forEach(t => t.classList.remove('active'));
                     contents.forEach(c => c.classList.remove('active'));
-
-                    // Tıklanan tab ve ilgili içeriği active yap
                     tab.classList.add('active');
                     const targetTab = tab.getAttribute('data-tab');
                     document.getElementById(targetTab).classList.add('active');
@@ -651,6 +648,52 @@
                         content.style.maxHeight = content.scrollHeight + 'px';
                     }
                 });
+            });
+
+            // Kredi kartı son kullanma tarihi için eklenen yeni fonksiyon
+            const sonKullanmaTarihiInput = document.getElementById('sonKullanmaTarihi');
+            sonKullanmaTarihiInput.addEventListener('input', (event) => {
+                let value = event.target.value.replace(/\D/g, ''); // Sadece rakamları al
+                let formattedValue = '';
+
+                if (value.length > 2) {
+                    formattedValue = value.substring(0, 2) + '/' + value.substring(2, 4);
+                } else {
+                    formattedValue = value;
+                }
+                
+                event.target.value = formattedValue;
+            });
+
+            // Ödeme Tamamla butonu için mevcut fonksiyon
+            const completePaymentButton = document.getElementById('completePaymentButton');
+            
+            completePaymentButton.addEventListener('click', () => {
+                const activeTab = document.querySelector('.payment-tab.active').getAttribute('data-tab');
+
+                if (activeTab === 'kredi-karti') {
+                    const cardNumber = document.getElementById('kartNumarasi').value;
+                    const expiry = document.getElementById('sonKullanmaTarihi').value;
+                    const cvv = document.getElementById('cvv').value;
+                    
+                    if (!cardNumber || !expiry || !cvv) {
+                        alert('Lütfen kart bilgilerinizi eksiksiz girin.');
+                        return;
+                    }
+
+                    // Basit bir tarih kontrolü ekleyelim.
+                    const [month, year] = expiry.split('/');
+                    if (parseInt(month) < 1 || parseInt(month) > 12 || expiry.length !== 5) {
+                         alert('Lütfen geçerli bir son kullanma tarihi girin (AA/YY).');
+                         return;
+                    }
+                    
+                    alert('Ödeme işlemi başarıyla gerçekleştirildi!');
+                } else if (activeTab === 'havale-eft') {
+                    alert('Havale/EFT ile ödeme işleminizi tamamlamak için banka bilgilerini not alınız.');
+                }
+                
+                window.location.href = 'siparis-tamamlandi.html';
             });
         });
     </script>
