@@ -15,8 +15,8 @@
             color: #222;
         }
 
-        /* YENİ HEADER STİLLERİ - KOD GÜNCELLENDİ */
-        .anasayfa-header {
+        /* YENİ LOGO BÖLÜMÜ */
+        .anasayfa-logo {
             width: 100%;
             height: 25vh; /* Sayfanın çeyreği kadar yükseklik */
             background-color: #004797; /* Resmin arkasındaki renk */
@@ -27,13 +27,60 @@
             position: relative;
         }
 
-        .anasayfa-header img {
+        .anasayfa-logo img {
             width: 25%; /* Sayfanın çeyreği kadar genişlik */
             height: 100%;
             object-fit: cover;
             object-position: left;
             margin-left: 0;
             display: block;
+        }
+
+        /* YENİ HEADER (Arama ve Eylemler) */
+        header {
+            background: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .search-bar {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 50%;
+            max-width: 400px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 8px 12px 8px 40px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .search-bar .fas {
+            position: absolute;
+            left: 15px;
+            color: #888;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-actions a {
+            text-decoration: none;
+            color: #004797;
+            font-weight: bold;
+            font-size: 14px;
         }
 
         /* Navigasyon Stilleri */
@@ -108,12 +155,12 @@
             padding: 0 20px;
         }
         
-        /* ÜRÜN KATEGORİLERİ - KOD GÜNCELLENDİ */
+        /* ÜRÜN KATEGORİLERİ */
         .primary-category-column,
         .secondary-categories-column,
         .tertiary-products-column {
             flex-shrink: 0;
-            width: 33.33%; /* Her sütunun üçte bir genişliğinde olmasını sağlar */
+            width: 33.33%;
             padding: 10px;
             border-right: 1px solid rgba(255,255,255,0.1);
             box-sizing: border-box;
@@ -138,17 +185,16 @@
             cursor: pointer;
             margin-bottom: 5px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Merkezi hizalama */
             align-items: center;
-            text-align: center; /* Yazıları ortala */
-        }
-        
-        /* KAPLİNLER KUTUCUKLARI - KOD GÜNCELLENDİ */
-        .secondary-category-item h3 {
-            width: 100%; /* Kutucuğu tam doldur */
             text-align: center;
         }
 
+        .secondary-category-item h3 {
+            width: 100%;
+            text-align: center;
+        }
+        
         .primary-category-item:hover,
         .primary-category-item.active {
             background-color: #0056b3;
@@ -169,7 +215,7 @@
             transform: rotate(90deg);
         }
         
-        /* ÜRÜN LİSTELERİ - KOD GÜNCELLENDİ */
+        /* ÜRÜN LİSTELERİ */
         .product-list {
             list-style: none;
             padding: 0;
@@ -197,7 +243,7 @@
             font-size: 0.9em;
             display: block;
             padding: 8px 10px;
-            text-align: center; /* Ürün yazılarını ortala */
+            text-align: center;
         }
         
         .product-list a:hover {
@@ -404,12 +450,12 @@
         
         /* Responsive Düzenlemeler */
         @media (max-width: 768px) {
-            .anasayfa-header {
+            .anasayfa-logo {
                 height: 15vh;
             }
             
-            .anasayfa-header img {
-                width: 50%; /* Küçük ekranlarda resim daha geniş yer kaplasın */
+            .anasayfa-logo img {
+                width: 50%;
             }
 
             header {
@@ -417,11 +463,6 @@
                 padding: 15px 10px;
                 height: auto;
                 overflow: visible;
-            }
-            
-            .header-logo img {
-                height: 60px;
-                width: auto;
             }
             
             .search-bar {
@@ -488,9 +529,19 @@
 </head>
 <body>
     
-    <div class="anasayfa-header">
-        <img src="https://storage.googleapis.com/gcp-content-fetcher/uploaded:WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png-580ba5ea-7bdd-46d5-8d47-45d31705cfb6" alt="BAYSU YAPI VE SULAMA MALZEMELERİ">
+    <div class="anasayfa-logo">
+        <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="BAYSU YAPI VE SULAMA MALZEMELERİ">
     </div>
+
+    <header>
+        <div class="search-bar" id="searchBarContainer">
+            <input type="search" id="searchInput" placeholder="Ürün Ara...">
+            <i class="fas fa-search"></i>
+            <div id="searchResults"></div>
+        </div>
+        <div class="header-actions" id="headerActions">
+        </div>
+    </header>
 
     <nav>
         <div class="nav-links">
@@ -714,12 +765,11 @@
             const allProducts = [];
             document.querySelectorAll('.product-list a').forEach(link => {
                 allProducts.push({
-                    name: link.dataset.productName,
+                    name: link.dataset.product-name,
                     url: link.href
                 });
             });
 
-            // "Hesabım" içeriğini dolduran fonksiyon
             function populateAccountContent(user) {
                 document.getElementById('userName').textContent = user.name;
                 document.getElementById('userEmail').textContent = user.email;
@@ -751,6 +801,12 @@
                 const currentUser = isLoggedIn ? users.find(u => u.email === loggedInUserEmail) : null;
                 
                 headerActions.innerHTML = ''; 
+                
+                const cartLink = document.createElement('a');
+                cartLink.href = '#';
+                cartLink.innerHTML = '<i class="fas fa-shopping-cart"></i> Sepet';
+                headerActions.appendChild(cartLink);
+
                 if (isLoggedIn) {
                     const myAccountLink = document.createElement('a');
                     myAccountLink.href = '#'; 
@@ -783,12 +839,7 @@
                     loginLink.id = 'loginBtn';
                     loginLink.innerHTML = '<i class="fas fa-user"></i> Giriş Yap';
                     
-                    const cartLink = document.createElement('a');
-                    cartLink.href = '#';
-                    cartLink.innerHTML = '<i class="fas fa-shopping-cart"></i> Sepet';
-
                     headerActions.appendChild(loginLink);
-                    headerActions.appendChild(cartLink);
                 }
             }
 
@@ -841,7 +892,7 @@
 
             document.querySelectorAll('.secondary-category-item').forEach(item => {
                 item.addEventListener('click', () => {
-                    const productListId = item.dataset.targetProducts + '-products';
+                    const productListId = item.dataset.target-products + '-products';
                     
                     resetSecondaryItems(item);
                     item.classList.add('active');
@@ -888,9 +939,9 @@
 
             document.addEventListener('click', (event) => {
                 const nav = document.querySelector('nav');
-                const header = document.querySelector('.anasayfa-header'); /* Header selector değişti */
-                const searchBarContainer = document.getElementById('searchBarContainer');
-                if (!nav.contains(event.target) && !header.contains(event.target) && !searchBarContainer.contains(event.target)) {
+                const header = document.querySelector('header');
+                const anasayfaLogo = document.querySelector('.anasayfa-logo');
+                if (!nav.contains(event.target) && !header.contains(event.target) && !anasayfaLogo.contains(event.target)) {
                     if (mainMenuContainer.classList.contains('active')) {
                         mainMenuContainer.classList.remove('active');
                         resetMenuState();
