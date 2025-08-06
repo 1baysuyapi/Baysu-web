@@ -6,7 +6,7 @@
     <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Siparişi Tamamla</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        /* Ana Sayfa ile Paylaşılan Genel CSS */
+        /* Genel CSS */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -110,7 +110,7 @@
         .menu-toggle:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
-        
+
         /* Ödeme Sayfasına Özel CSS */
         .checkout-container {
             display: flex;
@@ -121,7 +121,6 @@
             max-width: 1200px;
             margin: 20px auto;
         }
-
         .checkout-details {
             flex: 2;
         }
@@ -133,7 +132,6 @@
             position: sticky;
             top: 100px;
         }
-
         .checkout-progress {
             display: flex;
             justify-content: space-between;
@@ -153,14 +151,19 @@
             color: #004797;
             text-decoration: underline;
         }
-
-        /* Payment Options */
         .payment-options {
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             margin-bottom: 20px;
+        }
+        .payment-options h3 {
+            font-size: 1.2rem;
+            color: #004797;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
         }
         .payment-tabs {
             display: flex;
@@ -172,6 +175,7 @@
             cursor: pointer;
             font-weight: bold;
             color: #666;
+            border-bottom: 2px solid transparent;
         }
         .payment-tab.active {
             color: #004797;
@@ -183,7 +187,6 @@
         .payment-content.active {
             display: block;
         }
-        
         /* Kredi Kartı Formu */
         .credit-card-form {
             display: grid;
@@ -217,7 +220,6 @@
             grid-column: 1 / -1;
             margin-top: 20px;
         }
-        
         /* Havale/EFT */
         .bank-info {
             display: flex;
@@ -240,7 +242,6 @@
         .bank-details p:first-child {
             font-weight: bold;
         }
-
         /* Yasal Bildirimler */
         .legal-notices {
             margin-top: 30px;
@@ -274,38 +275,71 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.2s ease-out;
-            background-color: #f9f9f9;
+            background-color: #fff;
+            margin-bottom: 10px;
+        }
+        .collapsible-content p {
+            margin-top: 0;
+            padding-bottom: 10px;
+        }
+        
+        /* Teslimat ve Fatura Bilgileri */
+        .address-info {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .address-info h3 {
+            font-size: 1.2rem;
+            color: #004797;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .address-info-details {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        .address-info-details p {
+            margin: 0;
+        }
+        .address-info-details .label {
+            font-weight: bold;
         }
 
-        /* Sepet Özeti ve Bilgiler */
-        .summary-card {
+        /* Sepet Özeti */
+        .cart-summary {
             background: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 100px;
         }
-        .summary-card h2 {
+        .cart-summary h2 {
             margin: 0 0 15px 0;
             font-size: 1.5rem;
             color: #004797;
             border-bottom: 1px solid #eee;
             padding-bottom: 10px;
         }
-        .summary-row {
+        .cart-summary .summary-row {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
         }
-        .summary-row.total {
+        .cart-summary .summary-row:last-of-type {
             font-size: 1.2rem;
             font-weight: bold;
-            color: #004797;
-        }
-        .summary-row:last-of-type {
-            border-bottom: none;
+            border-top: 2px solid #004797;
+            padding-top: 10px;
+            margin-top: 15px;
         }
         .complete-order-button {
+            display: block;
             width: 100%;
             padding: 15px;
             background: #007bff;
@@ -315,39 +349,14 @@
             font-size: 1.2rem;
             cursor: pointer;
             margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
         }
         .secure-badge {
             text-align: center;
             margin-top: 15px;
             font-size: 0.8rem;
             color: #aaa;
-        }
-        .small-text {
-            font-size: 0.8rem;
-            color: #666;
-            margin-top: 10px;
-            text-align: center;
-        }
-        .small-text input {
-            margin-right: 5px;
-        }
-        .shipping-info, .invoice-info {
-            padding: 20px;
-        }
-        .shipping-info h3, .invoice-info h3 {
-            margin: 0 0 15px 0;
-            font-size: 1.2rem;
-            color: #004797;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .shipping-info p, .invoice-info p {
-            margin: 0;
-            font-size: 0.9rem;
-            line-height: 1.4;
         }
 
         /* Footer */
@@ -457,148 +466,133 @@
         </div>
         <a href="index.html" class="menu-toggle">Ürünlerimiz +</a>
     </nav>
-    
+
     <main>
         <div class="checkout-container">
             <div class="checkout-details">
                 <div class="checkout-progress">
-                    <span class="progress-step">1. TESLİMAT BİLGİLERİ</span>
-                    <i class="fas fa-arrow-right" style="color: #ccc;"></i>
+                    <span class="progress-step"><i class="fas fa-check-circle" style="color: green;"></i> 1. TESLİMAT BİLGİLERİ</span>
+                    <i class="fas fa-arrow-right" style="color: #004797;"></i>
                     <span class="progress-step active">2. ÖDEME İŞLEMLERİ</span>
                 </div>
 
+                <div class="address-info" id="delivery-info-container">
+                    <h3>TESLİMAT BİLGİLERİ</h3>
+                    <div class="address-info-details" id="delivery-info-details">
+                        <p><span class="label">Adres Başlığı:</span> <span id="display-adresBasligi"></span></p>
+                        <p><span class="label">Ad Soyad:</span> <span id="display-ad-soyad"></span></p>
+                        <p><span class="label">Adres:</span> <span id="display-adres"></span></p>
+                        <p><span class="label">Şehir/İlçe:</span> <span id="display-sehir-ilce"></span></p>
+                        <p><span class="label">Telefon:</span> <span id="display-telefon"></span></p>
+                        <p><span class="label">Kargo:</span> <span id="display-kargo"></span></p>
+                    </div>
+                </div>
+
+                <div class="address-info" id="invoice-info-container">
+                    <h3>FATURA BİLGİLERİ</h3>
+                    <div class="address-info-details" id="invoice-info-details">
+                        <p><span class="label">Fatura Tipi:</span> <span id="display-faturaTipi"></span></p>
+                        <p><span class="label">Ad Soyad:</span> <span id="display-fatura-ad-soyad"></span></p>
+                        <p><span class="label">Adres:</span> <span id="display-fatura-adres"></span></p>
+                        <p><span class="label">TC Kimlik No:</span> <span id="display-tcKimlikNo"></span></p>
+                    </div>
+                </div>
+
                 <div class="payment-options">
+                    <h3>ÖDEME SEÇENEKLERİ</h3>
                     <div class="payment-tabs">
-                        <div class="payment-tab active" data-tab="kredi-karti">KREDI/BANKA KARTI</div>
-                        <div class="payment-tab" data-tab="havale-eft">HAVALE/EFT</div>
+                        <div class="payment-tab active" data-tab="kredi-karti">Kredi Kartı</div>
+                        <div class="payment-tab" data-tab="havale-eft">Havale/EFT</div>
                     </div>
 
-                    <div id="kredi-karti" class="payment-content active">
-                        <div class="card-visual">
-                            <img src="https://i.ibb.co/h9yTzXf/credit-card-mockup.png" alt="Kredi Kartı Görseli">
-                        </div>
+                    <div class="payment-content active" id="kredi-karti">
                         <div class="credit-card-form">
-                            <div class="form-control full-width">
-                                <input type="text" id="cardName" placeholder=" ">
-                                <label for="cardName">Kart Üzerindeki İsim</label>
+                             <div class="card-visual">
+                                <img src="kart_gorseli.png" alt="Kredi Kartı Görseli">
                             </div>
                             <div class="form-control full-width">
-                                <input type="text" id="cardNumber" placeholder=" ">
-                                <label for="cardNumber">Kart Numarası</label>
+                                <input type="text" id="kartNumarasi" placeholder=" ">
+                                <label for="kartNumarasi">Kart Numarası</label>
                             </div>
                             <div class="form-control">
-                                <select id="expMonth">
-                                    <option value="">Ay</option>
-                                </select>
-                            </div>
-                            <div class="form-control">
-                                <select id="expYear">
-                                    <option value="">Yıl</option>
-                                </select>
+                                <input type="text" id="sonKullanmaTarihi" placeholder=" ">
+                                <label for="sonKullanmaTarihi">Son Kullanma Tarihi (AA/YY)</label>
                             </div>
                             <div class="form-control">
                                 <input type="text" id="cvv" placeholder=" ">
                                 <label for="cvv">CVV</label>
                             </div>
+                            <div class="form-control full-width">
+                                <input type="text" id="kartUzerindekiAdSoyad" placeholder=" ">
+                                <label for="kartUzerindekiAdSoyad">Kart Üzerindeki Ad Soyad</label>
+                            </div>
                         </div>
                         <div class="taksit-secimi">
-                            <h3>TAKSİT SEÇİMİ</h3>
-                            <p>Kartınıza özel taksit opsiyonlarını görebilmek için lütfen kart numarasını giriniz.</p>
+                            <h4>Taksit Seçenekleri</h4>
+                            <p>Taksit seçenekleri bankanıza göre değişiklik gösterebilir.</p>
                         </div>
                     </div>
 
-                    <div id="havale-eft" class="payment-content">
+                    <div class="payment-content" id="havale-eft">
+                        <p>Aşağıdaki banka hesaplarından birine havale/eft yaparak ödemenizi tamamlayabilirsiniz. Ödemenizi yaptıktan sonra sipariş numaranızı açıklama kısmına yazmayı unutmayın.</p>
                         <div class="bank-info">
-                            <img src="https://upload.wikimedia.org/wikipedia/tr/b/bc/Ziraat_Bankas%C4%B1_logosu.svg" alt="Ziraat Bankası">
+                            <img src="garanti-bankasi-logo.png" alt="Garanti Bankası">
                             <div class="bank-details">
-                                <p>Ziraat Bankası</p>
-                                <p>IBAN: TR48 0001 0023 0058 1525 7450 01</p>
-                                <p>Hesap Sahibi: Pımtaş Plastik İnş. Malz. San. ve Tic. A.Ş.</p>
-                                <p>Hesap Türü: TL</p>
+                                <p>GARANTİ BANKASI</p>
+                                <p><strong>IBAN:</strong> TR00 0000 0000 0000 0000 0000 00</p>
+                                <p><strong>Hesap Adı:</strong> BAYSU YAPI VE SULAMA MALZEMELERİ</p>
                             </div>
                         </div>
                         <div class="bank-info">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Halkbank_logo.svg" alt="Halkbank">
+                            <img src="is-bankasi-logo.png" alt="İş Bankası">
                             <div class="bank-details">
-                                <p>HALKBANK</p>
-                                <p>IBAN: TR65 0001 2009 6190 0010 2605 76</p>
-                                <p>Hesap Sahibi: Pımtaş Plastik İnş. Malz. San. ve Tic. A.Ş.</p>
-                                <p>Hesap Türü: TL</p>
+                                <p>İŞ BANKASI</p>
+                                <p><strong>IBAN:</strong> TR00 0000 0000 0000 0000 0000 00</p>
+                                <p><strong>Hesap Adı:</strong> BAYSU YAPI VE SULAMA MALZEMELERİ</p>
                             </div>
                         </div>
                     </div>
-
                 </div>
+
+                <button id="completePaymentButton" class="complete-order-button">ÖDEMEYİ TAMAMLA</button>
 
                 <div class="legal-notices">
-                    <h3>YASAL BİLDİRİMLER</h3>
-                    <button class="collapsible">ÖN BİLGİLENDİRME FORMU</button>
+                    <button type="button" class="collapsible">Ön Bilgilendirme Formu</button>
                     <div class="collapsible-content">
-                        <p>Ön bilgilendirme formu içeriği...</p>
+                        <p>Ön bilgilendirme metnini buraya ekleyebilirsiniz.</p>
                     </div>
-                    <button class="collapsible">MESAFELİ SATIŞ SÖZLEŞMESİ</button>
+                    <button type="button" class="collapsible">Mesafeli Satış Sözleşmesi</button>
                     <div class="collapsible-content">
-                        <p>Mesafeli satış sözleşmesi içeriği...</p>
+                        <p>Mesafeli satış sözleşmesi metnini buraya ekleyebilirsiniz.</p>
                     </div>
                 </div>
-
-                <p class="small-text">"SİPARİŞİ TAMAMLA" butonuna basmanız halinde, seçmiş olduğunuz ödeme yöntemine uygun olarak, toplam <strong>396,45 TL</strong> tahsil edilecektir.</p>
-
             </div>
 
-            <div class="checkout-summary-container">
-                <div class="summary-card">
-                    <h2>SEPET ÖZETİ</h2>
-                    <div class="summary-row">
-                        <span>Ara Toplam</span>
-                        <span>330,38 TL</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>KDV</span>
-                        <span>66,08 TL</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>KDV Dahil</span>
-                        <span>396,45 TL</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>Kargo</span>
-                        <span>0,00 TL</span>
-                    </div>
-                    <div class="summary-row total">
-                        <span>Toplam</span>
-                        <span>396,45 TL</span>
-                    </div>
-                    
-                    <p class="small-text">
-                        <input type="checkbox" id="approveLegal" required>
-                        <label for="approveLegal">Ön bilgilendirme formunu ve mesafeli satış sözleşmesini kabul ediyorum.</label>
-                    </p>
-                    
-                    <button class="complete-order-button" id="completeOrderBtn">SİPARİŞİ TAMAMLA</button>
-                    
-                    <div class="secure-badge">
-                        <i class="fas fa-lock"></i> This site is SSL SECURED
-                    </div>
+            <div class="checkout-summary cart-summary">
+                <h2>SEPET ÖZETİ</h2>
+                <div class="summary-row">
+                    <span>Ara Toplam</span>
+                    <span>150,00 TL</span>
                 </div>
-
-                <div class="summary-card shipping-info">
-                    <h3>TESLİMAT BİLGİLERİ <a href="#" style="font-size: 0.9rem;">düzenle</a></h3>
-                    <p>Adasdasdasd Sadasdasdas</p>
-                    <p>asdjadjsiojdsjioajdjsağıdj mahakkeki</p>
-                    <p>Göle / Ardahan / Türkiye</p>
+                <div class="summary-row">
+                    <span>KDV</span>
+                    <span>27,00 TL</span>
                 </div>
-                
-                <div class="summary-card invoice-info">
-                    <h3>FATURA BİLGİLERİ <a href="#" style="font-size: 0.9rem;">düzenle</a></h3>
-                    <p>Asdasdasd Sadasdasdas</p>
-                    <p>asdjadjsiojdsjioajdjsağıdj mahakkeki</p>
-                    <p>Göle / Ardahan / Türkiye</p>
+                <div class="summary-row">
+                    <span>Kargo Ücreti</span>
+                    <span>ALICI ÖDEMELİ</span>
+                </div>
+                <div class="summary-row">
+                    <span>GENEL TOPLAM</span>
+                    <span>177,00 TL</span>
+                </div>
+                <div class="secure-badge">
+                    <i class="fas fa-lock"></i> Bu site SSL güvencesi altındadır
                 </div>
             </div>
         </div>
     </main>
-    
+
     <footer>
         &copy; 2025 BAYSU YAPI VE SULAMA MALZEMELERİ - Tüm hakları saklıdır.
     </footer>
@@ -608,66 +602,57 @@
     </a>
 
     <script>
-        // Ödeme sekmeleri
-        const paymentTabs = document.querySelectorAll('.payment-tab');
-        const paymentContents = document.querySelectorAll('.payment-content');
+        document.addEventListener('DOMContentLoaded', () => {
+            // odeme.html'den gelen verileri al ve göster
+            const deliveryInfo = JSON.parse(localStorage.getItem('deliveryInfo'));
+            const shippingMethod = localStorage.getItem('shippingMethod');
+            
+            if (deliveryInfo) {
+                document.getElementById('display-adresBasligi').textContent = deliveryInfo.adresBasligi;
+                document.getElementById('display-ad-soyad').textContent = `${deliveryInfo.ad} ${deliveryInfo.soyad}`;
+                document.getElementById('display-adres').textContent = deliveryInfo.adres;
+                document.getElementById('display-sehir-ilce').textContent = `${deliveryInfo.city}/${deliveryInfo.district}`;
+                document.getElementById('display-telefon').textContent = deliveryInfo.cepTelefonu || deliveryInfo.telefon;
+                document.getElementById('display-kargo').textContent = shippingMethod;
 
-        paymentTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                paymentTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
+                // Fatura bilgileri
+                document.getElementById('display-faturaTipi').textContent = deliveryInfo.faturaTipi;
+                document.getElementById('display-fatura-ad-soyad').textContent = `${deliveryInfo.ad} ${deliveryInfo.soyad}`;
+                document.getElementById('display-fatura-adres').textContent = deliveryInfo.adres;
+                document.getElementById('display-tcKimlikNo').textContent = deliveryInfo.tcKimlikNo;
+            }
 
-                paymentContents.forEach(content => content.classList.remove('active'));
-                document.getElementById(tab.dataset.tab).classList.add('active');
+            // Tab sistemi
+            const tabs = document.querySelectorAll('.payment-tab');
+            const contents = document.querySelectorAll('.payment-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Tüm tabları ve içerikleri deactive yap
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+
+                    // Tıklanan tab ve ilgili içeriği active yap
+                    tab.classList.add('active');
+                    const targetTab = tab.getAttribute('data-tab');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+
+            // Collapsible (açılır-kapanır) menüler
+            const collapsibles = document.querySelectorAll('.collapsible');
+            collapsibles.forEach(collapsible => {
+                collapsible.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    }
+                });
             });
         });
-
-        // Yasal bildirimler için collapsible
-        const collapsibles = document.querySelectorAll('.collapsible');
-        collapsibles.forEach(item => {
-            item.addEventListener('click', function() {
-                this.classList.toggle('active');
-                const content = this.nextElementSibling;
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
-            });
-        });
-
-        // Kredi kartı formunu dinamik doldurma (Ay ve Yıl)
-        const expMonthSelect = document.getElementById('expMonth');
-        const expYearSelect = document.getElementById('expYear');
-        const currentYear = new Date().getFullYear();
-
-        // Ayları doldur
-        for (let i = 1; i <= 12; i++) {
-            const option = document.createElement('option');
-            option.value = i < 10 ? '0' + i : i;
-            option.textContent = i < 10 ? '0' + i : i;
-            expMonthSelect.appendChild(option);
-        }
-
-        // Yılları doldur
-        for (let i = 0; i < 15; i++) {
-            const year = currentYear + i;
-            const option = document.createElement('option');
-            option.value = year;
-            option.textContent = year;
-            expYearSelect.appendChild(option);
-        }
-
-        // "Siparişi Tamamla" butonunun yasal bildirimi onayla kutucuğu
-        const approveCheckbox = document.getElementById('approveLegal');
-        const completeOrderButton = document.getElementById('completeOrderBtn');
-        
-        completeOrderButton.disabled = true; // Başlangıçta butonu devre dışı bırak
-
-        approveCheckbox.addEventListener('change', function() {
-            completeOrderButton.disabled = !this.checked;
-        });
-
     </script>
 </body>
 </html>
