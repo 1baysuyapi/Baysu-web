@@ -18,21 +18,19 @@
         /* YENİ LOGO BÖLÜMÜ */
         .anasayfa-logo {
             width: 100%;
-            height: 25vh; /* Yüksekliği küçülttük */
-            background-color: #004797; /* Koyu mavi arka plan */
+            height: 25vh; /* Yüksekliği bu şekilde kaldı */
+            background-color: #fff; /* Arka planı beyaz yaptık */
             display: flex;
-            align-items: center;
-            justify-content: flex-start; /* Logoyu sola hizaladık */
+            align-items: center; /* Dikeyde ortalar */
+            justify-content: center; /* Yatayda ortalar */
             overflow: hidden;
             position: relative;
         }
 
         .anasayfa-logo img {
-            width: 25%; /* Sayfanın çeyreği kadar genişlik */
-            height: 100%;
-            object-fit: cover;
-            object-position: left;
-            margin-left: 0;
+            max-height: 80%; /* Yüksekliği konteynerin %80'i kadar */
+            max-width: 80%; /* Genişliği konteynerin %80'i kadar */
+            object-fit: contain; /* Resmi orantılı bir şekilde sığdırır */
             display: block;
         }
 
@@ -93,13 +91,13 @@
             align-items: center;
             justify-content: space-between;
         }
-        
+
         .nav-links {
             display: flex;
             align-items: center;
             gap: 20px;
         }
-        
+
         .nav-links a {
             color: white;
             text-decoration: none;
@@ -107,7 +105,7 @@
             font-size: 16px;
             transition: color 0.3s ease;
         }
-        
+
         .nav-links a:hover {
             color: #ccc;
         }
@@ -140,11 +138,11 @@
             box-sizing: border-box;
             z-index: 999;
         }
-        
+
         .main-menu-container.active {
             display: block;
         }
-        
+
         .menu-content {
             display: flex;
             justify-content: flex-start;
@@ -154,7 +152,7 @@
             overflow-x: hidden;
             padding: 0 20px;
         }
-        
+
         /* ÜRÜN KATEGORİLERİ */
         .primary-category-column,
         .secondary-categories-column,
@@ -165,12 +163,12 @@
             border-right: 1px solid rgba(255,255,255,0.1);
             box-sizing: border-box;
         }
-        
+
         .secondary-categories-column,
         .tertiary-products-column {
             display: none;
         }
-        
+
         .secondary-categories-column.active,
         .tertiary-products-column.active {
             display: block;
@@ -194,7 +192,7 @@
             width: 100%;
             text-align: center;
         }
-        
+
         .primary-category-item:hover,
         .primary-category-item.active {
             background-color: #0056b3;
@@ -204,17 +202,17 @@
         .secondary-category-item.active {
             background-color: #0066cc;
         }
-        
+
         .primary-category-item .arrow-icon,
         .secondary-category-item .arrow-icon {
             transition: transform 0.3s ease;
         }
-        
+
         .primary-category-item.active .arrow-icon,
         .secondary-category-item.active .arrow-icon {
             transform: rotate(90deg);
         }
-        
+
         /* ÜRÜN LİSTELERİ */
         .product-list {
             list-style: none;
@@ -225,7 +223,7 @@
             padding: 10px;
             display: none;
         }
-        
+
         .product-list li {
             margin-bottom: 5px;
             background-color: #007bff;
@@ -236,7 +234,7 @@
         .product-list li:hover {
             background-color: #0056b3;
         }
-        
+
         .product-list a {
             color: white;
             text-decoration: none;
@@ -245,7 +243,7 @@
             padding: 8px 10px;
             text-align: center;
         }
-        
+
         .product-list a:hover {
             text-decoration: underline;
         }
@@ -287,7 +285,7 @@
             color: #333;
             display: block;
         }
-        
+
         /* Hakkımızda ve Diğer İçerik Bölümleri */
         .content-section {
             padding: 40px 20px;
@@ -298,21 +296,21 @@
             border-radius: 8px;
             text-align: left;
         }
-        
+
         .content-section h2 {
             font-size: 28px;
             color: #004797;
             margin-bottom: 20px;
             text-align: center;
         }
-        
+
         .content-section p {
             font-size: 1.1em;
             color: #333;
             line-height: 1.7;
             margin-bottom: 15px;
         }
-        
+
         .content-section img {
             max-width: 320px;
             width: 100%;
@@ -324,7 +322,7 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
+
         /* İletişim Bölümü */
         .contact {
             background: #e9e9e9;
@@ -332,16 +330,16 @@
             margin-top: 40px;
             text-align: center;
         }
-        
+
         .contact h3 {
             color: #004797;
             margin-bottom: 10px;
         }
-        
+
         .contact p {
             margin: 5px 0;
         }
-        
+
         /* Hesabım Bölümü Stilleri */
         .account-container {
             max-width: 800px;
@@ -351,38 +349,38 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        
+
         .account-container h1 {
             color: #004797;
             border-bottom: 2px solid #ddd;
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
-        
+
         .account-info, .orders-section {
             margin-bottom: 30px;
         }
-        
+
         .account-info h2, .orders-section h2 {
             color: #ff6600;
             font-size: 20px;
             margin-bottom: 15px;
         }
-        
+
         .info-group {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 15px;
         }
-        
+
         .info-item {
             flex: 1;
             min-width: 250px;
             padding: 10px 0;
             border-bottom: 1px solid #eee;
         }
-        
+
         .info-item:last-child {
             border-bottom: none;
         }
@@ -392,13 +390,13 @@
             margin-bottom: 5px;
             color: #555;
         }
-        
+
         .orders-list {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-        
+
         .order-item {
             padding: 15px;
             border: 1px solid #ddd;
@@ -406,16 +404,16 @@
             margin-bottom: 10px;
             background-color: #f9f9f9;
         }
-        
+
         .order-item p {
             margin: 5px 0;
         }
-        
+
         .order-status {
             font-weight: bold;
             color: #007bff;
         }
-        
+
         footer {
             background: #000;
             color: #fff;
@@ -443,19 +441,20 @@
             text-decoration: none;
             font-size: 40px;
         }
-        
+
         .whatsapp-button:hover {
             transform: scale(1.1);
         }
-        
+
         /* Responsive Düzenlemeler */
         @media (max-width: 768px) {
             .anasayfa-logo {
                 height: 15vh;
             }
-            
+
             .anasayfa-logo img {
-                width: 50%;
+                max-height: 70%;
+                max-width: 70%;
             }
 
             header {
@@ -464,26 +463,26 @@
                 height: auto;
                 overflow: visible;
             }
-            
+
             .search-bar {
                 order: 3;
                 width: 100%;
                 max-width: none;
             }
-            
+
             .header-actions {
                 width: 100%;
                 justify-content: space-around;
                 order: 2;
                 margin-top: 10px;
             }
-            
+
             nav {
                 flex-direction: row-reverse;
                 justify-content: space-between;
                 align-items: center;
             }
-            
+
             .nav-links {
                 gap: 10px;
             }
@@ -493,30 +492,30 @@
                 max-height: 80vh;
                 overflow-y: auto;
             }
-            
+
             .menu-content {
                 flex-direction: column;
             }
-            
+
             .primary-category-column,
             .secondary-categories-column,
-            .tertiary-products-column { 
+            .tertiary-products-column {
                 width: 100%;
                 border-right: none;
                 padding: 5px;
                 margin-bottom: 10px;
             }
-            
+
             .secondary-categories-column.active,
             .tertiary-products-column.active {
                 display: block;
             }
-            
+
             .primary-category-item,
             .secondary-category-item {
                 margin-bottom: 5px;
             }
-            
+
             .whatsapp-button {
                 width: 60px;
                 height: 60px;
@@ -528,7 +527,7 @@
     </style>
 </head>
 <body>
-    
+
     <div class="anasayfa-logo">
         <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="BAYSU YAPI VE SULAMA MALZEMELERİ">
     </div>
@@ -765,7 +764,7 @@
             const allProducts = [];
             document.querySelectorAll('.product-list a').forEach(link => {
                 allProducts.push({
-                    name: link.dataset.product-name,
+                    name: link.dataset.productName,
                     url: link.href
                 });
             });
@@ -892,7 +891,7 @@
 
             document.querySelectorAll('.secondary-category-item').forEach(item => {
                 item.addEventListener('click', () => {
-                    const productListId = item.dataset.target-products + '-products';
+                    const productListId = item.dataset.targetProducts + '-products';
                     
                     resetSecondaryItems(item);
                     item.classList.add('active');
