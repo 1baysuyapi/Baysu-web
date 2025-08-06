@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siyah Seri Kaplin - Ürün Detayı</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f5f7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 20px;
+        }
+
+        .product-image-section {
+            flex: 1;
+            display: flex;
+            gap: 10px;
+        }
+
+        .thumbnail-images {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .thumbnail-images img {
+            width: 70px;
+            height: 70px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            object-fit: cover;
+        }
+
+        .main-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        .main-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .product-details-section {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .product-details-section h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .product-details-section .price {
+            font-size: 28px;
+            font-weight: bold;
+            color: #007bff;
+            margin: 10px 0;
+        }
+
+        .product-details-section .meta-info {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .product-details-section .meta-info p {
+            margin: 5px 0;
+        }
+        
+        .product-details-section .meta-info strong {
+            color: #222;
+        }
+
+        .size-options {
+            margin-top: 20px;
+        }
+
+        .size-options h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .size-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .size-buttons button {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .size-buttons button:hover,
+        .size-buttons button.active {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .quantity-selector button {
+            width: 40px;
+            height: 40px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .quantity-selector input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-left: none;
+            border-right: none;
+            font-size: 16px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-buttons button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #add-to-cart {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #buy-now {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .social-share {
+            margin-top: 20px;
+        }
+
+        .social-share a {
+            font-size: 24px;
+            color: #25D366;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .product-image-section {
+                flex-direction: column-reverse;
+            }
+
+            .thumbnail-images {
+                flex-direction: row;
+                justify-content: center;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="product-image-section">
+            <div class="thumbnail-images">
+                <img src="siyah-seri-manson.png" alt="Thumbnail 1">
+                <img src="siyah-seri-manson.png" alt="Thumbnail 2">
+                <img src="siyah-seri-manson.png" alt="Thumbnail 3">
+                <img src="siyah-seri-manson.png" alt="Thumbnail 4">
+            </div>
+            <div class="main-image">
+                <img src="siyah-seri-manson.png" alt="Ana Ürün Görseli">
+            </div>
+        </div>
+
+        <div class="product-details-section">
+            <h1>Manşon</h1>
+            <div class="meta-info">
+                <p><strong>Kategori:</strong> Siyah Seri Kaplinler</p>
+                <p><strong>Marka:</strong> Senkron</p>
+            </div>
+
+            <p class="price">Toplu fiyat</p>
+
+            <div class="size-options">
+                <h3>Boyut</h3>
+                <div class="size-buttons">
+                    <button class="size-button">20x20mm</button>
+                    <button class="size-button">25x25mm</button>
+                    <button class="size-button">32x32mm</button>
+                    <button class="size-button">40x40mm</button>
+                    <button class="size-button">50x50mm</button>
+                    <button class="size-button">63x63mm</button>
+                    <button class="size-button">75x75mm</button>
+                    <button class="size-button">90x90mm</button>
+                    <button class="size-button">110x110mm</button>
+                </div>
+            </div>
+
+            <div class="quantity-selector">
+                <button id="decrease-quantity">-</button>
+                <input type="number" id="quantity-input" value="1" min="1">
+                <button id="increase-quantity">+</button>
+            </div>
+
+            <div class="action-buttons">
+                <button id="add-to-cart">Sepete Ekle</button>
+                <button id="buy-now">Hemen Al</button>
+            </div>
+            
+            <div class="social-share">
+                <a href="https://wa.me/?text=Ürün%20detayını%20incele:%20URL" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sizeButtons = document.querySelectorAll('.size-button');
+            sizeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    sizeButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                });
+            });
+
+            const decreaseButton = document.getElementById('decrease-quantity');
+            const increaseButton = document.getElementById('increase-quantity');
+            const quantityInput = document.getElementById('quantity-input');
+
+            decreaseButton.addEventListener('click', () => {
+                let currentValue = parseInt(quantityInput.value);
+                if (currentValue > 1) {
+                    quantityInput.value = currentValue - 1;
+                }
+            });
+
+            increaseButton.addEventListener('click', () => {
+                let currentValue = parseInt(quantityInput.value);
+                quantityInput.value = currentValue + 1;
+            });
+            
+            // Bu kısım sepet işlemleri için ayrılmıştır.
+            // "Sepete Ekle" ve "Hemen Al" butonlarının işlevleri buraya eklenecek.
+            document.getElementById('add-to-cart').addEventListener('click', () => {
+                alert('Ürün sepete eklendi!');
+            });
+            
+            document.getElementById('buy-now').addEventListener('click', () => {
+                alert('Hemen al işlemi başlatıldı!');
+            });
+
+        });
+    </script>
+</body>
+</html>
