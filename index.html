@@ -18,22 +18,21 @@
         /* YENİ LOGO BÖLÜMÜ */
         .anasayfa-logo {
             width: 100%;
-            height: 25vh; /* Sayfanın çeyreği kadar yükseklik */
-            background-color: #004797; /* Resmin arkasındaki renk */
+            height: 100vh; /* Ekran yüksekliğinin tamamı */
+            background-color: #003366; /* Resimle uyumlu daha koyu bir mavi */
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            overflow: hidden;
+            justify-content: center; /* Resmi ortalar */
+            overflow: hidden; /* Taşmayı engeller */
             position: relative;
         }
 
         .anasayfa-logo img {
-            width: 25%; /* Sayfanın çeyreği kadar genişlik */
-            height: 100%;
-            object-fit: cover;
-            object-position: left;
-            margin-left: 0;
+            max-width: 80%; /* Ekran genişliğinin %80'i kadar */
+            max-height: 80%; /* Ekran yüksekliğinin %80'i kadar */
+            object-fit: contain; /* Resmin tamamını sığdırır, orantıyı korur */
             display: block;
+            margin: 0 auto; /* Yatayda ortalar */
         }
 
         /* YENİ HEADER (Arama ve Eylemler) */
@@ -451,11 +450,11 @@
         /* Responsive Düzenlemeler */
         @media (max-width: 768px) {
             .anasayfa-logo {
-                height: 15vh;
+                height: 100vh;
             }
             
             .anasayfa-logo img {
-                width: 50%;
+                width: 80%;
             }
 
             header {
