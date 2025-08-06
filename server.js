@@ -1,20 +1,4 @@
 const express = require('express');
-<<<<<<< HEAD
-const cors = require('cors'); // CORS modülü eklendi
-const bodyParser = require('body-parser');
-const app = express();
-// Render'ın dinamik olarak atadığı portu kullan, yoksa 10000'i kullan
-const port = process.env.PORT || 10000; 
-
-// CORS ve JSON ayarları
-app.use(cors()); // CORS middleware'i eklendi
-app.use(bodyParser.json());
-
-// Veritabanı yerine basit bir kullanıcı dizisi
-let users = [];
-
-// KAYIT OL endpoint'i
-=======
 const cors = require('cors'); 
 const bodyParser = require('body-parser');
 const app = express();
@@ -25,7 +9,6 @@ app.use(bodyParser.json());
 
 let users = [];
 
->>>>>>> 0890ca4aea42d5fd0efc2f6d8600e5bba56bee9d
 app.post('/register', (req, res) => {
     const { name, email, password } = req.body;
     if (!name || !email || !password) {
@@ -40,10 +23,6 @@ app.post('/register', (req, res) => {
     res.status(201).json({ message: 'Kayıt işlemi başarılı!' });
 });
 
-<<<<<<< HEAD
-// GİRİŞ YAP endpoint'i
-=======
->>>>>>> 0890ca4aea42d5fd0efc2f6d8600e5bba56bee9d
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
     const user = users.find(u => u.email === email && u.password === password);
@@ -56,8 +35,4 @@ app.post('/login', (req, res) => {
 
 app.listen(port, () => {
     console.log(`Sunucu http://localhost:${port} adresinde çalışıyor...`);
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> 0890ca4aea42d5fd0efc2f6d8600e5bba56bee9d
