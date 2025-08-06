@@ -541,7 +541,7 @@
 
     <nav>
         <div class="nav-links">
-            <a href="index.html">Anasayfa</a>
+            <a href="index.html" id="homepageLink">Anasayfa</a>
         </div>
         <div class="menu-toggle" id="menuToggle">Ürünlerimiz +</div>
         <div class="main-menu-container" id="mainMenuContainer">
@@ -682,6 +682,7 @@
 
         <div id="myAccountContent" style="display: none;">
             <div class="account-container">
+                <a href="#" id="returnHomepageLink" style="float: right; text-decoration: none; color: #004797;">← Anasayfaya Dön</a>
                 <h1>Hesabım</h1>
                 
                 <div class="account-info">
@@ -736,7 +737,8 @@
             const headerActions = document.getElementById('headerActions');
             const homepageContent = document.getElementById('homepageContent');
             const myAccountContent = document.getElementById('myAccountContent');
-            
+            const homepageLink = document.getElementById('homepageLink');
+
             // Sanal kullanıcı veritabanı (giris-yap.html ile aynı olmalı)
             const users = JSON.parse(localStorage.getItem('users')) || [{
                 name: 'Ali Yılmaz',
@@ -765,17 +767,42 @@
                 });
             });
 
-            // Oturum durumunu kontrol et ve sayfa içeriğini/header'ı güncelle
-            function updatePageContentAndHeader() {
+            // "Hesabım" içeriğini dolduran fonksiyon
+            function populateAccountContent(user) {
+                document.getElementById('userName').textContent = user.name;
+                document.getElementById('userEmail').textContent = user.email;
+                document.getElementById('userPhone').textContent = user.phone || 'Bilgi yok';
+
+                const ordersList = document.getElementById('ordersList');
+                ordersList.innerHTML = '';
+                if (user.orders && user.orders.length > 0) {
+                    user.orders.forEach(order => {
+                        const orderItem = document.createElement('li');
+                        orderItem.className = 'order-item';
+                        orderItem.innerHTML = `
+                            <p><strong>Sipariş No:</strong> ${order.id}</p>
+                            <p><strong>Tarih:</strong> ${order.date}</p>
+                            <p><strong>Toplam Tutar:</strong> ${order.total}</p>
+                            <p class="order-status">Durum: ${order.status}</p>
+                        `;
+                        ordersList.appendChild(orderItem);
+                    });
+                } else {
+                    ordersList.innerHTML = '<p>Henüz siparişiniz bulunmamaktadır.</p>';
+                }
+            }
+            
+            // Oturum durumunu kontrol et ve header'ı güncelle
+            function updateHeaderActions() {
                 const loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
                 const isLoggedIn = !!loggedInUserEmail;
                 const currentUser = isLoggedIn ? users.find(u => u.email === loggedInUserEmail) : null;
-
-                // Header'ı güncelle
+                
                 headerActions.innerHTML = ''; 
                 if (isLoggedIn) {
                     const myAccountLink = document.createElement('a');
-                    myAccountLink.href = '#'; // Sayfayı yenilemeye gerek yok, içerik zaten burada
+                    myAccountLink.href = '#'; 
+                    myAccountLink.id = 'myAccountLink';
                     myAccountLink.innerHTML = '<i class="fas fa-user"></i> Hesabım';
 
                     const logoutLink = document.createElement('a');
@@ -789,13 +816,14 @@
                     logoutLink.addEventListener('click', (e) => {
                         e.preventDefault();
                         localStorage.removeItem('loggedInUserEmail');
-                        window.location.reload(); // Sayfayı yenile
+                        window.location.reload(); 
                     });
                     
                     myAccountLink.addEventListener('click', (e) => {
                         e.preventDefault();
                         homepageContent.style.display = 'none';
                         myAccountContent.style.display = 'block';
+                        populateAccountContent(currentUser); // Hesabım içeriğini tıklandığında doldur
                     });
                 } else {
                     const loginLink = document.createElement('a');
@@ -810,40 +838,24 @@
                     headerActions.appendChild(loginLink);
                     headerActions.appendChild(cartLink);
                 }
-
-                // Sayfa içeriğini güncelle
-                if (isLoggedIn && currentUser) {
-                    homepageContent.style.display = 'none';
-                    myAccountContent.style.display = 'block';
-                    
-                    document.getElementById('userName').textContent = currentUser.name;
-                    document.getElementById('userEmail').textContent = currentUser.email;
-                    document.getElementById('userPhone').textContent = currentUser.phone || 'Bilgi yok';
-
-                    const ordersList = document.getElementById('ordersList');
-                    ordersList.innerHTML = '';
-                    if (currentUser.orders && currentUser.orders.length > 0) {
-                        currentUser.orders.forEach(order => {
-                            const orderItem = document.createElement('li');
-                            orderItem.className = 'order-item';
-                            orderItem.innerHTML = `
-                                <p><strong>Sipariş No:</strong> ${order.id}</p>
-                                <p><strong>Tarih:</strong> ${order.date}</p>
-                                <p><strong>Toplam Tutar:</strong> ${order.total}</p>
-                                <p class="order-status">Durum: ${order.status}</p>
-                            `;
-                            ordersList.appendChild(orderItem);
-                        });
-                    } else {
-                        ordersList.innerHTML = '<p>Henüz siparişiniz bulunmamaktadır.</p>';
-                    }
-                } else {
-                    homepageContent.style.display = 'block';
-                    myAccountContent.style.display = 'none';
-                }
             }
 
-            updatePageContentAndHeader();
+            updateHeaderActions();
+
+            // Anasayfa linki ve Hesabım'a dön linki için olay dinleyicisi
+            homepageLink.addEventListener('click', () => {
+                homepageContent.style.display = 'block';
+                myAccountContent.style.display = 'none';
+            });
+            const returnHomepageLink = document.getElementById('returnHomepageLink');
+            if(returnHomepageLink){
+                returnHomepageLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    homepageContent.style.display = 'block';
+                    myAccountContent.style.display = 'none';
+                });
+            }
+
 
             menuToggle.addEventListener('click', () => {
                 mainMenuContainer.classList.toggle("active");
