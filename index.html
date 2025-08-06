@@ -1,651 +1,748 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Ticaret Sitesi - Anasayfa</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Anasayfa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <style>
-        /* ========================================================================
-        CSS BÖLÜMÜ
-        ======================================================================== */
-        :root {
-            --primary-color: #007bff;
-            --secondary-color: #6c757d;
-            --success-color: #28a745;
-            --danger-color: #dc3545;
-            --warning-color: #ffc107;
-            --info-color: #17a2b8;
-            --light-color: #f8f9fa;
-            --dark-color: #343a40;
-            --background-color: #f4f4f4;
-            --border-color: #dee2e6;
-            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            --header-height: 80px;
-            --menu-width: 350px;
-            --tertiary-column-width: 300px;
-        }
-
-        * {
+        /* ======================================================================== */
+        /* GENEL VE LOGO STİLLERİ */
+        /* ======================================================================== */
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            background-color: #F5F5DC;
+            color: #222;
         }
 
-        body {
-            font-family: var(--font-family);
-            line-height: 1.6;
-            background-color: var(--background-color);
-            color: var(--dark-color);
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--primary-color);
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        header {
+        .anasayfa-logo {
+            width: 100%;
+            height: 25vh;
             background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            border-bottom: 2px solid #004797;
+            margin-bottom: 10px;
+        }
+
+        .anasayfa-logo img {
+            max-height: 80%;
+            max-width: 80%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* ======================================================================== */
+        /* HEADER VE NAVİGASYON STİLLERİ */
+        /* ======================================================================== */
+        header {
+            background: #fff;
             padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid #ddd;
             position: sticky;
             top: 0;
             z-index: 1000;
-            height: var(--header-height);
         }
 
-        .header-left, .header-right {
+        .search-bar {
+            position: relative;
             display: flex;
             align-items: center;
+            width: 50%;
+            max-width: 400px;
         }
 
-        .anasayfa-logo {
-            width: 150px;
-            margin-right: 20px;
-        }
-
-        .anasayfa-logo img {
+        .search-bar input {
             width: 100%;
-            height: auto;
+            padding: 8px 12px 8px 40px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 14px;
         }
 
-        .search-container {
-            position: relative;
-            flex-grow: 1;
-            margin: 0 20px;
-        }
-
-        .search-container input {
-            width: 100%;
-            padding: 10px 40px 10px 20px;
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .search-container i {
+        .search-bar .fas {
             position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--secondary-color);
+            left: 15px;
+            color: #888;
         }
 
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-actions a {
+            text-decoration: none;
+            color: #004797;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        nav {
+            background: #004797;
+            padding: 10px 20px;
+            position: relative;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ccc;
+        }
+
+        .menu-toggle {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border: 1px solid white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* ======================================================================== */
+        /* AÇILIR MENÜ KATEGORİ STİLLERİ */
+        /* ======================================================================== */
+        .main-menu-container {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #003366;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            padding: 10px 0;
+            box-sizing: border-box;
+            z-index: 999;
+        }
+
+        .main-menu-container.active {
+            display: block;
+        }
+
+        .menu-content {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            max-height: 80vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 0 20px;
+        }
+
+        .primary-category-column,
+        .secondary-categories-column,
+        .tertiary-products-column {
+            flex-shrink: 0;
+            width: 33.33%;
+            padding: 10px;
+            border-right: 1px solid rgba(255,255,255,0.1);
+            box-sizing: border-box;
+        }
+
+        .secondary-categories-column,
+        .tertiary-products-column {
+            display: none;
+        }
+
+        .secondary-categories-column.active,
+        .tertiary-products-column.active {
+            display: block;
+        }
+
+        .primary-category-item,
+        .secondary-category-item {
+            background-color: #004797;
+            border-radius: 5px;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .secondary-category-item h3 {
+            width: 100%;
+            text-align: center;
+        }
+
+        .primary-category-item:hover,
+        .primary-category-item.active {
+            background-color: #0056b3;
+        }
+
+        .secondary-category-item:hover,
+        .secondary-category-item.active {
+            background-color: #0066cc;
+        }
+
+        .primary-category-item .arrow-icon,
+        .secondary-category-item .arrow-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .primary-category-item.active .arrow-icon,
+        .secondary-category-item.active .arrow-icon {
+            transform: rotate(90deg);
+        }
+
+        /* ÜRÜN LİSTELERİ */
+        .product-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: #0066cc;
+            border-radius: 5px;
+            padding: 10px;
+            display: none;
+        }
+
+        .product-list li {
+            margin-bottom: 5px;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+        }
+
+        .product-list li:hover {
+            background-color: #0056b3;
+        }
+
+        .product-list a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9em;
+            display: block;
+            padding: 8px 10px;
+            text-align: center;
+        }
+
+        .product-list a:hover {
+            text-decoration: underline;
+        }
+
+        /* Arama sonuçları için stil */
         #searchResults {
             position: absolute;
             top: 100%;
             left: 0;
             width: 100%;
-            background-color: #fff;
-            border: 1px solid var(--border-color);
-            border-top: none;
-            border-radius: 0 0 5px 5px;
-            display: none;
-            max-height: 300px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 1001;
+            max-height: 400px;
             overflow-y: auto;
-            z-index: 999;
+            display: none;
         }
 
         #searchResults ul {
-            padding: 10px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         #searchResults li {
-            padding: 8px 10px;
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
             cursor: pointer;
+            transition: background-color 0.2s ease;
         }
 
-        #searchResults li:hover {
-            background-color: var(--light-color);
+        #searchResults li:last-child {
+            border-bottom: none;
         }
 
         #searchResults a {
+            text-decoration: none;
+            color: #333;
             display: block;
-            color: var(--dark-color);
-        }
-
-        #headerActions a {
-            margin-left: 15px;
-            color: var(--dark-color);
-            font-weight: 500;
-        }
-        #headerActions a i {
-            margin-right: 5px;
-        }
-
-        nav {
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        #menuToggle {
-            display: none;
-            cursor: pointer;
-            padding: 10px;
-            margin-right: 15px;
-            font-size: 24px;
-        }
-
-        .main-menu-container {
-            display: flex;
-            overflow: hidden;
-            transition: max-height 0.3s ease-in-out;
-            max-height: 0;
-            flex-direction: column;
-            width: 100%;
-            background-color: #fff;
-        }
-
-        .main-menu-container.active {
-            max-height: 500px; /* Menü içeriğine göre ayarlanabilir */
         }
         
-        .main-menu {
-            display: flex;
-            position: relative;
+        /* ======================================================================== */
+        /* İÇERİK BÖLÜMLERİ STİLLERİ */
+        /* ======================================================================== */
+        .content-section {
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            text-align: left;
         }
 
-        .primary-category-column {
-            width: var(--menu-width);
-            background-color: var(--light-color);
-            overflow-y: auto;
-            border-right: 1px solid var(--border-color);
+        .content-section h2 {
+            font-size: 28px;
+            color: #004797;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
-        .primary-category-item {
-            padding: 15px 20px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            position: relative;
-        }
-        .primary-category-item:hover,
-        .primary-category-item.active {
-            background-color: #fff;
-        }
-        .primary-category-item.active::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: -1px;
-            width: 3px;
-            height: 100%;
-            background-color: var(--primary-color);
-        }
-
-        .primary-category-item i {
-            margin-right: 10px;
-        }
-
-        .secondary-categories-column {
-            width: var(--menu-width);
-            background-color: #fff;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            overflow-y: auto;
-        }
-
-        .secondary-categories-column.active {
-            transform: translateX(0);
-            position: relative;
-        }
-
-        .secondary-category-item {
-            padding: 15px 20px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        .secondary-category-item:hover,
-        .secondary-category-item.active {
-            background-color: var(--primary-color);
-            color: #fff;
-        }
-
-        .tertiary-products-column {
-            width: var(--tertiary-column-width);
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-left: 1px solid var(--border-color);
-            position: absolute;
-            top: 0;
-            left: var(--menu-width);
-            height: 100%;
-            overflow-y: auto;
-            transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
-        }
-        
-        .tertiary-products-column.active {
-            transform: translateX(0);
-            position: relative;
-        }
-        
-        .product-list {
-            display: none;
-        }
-        .product-list h4 {
+        .content-section p {
+            font-size: 1.1em;
+            color: #333;
+            line-height: 1.7;
             margin-bottom: 15px;
-            color: var(--dark-color);
         }
-        .product-list ul li {
+
+        .content-section img {
+            max-width: 320px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* İletişim Bölümü */
+        .contact {
+            background: #e9e9e9;
+            padding: 30px 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .contact h3 {
+            color: #004797;
             margin-bottom: 10px;
         }
-        .product-list ul li a {
-            color: var(--dark-color);
-        }
-        .product-list ul li a:hover {
-            color: var(--primary-color);
+
+        .contact p {
+            margin: 5px 0;
         }
 
-        main {
+        /* Hesabım Bölümü Stilleri */
+        .account-container {
+            max-width: 800px;
+            margin: 40px auto;
             padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: var(--dark-color);
-        }
-
-        .homepage-content, .my-account-content {
-            display: block;
-        }
-        
-        .my-account-content {
-            display: none;
-            background: #fff;
-            padding: 30px;
+            background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        .my-account-content h2 {
+
+        .account-container h1 {
+            color: #004797;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
             margin-bottom: 20px;
         }
-        .account-info, .order-history {
+
+        .account-info, .orders-section {
             margin-bottom: 30px;
         }
-        .account-info p {
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-        .account-info strong {
-            display: inline-block;
-            width: 120px;
-        }
-        .order-item {
-            border: 1px solid var(--border-color);
-            padding: 15px;
-            border-radius: 5px;
+
+        .account-info h2, .orders-section h2 {
+            color: #ff6600;
+            font-size: 20px;
             margin-bottom: 15px;
         }
-        .order-item p {
-            margin-bottom: 5px;
+
+        .info-group {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
         }
+
+        .info-item {
+            flex: 1;
+            min-width: 250px;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-item strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .orders-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .order-item {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .order-item p {
+            margin: 5px 0;
+        }
+
         .order-status {
             font-weight: bold;
-            color: var(--success-color);
+            color: #007bff;
         }
-        .return-link {
-            display: block;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .product-card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .product-card {
-            background-color: #fff;
+        
+        /* ======================================================================== */
+        /* FOOTER VE WHATSAPP BUTONU STİLLERİ */
+        /* ======================================================================== */
+        footer {
+            background: #000;
+            color: #fff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-        .product-card img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 15px;
-        }
-        .product-card h3 {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-        .product-card .price {
-            font-size: 1.5em;
-            color: var(--dark-color);
-            font-weight: bold;
+            margin-top: 60px;
+            font-size: 14px;
         }
 
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            text-decoration: none;
+            font-size: 40px;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* ======================================================================== */
+        /* RESPONSİVE DÜZENLEMELER */
+        /* ======================================================================== */
         @media (max-width: 768px) {
-            header {
-                flex-wrap: wrap;
-                height: auto;
-                padding-bottom: 10px;
-            }
             .anasayfa-logo {
-                width: 120px;
-                order: 1;
+                height: 15vh;
             }
-            #menuToggle {
-                display: block;
-                order: 0;
+
+            .anasayfa-logo img {
+                max-height: 70%;
+                max-width: 70%;
             }
-            .header-right {
-                order: 2;
-                flex-grow: 1;
-                justify-content: flex-end;
+
+            header {
+                flex-direction: column;
+                padding: 15px 10px;
+                height: auto;
+                overflow: visible;
             }
-            .search-container {
+
+            .search-bar {
                 order: 3;
                 width: 100%;
-                margin: 10px 0 0 0;
+                max-width: none;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: space-around;
+                order: 2;
+                margin-top: 10px;
+            }
+
+            nav {
+                flex-direction: row-reverse;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .nav-links {
+                gap: 10px;
             }
 
             .main-menu-container {
-                position: absolute;
-                top: var(--header-height);
-                left: 0;
-                width: 100%;
-                z-index: 998;
-                max-height: 0;
-                overflow: hidden;
-            }
-            .main-menu-container.active {
-                max-height: 500px; /* Menü içeriğine göre ayarlanabilir */
+                padding: 5px;
+                max-height: 80vh;
+                overflow-y: auto;
             }
 
-            .main-menu {
+            .menu-content {
                 flex-direction: column;
             }
+
             .primary-category-column,
             .secondary-categories-column,
             .tertiary-products-column {
                 width: 100%;
                 border-right: none;
-                border-bottom: 1px solid var(--border-color);
-                position: relative;
-                transform: translateX(0);
-                display: none;
+                padding: 5px;
+                margin-bottom: 10px;
             }
-            .primary-category-column.active {
-                display: block;
-            }
-            .secondary-categories-column.active {
-                display: block;
-            }
+
+            .secondary-categories-column.active,
             .tertiary-products-column.active {
                 display: block;
+            }
+
+            .primary-category-item,
+            .secondary-category-item {
+                margin-bottom: 5px;
+            }
+
+            .whatsapp-button {
+                width: 60px;
+                height: 60px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 35px;
             }
         }
     </style>
 </head>
 <body>
 
+    <div class="anasayfa-logo">
+        <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="BAYSU YAPI VE SULAMA MALZEMELERİ">
+    </div>
+
     <header>
-        <div class="header-left">
-            <div id="menuToggle"><i class="fas fa-bars"></i></div>
-            <a href="index.html" class="anasayfa-logo" id="homepageLink">
-                <img src="https://i.ibb.co/q5kY1vP/WhatsApp-Image-2025-07-25-at-23-57-21-1-Photoroom.png" alt="Anasayfa Logosu">
-            </a>
-        </div>
-        
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Ürün veya kategori ara...">
+        <div class="search-bar" id="searchBarContainer">
+            <input type="search" id="searchInput" placeholder="Ürün Ara...">
             <i class="fas fa-search"></i>
             <div id="searchResults"></div>
         </div>
-
-        <div class="header-right" id="headerActions">
-            </div>
+        <div class="header-actions" id="headerActions">
+        </div>
     </header>
 
-    <nav id="mainMenuContainer" class="main-menu-container">
-        <div class="main-menu">
-            <div class="primary-category-column">
-                <div class="primary-category-item" data-target-menu="kadin-giyim-menu"><i class="fas fa-female"></i> Kadın Giyim</div>
-                <div class="primary-category-item" data-target-menu="erkek-giyim-menu"><i class="fas fa-male"></i> Erkek Giyim</div>
-                <div class="primary-category-item" data-target-menu="cocuk-giyim-menu"><i class="fas fa-child"></i> Çocuk Giyim</div>
-                <div class="primary-category-item" data-target-menu="elektronik-menu"><i class="fas fa-mobile-alt"></i> Elektronik</div>
-                <div class="primary-category-item" data-target-menu="ev-yasam-menu"><i class="fas fa-home"></i> Ev & Yaşam</div>
-            </div>
-
-            <div id="kadin-giyim-menu" class="secondary-categories-column">
-                <div class="secondary-category-item" data-target-products="kadin-ustgiyim">Üst Giyim</div>
-                <div class="secondary-category-item" data-target-products="kadin-altgiyim">Alt Giyim</div>
-                <div class="secondary-category-item" data-target-products="kadin-disgiyim">Dış Giyim</div>
-                <div class="secondary-category-item" data-target-products="kadin-ayakkabi">Ayakkabı</div>
-            </div>
-
-            <div id="erkek-giyim-menu" class="secondary-categories-column">
-                <div class="secondary-category-item" data-target-products="erkek-ustgiyim">Üst Giyim</div>
-                <div class="secondary-category-item" data-target-products="erkek-altgiyim">Alt Giyim</div>
-                <div class="secondary-category-item" data-target-products="erkek-disgiyim">Dış Giyim</div>
-                <div class="secondary-category-item" data-target-products="erkek-ayakkabi">Ayakkabı</div>
-            </div>
-
-            <div id="cocuk-giyim-menu" class="secondary-categories-column">
-                <div class="secondary-category-item" data-target-products="cocuk-ustgiyim">Üst Giyim</div>
-                <div class="secondary-category-item" data-target-products="cocuk-altgiyim">Alt Giyim</div>
-            </div>
-            
-            <div id="elektronik-menu" class="secondary-categories-column">
-                <div class="secondary-category-item" data-target-products="telefonlar">Telefonlar</div>
-                <div class="secondary-category-item" data-target-products="bilgisayarlar">Bilgisayarlar</div>
-                <div class="secondary-category-item" data-target-products="televizyonlar">Televizyonlar</div>
-            </div>
-            
-            <div id="ev-yasam-menu" class="secondary-categories-column">
-                <div class="secondary-category-item" data-target-products="mobilyalar">Mobilyalar</div>
-                <div class="secondary-category-item" data-target-products="dekorasyon">Dekorasyon</div>
-            </div>
-
-            <div id="tertiaryProductsColumn" class="tertiary-products-column">
-                <div id="kadin-ustgiyim-products" class="product-list">
-                    <h4>Kadın Üst Giyim Ürünleri</h4>
-                    <ul>
-                        <li><a href="#" data-product-name="Kadın Bluz">Kadın Bluz</a></li>
-                        <li><a href="#" data-product-name="Kadın Gömlek">Kadın Gömlek</a></li>
-                    </ul>
-                </div>
-                <div id="kadin-altgiyim-products" class="product-list">
-                    <h4>Kadın Alt Giyim Ürünleri</h4>
-                    <ul>
-                        <li><a href="#" data-product-name="Kadın Etek">Kadın Etek</a></li>
-                        <li><a href="#" data-product-name="Kadın Pantolon">Kadın Pantolon</a></li>
-                    </ul>
-                </div>
-                <div id="kadin-disgiyim-products" class="product-list">
-                    <h4>Kadın Dış Giyim Ürünleri</h4>
-                    <ul>
-                        <li><a href="#" data-product-name="Kadın Mont">Kadın Mont</a></li>
-                        <li><a href="#" data-product-name="Kadın Kaban">Kadın Kaban</a></li>
-                    </ul>
-                </div>
-                <div id="kadin-ayakkabi-products" class="product-list">
-                    <h4>Kadın Ayakkabı Ürünleri</h4>
-                    <ul>
-                        <li><a href="#" data-product-name="Topuklu Ayakkabı">Topuklu Ayakkabı</a></li>
-                        <li><a href="#" data-product-name="Spor Ayakkabı">Spor Ayakkabı</a></li>
-                    </ul>
+    <nav>
+        <div class="nav-links">
+            <a href="#" id="homepageLink">Anasayfa</a>
+        </div>
+        <div class="menu-toggle" id="menuToggle">Ürünlerimiz +</div>
+        <div class="main-menu-container" id="mainMenuContainer">
+            <div class="menu-content">
+                <div class="primary-category-column" id="primaryCategoryColumn">
+                    <div class="primary-category-item" data-target-menu="kaplin-sub-menu">
+                        <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
                 </div>
 
-                <div id="erkek-ustgiyim-products" class="product-list">
-                    <h4>Erkek Üst Giyim Ürünleri</h4>
-                    <ul>
-                        <li><a href="#" data-product-name="Erkek T-shirt">Erkek T-shirt</a></li>
-                        <li><a href="#" data-product-name="Erkek Gömlek">Erkek Gömlek</a></li>
-                    </ul>
-                </div>
-                <div id="erkek-altgiyim-products" class="product-list">
-                    <h4>Erkek Alt Giyim Ürünleri</h4>
-                    <ul>
-                        <li><a href="#" data-product-name="Erkek Pantolon">Erkek Pantolon</a></li>
-                        <li><a href="#" data-product-name="Erkek Şort">Erkek Şort</a></li>
-                    </ul>
-                </div>
-                <div id="erkek-disgiyim-products" class="product-list">
-                    <h4>Erkek Dış Giyim Ürünleri</h4>
-                    <ul>
-                        <li><a href="#" data-product-name="Erkek Mont">Erkek Mont</a></li>
-                        <li><a href="#" data-product-name="Erkek Ceket">Erkek Ceket</a></li>
-                    </ul>
-                </div>
-                <div id="erkek-ayakkabi-products" class="product-list">
-                    <h4>Erkek Ayakkabı Ürünleri</h4>
-                    <ul>
-                        <li><a href="#" data-product-name="Klasik Ayakkabı">Klasik Ayakkabı</a></li>
-                        <li><a href="#" data-product-name="Erkek Spor Ayakkabı">Erkek Spor Ayakkabı</a></li>
-                    </ul>
-                </div>
-
-                <div id="cocuk-ustgiyim-products" class="product-list">
-                    <h4>Çocuk Üst Giyim Ürünleri</h4>
-                    <ul>
-                        <li><a href="#" data-product-name="Çocuk T-shirt">Çocuk T-shirt</a></li>
-                        <li><a href="#" data-product-name="Çocuk Gömlek">Çocuk Gömlek</a></li>
-                    </ul>
-                </div>
-                <div id="cocuk-altgiyim-products" class="product-list">
-                    <h4>Çocuk Alt Giyim Ürünleri</h4>
-                    <ul>
-                        <li><a href="#" data-product-name="Çocuk Pantolon">Çocuk Pantolon</a></li>
-                        <li><a href="#" data-product-name="Çocuk Şort">Çocuk Şort</a></li>
-                    </ul>
+                <div class="secondary-categories-column" id="kaplin-sub-menu">
+                    <div class="secondary-category-item" data-target-products="mavi-seri">
+                        <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" data-target-products="siyah-seri">
+                        <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" data-target-products="kilitli-baglanti">
+                        <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" data-target-products="disli-sulama">
+                        <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" data-target-products="priz-kolyeler">
+                        <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" data-target-products="nipelli-seri">
+                        <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" data-target-products="vanalar">
+                        <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" data-target-products="vana-kutulari">
+                        <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" data-target-products="damlama-ek-parcalari">
+                        <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" data-target-products="yedek-parcalar">
+                        <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
                 </div>
 
-                <div id="telefonlar-products" class="product-list">
-                    <h4>Telefonlar</h4>
-                    <ul>
-                        <li><a href="#" data-product-name="Akıllı Telefon A">Akıllı Telefon A</a></li>
-                        <li><a href="#" data-product-name="Akıllı Telefon B">Akıllı Telefon B</a></li>
+                <div class="tertiary-products-column" id="tertiaryProductsColumn">
+                    <ul class="product-list" id="mavi-seri-products">
+                        <li><a href="mavi-disi-kaplin.html" target="_blank" data-product-name="Mavi Seri Dişi Kaplin">Mavi Seri Dişi Kaplin</a></li>
+                        <li><a href="mavi-erkek-kaplin.html" target="_blank" data-product-name="Mavi Seri Erkek Kaplin">Mavi Seri Erkek Kaplin</a></li>
+                        <li><a href="mavi-dirsek-kaplin.html" target="_blank" data-product-name="Mavi Seri Dirsek Kaplin">Mavi Seri Dirsek Kaplin</a></li>
+                        <li><a href="mavi-disi-dirsek.html" target="_blank" data-product-name="Mavi Seri Dişi Dirsek">Mavi Seri Dişi Dirsek</a></li>
+                        <li><a href="mavi-erkek-dirsek.html" target="_blank" data-product-name="Mavi Seri Erkek Dirsek">Mavi Seri Erkek Dirsek</a></li>
+                        <li><a href="mavi-manson.html" target="_blank" data-product-name="Mavi Seri Manşon">Mavi Seri Manşon</a></li>
+                        <li><a href="mavi-tapa.html" target="_blank" data-product-name="Mavi Seri Tapa">Mavi Seri Tapa</a></li>
+                        <li><a href="mavi-erkek-te.html" target="_blank" data-product-name="Mavi Seri Erkek Te">Mavi Seri Erkek Te</a></li>
+                        <li><a href="mavi-disi-te.html" target="_blank" data-product-name="Mavi Seri Dişi Te">Mavi Seri Dişi Te</a></li>
+                        <li><a href="mavi-reduksiyon-te.html" target="_blank" data-product-name="Mavi Seri Redüksiyon Te">Mavi Seri Redüksiyon Te</a></li>
+                        <li><a href="mavi-reduksiyon.html" target="_blank" data-product-name="Mavi Seri Redüksiyon">Mavi Seri Redüksiyon</a></li>
+                        <li><a href="mavi-te.html" target="_blank" data-product-name="Mavi Seri Te">Mavi Seri Te</a></li>
                     </ul>
-                </div>
-                <div id="bilgisayarlar-products" class="product-list">
-                    <h4>Bilgisayarlar</h4>
-                    <ul>
-                        <li><a href="#" data-product-name="Dizüstü Bilgisayar">Dizüstü Bilgisayar</a></li>
-                        <li><a href="#" data-product-name="Masaüstü Bilgisayar">Masaüstü Bilgisayar</a></li>
+                    <ul class="product-list" id="siyah-seri-products">
+                        <li><a href="siyah-disi.html" target="_blank" data-product-name="Siyah Seri Dişi Kaplin">Siyah Seri Dişi Kaplin</a></li>
+                        <li><a href="siyah-erkek-kaplin.html" target="_blank" data-product-name="Siyah Seri Erkek Kaplin">Siyah Seri Erkek Kaplin</a></li>
+                        <li><a href="siyah-dirsek.html" target="_blank" data-product-name="Siyah Seri Dirsek Kaplin">Siyah Seri Dirsek Kaplin</a></li>
+                        <li><a href="siyah-disi-dirsek.html" target="_blank" data-product-name="Siyah Seri Dişi Dirsek">Siyah Seri Dişi Dirsek</a></li>
+                        <li><a href="siyah-erkek-dirsek.html" target="_blank" data-product-name="Siyah Seri Erkek Dirsek">Siyah Seri Erkek Dirsek</a></li>
+                        <li><a href="siyah-manson.html" target="_blank" data-product-name="Siyah Seri Manşon">Siyah Seri Manşon</a></li>
+                        <li><a href="siyah-tapa.html" target="_blank" data-product-name="Siyah Seri Tapa">Siyah Seri Tapa</a></li>
+                        <li><a href="siyah-erkek-te.html" target="_blank" data-product-name="Siyah Seri Erkek Te">Siyah Seri Erkek Te</a></li>
+                        <li><a href="siyah-disi-te.html" target="_blank" data-product-name="Siyah Seri Dişi Te">Siyah Seri Dişi Te</a></li>
+                        <li><a href="siyah-reduksiyon-te.html" target="_blank" data-product-name="Siyah Seri Redüksiyon Te">Siyah Seri Redüksiyon Te</a></li>
+                        <li><a href="siyah-reduksiyon.html" target="_blank" data-product-name="Siyah Seri Redüksiyon">Siyah Seri Redüksiyon</a></li>
+                        <li><a href="siyah-te.html" target="_blank" data-product-name="Siyah Seri Te">Siyah Seri Te</a></li>
                     </ul>
-                </div>
-                <div id="televizyonlar-products" class="product-list">
-                    <h4>Televizyonlar</h4>
-                    <ul>
-                        <li><a href="#" data-product-name="4K Smart TV">4K Smart TV</a></li>
-                        <li><a href="#" data-product-name="OLED TV">OLED TV</a></li>
+                    <ul class="product-list" id="kilitli-baglanti-products">
+                        <li><a href="kilitli-erkek-dirsek.html" target="_blank" data-product-name="Kilitli Bağlantı Erkek Dirsek">Kilitli Bağlantı Erkek Dirsek</a></li>
+                        <li><a href="kilitli-dirsek.html" target="_blank" data-product-name="Kilitli Bağlantı Dirsek">Kilitli Bağlantı Dirsek</a></li>
+                        <li><a href="kilitli-reduksiyon-dirsek.html" target="_blank" data-product-name="Kilitli Bağlantı Redüksiyon Dirsek">Kilitli Bağlantı Redüksiyon Dirsek</a></li>
+                        <li><a href="kilitli-te.html" target="_blank" data-product-name="Kilitli Bağlantı TE">Kilitli Bağlantı TE</a></li>
+                        <li><a href="kilitli-erkek-te.html" target="_blank" data-product-name="Kilitli Bağlantı Erkek TE">Kilitli Bağlantı Erkek TE</a></li>
                     </ul>
-                </div>
-
-                <div id="mobilyalar-products" class="product-list">
-                    <h4>Mobilyalar</h4>
-                    <ul>
-                        <li><a href="#" data-product-name="Koltuk Takımı">Koltuk Takımı</a></li>
-                        <li><a href="#" data-product-name="Yemek Masası">Yemek Masası</a></li>
+                    <ul class="product-list" id="disli-sulama-products">
+                        <li><a href="disli-disi-dirsek.html" target="_blank" data-product-name="Dişli Dişi Dirsek">Dişli Dişi Dirsek</a></li>
+                        <li><a href="disli-disi-nipel.html" target="_blank" data-product-name="Dişli Dişi Nipel">Dişli Dişi Nipel</a></li>
+                        <li><a href="disli-disi-reduksiyon-dirsek.html" target="_blank" data-product-name="Dişli Dişi Redüksiyon Dirsek">Dişli Dişi Redüksiyon Dirsek</a></li>
+                        <li><a href="erkek-disli-kor-tapa.html" target="_blank" data-product-name="Erkek Dişli Kör Tapa">Erkek Dişli Kör Tapa</a></li>
                     </ul>
-                </div>
-                <div id="dekorasyon-products" class="product-list">
-                    <h4>Dekorasyon</h4>
-                    <ul>
-                        <li><a href="#" data-product-name="Duvar Saati">Duvar Saati</a></li>
-                        <li><a href="#" data-product-name="Tablo">Tablo</a></li>
+                    <ul class="product-list" id="priz-kolyeler-products">
+                        <li><a href="#" data-product-name="Priz Kolye">Priz Kolye</a></li>
+                        <li><a href="#" data-product-name="Dişi Nipelli Priz Kolye">Dişi Nipelli Priz Kolye</a></li>
+                        <li><a href="#" data-product-name="Erkek Nipelli Priz Kolye">Erkek Nipelli Priz Kolye</a></li>
+                        <li><a href="#" data-product-name="Kızaklı Priz Kolye">Kızaklı Priz Kolye</a></li>
+                        <li><a href="#" data-product-name="Çift Çıkışlı Priz Kolye">Çift Çıkışlı Priz Kolye</a></li>
+                    </ul>
+                    <ul class="product-list" id="nipelli-seri-products">
+                        <li><a href="#" data-product-name="Dişi Nipelli Priz Kolye">Dişi Nipelli Priz Kolye</a></li>
+                        <li><a href="#" data-product-name="Erkek Nipelli Priz Kolye">Erkek Nipelli Priz Kolye</a></li>
+                        <li><a href="#" data-product-name="Nipelli Erkek TE">Nipelli Erkek TE</a></li>
+                        <li><a href="#" data-product-name="Nipelli Dişi Dirsek">Nipelli Dişi Dirsek</a></li>
+                    </ul>
+                    <ul class="product-list" id="vanalar-products">
+                        <li><a href="disi-disi-vana.html" target="_blank" data-product-name="Dişi Dişi Vana">Dişi Dişi Vana</a></li>
+                        <li><a href="erkek-disi-vana.html" target="_blank" data-product-name="Erkek Dişi Vana">Erkek Dişi Vana</a></li>
+                        <li><a href="kaplin-disi-vana.html" target="_blank" data-product-name="Kaplin Dişi Vana">Kaplin Dişi Vana</a></li>
+                        <li><a href="kaplin-erkek-vana.html" target="_blank" data-product-name="Kaplin Erkek Vana">Kaplin Erkek Vana</a></li>
+                    </ul>
+                    <ul class="product-list" id="vana-kutulari-products">
+                        <li><a href="6-inc-vana-kutusu.html" target="_blank" data-product-name="6 İnç Vana Kutusu">6" Vana Kutusu</a></li>
+                        <li><a href="10-inc-vana-kutusu.html" target="_blank" data-product-name="10 İnç Vana Kutusu">10" Vana Kutusu</a></li>
+                        <li><a href="12-inc-vana-kutusu.html" target="_blank" data-product-name="12 İnç Vana Kutusu">12" Vana Kutusu</a></li>
+                        <li><a href="14-inc-vana-kutusu.html" target="_blank" data-product-name="14 İnç Vana Kutusu">14" Vana Kutusu</a></li>
+                    </ul>
+                    <ul class="product-list" id="damlama-ek-parcalari-products">
+                        <li><a href="#" data-product-name="Çıkış Mini Vana">Çıkış Mini Vana</a></li>
+                        <li><a href="#" data-product-name="Debi Ayarlı Damlatıcı Geniş Boşaltım">Debi Ayarlı Damlatıcı Geniş Boşaltım</a></li>
+                        <li><a href="#" data-product-name="Debi Ayarlı Damlatıcı Kırmızı">Debi Ayarlı Damlatıcı Kırmızı</a></li>
+                        <li><a href="#" data-product-name="Debi Ayarlı Damlatıcı Yeşil">Debi Ayarlı Damlatıcı Yeşil</a></li>
+                        <li><a href="#" data-product-name="Düz Damlama Conta">Düz Damlama Conta</a></li>
+                        <li><a href="#" data-product-name="Kanallı Conta">Kanallı Conta</a></li>
+                    </ul>
+                    <ul class="product-list" id="yedek-parcalar-products">
+                        <li><a href="#" data-product-name="Kaplin Sıkma Anahtarı">Kaplin Sıkma Anahtarı</a></li>
+                        <li><a href="#" data-product-name="Pah Açma Aparatı">Pah Açma Aparatı</a></li>
+                        <li><a href="#" data-product-name="O-Ring">O-Ring</a></li>
+                        <li><a href="#" data-product-name="Abot Üstü Kaplin Dağıtıcı">Abot Üstü Kaplin Dağıtıcı</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
-    
+
     <main>
         <div id="homepageContent">
-            <h2>Öne Çıkan Ürünler</h2>
-            <div class="product-card-container">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/200" alt="Ürün Resmi 1">
-                    <h3>Ürün Adı 1</h3>
-                    <p class="price">499 TL</p>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/200" alt="Ürün Resmi 2">
-                    <h3>Ürün Adı 2</h3>
-                    <p class="price">799 TL</p>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/200" alt="Ürün Resmi 3">
-                    <h3>Ürün Adı 3</h3>
-                    <p class="price">1.299 TL</p>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/200" alt="Ürün Resmi 4">
-                    <h3>Ürün Adı 4</h3>
-                    <p class="price">250 TL</p>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/200" alt="Ürün Resmi 5">
-                    <h3>Ürün Adı 5</h3>
-                    <p class="price">899 TL</p>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/200" alt="Ürün Resmi 6">
-                    <h3>Ürün Adı 6</h3>
-                    <p class="price">699 TL</p>
-                </div>
-            </div>
+            <section class="content-section">
+                <h2>HAKKIMIZDA</h2>
+                <p>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ olarak, **2018 yılında başladığımız yolculuğumuzda** Ankara ve çevresindeki müşterilerimize kaliteli sulama, tesisat, hırdavat, PVC ve PPRC çözümleri sunmaktayız. Geniş ürün yelpazemiz ve uzman kadromuzla projelerinize değer katıyoruz.</p>
+                <p>Amacımız, suyun verimli kullanımı ve sürdürülebilir tarım için en uygun ürünleri, rekabetçi fiyatlarla sizlere ulaştırmaktır.</p>
+            </section>
         </div>
 
-        <div id="myAccountContent">
-            <h2>Hesabım</h2>
-            <div class="account-info">
-                <h3>Kullanıcı Bilgileri</h3>
-                <p><strong>Adı Soyadı:</strong> <span id="userName"></span></p>
-                <p><strong>E-posta:</strong> <span id="userEmail"></span></p>
-                <p><strong>Telefon:</strong> <span id="userPhone"></span></p>
-            </div>
-            <div class="order-history">
-                <h3>Siparişlerim</h3>
-                <ul id="ordersList">
+        <div id="myAccountContent" style="display: none;">
+            <div class="account-container">
+                <a href="#" id="returnHomepageLink" style="float: right; text-decoration: none; color: #004797;">← Anasayfaya Dön</a>
+                <h1>Hesabım</h1>
+                
+                <div class="account-info">
+                    <h2>Hesap Bilgilerim</h2>
+                    <div class="info-group">
+                        <div class="info-item">
+                            <strong>Ad Soyad:</strong>
+                            <span id="userName"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong>E-posta Adresi:</strong>
+                            <span id="userEmail"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Telefon Numarası:</strong>
+                            <span id="userPhone"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="orders-section">
+                    <h2>Son Siparişlerim</h2>
+                    <ul class="orders-list" id="ordersList">
                     </ul>
+                </div>
             </div>
-            <a href="#" id="returnHomepageLink" class="return-link">Anasayfaya Dön</a>
         </div>
     </main>
-
+    
+    <section class="contact">
+        <h3>İletişim</h3>
+        <p><strong>Telefon:</strong> 0553 397 36 03</p>
+        <p><strong>E-posta:</strong> ebayrakci75@gmail.com</p>
+        <p><strong>Adres:</strong> Ankara, Türkiye</p>
+    </section>
+    
+    <footer>
+        &copy; 2025 BAYSU YAPI VE SULAMA MALZEMELERİ - Tüm hakları saklıdır.
+    </footer>
+    
+    <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum." class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuToggle = document.getElementById('menuToggle');
@@ -714,12 +811,13 @@
             function updateHeaderActions() {
                 const loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
                 const isLoggedIn = !!loggedInUserEmail;
+                const currentUser = isLoggedIn ? users.find(u => u.email === loggedInUserEmail) : null;
                 
                 headerActions.innerHTML = ''; 
                 
                 const cartLink = document.createElement('a');
+                cartLink.href = '#';
                 cartLink.innerHTML = '<i class="fas fa-shopping-cart"></i> Sepet';
-                cartLink.href = 'sepet.html'; // Sepet linki artık sepet.html'ye gidiyor
                 headerActions.appendChild(cartLink);
 
                 if (isLoggedIn) {
@@ -746,7 +844,6 @@
                         e.preventDefault();
                         homepageContent.style.display = 'none';
                         myAccountContent.style.display = 'block';
-                        const currentUser = users.find(u => u.email === loggedInUserEmail);
                         populateAccountContent(currentUser); // Hesabım içeriğini tıklandığında doldur
                     });
                 } else {
@@ -890,6 +987,5 @@
             }
         });
     </script>
-
 </body>
 </html>
