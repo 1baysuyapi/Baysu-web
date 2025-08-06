@@ -27,15 +27,15 @@
         }
 
         .header-logo {
-            flex-grow: 1; /* Sağ tarafa doğru uzaması için */
+            flex-grow: 1;
             flex-shrink: 0;
             margin-right: 20px;
-            text-align: left; /* Logoyu sola hizala */
+            text-align: left;
         }
 
         .header-logo img {
-            width: 100%; /* İçeriği tamamen kaplaması için */
-            max-width: 320px; /* Maksimum genişlik belirlendi */
+            width: 100%;
+            max-width: 320px;
             height: auto;
         }
 
@@ -164,7 +164,7 @@
         .secondary-categories-column,
         .tertiary-products-column {
             flex-shrink: 0;
-            width: 250px; /* Siyah ve Mavi seri gibi alt başlıkların daha uzun görünmesi için genişlik artırıldı */
+            width: 250px;
             padding: 10px;
             border-right: 1px solid rgba(255,255,255,0.1);
             box-sizing: border-box;
@@ -198,7 +198,7 @@
         }
 
         .secondary-category-item {
-            background-color: #0056b3; /* Alt kategori arka planı farklı renk */
+            background-color: #0056b3;
             border-radius: 5px;
             color: white;
             padding: 10px;
@@ -211,7 +211,7 @@
         
         .secondary-category-item:hover,
         .secondary-category-item.active {
-            background-color: #0066cc; /* Alt kategori hover rengi */
+            background-color: #0066cc;
         }
         
         .primary-category-item .arrow-icon,
@@ -228,7 +228,7 @@
             list-style: none;
             padding: 0;
             margin: 0;
-            background-color: #0066cc; /* Ürün listesi arka planı farklı renk */
+            background-color: #0066cc;
             border-radius: 5px;
             padding: 10px;
             display: none;
@@ -455,7 +455,7 @@
 <body>
     <header>
         <div class="header-logo">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/16827151860282902150_0" alt="BAYSU YAPI VE SULAMA MALZEMELERİ Logo">
+            <img src="WhatsApp Image 2025-07-25 at 22.26.24.jpeg" alt="BAYSU YAPI VE SULAMA MALZEMELERİ Logo">
         </div>
         <div class="search-bar" id="searchBarContainer">
             <input type="search" id="searchInput" placeholder="Ürün Ara...">
@@ -606,7 +606,7 @@
             const allProducts = [];
             document.querySelectorAll('.product-list a').forEach(link => {
                 allProducts.push({
-                    name: link.dataset.product-name,
+                    name: link.dataset.productName,
                     url: link.href
                 });
             });
@@ -620,7 +620,7 @@
 
             document.querySelectorAll('.primary-category-item').forEach(item => {
                 item.addEventListener('click', () => {
-                    const targetMenuId = item.dataset.target-menu;
+                    const targetMenuId = item.dataset.targetMenu;
                     const secondaryColumn = document.getElementById(targetMenuId);
                     const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
 
@@ -628,7 +628,7 @@
                     document.querySelectorAll('.primary-category-item').forEach(el => {
                         if (el !== item) {
                             el.classList.remove('active');
-                            document.getElementById(el.dataset.target-menu).classList.remove('active');
+                            document.getElementById(el.dataset.targetMenu).classList.remove('active');
                         }
                     });
 
@@ -654,7 +654,7 @@
             document.querySelectorAll('.secondary-category-item').forEach(item => {
                 item.addEventListener('click', () => {
                     const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
-                    const productListId = item.dataset.target-products + '-products';
+                    const productListId = item.dataset.targetProducts + '-products';
                     
                     // Sadece tıklanan alt menüyü aktif yap, diğerlerini kapat
                     resetSecondaryItems(item);
