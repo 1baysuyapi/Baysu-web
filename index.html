@@ -26,20 +26,17 @@
             gap: 15px;
             height: 100px;
             overflow: hidden;
+            /* HEADER RESMİ KAPLAMASI İÇİN ARKA PLAN STİLLERİ */
+            background-image: url('7.png'); /* Resmin yolunu buraya yazın */
+            background-size: cover; /* Resmi tüm alanı kaplayacak şekilde boyutlandır */
+            background-position: center; /* Resmi ortala */
+            background-repeat: no-repeat; /* Resmin tekrarlanmasını engelle */
+            position: relative; /* Alt elemanlar için referans noktası */
         }
 
-        .header-logo {
-            flex-grow: 1;
-            flex-shrink: 0;
-            margin-right: 20px;
-            text-align: left;
-            height: 100%;
-        }
-
+        /* Logo resmini artık kullanmıyoruz, background-image kullanıldığı için gizliyoruz */
         .header-logo img {
-            height: 100%;
-            width: auto;
-            display: block;
+            display: none;
         }
 
         .search-bar {
@@ -496,9 +493,6 @@
                     <div class="primary-category-item" data-target-menu="kaplinler-menu">
                         <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" data-target-menu="vanalar-menu">
-                        <h3>VANALAR <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
                 </div>
 
                 <div class="secondary-categories-column" id="kaplinler-menu">
@@ -514,9 +508,6 @@
                     <div class="secondary-category-item" data-target-products="disli-sulama">
                         <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                </div>
-
-                <div class="secondary-categories-column" id="vanalar-menu">
                     <div class="secondary-category-item" data-target-products="vanalar">
                         <h3>Kaplinli Vanalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
@@ -587,7 +578,7 @@
     <main>
         <section class="content-section">
             <h2>BAYSU YAPI<br>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ</h2>
-            <p>BAYSU YAPI VE SULAMA MALZEMELERİ olarak, **2018 yılında başladığımız yolculuğumuzda** Ankara ve çevresindeki müşterilerimize kaliteli sulama, tesisat, hırdavat, PVC ve PPRC çözümleri sunmaktayız. Geniş ürün yelpazemiz ve uzman kadromuzla projelerinize değer katıyoruz.</p>
+            <p>BAYSU YAPI<br>BAYRAKÇI SULAMA VE MALZEMELERİ olarak, **2018 yılında başladığımız yolculuğumuzda** Ankara ve çevresindeki müşterilerimize kaliteli sulama, tesisat, hırdavat, PVC ve PPRC çözümleri sunmaktayız. Geniş ürün yelpazemiz ve uzman kadromuzla projelerinize değer katıyoruz.</p>
             <p>Amacımız, suyun verimli kullanımı ve sürdürülebilir tarım için en uygun ürünleri, rekabetçi fiyatlarla sizlere ulaştırmaktır.</p>
         </section>
     </main>
