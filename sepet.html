@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alışveriş Sepeti</title>
+    <style>
+        /* Ana sayfadaki tüm CSS'leri buraya kopyalayıp yapıştır. */
+        /* Ayrıca sepete özel stil tanımlamalarını da ekleyebilirsin. */
+        .cart-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        /* ... Diğer sepet stilleri ... */
+    </style>
+</head>
+<body>
+    <main>
+        <div class="cart-container">
+            <h1>Alışveriş Sepetiniz</h1>
+            <div id="cart-items-container">
+                <p>Sepetinizde ürün bulunmamaktadır.</p>
+            </div>
+            <div class="cart-summary" id="cart-summary-container">
+            </div>
+            <button class="checkout-button">Siparişi Tamamla</p>
+        </div>
+    </main>
+
+    <script src="urunler.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            function renderCart() {
+                const cart = getCart();
+                const container = document.getElementById('cart-items-container');
+                const summaryContainer = document.getElementById('cart-summary-container');
+                let total = 0;
+                
+                container.innerHTML = '';
+                
+                if (cart.length === 0) {
+                    container.innerHTML = '<p>Sepetinizde ürün bulunmamaktadır.</p>';
+                    summaryContainer.innerHTML = '';
+                    return;
+                }
+                
+                cart.forEach(item => {
+                    const itemTotal = parseFloat(item.fiyat) * item.quantity;
+                    total += itemTotal;
+                    
+                    const itemHtml = `
+                        <div class="cart-item">
+                            <img src="${item.resim}" alt="${item.ad}" class="cart-item-img">
+                            <div class="cart-item-details">
+                                <h3>${item.ad}</h3>
+                                <p>Fiyat: ${item.fiyat} TL</p>
+                            </div>
+                            <div class="cart-item-actions">
+                                <input type="number" min="1" value="${item.quantity}" 
+                                    onchange="updateCartQuantity('${item.id}', this.value)">
+                                <button onclick="removeFromCart('${item.id}')">Sil</button>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += itemHtml;
+                });
+                
+                summaryContainer.innerHTML = `<h2>Toplam Tutar: ${total.toFixed(2)} TL</h2>`;
+                
+                updateCartIcon();
+            }
+
+            renderCart();
+            updateCartIcon();
+        });
+    </script>
+</body>
+</html>
