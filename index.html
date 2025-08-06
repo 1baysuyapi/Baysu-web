@@ -570,13 +570,13 @@
                         <li><a href="disli-disi-reduksiyon-dirsek.html" target="_blank" data-product-name="Dişli Dişi Redüksiyon Dirsek">Dişli Dişi Redüksiyon Dirsek</a></li>
                         <li><a href="erkek-disli-kor-tapa.html" target="_blank" data-product-name="Erkek Dişli Kör Tapa">Erkek Dişli Kör Tapa</a></li>
                     </ul>
-                     <ul class="product-list" id="priz-kolyeler-products">
-                        <li><a href="#">Priz Kolyeler 1</a></li>
-                        <li><a href="#">Priz Kolyeler 2</a></li>
+                    <ul class="product-list" id="priz-kolyeler-products">
+                        <li><a href="#" data-product-name="Priz Kolyeler 1">Priz Kolyeler 1</a></li>
+                        <li><a href="#" data-product-name="Priz Kolyeler 2">Priz Kolyeler 2</a></li>
                     </ul>
                     <ul class="product-list" id="nipelli-seri-products">
-                        <li><a href="#">Nipelli Seri 1</a></li>
-                        <li><a href="#">Nipelli Seri 2</a></li>
+                        <li><a href="#" data-product-name="Nipelli Seri 1">Nipelli Seri 1</a></li>
+                        <li><a href="#" data-product-name="Nipelli Seri 2">Nipelli Seri 2</a></li>
                     </ul>
                     <ul class="product-list" id="vanalar-products">
                         <li><a href="disi-disi-vana.html" target="_blank" data-product-name="Dişi Dişi Vana">Dişi Dişi Vana</a></li>
@@ -591,12 +591,18 @@
                         <li><a href="14-inc-vana-kutusu.html" target="_blank" data-product-name="14 İnç Vana Kutusu">14" Vana Kutusu</a></li>
                     </ul>
                     <ul class="product-list" id="damlama-ek-parcalari-products">
-                        <li><a href="#">Damlama Ek Parçaları 1</a></li>
-                        <li><a href="#">Damlama Ek Parçaları 2</a></li>
+                        <li><a href="#" data-product-name="Çıkış Mini Vana">Çıkış Mini Vana</a></li>
+                        <li><a href="#" data-product-name="Debi Ayarlı Damlatıcı Geniş Boşaltım">Debi Ayarlı Damlatıcı Geniş Boşaltım</a></li>
+                        <li><a href="#" data-product-name="Debi Ayarlı Damlatıcı Kırmızı">Debi Ayarlı Damlatıcı Kırmızı</a></li>
+                        <li><a href="#" data-product-name="Debi Ayarlı Damlatıcı Yeşil">Debi Ayarlı Damlatıcı Yeşil</a></li>
+                        <li><a href="#" data-product-name="Düz Damlama Conta">Düz Damlama Conta</a></li>
+                        <li><a href="#" data-product-name="Kanallı Conta">Kanallı Conta</a></li>
                     </ul>
                     <ul class="product-list" id="yedek-parcalar-products">
-                        <li><a href="#">Yedek Parça 1</a></li>
-                        <li><a href="#">Yedek Parça 2</a></li>
+                        <li><a href="#" data-product-name="Kaplin Sıkma Anahtarı">Kaplin Sıkma Anahtarı</a></li>
+                        <li><a href="#" data-product-name="Pah Açma Aparatı">Pah Açma Aparatı</a></li>
+                        <li><a href="#" data-product-name="O-Ring">O-Ring</a></li>
+                        <li><a href="#" data-product-name="Abot Üstü Kaplin Dağıtıcı">Abot Üstü Kaplin Dağıtıcı</a></li>
                     </ul>
                 </div>
             </div>
@@ -693,6 +699,12 @@
                     if (productListToShow) {
                         productListToShow.style.display = 'block';
                     }
+                    
+                    // Sayfayı en üste kaydır
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                 });
             });
 
