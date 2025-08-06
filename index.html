@@ -24,6 +24,8 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 15px;
+            height: 100px;
+            overflow: hidden;
         }
 
         .header-logo {
@@ -31,12 +33,13 @@
             flex-shrink: 0;
             margin-right: 20px;
             text-align: left;
+            height: 100%;
         }
 
         .header-logo img {
-            width: 100%;
-            max-width: 320px;
-            height: auto;
+            height: 100%;
+            width: auto;
+            display: block;
         }
 
         .search-bar {
@@ -310,6 +313,12 @@
             margin-bottom: 20px;
             text-align: center;
         }
+        /* Hakkımızda başlığı için yeni stil */
+        .content-section h2 span {
+            display: block;
+            font-size: 18px;
+            font-weight: normal;
+        }
 
         .content-section p {
             font-size: 1.1em;
@@ -384,10 +393,12 @@
             header {
                 flex-direction: column;
                 padding: 15px 10px;
+                height: auto;
             }
             
             .header-logo img {
                 height: 60px;
+                width: auto;
             }
             
             .search-bar {
@@ -485,9 +496,6 @@
                     <div class="primary-category-item" data-target-menu="kaplinler-menu">
                         <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="primary-category-item" data-target-menu="vanalar-menu">
-                        <h3>VANALAR <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
                     </div>
 
                 <div class="secondary-categories-column" id="kaplinler-menu">
@@ -503,16 +511,13 @@
                     <div class="secondary-category-item" data-target-products="disli-sulama">
                         <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                </div>
-
-                <div class="secondary-categories-column" id="vanalar-menu">
                     <div class="secondary-category-item" data-target-products="vanalar">
                         <h3>Kaplinli Vanalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <div class="secondary-category-item" data-target-products="vana-kutulari">
                         <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    </div>
+                </div>
 
                 <div class="tertiary-products-column" id="tertiaryProductsColumn">
                     <ul class="product-list" id="mavi-seri-products">
@@ -575,7 +580,7 @@
     
     <main>
         <section class="content-section">
-            <h2>Hakkımızda</h2>
+            <h2>BAYSU YAPI<br>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ</h2>
             <p>BAYSU YAPI VE SULAMA MALZEMELERİ olarak, **2018 yılında başladığımız yolculuğumuzda** Ankara ve çevresindeki müşterilerimize kaliteli sulama, tesisat, hırdavat, PVC ve PPRC çözümleri sunmaktayız. Geniş ürün yelpazemiz ve uzman kadromuzla projelerinize değer katıyoruz.</p>
             <p>Amacımız, suyun verimli kullanımı ve sürdürülebilir tarım için en uygun ürünleri, rekabetçi fiyatlarla sizlere ulaştırmaktır.</p>
         </section>
@@ -606,7 +611,7 @@
             const allProducts = [];
             document.querySelectorAll('.product-list a').forEach(link => {
                 allProducts.push({
-                    name: link.dataset.productName,
+                    name: link.dataset.product-name,
                     url: link.href
                 });
             });
@@ -620,7 +625,7 @@
 
             document.querySelectorAll('.primary-category-item').forEach(item => {
                 item.addEventListener('click', () => {
-                    const targetMenuId = item.dataset.targetMenu;
+                    const targetMenuId = item.dataset.target-menu;
                     const secondaryColumn = document.getElementById(targetMenuId);
                     const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
 
@@ -628,7 +633,7 @@
                     document.querySelectorAll('.primary-category-item').forEach(el => {
                         if (el !== item) {
                             el.classList.remove('active');
-                            document.getElementById(el.dataset.targetMenu).classList.remove('active');
+                            document.getElementById(el.dataset.target-menu).classList.remove('active');
                         }
                     });
 
@@ -638,13 +643,7 @@
                     tertiaryColumn.classList.remove('active');
                     resetProductLists();
 
-                    if (isActive) {
-                        // Tıklanan menü açıldığında ilk alt menüyü otomatik aç
-                        const firstSecondaryItem = secondaryColumn.querySelector('.secondary-category-item');
-                        if (firstSecondaryItem) {
-                            firstSecondaryItem.click();
-                        }
-                    } else {
+                    if (!isActive) {
                         // Kapatıldığında tüm alt menüleri ve ürünleri sıfırla
                         resetSecondaryItems(null);
                     }
@@ -654,7 +653,7 @@
             document.querySelectorAll('.secondary-category-item').forEach(item => {
                 item.addEventListener('click', () => {
                     const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
-                    const productListId = item.dataset.targetProducts + '-products';
+                    const productListId = item.dataset.target-products + '-products';
                     
                     // Sadece tıklanan alt menüyü aktif yap, diğerlerini kapat
                     resetSecondaryItems(item);
