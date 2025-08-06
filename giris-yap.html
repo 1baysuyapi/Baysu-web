@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giriş Yap - BAYSU YAPI</title>
+    <title>Giriş Yap / Üye Ol - BAYSU YAPI</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
@@ -78,6 +78,14 @@
             color: #888;
             cursor: pointer;
         }
+        
+        .login-form, .signup-form {
+            display: none;
+        }
+        
+        .login-form.active, .signup-form.active {
+            display: block;
+        }
 
         .options-group {
             display: flex;
@@ -112,7 +120,7 @@
         .orange-button:hover {
             background-color: #e65c00;
         }
-
+        
     </style>
 </head>
 <body>
@@ -123,15 +131,14 @@
             <a href="#" id="signupTab">Üye Ol</a>
         </div>
         
-        <form class="login-form">
+        <form class="login-form active" action="index.html">
             <div class="form-group">
                 <input type="email" placeholder="E-Posta" required>
             </div>
             <div class="form-group">
-                <input type="password" placeholder="Şifre" id="passwordInput" required>
-                <i class="fas fa-eye password-toggle" id="passwordToggle"></i>
+                <input type="password" placeholder="Şifre" id="loginPasswordInput" required>
+                <i class="fas fa-eye password-toggle" data-target="loginPasswordInput" id="loginPasswordToggle"></i>
             </div>
-            <button type="submit" class="orange-button">Giriş Yap</button>
             <div class="options-group">
                 <div>
                     <input type="checkbox" id="rememberMe">
@@ -139,15 +146,71 @@
                 </div>
                 <a href="#">Şifremi Unuttum</a>
             </div>
+            <button type="submit" class="orange-button">Giriş Yap</button>
         </form>
+
+        <form class="signup-form" action="index.html">
+            <div class="form-group">
+                <input type="text" placeholder="Ad Soyad" required>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="E-Posta" required>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Şifre" id="signupPasswordInput" required>
+                <i class="fas fa-eye password-toggle" data-target="signupPasswordInput" id="signupPasswordToggle"></i>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Şifre Tekrarı" id="signupPasswordRepeatInput" required>
+                <i class="fas fa-eye password-toggle" data-target="signupPasswordRepeatInput"></i>
+            </div>
+            <button type="submit" class="orange-button">Üye Ol</button>
+        </form>
+
     </div>
 
     <script>
-        document.getElementById('passwordToggle').addEventListener('click', function() {
-            const passwordInput = document.getElementById('passwordInput');
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-            this.classList.toggle('fa-eye-slash');
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginTab = document.getElementById('loginTab');
+            const signupTab = document.getElementById('signupTab');
+            const loginForm = document.querySelector('.login-form');
+            const signupForm = document.querySelector('.signup-form');
+
+            // Sekme değiştirme işlevi
+            function switchTab(tabId) {
+                if (tabId === 'loginTab') {
+                    loginTab.classList.add('active');
+                    signupTab.classList.remove('active');
+                    loginForm.classList.add('active');
+                    signupForm.classList.remove('active');
+                } else if (tabId === 'signupTab') {
+                    signupTab.classList.add('active');
+                    loginTab.classList.remove('active');
+                    signupForm.classList.add('active');
+                    loginForm.classList.remove('active');
+                }
+            }
+
+            loginTab.addEventListener('click', (e) => {
+                e.preventDefault();
+                switchTab('loginTab');
+            });
+
+            signupTab.addEventListener('click', (e) => {
+                e.preventDefault();
+                switchTab('signupTab');
+            });
+
+            // Şifre göster/gizle işlevi
+            document.querySelectorAll('.password-toggle').forEach(toggleIcon => {
+                toggleIcon.addEventListener('click', function() {
+                    const targetId = this.dataset.target;
+                    const passwordInput = document.getElementById(targetId);
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+                    this.classList.toggle('fa-eye-slash');
+                });
+            });
         });
     </script>
 </body>
