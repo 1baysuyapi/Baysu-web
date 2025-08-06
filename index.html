@@ -319,16 +319,18 @@
             margin-bottom: 15px;
         }
         
-        .content-section img {
-            max-width: 320px;
+        /* Ana Görsel Alanı */
+        .homepage-images {
+            display: flex; /* Resimleri yan yana koymak için flexbox kullan */
             width: 100%;
             height: auto;
             margin-bottom: 30px;
-            border: 1px solid #ddd;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+        }
+
+        .homepage-images img {
+            width: 50%; /* Her resim alanın yarısını kaplasın */
+            height: auto;
+            object-fit: cover; /* Resmin boyutlarını korurken alanı doldurmasını sağlar */
         }
         
         /* İletişim Bölümü */
@@ -575,6 +577,10 @@
     </nav>
     
     <main>
+        <div class="homepage-images">
+            <img src="7.png" alt="Anasayfa Sol Görsel">
+            <img src="1.png" alt="Anasayfa Sağ Görsel">
+        </div>
         <section class="content-section">
             <h2>Hakkımızda</h2>
             <p>BAYSU YAPI VE SULAMA MALZEMELERİ olarak, **2018 yılında başladığımız yolculuğumuzda** Ankara ve çevresindeki müşterilerimize kaliteli sulama, tesisat, hırdavat, PVC ve PPRC çözümleri sunmaktayız. Geniş ürün yelpazemiz ve uzman kadromuzla projelerinize değer katıyoruz.</p>
