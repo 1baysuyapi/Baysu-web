@@ -390,7 +390,10 @@
             header {
                 flex-direction: column;
                 padding: 15px 10px;
+                /* Mobil için sabit yüksekliği kaldırdım */
                 height: auto;
+                /* Mobil için overflow özelliğini kaldırdım */
+                overflow: visible;
             }
             
             .header-logo img {
@@ -612,8 +615,8 @@
     <main>
         <section class="content-section">
             <h2>HAKKIMIZDA</h2>
-            <p>BAYRAKÇI SULAMA VE MALZEMELERİ olarak, **2018 yılında başladığımız yolculuğumuzda** Ankara ve çevresindeki müşterilerimize kaliteli sulama, tesisat, hırdavat, PVC ve PPRC malzemeleri hizmetini vermekteyiz. Geniş ürün yelpazemiz ve uzman kadromuzla projelerinize değer katıyoruz.</p>
-            <p>Amacımız, suyun verimli kullanımı ve sürdürülebilir tarım ve inşaat sektöründe en uygun ürünleri, rekabetçi fiyatlarla sizlere ulaştırmaktır.</p>
+            <p>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ olarak, **2018 yılında başladığımız yolculuğumuzda** Ankara ve çevresindeki müşterilerimize kaliteli sulama, tesisat, hırdavat, PVC ve PPRC çözümleri sunmaktayız. Geniş ürün yelpazemiz ve uzman kadromuzla projelerinize değer katıyoruz.</p>
+            <p>Amacımız, suyun verimli kullanımı ve sürdürülebilir tarım için en uygun ürünleri, rekabetçi fiyatlarla sizlere ulaştırmaktır.</p>
         </section>
     </main>
     
@@ -638,6 +641,7 @@
             const mainMenuContainer = document.getElementById('mainMenuContainer');
             const searchInput = document.getElementById('searchInput');
             const searchResults = document.getElementById('searchResults');
+            const tertiaryProductsColumn = document.getElementById('tertiaryProductsColumn');
 
             const allProducts = [];
             document.querySelectorAll('.product-list a').forEach(link => {
@@ -658,9 +662,7 @@
                 item.addEventListener('click', () => {
                     const targetMenuId = item.dataset.targetMenu;
                     const secondaryColumn = document.getElementById(targetMenuId);
-                    const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
-
-                    // Diğer tüm ana menüleri kapat
+                    
                     document.querySelectorAll('.primary-category-item').forEach(el => {
                         if (el !== item) {
                             el.classList.remove('active');
@@ -668,13 +670,11 @@
                         }
                     });
 
-                    // Tıklanan menüyü aç/kapat
                     const isActive = item.classList.toggle('active');
                     secondaryColumn.classList.toggle('active', isActive);
-                    tertiaryColumn.classList.remove('active');
+                    tertiaryProductsColumn.classList.remove('active');
                     resetProductLists();
                     
-                    // Alt menü açılmadığında ürün listesini de kapat
                     if (!isActive) {
                         resetSecondaryItems(null);
                     }
@@ -683,27 +683,23 @@
 
             document.querySelectorAll('.secondary-category-item').forEach(item => {
                 item.addEventListener('click', () => {
-                    const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
                     const productListId = item.dataset.targetProducts + '-products';
                     
-                    // Sadece tıklanan alt menüyü aktif yap, diğerlerini kapat
                     resetSecondaryItems(item);
                     item.classList.add('active');
 
-                    // Ürün listelerini sıfırla
                     resetProductLists();
 
-                    // İlgili ürün listesini göster
-                    tertiaryColumn.classList.add('active');
+                    tertiaryProductsColumn.classList.add('active');
                     const productListToShow = document.getElementById(productListId);
                     if (productListToShow) {
                         productListToShow.style.display = 'block';
                     }
                     
-                    // Sayfayı en üste kaydır
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
+                    // Açılan ürün listesine sayfanın kaydırılmasını sağlar
+                    tertiaryProductsColumn.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 });
             });
