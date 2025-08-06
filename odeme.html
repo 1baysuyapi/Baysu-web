@@ -6,7 +6,7 @@
     <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Siparişi Tamamla</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        /* Ana Sayfa ile Paylaşılan Genel CSS */
+        /* Genel CSS */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -282,7 +282,7 @@
             align-items: center;
             gap: 15px;
         }
-        .shipping-option-content input{
+        .shipping-option-content input[type="radio"] {
             margin-right: 5px;
         }
         .shipping-option-content label {
@@ -305,7 +305,7 @@
             color: #555;
         }
 
-        /* Sepet Özeti - sepet.html'den kopyalandı */
+        /* Sepet Özeti */
         .cart-summary h2 {
             margin: 0 0 15px 0;
             font-size: 1.5rem;
@@ -313,22 +313,8 @@
             border-bottom: 1px solid #eee;
             padding-bottom: 10px;
         }
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
-        }
-        .summary-row.total {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #004797;
-        }
-        .summary-row:last-of-type {
-            border-bottom: none;
-        }
         .complete-order-button {
-            display: block; /* button gibi davranması için */
+            display: block;
             width: 100%;
             padding: 15px;
             background: #007bff;
@@ -338,8 +324,8 @@
             font-size: 1.2rem;
             cursor: pointer;
             margin-top: 20px;
-            text-align: center; /* metni ortalamak için */
-            text-decoration: none; /* bağlantı alt çizgisini kaldırmak için */
+            text-align: center;
+            text-decoration: none;
         }
         .secure-badge {
             text-align: center;
@@ -470,61 +456,61 @@
 
                 <div class="address-form">
                     <h3>YENİ ADRES EKLE <br><span class="add-address-info">Yeni adres bilgilerini ekleyin.</span></h3>
-                    <form action="#">
+                    <form id="delivery-form">
                         <div class="form-grid">
                             <div class="form-control">
-                                <input type="text" id="adresBasligi" placeholder=" ">
+                                <input type="text" id="adresBasligi" name="adresBasligi" placeholder=" ">
                                 <label for="adresBasligi" class="required-star">Adres Başlığı</label>
                             </div>
                             <div class="form-control">
-                                <input type="text" id="adresOrnek" placeholder=" ">
+                                <input type="text" id="adresOrnek" name="adresOrnek" placeholder=" ">
                                 <label for="adresOrnek">Örnek: Ev ya da İş</label>
                             </div>
                             <div class="form-control">
-                                <input type="text" id="ad" placeholder=" ">
+                                <input type="text" id="ad" name="ad" placeholder=" ">
                                 <label for="ad" class="required-star">Ad</label>
                             </div>
                             <div class="form-control">
-                                <input type="text" id="soyad" placeholder=" ">
+                                <input type="text" id="soyad" name="soyad" placeholder=" ">
                                 <label for="soyad" class="required-star">Soyad</label>
                             </div>
                             <div class="form-control">
-                                <select id="country">
-                                    <option value="tr">Türkiye</option>
+                                <select id="country" name="country">
+                                    <option value="Türkiye">Türkiye</option>
                                 </select>
                             </div>
                             <div class="form-control">
-                                <select id="city">
+                                <select id="city" name="city">
                                     <option value="">Şehir Seçiniz</option>
                                 </select>
                             </div>
                             <div class="form-control">
-                                <select id="district">
+                                <select id="district" name="district">
                                     <option value="">İlçe Seçiniz</option>
                                 </select>
                             </div>
                             <div class="form-control">
-                                <input type="text" id="telefon" placeholder=" ">
+                                <input type="text" id="telefon" name="telefon" placeholder=" ">
                                 <label for="telefon" class="required-star">Telefon</label>
                             </div>
                             <div class="form-control">
-                                <input type="text" id="cepTelefonu" placeholder=" ">
+                                <input type="text" id="cepTelefonu" name="cepTelefonu" placeholder=" ">
                                 <label for="cepTelefonu" class="required-star">Cep Telefonu</label>
                             </div>
                             <div class="form-control">
-                                <input type="text" id="tcKimlikNo" placeholder=" ">
+                                <input type="text" id="tcKimlikNo" name="tcKimlikNo" placeholder=" ">
                                 <label for="tcKimlikNo" class="required-star">TC Kimlik No</label>
                             </div>
                             <div class="form-control full-width">
-                                <textarea id="adres" placeholder=" "></textarea>
+                                <textarea id="adres" name="adres" placeholder=" "></textarea>
                                 <label for="adres">Adres</label>
                             </div>
                         </div>
                         <div class="invoice-type">
                             <span>FATURA TİPİ</span>
-                            <input type="radio" id="bireysel" name="faturaTipi" value="bireysel" checked>
+                            <input type="radio" id="bireysel" name="faturaTipi" value="Bireysel" checked>
                             <label for="bireysel">Bireysel</label>
-                            <input type="radio" id="kurumsal" name="faturaTipi" value="kurumsal">
+                            <input type="radio" id="kurumsal" name="faturaTipi" value="Kurumsal">
                             <label for="kurumsal">Kurumsal</label>
                         </div>
                         <button type="submit">KAYDET</button>
@@ -535,7 +521,7 @@
                     <h3>KARGO SEÇENEKLERİ<br><span class="add-shipping-info">Tercih ettiğiniz kargoyu seçiniz.</span></h3>
                     <div class="shipping-option">
                         <div class="shipping-option-content">
-                            <input type="radio" id="yurtici" name="kargo" value="yurtici">
+                            <input type="radio" id="yurtici" name="kargo" value="Yurtiçi Kargo" checked>
                             <label for="yurtici">
                                 <h4>Yurtiçi Kargo</h4>
                                 <p>Yurtiçi Kargo (Alıcı ödemeli olarak gönderilmektedir. Kargo ağırlığına göre kargo ücretleri değişmektedir.)</p>
@@ -545,7 +531,7 @@
                     </div>
                     <div class="shipping-option">
                         <div class="shipping-option-content">
-                            <input type="radio" id="fabrika" name="kargo" value="fabrika">
+                            <input type="radio" id="fabrika" name="kargo" value="Fabrikadan Teslim Alacağım">
                             <label for="fabrika">
                                 <h4>Fabrikadan Teslim Alacağım</h4>
                             </label>
@@ -557,29 +543,7 @@
 
             <div class="checkout-summary cart-summary">
                 <h2>SEPET ÖZETİ</h2>
-                <div class="summary-row">
-                    <span>Ara Toplam</span>
-                    <span>330,38 TL</span>
-                </div>
-                <div class="summary-row">
-                    <span>KDV</span>
-                    <span>66,08 TL</span>
-                </div>
-                <div class="summary-row">
-                    <span>KDV Dahil</span>
-                    <span>396,45 TL</span>
-                </div>
-                <div class="summary-row">
-                    <span>Kargo</span>
-                    <span>0,00 TL</span>
-                </div>
-                <div class="summary-row total">
-                    <span>Toplam</span>
-                    <span>396,45 TL</span>
-                </div>
-
-                <a href="odeme-son.html" class="complete-order-button">ÖDEME İŞLEMLERİ</a>
-
+                <button id="nextStepButton" class="complete-order-button">ÖDEME İŞLEMLERİ</button>
                 <div class="secure-badge">
                     <i class="fas fa-lock"></i> This site is SSL SECURED
                 </div>
@@ -599,8 +563,9 @@
         document.addEventListener('DOMContentLoaded', () => {
             const citySelect = document.getElementById('city');
             const districtSelect = document.getElementById('district');
+            const nextStepButton = document.getElementById('nextStepButton');
 
-            // Şehirler ve ilçeler verisi
+            // İl ve ilçe verisi
             const iller = {
                 "Adana": ["Aladağ", "Ceyhan", "Çukurova", "Feke", "İmamoğlu", "Karaisalı", "Karataş", "Kozan", "Pozantı", "Saimbeyli", "Sarıçam", "Seyhan", "Tufanbeyli", "Yumurtalık", "Yüreğir"],
                 "Adıyaman": ["Besni", "Çelikhan", "Gerger", "Gölbaşı", "Kahta", "Merkez", "Samsat", "Sincik", "Tut"],
@@ -629,4 +594,102 @@
                 "Erzurum": ["Aşkale", "Aziziye", "Çat", "Hınıs", "Horasan", "İspir", "Karaçoban", "Karayazı", "Köprüköy", "Narman", "Oltu", "Olur", "Palandöken", "Pasinler", "Pazaryolu", "Şenkaya", "Tekman", "Tortum", "Uzundere", "Yakutiye"],
                 "Eskişehir": ["Alpu", "Beylikova", "Çifteler", "Günyüzü", "Han", "İnönü", "Mahmudiye", "Mihalgazi", "Mihalıççık", "Odunpazarı", "Sarıcakaya", "Seyitgazi", "Sivrihisar", "Tepebaşı"],
                 "Gaziantep": ["Araban", "İslahiye", "Karkamış", "Nizip", "Nurdağı", "Oğuzeli", "Şahinbey", "Şehitkamil", "Yavuzeli"],
-                "Giresun": ["Alucra", "Bulancak", "Çamoluk", "Çanak
+                "Giresun": ["Alucra", "Bulancak", "Çamoluk", "Çanakçı", "Dereli", "Doğankent", "Espiye", "Eynesil", "Görele", "Güce", "Keşap", "Merkez", "Piraziz", "Şebinkarahisar", "Tirebolu", "Yağlıdere"],
+                "Gümüşhane": ["Kelkit", "Köse", "Kürtün", "Merkez", "Şiran", "Torul"],
+                "Hakkâri": ["Çukurca", "Merkez", "Şemdinli", "Yüksekova"],
+                "Hatay": ["Altınözü", "Antakya", "Arsuz", "Belen", "Defne", "Dörtyol", "Erzin", "Hassa", "İskenderun", "Kırıkhan", "Kumlu", "Payas", "Reyhanlı", "Samandağ", "Yayladağı"],
+                "Isparta": ["Aksu", "Atabey", "Eğirdir", "Gelendost", "Gönen", "Keçiborlu", "Senirkent", "Sütçüler", "Şarkikaraağaç", "Uluborlu", "Yalvaç", "Yenişarbademli", "Merkez"],
+                "Mersin": ["Akdeniz", "Anamur", "Aydıncık", "Bozyazı", "Çamlıyayla", "Erdemli", "Gülnar", "Mezitli", "Mut", "Silifke", "Tarsus", "Toroslar", "Yenişehir"],
+                "İstanbul": ["Adalar", "Arnavutköy", "Ataşehir", "Avcılar", "Bağcılar", "Bahçelievler", "Bakırköy", "Başakşehir", "Bayrampaşa", "Beşiktaş", "Beykoz", "Beylikdüzü", "Büyükçekmece", "Çatalca", "Çekmeköy", "Esenler", "Esenyurt", "Eyüp", "Fatih", "Gaziosmanpaşa", "Güngören", "Kadıköy", "Kağıthane", "Kartal", "Küçükçekmece", "Maltepe", "Pendik", "Sancaktepe", "Sarıyer", "Silivri", "Sultanbeyli", "Sultangazi", "Şile", "Şişli", "Tuzla", "Ümraniye", "Üsküdar", "Zeytinburnu"],
+                "İzmir": ["Aliağa", "Balçova", "Bayındır", "Bayraklı", "Bergama", "Beydağ", "Bornova", "Buca", "Çeşme", "Çiğli", "Dikili", "Foça", "Gaziemir", "Güzelbahçe", "Karabağlar", "Karaburun", "Karşıyaka", "Kemalpaşa", "Kınık", "Kiraz", "Konak", "Menderes", "Menemen", "Narlıdere", "Ödemiş", "Seferihisar", "Selçuk", "Tire", "Torbalı", "Urla"],
+                "Kars": ["Akyaka", "Arpaçay", "Digor", "Kağızman", "Merkez", "Sarıkamış", "Selim", "Susuz"],
+                "Kastamonu": ["Abana", "Ağlı", "Araç", "Azdavay", "Bozkurt", "Cide", "Çatalzeytin", "Daday", "Devrekani", "Doğanyurt", "Hanönü", "İhsangazi", "İnebolu", "Küre", "Merkez", "Pınarbaşı", "Şenpazar", "Seydiler", "Taşköprü", "Tosya"],
+                "Kayseri": ["Akkışla", "Bünyan", "Develi", "Felahiye", "Hacılar", "İncesu", "Kocasinan", "Melikgazi", "Özvatan", "Pınarbaşı", "Sarıoğlan", "Sarız", "Talas", "Tomarza", "Yahyalı", "Yeşilhisar"],
+                "Kırklareli": ["Babaeski", "Demirköy", "Kofçaz", "Lüleburgaz", "Merkez", "Pehlivanköy", "Pınarhisar", "Vize"],
+                "Kırşehir": ["Akçakent", "Akpınar", "Boztepe", "Çiçekdağı", "Kaman", "Merkez", "Mucur"],
+                "Kocaeli": ["Başiskele", "Çayırova", "Darıca", "Derince", "Dilovası", "Gebze", "Gölcük", "İzmit", "Kandıra", "Karamürsel", "Kartepe", "Körfez"],
+                "Konya": ["Ahırlı", "Akören", "Akşehir", "Altınekin", "Beyşehir", "Bozkır", "Cihanbeyli", "Çeltik", "Çumra", "Derbent", "Derebucak", "Emirgazi", "Ereğli", "Güneysınır", "Hadim", "Halkapınar", "Hüyük", "Ilgın", "Kadınhanı", "Karapınar", "Karatay", "Kulu", "Meram", "Sarayönü", "Selçuklu", "Seydişehir", "Taşkent", "Tuzlukçu", "Yalıhüyük", "Yunak"],
+                "Kütahya": ["Altıntaş", "Aslanapa", "Çavdarhisar", "Domaniç", "Dumlupınar", "Emet", "Gediz", "Hisarcık", "Merkez", "Pazarlar", "Simav", "Şaphane", "Tavşanlı"],
+                "Malatya": ["Akçadağ", "Arapgir", "Arguvan", "Battalgazi", "Darende", "Doğanşehir", "Doğanyol", "Hekimhan", "Kale", "Kuluncak", "Pütürge", "Yazıhan", "Yeşilyurt"],
+                "Manisa": ["Ahmetli", "Akhisar", "Alaşehir", "Demirci", "Gölmarmara", "Gördes", "Kırkağaç", "Köprübaşı", "Kula", "Salihli", "Sarıgöl", "Saruhanlı", "Selendi", "Soma", "Şehzadeler", "Turgutlu", "Yunusemre"],
+                "Kahramanmaraş": ["Afşin", "Andırın", "Çağlayancerit", "Dulkadiroğlu", "Ekinözü", "Elbistan", "Göksun", "Nurhak", "Onikişubat", "Pazarcık", "Türkoğlu"],
+                "Mardin": ["Artuklu", "Dargeçit", "Derik", "Kızıltepe", "Mazıdağı", "Midyat", "Nusaybin", "Ömerli", "Savur", "Yeşilli"],
+                "Muğla": ["Bodrum", "Dalaman", "Datça", "Fethiye", "Kavaklıdere", "Köyceğiz", "Marmaris", "Menteşe", "Milas", "Ortaca", "Seydikemer", "Ula", "Yatağan"],
+                "Muş": ["Bulanık", "Hasköy", "Korkut", "Malazgirt", "Merkez", "Varto"],
+                "Nevşehir": ["Acıgöl", "Avanos", "Derinkuyu", "Gülşehir", "Hacıbektaş", "Kozaklı", "Merkez", "Ürgüp"],
+                "Niğde": ["Altunhisar", "Bor", "Çamardı", "Çiftlik", "Merkez", "Ulukışla"],
+                "Ordu": ["Akkuş", "Altınordu", "Aybastı", "Çamaş", "Çatalpınar", "Çaybaşı", "Fatsa", "Gölköy", "Gülyalı", "Gürgentepe", "İkizce", "Kabadüz", "Kabataş", "Korgan", "Kumru", "Mesudiye", "Perşembe", "Ulubey", "Ünye"],
+                "Rize": ["Ardeşen", "Çamlıhemşin", "Çayeli", "Derepazarı", "Fındıklı", "Güneysu", "Hemşin", "İkizdere", "İyidere", "Kalkandere", "Merkez", "Pazar"],
+                "Sakarya": ["Adapazarı", "Akyazı", "Arifiye", "Erenler", "Ferizli", "Geyve", "Hendek", "Karapürçek", "Karasu", "Kaynarca", "Kocaali", "Pamukova", "Sapanca", "Serdivan", "Söğütlü", "Taraklı"],
+                "Samsun": ["Alaçam", "Asarcık", "Atakum", "Ayvacık", "Bafra", "Canik", "Çarşamba", "Havza", "İlkadım", "Kavak", "Ladik", "Ondokuzmayıs", "Salıpazarı", "Tekkeköy", "Terme", "Vezirköprü", "Yakakent"],
+                "Siirt": ["Baykan", "Eruh", "Kurtalan", "Pervari", "Merkez", "Şirvan"],
+                "Sinop": ["Ayancık", "Boyabat", "Dikmen", "Durağan", "Erfelek", "Gerze", "Merkez", "Saraydüzü", "Türkeli"],
+                "Sivas": ["Akıncılar", "Altınyayla", "Divriği", "Doğanşar", "Gemerek", "Gölova", "Gürün", "Hafik", "İmranlı", "Kangal", "Koyulhisar", "Merkez", "Suşehri", "Şarkışla", "Ulaş", "Yıldızeli", "Zara"],
+                "Tekirdağ": ["Çerkezköy", "Çorlu", "Ergene", "Hayrabolu", "Kapaklı", "Malkara", "Marmara Ereğlisi", "Muratlı", "Saray", "Şarköy", "Süleymanpaşa"],
+                "Tokat": ["Almus", "Artova", "Başçiftlik", "Erbaa", "Merkez", "Niksar", "Pazar", "Reşadiye", "Sulusaray", "Turhal", "Yeşilyurt", "Zile"],
+                "Trabzon": ["Akçaabat", "Araklı", "Arsin", "Beşikdüzü", "Çarşıbaşı", "Çaykara", "Dernekpazarı", "Düzköy", "Hayrat", "Köprübaşı", "Maçka", "Of", "Ortahisar", "Sürmene", "Şalpazarı", "Tonya", "Vakfıkebir", "Yomra"],
+                "Tunceli": ["Çemişgezek", "Hozat", "Mazgirt", "Merkez", "Nazımiye", "Ovacık", "Pertek", "Pülümür"],
+                "Şanlıurfa": ["Akçakale", "Birecik", "Bozova", "Ceylanpınar", "Eyyübiye", "Halfeti", "Haliliye", "Harran", "Hilvan", "Karaköprü", "Siverek", "Suruç", "Viranşehir"],
+                "Uşak": ["Banaz", "Eşme", "Karahallı", "Merkez", "Sivaslı", "Ulubey"],
+                "Van": ["Bahçesaray", "Başkale", "Çaldıran", "Çatak", "Edremit", "Erciş", "Gevaş", "Gürpınar", "İpekyolu", "Muradiye", "Özalp", "Saray", "Tuşba"],
+                "Yozgat": ["Akdağmadeni", "Aydıncık", "Boğazlıyan", "Çandır", "Çayıralan", "Çekerek", "Kadışehri", "Merkez", "Saraykent", "Sarıkaya", "Sorgun", "Şefaatli", "Yenifakılı", "Yerköy"],
+                "Zonguldak": ["Alaplı", "Çaycuma", "Devrek", "Ereğli", "Gökçebey", "Kilimli", "Kozlu", "Merkez"],
+                "Aksaray": ["Ağaçören", "Eskil", "Gülağaç", "Güzelyurt", "Merkez", "Ortaköy", "Sarıyahşi"],
+                "Bayburt": ["Aydıntepe", "Demirözü", "Merkez"],
+                "Karaman": ["Ayrancı", "Başyayla", "Ermenek", "Kazımkarabekir", "Merkez", "Sarıveliler"],
+                "Kırıkkale": ["Bahşılı", "Balışeyh", "Çelebi", "Delice", "Karakeçili", "Keskin", "Merkez", "Sulakyurt", "Yahşihan"],
+                "Batman": ["Beşiri", "Gercüş", "Hasankeyf", "Kozluk", "Merkez", "Sason"],
+                "Şırnak": ["Beytüşşebap", "Cizre", "Güçlükonak", "İdil", "Merkez", "Silopi", "Uludere"],
+                "Bartın": ["Amasra", "Kurucaşile", "Merkez", "Ulus"],
+                "Ardahan": ["Çıldır", "Damal", "Göle", "Hanak", "Merkez", "Posof"],
+                "Iğdır": ["Aralık", "Karakoyunlu", "Merkez", "Tuzluca"],
+                "Yalova": ["Altınova", "Armutlu", "Çınarcık", "Çiftlikköy", "Merkez", "Termal"],
+                "Karabük": ["Eflani", "Eskipazar", "Merkez", "Ovacık", "Safranbolu", "Yenice"],
+                "Kilis": ["Elbeyli", "Merkez", "Musabeyli", "Polateli"],
+                "Osmaniye": ["Bahçe", "Düziçi", "Hasanbeyli", "Kadirli", "Merkez", "Sumbas", "Toprakkale"],
+                "Düzce": ["Akçakoca", "Cumayeri", "Çilimli", "Gölyaka", "Gümüşova", "Kaynaşlı", "Merkez", "Yığılca"]
+            };
+
+            for (const il in iller) {
+                const option = document.createElement('option');
+                option.value = il;
+                option.textContent = il;
+                citySelect.appendChild(option);
+            }
+
+            citySelect.addEventListener('change', (event) => {
+                const selectedCity = event.target.value;
+                districtSelect.innerHTML = '<option value="">İlçe Seçiniz</option>';
+
+                if (selectedCity) {
+                    const districts = iller[selectedCity];
+                    districts.forEach(ilce => {
+                        const option = document.createElement('option');
+                        option.value = ilce;
+                        option.textContent = ilce;
+                        districtSelect.appendChild(option);
+                    });
+                }
+            });
+
+            nextStepButton.addEventListener('click', () => {
+                const form = document.getElementById('delivery-form');
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                
+                // Formdaki tüm verileri al ve yerel depolamaya (localStorage) kaydet
+                localStorage.setItem('deliveryInfo', JSON.stringify(data));
+                
+                // Kargo seçeneğini de kaydet
+                const selectedKargo = document.querySelector('input[name="kargo"]:checked');
+                if (selectedKargo) {
+                    localStorage.setItem('shippingMethod', selectedKargo.value);
+                }
+
+                // Ödeme sayfasına yönlendir
+                window.location.href = 'odeme-son.html';
+            });
+        });
+    </script>
+</body>
+</html>
