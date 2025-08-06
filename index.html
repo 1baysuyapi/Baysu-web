@@ -455,7 +455,7 @@
 <body>
     <header>
         <div class="header-logo">
-            <img src="https://via.placeholder.com/320x80.png?text=BAYSU+YAPI" alt="BAYSU YAPI VE SULAMA MALZEMELERİ Logo">
+            <img src="http://googleusercontent.com/image_collection/image_retrieval/16827151860282902150_0" alt="BAYSU YAPI VE SULAMA MALZEMELERİ Logo">
         </div>
         <div class="search-bar" id="searchBarContainer">
             <input type="search" id="searchInput" placeholder="Ürün Ara...">
@@ -606,7 +606,7 @@
             const allProducts = [];
             document.querySelectorAll('.product-list a').forEach(link => {
                 allProducts.push({
-                    name: link.dataset.productName,
+                    name: link.dataset.product-name,
                     url: link.href
                 });
             });
@@ -620,7 +620,7 @@
 
             document.querySelectorAll('.primary-category-item').forEach(item => {
                 item.addEventListener('click', () => {
-                    const targetMenuId = item.dataset.targetMenu;
+                    const targetMenuId = item.dataset.target-menu;
                     const secondaryColumn = document.getElementById(targetMenuId);
                     const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
 
@@ -628,7 +628,7 @@
                     document.querySelectorAll('.primary-category-item').forEach(el => {
                         if (el !== item) {
                             el.classList.remove('active');
-                            document.getElementById(el.dataset.targetMenu).classList.remove('active');
+                            document.getElementById(el.dataset.target-menu).classList.remove('active');
                         }
                     });
 
@@ -654,7 +654,7 @@
             document.querySelectorAll('.secondary-category-item').forEach(item => {
                 item.addEventListener('click', () => {
                     const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
-                    const productListId = item.dataset.targetProducts + '-products';
+                    const productListId = item.dataset.target-products + '-products';
                     
                     // Sadece tıklanan alt menüyü aktif yap, diğerlerini kapat
                     resetSecondaryItems(item);
@@ -689,11 +689,6 @@
                         });
                         searchResults.appendChild(ul);
                         searchResults.style.display = 'block';
-
-                        // Eğer tek sonuç varsa direkt yönlendir
-                        if (filteredProducts.length === 1) {
-                            // window.location.href = filteredProducts[0].url; // Bu satır tek sonuca direkt yönlendirme yapar
-                        }
                     } else {
                         searchResults.style.display = 'none';
                     }
