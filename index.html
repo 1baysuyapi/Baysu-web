@@ -310,13 +310,7 @@
             margin-bottom: 20px;
             text-align: center;
         }
-        /* Hakkımızda başlığı için yeni stil */
-        .content-section h2 span {
-            display: block;
-            font-size: 18px;
-            font-weight: normal;
-        }
-
+        
         .content-section p {
             font-size: 1.1em;
             color: #333;
@@ -390,9 +384,7 @@
             header {
                 flex-direction: column;
                 padding: 15px 10px;
-                /* Mobil için sabit yüksekliği kaldırdım */
                 height: auto;
-                /* Mobil için overflow özelliğini kaldırdım */
                 overflow: visible;
             }
             
@@ -574,12 +566,17 @@
                         <li><a href="erkek-disli-kor-tapa.html" target="_blank" data-product-name="Erkek Dişli Kör Tapa">Erkek Dişli Kör Tapa</a></li>
                     </ul>
                     <ul class="product-list" id="priz-kolyeler-products">
-                        <li><a href="#" data-product-name="Priz Kolyeler 1">Priz Kolyeler 1</a></li>
-                        <li><a href="#" data-product-name="Priz Kolyeler 2">Priz Kolyeler 2</a></li>
+                        <li><a href="#" data-product-name="Priz Kolye">Priz Kolye</a></li>
+                        <li><a href="#" data-product-name="Dişi Nipelli Priz Kolye">Dişi Nipelli Priz Kolye</a></li>
+                        <li><a href="#" data-product-name="Erkek Nipelli Priz Kolye">Erkek Nipelli Priz Kolye</a></li>
+                        <li><a href="#" data-product-name="Kızaklı Priz Kolye">Kızaklı Priz Kolye</a></li>
+                        <li><a href="#" data-product-name="Çift Çıkışlı Priz Kolye">Çift Çıkışlı Priz Kolye</a></li>
                     </ul>
                     <ul class="product-list" id="nipelli-seri-products">
-                        <li><a href="#" data-product-name="Nipelli Seri 1">Nipelli Seri 1</a></li>
-                        <li><a href="#" data-product-name="Nipelli Seri 2">Nipelli Seri 2</a></li>
+                        <li><a href="#" data-product-name="Dişi Nipelli Priz Kolye">Dişi Nipelli Priz Kolye</a></li>
+                        <li><a href="#" data-product-name="Erkek Nipelli Priz Kolye">Erkek Nipelli Priz Kolye</a></li>
+                        <li><a href="#" data-product-name="Nipelli Erkek TE">Nipelli Erkek TE</a></li>
+                        <li><a href="#" data-product-name="Nipelli Dişi Dirsek">Nipelli Dişi Dirsek</a></li>
                     </ul>
                     <ul class="product-list" id="vanalar-products">
                         <li><a href="disi-disi-vana.html" target="_blank" data-product-name="Dişi Dişi Vana">Dişi Dişi Vana</a></li>
@@ -696,7 +693,6 @@
                         productListToShow.style.display = 'block';
                     }
                     
-                    // Açılan ürün listesine sayfanın kaydırılmasını sağlar
                     tertiaryProductsColumn.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
