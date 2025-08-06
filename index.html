@@ -29,7 +29,7 @@
             /* HEADER RESMİ KAPLAMASI İÇİN ARKA PLAN STİLLERİ */
             background-image: url('7.png'); /* Resmin yolunu buraya yazın */
             background-size: cover; /* Resmi tüm alanı kaplayacak şekilde boyutlandır */
-            background-position: center; /* Resmi ortala */
+            background-position: center 40%; /* Resmi ortanın biraz yukarısına ayarlar */
             background-repeat: no-repeat; /* Resmin tekrarlanmasını engelle */
             position: relative; /* Alt elemanlar için referans noktası */
         }
@@ -490,12 +490,12 @@
         <div class="main-menu-container" id="mainMenuContainer">
             <div class="menu-content">
                 <div class="primary-category-column" id="primaryCategoryColumn">
-                    <div class="primary-category-item" data-target-menu="kaplinler-menu">
+                    <div class="primary-category-item" data-target-menu="kaplin-sub-menu">
                         <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                 </div>
 
-                <div class="secondary-categories-column" id="kaplinler-menu">
+                <div class="secondary-categories-column" id="kaplin-sub-menu">
                     <div class="secondary-category-item" data-target-products="mavi-seri">
                         <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
@@ -508,11 +508,23 @@
                     <div class="secondary-category-item" data-target-products="disli-sulama">
                         <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
+                    <div class="secondary-category-item" data-target-products="priz-kolyeler">
+                        <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" data-target-products="nipelli-seri">
+                        <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
                     <div class="secondary-category-item" data-target-products="vanalar">
-                        <h3>Kaplinli Vanalar <span class="arrow-icon">&#9658;</span></h3>
+                        <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <div class="secondary-category-item" data-target-products="vana-kutulari">
                         <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" data-target-products="damlama-ek-parcalari">
+                        <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="secondary-category-item" data-target-products="yedek-parcalar">
+                        <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                 </div>
 
@@ -558,6 +570,14 @@
                         <li><a href="disli-disi-reduksiyon-dirsek.html" target="_blank" data-product-name="Dişli Dişi Redüksiyon Dirsek">Dişli Dişi Redüksiyon Dirsek</a></li>
                         <li><a href="erkek-disli-kor-tapa.html" target="_blank" data-product-name="Erkek Dişli Kör Tapa">Erkek Dişli Kör Tapa</a></li>
                     </ul>
+                     <ul class="product-list" id="priz-kolyeler-products">
+                        <li><a href="#">Priz Kolyeler 1</a></li>
+                        <li><a href="#">Priz Kolyeler 2</a></li>
+                    </ul>
+                    <ul class="product-list" id="nipelli-seri-products">
+                        <li><a href="#">Nipelli Seri 1</a></li>
+                        <li><a href="#">Nipelli Seri 2</a></li>
+                    </ul>
                     <ul class="product-list" id="vanalar-products">
                         <li><a href="disi-disi-vana.html" target="_blank" data-product-name="Dişi Dişi Vana">Dişi Dişi Vana</a></li>
                         <li><a href="erkek-disi-vana.html" target="_blank" data-product-name="Erkek Dişi Vana">Erkek Dişi Vana</a></li>
@@ -570,6 +590,14 @@
                         <li><a href="12-inc-vana-kutusu.html" target="_blank" data-product-name="12 İnç Vana Kutusu">12" Vana Kutusu</a></li>
                         <li><a href="14-inc-vana-kutusu.html" target="_blank" data-product-name="14 İnç Vana Kutusu">14" Vana Kutusu</a></li>
                     </ul>
+                    <ul class="product-list" id="damlama-ek-parcalari-products">
+                        <li><a href="#">Damlama Ek Parçaları 1</a></li>
+                        <li><a href="#">Damlama Ek Parçaları 2</a></li>
+                    </ul>
+                    <ul class="product-list" id="yedek-parcalar-products">
+                        <li><a href="#">Yedek Parça 1</a></li>
+                        <li><a href="#">Yedek Parça 2</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -578,7 +606,7 @@
     <main>
         <section class="content-section">
             <h2>BAYSU YAPI<br>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ</h2>
-            <p>BAYSU YAPI<br>BAYRAKÇI SULAMA VE MALZEMELERİ olarak, **2018 yılında başladığımız yolculuğumuzda** Ankara ve çevresindeki müşterilerimize kaliteli sulama, tesisat, hırdavat, PVC ve PPRC çözümleri sunmaktayız. Geniş ürün yelpazemiz ve uzman kadromuzla projelerinize değer katıyoruz.</p>
+            <p>BAYSU YAPI VE SULAMA MALZEMELERİ olarak, **2018 yılında başladığımız yolculuğumuzda** Ankara ve çevresindeki müşterilerimize kaliteli sulama, tesisat, hırdavat, PVC ve PPRC çözümleri sunmaktayız. Geniş ürün yelpazemiz ve uzman kadromuzla projelerinize değer katıyoruz.</p>
             <p>Amacımız, suyun verimli kullanımı ve sürdürülebilir tarım için en uygun ürünleri, rekabetçi fiyatlarla sizlere ulaştırmaktır.</p>
         </section>
     </main>
