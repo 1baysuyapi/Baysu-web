@@ -1,1 +1,154 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap - BAYSU YAPI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
 
+        .login-tabs {
+            display: flex;
+            justify-content: space-around;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .login-tabs a {
+            flex-grow: 1;
+            padding: 15px 0;
+            text-decoration: none;
+            color: #555;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s, border-bottom 0.3s;
+            position: relative;
+        }
+        
+        .login-tabs a.active {
+            color: #004797;
+            border-bottom: 3px solid #004797;
+        }
+        
+        .login-tabs a:hover {
+            color: #004797;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .form-group input {
+            width: calc(100% - 22px);
+            padding: 12px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            cursor: pointer;
+        }
+
+        .options-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .options-group a {
+            color: #004797;
+            text-decoration: none;
+        }
+
+        .options-group a:hover {
+            text-decoration: underline;
+        }
+
+        .orange-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .orange-button:hover {
+            background-color: #e65c00;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-tabs">
+            <a href="#" class="active" id="loginTab">Giriş Yap</a>
+            <a href="#" id="signupTab">Üye Ol</a>
+        </div>
+        
+        <form class="login-form">
+            <div class="form-group">
+                <input type="email" placeholder="E-Posta" required>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Şifre" id="passwordInput" required>
+                <i class="fas fa-eye password-toggle" id="passwordToggle"></i>
+            </div>
+            <button type="submit" class="orange-button">Giriş Yap</button>
+            <div class="options-group">
+                <div>
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">Beni Hatırla</label>
+                </div>
+                <a href="#">Şifremi Unuttum</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('passwordToggle').addEventListener('click', function() {
+            const passwordInput = document.getElementById('passwordInput');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
+</body>
+</html>
