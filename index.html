@@ -282,16 +282,12 @@
             border-bottom: none;
         }
 
-        #searchResults li:hover {
-            background-color: #f0f0f0;
-        }
-
         #searchResults a {
             text-decoration: none;
             color: #333;
             display: block;
         }
-
+        
         /* Hakkımızda ve Diğer İçerik Bölümleri */
         .content-section {
             padding: 40px 20px;
@@ -302,7 +298,7 @@
             border-radius: 8px;
             text-align: left;
         }
-
+        
         .content-section h2 {
             font-size: 28px;
             color: #004797;
@@ -344,6 +340,80 @@
         
         .contact p {
             margin: 5px 0;
+        }
+        
+        /* Hesabım Bölümü Stilleri */
+        .account-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .account-container h1 {
+            color: #004797;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .account-info, .orders-section {
+            margin-bottom: 30px;
+        }
+        
+        .account-info h2, .orders-section h2 {
+            color: #ff6600;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .info-group {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .info-item {
+            flex: 1;
+            min-width: 250px;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-item strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        
+        .orders-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .order-item {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+        
+        .order-item p {
+            margin: 5px 0;
+        }
+        
+        .order-status {
+            font-weight: bold;
+            color: #007bff;
         }
         
         footer {
@@ -602,11 +672,43 @@
     </nav>
     
     <main>
-        <section class="content-section">
-            <h2>HAKKIMIZDA</h2>
-            <p>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ olarak, **2018 yılında başladığımız yolculuğumuzda** Ankara ve çevresindeki müşterilerimize kaliteli sulama, tesisat, hırdavat, PVC ve PPRC çözümleri sunmaktayız. Geniş ürün yelpazemiz ve uzman kadromuzla projelerinize değer katıyoruz.</p>
-            <p>Amacımız, suyun verimli kullanımı ve sürdürülebilir tarım için en uygun ürünleri, rekabetçi fiyatlarla sizlere ulaştırmaktır.</p>
-        </section>
+        <div id="homepageContent">
+            <section class="content-section">
+                <h2>HAKKIMIZDA</h2>
+                <p>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ olarak, **2018 yılında başladığımız yolculuğumuzda** Ankara ve çevresindeki müşterilerimize kaliteli sulama, tesisat, hırdavat, PVC ve PPRC çözümleri sunmaktayız. Geniş ürün yelpazemiz ve uzman kadromuzla projelerinize değer katıyoruz.</p>
+                <p>Amacımız, suyun verimli kullanımı ve sürdürülebilir tarım için en uygun ürünleri, rekabetçi fiyatlarla sizlere ulaştırmaktır.</p>
+            </section>
+        </div>
+
+        <div id="myAccountContent" style="display: none;">
+            <div class="account-container">
+                <h1>Hesabım</h1>
+                
+                <div class="account-info">
+                    <h2>Hesap Bilgilerim</h2>
+                    <div class="info-group">
+                        <div class="info-item">
+                            <strong>Ad Soyad:</strong>
+                            <span id="userName"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong>E-posta Adresi:</strong>
+                            <span id="userEmail"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Telefon Numarası:</strong>
+                            <span id="userPhone"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="orders-section">
+                    <h2>Son Siparişlerim</h2>
+                    <ul class="orders-list" id="ordersList">
+                        </ul>
+                </div>
+            </div>
+        </div>
     </main>
     
     <section class="contact">
@@ -632,6 +734,28 @@
             const searchResults = document.getElementById('searchResults');
             const tertiaryProductsColumn = document.getElementById('tertiaryProductsColumn');
             const headerActions = document.getElementById('headerActions');
+            const homepageContent = document.getElementById('homepageContent');
+            const myAccountContent = document.getElementById('myAccountContent');
+            
+            // Sanal kullanıcı veritabanı (giris-yap.html ile aynı olmalı)
+            const users = JSON.parse(localStorage.getItem('users')) || [{
+                name: 'Ali Yılmaz',
+                email: 'ali@test.com',
+                password: '123',
+                phone: '0555 123 45 67',
+                orders: [
+                    { id: '#123456', date: '15 Mayıs 2025', total: '550 TL', status: 'Kargoya Verildi' },
+                    { id: '#123455', date: '10 Mayıs 2025', total: '220 TL', status: 'Teslim Edildi' }
+                ]
+            }, {
+                name: 'Ayşe Kaya',
+                email: 'ayse@test.com',
+                password: '456',
+                phone: '0532 987 65 43',
+                orders: [
+                    { id: '#123457', date: '16 Mayıs 2025', total: '800 TL', status: 'Siparişiniz Alındı' }
+                ]
+            }];
 
             const allProducts = [];
             document.querySelectorAll('.product-list a').forEach(link => {
@@ -641,15 +765,17 @@
                 });
             });
 
-            // Oturum durumunu kontrol et ve header'ı güncelle
-            function updateHeaderActions() {
-                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-                headerActions.innerHTML = ''; // Önceki linkleri temizle
+            // Oturum durumunu kontrol et ve sayfa içeriğini/header'ı güncelle
+            function updatePageContentAndHeader() {
+                const loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
+                const isLoggedIn = !!loggedInUserEmail;
+                const currentUser = isLoggedIn ? users.find(u => u.email === loggedInUserEmail) : null;
 
+                // Header'ı güncelle
+                headerActions.innerHTML = ''; 
                 if (isLoggedIn) {
-                    // Kullanıcı giriş yapmışsa
                     const myAccountLink = document.createElement('a');
-                    myAccountLink.href = '#'; // Hesabım sayfası için burayı düzenleyebilirsiniz
+                    myAccountLink.href = '#'; // Sayfayı yenilemeye gerek yok, içerik zaten burada
                     myAccountLink.innerHTML = '<i class="fas fa-user"></i> Hesabım';
 
                     const logoutLink = document.createElement('a');
@@ -662,17 +788,18 @@
 
                     logoutLink.addEventListener('click', (e) => {
                         e.preventDefault();
-                        localStorage.removeItem('isLoggedIn');
+                        localStorage.removeItem('loggedInUserEmail');
                         window.location.reload(); // Sayfayı yenile
                     });
-
+                    
+                    myAccountLink.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        homepageContent.style.display = 'none';
+                        myAccountContent.style.display = 'block';
+                    });
                 } else {
-                    // Kullanıcı giriş yapmamışsa
                     const loginLink = document.createElement('a');
-                    
-                    // Yönlendirme parametresini ekliyoruz.
                     loginLink.href = 'giris-yap.html?redirect=' + encodeURIComponent(window.location.pathname);
-                    
                     loginLink.id = 'loginBtn';
                     loginLink.innerHTML = '<i class="fas fa-user"></i> Giriş Yap';
                     
@@ -683,9 +810,40 @@
                     headerActions.appendChild(loginLink);
                     headerActions.appendChild(cartLink);
                 }
+
+                // Sayfa içeriğini güncelle
+                if (isLoggedIn && currentUser) {
+                    homepageContent.style.display = 'none';
+                    myAccountContent.style.display = 'block';
+                    
+                    document.getElementById('userName').textContent = currentUser.name;
+                    document.getElementById('userEmail').textContent = currentUser.email;
+                    document.getElementById('userPhone').textContent = currentUser.phone || 'Bilgi yok';
+
+                    const ordersList = document.getElementById('ordersList');
+                    ordersList.innerHTML = '';
+                    if (currentUser.orders && currentUser.orders.length > 0) {
+                        currentUser.orders.forEach(order => {
+                            const orderItem = document.createElement('li');
+                            orderItem.className = 'order-item';
+                            orderItem.innerHTML = `
+                                <p><strong>Sipariş No:</strong> ${order.id}</p>
+                                <p><strong>Tarih:</strong> ${order.date}</p>
+                                <p><strong>Toplam Tutar:</strong> ${order.total}</p>
+                                <p class="order-status">Durum: ${order.status}</p>
+                            `;
+                            ordersList.appendChild(orderItem);
+                        });
+                    } else {
+                        ordersList.innerHTML = '<p>Henüz siparişiniz bulunmamaktadır.</p>';
+                    }
+                } else {
+                    homepageContent.style.display = 'block';
+                    myAccountContent.style.display = 'none';
+                }
             }
 
-            updateHeaderActions();
+            updatePageContentAndHeader();
 
             menuToggle.addEventListener('click', () => {
                 mainMenuContainer.classList.toggle("active");
