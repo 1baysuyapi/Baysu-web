@@ -465,16 +465,8 @@
             <i class="fas fa-search"></i>
             <div id="searchResults"></div>
         </div>
-        <div class="header-actions">
-            <a href="giris-yap.html" id="loginBtn">
-                <i class="fas fa-user"></i>
-                Giriş Yap
-            </a>
-            <a href="#">
-                <i class="fas fa-shopping-cart"></i>
-                Sepet
-            </a>
-        </div>
+        <div class="header-actions" id="headerActions">
+            </div>
     </header>
 
     <nav>
@@ -639,14 +631,58 @@
             const searchInput = document.getElementById('searchInput');
             const searchResults = document.getElementById('searchResults');
             const tertiaryProductsColumn = document.getElementById('tertiaryProductsColumn');
+            const headerActions = document.getElementById('headerActions');
 
             const allProducts = [];
             document.querySelectorAll('.product-list a').forEach(link => {
                 allProducts.push({
-                    name: link.dataset.product-name,
+                    name: link.dataset.productName,
                     url: link.href
                 });
             });
+
+            // Oturum durumunu kontrol et ve header'ı güncelle
+            function updateHeaderActions() {
+                const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+                headerActions.innerHTML = ''; // Önceki linkleri temizle
+
+                if (isLoggedIn) {
+                    // Kullanıcı giriş yapmışsa
+                    const myAccountLink = document.createElement('a');
+                    myAccountLink.href = '#'; // Hesabım sayfası için burayı düzenleyebilirsiniz
+                    myAccountLink.innerHTML = '<i class="fas fa-user"></i> Hesabım';
+
+                    const logoutLink = document.createElement('a');
+                    logoutLink.href = '#';
+                    logoutLink.id = 'logoutBtn';
+                    logoutLink.innerHTML = '<i class="fas fa-sign-out-alt"></i> Çıkış Yap';
+                    
+                    headerActions.appendChild(myAccountLink);
+                    headerActions.appendChild(logoutLink);
+
+                    logoutLink.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        localStorage.removeItem('isLoggedIn');
+                        window.location.reload(); // Sayfayı yenile
+                    });
+
+                } else {
+                    // Kullanıcı giriş yapmamışsa
+                    const loginLink = document.createElement('a');
+                    loginLink.href = 'giris-yap.html';
+                    loginLink.id = 'loginBtn';
+                    loginLink.innerHTML = '<i class="fas fa-user"></i> Giriş Yap';
+                    
+                    const cartLink = document.createElement('a');
+                    cartLink.href = '#';
+                    cartLink.innerHTML = '<i class="fas fa-shopping-cart"></i> Sepet';
+
+                    headerActions.appendChild(loginLink);
+                    headerActions.appendChild(cartLink);
+                }
+            }
+
+            updateHeaderActions();
 
             menuToggle.addEventListener('click', () => {
                 mainMenuContainer.classList.toggle("active");
