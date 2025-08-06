@@ -131,7 +131,7 @@
             <a href="#" id="signupTab">Üye Ol</a>
         </div>
         
-        <form class="login-form active" action="index.html">
+        <form class="login-form active" id="loginForm">
             <div class="form-group">
                 <input type="email" placeholder="E-Posta" required>
             </div>
@@ -149,7 +149,7 @@
             <button type="submit" class="orange-button">Giriş Yap</button>
         </form>
 
-        <form class="signup-form" action="index.html">
+        <form class="signup-form" id="signupForm">
             <div class="form-group">
                 <input type="text" placeholder="Ad Soyad" required>
             </div>
@@ -173,8 +173,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             const loginTab = document.getElementById('loginTab');
             const signupTab = document.getElementById('signupTab');
-            const loginForm = document.querySelector('.login-form');
-            const signupForm = document.querySelector('.signup-form');
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
 
             // Sekme değiştirme işlevi
             function switchTab(tabId) {
@@ -210,6 +210,21 @@
                     passwordInput.setAttribute('type', type);
                     this.classList.toggle('fa-eye-slash');
                 });
+            });
+
+            // Giriş ve üye olma formlarını dinleme
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Giriş başarılı olursa, lokal depolama verisini ayarla ve anasayfaya yönlendir
+                localStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'index.html';
+            });
+
+            signupForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Üyelik başarılı olursa, lokal depolama verisini ayarla ve anasayfaya yönlendir
+                localStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'index.html';
             });
         });
     </script>
