@@ -5,42 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Anasayfa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
     <style>
-        /* ======================================================================== */
-        /* GENEL VE LOGO STİLLERİ */
-        /* ======================================================================== */
+        /* Genel CSS */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #F5F5DC;
+            background-color: #F5F5DC; /* Arka planı krem rengi yaptık */
             color: #222;
         }
 
+        /* YENİ LOGO BÖLÜMÜ */
         .anasayfa-logo {
             width: 100%;
-            height: 25vh;
-            background-color: #fff;
+            height: 25vh; /* Yüksekliği bu şekilde kaldı */
+            background-color: #fff; /* Arka planı beyaz yaptık */
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: center; /* Dikeyde ortalar */
+            justify-content: center; /* Yatayda ortalar */
             overflow: hidden;
             position: relative;
-            border-bottom: 2px solid #004797;
-            margin-bottom: 10px;
+            border-bottom: 2px solid #004797; /* DAHA BELİRGİN ÇİZGİ */
+            margin-bottom: 10px; /* Çizgi ile header arasında boşluk */
         }
 
         .anasayfa-logo img {
-            max-height: 80%;
-            max-width: 80%;
-            object-fit: contain;
+            max-height: 80%; /* Yüksekliği konteynerin %80'i kadar */
+            max-width: 80%; /* Genişliği konteynerin %80'i kadar */
+            object-fit: contain; /* Resmi orantılı bir şekilde sığdırır */
             display: block;
         }
 
-        /* ======================================================================== */
-        /* HEADER VE NAVİGASYON STİLLERİ */
-        /* ======================================================================== */
+        /* YENİ HEADER (Arama ve Eylemler) */
         header {
             background: #fff;
             padding: 10px 20px;
@@ -87,6 +83,7 @@
             font-size: 14px;
         }
 
+        /* Navigasyon Stilleri */
         nav {
             background: #004797;
             padding: 10px 20px;
@@ -130,10 +127,7 @@
         .menu-toggle:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
-        
-        /* ======================================================================== */
-        /* AÇILIR MENÜ KATEGORİ STİLLERİ */
-        /* ======================================================================== */
+
         .main-menu-container {
             display: none;
             position: absolute;
@@ -161,6 +155,7 @@
             padding: 0 20px;
         }
 
+        /* ÜRÜN KATEGORİLERİ */
         .primary-category-column,
         .secondary-categories-column,
         .tertiary-products-column {
@@ -190,7 +185,7 @@
             cursor: pointer;
             margin-bottom: 5px;
             display: flex;
-            justify-content: center;
+            justify-content: center; /* Merkezi hizalama */
             align-items: center;
             text-align: center;
         }
@@ -292,10 +287,8 @@
             color: #333;
             display: block;
         }
-        
-        /* ======================================================================== */
-        /* İÇERİK BÖLÜMLERİ STİLLERİ */
-        /* ======================================================================== */
+
+        /* Hakkımızda ve Diğer İçerik Bölümleri */
         .content-section {
             padding: 40px 20px;
             max-width: 900px;
@@ -422,10 +415,7 @@
             font-weight: bold;
             color: #007bff;
         }
-        
-        /* ======================================================================== */
-        /* FOOTER VE WHATSAPP BUTONU STİLLERİ */
-        /* ======================================================================== */
+
         footer {
             background: #000;
             color: #fff;
@@ -434,6 +424,7 @@
             font-size: 14px;
         }
 
+        /* WhatsApp Butonu Stilleri */
         .whatsapp-button {
             position: fixed;
             bottom: 20px;
@@ -457,9 +448,7 @@
             transform: scale(1.1);
         }
 
-        /* ======================================================================== */
-        /* RESPONSİVE DÜZENLEMELER */
-        /* ======================================================================== */
+        /* Responsive Düzenlemeler */
         @media (max-width: 768px) {
             .anasayfa-logo {
                 height: 15vh;
@@ -557,7 +546,7 @@
 
     <nav>
         <div class="nav-links">
-            <a href="#" id="homepageLink">Anasayfa</a>
+            <a href="index.html" id="homepageLink">Anasayfa</a>
         </div>
         <div class="menu-toggle" id="menuToggle">Ürünlerimiz +</div>
         <div class="main-menu-container" id="mainMenuContainer">
@@ -686,12 +675,12 @@
             </div>
         </div>
     </nav>
-
+    
     <main>
         <div id="homepageContent">
             <section class="content-section">
                 <h2>HAKKIMIZDA</h2>
-                <p>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ olarak, **2018 yılında başladığımız yolculuğumuzda** Ankara ve çevresindeki müşterilerimize kaliteli sulama, tesisat, hırdavat, PVC ve PPRC çözümleri sunmaktayız. Geniş ürün yelpazemiz ve uzman kadromuzla projelerinize değer katıyoruz.</p>
+                <p>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ olarak, <strong>2018 yılında başladığımız yolculuğumuzda</strong> Ankara ve çevresindeki müşterilerimize kaliteli sulama, tesisat, hırdavat, PVC ve PPRC çözümleri sunmaktayız. Geniş ürün yelpazemiz ve uzman kadromuzla projelerinize değer katıyoruz.</p>
                 <p>Amacımız, suyun verimli kullanımı ve sürdürülebilir tarım için en uygun ürünleri, rekabetçi fiyatlarla sizlere ulaştırmaktır.</p>
             </section>
         </div>
@@ -769,7 +758,6 @@
                 name: 'Ayşe Kaya',
                 email: 'ayse@test.com',
                 password: '456',
-                phone: 'Bilgi yok',
                 orders: [
                     { id: '#123457', date: '16 Mayıs 2025', total: '800 TL', status: 'Siparişiniz Alındı' }
                 ]
@@ -859,8 +847,7 @@
             updateHeaderActions();
 
             // Anasayfa linki ve Hesabım'a dön linki için olay dinleyicisi
-            homepageLink.addEventListener('click', (e) => {
-                e.preventDefault(); // href="#" olduğu için sayfanın en üstüne gitmesini engeller
+            homepageLink.addEventListener('click', () => {
                 homepageContent.style.display = 'block';
                 myAccountContent.style.display = 'none';
             });
