@@ -128,6 +128,7 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            min-height: 200px; /* Sepet boşken içeriğin küçülmesini engellemek için */
         }
         
         .cart-details-header {
@@ -145,85 +146,11 @@
             color: #004797;
         }
         
-        .empty-cart-link {
-            text-decoration: none;
-            color: #dc3545;
-            font-weight: bold;
-        }
-        
-        .cart-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .cart-item img {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        
-        .item-info {
-            flex: 1;
-        }
-        
-        .item-info p {
-            margin: 0 0 5px 0;
-            font-weight: bold;
-        }
-        
-        .item-actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .quantity-control {
-            display: flex;
-            align-items: center;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        
-        .quantity-control button {
-            background: #f8f9fa;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 1rem;
-            color: #555;
-        }
-        
-        .quantity-control input {
-            width: 40px;
+        .empty-cart-message {
             text-align: center;
-            border: none;
-            outline: none;
-            padding: 5px 0;
-        }
-        
-        .item-price {
-            text-align: right;
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: #004797;
-        }
-        
-        .item-price small {
-            font-weight: normal;
-            font-size: 0.8rem;
+            padding: 50px 20px;
+            font-size: 1.2rem;
             color: #666;
-            display: block;
-        }
-        
-        .remove-item-link {
-            text-decoration: none;
-            color: #dc3545;
-            font-size: 0.9rem;
         }
         
         .continue-shopping-button {
@@ -289,6 +216,16 @@
             font-size: 0.8rem;
             color: #aaa;
         }
+        
+        /* Sepet boşkenki durum için ekstra stiller */
+        .cart-summary.empty .summary-row span:last-child {
+            font-weight: normal;
+        }
+        .cart-summary.empty .complete-order-button {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
 
         /* Yeni özellikler bölümü */
         .features-section {
@@ -402,28 +339,6 @@
             .nav-links {
                 gap: 10px;
             }
-            .cart-item {
-                flex-direction: column;
-                align-items: flex-start;
-                text-align: left;
-            }
-            .item-info {
-                text-align: center;
-            }
-            .item-actions {
-                margin-top: 10px;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-            .item-price {
-                margin-top: 10px;
-            }
-            .remove-item-link {
-                margin-top: 10px;
-                text-align: center;
-                width: 100%;
-            }
             .whatsapp-button {
                 width: 60px;
                 height: 60px;
@@ -463,59 +378,38 @@
             <div class="cart-details">
                 <div class="cart-details-header">
                     <h2>SEPET DETAYI</h2>
-                    <a href="#" class="empty-cart-link">
-                        <i class="fas fa-trash-alt"></i> Sepeti Boşalt
-                    </a>
                 </div>
                 
-                <div class="cart-item">
-                    <img src="https://via.placeholder.com/100" alt="PP Çift Taraf Kaplin Çıkışı Single Vana 32">
-                    
-                    <div class="item-info">
-                        <p>PP Çift Taraf Kaplin Çıkışı Single Vana 32</p>
-                        <a href="#" class="remove-item-link">
-                            <i class="fas fa-trash-alt"></i> Sepetten Sil
-                        </a>
-                    </div>
-
-                    <div class="item-actions">
-                        <div class="quantity-control">
-                            <button>-</button>
-                            <input type="text" value="2" readonly>
-                            <button>+</button>
-                        </div>
-                        <div class="item-price">
-                            330,38 TL
-                            <small>+ KDV % 20</small>
-                        </div>
-                    </div>
+                <div class="empty-cart-message">
+                    <p><i class="fas fa-info-circle"></i> Sepetinizde ürün bulunmamaktadır.</p>
                 </div>
+                
 
                 <a href="index.html" class="continue-shopping-button">
                     <i class="fas fa-arrow-left"></i> ALIŞVERİŞE DEVAM ET
                 </a>
             </div>
 
-            <div class="cart-summary">
+            <div class="cart-summary empty">
                 <h2>SEPET ÖZETİ</h2>
                 <div class="summary-row">
                     <span>Ara Toplam</span>
-                    <span>330,38 TL</span>
+                    <span>0,00 TL</span>
                 </div>
                 <div class="summary-row">
                     <span>KDV</span>
-                    <span>66,08 TL</span>
+                    <span>0,00 TL</span>
                 </div>
                 <div class="summary-row">
                     <span>KDV Dahil</span>
-                    <span>396,45 TL</span>
+                    <span>0,00 TL</span>
                 </div>
                 <div class="summary-row total">
                     <span>Toplam</span>
-                    <span>396,45 TL</span>
+                    <span>0,00 TL</span>
                 </div>
                 
-                <button class="complete-order-button">ALIŞVERİŞİ TAMAMLA</button>
+                <button class="complete-order-button" disabled>ALIŞVERİŞİ TAMAMLA</button>
                 
                 <div class="secure-badge">
                     <i class="fas fa-lock"></i> This site is SSL SECURED
@@ -558,15 +452,10 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const completeOrderButton = document.querySelector('.complete-order-button');
-            const isLoggedIn = localStorage.getItem('loggedInUserEmail');
-
-            completeOrderButton.addEventListener('click', () => {
-                if (isLoggedIn) {
-                    window.location.href = 'odeme.html';
-                } else {
-                    window.location.href = 'giris-yap.html?redirect=odeme.html';
-                }
-            });
+            
+            // Sepet boş olduğu için butonu devre dışı bırakıyoruz.
+            // Gerçek bir uygulamada bu kontrol sepetin durumuna göre dinamik olarak yapılır.
+            completeOrderButton.disabled = true;
         });
     </script>
 </body>
