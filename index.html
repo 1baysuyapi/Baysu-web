@@ -496,7 +496,10 @@
                     <div class="primary-category-item" data-target-menu="kaplinler-menu">
                         <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
                     </div>
+                    <div class="primary-category-item" data-target-menu="vanalar-menu">
+                        <h3>VANALAR <span class="arrow-icon">&#9658;</span></h3>
                     </div>
+                </div>
 
                 <div class="secondary-categories-column" id="kaplinler-menu">
                     <div class="secondary-category-item" data-target-products="mavi-seri">
@@ -511,6 +514,9 @@
                     <div class="secondary-category-item" data-target-products="disli-sulama">
                         <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
+                </div>
+
+                <div class="secondary-categories-column" id="vanalar-menu">
                     <div class="secondary-category-item" data-target-products="vanalar">
                         <h3>Kaplinli Vanalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
@@ -611,7 +617,7 @@
             const allProducts = [];
             document.querySelectorAll('.product-list a').forEach(link => {
                 allProducts.push({
-                    name: link.dataset.product-name,
+                    name: link.dataset.productName,
                     url: link.href
                 });
             });
@@ -625,7 +631,7 @@
 
             document.querySelectorAll('.primary-category-item').forEach(item => {
                 item.addEventListener('click', () => {
-                    const targetMenuId = item.dataset.target-menu;
+                    const targetMenuId = item.dataset.targetMenu;
                     const secondaryColumn = document.getElementById(targetMenuId);
                     const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
 
@@ -633,7 +639,7 @@
                     document.querySelectorAll('.primary-category-item').forEach(el => {
                         if (el !== item) {
                             el.classList.remove('active');
-                            document.getElementById(el.dataset.target-menu).classList.remove('active');
+                            document.getElementById(el.dataset.targetMenu).classList.remove('active');
                         }
                     });
 
@@ -642,9 +648,9 @@
                     secondaryColumn.classList.toggle('active', isActive);
                     tertiaryColumn.classList.remove('active');
                     resetProductLists();
-
+                    
+                    // Alt menü açılmadığında ürün listesini de kapat
                     if (!isActive) {
-                        // Kapatıldığında tüm alt menüleri ve ürünleri sıfırla
                         resetSecondaryItems(null);
                     }
                 });
@@ -653,7 +659,7 @@
             document.querySelectorAll('.secondary-category-item').forEach(item => {
                 item.addEventListener('click', () => {
                     const tertiaryColumn = document.getElementById('tertiaryProductsColumn');
-                    const productListId = item.dataset.target-products + '-products';
+                    const productListId = item.dataset.targetProducts + '-products';
                     
                     // Sadece tıklanan alt menüyü aktif yap, diğerlerini kapat
                     resetSecondaryItems(item);
