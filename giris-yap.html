@@ -1,283 +1,217 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giriş Yap / Üye Ol - BAYSU YAPI</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-image: url('1.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .login-container {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        .login-tabs {
-            display: flex;
-            justify-content: space-around;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 20px;
-        }
-        
-        .login-tabs a {
-            flex-grow: 1;
-            padding: 15px 0;
-            text-decoration: none;
-            color: #555;
-            font-size: 18px;
-            font-weight: bold;
-            transition: color 0.3s, border-bottom 0.3s;
-            position: relative;
-        }
-        
-        .login-tabs a.active {
-            color: #004797;
-            border-bottom: 3px solid #004797;
-        }
-        
-        .login-tabs a:hover {
-            color: #004797;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .form-group input {
-            width: calc(100% - 22px);
-            padding: 12px 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .form-group .password-toggle {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #888;
-            cursor: pointer;
-        }
-        
-        .login-form, .signup-form {
-            display: none;
-        }
-        
-        .login-form.active, .signup-form.active {
-            display: block;
-        }
-
-        .options-group {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-        
-        .options-group a {
-            color: #004797;
-            text-decoration: none;
-        }
-
-        .options-group a:hover {
-            text-decoration: underline;
-        }
-
-        .orange-button {
-            width: 100%;
-            padding: 15px;
-            background-color: #ff6600;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .orange-button:hover {
-            background-color: #e65c00;
-        }
-
-        #error-message {
-            color: red;
-            font-size: 14px;
-            margin-top: 10px;
-        }
-        
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap | KAYSU YAPI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .links {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .links a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        #registerFormContainer {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
-    <div class="login-container">
-        <div class="login-tabs">
-            <a href="#" class="active" id="loginTab">Giriş Yap</a>
-            <a href="#" id="signupTab">Üye Ol</a>
-        </div>
-        
-        <form class="login-form active" id="loginForm">
-            <div class="form-group">
-                <input type="email" placeholder="E-Posta" id="loginEmailInput" required>
-            </div>
-            <div class="form-group">
-                <input type="password" placeholder="Şifre" id="loginPasswordInput" required>
-                <i class="fas fa-eye password-toggle" data-target="loginPasswordInput" id="loginPasswordToggle"></i>
-            </div>
-            <div class="options-group">
-                <div>
-                    <input type="checkbox" id="rememberMe">
-                    <label for="rememberMe">Beni Hatırla</label>
-                </div>
-                <a href="#">Şifremi Unuttum</a>
-            </div>
-            <button type="submit" class="orange-button">Giriş Yap</button>
-            <p id="error-message"></p>
-        </form>
+    <div class="container">
+        
+        <div id="loginFormContainer">
+            <h2>Giriş Yap</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">E-posta</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Şifre</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn" id="loginBtn">Giriş Yap</button>
+            </form>
+            <div class="links">
+                Hesabın yok mu? <a href="#" id="showRegisterForm">Kayıt ol</a>
+            </div>
+        </div>
 
-        <form class="signup-form" id="signupForm">
-            <div class="form-group">
-                <input type="text" placeholder="Ad Soyad" id="signupNameInput" required>
-            </div>
-            <div class="form-group">
-                <input type="email" placeholder="E-Posta" id="signupEmailInput" required>
-            </div>
-            <div class="form-group">
-                <input type="password" placeholder="Şifre" id="signupPasswordInput" required>
-                <i class="fas fa-eye password-toggle" data-target="signupPasswordInput" id="signupPasswordToggle"></i>
-            </div>
-            <div class="form-group">
-                <input type="password" placeholder="Şifre Tekrarı" id="signupPasswordRepeatInput" required>
-                <i class="fas fa-eye password-toggle" data-target="signupPasswordRepeatInput"></i>
-            </div>
-            <button type="submit" class="orange-button">Üye Ol</button>
-            <p id="signup-error-message"></p>
-        </form>
+        <div id="registerFormContainer">
+            <h2>Kayıt Ol</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="name">Ad Soyad</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">E-posta</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Şifre</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <button type="submit" class="btn" id="registerBtn">Kayıt Ol</button>
+            </form>
+            <div class="links">
+                Zaten hesabın var mı? <a href="#" id="showLoginForm">Giriş yap</a>
+            </div>
+        </div>
 
-    </div>
+    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const loginTab = document.getElementById('loginTab');
-            const signupTab = document.getElementById('signupTab');
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-            const errorMessage = document.getElementById('error-message');
-            const signupErrorMessage = document.getElementById('signup-error-message');
-
-            const redirectTo = new URLSearchParams(window.location.search).get('redirect') || 'index.html';
-
-            // Sanal kullanıcı veritabanı (Normalde bu bir sunucu tarafında olur)
-            let users = JSON.parse(localStorage.getItem('users')) || [{
-                name: 'Ali Yılmaz',
-                email: 'ali@test.com',
-                password: '123',
-                phone: '0555 123 45 67',
-                orders: [
-                    { id: '#123456', date: '15 Mayıs 2025', total: '550 TL', status: 'Kargoya Verildi' },
-                    { id: '#123455', date: '10 Mayıs 2025', total: '220 TL', status: 'Teslim Edildi' }
-                ]
-            }, {
-                name: 'Ayşe Kaya',
-                email: 'ayse@test.com',
-                password: '456',
-                phone: '0532 987 65 43',
-                orders: [
-                    { id: '#123457', date: '16 Mayıs 2025', total: '800 TL', status: 'Siparişiniz Alındı' }
-                ]
-            }];
-
-            function switchTab(tabId) {
-                loginTab.classList.toggle('active', tabId === 'loginTab');
-                signupTab.classList.toggle('active', tabId === 'signupTab');
-                loginForm.classList.toggle('active', tabId === 'loginTab');
-                signupForm.classList.toggle('active', tabId === 'signupTab');
-                errorMessage.textContent = '';
-                signupErrorMessage.textContent = '';
-            }
-
-            loginTab.addEventListener('click', (e) => {
-                e.preventDefault();
-                switchTab('loginTab');
-            });
-
-            signupTab.addEventListener('click', (e) => {
-                e.preventDefault();
-                switchTab('signupTab');
-            });
-
-            document.querySelectorAll('.password-toggle').forEach(toggleIcon => {
-                toggleIcon.addEventListener('click', function() {
-                    const targetId = this.dataset.target;
-                    const passwordInput = document.getElementById(targetId);
-                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-                    passwordInput.setAttribute('type', type);
-                    this.classList.toggle('fa-eye-slash');
-                });
-            });
-
-            loginForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const email = document.getElementById('loginEmailInput').value;
-                const password = document.getElementById('loginPasswordInput').value;
-                
-                const user = users.find(u => u.email === email && u.password === password);
-                
-                if (user) {
-                    localStorage.setItem('loggedInUserEmail', email);
-                    window.location.href = redirectTo;
-                } else {
-                    errorMessage.textContent = 'Hatalı e-posta veya şifre.';
-                }
-            });
-
-            signupForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const name = document.getElementById('signupNameInput').value;
-                const email = document.getElementById('signupEmailInput').value;
-                const password = document.getElementById('signupPasswordInput').value;
-                const passwordRepeat = document.getElementById('signupPasswordRepeatInput').value;
-
-                if (password !== passwordRepeat) {
-                    signupErrorMessage.textContent = 'Şifreler uyuşmuyor!';
-                    return;
-                }
-
-                if (users.some(u => u.email === email)) {
-                    signupErrorMessage.textContent = 'Bu e-posta adresi zaten kullanılıyor.';
-                    return;
-                }
-                
-                // Yeni kullanıcıyı sanal veritabanına ekle
-                const newUser = { name, email, password, phone: '', orders: [] };
-                users.push(newUser);
-                localStorage.setItem('users', JSON.stringify(users)); // Veritabanını güncelle
-                
-                localStorage.setItem('loggedInUserEmail', email);
-                window.location.href = redirectTo;
-            });
-        });
-    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginFormContainer = document.getElementById('loginFormContainer');
+            const registerFormContainer = document.getElementById('registerFormContainer');
+            const showRegisterFormLink = document.getElementById('showRegisterForm');
+            const showLoginFormLink = document.getElementById('showLoginForm');
+    
+            const loginEmailInput = document.getElementById('loginEmail');
+            const loginPasswordInput = document.getElementById('loginPassword');
+            const loginBtn = document.getElementById('loginBtn');
+    
+            const nameInput = document.getElementById('name');
+            const registerEmailInput = document.getElementById('registerEmail');
+            const registerPasswordInput = document.getElementById('registerPassword');
+            const registerBtn = document.getElementById('registerBtn');
+    
+            function showLoginForm() {
+                loginFormContainer.style.display = 'block';
+                registerFormContainer.style.display = 'none';
+            }
+    
+            function showRegisterForm() {
+                loginFormContainer.style.display = 'none';
+                registerFormContainer.style.display = 'block';
+            }
+    
+            showRegisterFormLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                showRegisterForm();
+            });
+    
+            showLoginFormLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                showLoginForm();
+            });
+    
+            // Başlangıçta giriş formunu göster
+            showLoginForm();
+    
+            // KAYIT İŞLEMİ (Sunucuya istek gönderir)
+            registerBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const name = nameInput.value;
+                const email = registerEmailInput.value;
+                const password = registerPasswordInput.value;
+    
+                try {
+                    const response = await fetch('https://baysu-web-app.onrender.com/register', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name, email, password })
+                    });
+    
+                    const data = await response.json();
+                    alert(data.message);
+                    if (response.ok) {
+                        showLoginForm(); // Başarılıysa giriş formuna geçiş yap
+                    }
+                } catch (error) {
+                    console.error('Hata:', error);
+                    alert('Kayıt işlemi başarısız oldu.');
+                }
+            });
+    
+            // GİRİŞ İŞLEMİ (Sunucuya istek gönderir)
+            loginBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const email = loginEmailInput.value;
+                const password = loginPasswordInput.value;
+    
+                try {
+                    const response = await fetch('https://baysu-web-app.onrender.com/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, password })
+                    });
+    
+                    const data = await response.json();
+                    
+                    if (response.ok) {
+                        // Sunucudan başarılı yanıt gelirse kullanıcıyı kaydedip yönlendirme yap
+                        localStorage.setItem('loggedInUserEmail', data.user.email);
+                        window.location.href = 'index.html';
+                    } else {
+                        alert(data.message);
+                    }
+                } catch (error) {
+                    console.error('Hata:', error);
+                    alert('Giriş işlemi başarısız oldu.');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
