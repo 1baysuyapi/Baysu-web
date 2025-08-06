@@ -669,7 +669,10 @@
                 } else {
                     // Kullanıcı giriş yapmamışsa
                     const loginLink = document.createElement('a');
-                    loginLink.href = 'giris-yap.html';
+                    
+                    // Yönlendirme parametresini ekliyoruz.
+                    loginLink.href = 'giris-yap.html?redirect=' + encodeURIComponent(window.location.pathname);
+                    
                     loginLink.id = 'loginBtn';
                     loginLink.innerHTML = '<i class="fas fa-user"></i> Giriş Yap';
                     
