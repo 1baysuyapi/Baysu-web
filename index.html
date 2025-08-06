@@ -15,78 +15,27 @@
             color: #222;
         }
 
-        /* Yeni Header Stilleri */
-        header {
-            background-color: #003366;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
-            height: 100px;
-            overflow: hidden;
-            background-image: url('7.png');
-            background-size: cover;
-            background-position: center 40%;
-            background-repeat: no-repeat;
-            position: relative;
-        }
-
-        .header-logo img {
-            display: none;
-        }
-
-        .search-bar {
-            flex-grow: 1;
-            max-width: 600px;
-            position: relative;
-        }
-
-        .search-bar input {
+        /* YENİ HEADER STİLLERİ - KOD GÜNCELLENDİ */
+        .anasayfa-header {
             width: 100%;
-            padding: 10px 40px 10px 15px;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .search-bar .fa-search {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #888;
-        }
-        
-        .header-actions {
+            height: 25vh; /* Sayfanın çeyreği kadar yükseklik */
+            background-color: #004797; /* Resmin arkasındaki renk */
             display: flex;
             align-items: center;
-            gap: 15px;
-            flex-shrink: 0;
+            justify-content: flex-start;
+            overflow: hidden;
+            position: relative;
         }
 
-        .header-actions a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: color 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .header-actions a:hover {
-            color: #ccc;
+        .anasayfa-header img {
+            width: 25%; /* Sayfanın çeyreği kadar genişlik */
+            height: 100%;
+            object-fit: cover;
+            object-position: left;
+            margin-left: 0;
+            display: block;
         }
 
-        .header-actions a i {
-            font-size: 20px;
-        }
-        
         /* Navigasyon Stilleri */
         nav {
             background: #004797;
@@ -159,11 +108,12 @@
             padding: 0 20px;
         }
         
+        /* ÜRÜN KATEGORİLERİ - KOD GÜNCELLENDİ */
         .primary-category-column,
         .secondary-categories-column,
         .tertiary-products-column {
             flex-shrink: 0;
-            width: 250px;
+            width: 33.33%; /* Her sütunun üçte bir genişliğinde olmasını sağlar */
             padding: 10px;
             border-right: 1px solid rgba(255,255,255,0.1);
             box-sizing: border-box;
@@ -179,7 +129,8 @@
             display: block;
         }
 
-        .primary-category-item {
+        .primary-category-item,
+        .secondary-category-item {
             background-color: #004797;
             border-radius: 5px;
             color: white;
@@ -189,6 +140,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            text-align: center; /* Yazıları ortala */
+        }
+        
+        /* KAPLİNLER KUTUCUKLARI - KOD GÜNCELLENDİ */
+        .secondary-category-item h3 {
+            width: 100%; /* Kutucuğu tam doldur */
+            text-align: center;
         }
 
         .primary-category-item:hover,
@@ -196,18 +154,6 @@
             background-color: #0056b3;
         }
 
-        .secondary-category-item {
-            background-color: #0056b3;
-            border-radius: 5px;
-            color: white;
-            padding: 10px;
-            cursor: pointer;
-            margin-bottom: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
         .secondary-category-item:hover,
         .secondary-category-item.active {
             background-color: #0066cc;
@@ -223,6 +169,7 @@
             transform: rotate(90deg);
         }
         
+        /* ÜRÜN LİSTELERİ - KOD GÜNCELLENDİ */
         .product-list {
             list-style: none;
             padding: 0;
@@ -235,6 +182,13 @@
         
         .product-list li {
             margin-bottom: 5px;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+        }
+
+        .product-list li:hover {
+            background-color: #0056b3;
         }
         
         .product-list a {
@@ -242,12 +196,12 @@
             text-decoration: none;
             font-size: 0.9em;
             display: block;
-            padding: 3px 0;
+            padding: 8px 10px;
+            text-align: center; /* Ürün yazılarını ortala */
         }
         
         .product-list a:hover {
             text-decoration: underline;
-            color: #33ffff;
         }
 
         /* Arama sonuçları için stil */
@@ -450,6 +404,14 @@
         
         /* Responsive Düzenlemeler */
         @media (max-width: 768px) {
+            .anasayfa-header {
+                height: 15vh;
+            }
+            
+            .anasayfa-header img {
+                width: 50%; /* Küçük ekranlarda resim daha geniş yer kaplasın */
+            }
+
             header {
                 flex-direction: column;
                 padding: 15px 10px;
@@ -497,7 +459,7 @@
             
             .primary-category-column,
             .secondary-categories-column,
-            .tertiary-products-column {
+            .tertiary-products-column { 
                 width: 100%;
                 border-right: none;
                 padding: 5px;
@@ -526,18 +488,9 @@
 </head>
 <body>
     
-    <header>
-        <div class="header-logo">
-            <img src="7.png" alt="BAYSU YAPI VE SULAMA MALZEMELERİ Logo">
-        </div>
-        <div class="search-bar" id="searchBarContainer">
-            <input type="search" id="searchInput" placeholder="Ürün Ara...">
-            <i class="fas fa-search"></i>
-            <div id="searchResults"></div>
-        </div>
-        <div class="header-actions" id="headerActions">
-            </div>
-    </header>
+    <div class="anasayfa-header">
+        <img src="https://storage.googleapis.com/gcp-content-fetcher/uploaded:WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png-580ba5ea-7bdd-46d5-8d47-45d31705cfb6" alt="BAYSU YAPI VE SULAMA MALZEMELERİ">
+    </div>
 
     <nav>
         <div class="nav-links">
@@ -753,7 +706,6 @@
                 name: 'Ayşe Kaya',
                 email: 'ayse@test.com',
                 password: '456',
-                phone: '0532 987 65 43',
                 orders: [
                     { id: '#123457', date: '16 Mayıs 2025', total: '800 TL', status: 'Siparişiniz Alındı' }
                 ]
@@ -936,7 +888,7 @@
 
             document.addEventListener('click', (event) => {
                 const nav = document.querySelector('nav');
-                const header = document.querySelector('header');
+                const header = document.querySelector('.anasayfa-header'); /* Header selector değişti */
                 const searchBarContainer = document.getElementById('searchBarContainer');
                 if (!nav.contains(event.target) && !header.contains(event.target) && !searchBarContainer.contains(event.target)) {
                     if (mainMenuContainer.classList.contains('active')) {
