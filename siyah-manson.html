@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baysu Yapı - Kaplin Manşon Puşvit</title>
+    <title>Baysu Yapı - Siyah Seri Manşon</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
@@ -108,11 +108,11 @@
             text-decoration: none;
             font-weight: bold;
         }
-
+        
         main {
             padding: 20px;
         }
-
+        
         .product-container {
             display: flex;
             gap: 20px;
@@ -121,57 +121,35 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        .product-images-section {
-            display: flex;
+        
+        .product-image-section {
             flex: 1;
-            gap: 10px;
-        }
-
-        .thumbnails {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
+            justify-content: center;
+            align-items: center;
         }
-
-        .thumbnails img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-        }
-
-        .main-image-container {
-            flex: 1;
-        }
-
-        .main-image-container img {
-            width: 100%;
+        
+        .product-image-section img {
+            max-width: 100%;
             height: auto;
             border: 1px solid var(--border-color);
         }
-
+        
         .product-info-section {
             flex: 1.5;
             padding: 0 20px;
         }
-
+        
         .product-info-section h1 {
             color: var(--primary-color);
             font-size: 1.8em;
             margin-bottom: 10px;
         }
-
-        .product-info-section .rating {
-            color: var(--secondary-color);
-            margin-bottom: 10px;
-        }
-
+        
         .product-info-section .details {
             margin-bottom: 20px;
         }
-
+        
         .product-info-section .details div {
             margin-bottom: 5px;
         }
@@ -195,22 +173,22 @@
             font-size: 0.9em;
             margin-bottom: 20px;
         }
-
+        
         .size-options {
             margin-bottom: 20px;
         }
-
+        
         .size-options label {
             font-weight: bold;
         }
-
+        
         .size-buttons {
             display: flex;
             flex-wrap: wrap;
             gap: 5px;
             margin-top: 10px;
         }
-
+        
         .size-buttons button {
             padding: 8px 12px;
             border: 1px solid var(--border-color);
@@ -218,46 +196,46 @@
             cursor: pointer;
             border-radius: 5px;
         }
-
+        
         .size-buttons button.selected {
             background-color: var(--secondary-color);
             color: #fff;
             border-color: var(--secondary-color);
         }
-
+        
         .quantity-controls {
             display: flex;
             align-items: center;
             margin-bottom: 20px;
             gap: 10px;
         }
-
+        
         .quantity-input {
             display: flex;
             border: 1px solid var(--border-color);
             border-radius: 5px;
             overflow: hidden;
         }
-
+        
         .quantity-input button {
             background-color: #eee;
             border: none;
             padding: 8px 12px;
             cursor: pointer;
         }
-
+        
         .quantity-input input {
             width: 50px;
             text-align: center;
             border: none;
             padding: 8px 0;
         }
-
+        
         .action-buttons {
             display: flex;
             gap: 10px;
         }
-
+        
         .action-buttons .add-to-cart {
             background-color: #6c9f3e;
             color: #fff;
@@ -267,7 +245,7 @@
             cursor: pointer;
             font-weight: bold;
         }
-
+        
         .action-buttons .buy-now {
             background-color: var(--primary-color);
             color: #fff;
@@ -277,7 +255,7 @@
             cursor: pointer;
             font-weight: bold;
         }
-
+        
         .footer-features {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -323,71 +301,55 @@
     <header>
         <div class="header-top">
             <div class="header-logo">
-                <img src="https://via.placeholder.com/250x60/f4f4f9/004797?text=BAYSU+YAPI" alt="Baysu Yapı Logo">
+                <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="Baysu Yapı Logo">
             </div>
             <div class="header-search">
                 <i class="fas fa-search"></i>
                 <input type="text" placeholder="Ürün Ara...">
             </div>
             <div class="header-actions">
-                <a href="#"><i class="fas fa-shopping-cart"></i> Sepet</a>
+                <a href="sepet.html"><i class="fas fa-shopping-cart"></i> Sepet</a>
                 <a href="#"><i class="fas fa-user"></i> Hesabım</a>
                 <a href="#"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a>
             </div>
         </div>
         <nav class="header-nav">
-            <a href="#">Anasayfa</a>
+            <a href="index.html">Anasayfa</a>
             <a href="#" class="product-menu-toggle">Ürünlerimiz +</a>
         </nav>
     </header>
 
     <main>
         <div class="product-container">
-            <div class="product-images-section">
-                <div class="thumbnails">
-                    <img src="https://via.placeholder.com/80/2b4d99/FFFFFF?text=Manşon" alt="Ürün Resmi 1">
-                    <img src="https://via.placeholder.com/80/4d71c4/FFFFFF?text=Manşon" alt="Ürün Resmi 2">
-                    <img src="https://via.placeholder.com/80/2b4d99/FFFFFF?text=Manşon" alt="Ürün Resmi 3">
-                </div>
-                <div class="main-image-container">
-                    <img src="https://via.placeholder.com/400/2b4d99/FFFFFF?text=Kaplin+Manşon+Puşvit" alt="Ana Ürün Resmi">
-                </div>
+            <div class="product-image-section">
+                <img src="siyah-seri-manson.png" alt="Siyah Seri Manşon">
             </div>
 
             <div class="product-info-section">
-                <h1>Kaplin Manşon Puşvit ( Boyut Seçiniz )</h1>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                    <span>5 - Yorum</span>
-                </div>
+                <h1>Siyah Seri Manşon</h1>
                 <div class="details">
-                    <div>Kategori : Poelsan Yeşil Seri Kaplinler</div>
-                    <div>Marka : Poelsan</div>
-                    <div>Stok Kodu : KM</div>
+                    <div>Kategori : Siyah Seri Kaplinler</div>
+                    <div>Marka : Senkron</div>
+                    <div>Stok Kodu : Mevcut Değil</div>
                 </div>
                 
                 <div class="price-container">
-                    <span class="price">17,90 TL</span>
-                    <span class="old-price"></span>
+                    <span class="price">15,90 TL</span>
                 </div>
-                <div class="installment">*1,91 TL den başlayan taksitlerle!</div>
+                <div class="installment">*1,33 TL den başlayan taksitlerle!</div>
                 
                 <div class="size-options">
                     <label>Boyut:</label>
                     <div class="size-buttons">
-                        <button>20x20mm</button>
-                        <button>25x25mm</button>
-                        <button>32x32mm</button>
-                        <button>40x40mm</button>
-                        <button>50x50mm</button>
-                        <button>63x63mm</button>
-                        <button>75x75mm</button>
-                        <button>90x90mm</button>
-                        <button>110x110mm</button>
+                        <button>20mm</button>
+                        <button>25mm</button>
+                        <button>32mm</button>
+                        <button>40mm</button>
+                        <button>50mm</button>
+                        <button>63mm</button>
+                        <button>75mm</button>
+                        <button>90mm</button>
+                        <button>110mm</button>
                     </div>
                 </div>
                 
@@ -398,11 +360,10 @@
                         <button>+</button>
                     </div>
                     <div class="action-buttons">
-                        <button class="add-to-cart">Sepete Ekle</button>
-                        <button class="buy-now">Hemen Al</button>
+                        <a href="sepet.html"><button class="add-to-cart">Sepete Ekle</button></a>
+                        <a href="sepet.html"><button class="buy-now">Hemen Al</button></a>
                     </div>
                 </div>
-
             </div>
         </div>
         
