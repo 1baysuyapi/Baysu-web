@@ -30,7 +30,7 @@
             color: var(--text-color);
         }
 
-        /* Başlık ve Navigasyon - Sepet.html'den alındı */
+        /* Başlık ve Navigasyon */
         .header-main {
             display: flex;
             flex-direction: column;
@@ -211,121 +211,45 @@
             flex-grow: 1;
         }
 
-        /* Anasayfa Ürün Listesi Stilleri */
-        .products {
+        /* Anasayfa Boş Alan ve Hakkımızda/İletişim */
+        .page-content {
             padding: 20px;
             max-width: 1200px;
             margin: 20px auto;
-        }
-        .products h2 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 30px;
             text-align: center;
         }
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .product-card {
-            background: var(--card-background);
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            overflow: hidden;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            padding: 20px;
-        }
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-        .product-image-container {
-            height: 200px;
+
+        .hero-section {
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
-            margin-bottom: 15px;
-        }
-        .product-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        .product-info {
-            padding: 10px 0;
-        }
-        .product-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-color);
-            margin: 0;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .product-price {
-            font-size: 1.2rem;
-            color: var(--secondary-color);
-            font-weight: 700;
-            margin: 10px 0 15px 0;
-        }
-        .product-actions {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        .add-to-cart-btn, .product-details-btn {
-            padding: 12px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        .add-to-cart-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: 2px solid var(--primary-color);
-        }
-        .add-to-cart-btn:hover {
-            background-color: #00356e;
-            transform: translateY(-2px);
-        }
-        .product-details-btn {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-        .product-details-btn:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* İletişim ve Footer */
-        .contact {
-            background: #e9e9e9;
-            padding: 30px 20px;
-            margin-top: 40px;
-            text-align: center;
-        }
-        .contact h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
+            height: 50vh;
+            color: var(--light-text-color);
             font-size: 1.5rem;
         }
-        .contact p {
-            margin: 5px 0;
-            font-size: 1rem;
-            color: var(--light-text-color);
+
+        .about-section, .contact-section {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+            margin-bottom: 40px;
+            text-align: left;
         }
+        
+        .about-section h2, .contact-section h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .about-section p, .contact-section p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
         footer {
             background: #000;
             color: #fff;
@@ -375,9 +299,6 @@
             .menu-content {
                 flex-direction: column;
             }
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            }
         }
 
         @media (max-width: 768px) {
@@ -421,8 +342,8 @@
         <div class="nav-content">
             <div class="nav-links">
                 <a href="index.html">Anasayfa</a>
-                <a href="hakkimizda.html">Hakkımızda</a>
-                <a href="iletisim.html">İletişim</a>
+                <a href="#about-section">Hakkımızda</a>
+                <a href="#contact-section">İletişim</a>
             </div>
             <div class="menu-toggle" id="menuToggle">Ürünlerimiz +</div>
             <div class="main-menu-container" id="mainMenuContainer">
@@ -430,15 +351,6 @@
                     <div class="primary-category-column" id="primaryCategoryColumn">
                         <div class="primary-category-item" data-target-menu="kaplin-sub-menu">
                             <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                        <div class="primary-category-item" data-target-menu="vana-sub-menu">
-                            <h3>VANALAR <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                        <div class="primary-category-item" data-target-menu="damlama-sub-menu">
-                            <h3>DAMLA EK PARÇALARI <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                        <div class="primary-category-item" data-target-menu="yedek-sub-menu">
-                            <h3>YEDEK PARÇALAR <span class="arrow-icon">&#9658;</span></h3>
                         </div>
                     </div>
                     <div class="secondary-categories-column" id="kaplin-sub-menu">
@@ -460,9 +372,21 @@
                         <div class="secondary-category-item" data-target-products="nipelli-seri">
                             <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
                         </div>
+                        <div class="secondary-category-item" data-target-products="vanalar">
+                            <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
+                        </div>
+                        <div class="secondary-category-item" data-target-products="vana-kutulari">
+                            <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
+                        </div>
+                        <div class="secondary-category-item" data-target-products="damlama-ek-parcalari">
+                            <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                        </div>
+                        <div class="secondary-category-item" data-target-products="yedek-parcalar">
+                            <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
+                        </div>
                     </div>
                     <div class="tertiary-products-column" id="tertiaryProductsColumn">
-                        <ul class="product-list" id="mavi-seri-products">
+                        <ul class="product-list" id="mavi-seri-products" style="display:none;">
                             <li><a href="mavi-disi-kaplin.html"><span>Mavi Seri Dişi Kaplin</span></a></li>
                             <li><a href="mavi-erkek-kaplin.html"><span>Mavi Seri Erkek Kaplin</span></a></li>
                             <li><a href="mavi-dirsek-kaplin.html"><span>Mavi Seri Dirsek Kaplin</span></a></li>
@@ -516,83 +440,57 @@
                             <li><a href="nipelli-erkek-te.html"><span>Nipelli Erkek TE</span></a></li>
                             <li><a href="nipelli-disi-dirsek.html"><span>Nipelli Dişi Dirsek</span></a></li>
                         </ul>
+                        <ul class="product-list" id="vanalar-products" style="display:none;">
+                            <li><a href="disi-disi-vana.html"><span>Dişi Dişi Vana</span></a></li>
+                            <li><a href="erkek-disi-vana.html"><span>Erkek Dişi Vana</span></a></li>
+                            <li><a href="kaplin-disi-vana.html"><span>Kaplin Dişi Vana</span></a></li>
+                            <li><a href="kaplin-erkek-vana.html"><span>Kaplin Erkek Vana</span></a></li>
+                        </ul>
+                        <ul class="product-list" id="vana-kutulari-products" style="display:none;">
+                            <li><a href="6-inc-vana-kutusu.html"><span>6" Vana Kutusu</span></a></li>
+                            <li><a href="10-inc-vana-kutusu.html"><span>10" Vana Kutusu</span></a></li>
+                            <li><a href="12-inc-vana-kutusu.html"><span>12" Vana Kutusu</span></a></li>
+                            <li><a href="14-inc-vana-kutusu.html"><span>14" Vana Kutusu</span></a></li>
+                        </ul>
+                        <ul class="product-list" id="damlama-ek-parcalari-products" style="display:none;">
+                            <li><a href="cikis-mini-vana.html"><span>Çıkış Mini Vana</span></a></li>
+                            <li><a href="debi-ayarli-damlatici-genis.html"><span>Debi Ayarlı Damlatıcı Geniş Boşaltım</span></a></li>
+                            <li><a href="debi-ayarli-damlatici-kirmizi.html"><span>Debi Ayarlı Damlatıcı Kırmızı</span></a></li>
+                            <li><a href="debi-ayarli-damlatici-yesil.html"><span>Debi Ayarlı Damlatıcı Yeşil</span></a></li>
+                            <li><a href="duz-damlama-conta.html"><span>Düz Damlama Conta</span></a></li>
+                            <li><a href="kanalli-conta.html"><span>Kanallı Conta</span></a></li>
+                        </ul>
+                        <ul class="product-list" id="yedek-parcalar-products" style="display:none;">
+                            <li><a href="kaplin-sikma-anahtari.html"><span>Kaplin Sıkma Anahtarı</span></a></li>
+                            <li><a href="pah-acma-aparati.html"><span>Pah Açma Aparatı</span></a></li>
+                            <li><a href="o-ring.html"><span>O-Ring</span></a></li>
+                            <li><a href="abot-ustu-kaplin-dagitici.html"><span>Abot Üstü Kaplin Dağıtıcı</span></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
     
-    <main>
-        <section class="products" id="productsSection">
-            <h2>Öne Çıkan Ürünler</h2>
-            <div class="products-grid">
-                <div class="product-card" data-product-id="1">
-                    <div class="product-image-container">
-                        <img src="https://example.com/images/mavi-disi-kaplin.jpg" alt="Mavi Seri Dişi Kaplin" class="product-image">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Mavi Seri Dişi Kaplin</h3>
-                        <p class="product-price">15.50 TL</p>
-                    </div>
-                    <div class="product-actions">
-                        <a href="mavi-disi-kaplin.html" class="product-details-btn">İncele</a>
-                        <button class="add-to-cart-btn" data-product-id="1" data-product-name="Mavi Seri Dişi Kaplin" data-product-price="15.50" data-product-image="https://example.com/images/mavi-disi-kaplin.jpg">Sepete Ekle</button>
-                    </div>
-                </div>
+    <main class="page-content">
+        <div class="hero-section">
+            <p>Ürünlerimize göz atın ve sulama ihtiyaçlarınız için en iyi çözümleri keşfedin.</p>
+        </div>
 
-                <div class="product-card" data-product-id="2">
-                    <div class="product-image-container">
-                        <img src="https://example.com/images/mavi-erkek-kaplin.jpg" alt="Mavi Seri Erkek Kaplin" class="product-image">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Mavi Seri Erkek Kaplin</h3>
-                        <p class="product-price">14.00 TL</p>
-                    </div>
-                    <div class="product-actions">
-                        <a href="mavi-erkek-kaplin.html" class="product-details-btn">İncele</a>
-                        <button class="add-to-cart-btn" data-product-id="2" data-product-name="Mavi Seri Erkek Kaplin" data-product-price="14.00" data-product-image="https://example.com/images/mavi-erkek-kaplin.jpg">Sepete Ekle</button>
-                    </div>
-                </div>
-                
-                <div class="product-card" data-product-id="3">
-                    <div class="product-image-container">
-                        <img src="https://example.com/images/siyah-disi.jpg" alt="Siyah Seri Dişi Kaplin" class="product-image">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Siyah Seri Dişi Kaplin</h3>
-                        <p class="product-price">22.75 TL</p>
-                    </div>
-                    <div class="product-actions">
-                        <a href="siyah-disi.html" class="product-details-btn">İncele</a>
-                        <button class="add-to-cart-btn" data-product-id="3" data-product-name="Siyah Seri Dişi Kaplin" data-product-price="22.75" data-product-image="https://example.com/images/siyah-disi.jpg">Sepete Ekle</button>
-                    </div>
-                </div>
+        <section id="about-section" class="about-section">
+            <h2>Hakkımızda</h2>
+            <p>Baysu Yapı ve Sulama Malzemeleri olarak, yılların tecrübesiyle sulama sektöründe güvenilir ve kaliteli ürünler sunmaktan gurur duyuyoruz. Müşteri memnuniyetini her zaman ön planda tutarak, geniş ürün yelpazemizle her türlü sulama ihtiyacınıza yönelik pratik ve dayanıklı çözümler üretiyoruz. Modern tarım teknolojilerini yakından takip ederek, ürünlerimizi sürekli geliştiriyor ve yeniliğe açık bir şekilde çalışmalarımıza devam ediyoruz.</p>
+            <p>Misyonumuz, sürdürülebilir tarıma katkıda bulunmak ve su kaynaklarının verimli kullanımını teşvik etmektir. Vizyonumuz ise, sektörde öncü bir marka olarak, global pazarda adımızdan söz ettiren lider bir firma olmaktır.</p>
+        </section>
 
-                <div class="product-card" data-product-id="4">
-                    <div class="product-image-container">
-                        <img src="https://example.com/images/kilitli-erkek-dirsek.jpg" alt="Kilitli Bağlantı Erkek Dirsek" class="product-image">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Kilitli Bağlantı Erkek Dirsek</h3>
-                        <p class="product-price">18.20 TL</p>
-                    </div>
-                    <div class="product-actions">
-                        <a href="kilitli-erkek-dirsek.html" class="product-details-btn">İncele</a>
-                        <button class="add-to-cart-btn" data-product-id="4" data-product-name="Kilitli Bağlantı Erkek Dirsek" data-product-price="18.20" data-product-image="https://example.com/images/kilitli-erkek-dirsek.jpg">Sepete Ekle</button>
-                    </div>
-                </div>
-
-                </div>
+        <section id="contact-section" class="contact-section">
+            <h2>İletişim</h2>
+            <p><strong>Telefon:</strong> 0553 397 36 03</p>
+            <p><strong>E-posta:</strong> ebayrakci75@gmail.com</p>
+            <p><strong>Adres:</strong> Ankara, Türkiye</p>
         </section>
     </main>
 
-    <section class="contact">
-        <h3>İletişim</h3>
-        <p><strong>Telefon:</strong> 0553 397 36 03</p>
-        <p><strong>E-posta:</strong> ebayrakci75@gmail.com</p>
-        <p><strong>Adres:</strong> Ankara, Türkiye</p>
-    </section>
-    
     <footer>
         &copy; 2025 BAYSU YAPI VE SULAMA MALZEMELERİ - Tüm hakları saklıdır.
     </footer>
@@ -664,33 +562,16 @@
                 });
             });
 
-            // Sepete Ekle işlevi
-            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const id = e.target.dataset.productId;
-                    const name = e.target.dataset.productName;
-                    const price = parseFloat(e.target.dataset.productPrice);
-                    const image = e.target.dataset.productImage;
-                    
-                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                    const existingItem = cart.find(item => item.id === id);
-
-                    if (existingItem) {
-                        existingItem.quantity++;
-                    } else {
-                        cart.push({
-                            id: id,
-                            name: name,
-                            price: price,
-                            image: image,
-                            quantity: 1
-                        });
-                    }
-
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                    alert(`${name} sepete eklendi!`);
+            // Üst menü linkleri için kaydırma işlevi
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 });
             });
+
         });
     </script>
 </body>
