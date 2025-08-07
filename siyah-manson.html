@@ -37,7 +37,10 @@
         <div class="bg-white p-4 flex flex-col md:flex-row items-center justify-between">
             <!-- Logo -->
             <div class="md:flex-1 text-center mb-4 md:mb-0">
-                <img src="https://placehold.co/250x50/004797/FFFFFF?text=BAYSU+YAPI+LOGO" alt="Baysu Yapı Logo" class="max-w-[250px] mx-auto">
+                <!-- User's new logo image URL is used here -->
+                <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" 
+                     alt="Baysu Yapı Logo" 
+                     class="max-w-[250px] mx-auto">
             </div>
             <!-- Search Bar -->
             <div class="flex-grow md:flex-2 flex items-center w-full max-w-lg mx-auto md:mx-0 mb-4 md:mb-0">
@@ -106,7 +109,7 @@
                 <div class="mb-6">
                     <label class="font-bold text-gray-700 block mb-2">Boyut:</label>
                     <div class="flex flex-wrap gap-2" id="sizeButtons">
-                        <!-- Boyut butonları JavaScript ile dinamik olarak yüklenecektir -->
+                        <!-- Boyut butonları Firebase'den dinamik olarak yüklenecektir -->
                         <p class="text-gray-500">Boyut seçenekleri yükleniyor...</p>
                     </div>
                 </div>
@@ -178,7 +181,7 @@
         // Import Firebase SDKs
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // Define Firebase and Canvas global variables
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
@@ -250,6 +253,9 @@
                         // User ID is obtained
                         userId = user.uid;
                         console.log("Logged in with Firebase Auth. User ID:", userId);
+                        // Run this function once to populate the database with product sizes.
+                        // You can remove this line after the data is set.
+                        await writeDummyData();
                         // Start the database listener after user is authenticated
                         setupDatabaseListener();
                     } else {
@@ -429,6 +435,36 @@
                 showMessage('Lütfen önce bir boyut seçiniz.', 'error');
             }
         });
+
+        // Function to write dummy data to Firestore
+        async function writeDummyData() {
+            if (!db || !userId) {
+                console.error("Database or User ID is not ready for writing.");
+                return;
+            }
+
+            const dummyData = {
+                '20': 15.50,
+                '25': 20.75,
+                '32': 28.00,
+                '40': 35.25,
+                '50': 45.00,
+                '63': 55.75,
+                '75': 68.00,
+                '90': 85.50,
+                '110': 110.25
+            };
+
+            const productId = 'siyah-seri-manson';
+            const docRef = doc(db, `artifacts/${appId}/users/${userId}/price_updates`, productId);
+
+            try {
+                await setDoc(docRef, dummyData);
+                console.log("Dummy product data has been written to Firestore.");
+            } catch (e) {
+                console.error("Error writing document: ", e);
+            }
+        }
 
         // Initialize Firebase on window load
         window.onload = initializeFirebase;
