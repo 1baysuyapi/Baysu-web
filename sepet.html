@@ -417,6 +417,19 @@
 
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+            // Eğer sepet boşsa, örnek bir ürün ekleyelim
+            if (cart.length === 0) {
+                cart.push({
+                    id: 'product-1',
+                    name: 'Siyah Seri Manson',
+                    description: 'Yüksek Kaliteli Plastik Kaplin',
+                    price: 250.00,
+                    quantity: 1,
+                    image: 'siyah-seri-manson.png' // Doğru görsel adı
+                });
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+
             function renderCart() {
                 cartList.innerHTML = '';
                 if (cart.length === 0) {
