@@ -307,25 +307,37 @@
                 display: flex !important;
             }
             .menu-column {
+                display: none;
+            }
+            .menu-column.active {
                 display: block;
-                width: 30%;
             }
             .category-item.active {
-                background-color: var(--background-color);
+                background-color: var(--primary-color);
             }
             .category-item.active h3 {
-                color: var(--text-color);
+                color: white;
             }
             .category-item.active .arrow-icon {
-                color: var(--light-text-color);
-                transform: rotate(0);
+                color: white;
+                transform: rotate(90deg);
             }
             .main-menu-container .menu-content {
                 display: flex;
                 width: 100%;
             }
-            .desktop-only { display: block; }
-            .mobile-only { display: none; }
+            #primaryCategoryColumn.active {
+                display: block;
+                width: 30%;
+            }
+            #secondary-categories-all.active {
+                display: block;
+                width: 30%;
+            }
+            #tertiary-products.active {
+                display: block;
+                width: 40%;
+            }
         }
 
         @media (max-width: 768px) {
@@ -359,8 +371,6 @@
                 display: block;
                 width: 100%;
             }
-            .desktop-only { display: none; }
-            .mobile-only { display: block; }
         }
     </style>
 </head>
@@ -569,9 +579,7 @@
             const toggleMainMenu = () => {
                 const isActive = mainMenuContainer.classList.toggle('active');
                 if (isActive) {
-                    if (isDesktop()) {
-                        primaryCategoryColumn.classList.add('active');
-                    }
+                    primaryCategoryColumn.classList.add('active');
                     if (menuToggleMobile) {
                         menuToggleMobile.classList.add('active');
                     }
