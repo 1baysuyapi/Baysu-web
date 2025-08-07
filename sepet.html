@@ -88,7 +88,7 @@
             background-color: var(--primary-color);
             padding: 15px 20px;
             width: 100%;
-            position: relative; /* Menü için gerekli */
+            position: relative;
             z-index: 10;
         }
         .nav-content {
@@ -114,6 +114,7 @@
             cursor: pointer;
             position: relative;
             z-index: 11;
+            transition: color 0.3s;
         }
         .menu-toggle.active {
             color: var(--secondary-color);
@@ -675,7 +676,7 @@
                             <img src="${item.image}" alt="${item.name}" class="item-image">
                             <div class="item-details">
                                 <h4>${item.name}</h4>
-                                <p>${item.description || 'Açıklama mevcut değil.'}</p>
+                                <p>${item.description || ''}</p>
                             </div>
                             <div class="item-quantity">
                                 <button class="quantity-btn minus" data-id="${item.id}">-</button>
@@ -742,7 +743,10 @@
             // ÜRÜNLERİMİZ MENÜSÜ İÇİN EK KODLAR
             const menuToggle = document.getElementById('menuToggle');
             const mainMenuContainer = document.getElementById('mainMenuContainer');
+            const primaryCategoryColumn = document.getElementById('primaryCategoryColumn');
+            const secondaryCategoriesColumns = document.querySelectorAll('.secondary-categories-column');
             const tertiaryProductsColumn = document.getElementById('tertiaryProductsColumn');
+            const allProductLists = document.querySelectorAll('.product-list');
 
             menuToggle.addEventListener('click', () => {
                 mainMenuContainer.classList.toggle('active');
@@ -754,9 +758,15 @@
                     document.querySelectorAll('.primary-category-item').forEach(el => el.classList.remove('active'));
                     item.classList.add('active');
                     
-                    document.querySelectorAll('.secondary-categories-column, .tertiary-products-column').forEach(el => el.style.display = 'none');
-                    document.getElementById(item.dataset.targetMenu).style.display = 'block';
-                    document.getElementById(item.dataset.targetMenu).classList.add('active');
+                    secondaryCategoriesColumns.forEach(el => el.classList.remove('active'));
+                    tertiaryProductsColumn.classList.remove('active');
+                    allProductLists.forEach(ul => ul.style.display = 'none');
+
+                    const targetMenuId = item.dataset.targetMenu;
+                    const targetMenu = document.getElementById(targetMenuId);
+                    if (targetMenu) {
+                        targetMenu.classList.add('active');
+                    }
                 });
             });
 
@@ -765,9 +775,14 @@
                     document.querySelectorAll('.secondary-category-item').forEach(el => el.classList.remove('active'));
                     item.classList.add('active');
 
-                    document.querySelectorAll('.product-list').forEach(ul => ul.style.display = 'none');
-                    document.getElementById(item.dataset.targetProducts + '-products').style.display = 'block';
-                    tertiaryProductsColumn.classList.add('active');
+                    allProductLists.forEach(ul => ul.style.display = 'none');
+                    
+                    const targetProductsId = item.dataset.target-products + '-products';
+                    const targetProducts = document.getElementById(targetProductsId);
+                    if (targetProducts) {
+                         targetProducts.style.display = 'block';
+                         tertiaryProductsColumn.classList.add('active');
+                    }
                 });
             });
 
@@ -800,7 +815,6 @@
                     alert(`${productName} sepete eklendi.`); // Kullanıcıya geri bildirim ver
                 });
             });
-
             renderCart();
         });
     </script>
