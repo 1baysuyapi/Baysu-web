@@ -128,7 +128,7 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            min-height: 200px; /* Sepet boşken içeriğin küçülmesini engellemek için */
+            min-height: 200px;
         }
         
         .cart-details-header {
@@ -217,17 +217,11 @@
             color: #aaa;
         }
         
-        /* Sepet boşkenki durum için ekstra stiller */
-        .cart-summary.empty .summary-row span:last-child {
-            font-weight: normal;
-        }
         .cart-summary.empty .complete-order-button {
             background-color: #ccc;
             cursor: not-allowed;
         }
 
-
-        /* Yeni özellikler bölümü */
         .features-section {
             display: flex;
             justify-content: space-around;
@@ -347,6 +341,69 @@
                 font-size: 35px;
             }
         }
+
+        /* Sepet İçeriği Tablosu */
+        .cart-items-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .cart-items-table th,
+        .cart-items-table td {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-items-table th {
+            background-color: #f8f8f8;
+            color: #004797;
+        }
+        .cart-item-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .cart-item-info img {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+        .item-details h4 {
+            margin: 0;
+        }
+        .item-details p {
+            margin: 5px 0 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 100px;
+        }
+        .quantity-controls button {
+            background-color: #eee;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        .quantity-controls input {
+            width: 40px;
+            text-align: center;
+            border: none;
+            padding: 8px 0;
+        }
+        .remove-item {
+            color: #ff0000;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        .remove-item:hover {
+            color: #cc0000;
+        }
     </style>
 </head>
 <body>
@@ -370,43 +427,34 @@
         <div class="nav-links">
             <a href="index.html">Anasayfa</a>
         </div>
-        <a href="index.html" class="menu-toggle">Ürünlerimiz +</a>
+        <a href="#" class="menu-toggle">Ürünlerimiz +</a>
     </nav>
     
     <main>
         <div class="cart-container">
-            <div class="cart-details">
+            <div class="cart-details" id="cartDetails">
                 <div class="cart-details-header">
                     <h2>SEPET DETAYI</h2>
                 </div>
-                
-                <div class="empty-cart-message">
-                    <p><i class="fas fa-info-circle"></i> Sepetinizde ürün bulunmamaktadır.</p>
                 </div>
-                
 
-                <a href="index.html" class="continue-shopping-button">
-                    <i class="fas fa-arrow-left"></i> ALIŞVERİŞE DEVAM ET
-                </a>
-            </div>
-
-            <div class="cart-summary empty">
+            <div class="cart-summary" id="cartSummary">
                 <h2>SEPET ÖZETİ</h2>
                 <div class="summary-row">
                     <span>Ara Toplam</span>
-                    <span>0,00 TL</span>
+                    <span id="subtotalPrice">0,00 TL</span>
                 </div>
                 <div class="summary-row">
                     <span>KDV</span>
-                    <span>0,00 TL</span>
+                    <span id="vatPrice">0,00 TL</span>
                 </div>
                 <div class="summary-row">
                     <span>KDV Dahil</span>
-                    <span>0,00 TL</span>
+                    <span id="totalWithVat">0,00 TL</span>
                 </div>
                 <div class="summary-row total">
                     <span>Toplam</span>
-                    <span>0,00 TL</span>
+                    <span id="totalPrice">0,00 TL</span>
                 </div>
                 
                 <button class="complete-order-button" disabled>ALIŞVERİŞİ TAMAMLA</button>
@@ -451,11 +499,131 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const cartDetailsDiv = document.getElementById('cartDetails');
+            const subtotalPriceSpan = document.getElementById('subtotalPrice');
+            const vatPriceSpan = document.getElementById('vatPrice');
+            const totalWithVatSpan = document.getElementById('totalWithVat');
+            const totalPriceSpan = document.getElementById('totalPrice');
             const completeOrderButton = document.querySelector('.complete-order-button');
             
-            // Sepet boş olduğu için butonu devre dışı bırakıyoruz.
-            // Gerçek bir uygulamada bu kontrol sepetin durumuna göre dinamik olarak yapılır.
-            completeOrderButton.disabled = true;
+            // Sabit KDV oranı
+            const VAT_RATE = 0.20;
+
+            function renderCart() {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                
+                if (cart.length === 0) {
+                    cartDetailsDiv.innerHTML = `
+                        <div class="cart-details-header">
+                            <h2>SEPET DETAYI</h2>
+                        </div>
+                        <div class="empty-cart-message">
+                            <p><i class="fas fa-info-circle"></i> Sepetinizde ürün bulunmamaktadır.</p>
+                        </div>
+                        <a href="index.html" class="continue-shopping-button">
+                            <i class="fas fa-arrow-left"></i> ALIŞVERİŞE DEVAM ET
+                        </a>
+                    `;
+                    // Fiyatları sıfırla ve butonu devre dışı bırak
+                    subtotalPriceSpan.textContent = "0,00 TL";
+                    vatPriceSpan.textContent = "0,00 TL";
+                    totalWithVatSpan.textContent = "0,00 TL";
+                    totalPriceSpan.textContent = "0,00 TL";
+                    completeOrderButton.disabled = true;
+                    return;
+                }
+
+                let subtotal = 0;
+                let cartHTML = `
+                    <div class="cart-details-header">
+                        <h2>SEPET DETAYI</h2>
+                    </div>
+                    <table class="cart-items-table">
+                        <thead>
+                            <tr>
+                                <th>Ürün</th>
+                                <th>Birim Fiyat</th>
+                                <th>Adet</th>
+                                <th>Ara Toplam</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+
+                cart.forEach((product, index) => {
+                    const itemTotal = product.price * product.quantity;
+                    subtotal += itemTotal;
+                    cartHTML += `
+                        <tr>
+                            <td>
+                                <div class="cart-item-info">
+                                    <img src="siyah-seri-manson.png" alt="${product.name}">
+                                    <div class="item-details">
+                                        <h4>${product.name}</h4>
+                                        <p>Boyut: ${product.size}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>${product.price.toFixed(2).replace('.', ',')} TL</td>
+                            <td>
+                                <div class="quantity-controls">
+                                    <button onclick="updateQuantity(${index}, -1)">-</button>
+                                    <input type="text" value="${product.quantity}" readonly>
+                                    <button onclick="updateQuantity(${index}, 1)">+</button>
+                                </div>
+                            </td>
+                            <td>${itemTotal.toFixed(2).replace('.', ',')} TL</td>
+                            <td><i class="fas fa-trash-alt remove-item" onclick="removeItem(${index})"></i></td>
+                        </tr>
+                    `;
+                });
+
+                cartHTML += `
+                        </tbody>
+                    </table>
+                    <a href="index.html" class="continue-shopping-button">
+                        <i class="fas fa-arrow-left"></i> ALIŞVERİŞE DEVAM ET
+                    </a>
+                `;
+
+                cartDetailsDiv.innerHTML = cartHTML;
+                
+                // Fiyatları hesapla ve güncelle
+                const vat = subtotal * VAT_RATE;
+                const total = subtotal + vat;
+                
+                subtotalPriceSpan.textContent = `${subtotal.toFixed(2).replace('.', ',')} TL`;
+                vatPriceSpan.textContent = `${vat.toFixed(2).replace('.', ',')} TL`;
+                totalWithVatSpan.textContent = `${total.toFixed(2).replace('.', ',')} TL`;
+                totalPriceSpan.textContent = `${total.toFixed(2).replace('.', ',')} TL`;
+
+                // Sepet boş değilse butonu etkinleştir
+                completeOrderButton.disabled = false;
+            }
+
+            // Adet güncelleme fonksiyonu
+            window.updateQuantity = function(index, change) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                if (cart[index]) {
+                    cart[index].quantity += change;
+                    if (cart[index].quantity < 1) {
+                        cart[index].quantity = 1;
+                    }
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    renderCart();
+                }
+            };
+
+            // Ürün silme fonksiyonu
+            window.removeItem = function(index) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                renderCart();
+            };
+
+            renderCart();
         });
     </script>
 </body>
