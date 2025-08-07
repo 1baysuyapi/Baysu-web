@@ -1,573 +1,600 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Siparişi Tamamla</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        /* Genel CSS */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #F5F5DC;
-            color: #222;
-        }
-        .anasayfa-logo {
-            width: 100%;
-            height: 25vh;
-            background-color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-            border-bottom: 2px solid #004797;
-            margin-bottom: 10px;
-        }
-        .anasayfa-logo img {
-            max-height: 80%;
-            max-width: 80%;
-            object-fit: contain;
-            display: block;
-        }
-        header {
-            background: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #ddd;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .search-bar {
-            position: relative;
-            display: flex;
-            align-items: center;
-            width: 50%;
-            max-width: 400px;
-        }
-        .search-bar input {
-            width: 100%;
-            padding: 8px 12px 8px 40px;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            font-size: 14px;
-        }
-        .search-bar .fas {
-            position: absolute;
-            left: 15px;
-            color: #888;
-        }
-        .header-actions {
-            display: flex;
-            gap: 15px;
-        }
-        .header-actions a {
-            text-decoration: none;
-            color: #004797;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        nav {
-            background: #004797;
-            padding: 10px 20px;
-            position: relative;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-            transition: color 0.3s ease;
-        }
-        .nav-links a:hover {
-            color: #ccc;
-        }
-        .menu-toggle {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 5px 10px;
-            border: 1px solid white;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .menu-toggle:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sipariş Onay - Teslimat ve Ödeme</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Renkler ve Font */
+        :root {
+            --primary-color: #004797;
+            --secondary-color: #FF6B6B; /* Yeni vurgu rengi */
+            --background-color: #F8F9FA;
+            --card-background: #FFFFFF;
+            --text-color: #333333;
+            --light-text-color: #666666;
+            --border-color: #E0E0E0;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
 
-        /* Ödeme Sayfasına Özel CSS */
-        .checkout-container {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 20px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 20px auto;
-        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
 
-        .checkout-details {
-            flex: 2;
-        }
-        .checkout-summary {
-            flex: 1;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 100px;
-        }
+        /* Başlık ve Navigasyon */
+        .header-main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: var(--card-background);
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .logo {
+            width: 200px;
+            margin-bottom: 15px;
+        }
+        .search-and-actions {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 900px;
+            justify-content: space-between;
+        }
+        .search-bar {
+            position: relative;
+            flex-grow: 1;
+            margin-right: 20px;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 14px;
+        }
+        .search-bar .fas {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-text-color);
+        }
+        .header-actions {
+            display: flex;
+            gap: 20px;
+        }
+        .header-actions a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        .header-actions a:hover {
+            color: var(--secondary-color);
+        }
+        .nav-bar {
+            background-color: var(--primary-color);
+            padding: 15px 20px;
+            width: 100%;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
 
-        .checkout-progress {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        .progress-step {
-            font-weight: bold;
-            color: #ccc;
-            font-size: 1.1rem;
-        }
-        .progress-step.active {
-            color: #004797;
-            text-decoration: underline;
-        }
+        /* Ana İçerik */
+        .checkout-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 30px;
+            padding: 40px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .checkout-details {
+            flex: 2;
+        }
+        .checkout-summary {
+            flex: 1;
+            background: var(--card-background);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 100px;
+        }
 
-        .address-form, .shipping-options {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        .address-form h3, .shipping-options h3 {
-            font-size: 1.2rem;
-            color: #004797;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-            position: relative;
-        }
-        .address-form h3 .add-address-info, .shipping-options h3 .add-shipping-info {
-            font-size: 0.9rem;
-            color: #666;
-            font-weight: normal;
-        }
+        .checkout-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-weight: 600;
+            color: var(--light-text-color);
+            font-size: 1.1rem;
+        }
+        .progress-step.active {
+            color: var(--primary-color);
+        }
+        .progress-step.active .step-icon {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        .progress-step .step-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--border-color);
+            color: var(--light-text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            margin-bottom: 8px;
+            transition: all 0.3s;
+        }
+        .progress-line {
+            height: 2px;
+            background-color: var(--border-color);
+            flex-grow: 1;
+            margin: 0 10px;
+        }
 
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
+        /* Form ve Kargo Bölümleri */
+        .section-card {
+            background-color: var(--card-background);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+        }
+        .section-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        .section-card .add-info {
+            font-size: 1rem;
+            color: var(--light-text-color);
+            font-weight: normal;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .form-control {
+            position: relative;
+        }
+        .form-control label {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: var(--light-text-color);
+            background-color: transparent;
+            transition: all 0.2s ease;
+            pointer-events: none;
+            font-size: 1rem;
+        }
+        .form-control input:focus + label, 
+        .form-control input:not(:placeholder-shown) + label,
+        .form-control textarea:focus + label, 
+        .form-control textarea:not(:placeholder-shown) + label {
+            top: -10px;
+            left: 12px;
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            background-color: var(--card-background);
+            padding: 0 5px;
+        }
+        .form-control input, .form-control select, .form-control textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-sizing: border-box;
+            outline: none;
+            font-size: 1rem;
+        }
+        .form-control textarea {
+            min-height: 120px;
+        }
+        .form-control.full-width {
+            grid-column: 1 / -1;
+        }
+        .required-star::after {
+            content: ' *';
+            color: var(--secondary-color);
+        }
 
-        .form-control {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-        .form-control label {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            color: #aaa;
-            transition: all 0.2s ease;
-            pointer-events: none;
-            background-color: #fff;
-            padding: 0 5px;
-        }
-        .form-control input:focus + label, .form-control input:not(:placeholder-shown) + label,
-        .form-control textarea:focus + label, .form-control textarea:not(:placeholder-shown) + label {
-            top: -10px;
-            left: 10px;
-            font-size: 0.8em;
-            color: #004797;
-        }
-        .form-control input, .form-control select, .form-control textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-            outline: none;
-        }
-        .form-control select {
-            appearance: none;
-            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2C197.8L156.4%2C67.2c-4.4-4.4-11.6-4.4-16%2C0L5.4%2C197.8c-4.4%2C4.4-4.4%2C11.6%2C0%2C16l11.3%2C11.3c4.4%2C4.4%2C11.6%2C4.4%2C16%2C0l115.3-115.3c4.4-4.4%2C11.6-4.4%2C16%2C0l115.3%2C115.3c4.4%2C4.4%2C11.6%2C4.4%2C16%2C0l11.3-11.3C291.4%2C209.4%2C291.4%2C202.2%2C287%2C197.8z%22%2F%3E%3C%2Fsvg%3E');
-            background-repeat: no-repeat, repeat;
-            background-position: right .7em top 50%, 0 0;
-            background-size: .65em auto, 100%;
-        }
-        .form-control.full-width {
-            grid-column: 1 / -1;
-        }
-        .form-control textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
+        .invoice-type {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-top: 25px;
+        }
+        .invoice-type span {
+            font-weight: 600;
+        }
+        .invoice-type label {
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .section-card .submit-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            float: right;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .section-card .submit-button:hover {
+            background-color: #00366D;
+        }
 
-        .required-star::after {
-            content: '*';
-            color: #dc3545;
-        }
+        .shipping-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .shipping-option:hover {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.2);
+        }
+        .shipping-option.selected {
+            border-color: var(--primary-color);
+            background-color: #F0F4FF;
+        }
+        .shipping-option-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .shipping-option-content input[type="radio"] {
+            transform: scale(1.3);
+            cursor: pointer;
+        }
+        .shipping-option-content h4 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+        .shipping-option-content p {
+            margin: 5px 0 0 0;
+            font-size: 0.9rem;
+            color: var(--light-text-color);
+        }
+        .shipping-option .shipping-price {
+            font-weight: bold;
+            color: var(--secondary-color);
+            background-color: #FFEFEF;
+            padding: 8px 15px;
+            border-radius: 20px;
+        }
 
-        .address-form button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            float: right;
-            margin-top: 15px;
-        }
+        /* Sepet Özeti */
+        .cart-summary h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin: 0 0 20px 0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        .summary-total {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+        .summary-total span {
+            color: var(--secondary-color);
+        }
+        .next-step-button {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-top: 30px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .next-step-button:hover {
+            background-color: #E65A5A;
+        }
+        .secure-badge {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--light-text-color);
+        }
 
-        .invoice-type {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .invoice-type span {
-            font-weight: bold;
-        }
-        .invoice-type label {
-            cursor: pointer;
-        }
+        /* Footer ve WhatsApp Butonu */
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 25px;
+            margin-top: 60px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            text-decoration: none;
+            font-size: 35px;
+        }
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
 
-        .shipping-options h3 {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #eee;
-        }
-        .shipping-option {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-        .shipping-option.selected {
-            border-color: #004797;
-            background-color: #e6f2ff;
-        }
-        .shipping-option-content {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .shipping-option-content input[type="radio"] {
-            margin-right: 5px;
-        }
-        .shipping-option-content label {
-            cursor: pointer;
-        }
-        .shipping-option-content h4 {
-            margin: 0;
-        }
-        .shipping-option-content p {
-            margin: 5px 0 0 0;
-            font-size: 0.9rem;
-            color: #666;
-        }
-        .shipping-option button {
-            background-color: #eee;
-            border: 1px solid #ccc;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            color: #555;
-        }
-
-        /* Sepet Özeti */
-        .cart-summary h2 {
-            margin: 0 0 15px 0;
-            font-size: 1.5rem;
-            color: #004797;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-        .complete-order-button {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            margin-top: 20px;
-            text-align: center;
-            text-decoration: none;
-        }
-        .secure-badge {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 0.8rem;
-            color: #aaa;
-        }
-
-        /* Footer */
-        footer {
-            background: #000;
-            color: #fff;
-            padding: 20px;
-            margin-top: 60px;
-            font-size: 14px;
-            text-align: center;
-        }
-        .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50%;
-            width: 70px;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease-in-out;
-            text-decoration: none;
-            font-size: 40px;
-        }
-        .whatsapp-button:hover {
-            transform: scale(1.1);
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .checkout-container {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .checkout-summary {
-                order: -1;
-                position: static;
-            }
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 768px) {
-             .anasayfa-logo {
-                height: 15vh;
-            }
-            .anasayfa-logo img {
-                max-height: 70%;
-                max-width: 70%;
-            }
-            header {
-                flex-direction: column;
-                padding: 15px 10px;
-                height: auto;
-                overflow: visible;
-            }
-            .search-bar {
-                order: 3;
-                width: 100%;
-                max-width: none;
-            }
-            .header-actions {
-                width: 100%;
-                justify-content: space-around;
-                order: 2;
-                margin-top: 10px;
-            }
-            nav {
-                flex-direction: row-reverse;
-                justify-content: space-between;
-                align-items: center;
-            }
-            .nav-links {
-                gap: 10px;
-            }
-            .whatsapp-button {
-                width: 60px;
-                height: 60px;
-                bottom: 15px;
-                right: 15px;
-                font-size: 35px;
-            }
-        }
-    </style>
+        /* Responsive Tasarım */
+        @media (max-width: 992px) {
+            .checkout-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .checkout-summary {
+                order: -1;
+                position: static;
+            }
+            .search-and-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .search-bar {
+                margin-right: 0;
+            }
+            .nav-links {
+                gap: 20px;
+            }
+        }
+        @media (max-width: 768px) {
+            .logo {
+                width: 150px;
+            }
+            .search-bar input {
+                padding: 10px 15px 10px 40px;
+            }
+            .nav-bar {
+                display: none; /* Mobil için menüyü gizliyoruz */
+            }
+            .checkout-container {
+                padding: 20px 10px;
+            }
+            .progress-step {
+                font-size: 0.9rem;
+            }
+            .progress-step .step-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="anasayfa-logo">
-        <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="BAYSU YAPI VE SULAMA MALZEMELERİ">
-    </div>
+    <header class="header-main">
+        <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="BAYSU LOGO" class="logo">
+        <div class="search-and-actions">
+            <div class="search-bar">
+                <input type="search" placeholder="Ürün Ara...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="header-actions">
+                <a href="giris-yap.html"><i class="fas fa-user"></i> Giriş Yap</a>
+                <a href="sepet.html"><i class="fas fa-shopping-cart"></i> Sepet</a>
+            </div>
+        </div>
+    </header>
 
-    <header>
-        <div class="search-bar">
-            <input type="search" placeholder="Ürün Ara...">
-            <i class="fas fa-search"></i>
-        </div>
-        <div class="header-actions">
-            <a href="giris-yap.html"><i class="fas fa-user"></i> Giriş Yap</a>
-            <a href="sepet.html"><i class="fas fa-shopping-cart"></i> Sepet</a>
-        </div>
-    </header>
+    <nav class="nav-bar">
+        <div class="nav-links">
+            <a href="index.html">Anasayfa</a>
+            <a href="#">Ürünlerimiz</a>
+            <a href="#">Hakkımızda</a>
+            <a href="#">İletişim</a>
+        </div>
+    </nav>
 
-    <nav>
-        <div class="nav-links">
-            <a href="index.html">Anasayfa</a>
-        </div>
-        <a href="index.html" class="menu-toggle">Ürünlerimiz +</a>
-    </nav>
+    <main>
+        <div class="checkout-container">
+            <div class="checkout-details">
+                <div class="checkout-progress">
+                    <div class="progress-step active">
+                        <div class="step-icon">1</div>
+                        Teslimat
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step">
+                        <div class="step-icon">2</div>
+                        Ödeme
+                    </div>
+                </div>
 
-    <main>
-        <div class="checkout-container">
-            <div class="checkout-details">
-                <div class="checkout-progress">
-                    <span class="progress-step active">1. TESLİMAT BİLGİLERİ</span>
-                    <i class="fas fa-arrow-right" style="color: #ccc;"></i>
-                    <span class="progress-step">2. ÖDEME İŞLEMLERİ</span>
-                </div>
+                <div class="section-card address-form">
+                    <h3>Teslimat Adresi <br><span class="add-info">Yeni adres bilgilerinizi giriniz.</span></h3>
+                    <form id="delivery-form">
+                        <div class="form-grid">
+                            <div class="form-control">
+                                <input type="text" id="ad" name="ad" placeholder=" ">
+                                <label for="ad" class="required-star">Adınız</label>
+                            </div>
+                            <div class="form-control">
+                                <input type="text" id="soyad" name="soyad" placeholder=" ">
+                                <label for="soyad" class="required-star">Soyadınız</label>
+                            </div>
+                            <div class="form-control">
+                                <input type="text" id="adresBasligi" name="adresBasligi" placeholder=" ">
+                                <label for="adresBasligi" class="required-star">Adres Başlığı</label>
+                            </div>
+                            <div class="form-control">
+                                <input type="text" id="cepTelefonu" name="cepTelefonu" placeholder=" ">
+                                <label for="cepTelefonu" class="required-star">Cep Telefonu</label>
+                            </div>
+                            <div class="form-control">
+                                <select id="city" name="city">
+                                    <option value="">Şehir Seçiniz</option>
+                                </select>
+                            </div>
+                            <div class="form-control">
+                                <select id="district" name="district">
+                                    <option value="">İlçe Seçiniz</option>
+                                </select>
+                            </div>
+                            <div class="form-control full-width">
+                                <textarea id="adres" name="adres" placeholder=" "></textarea>
+                                <label for="adres" class="required-star">Adresiniz</label>
+                            </div>
+                            <div class="form-control full-width">
+                                <div class="invoice-type">
+                                    <span>FATURA TİPİ:</span>
+                                    <input type="radio" id="bireysel" name="faturaTipi" value="Bireysel" checked>
+                                    <label for="bireysel">Bireysel</label>
+                                    <input type="radio" id="kurumsal" name="faturaTipi" value="Kurumsal">
+                                    <label for="kurumsal">Kurumsal</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="submit-button">ADRESİ KAYDET</button>
+                    </form>
+                </div>
 
-                <div class="address-form">
-                    <h3>YENİ ADRES EKLE <br><span class="add-address-info">Yeni adres bilgilerini ekleyin.</span></h3>
-                    <form id="delivery-form">
-                        <div class="form-grid">
-                            <div class="form-control">
-                                <input type="text" id="adresBasligi" name="adresBasligi" placeholder=" ">
-                                <label for="adresBasligi" class="required-star">Adres Başlığı</label>
-                            </div>
-                            <div class="form-control">
-                                <input type="text" id="adresOrnek" name="adresOrnek" placeholder=" ">
-                                <label for="adresOrnek">Örnek: Ev ya da İş</label>
-                            </div>
-                            <div class="form-control">
-                                <input type="text" id="ad" name="ad" placeholder=" ">
-                                <label for="ad" class="required-star">Ad</label>
-                            </div>
-                            <div class="form-control">
-                                <input type="text" id="soyad" name="soyad" placeholder=" ">
-                                <label for="soyad" class="required-star">Soyad</label>
-                            </div>
-                            <div class="form-control">
-                                <select id="country" name="country">
-                                    <option value="Türkiye">Türkiye</option>
-                                </select>
-                            </div>
-                            <div class="form-control">
-                                <select id="city" name="city">
-                                    <option value="">Şehir Seçiniz</option>
-                                </select>
-                            </div>
-                            <div class="form-control">
-                                <select id="district" name="district">
-                                    <option value="">İlçe Seçiniz</option>
-                                </select>
-                            </div>
-                            <div class="form-control">
-                                <input type="text" id="telefon" name="telefon" placeholder=" ">
-                                <label for="telefon" class="required-star">Telefon</label>
-                            </div>
-                            <div class="form-control">
-                                <input type="text" id="cepTelefonu" name="cepTelefonu" placeholder=" ">
-                                <label for="cepTelefonu" class="required-star">Cep Telefonu</label>
-                            </div>
-                            <div class="form-control">
-                                <input type="text" id="tcKimlikNo" name="tcKimlikNo" placeholder=" ">
-                                <label for="tcKimlikNo" class="required-star">TC Kimlik No</label>
-                            </div>
-                            <div class="form-control full-width">
-                                <textarea id="adres" name="adres" placeholder=" "></textarea>
-                                <label for="adres">Adres</label>
-                            </div>
-                        </div>
-                        <div class="invoice-type">
-                            <span>FATURA TİPİ</span>
-                            <input type="radio" id="bireysel" name="faturaTipi" value="Bireysel" checked>
-                            <label for="bireysel">Bireysel</label>
-                            <input type="radio" id="kurumsal" name="faturaTipi" value="Kurumsal">
-                            <label for="kurumsal">Kurumsal</label>
-                        </div>
-                        <button type="submit">KAYDET</button>
-                    </form>
-                </div>
+                <div class="section-card shipping-options">
+                    <h3>Kargo Seçenekleri<br><span class="add-info">Tercih ettiğiniz kargoyu seçiniz.</span></h3>
+                    <div class="shipping-option" data-kargo="Yurtiçi Kargo">
+                        <div class="shipping-option-content">
+                            <input type="radio" id="yurtici" name="kargo" value="Yurtiçi Kargo" checked>
+                            <label for="yurtici">
+                                <h4>Yurtiçi Kargo</h4>
+                                <p>Alıcı ödemeli olarak gönderilmektedir.</p>
+                            </label>
+                        </div>
+                        <span class="shipping-price">ALICI ÖDEMELİ</span>
+                    </div>
+                    <div class="shipping-option" data-kargo="Fabrika">
+                        <div class="shipping-option-content">
+                            <input type="radio" id="fabrika" name="kargo" value="Fabrikadan Teslim Alacağım">
+                            <label for="fabrika">
+                                <h4>Fabrikadan Teslim</h4>
+                                <p>Siparişinizi adresimizden kendiniz teslim alabilirsiniz.</p>
+                            </label>
+                        </div>
+                        <span class="shipping-price">ÜCRETSİZ</span>
+                    </div>
+                </div>
+            </div>
 
-                <div class="shipping-options">
-                    <h3>KARGO SEÇENEKLERİ<br><span class="add-shipping-info">Tercih ettiğiniz kargoyu seçiniz.</span></h3>
-                    <div class="shipping-option">
-                        <div class="shipping-option-content">
-                            <input type="radio" id="yurtici" name="kargo" value="Yurtiçi Kargo" checked>
-                            <label for="yurtici">
-                                <h4>Yurtiçi Kargo</h4>
-                                <p>Yurtiçi Kargo (Alıcı ödemeli olarak gönderilmektedir. Kargo ağırlığına göre kargo ücretleri değişmektedir.)</p>
-                            </label>
-                        </div>
-                        <button>ALICI ÖDEMELİDİR</button>
-                    </div>
-                    <div class="shipping-option">
-                        <div class="shipping-option-content">
-                            <input type="radio" id="fabrika" name="kargo" value="Fabrikadan Teslim Alacağım">
-                            <label for="fabrika">
-                                <h4>Fabrikadan Teslim Alacağım</h4>
-                            </label>
-                        </div>
-                        <button>ALICI ÖDEMELİDİR</button>
-                    </div>
-                </div>
-            </div>
+            <div class="checkout-summary cart-summary">
+                <h2>Sepet Özeti</h2>
+                <div id="summary-items">
+                    <div class="summary-item"><span>Ara Toplam</span><span id="subtotal">0.00 TL</span></div>
+                    <div class="summary-item"><span>Kargo</span><span id="shipping-cost">0.00 TL</span></div>
+                </div>
+                <div class="summary-total">Toplam Tutar: <span id="total-price">0.00 TL</span></div>
+                <button id="nextStepButton" class="next-step-button">ÖDEME SAYFASINA GİT</button>
+                <div class="secure-badge">
+                    <i class="fas fa-lock"></i> SSL Güvenli Alışveriş
+                </div>
+            </div>
+        </div>
+    </main>
 
-            <div class="checkout-summary cart-summary">
-                <h2>SEPET ÖZETİ</h2>
-                <button id="nextStepButton" class="complete-order-button">ÖDEME İŞLEMLERİ</button>
-                <div class="secure-badge">
-                    <i class="fas fa-lock"></i> This site is SSL SECURED
-                </div>
-            </div>
-        </div>
-    </main>
+    <footer>
+        &copy; 2025 BAYSU YAPI VE SULAMA MALZEMELERİ - Tüm hakları saklıdır.
+    </footer>
 
-    <footer>
-        &copy; 2025 BAYSU YAPI VE SULAMA MALZEMELERİ - Tüm hakları saklıdır.
-    </footer>
+    <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum." class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-    <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum." class="whatsapp-button" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const citySelect = document.getElementById('city');
+            const districtSelect = document.getElementById('district');
+            const deliveryForm = document.getElementById('delivery-form');
+            const nextStepButton = document.getElementById('nextStepButton');
+            const shippingOptions = document.querySelectorAll('.shipping-option');
+            
+            const subtotalSpan = document.getElementById('subtotal');
+            const shippingCostSpan = document.getElementById('shipping-cost');
+            const totalPriceSpan = document.getElementById('total-price');
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const citySelect = document.getElementById('city');
-            const districtSelect = document.getElementById('district');
-            const nextStepButton = document.getElementById('nextStepButton');
-
-            // İl ve ilçe verisi
-            const iller = {
-                "Adana": ["Aladağ", "Ceyhan", "Çukurova", "Feke", "İmamoğlu", "Karaisalı", "Karataş", "Kozan", "Pozantı", "Saimbeyli", "Sarıçam", "Seyhan", "Tufanbeyli", "Yumurtalık", "Yüreğir"],
+            // İl ve ilçe verisi
+            const iller = {
+                // ... (Sizin gönderdiğiniz tüm il ve ilçe listesi burada)
+                "Adana": ["Aladağ", "Ceyhan", "Çukurova", "Feke", "İmamoğlu", "Karaisalı", "Karataş", "Kozan", "Pozantı", "Saimbeyli", "Sarıçam", "Seyhan", "Tufanbeyli", "Yumurtalık", "Yüreğir"],
                 "Adıyaman": ["Besni", "Çelikhan", "Gerger", "Gölbaşı", "Kahta", "Merkez", "Samsat", "Sincik", "Tut"],
                 "Afyonkarahisar": ["Başmakçı", "Bayat", "Bolvadin", "Çay", "Çobanlar", "Dazkırı", "Dinar", "Emirdağ", "Evciler", "Hocalar", "İhsaniye", "İscehisar", "Kızılören", "Sandıklı", "Sinanpaşa", "Sultandağı", "Şuhut", "Merkez"],
                 "Ağrı": ["Diyadin", "Doğubayazıt", "Eleşkirt", "Hamur", "Patnos", "Taşlıçay", "Tutak", "Merkez"],
@@ -648,48 +675,90 @@
                 "Kilis": ["Elbeyli", "Merkez", "Musabeyli", "Polateli"],
                 "Osmaniye": ["Bahçe", "Düziçi", "Hasanbeyli", "Kadirli", "Merkez", "Sumbas", "Toprakkale"],
                 "Düzce": ["Akçakoca", "Cumayeri", "Çilimli", "Gölyaka", "Gümüşova", "Kaynaşlı", "Merkez", "Yığılca"]
-            };
+            };
 
-            for (const il in iller) {
-                const option = document.createElement('option');
-                option.value = il;
-                option.textContent = il;
-                citySelect.appendChild(option);
-            }
+            // İl ve ilçe dropdownlarını doldurma
+            for (const il in iller) {
+                const option = document.createElement('option');
+                option.value = il;
+                option.textContent = il;
+                citySelect.appendChild(option);
+            }
 
-            citySelect.addEventListener('change', (event) => {
-                const selectedCity = event.target.value;
-                districtSelect.innerHTML = '<option value="">İlçe Seçiniz</option>';
+            citySelect.addEventListener('change', (event) => {
+                const selectedCity = event.target.value;
+                districtSelect.innerHTML = '<option value="">İlçe Seçiniz</option>';
+                if (selectedCity) {
+                    const districts = iller[selectedCity];
+                    districts.forEach(ilce => {
+                        const option = document.createElement('option');
+                        option.value = ilce;
+                        option.textContent = ilce;
+                        districtSelect.appendChild(option);
+                    });
+                }
+            });
 
-                if (selectedCity) {
-                    const districts = iller[selectedCity];
-                    districts.forEach(ilce => {
-                        const option = document.createElement('option');
-                        option.value = ilce;
-                        option.textContent = ilce;
-                        districtSelect.appendChild(option);
-                    });
-                }
-            });
+            // Kargo seçeneklerini seçili hale getirme
+            shippingOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    shippingOptions.forEach(o => o.classList.remove('selected'));
+                    option.classList.add('selected');
+                    option.querySelector('input[type="radio"]').checked = true;
+                    updateSummary();
+                });
+            });
 
-            nextStepButton.addEventListener('click', () => {
-                const form = document.getElementById('delivery-form');
-                const formData = new FormData(form);
-                const data = Object.fromEntries(formData.entries());
-                
-                // Formdaki tüm verileri al ve yerel depolamaya (localStorage) kaydet
-                localStorage.setItem('deliveryInfo', JSON.stringify(data));
-                
-                // Kargo seçeneğini de kaydet
-                const selectedKargo = document.querySelector('input[name="kargo"]:checked');
-                if (selectedKargo) {
-                    localStorage.setItem('shippingMethod', selectedKargo.value);
-                }
+            // Ödeme özeti güncelleme fonksiyonu
+            function updateSummary() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+                
+                const selectedKargo = document.querySelector('input[name="kargo"]:checked').value;
+                let shippingCost = 0;
+                if (selectedKargo === 'Yurtiçi Kargo') {
+                    shippingCost = 'ALICI ÖDEMELİ';
+                } else {
+                    shippingCost = 'ÜCRETSİZ';
+                }
+                
+                let totalPrice = subtotal;
+                if (shippingCost !== 'ALICI ÖDEMELİ') {
+                    totalPrice += 0;
+                }
 
-                // Ödeme sayfasına yönlendir
-                window.location.href = 'odeme-son.html';
-            });
-        });
-    </script>
+                subtotalSpan.textContent = subtotal.toFixed(2) + ' TL';
+                shippingCostSpan.textContent = shippingCost === 'ALICI ÖDEMELİ' ? shippingCost : shippingCost;
+                totalPriceSpan.textContent = totalPrice.toFixed(2) + ' TL';
+            }
+
+            // Sayfa yüklendiğinde ve kargo seçeneği değiştiğinde özeti güncelle
+            updateSummary();
+
+            // ÖDEME SAYFASINA GİT butonuna tıklandığında
+            nextStepButton.addEventListener('click', () => {
+                const form = document.getElementById('delivery-form');
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                
+                // Gerekli alanların boş olup olmadığını kontrol et
+                const requiredFields = ['ad', 'soyad', 'adresBasligi', 'cepTelefonu', 'city', 'district', 'adres'];
+                for (const field of requiredFields) {
+                    if (!data[field]) {
+                        alert('Lütfen tüm zorunlu alanları doldurunuz.');
+                        return;
+                    }
+                }
+                
+                localStorage.setItem('deliveryInfo', JSON.stringify(data));
+                const selectedKargo = document.querySelector('input[name="kargo"]:checked');
+                if (selectedKargo) {
+                    localStorage.setItem('shippingMethod', selectedKargo.value);
+                }
+
+                window.location.href = 'odeme-son.html';
+            });
+        });
+    </script>
 </body>
 </html>
