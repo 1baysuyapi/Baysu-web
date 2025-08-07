@@ -129,7 +129,7 @@
         }
         
         .main-menu-container {
-            display: none;
+            display: none; /* Varsayılan olarak kapalı */
             position: absolute;
             top: 100%;
             left: 0;
@@ -142,7 +142,7 @@
             padding: 20px;
         }
         .main-menu-container.active {
-            display: flex;
+            display: flex; /* Açıkken flex olarak görünür */
         }
         .menu-content {
             display: flex;
@@ -570,7 +570,6 @@
                         menuToggleMobile.classList.remove('active');
                     }
                     // Tüm alt menüleri ve aktiflikleri sıfırla
-                    document.getElementById('primaryCategoryColumn').style.display = 'none';
                     secondaryCategoriesContainer.style.display = 'none';
                     tertiaryProductsContainer.style.display = 'none';
                     document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
