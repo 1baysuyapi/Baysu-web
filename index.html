@@ -151,11 +151,16 @@
         .primary-category-column, .secondary-categories-column, .tertiary-products-column {
             flex: 1;
             padding: 15px;
+        }
+        
+        /* Menülerin başlangıçta gizlenmesi için */
+        .secondary-categories-column, .tertiary-products-column {
             display: none;
         }
-        .primary-category-column.active, .secondary-categories-column.active, .tertiary-products-column.active {
+        .secondary-categories-column.active, .tertiary-products-column.active {
             display: block;
         }
+        
         .category-item {
             cursor: pointer;
             padding: 10px;
@@ -212,9 +217,8 @@
         .product-list a:hover {
             background-color: var(--background-color);
         }
-        .mobile-only {
-            display: none;
-        }
+        .desktop-only { display: block; }
+        .mobile-only { display: none; }
 
         /* Anasayfa Boş Alan ve Hakkımızda/İletişim */
         .page-content {
@@ -323,6 +327,8 @@
                 display: flex;
                 width: 100%;
             }
+            .desktop-only { display: block; }
+            .mobile-only { display: none; }
         }
 
         @media (max-width: 768px) {
@@ -356,9 +362,8 @@
                 display: block;
                 width: 100%;
             }
-            .mobile-only {
-                display: block;
-            }
+            .desktop-only { display: none; }
+            .mobile-only { display: block; }
         }
     </style>
 </head>
@@ -390,45 +395,14 @@
         </div>
         <div class="main-menu-container" id="mainMenuContainer">
             <div class="menu-content">
+                
                 <div class="primary-category-column" id="primaryCategoryColumn">
-                    <div class="category-item" data-target-menu="secondary-categories">
+                    <div class="category-item" data-target-menu="secondary-categories-all">
                         <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div id="secondary-categories" class="mobile-only">
-                        <div class="category-item" data-target-products="mavi-seri">
-                            <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                        <div class="category-item" data-target-products="siyah-seri">
-                            <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                        <div class="category-item" data-target-products="kilitli-baglanti">
-                            <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                        <div class="category-item" data-target-products="disli-sulama">
-                            <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                        <div class="category-item" data-target-products="priz-kolyeler">
-                            <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                        <div class="category-item" data-target-products="nipelli-seri">
-                            <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                        <div class="category-item" data-target-products="vanalar">
-                            <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                        <div class="category-item" data-target-products="vana-kutulari">
-                            <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                        <div class="category-item" data-target-products="damlama-ek-parcalari">
-                            <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                        <div class="category-item" data-target-products="yedek-parcalar">
-                            <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
-                        </div>
-                    </div>
                 </div>
-                
-                <div class="secondary-categories-column" id="secondary-categories-desktop">
+
+                <div class="secondary-categories-column" id="secondary-categories-all">
                     <div class="category-item" data-target-products="mavi-seri">
                         <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
@@ -577,8 +551,8 @@
             const menuToggleMobile = document.getElementById('menuToggle');
             const menuToggleDesktop = document.getElementById('menuToggleDesktop');
             const mainMenuContainer = document.getElementById('mainMenuContainer');
-            const primaryCategoryItem = document.querySelector('[data-target-menu="secondary-categories"]');
-            const secondaryCategoryItems = document.querySelectorAll('[data-target-products]');
+            const primaryCategoryItem = document.querySelector('[data-target-menu="secondary-categories-all"]');
+            const secondaryCategoryItems = document.querySelectorAll('#secondary-categories-all .category-item');
             const allProductLists = document.querySelectorAll('.product-list');
 
             const toggleMainMenu = () => {
@@ -587,74 +561,72 @@
                 if (isMobile) {
                     menuToggleMobile.classList.toggle('active');
                 }
+
+                // Ana menü açıldığında sadece ilk seviye kategoriyi göster
+                if (mainMenuContainer.classList.contains('active')) {
+                    document.getElementById('primaryCategoryColumn').style.display = 'block';
+                    document.getElementById('secondary-categories-all').style.display = 'none';
+                    document.getElementById('tertiary-products').style.display = 'none';
+                } else {
+                    document.getElementById('primaryCategoryColumn').style.display = 'none';
+                    document.getElementById('secondary-categories-all').style.display = 'none';
+                    document.getElementById('tertiary-products').style.display = 'none';
+                }
             };
             
-            const handleCategoryClick = (categoryItem, isPrimary = false) => {
-                const isMobile = window.innerWidth <= 768;
-                const isActive = categoryItem.classList.contains('active');
+            const handlePrimaryCategoryClick = (categoryItem) => {
+                const isActive = document.getElementById('secondary-categories-all').style.display === 'block';
 
-                // Tüm aktiflikleri kaldır
-                if (isPrimary) {
-                    document.querySelectorAll('.primary-category-column .category-item').forEach(el => el.classList.remove('active'));
-                }
-                document.querySelectorAll('.secondary-categories-column .category-item').forEach(el => el.classList.remove('active'));
+                // Önce tüm aktiflikleri kaldır
+                document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
                 allProductLists.forEach(ul => ul.classList.remove('active'));
-
-                // Tıklanan öğe aktif değilse, aktif yap
-                if (!isActive) {
+                
+                // İkincil menü açıksa kapat, kapalıysa aç
+                if (isActive) {
+                    document.getElementById('secondary-categories-all').style.display = 'none';
+                    document.getElementById('tertiary-products').style.display = 'none';
+                } else {
+                    document.getElementById('secondary-categories-all').style.display = 'block';
                     categoryItem.classList.add('active');
-
-                    // Masaüstü için ikincil kategoriyi göster
-                    if (!isMobile) {
-                        document.getElementById('secondary-categories-desktop').classList.add('active');
-                    } else { // Mobil için ikincil kategoriyi göster
-                        const mobileSecondary = document.getElementById('secondary-categories');
-                        mobileSecondary.classList.add('active');
-                    }
                 }
             };
 
             const handleProductListClick = (categoryItem) => {
-                const isMobile = window.innerWidth <= 768;
-                const targetProductsId = categoryItem.dataset.targetProducts + '-products';
-                const targetProducts = document.getElementById(targetProductsId);
                 const isActive = categoryItem.classList.contains('active');
             
                 // Tüm aktiflikleri kaldır
-                document.querySelectorAll('.secondary-categories-column .category-item').forEach(el => el.classList.remove('active'));
+                secondaryCategoryItems.forEach(el => el.classList.remove('active'));
                 allProductLists.forEach(ul => ul.classList.remove('active'));
 
-                // Tıklanan öğe aktif değilse, aktif yap
+                // Tıklanan öğe aktif değilse, aktif yap ve ürünleri göster
                 if (!isActive) {
                     categoryItem.classList.add('active');
-                    document.getElementById('tertiary-products').classList.add('active');
+                    document.getElementById('tertiary-products').style.display = 'block';
+                    const targetProductsId = categoryItem.dataset.targetProducts + '-products';
+                    const targetProducts = document.getElementById(targetProductsId);
                     if (targetProducts) {
                         targetProducts.classList.add('active');
                     }
                 } else {
-                    document.getElementById('tertiary-products').classList.remove('active');
+                    document.getElementById('tertiary-products').style.display = 'none';
                 }
             };
 
-            // Mobil menü butonu
+            // Menü açıp kapatma düğmeleri
             if (menuToggleMobile) {
                 menuToggleMobile.addEventListener('click', toggleMainMenu);
             }
-
-            // Masaüstü "Ürünlerimiz" linki
             if (menuToggleDesktop) {
                 menuToggleDesktop.addEventListener('click', (e) => {
                     e.preventDefault();
-                    if (window.innerWidth > 768) {
-                        toggleMainMenu();
-                    }
+                    toggleMainMenu();
                 });
             }
 
             // Kaplinler (Ana kategori) tıklaması
             if (primaryCategoryItem) {
                 primaryCategoryItem.addEventListener('click', () => {
-                    handleCategoryClick(primaryCategoryItem, true);
+                    handlePrimaryCategoryClick(primaryCategoryItem);
                 });
             }
 
@@ -667,8 +639,8 @@
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
+                    mainMenuContainer.classList.remove('active');
                     if (window.innerWidth <= 768) {
-                        mainMenuContainer.classList.remove('active');
                         menuToggleMobile.classList.remove('active');
                     }
                     document.querySelector(this.getAttribute('href')).scrollIntoView({
@@ -679,20 +651,11 @@
 
             // Başlangıçta menülerin durumunu ayarla
             const initialSetup = () => {
-                const isMobile = window.innerWidth <= 768;
                 mainMenuContainer.classList.remove('active');
-                if (isMobile) {
-                    menuToggleMobile.classList.remove('active');
-                }
-                
-                // Menülerin başlangıçta kapalı olmasını sağla
-                document.getElementById('primaryCategoryColumn').classList.remove('active');
-                document.getElementById('secondary-categories-desktop').classList.remove('active');
-                document.getElementById('tertiary-products').classList.remove('active');
-
-                // Mobil için alt menüleri gizle
-                const mobileSecondary = document.getElementById('secondary-categories');
-                if (mobileSecondary) mobileSecondary.classList.remove('active');
+                menuToggleMobile.classList.remove('active');
+                document.getElementById('primaryCategoryColumn').style.display = 'none';
+                document.getElementById('secondary-categories-all').style.display = 'none';
+                document.getElementById('tertiary-products').style.display = 'none';
             };
             
             window.addEventListener('resize', initialSetup);
