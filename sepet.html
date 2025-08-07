@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sepetim</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alışveriş Sepeti</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
     <style>
+        /* Renkler ve Font */
         :root {
             --primary-color: #004797;
             --secondary-color: #FF6B6B;
@@ -29,7 +30,7 @@
             color: var(--text-color);
         }
 
-        /* Header ve Navigasyon */
+        /* Başlık ve Navigasyon */
         .header-main {
             display: flex;
             flex-direction: column;
@@ -103,34 +104,53 @@
             color: var(--secondary-color);
         }
 
-        /* Ana İçerik */
-        .container {
+        /* Sepet Sayfası İçeriği */
+        .cart-container {
             max-width: 1200px;
             margin: 40px auto;
-            padding: 0 20px;
-            display: flex;
-            flex-direction: row;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
             gap: 30px;
-            align-items: flex-start;
         }
-        .shopping-cart {
-            flex-grow: 1;
+        .cart-items {
+            background-color: var(--card-background);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
         }
+        .cart-summary {
+            background-color: var(--card-background);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 100px;
+        }
+        .cart-items h2, .cart-summary h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 15px;
+        }
+
         .cart-item {
             display: flex;
             align-items: center;
-            gap: 20px;
-            background-color: var(--card-background);
-            padding: 20px;
-            border-radius: var(--border-radius);
-            margin-bottom: 20px;
-            box-shadow: var(--box-shadow);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
         }
-        .cart-item img {
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        .item-image {
             width: 100px;
             height: 100px;
             object-fit: cover;
-            border-radius: var(--border-radius);
+            border-radius: 8px;
+            margin-right: 20px;
         }
         .item-details {
             flex-grow: 1;
@@ -138,90 +158,85 @@
         .item-details h4 {
             margin: 0;
             font-size: 1.2rem;
-            color: var(--primary-color);
+            color: var(--text-color);
         }
         .item-details p {
             margin: 5px 0 0 0;
             color: var(--light-text-color);
+            font-size: 0.9rem;
         }
-        .item-actions {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .quantity-control {
+        .item-quantity {
             display: flex;
             align-items: center;
             gap: 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
         }
-        .quantity-control button {
-            background: none;
+        .quantity-btn {
+            background-color: var(--primary-color);
+            color: white;
             border: none;
-            font-size: 1.5rem;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
             cursor: pointer;
-            width: 40px;
-            height: 40px;
-            color: var(--primary-color);
-            transition: color 0.3s;
-        }
-        .quantity-control button:hover {
-            color: var(--secondary-color);
-        }
-        .quantity-control span {
-            font-weight: 600;
             font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 1rem;
         }
         .item-price {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
             color: var(--secondary-color);
+            width: 150px;
+            text-align: right;
         }
-        .remove-item {
+        .remove-btn {
             background: none;
             border: none;
-            color: var(--light-text-color);
-            font-size: 1.5rem;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
             cursor: pointer;
-            transition: color 0.3s;
+            margin-left: 20px;
         }
-        .remove-item:hover {
-            color: #d9534f;
+        .cart-empty {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--light-text-color);
+            padding: 50px 0;
+        }
+        .cart-empty a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
         }
 
-        .cart-summary {
-            width: 350px;
-            background: var(--card-background);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-        }
-        .cart-summary h2 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin: 0 0 20px 0;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--primary-color);
-        }
+        /* Sepet Özeti */
         .summary-item {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-size: 1rem;
         }
         .summary-total {
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--primary-color);
-            margin-top: 20px;
+            margin-top: 25px;
             border-top: 1px solid var(--border-color);
             padding-top: 20px;
         }
         .summary-total span {
             color: var(--secondary-color);
         }
-        .checkout-button {
+        .checkout-btn {
             display: block;
             width: 100%;
             padding: 18px;
@@ -236,58 +251,30 @@
             text-decoration: none;
             transition: background-color 0.3s;
         }
-        .checkout-button:hover {
+        .checkout-btn:hover {
             background-color: #E65A5A;
         }
-
-        /* Responsive Tasarım */
-        @media (max-width: 992px) {
-            .container {
-                flex-direction: column;
-                gap: 20px;
-            }
-            .cart-summary {
-                width: 100%;
-            }
-            .search-and-actions {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .search-bar {
-                margin-right: 0;
-            }
-        }
-        @media (max-width: 768px) {
-            .logo {
-                width: 150px;
-            }
-            .nav-bar {
-                display: none;
-            }
-            .cart-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .item-actions {
-                width: 100%;
-                justify-content: space-between;
-                margin-top: 15px;
-            }
-            .quantity-control {
-                justify-content: space-between;
-                width: 120px;
-            }
-        }
-
-        /* Footer ve WhatsApp butonu */
-        footer {
-            background: #000;
-            color: #fff;
-            padding: 25px;
-            margin-top: 60px;
-            font-size: 14px;
+        .continue-shopping-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #fff;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
             text-align: center;
+            text-decoration: none;
+            transition: all 0.3s;
         }
+        .continue-shopping-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
         .whatsapp-button {
             position: fixed;
             bottom: 30px;
@@ -309,10 +296,60 @@
         .whatsapp-button:hover {
             transform: scale(1.1);
         }
+        
+        /* Responsive Tasarım */
+        @media (max-width: 992px) {
+            .cart-container {
+                grid-template-columns: 1fr;
+            }
+            .cart-summary {
+                order: -1;
+            }
+            .search-and-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .search-bar {
+                margin-right: 0;
+            }
+            .nav-links {
+                gap: 20px;
+            }
+        }
+        @media (max-width: 768px) {
+            .logo {
+                width: 150px;
+            }
+            .search-bar input {
+                padding: 10px 15px 10px 40px;
+            }
+            .nav-bar {
+                display: none;
+            }
+            .cart-item {
+                flex-wrap: wrap;
+                text-align: center;
+                justify-content: center;
+            }
+            .item-image {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            .item-details {
+                text-align: center;
+                width: 100%;
+            }
+            .item-quantity {
+                justify-content: center;
+                margin-top: 10px;
+            }
+            .item-price, .remove-btn {
+                margin-top: 15px;
+            }
+        }
     </style>
 </head>
 <body>
-
     <header class="header-main">
         <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="BAYSU LOGO" class="logo">
         <div class="search-and-actions">
@@ -337,127 +374,133 @@
     </nav>
 
     <main>
-        <div class="container">
-            <div class="shopping-cart" id="cart-items-container">
+        <div class="cart-container">
+            <div class="cart-items">
+                <h2>Alışveriş Sepeti</h2>
+                <div id="cart-list">
+                    </div>
+                <div id="cart-empty" class="cart-empty" style="display: none;">
+                    Sepetinizde ürün bulunmamaktadır. <br><a href="index.html">Alışverişe Başla</a>
                 </div>
-            
+            </div>
+
             <div class="cart-summary">
-                <h2>Sepet Özeti</h2>
-                <div id="summary-items">
-                    <div class="summary-item">
-                        <span>Ara Toplam</span>
-                        <span id="subtotal">0.00 TL</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Kargo</span>
-                        <span id="shipping-cost">Belirlenmedi</span>
-                    </div>
+                <h2>Sipariş Özeti</h2>
+                <div class="summary-item">
+                    <span>Sepet Toplamı</span>
+                    <span id="subtotal">0.00 TL</span>
                 </div>
-                <div class="summary-total">Toplam Tutar: <span id="total-price">0.00 TL</span></div>
-                
-                <a href="odeme.html" class="checkout-button">Alışverişi Tamamla</a>
+                <div class="summary-item">
+                    <span>Kargo</span>
+                    <span>ALICI ÖDEMELİ</span>
+                </div>
+                <div class="summary-total">
+                    Toplam Tutar: <span id="total-price">0.00 TL</span>
+                </div>
+                <a href="teslimat-bilgileri.html" class="checkout-btn">Ödeme Sayfasına Git</a>
+                <a href="index.html" class="continue-shopping-btn">Alışverişe Devam Et</a>
             </div>
         </div>
     </main>
-
-    <footer>
-        &copy; 2025 BAYSU YAPI VE SULAMA MALZEMELERİ - Tüm hakları saklıdır.
-    </footer>
-
+    
     <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum." class="whatsapp-button" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const cartItemsContainer = document.getElementById('cart-items-container');
-            const subtotalElement = document.getElementById('subtotal');
-            const shippingCostElement = document.getElementById('shipping-cost');
-            const totalPriceElement = document.getElementById('total-price');
+            const cartList = document.getElementById('cart-list');
+            const cartEmpty = document.getElementById('cart-empty');
+            const subtotalSpan = document.getElementById('subtotal');
+            const totalPriceSpan = document.getElementById('total-price');
+            const checkoutButton = document.querySelector('.checkout-btn');
 
-            // Başlangıçta sepet verilerini al
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-            // Sepeti ekranda gösteren fonksiyon
             function renderCart() {
-                cartItemsContainer.innerHTML = '';
+                cartList.innerHTML = '';
                 if (cart.length === 0) {
-                    cartItemsContainer.innerHTML = '<p style="text-align: center; font-size: 1.2rem; color: var(--light-text-color);">Sepetinizde ürün bulunmamaktadır.</p>';
+                    cartEmpty.style.display = 'block';
+                    cartList.style.display = 'none';
+                    checkoutButton.style.display = 'none';
                 } else {
+                    cartEmpty.style.display = 'none';
+                    cartList.style.display = 'block';
+                    checkoutButton.style.display = 'block';
+
                     cart.forEach(item => {
-                        const cartItemDiv = document.createElement('div');
-                        cartItemDiv.classList.add('cart-item');
-                        
-                        // Resim yolu, ürün adı ve diğer bilgileri direkt olarak localStorage'dan alıyoruz.
-                        cartItemDiv.innerHTML = `
-                            <img src="${item.image}" alt="${item.name}">
+                        const cartItem = document.createElement('div');
+                        cartItem.classList.add('cart-item');
+                        cartItem.innerHTML = `
+                            <img src="${item.image}" alt="${item.name}" class="item-image">
                             <div class="item-details">
                                 <h4>${item.name}</h4>
-                                <p>Koli: ${item.koli}</p>
+                                <p>${item.description}</p>
                             </div>
-                            <div class="item-actions">
-                                <div class="quantity-control">
-                                    <button class="decrease-quantity" data-id="${item.id}">-</button>
-                                    <span>${item.quantity}</span>
-                                    <button class="increase-quantity" data-id="${item.id}">+</button>
-                                </div>
-                                <span class="item-price">${(item.price * item.quantity).toFixed(2)} TL</span>
-                                <button class="remove-item" data-id="${item.id}"><i class="fas fa-trash"></i></button>
+                            <div class="item-quantity">
+                                <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                                <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}">
+                                <button class="quantity-btn plus" data-id="${item.id}">+</button>
                             </div>
+                            <span class="item-price">${(item.price * item.quantity).toFixed(2)} TL</span>
+                            <button class="remove-btn" data-id="${item.id}"><i class="fas fa-trash-alt"></i></button>
                         `;
-                        cartItemsContainer.appendChild(cartItemDiv);
+                        cartList.appendChild(cartItem);
                     });
                 }
                 updateSummary();
             }
 
-            // Sepet özetini güncelleyen fonksiyon
             function updateSummary() {
                 const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-                subtotalElement.textContent = subtotal.toFixed(2) + ' TL';
-                
-                // Sepet sayfasında kargo ücreti henüz belirlenmediği için
-                shippingCostElement.textContent = 'Belirlenmedi';
-                totalPriceElement.textContent = subtotal.toFixed(2) + ' TL';
+                subtotalSpan.textContent = subtotal.toFixed(2) + ' TL';
+                totalPriceSpan.textContent = subtotal.toFixed(2) + ' TL';
             }
 
-            // Sepetteki ürün miktarını güncelleyen fonksiyon
-            function updateCart(id, change) {
-                const itemIndex = cart.findIndex(item => item.id === id);
-                if (itemIndex > -1) {
-                    cart[itemIndex].quantity += change;
-                    if (cart[itemIndex].quantity <= 0) {
-                        cart.splice(itemIndex, 1); // Miktar 0 veya altına düşerse ürünü sepetten çıkar
+            cartList.addEventListener('click', (e) => {
+                if (e.target.classList.contains('plus')) {
+                    const id = e.target.dataset.id;
+                    const item = cart.find(i => i.id === id);
+                    if (item) {
+                        item.quantity++;
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        renderCart();
                     }
+                }
+                if (e.target.classList.contains('minus')) {
+                    const id = e.target.dataset.id;
+                    const item = cart.find(i => i.id === id);
+                    if (item && item.quantity > 1) {
+                        item.quantity--;
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        renderCart();
+                    }
+                }
+                if (e.target.classList.contains('remove-btn')) {
+                    const id = e.target.dataset.id;
+                    cart = cart.filter(item => item.id !== id);
                     localStorage.setItem('cart', JSON.stringify(cart));
                     renderCart();
                 }
-            }
-
-            // Ürünü sepetten tamamen çıkaran fonksiyon
-            function removeItem(id) {
-                cart = cart.filter(item => item.id !== id);
-                localStorage.setItem('cart', JSON.stringify(cart));
-                renderCart();
-            }
-
-            // Sepet elemanları için olay dinleyici
-            cartItemsContainer.addEventListener('click', (e) => {
-                const targetButton = e.target.closest('button');
-                if (!targetButton) return; // Buton değilse işlemi durdur
-
-                const id = targetButton.dataset.id;
-                
-                if (targetButton.classList.contains('increase-quantity')) {
-                    updateCart(id, 1);
-                } else if (targetButton.classList.contains('decrease-quantity')) {
-                    updateCart(id, -1);
-                } else if (targetButton.classList.contains('remove-item')) {
-                    removeItem(id);
+            });
+            
+            cartList.addEventListener('change', (e) => {
+                if (e.target.classList.contains('quantity-input')) {
+                    const id = e.target.dataset.id;
+                    let quantity = parseInt(e.target.value);
+                    if (quantity < 1 || isNaN(quantity)) {
+                        quantity = 1;
+                        e.target.value = 1;
+                    }
+                    const item = cart.find(i => i.id === id);
+                    if (item) {
+                        item.quantity = quantity;
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        renderCart();
+                    }
                 }
             });
 
-            // Sayfa ilk yüklendiğinde sepeti göster
             renderCart();
         });
     </script>
