@@ -411,7 +411,6 @@
                 const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
                 subtotalElement.textContent = subtotal.toFixed(2) + ' TL';
                 
-                // Sepet sayfasında kargo ücreti henüz belirlenmediği için
                 shippingCostElement.textContent = 'Belirlenmedi'; 
                 totalPriceElement.textContent = subtotal.toFixed(2) + ' TL';
             }
