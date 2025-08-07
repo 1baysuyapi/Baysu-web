@@ -253,10 +253,11 @@
                         // User ID is obtained
                         userId = user.uid;
                         console.log("Logged in with Firebase Auth. User ID:", userId);
-                        // Run this function once to populate the database with product sizes.
-                        // You can remove this line after the data is set.
+                        
+                        // First, write the dummy data to ensure it exists
                         await writeDummyData();
-                        // Start the database listener after user is authenticated
+
+                        // Then, set up the listener to read the data
                         setupDatabaseListener();
                     } else {
                         // If user is logged out, try to sign in anonymously or with a custom token
