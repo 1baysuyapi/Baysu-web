@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Tailwind CSS'e özel renklerin ve fontun tanımlanması -->
     <style>
+        /* Define custom colors and font for the theme */
         :root {
             --primary-color: #004797;
             --secondary-color: #ff9900;
@@ -23,7 +24,7 @@
             font-family: 'Poppins', sans-serif;
         }
     </style>
-    <!-- Font Awesome ve Google Fonts'u dahil etme -->
+    <!-- Font Awesome and Google Fonts included -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,19 +32,19 @@
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
 
-    <!-- Başlık Bölümü -->
+    <!-- Header Section -->
     <header class="shadow-md">
         <div class="bg-white p-4 flex flex-col md:flex-row items-center justify-between">
             <!-- Logo -->
             <div class="md:flex-1 text-center mb-4 md:mb-0">
                 <img src="https://placehold.co/250x50/004797/FFFFFF?text=BAYSU+YAPI+LOGO" alt="Baysu Yapı Logo" class="max-w-[250px] mx-auto">
             </div>
-            <!-- Arama Kutusu -->
+            <!-- Search Bar -->
             <div class="flex-grow md:flex-2 flex items-center w-full max-w-lg mx-auto md:mx-0 mb-4 md:mb-0">
                 <i class="fas fa-search text-gray-500 mr-2"></i>
                 <input type="text" placeholder="Ürün Ara..." class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
             </div>
-            <!-- Eylemler -->
+            <!-- Actions -->
             <div class="flex-1 flex justify-center md:justify-end gap-4">
                 <a href="sepet.html" class="text-primary font-bold flex items-center hover:text-secondary transition-colors">
                     <i class="fas fa-shopping-cart mr-1"></i> Sepet
@@ -56,7 +57,7 @@
                 </a>
             </div>
         </div>
-        <!-- Navigasyon Çubuğu -->
+        <!-- Navigation Bar -->
         <nav class="bg-primary text-white p-3 flex justify-center md:justify-between items-center flex-wrap">
             <a href="index.html" class="p-2 font-bold hover:bg-secondary rounded-md transition-colors">Anasayfa</a>
             <a href="#" class="p-2 font-bold hover:bg-secondary rounded-md transition-colors">Hakkımızda</a>
@@ -68,15 +69,18 @@
         </nav>
     </header>
 
-    <!-- Ana İçerik -->
+    <!-- Main Content -->
     <main class="container mx-auto p-4 md:p-8 flex-grow">
         <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg flex flex-col lg:flex-row gap-8">
-            <!-- Ürün Resmi Bölümü -->
+            <!-- Product Image Section -->
             <div class="lg:w-1/2 flex justify-center items-center p-4">
-                <img src="https://placehold.co/600x600/000000/FFFFFF?text=Siyah+Seri+Man%C5%9Fon" alt="Siyah Seri Manşon" class="w-full max-w-sm rounded-lg border border-gray-200 shadow-md">
+                <!-- User's requested image URL is used here. Please replace with the actual path. -->
+                <img src="https://placehold.co/600x600/000000/FFFFFF?text=siyah-seri-manson.png" 
+                     alt="Siyah Seri Manşon" 
+                     class="w-full max-w-sm rounded-lg border border-gray-200 shadow-md">
             </div>
 
-            <!-- Ürün Bilgisi ve Eylem Bölümü -->
+            <!-- Product Info and Actions Section -->
             <div class="lg:w-1/2 flex flex-col justify-center">
                 <h1 class="text-3xl md:text-4xl font-bold text-primary mb-2">Siyah Seri Manşon</h1>
                 <div class="text-gray-600 mb-6 space-y-1">
@@ -85,7 +89,7 @@
                     <div><strong>Stok Kodu:</strong> Mevcut Değil</div>
                 </div>
                 
-                <!-- Fiyat ve Taksit Bilgisi -->
+                <!-- Price and Installment Info -->
                 <div class="mb-6 space-y-4">
                     <div>
                         <label class="text-gray-500 font-semibold text-lg">Birim Fiyatı:</label>
@@ -98,24 +102,24 @@
                     <div class="text-gray-400 text-sm italic" id="installmentText"></div>
                 </div>
 
-                <!-- Boyut Seçenekleri -->
+                <!-- Size Options -->
                 <div class="mb-6">
                     <label class="font-bold text-gray-700 block mb-2">Boyut:</label>
                     <div class="flex flex-wrap gap-2" id="sizeButtons">
-                        <!-- Boyut butonları buraya JavaScript ile eklenecek -->
+                        <!-- Size buttons will be added dynamically by JavaScript -->
                         <p class="text-gray-500">Fiyatlar yükleniyor...</p>
                     </div>
                 </div>
 
-                <!-- Adet Kontrolleri ve Eylem Butonları -->
+                <!-- Quantity Controls and Action Buttons -->
                 <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                    <!-- Adet Kontrolü -->
+                    <!-- Quantity Control -->
                     <div class="flex items-center border border-gray-300 rounded-md overflow-hidden w-full sm:w-auto">
                         <button id="decreaseBtn" class="p-3 text-lg text-gray-600 hover:bg-gray-200 transition-colors">-</button>
                         <input type="number" id="quantityInput" value="1" min="1" class="w-full sm:w-16 text-center border-none focus:outline-none p-2">
                         <button id="increaseBtn" class="p-3 text-lg text-gray-600 hover:bg-gray-200 transition-colors">+</button>
                     </div>
-                    <!-- Eylem Butonları -->
+                    <!-- Action Buttons -->
                     <div class="flex-grow flex gap-4">
                         <button id="addToCartBtn" class="flex-1 bg-[#6c9f3e] text-white font-bold py-3 px-6 rounded-md hover:bg-opacity-90 transition-colors shadow-md">
                             Sepete Ekle
@@ -130,7 +134,7 @@
             </div>
         </div>
         
-        <!-- Altbilgi Özellikleri -->
+        <!-- Footer Features -->
         <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center">
                 <i class="fas fa-truck text-5xl text-primary mb-4"></i>
@@ -150,39 +154,39 @@
             <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center">
                 <i class="fas fa-smile text-5xl text-primary mb-4"></i>
                 <h4 class="font-bold text-xl text-primary mb-2">Mutlu Müşteri</h4>
-                <p class="text-gray-600 text-sm">1977 den beri kaliteli ürünler üreterek sizleri mutlu etmekten gurur duyuyoruz.</p>
+                <p class="text-gray-600 text-sm">2018'den beri kaliteli ürünler satarak sizleri mutlu etmekten gurur duyuyoruz.</p>
             </div>
         </div>
     </main>
     
-    <!-- Sabit WhatsApp Butonu -->
+    <!-- Fixed WhatsApp Button -->
     <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCn%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum" class="fixed bottom-5 right-5 bg-[#25d366] text-white rounded-full w-16 h-16 flex items-center justify-center text-3xl shadow-lg z-50 hover:scale-110 transition-transform" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
     
-    <!-- Yükleme Göstergesi -->
+    <!-- Loading Overlay -->
     <div id="loading-overlay" class="fixed inset-0 bg-white bg-opacity-80 flex items-center justify-center z-40 hidden">
         <div class="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
     </div>
     
-    <!-- Özel Mesaj Kutusu -->
+    <!-- Custom Message Box -->
     <div id="message-box" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white p-4 rounded-lg shadow-xl z-[2000] opacity-0 transition-opacity duration-500 ease-in-out hidden">
     </div>
 
-    <!-- JavaScript Kodu -->
+    <!-- JavaScript for dynamic functionality -->
     <script type="module">
-        // Firebase SDK'larını içe aktarın
+        // Import Firebase SDKs
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Firebase ve Canvas değişkenlerini tanımlayın
+        // Define Firebase and Canvas global variables
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
         let db, auth, userId;
         
-        // HTML elementlerini alın
+        // Get HTML elements
         const sizeButtonsContainer = document.getElementById('sizeButtons');
         const productPriceSpan = document.getElementById('productPrice');
         const totalPriceSpan = document.getElementById('totalPrice');
@@ -194,22 +198,22 @@
         const loadingOverlay = document.getElementById('loading-overlay');
         const messageBox = document.getElementById('message-box');
 
-        // Ürün fiyatları ve seçili boyutu tutmak için değişkenler
+        // Variables to hold product prices and selected size
         let selectedSize = null;
         let currentPrice = null;
         let productVariations = {}; 
 
-        // Yükleme ekranını gösterir
+        // Shows the loading overlay
         function showLoading() {
             loadingOverlay.style.display = 'flex';
         }
 
-        // Yükleme ekranını gizler
+        // Hides the loading overlay
         function hideLoading() {
             loadingOverlay.style.display = 'none';
         }
         
-        // Özel bir mesaj kutusu gösterir
+        // Shows a custom message box instead of alert()
         function showMessage(message, type = 'success') {
             messageBox.textContent = message;
             if (type === 'success') {
@@ -232,7 +236,7 @@
             }, 3000);
         }
 
-        // Firebase'i başlatın ve kimlik doğrulamasını yapın
+        // Initializes Firebase and authenticates the user
         async function initializeFirebase() {
             try {
                 showLoading();
@@ -240,16 +244,16 @@
                 auth = getAuth(app);
                 db = getFirestore(app);
 
-                // Firebase kimlik doğrulama dinleyicisi
+                // Firebase auth state change listener
                 onAuthStateChanged(auth, async (user) => {
                     if (user) {
-                        // Kullanıcı kimliği alındı
+                        // User ID is obtained
                         userId = user.uid;
-                        console.log("Firebase Auth ile giriş yapıldı. User ID:", userId);
-                        // Kullanıcı kimlik doğrulandıktan sonra veritabanı dinleyicisini başlatın
+                        console.log("Logged in with Firebase Auth. User ID:", userId);
+                        // Start the database listener after user is authenticated
                         setupDatabaseListener();
                     } else {
-                        // Kullanıcı oturumu kapalıysa anonim veya özel token ile giriş yapmayı deneyin
+                        // If user is logged out, try to sign in anonymously or with a custom token
                         try {
                             if (initialAuthToken) {
                                 await signInWithCustomToken(auth, initialAuthToken);
@@ -257,43 +261,39 @@
                                 await signInAnonymously(auth);
                             }
                         } catch (error) {
-                            console.error("Firebase Auth ile giriş yapılamadı:", error);
+                            console.error("Failed to log in with Firebase Auth:", error);
                             hideLoading();
                         }
                     }
                 });
 
-                // Sayfa ilk yüklendiğinde kimlik doğrulama işlemini başlatın
-                if (initialAuthToken) {
-                    await signInWithCustomToken(auth, initialAuthToken);
-                } else {
-                    await signInAnonymously(auth);
-                }
             } catch (error) {
-                console.error("Firebase başlatılırken bir hata oluştu:", error);
+                console.error("Error initializing Firebase:", error);
                 hideLoading();
             }
         }
         
-        // Veritabanı dinleyicisini kurar
+        // Sets up the database listener to fetch product prices
         function setupDatabaseListener() {
             if (!db || !userId) {
-                console.error("Veritabanı veya kullanıcı kimliği hazır değil.");
+                console.error("Database or User ID is not ready.");
                 hideLoading();
                 return;
             }
             
-            // Fiyat düzenleme panelinden gelen fiyatları dinle
-            const productId = 'siyah-seri-manson'; // <-- Bu ID'yi değiştirmeyin!
+            // Product ID from the price panel
+            const productId = 'siyah-seri-manson';
+            // Firestore document path
             const docRef = doc(db, `artifacts/${appId}/users/${userId}/price_updates`, productId);
 
+            // Listen for real-time updates on the price document
             onSnapshot(docRef, (docSnap) => {
                 if (docSnap.exists()) {
                     productVariations = docSnap.data();
                     renderSizeButtons(productVariations);
-                    console.log("Fiyatlar veritabanından güncellendi.");
+                    console.log("Prices updated from database.");
                 } else {
-                    console.log("Bu ürün için veritabanında fiyat bilgisi bulunamadı.");
+                    console.log("No price information found for this product in the database.");
                     sizeButtonsContainer.innerHTML = '<p class="text-gray-500">Bu ürün için fiyat bilgisi bulunamadı.</p>';
                     productPriceSpan.textContent = 'N/A';
                     totalPriceSpan.textContent = 'N/A';
@@ -301,12 +301,12 @@
                 }
                 hideLoading();
             }, (error) => {
-                console.error("Veritabanı dinleyicisinde hata:", error);
+                console.error("Error in database listener:", error);
                 hideLoading();
             });
         }
         
-        // Boyut butonlarını dinamik olarak oluşturur
+        // Renders size buttons dynamically based on fetched data
         function renderSizeButtons(variations) {
             sizeButtonsContainer.innerHTML = '';
             const sizes = Object.keys(variations);
@@ -324,7 +324,7 @@
                 sizeButtonsContainer.appendChild(button);
             });
             
-            // İlk boyutun otomatik olarak seçilmesi
+            // Automatically select the first size on load
             if (sizes.length > 0) {
                 const firstButton = sizeButtonsContainer.querySelector('button');
                 if (firstButton) {
@@ -338,7 +338,7 @@
             }
         }
         
-        // Boyut seçimi olayını yönetir
+        // Handles size button click event
         function handleSizeSelection(event) {
             document.querySelectorAll('#sizeButtons button').forEach(btn => {
                 btn.classList.remove('bg-secondary', 'text-white');
@@ -355,7 +355,7 @@
             }
         }
         
-        // Toplam fiyatı günceller
+        // Updates the total price based on quantity
         function updateTotalPrice() {
             if (currentPrice !== null) {
                 const quantity = parseInt(quantityInput.value) || 1;
@@ -366,7 +366,7 @@
             }
         }
 
-        // Birim fiyatı ve taksit yazısını günceller
+        // Updates the unit price and installment text
         function updatePrice(price) {
             currentPrice = parseFloat(price);
             productPriceSpan.textContent = `${currentPrice.toFixed(2).replace('.', ',')} TL`;
@@ -377,7 +377,7 @@
             updateTotalPrice();
         }
 
-        // Adet artırma/azaltma butonları
+        // Quantity increase/decrease buttons
         increaseBtn.addEventListener('click', () => {
             let currentQuantity = parseInt(quantityInput.value) || 1;
             quantityInput.value = currentQuantity + 1;
@@ -392,7 +392,7 @@
             }
         });
         
-        // Adet girişine de dinleyici ekle
+        // Listener for quantity input change
         quantityInput.addEventListener('change', () => {
             if (parseInt(quantityInput.value) < 1 || !quantityInput.value) {
                 quantityInput.value = 1;
@@ -400,7 +400,7 @@
             updateTotalPrice();
         });
 
-        // Sepete ekle butonu
+        // Add to cart button functionality
         addToCartBtn.addEventListener('click', () => {
             if (selectedSize && currentPrice) {
                 const quantity = parseInt(quantityInput.value);
@@ -412,8 +412,7 @@
                     quantity: quantity
                 };
                 
-                // localStorage yerine çok kullanıcılı bir ortam için Firestore'u kullanabilirsiniz.
-                // Bu örnek, basitlik için localStorage'u kullanmaya devam eder.
+                // Using localStorage for simplicity. For a multi-user app, Firestore would be used for the cart.
                 let cart = JSON.parse(localStorage.getItem('cart')) || [];
                 
                 const existingProductIndex = cart.findIndex(item => item.name === product.name && item.size === product.size);
@@ -431,7 +430,7 @@
             }
         });
 
-        // Sayfa yüklendiğinde Firebase'i başlat
+        // Initialize Firebase on window load
         window.onload = initializeFirebase;
     </script>
 </body>
