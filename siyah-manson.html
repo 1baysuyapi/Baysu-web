@@ -158,11 +158,21 @@
             margin-bottom: 20px;
         }
 
+        .price-container div {
+            margin-bottom: 10px;
+        }
+
+        .price-container label {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #555;
+            display: block;
+        }
+
         .price {
             font-size: 2em;
             color: var(--secondary-color);
             font-weight: bold;
-            margin-bottom: 5px;
         }
 
         .installment {
@@ -331,7 +341,14 @@
                 </div>
                 
                 <div class="price-container">
-                    <span class="price" id="productPrice">Lütfen boyut seçiniz.</span>
+                    <div class="unit-price-wrapper">
+                        <label>Birim Fiyatı:</label>
+                        <span class="price" id="productPrice">Lütfen boyut seçiniz.</span>
+                    </div>
+                    <div class="total-price-wrapper" style="margin-top: 10px;">
+                        <label>Toplam Fiyat:</label>
+                        <span class="price" id="totalPrice">0,00 TL</span>
+                    </div>
                 </div>
                 <div class="installment" id="installmentText" style="display:none;"></div>
                 
@@ -396,6 +413,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const sizeButtons = document.querySelectorAll('.size-buttons button');
             const productPriceSpan = document.getElementById('productPrice');
+            const totalPriceSpan = document.getElementById('totalPrice'); // Yeni toplam fiyat alanı
             const installmentText = document.getElementById('installmentText');
             const quantityInput = document.getElementById('quantityInput');
             const increaseBtn = document.getElementById('increaseBtn');
@@ -405,6 +423,16 @@
             let selectedSize = null;
             let currentPrice = null;
 
+            function updateTotalPrice() {
+                if (currentPrice !== null) {
+                    const quantity = parseInt(quantityInput.value);
+                    const total = currentPrice * quantity;
+                    totalPriceSpan.textContent = `${total.toFixed(2).replace('.', ',')} TL`;
+                } else {
+                    totalPriceSpan.textContent = "0,00 TL";
+                }
+            }
+
             function updatePrice(price) {
                 currentPrice = parseFloat(price);
                 productPriceSpan.textContent = `${currentPrice.toFixed(2).replace('.', ',')} TL`;
@@ -412,6 +440,8 @@
                 const installmentPrice = (currentPrice / 12).toFixed(2);
                 installmentText.textContent = `*${installmentPrice.replace('.', ',')} TL'den başlayan taksitlerle!`;
                 installmentText.style.display = 'block';
+
+                updateTotalPrice(); // Boyut değişince toplam fiyatı da güncelle
             }
 
             sizeButtons.forEach(button => {
@@ -427,19 +457,21 @@
             increaseBtn.addEventListener('click', () => {
                 let currentQuantity = parseInt(quantityInput.value);
                 quantityInput.value = currentQuantity + 1;
+                updateTotalPrice(); // Adet artınca toplam fiyatı güncelle
             });
 
             decreaseBtn.addEventListener('click', () => {
                 let currentQuantity = parseInt(quantityInput.value);
                 if (currentQuantity > 1) {
                     quantityInput.value = currentQuantity - 1;
+                    updateTotalPrice(); // Adet azalınca toplam fiyatı güncelle
                 }
             });
 
             addToCartBtn.addEventListener('click', () => {
                 if (selectedSize && currentPrice) {
                     const quantity = parseInt(quantityInput.value);
-                    const productName = document.querySelector('h1').textContent.split('(')[0].trim();
+                    const productName = document.querySelector('h1').textContent.trim();
                     const product = {
                         name: productName,
                         size: selectedSize,
@@ -447,10 +479,8 @@
                         quantity: quantity
                     };
                     
-                    // Sepete ekleme işlemi
                     let cart = JSON.parse(localStorage.getItem('cart')) || [];
                     
-                    // Aynı ürünü (aynı boyut) bul ve adetini artır
                     const existingProductIndex = cart.findIndex(item => item.name === product.name && item.size === product.size);
                     if (existingProductIndex > -1) {
                         cart[existingProductIndex].quantity += quantity;
@@ -462,9 +492,6 @@
                     
                     alert(`${product.size} boyutunda ${quantity} adet ${product.name} sepete eklendi!`);
                     
-                    // İsteğe bağlı olarak sepet sayfasına yönlendirme
-                    // window.location.href = 'sepet.html';
-
                 } else {
                     alert('Lütfen önce bir boyut seçiniz.');
                 }
@@ -472,6 +499,7 @@
 
             // Başlangıçta fiyatı ve taksit yazısını gizle
             productPriceSpan.textContent = 'Lütfen boyut seçiniz.';
+            totalPriceSpan.textContent = '0,00 TL';
             installmentText.style.display = 'none';
         });
     </script>
