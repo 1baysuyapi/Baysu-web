@@ -622,7 +622,7 @@
             }
             if (menuToggleDesktop) {
                 menuToggleDesktop.addEventListener('click', (e) => {
-                    e.preventDefault();
+                    e.preventDefault(); // Bu satır sayfa yenilenmesini engeller
                     e.stopPropagation();
                     toggleMenuVisibility(!mainMenuContainer.classList.contains('active'));
                 });
