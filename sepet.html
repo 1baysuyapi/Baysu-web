@@ -425,7 +425,7 @@
                     description: 'Yüksek Kaliteli Plastik Kaplin',
                     price: 250.00,
                     quantity: 1,
-                    image: 'siyah-seri-manson.png' // Doğru görsel adı
+                    image: 'siyah-seri-manson.png'
                 });
                 localStorage.setItem('cart', JSON.stringify(cart));
             }
@@ -464,7 +464,12 @@
                 updateSummary();
             }
 
-            // Olay dinleyicilerini tüm sayfa için bir kere kuruyoruz
+            function updateSummary() {
+                const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+                subtotalSpan.textContent = subtotal.toFixed(2) + ' TL';
+                totalPriceSpan.textContent = subtotal.toFixed(2) + ' TL';
+            }
+
             document.addEventListener('click', (e) => {
                 const targetButton = e.target.closest('.quantity-btn');
                 if (targetButton) {
@@ -506,12 +511,6 @@
                     }
                 }
             });
-
-            function updateSummary() {
-                const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-                subtotalSpan.textContent = subtotal.toFixed(2) + ' TL';
-                totalPriceSpan.textContent = subtotal.toFixed(2) + ' TL';
-            }
 
             renderCart();
         });
