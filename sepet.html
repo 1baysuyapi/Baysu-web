@@ -427,7 +427,7 @@
         <div class="nav-links">
             <a href="index.html">Anasayfa</a>
         </div>
-        <a href="#" class="menu-toggle">Ürünlerimiz +</a>
+        <a href="index.html" class="menu-toggle">Ürünlerimiz +</a>
     </nav>
     
     <main>
@@ -622,6 +622,42 @@
                 localStorage.setItem('cart', JSON.stringify(cart));
                 renderCart();
             };
+
+            // Alışverişi Tamamla butonuna tıklanınca çalışacak fonksiyon
+            completeOrderButton.addEventListener('click', () => {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                if (cart.length === 0) {
+                    alert('Sepetinizde ürün bulunmamaktadır.');
+                    return;
+                }
+
+                let orderMessage = "Merhaba, sepetimdeki ürünleri sipariş etmek istiyorum:\n\n";
+                let subtotal = 0;
+
+                cart.forEach((product, index) => {
+                    const itemTotal = product.price * product.quantity;
+                    subtotal += itemTotal;
+                    orderMessage += `${index + 1}. ${product.name}\n`;
+                    orderMessage += `   - Boyut: ${product.size}\n`;
+                    orderMessage += `   - Adet: ${product.quantity}\n`;
+                    orderMessage += `   - Fiyat: ${itemTotal.toFixed(2).replace('.', ',')} TL\n\n`;
+                });
+
+                const vat = subtotal * VAT_RATE;
+                const total = subtotal + vat;
+
+                orderMessage += "--------------------------------------\n";
+                orderMessage += `Ara Toplam: ${subtotal.toFixed(2).replace('.', ',')} TL\n`;
+                orderMessage += `KDV (%${VAT_RATE * 100}): ${vat.toFixed(2).replace('.', ',')} TL\n`;
+                orderMessage += `Genel Toplam: ${total.toFixed(2).replace('.', ',')} TL\n`;
+                orderMessage += "--------------------------------------\n\n";
+                orderMessage += "Lütfen siparişimle ilgili bilgi verir misiniz?";
+
+                // WhatsApp linki oluşturma. +905533973603 numarasına yönlendiriyor.
+                const whatsappLink = `https://wa.me/905533973603?text=${encodeURIComponent(orderMessage)}`;
+
+                window.open(whatsappLink, '_blank');
+            });
 
             renderCart();
         });
