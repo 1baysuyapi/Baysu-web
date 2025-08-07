@@ -1,695 +1,695 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Siparişi Tamamla</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        /* Genel CSS */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #F5F5DC;
-            color: #222;
-        }
-        .anasayfa-logo {
-            width: 100%;
-            height: 25vh;
-            background-color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-            border-bottom: 2px solid #004797;
-            margin-bottom: 10px;
-        }
-        .anasayfa-logo img {
-            max-height: 80%;
-            max-width: 80%;
-            object-fit: contain;
-            display: block;
-        }
-        header {
-            background: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #ddd;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .search-bar {
-            position: relative;
-            display: flex;
-            align-items: center;
-            width: 50%;
-            max-width: 400px;
-        }
-        .search-bar input {
-            width: 100%;
-            padding: 8px 12px 8px 40px;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            font-size: 14px;
-        }
-        .search-bar .fas {
-            position: absolute;
-            left: 15px;
-            color: #888;
-        }
-        .header-actions {
-            display: flex;
-            gap: 15px;
-        }
-        .header-actions a {
-            text-decoration: none;
-            color: #004797;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        nav {
-            background: #004797;
-            padding: 10px 20px;
-            position: relative;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-            transition: color 0.3s ease;
-        }
-        .nav-links a:hover {
-            color: #ccc;
-        }
-        .menu-toggle {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 5px 10px;
-            border: 1px solid white;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .menu-toggle:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BAYSU YAPI VE SULAMA MALZEMELERİ - Siparişi Tamamla</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Genel CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F5F5DC;
+            color: #222;
+        }
+        .anasayfa-logo {
+            width: 100%;
+            height: 25vh;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            border-bottom: 2px solid #004797;
+            margin-bottom: 10px;
+        }
+        .anasayfa-logo img {
+            max-height: 80%;
+            max-width: 80%;
+            object-fit: contain;
+            display: block;
+        }
+        header {
+            background: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .search-bar {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 50%;
+            max-width: 400px;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 8px 12px 8px 40px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        .search-bar .fas {
+            position: absolute;
+            left: 15px;
+            color: #888;
+        }
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+        .header-actions a {
+            text-decoration: none;
+            color: #004797;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        nav {
+            background: #004797;
+            padding: 10px 20px;
+            position: relative;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #ccc;
+        }
+        .menu-toggle {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border: 1px solid white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .menu-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
 
-        /* Ödeme Sayfasına Özel CSS */
-        .checkout-container {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 20px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 20px auto;
-        }
+        /* Ödeme Sayfasına Özel CSS */
+        .checkout-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
 
-        .checkout-details {
-            flex: 2;
-        }
-        .checkout-summary {
-            flex: 1;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 100px;
-        }
+        .checkout-details {
+            flex: 2;
+        }
+        .checkout-summary {
+            flex: 1;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 100px;
+        }
 
-        .checkout-progress {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        .progress-step {
-            font-weight: bold;
-            color: #ccc;
-            font-size: 1.1rem;
-        }
-        .progress-step.active {
-            color: #004797;
-            text-decoration: underline;
-        }
+        .checkout-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .progress-step {
+            font-weight: bold;
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+        .progress-step.active {
+            color: #004797;
+            text-decoration: underline;
+        }
 
-        .address-form, .shipping-options {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        .address-form h3, .shipping-options h3 {
-            font-size: 1.2rem;
-            color: #004797;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-            position: relative;
-        }
-        .address-form h3 .add-address-info, .shipping-options h3 .add-shipping-info {
-            font-size: 0.9rem;
-            color: #666;
-            font-weight: normal;
-        }
+        .address-form, .shipping-options {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .address-form h3, .shipping-options h3 {
+            font-size: 1.2rem;
+            color: #004797;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        .address-form h3 .add-address-info, .shipping-options h3 .add-shipping-info {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: normal;
+        }
 
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
 
-        .form-control {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-        .form-control label {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            color: #aaa;
-            transition: all 0.2s ease;
-            pointer-events: none;
-            background-color: #fff;
-            padding: 0 5px;
-        }
-        .form-control input:focus + label, .form-control input:not(:placeholder-shown) + label,
-        .form-control textarea:focus + label, .form-control textarea:not(:placeholder-shown) + label {
-            top: -10px;
-            left: 10px;
-            font-size: 0.8em;
-            color: #004797;
-        }
-        .form-control input, .form-control select, .form-control textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-            outline: none;
-        }
-        .form-control select {
-            appearance: none;
-            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2C197.8L156.4%2C67.2c-4.4-4.4-11.6-4.4-16%2C0L5.4%2C197.8c-4.4%2C4.4-4.4%2C11.6%2C0%2C16l11.3%2C11.3c4.4%2C4.4%2C11.6%2C4.4%2C16%2C0l115.3-115.3c4.4-4.4%2C11.6-4.4%2C16%2C0l115.3%2C115.3c4.4%2C4.4%2C11.6%2C4.4%2C16%2C0l11.3-11.3C291.4%2C209.4%2C291.4%2C202.2%2C287%2C197.8z%22%2F%3E%3C%2Fsvg%3E');
-            background-repeat: no-repeat, repeat;
-            background-position: right .7em top 50%, 0 0;
-            background-size: .65em auto, 100%;
-        }
-        .form-control.full-width {
-            grid-column: 1 / -1;
-        }
-        .form-control textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
+        .form-control {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .form-control label {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            color: #aaa;
+            transition: all 0.2s ease;
+            pointer-events: none;
+            background-color: #fff;
+            padding: 0 5px;
+        }
+        .form-control input:focus + label, .form-control input:not(:placeholder-shown) + label,
+        .form-control textarea:focus + label, .form-control textarea:not(:placeholder-shown) + label {
+            top: -10px;
+            left: 10px;
+            font-size: 0.8em;
+            color: #004797;
+        }
+        .form-control input, .form-control select, .form-control textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            outline: none;
+        }
+        .form-control select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2C197.8L156.4%2C67.2c-4.4-4.4-11.6-4.4-16%2C0L5.4%2C197.8c-4.4%2C4.4-4.4%2C11.6%2C0%2C16l11.3%2C11.3c4.4%2C4.4%2C11.6%2C4.4%2C16%2C0l115.3-115.3c4.4-4.4%2C11.6-4.4%2C16%2C0l115.3%2C115.3c4.4%2C4.4%2C11.6%2C4.4%2C16%2C0l11.3-11.3C291.4%2C209.4%2C291.4%2C202.2%2C287%2C197.8z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat, repeat;
+            background-position: right .7em top 50%, 0 0;
+            background-size: .65em auto, 100%;
+        }
+        .form-control.full-width {
+            grid-column: 1 / -1;
+        }
+        .form-control textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
 
-        .required-star::after {
-            content: '*';
-            color: #dc3545;
-        }
+        .required-star::after {
+            content: '*';
+            color: #dc3545;
+        }
 
-        .address-form button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            float: right;
-            margin-top: 15px;
-        }
+        .address-form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            float: right;
+            margin-top: 15px;
+        }
 
-        .invoice-type {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .invoice-type span {
-            font-weight: bold;
-        }
-        .invoice-type label {
-            cursor: pointer;
-        }
+        .invoice-type {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .invoice-type span {
+            font-weight: bold;
+        }
+        .invoice-type label {
+            cursor: pointer;
+        }
 
-        .shipping-options h3 {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #eee;
-        }
-        .shipping-option {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-        .shipping-option.selected {
-            border-color: #004797;
-            background-color: #e6f2ff;
-        }
-        .shipping-option-content {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .shipping-option-content input[type="radio"] {
-            margin-right: 5px;
-        }
-        .shipping-option-content label {
-            cursor: pointer;
-        }
-        .shipping-option-content h4 {
-            margin: 0;
-        }
-        .shipping-option-content p {
-            margin: 5px 0 0 0;
-            font-size: 0.9rem;
-            color: #666;
-        }
-        .shipping-option button {
-            background-color: #eee;
-            border: 1px solid #ccc;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            color: #555;
-        }
+        .shipping-options h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+        .shipping-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .shipping-option.selected {
+            border-color: #004797;
+            background-color: #e6f2ff;
+        }
+        .shipping-option-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .shipping-option-content input[type="radio"] {
+            margin-right: 5px;
+        }
+        .shipping-option-content label {
+            cursor: pointer;
+        }
+        .shipping-option-content h4 {
+            margin: 0;
+        }
+        .shipping-option-content p {
+            margin: 5px 0 0 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .shipping-option button {
+            background-color: #eee;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            color: #555;
+        }
 
-        /* Sepet Özeti */
-        .cart-summary h2 {
-            margin: 0 0 15px 0;
-            font-size: 1.5rem;
-            color: #004797;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-        .complete-order-button {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            margin-top: 20px;
-            text-align: center;
-            text-decoration: none;
-        }
-        .secure-badge {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 0.8rem;
-            color: #aaa;
-        }
+        /* Sepet Özeti */
+        .cart-summary h2 {
+            margin: 0 0 15px 0;
+            font-size: 1.5rem;
+            color: #004797;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .complete-order-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+        }
+        .secure-badge {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
 
-        /* Footer */
-        footer {
-            background: #000;
-            color: #fff;
-            padding: 20px;
-            margin-top: 60px;
-            font-size: 14px;
-            text-align: center;
-        }
-        .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50%;
-            width: 70px;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease-in-out;
-            text-decoration: none;
-            font-size: 40px;
-        }
-        .whatsapp-button:hover {
-            transform: scale(1.1);
-        }
+        /* Footer */
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 20px;
+            margin-top: 60px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            text-decoration: none;
+            font-size: 40px;
+        }
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
 
-        /* Responsive */
-        @media (max-width: 992px) {
-            .checkout-container {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .checkout-summary {
-                order: -1;
-                position: static;
-            }
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 768px) {
-             .anasayfa-logo {
-                height: 15vh;
-            }
-            .anasayfa-logo img {
-                max-height: 70%;
-                max-width: 70%;
-            }
-            header {
-                flex-direction: column;
-                padding: 15px 10px;
-                height: auto;
-                overflow: visible;
-            }
-            .search-bar {
-                order: 3;
-                width: 100%;
-                max-width: none;
-            }
-            .header-actions {
-                width: 100%;
-                justify-content: space-around;
-                order: 2;
-                margin-top: 10px;
-            }
-            nav {
-                flex-direction: row-reverse;
-                justify-content: space-between;
-                align-items: center;
-            }
-            .nav-links {
-                gap: 10px;
-            }
-            .whatsapp-button {
-                width: 60px;
-                height: 60px;
-                bottom: 15px;
-                right: 15px;
-                font-size: 35px;
-            }
-        }
-    </style>
+        /* Responsive */
+        @media (max-width: 992px) {
+            .checkout-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .checkout-summary {
+                order: -1;
+                position: static;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+             .anasayfa-logo {
+                height: 15vh;
+            }
+            .anasayfa-logo img {
+                max-height: 70%;
+                max-width: 70%;
+            }
+            header {
+                flex-direction: column;
+                padding: 15px 10px;
+                height: auto;
+                overflow: visible;
+            }
+            .search-bar {
+                order: 3;
+                width: 100%;
+                max-width: none;
+            }
+            .header-actions {
+                width: 100%;
+                justify-content: space-around;
+                order: 2;
+                margin-top: 10px;
+            }
+            nav {
+                flex-direction: row-reverse;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .nav-links {
+                gap: 10px;
+            }
+            .whatsapp-button {
+                width: 60px;
+                height: 60px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 35px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="anasayfa-logo">
-        <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="BAYSU YAPI VE SULAMA MALZEMELERİ">
-    </div>
+    <div class="anasayfa-logo">
+        <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="BAYSU YAPI VE SULAMA MALZEMELERİ">
+    </div>
 
-    <header>
-        <div class="search-bar">
-            <input type="search" placeholder="Ürün Ara...">
-            <i class="fas fa-search"></i>
-        </div>
-        <div class="header-actions">
-            <a href="giris-yap.html"><i class="fas fa-user"></i> Giriş Yap</a>
-            <a href="sepet.html"><i class="fas fa-shopping-cart"></i> Sepet</a>
-        </div>
-    </header>
+    <header>
+        <div class="search-bar">
+            <input type="search" placeholder="Ürün Ara...">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="header-actions">
+            <a href="giris-yap.html"><i class="fas fa-user"></i> Giriş Yap</a>
+            <a href="sepet.html"><i class="fas fa-shopping-cart"></i> Sepet</a>
+        </div>
+    </header>
 
-    <nav>
-        <div class="nav-links">
-            <a href="index.html">Anasayfa</a>
-        </div>
-        <a href="index.html" class="menu-toggle">Ürünlerimiz +</a>
-    </nav>
+    <nav>
+        <div class="nav-links">
+            <a href="index.html">Anasayfa</a>
+        </div>
+        <a href="index.html" class="menu-toggle">Ürünlerimiz +</a>
+    </nav>
 
-    <main>
-        <div class="checkout-container">
-            <div class="checkout-details">
-                <div class="checkout-progress">
-                    <span class="progress-step active">1. TESLİMAT BİLGİLERİ</span>
-                    <i class="fas fa-arrow-right" style="color: #ccc;"></i>
-                    <span class="progress-step">2. ÖDEME İŞLEMLERİ</span>
-                </div>
+    <main>
+        <div class="checkout-container">
+            <div class="checkout-details">
+                <div class="checkout-progress">
+                    <span class="progress-step active">1. TESLİMAT BİLGİLERİ</span>
+                    <i class="fas fa-arrow-right" style="color: #ccc;"></i>
+                    <span class="progress-step">2. ÖDEME İŞLEMLERİ</span>
+                </div>
 
-                <div class="address-form">
-                    <h3>YENİ ADRES EKLE <br><span class="add-address-info">Yeni adres bilgilerini ekleyin.</span></h3>
-                    <form id="delivery-form">
-                        <div class="form-grid">
-                            <div class="form-control">
-                                <input type="text" id="adresBasligi" name="adresBasligi" placeholder=" ">
-                                <label for="adresBasligi" class="required-star">Adres Başlığı</label>
-                            </div>
-                            <div class="form-control">
-                                <input type="text" id="adresOrnek" name="adresOrnek" placeholder=" ">
-                                <label for="adresOrnek">Örnek: Ev ya da İş</label>
-                            </div>
-                            <div class="form-control">
-                                <input type="text" id="ad" name="ad" placeholder=" ">
-                                <label for="ad" class="required-star">Ad</label>
-                            </div>
-                            <div class="form-control">
-                                <input type="text" id="soyad" name="soyad" placeholder=" ">
-                                <label for="soyad" class="required-star">Soyad</label>
-                            </div>
-                            <div class="form-control">
-                                <select id="country" name="country">
-                                    <option value="Türkiye">Türkiye</option>
-                                </select>
-                            </div>
-                            <div class="form-control">
-                                <select id="city" name="city">
-                                    <option value="">Şehir Seçiniz</option>
-                                </select>
-                            </div>
-                            <div class="form-control">
-                                <select id="district" name="district">
-                                    <option value="">İlçe Seçiniz</option>
-                                </select>
-                            </div>
-                            <div class="form-control">
-                                <input type="text" id="telefon" name="telefon" placeholder=" ">
-                                <label for="telefon" class="required-star">Telefon</label>
-                            </div>
-                            <div class="form-control">
-                                <input type="text" id="cepTelefonu" name="cepTelefonu" placeholder=" ">
-                                <label for="cepTelefonu" class="required-star">Cep Telefonu</label>
-                            </div>
-                            <div class="form-control">
-                                <input type="text" id="tcKimlikNo" name="tcKimlikNo" placeholder=" ">
-                                <label for="tcKimlikNo" class="required-star">TC Kimlik No</label>
-                            </div>
-                            <div class="form-control full-width">
-                                <textarea id="adres" name="adres" placeholder=" "></textarea>
-                                <label for="adres">Adres</label>
-                            </div>
-                        </div>
-                        <div class="invoice-type">
-                            <span>FATURA TİPİ</span>
-                            <input type="radio" id="bireysel" name="faturaTipi" value="Bireysel" checked>
-                            <label for="bireysel">Bireysel</label>
-                            <input type="radio" id="kurumsal" name="faturaTipi" value="Kurumsal">
-                            <label for="kurumsal">Kurumsal</label>
-                        </div>
-                        <button type="submit">KAYDET</button>
-                    </form>
-                </div>
+                <div class="address-form">
+                    <h3>YENİ ADRES EKLE <br><span class="add-address-info">Yeni adres bilgilerini ekleyin.</span></h3>
+                    <form id="delivery-form">
+                        <div class="form-grid">
+                            <div class="form-control">
+                                <input type="text" id="adresBasligi" name="adresBasligi" placeholder=" ">
+                                <label for="adresBasligi" class="required-star">Adres Başlığı</label>
+                            </div>
+                            <div class="form-control">
+                                <input type="text" id="adresOrnek" name="adresOrnek" placeholder=" ">
+                                <label for="adresOrnek">Örnek: Ev ya da İş</label>
+                            </div>
+                            <div class="form-control">
+                                <input type="text" id="ad" name="ad" placeholder=" ">
+                                <label for="ad" class="required-star">Ad</label>
+                            </div>
+                            <div class="form-control">
+                                <input type="text" id="soyad" name="soyad" placeholder=" ">
+                                <label for="soyad" class="required-star">Soyad</label>
+                            </div>
+                            <div class="form-control">
+                                <select id="country" name="country">
+                                    <option value="Türkiye">Türkiye</option>
+                                </select>
+                            </div>
+                            <div class="form-control">
+                                <select id="city" name="city">
+                                    <option value="">Şehir Seçiniz</option>
+                                </select>
+                            </div>
+                            <div class="form-control">
+                                <select id="district" name="district">
+                                    <option value="">İlçe Seçiniz</option>
+                                </select>
+                            </div>
+                            <div class="form-control">
+                                <input type="text" id="telefon" name="telefon" placeholder=" ">
+                                <label for="telefon" class="required-star">Telefon</label>
+                            </div>
+                            <div class="form-control">
+                                <input type="text" id="cepTelefonu" name="cepTelefonu" placeholder=" ">
+                                <label for="cepTelefonu" class="required-star">Cep Telefonu</label>
+                            </div>
+                            <div class="form-control">
+                                <input type="text" id="tcKimlikNo" name="tcKimlikNo" placeholder=" ">
+                                <label for="tcKimlikNo" class="required-star">TC Kimlik No</label>
+                            </div>
+                            <div class="form-control full-width">
+                                <textarea id="adres" name="adres" placeholder=" "></textarea>
+                                <label for="adres">Adres</label>
+                            </div>
+                        </div>
+                        <div class="invoice-type">
+                            <span>FATURA TİPİ</span>
+                            <input type="radio" id="bireysel" name="faturaTipi" value="Bireysel" checked>
+                            <label for="bireysel">Bireysel</label>
+                            <input type="radio" id="kurumsal" name="faturaTipi" value="Kurumsal">
+                            <label for="kurumsal">Kurumsal</label>
+                        </div>
+                        <button type="submit">KAYDET</button>
+                    </form>
+                </div>
 
-                <div class="shipping-options">
-                    <h3>KARGO SEÇENEKLERİ<br><span class="add-shipping-info">Tercih ettiğiniz kargoyu seçiniz.</span></h3>
-                    <div class="shipping-option">
-                        <div class="shipping-option-content">
-                            <input type="radio" id="yurtici" name="kargo" value="Yurtiçi Kargo" checked>
-                            <label for="yurtici">
-                                <h4>Yurtiçi Kargo</h4>
-                                <p>Yurtiçi Kargo (Alıcı ödemeli olarak gönderilmektedir. Kargo ağırlığına göre kargo ücretleri değişmektedir.)</p>
-                            </label>
-                        </div>
-                        <button>ALICI ÖDEMELİDİR</button>
-                    </div>
-                    <div class="shipping-option">
-                        <div class="shipping-option-content">
-                            <input type="radio" id="fabrika" name="kargo" value="Fabrikadan Teslim Alacağım">
-                            <label for="fabrika">
-                                <h4>Fabrikadan Teslim Alacağım</h4>
-                            </label>
-                        </div>
-                        <button>ALICI ÖDEMELİDİR</button>
-                    </div>
-                </div>
-            </div>
+                <div class="shipping-options">
+                    <h3>KARGO SEÇENEKLERİ<br><span class="add-shipping-info">Tercih ettiğiniz kargoyu seçiniz.</span></h3>
+                    <div class="shipping-option">
+                        <div class="shipping-option-content">
+                            <input type="radio" id="yurtici" name="kargo" value="Yurtiçi Kargo" checked>
+                            <label for="yurtici">
+                                <h4>Yurtiçi Kargo</h4>
+                                <p>Yurtiçi Kargo (Alıcı ödemeli olarak gönderilmektedir. Kargo ağırlığına göre kargo ücretleri değişmektedir.)</p>
+                            </label>
+                        </div>
+                        <button>ALICI ÖDEMELİDİR</button>
+                    </div>
+                    <div class="shipping-option">
+                        <div class="shipping-option-content">
+                            <input type="radio" id="fabrika" name="kargo" value="Fabrikadan Teslim Alacağım">
+                            <label for="fabrika">
+                                <h4>Fabrikadan Teslim Alacağım</h4>
+                            </label>
+                        </div>
+                        <button>ALICI ÖDEMELİDİR</button>
+                    </div>
+                </div>
+            </div>
 
-            <div class="checkout-summary cart-summary">
-                <h2>SEPET ÖZETİ</h2>
-                <button id="nextStepButton" class="complete-order-button">ÖDEME İŞLEMLERİ</button>
-                <div class="secure-badge">
-                    <i class="fas fa-lock"></i> This site is SSL SECURED
-                </div>
-            </div>
-        </div>
-    </main>
+            <div class="checkout-summary cart-summary">
+                <h2>SEPET ÖZETİ</h2>
+                <button id="nextStepButton" class="complete-order-button">ÖDEME İŞLEMLERİ</button>
+                <div class="secure-badge">
+                    <i class="fas fa-lock"></i> This site is SSL SECURED
+                </div>
+            </div>
+        </div>
+    </main>
 
-    <footer>
-        &copy; 2025 BAYSU YAPI VE SULAMA MALZEMELERİ - Tüm hakları saklıdır.
-    </footer>
+    <footer>
+        &copy; 2025 BAYSU YAPI VE SULAMA MALZEMELERİ - Tüm hakları saklıdır.
+    </footer>
 
-    <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum." class="whatsapp-button" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum." class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const citySelect = document.getElementById('city');
-            const districtSelect = document.getElementById('district');
-            const nextStepButton = document.getElementById('nextStepButton');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const citySelect = document.getElementById('city');
+            const districtSelect = document.getElementById('district');
+            const nextStepButton = document.getElementById('nextStepButton');
 
-            // İl ve ilçe verisi
-            const iller = {
-                "Adana": ["Aladağ", "Ceyhan", "Çukurova", "Feke", "İmamoğlu", "Karaisalı", "Karataş", "Kozan", "Pozantı", "Saimbeyli", "Sarıçam", "Seyhan", "Tufanbeyli", "Yumurtalık", "Yüreğir"],
-                "Adıyaman": ["Besni", "Çelikhan", "Gerger", "Gölbaşı", "Kahta", "Merkez", "Samsat", "Sincik", "Tut"],
-                "Afyonkarahisar": ["Başmakçı", "Bayat", "Bolvadin", "Çay", "Çobanlar", "Dazkırı", "Dinar", "Emirdağ", "Evciler", "Hocalar", "İhsaniye", "İscehisar", "Kızılören", "Sandıklı", "Sinanpaşa", "Sultandağı", "Şuhut", "Merkez"],
-                "Ağrı": ["Diyadin", "Doğubayazıt", "Eleşkirt", "Hamur", "Patnos", "Taşlıçay", "Tutak", "Merkez"],
-                "Amasya": ["Göynücek", "Gümüşhacıköy", "Hamamözü", "Merkez", "Merzifon", "Suluova", "Taşova"],
-                "Ankara": ["Akyurt", "Altındağ", "Ayaş", "Balâ", "Beypazarı", "Çamlıdere", "Çankaya", "Çubuk", "Elmadağ", "Etimesgut", "Evren", "Gölbaşı", "Güdül", "Haymana", "Kalecik", "Kazan", "Keçiören", "Kızılcahamam", "Mamak", "Nallıhan", "Polatlı", "Pursaklar", "Sincan", "Şereflikoçhisar", "Yenimahalle"],
-                "Antalya": ["Akseki", "Aksu", "Alanya", "Demre", "Döşemealtı", "Elmalı", "Finike", "Gazipaşa", "Gündoğmuş", "İbradı", "Kaş", "Kemer", "Kepez", "Konyaaltı", "Korkuteli", "Kumluca", "Manavgat", "Muratpaşa", "Serik"],
-                "Artvin": ["Ardanuç", "Arhavi", "Borçka", "Hopa", "Merkez", "Murgul", "Şavşat", "Yusufeli"],
-                "Aydın": ["Bozdoğan", "Buharkent", "Çine", "Didim", "Efeler", "Germencik", "İncirliova", "Karacasu", "Karpuzlu", "Koçarlı", "Köşk", "Kuşadası", "Kuyucak", "Nazilli", "Söke", "Sultanhisar", "Yenipazar"],
-                "Balıkesir": ["Altıeylül", "Ayvalık", "Balya", "Bandırma", "Bigadiç", "Burhaniye", "Dursunbey", "Edremit", "Erdek", "Gömeç", "Gönen", "Havran", "İvrindi", "Karesi", "Kepsut", "Manyas", "Marmara", "Savaştepe", "Sındırgı", "Susurluk"],
-                "Bilecik": ["Bozüyük", "Gölpazarı", "İnhisar", "Merkez", "Osmaneli", "Pazaryeri", "Söğüt", "Yenipazar"],
-                "Bingöl": ["Adaklı", "Genç", "Karlıova", "Kiğı", "Merkez", "Solhan", "Yayladere", "Yedisu"],
-                "Bitlis": ["Adilcevaz", "Ahlat", "Güroymak", "Hizan", "Merkez", "Mutki", "Tatvan"],
-                "Bolu": ["Dörtdivan", "Gerede", "Göynük", "Kıbrıscık", "Mengen", "Merkez", "Mudurnu", "Seben", "Yeniçağa"],
-                "Burdur": ["Ağlasun", "Altınyayla", "Bucak", "Çavdır", "Çeltikçi", "Gölhisar", "Karamanlı", "Kemer", "Merkez", "Tefenni", "Yeşilova"],
-                "Bursa": ["Büyükorhan", "Gemlik", "Gürsu", "Harmancık", "İnegöl", "İznik", "Karacabey", "Keles", "Kestel", "Mudanya", "Mustafakemalpaşa", "Nilüfer", "Orhaneli", "Orhangazi", "Osmangazi", "Yenişehir", "Yıldırım"],
-                "Çanakkale": ["Ayvacık", "Bayramiç", "Biga", "Bozcaada", "Çan", "Eceabat", "Ezine", "Gelibolu", "Gökçeada", "Lapseki", "Merkez", "Yenice"],
-                "Çankırı": ["Atkaracalar", "Bayramören", "Çerkeş", "Eldivan", "Ilgaz", "Kızılırmak", "Korgun", "Kurşunlu", "Merkez", "Orta", "Şabanözü", "Yapraklı"],
-                "Çorum": ["Alaca", "Bayat", "Boğazkale", "Dodurga", "İskilip", "Kargı", "Laçin", "Mecitözü", "Oğuzlar", "Ortaköy", "Osmancık", "Sungurlu", "Uğurludağ", "Merkez"],
-                "Denizli": ["Acıpayam", "Babadağ", "Baklan", "Bekilli", "Beyağaç", "Bozkurt", "Buldan", "Çal", "Çameli", "Çardak", "Çivril", "Güney", "Honaz", "Kale", "Merkezefendi", "Pamukkale", "Sarayköy", "Serinhisar", "Tavas"],
-                "Diyarbakır": ["Bağlar", "Bismil", "Çermik", "Çınar", "Çüngüş", "Dicle", "Eğil", "Ergani", "Hani", "Hazro", "Kayapınar", "Kocaköy", "Kulp", "Lice", "Silvan", "Sur", "Yenişehir"],
-                "Edirne": ["Enez", "Havsa", "İpsala", "Keşan", "Lalapaşa", "Meriç", "Merkez", "Süloğlu", "Uzunköprü"],
-                "Elazığ": ["Ağın", "Alacakaya", "Arıcak", "Baskil", "Karakoçan", "Keban", "Kovancılar", "Maden", "Merkez", "Palu", "Sivrice"],
-                "Erzincan": ["Çayırlı", "İliç", "Kemah", "Kemaliye", "Merkez", "Otlukbeli", "Refahiye", "Tercan", "Üzümlü"],
-                "Erzurum": ["Aşkale", "Aziziye", "Çat", "Hınıs", "Horasan", "İspir", "Karaçoban", "Karayazı", "Köprüköy", "Narman", "Oltu", "Olur", "Palandöken", "Pasinler", "Pazaryolu", "Şenkaya", "Tekman", "Tortum", "Uzundere", "Yakutiye"],
-                "Eskişehir": ["Alpu", "Beylikova", "Çifteler", "Günyüzü", "Han", "İnönü", "Mahmudiye", "Mihalgazi", "Mihalıççık", "Odunpazarı", "Sarıcakaya", "Seyitgazi", "Sivrihisar", "Tepebaşı"],
-                "Gaziantep": ["Araban", "İslahiye", "Karkamış", "Nizip", "Nurdağı", "Oğuzeli", "Şahinbey", "Şehitkamil", "Yavuzeli"],
-                "Giresun": ["Alucra", "Bulancak", "Çamoluk", "Çanakçı", "Dereli", "Doğankent", "Espiye", "Eynesil", "Görele", "Güce", "Keşap", "Merkez", "Piraziz", "Şebinkarahisar", "Tirebolu", "Yağlıdere"],
-                "Gümüşhane": ["Kelkit", "Köse", "Kürtün", "Merkez", "Şiran", "Torul"],
-                "Hakkâri": ["Çukurca", "Merkez", "Şemdinli", "Yüksekova"],
-                "Hatay": ["Altınözü", "Antakya", "Arsuz", "Belen", "Defne", "Dörtyol", "Erzin", "Hassa", "İskenderun", "Kırıkhan", "Kumlu", "Payas", "Reyhanlı", "Samandağ", "Yayladağı"],
-                "Isparta": ["Aksu", "Atabey", "Eğirdir", "Gelendost", "Gönen", "Keçiborlu", "Senirkent", "Sütçüler", "Şarkikaraağaç", "Uluborlu", "Yalvaç", "Yenişarbademli", "Merkez"],
-                "Mersin": ["Akdeniz", "Anamur", "Aydıncık", "Bozyazı", "Çamlıyayla", "Erdemli", "Gülnar", "Mezitli", "Mut", "Silifke", "Tarsus", "Toroslar", "Yenişehir"],
-                "İstanbul": ["Adalar", "Arnavutköy", "Ataşehir", "Avcılar", "Bağcılar", "Bahçelievler", "Bakırköy", "Başakşehir", "Bayrampaşa", "Beşiktaş", "Beykoz", "Beylikdüzü", "Büyükçekmece", "Çatalca", "Çekmeköy", "Esenler", "Esenyurt", "Eyüp", "Fatih", "Gaziosmanpaşa", "Güngören", "Kadıköy", "Kağıthane", "Kartal", "Küçükçekmece", "Maltepe", "Pendik", "Sancaktepe", "Sarıyer", "Silivri", "Sultanbeyli", "Sultangazi", "Şile", "Şişli", "Tuzla", "Ümraniye", "Üsküdar", "Zeytinburnu"],
-                "İzmir": ["Aliağa", "Balçova", "Bayındır", "Bayraklı", "Bergama", "Beydağ", "Bornova", "Buca", "Çeşme", "Çiğli", "Dikili", "Foça", "Gaziemir", "Güzelbahçe", "Karabağlar", "Karaburun", "Karşıyaka", "Kemalpaşa", "Kınık", "Kiraz", "Konak", "Menderes", "Menemen", "Narlıdere", "Ödemiş", "Seferihisar", "Selçuk", "Tire", "Torbalı", "Urla"],
-                "Kars": ["Akyaka", "Arpaçay", "Digor", "Kağızman", "Merkez", "Sarıkamış", "Selim", "Susuz"],
-                "Kastamonu": ["Abana", "Ağlı", "Araç", "Azdavay", "Bozkurt", "Cide", "Çatalzeytin", "Daday", "Devrekani", "Doğanyurt", "Hanönü", "İhsangazi", "İnebolu", "Küre", "Merkez", "Pınarbaşı", "Şenpazar", "Seydiler", "Taşköprü", "Tosya"],
-                "Kayseri": ["Akkışla", "Bünyan", "Develi", "Felahiye", "Hacılar", "İncesu", "Kocasinan", "Melikgazi", "Özvatan", "Pınarbaşı", "Sarıoğlan", "Sarız", "Talas", "Tomarza", "Yahyalı", "Yeşilhisar"],
-                "Kırklareli": ["Babaeski", "Demirköy", "Kofçaz", "Lüleburgaz", "Merkez", "Pehlivanköy", "Pınarhisar", "Vize"],
-                "Kırşehir": ["Akçakent", "Akpınar", "Boztepe", "Çiçekdağı", "Kaman", "Merkez", "Mucur"],
-                "Kocaeli": ["Başiskele", "Çayırova", "Darıca", "Derince", "Dilovası", "Gebze", "Gölcük", "İzmit", "Kandıra", "Karamürsel", "Kartepe", "Körfez"],
-                "Konya": ["Ahırlı", "Akören", "Akşehir", "Altınekin", "Beyşehir", "Bozkır", "Cihanbeyli", "Çeltik", "Çumra", "Derbent", "Derebucak", "Emirgazi", "Ereğli", "Güneysınır", "Hadim", "Halkapınar", "Hüyük", "Ilgın", "Kadınhanı", "Karapınar", "Karatay", "Kulu", "Meram", "Sarayönü", "Selçuklu", "Seydişehir", "Taşkent", "Tuzlukçu", "Yalıhüyük", "Yunak"],
-                "Kütahya": ["Altıntaş", "Aslanapa", "Çavdarhisar", "Domaniç", "Dumlupınar", "Emet", "Gediz", "Hisarcık", "Merkez", "Pazarlar", "Simav", "Şaphane", "Tavşanlı"],
-                "Malatya": ["Akçadağ", "Arapgir", "Arguvan", "Battalgazi", "Darende", "Doğanşehir", "Doğanyol", "Hekimhan", "Kale", "Kuluncak", "Pütürge", "Yazıhan", "Yeşilyurt"],
-                "Manisa": ["Ahmetli", "Akhisar", "Alaşehir", "Demirci", "Gölmarmara", "Gördes", "Kırkağaç", "Köprübaşı", "Kula", "Salihli", "Sarıgöl", "Saruhanlı", "Selendi", "Soma", "Şehzadeler", "Turgutlu", "Yunusemre"],
-                "Kahramanmaraş": ["Afşin", "Andırın", "Çağlayancerit", "Dulkadiroğlu", "Ekinözü", "Elbistan", "Göksun", "Nurhak", "Onikişubat", "Pazarcık", "Türkoğlu"],
-                "Mardin": ["Artuklu", "Dargeçit", "Derik", "Kızıltepe", "Mazıdağı", "Midyat", "Nusaybin", "Ömerli", "Savur", "Yeşilli"],
-                "Muğla": ["Bodrum", "Dalaman", "Datça", "Fethiye", "Kavaklıdere", "Köyceğiz", "Marmaris", "Menteşe", "Milas", "Ortaca", "Seydikemer", "Ula", "Yatağan"],
-                "Muş": ["Bulanık", "Hasköy", "Korkut", "Malazgirt", "Merkez", "Varto"],
-                "Nevşehir": ["Acıgöl", "Avanos", "Derinkuyu", "Gülşehir", "Hacıbektaş", "Kozaklı", "Merkez", "Ürgüp"],
-                "Niğde": ["Altunhisar", "Bor", "Çamardı", "Çiftlik", "Merkez", "Ulukışla"],
-                "Ordu": ["Akkuş", "Altınordu", "Aybastı", "Çamaş", "Çatalpınar", "Çaybaşı", "Fatsa", "Gölköy", "Gülyalı", "Gürgentepe", "İkizce", "Kabadüz", "Kabataş", "Korgan", "Kumru", "Mesudiye", "Perşembe", "Ulubey", "Ünye"],
-                "Rize": ["Ardeşen", "Çamlıhemşin", "Çayeli", "Derepazarı", "Fındıklı", "Güneysu", "Hemşin", "İkizdere", "İyidere", "Kalkandere", "Merkez", "Pazar"],
-                "Sakarya": ["Adapazarı", "Akyazı", "Arifiye", "Erenler", "Ferizli", "Geyve", "Hendek", "Karapürçek", "Karasu", "Kaynarca", "Kocaali", "Pamukova", "Sapanca", "Serdivan", "Söğütlü", "Taraklı"],
-                "Samsun": ["Alaçam", "Asarcık", "Atakum", "Ayvacık", "Bafra", "Canik", "Çarşamba", "Havza", "İlkadım", "Kavak", "Ladik", "Ondokuzmayıs", "Salıpazarı", "Tekkeköy", "Terme", "Vezirköprü", "Yakakent"],
-                "Siirt": ["Baykan", "Eruh", "Kurtalan", "Pervari", "Merkez", "Şirvan"],
-                "Sinop": ["Ayancık", "Boyabat", "Dikmen", "Durağan", "Erfelek", "Gerze", "Merkez", "Saraydüzü", "Türkeli"],
-                "Sivas": ["Akıncılar", "Altınyayla", "Divriği", "Doğanşar", "Gemerek", "Gölova", "Gürün", "Hafik", "İmranlı", "Kangal", "Koyulhisar", "Merkez", "Suşehri", "Şarkışla", "Ulaş", "Yıldızeli", "Zara"],
-                "Tekirdağ": ["Çerkezköy", "Çorlu", "Ergene", "Hayrabolu", "Kapaklı", "Malkara", "Marmara Ereğlisi", "Muratlı", "Saray", "Şarköy", "Süleymanpaşa"],
-                "Tokat": ["Almus", "Artova", "Başçiftlik", "Erbaa", "Merkez", "Niksar", "Pazar", "Reşadiye", "Sulusaray", "Turhal", "Yeşilyurt", "Zile"],
-                "Trabzon": ["Akçaabat", "Araklı", "Arsin", "Beşikdüzü", "Çarşıbaşı", "Çaykara", "Dernekpazarı", "Düzköy", "Hayrat", "Köprübaşı", "Maçka", "Of", "Ortahisar", "Sürmene", "Şalpazarı", "Tonya", "Vakfıkebir", "Yomra"],
-                "Tunceli": ["Çemişgezek", "Hozat", "Mazgirt", "Merkez", "Nazımiye", "Ovacık", "Pertek", "Pülümür"],
-                "Şanlıurfa": ["Akçakale", "Birecik", "Bozova", "Ceylanpınar", "Eyyübiye", "Halfeti", "Haliliye", "Harran", "Hilvan", "Karaköprü", "Siverek", "Suruç", "Viranşehir"],
-                "Uşak": ["Banaz", "Eşme", "Karahallı", "Merkez", "Sivaslı", "Ulubey"],
-                "Van": ["Bahçesaray", "Başkale", "Çaldıran", "Çatak", "Edremit", "Erciş", "Gevaş", "Gürpınar", "İpekyolu", "Muradiye", "Özalp", "Saray", "Tuşba"],
-                "Yozgat": ["Akdağmadeni", "Aydıncık", "Boğazlıyan", "Çandır", "Çayıralan", "Çekerek", "Kadışehri", "Merkez", "Saraykent", "Sarıkaya", "Sorgun", "Şefaatli", "Yenifakılı", "Yerköy"],
-                "Zonguldak": ["Alaplı", "Çaycuma", "Devrek", "Ereğli", "Gökçebey", "Kilimli", "Kozlu", "Merkez"],
-                "Aksaray": ["Ağaçören", "Eskil", "Gülağaç", "Güzelyurt", "Merkez", "Ortaköy", "Sarıyahşi"],
-                "Bayburt": ["Aydıntepe", "Demirözü", "Merkez"],
-                "Karaman": ["Ayrancı", "Başyayla", "Ermenek", "Kazımkarabekir", "Merkez", "Sarıveliler"],
-                "Kırıkkale": ["Bahşılı", "Balışeyh", "Çelebi", "Delice", "Karakeçili", "Keskin", "Merkez", "Sulakyurt", "Yahşihan"],
-                "Batman": ["Beşiri", "Gercüş", "Hasankeyf", "Kozluk", "Merkez", "Sason"],
-                "Şırnak": ["Beytüşşebap", "Cizre", "Güçlükonak", "İdil", "Merkez", "Silopi", "Uludere"],
-                "Bartın": ["Amasra", "Kurucaşile", "Merkez", "Ulus"],
-                "Ardahan": ["Çıldır", "Damal", "Göle", "Hanak", "Merkez", "Posof"],
-                "Iğdır": ["Aralık", "Karakoyunlu", "Merkez", "Tuzluca"],
-                "Yalova": ["Altınova", "Armutlu", "Çınarcık", "Çiftlikköy", "Merkez", "Termal"],
-                "Karabük": ["Eflani", "Eskipazar", "Merkez", "Ovacık", "Safranbolu", "Yenice"],
-                "Kilis": ["Elbeyli", "Merkez", "Musabeyli", "Polateli"],
-                "Osmaniye": ["Bahçe", "Düziçi", "Hasanbeyli", "Kadirli", "Merkez", "Sumbas", "Toprakkale"],
-                "Düzce": ["Akçakoca", "Cumayeri", "Çilimli", "Gölyaka", "Gümüşova", "Kaynaşlı", "Merkez", "Yığılca"]
-            };
+            // İl ve ilçe verisi
+            const iller = {
+                "Adana": ["Aladağ", "Ceyhan", "Çukurova", "Feke", "İmamoğlu", "Karaisalı", "Karataş", "Kozan", "Pozantı", "Saimbeyli", "Sarıçam", "Seyhan", "Tufanbeyli", "Yumurtalık", "Yüreğir"],
+                "Adıyaman": ["Besni", "Çelikhan", "Gerger", "Gölbaşı", "Kahta", "Merkez", "Samsat", "Sincik", "Tut"],
+                "Afyonkarahisar": ["Başmakçı", "Bayat", "Bolvadin", "Çay", "Çobanlar", "Dazkırı", "Dinar", "Emirdağ", "Evciler", "Hocalar", "İhsaniye", "İscehisar", "Kızılören", "Sandıklı", "Sinanpaşa", "Sultandağı", "Şuhut", "Merkez"],
+                "Ağrı": ["Diyadin", "Doğubayazıt", "Eleşkirt", "Hamur", "Patnos", "Taşlıçay", "Tutak", "Merkez"],
+                "Amasya": ["Göynücek", "Gümüşhacıköy", "Hamamözü", "Merkez", "Merzifon", "Suluova", "Taşova"],
+                "Ankara": ["Akyurt", "Altındağ", "Ayaş", "Balâ", "Beypazarı", "Çamlıdere", "Çankaya", "Çubuk", "Elmadağ", "Etimesgut", "Evren", "Gölbaşı", "Güdül", "Haymana", "Kalecik", "Kazan", "Keçiören", "Kızılcahamam", "Mamak", "Nallıhan", "Polatlı", "Pursaklar", "Sincan", "Şereflikoçhisar", "Yenimahalle"],
+                "Antalya": ["Akseki", "Aksu", "Alanya", "Demre", "Döşemealtı", "Elmalı", "Finike", "Gazipaşa", "Gündoğmuş", "İbradı", "Kaş", "Kemer", "Kepez", "Konyaaltı", "Korkuteli", "Kumluca", "Manavgat", "Muratpaşa", "Serik"],
+                "Artvin": ["Ardanuç", "Arhavi", "Borçka", "Hopa", "Merkez", "Murgul", "Şavşat", "Yusufeli"],
+                "Aydın": ["Bozdoğan", "Buharkent", "Çine", "Didim", "Efeler", "Germencik", "İncirliova", "Karacasu", "Karpuzlu", "Koçarlı", "Köşk", "Kuşadası", "Kuyucak", "Nazilli", "Söke", "Sultanhisar", "Yenipazar"],
+                "Balıkesir": ["Altıeylül", "Ayvalık", "Balya", "Bandırma", "Bigadiç", "Burhaniye", "Dursunbey", "Edremit", "Erdek", "Gömeç", "Gönen", "Havran", "İvrindi", "Karesi", "Kepsut", "Manyas", "Marmara", "Savaştepe", "Sındırgı", "Susurluk"],
+                "Bilecik": ["Bozüyük", "Gölpazarı", "İnhisar", "Merkez", "Osmaneli", "Pazaryeri", "Söğüt", "Yenipazar"],
+                "Bingöl": ["Adaklı", "Genç", "Karlıova", "Kiğı", "Merkez", "Solhan", "Yayladere", "Yedisu"],
+                "Bitlis": ["Adilcevaz", "Ahlat", "Güroymak", "Hizan", "Merkez", "Mutki", "Tatvan"],
+                "Bolu": ["Dörtdivan", "Gerede", "Göynük", "Kıbrıscık", "Mengen", "Merkez", "Mudurnu", "Seben", "Yeniçağa"],
+                "Burdur": ["Ağlasun", "Altınyayla", "Bucak", "Çavdır", "Çeltikçi", "Gölhisar", "Karamanlı", "Kemer", "Merkez", "Tefenni", "Yeşilova"],
+                "Bursa": ["Büyükorhan", "Gemlik", "Gürsu", "Harmancık", "İnegöl", "İznik", "Karacabey", "Keles", "Kestel", "Mudanya", "Mustafakemalpaşa", "Nilüfer", "Orhaneli", "Orhangazi", "Osmangazi", "Yenişehir", "Yıldırım"],
+                "Çanakkale": ["Ayvacık", "Bayramiç", "Biga", "Bozcaada", "Çan", "Eceabat", "Ezine", "Gelibolu", "Gökçeada", "Lapseki", "Merkez", "Yenice"],
+                "Çankırı": ["Atkaracalar", "Bayramören", "Çerkeş", "Eldivan", "Ilgaz", "Kızılırmak", "Korgun", "Kurşunlu", "Merkez", "Orta", "Şabanözü", "Yapraklı"],
+                "Çorum": ["Alaca", "Bayat", "Boğazkale", "Dodurga", "İskilip", "Kargı", "Laçin", "Mecitözü", "Oğuzlar", "Ortaköy", "Osmancık", "Sungurlu", "Uğurludağ", "Merkez"],
+                "Denizli": ["Acıpayam", "Babadağ", "Baklan", "Bekilli", "Beyağaç", "Bozkurt", "Buldan", "Çal", "Çameli", "Çardak", "Çivril", "Güney", "Honaz", "Kale", "Merkezefendi", "Pamukkale", "Sarayköy", "Serinhisar", "Tavas"],
+                "Diyarbakır": ["Bağlar", "Bismil", "Çermik", "Çınar", "Çüngüş", "Dicle", "Eğil", "Ergani", "Hani", "Hazro", "Kayapınar", "Kocaköy", "Kulp", "Lice", "Silvan", "Sur", "Yenişehir"],
+                "Edirne": ["Enez", "Havsa", "İpsala", "Keşan", "Lalapaşa", "Meriç", "Merkez", "Süloğlu", "Uzunköprü"],
+                "Elazığ": ["Ağın", "Alacakaya", "Arıcak", "Baskil", "Karakoçan", "Keban", "Kovancılar", "Maden", "Merkez", "Palu", "Sivrice"],
+                "Erzincan": ["Çayırlı", "İliç", "Kemah", "Kemaliye", "Merkez", "Otlukbeli", "Refahiye", "Tercan", "Üzümlü"],
+                "Erzurum": ["Aşkale", "Aziziye", "Çat", "Hınıs", "Horasan", "İspir", "Karaçoban", "Karayazı", "Köprüköy", "Narman", "Oltu", "Olur", "Palandöken", "Pasinler", "Pazaryolu", "Şenkaya", "Tekman", "Tortum", "Uzundere", "Yakutiye"],
+                "Eskişehir": ["Alpu", "Beylikova", "Çifteler", "Günyüzü", "Han", "İnönü", "Mahmudiye", "Mihalgazi", "Mihalıççık", "Odunpazarı", "Sarıcakaya", "Seyitgazi", "Sivrihisar", "Tepebaşı"],
+                "Gaziantep": ["Araban", "İslahiye", "Karkamış", "Nizip", "Nurdağı", "Oğuzeli", "Şahinbey", "Şehitkamil", "Yavuzeli"],
+                "Giresun": ["Alucra", "Bulancak", "Çamoluk", "Çanakçı", "Dereli", "Doğankent", "Espiye", "Eynesil", "Görele", "Güce", "Keşap", "Merkez", "Piraziz", "Şebinkarahisar", "Tirebolu", "Yağlıdere"],
+                "Gümüşhane": ["Kelkit", "Köse", "Kürtün", "Merkez", "Şiran", "Torul"],
+                "Hakkâri": ["Çukurca", "Merkez", "Şemdinli", "Yüksekova"],
+                "Hatay": ["Altınözü", "Antakya", "Arsuz", "Belen", "Defne", "Dörtyol", "Erzin", "Hassa", "İskenderun", "Kırıkhan", "Kumlu", "Payas", "Reyhanlı", "Samandağ", "Yayladağı"],
+                "Isparta": ["Aksu", "Atabey", "Eğirdir", "Gelendost", "Gönen", "Keçiborlu", "Senirkent", "Sütçüler", "Şarkikaraağaç", "Uluborlu", "Yalvaç", "Yenişarbademli", "Merkez"],
+                "Mersin": ["Akdeniz", "Anamur", "Aydıncık", "Bozyazı", "Çamlıyayla", "Erdemli", "Gülnar", "Mezitli", "Mut", "Silifke", "Tarsus", "Toroslar", "Yenişehir"],
+                "İstanbul": ["Adalar", "Arnavutköy", "Ataşehir", "Avcılar", "Bağcılar", "Bahçelievler", "Bakırköy", "Başakşehir", "Bayrampaşa", "Beşiktaş", "Beykoz", "Beylikdüzü", "Büyükçekmece", "Çatalca", "Çekmeköy", "Esenler", "Esenyurt", "Eyüp", "Fatih", "Gaziosmanpaşa", "Güngören", "Kadıköy", "Kağıthane", "Kartal", "Küçükçekmece", "Maltepe", "Pendik", "Sancaktepe", "Sarıyer", "Silivri", "Sultanbeyli", "Sultangazi", "Şile", "Şişli", "Tuzla", "Ümraniye", "Üsküdar", "Zeytinburnu"],
+                "İzmir": ["Aliağa", "Balçova", "Bayındır", "Bayraklı", "Bergama", "Beydağ", "Bornova", "Buca", "Çeşme", "Çiğli", "Dikili", "Foça", "Gaziemir", "Güzelbahçe", "Karabağlar", "Karaburun", "Karşıyaka", "Kemalpaşa", "Kınık", "Kiraz", "Konak", "Menderes", "Menemen", "Narlıdere", "Ödemiş", "Seferihisar", "Selçuk", "Tire", "Torbalı", "Urla"],
+                "Kars": ["Akyaka", "Arpaçay", "Digor", "Kağızman", "Merkez", "Sarıkamış", "Selim", "Susuz"],
+                "Kastamonu": ["Abana", "Ağlı", "Araç", "Azdavay", "Bozkurt", "Cide", "Çatalzeytin", "Daday", "Devrekani", "Doğanyurt", "Hanönü", "İhsangazi", "İnebolu", "Küre", "Merkez", "Pınarbaşı", "Şenpazar", "Seydiler", "Taşköprü", "Tosya"],
+                "Kayseri": ["Akkışla", "Bünyan", "Develi", "Felahiye", "Hacılar", "İncesu", "Kocasinan", "Melikgazi", "Özvatan", "Pınarbaşı", "Sarıoğlan", "Sarız", "Talas", "Tomarza", "Yahyalı", "Yeşilhisar"],
+                "Kırklareli": ["Babaeski", "Demirköy", "Kofçaz", "Lüleburgaz", "Merkez", "Pehlivanköy", "Pınarhisar", "Vize"],
+                "Kırşehir": ["Akçakent", "Akpınar", "Boztepe", "Çiçekdağı", "Kaman", "Merkez", "Mucur"],
+                "Kocaeli": ["Başiskele", "Çayırova", "Darıca", "Derince", "Dilovası", "Gebze", "Gölcük", "İzmit", "Kandıra", "Karamürsel", "Kartepe", "Körfez"],
+                "Konya": ["Ahırlı", "Akören", "Akşehir", "Altınekin", "Beyşehir", "Bozkır", "Cihanbeyli", "Çeltik", "Çumra", "Derbent", "Derebucak", "Emirgazi", "Ereğli", "Güneysınır", "Hadim", "Halkapınar", "Hüyük", "Ilgın", "Kadınhanı", "Karapınar", "Karatay", "Kulu", "Meram", "Sarayönü", "Selçuklu", "Seydişehir", "Taşkent", "Tuzlukçu", "Yalıhüyük", "Yunak"],
+                "Kütahya": ["Altıntaş", "Aslanapa", "Çavdarhisar", "Domaniç", "Dumlupınar", "Emet", "Gediz", "Hisarcık", "Merkez", "Pazarlar", "Simav", "Şaphane", "Tavşanlı"],
+                "Malatya": ["Akçadağ", "Arapgir", "Arguvan", "Battalgazi", "Darende", "Doğanşehir", "Doğanyol", "Hekimhan", "Kale", "Kuluncak", "Pütürge", "Yazıhan", "Yeşilyurt"],
+                "Manisa": ["Ahmetli", "Akhisar", "Alaşehir", "Demirci", "Gölmarmara", "Gördes", "Kırkağaç", "Köprübaşı", "Kula", "Salihli", "Sarıgöl", "Saruhanlı", "Selendi", "Soma", "Şehzadeler", "Turgutlu", "Yunusemre"],
+                "Kahramanmaraş": ["Afşin", "Andırın", "Çağlayancerit", "Dulkadiroğlu", "Ekinözü", "Elbistan", "Göksun", "Nurhak", "Onikişubat", "Pazarcık", "Türkoğlu"],
+                "Mardin": ["Artuklu", "Dargeçit", "Derik", "Kızıltepe", "Mazıdağı", "Midyat", "Nusaybin", "Ömerli", "Savur", "Yeşilli"],
+                "Muğla": ["Bodrum", "Dalaman", "Datça", "Fethiye", "Kavaklıdere", "Köyceğiz", "Marmaris", "Menteşe", "Milas", "Ortaca", "Seydikemer", "Ula", "Yatağan"],
+                "Muş": ["Bulanık", "Hasköy", "Korkut", "Malazgirt", "Merkez", "Varto"],
+                "Nevşehir": ["Acıgöl", "Avanos", "Derinkuyu", "Gülşehir", "Hacıbektaş", "Kozaklı", "Merkez", "Ürgüp"],
+                "Niğde": ["Altunhisar", "Bor", "Çamardı", "Çiftlik", "Merkez", "Ulukışla"],
+                "Ordu": ["Akkuş", "Altınordu", "Aybastı", "Çamaş", "Çatalpınar", "Çaybaşı", "Fatsa", "Gölköy", "Gülyalı", "Gürgentepe", "İkizce", "Kabadüz", "Kabataş", "Korgan", "Kumru", "Mesudiye", "Perşembe", "Ulubey", "Ünye"],
+                "Rize": ["Ardeşen", "Çamlıhemşin", "Çayeli", "Derepazarı", "Fındıklı", "Güneysu", "Hemşin", "İkizdere", "İyidere", "Kalkandere", "Merkez", "Pazar"],
+                "Sakarya": ["Adapazarı", "Akyazı", "Arifiye", "Erenler", "Ferizli", "Geyve", "Hendek", "Karapürçek", "Karasu", "Kaynarca", "Kocaali", "Pamukova", "Sapanca", "Serdivan", "Söğütlü", "Taraklı"],
+                "Samsun": ["Alaçam", "Asarcık", "Atakum", "Ayvacık", "Bafra", "Canik", "Çarşamba", "Havza", "İlkadım", "Kavak", "Ladik", "Ondokuzmayıs", "Salıpazarı", "Tekkeköy", "Terme", "Vezirköprü", "Yakakent"],
+                "Siirt": ["Baykan", "Eruh", "Kurtalan", "Pervari", "Merkez", "Şirvan"],
+                "Sinop": ["Ayancık", "Boyabat", "Dikmen", "Durağan", "Erfelek", "Gerze", "Merkez", "Saraydüzü", "Türkeli"],
+                "Sivas": ["Akıncılar", "Altınyayla", "Divriği", "Doğanşar", "Gemerek", "Gölova", "Gürün", "Hafik", "İmranlı", "Kangal", "Koyulhisar", "Merkez", "Suşehri", "Şarkışla", "Ulaş", "Yıldızeli", "Zara"],
+                "Tekirdağ": ["Çerkezköy", "Çorlu", "Ergene", "Hayrabolu", "Kapaklı", "Malkara", "Marmara Ereğlisi", "Muratlı", "Saray", "Şarköy", "Süleymanpaşa"],
+                "Tokat": ["Almus", "Artova", "Başçiftlik", "Erbaa", "Merkez", "Niksar", "Pazar", "Reşadiye", "Sulusaray", "Turhal", "Yeşilyurt", "Zile"],
+                "Trabzon": ["Akçaabat", "Araklı", "Arsin", "Beşikdüzü", "Çarşıbaşı", "Çaykara", "Dernekpazarı", "Düzköy", "Hayrat", "Köprübaşı", "Maçka", "Of", "Ortahisar", "Sürmene", "Şalpazarı", "Tonya", "Vakfıkebir", "Yomra"],
+                "Tunceli": ["Çemişgezek", "Hozat", "Mazgirt", "Merkez", "Nazımiye", "Ovacık", "Pertek", "Pülümür"],
+                "Şanlıurfa": ["Akçakale", "Birecik", "Bozova", "Ceylanpınar", "Eyyübiye", "Halfeti", "Haliliye", "Harran", "Hilvan", "Karaköprü", "Siverek", "Suruç", "Viranşehir"],
+                "Uşak": ["Banaz", "Eşme", "Karahallı", "Merkez", "Sivaslı", "Ulubey"],
+                "Van": ["Bahçesaray", "Başkale", "Çaldıran", "Çatak", "Edremit", "Erciş", "Gevaş", "Gürpınar", "İpekyolu", "Muradiye", "Özalp", "Saray", "Tuşba"],
+                "Yozgat": ["Akdağmadeni", "Aydıncık", "Boğazlıyan", "Çandır", "Çayıralan", "Çekerek", "Kadışehri", "Merkez", "Saraykent", "Sarıkaya", "Sorgun", "Şefaatli", "Yenifakılı", "Yerköy"],
+                "Zonguldak": ["Alaplı", "Çaycuma", "Devrek", "Ereğli", "Gökçebey", "Kilimli", "Kozlu", "Merkez"],
+                "Aksaray": ["Ağaçören", "Eskil", "Gülağaç", "Güzelyurt", "Merkez", "Ortaköy", "Sarıyahşi"],
+                "Bayburt": ["Aydıntepe", "Demirözü", "Merkez"],
+                "Karaman": ["Ayrancı", "Başyayla", "Ermenek", "Kazımkarabekir", "Merkez", "Sarıveliler"],
+                "Kırıkkale": ["Bahşılı", "Balışeyh", "Çelebi", "Delice", "Karakeçili", "Keskin", "Merkez", "Sulakyurt", "Yahşihan"],
+                "Batman": ["Beşiri", "Gercüş", "Hasankeyf", "Kozluk", "Merkez", "Sason"],
+                "Şırnak": ["Beytüşşebap", "Cizre", "Güçlükonak", "İdil", "Merkez", "Silopi", "Uludere"],
+                "Bartın": ["Amasra", "Kurucaşile", "Merkez", "Ulus"],
+                "Ardahan": ["Çıldır", "Damal", "Göle", "Hanak", "Merkez", "Posof"],
+                "Iğdır": ["Aralık", "Karakoyunlu", "Merkez", "Tuzluca"],
+                "Yalova": ["Altınova", "Armutlu", "Çınarcık", "Çiftlikköy", "Merkez", "Termal"],
+                "Karabük": ["Eflani", "Eskipazar", "Merkez", "Ovacık", "Safranbolu", "Yenice"],
+                "Kilis": ["Elbeyli", "Merkez", "Musabeyli", "Polateli"],
+                "Osmaniye": ["Bahçe", "Düziçi", "Hasanbeyli", "Kadirli", "Merkez", "Sumbas", "Toprakkale"],
+                "Düzce": ["Akçakoca", "Cumayeri", "Çilimli", "Gölyaka", "Gümüşova", "Kaynaşlı", "Merkez", "Yığılca"]
+            };
 
-            for (const il in iller) {
-                const option = document.createElement('option');
-                option.value = il;
-                option.textContent = il;
-                citySelect.appendChild(option);
-            }
+            for (const il in iller) {
+                const option = document.createElement('option');
+                option.value = il;
+                option.textContent = il;
+                citySelect.appendChild(option);
+            }
 
-            citySelect.addEventListener('change', (event) => {
-                const selectedCity = event.target.value;
-                districtSelect.innerHTML = '<option value="">İlçe Seçiniz</option>';
+            citySelect.addEventListener('change', (event) => {
+                const selectedCity = event.target.value;
+                districtSelect.innerHTML = '<option value="">İlçe Seçiniz</option>';
 
-                if (selectedCity) {
-                    const districts = iller[selectedCity];
-                    districts.forEach(ilce => {
-                        const option = document.createElement('option');
-                        option.value = ilce;
-                        option.textContent = ilce;
-                        districtSelect.appendChild(option);
-                    });
-                }
-            });
+                if (selectedCity) {
+                    const districts = iller[selectedCity];
+                    districts.forEach(ilce => {
+                        const option = document.createElement('option');
+                        option.value = ilce;
+                        option.textContent = ilce;
+                        districtSelect.appendChild(option);
+                    });
+                }
+            });
 
-            nextStepButton.addEventListener('click', () => {
-                const form = document.getElementById('delivery-form');
-                const formData = new FormData(form);
-                const data = Object.fromEntries(formData.entries());
-                
-                // Formdaki tüm verileri al ve yerel depolamaya (localStorage) kaydet
-                localStorage.setItem('deliveryInfo', JSON.stringify(data));
-                
-                // Kargo seçeneğini de kaydet
-                const selectedKargo = document.querySelector('input[name="kargo"]:checked');
-                if (selectedKargo) {
-                    localStorage.setItem('shippingMethod', selectedKargo.value);
-                }
+            nextStepButton.addEventListener('click', () => {
+                const form = document.getElementById('delivery-form');
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                
+                // Formdaki tüm verileri al ve yerel depolamaya (localStorage) kaydet
+                localStorage.setItem('deliveryInfo', JSON.stringify(data));
+                
+                // Kargo seçeneğini de kaydet
+                const selectedKargo = document.querySelector('input[name="kargo"]:checked');
+                if (selectedKargo) {
+                    localStorage.setItem('shippingMethod', selectedKargo.value);
+                }
 
-                // Ödeme sayfasına yönlendir
-                window.location.href = 'odeme-son.html';
-            });
-        });
-    </script>
+                // Ödeme sayfasına yönlendir
+                window.location.href = 'odeme-son.html';
+            });
+        });
+    </script>
 </body>
 </html>
