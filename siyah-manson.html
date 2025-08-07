@@ -4,447 +4,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baysu Yapı - Siyah Seri Manşon</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS'i CDN üzerinden dahil etme -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS'e özel renklerin ve fontun tanımlanması -->
     <style>
         :root {
             --primary-color: #004797;
             --secondary-color: #ff9900;
-            --bg-color: #f4f4f9;
-            --text-color: #333;
-            --border-color: #ddd;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        .bg-primary { background-color: var(--primary-color); }
+        .text-primary { color: var(--primary-color); }
+        .border-primary { border-color: var(--primary-color); }
+        .bg-secondary { background-color: var(--secondary-color); }
+        .text-secondary { color: var(--secondary-color); }
 
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-        }
-
-        .header-top {
-            background-color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-logo {
-            flex: 1;
-            text-align: center;
-        }
-
-        .header-logo img {
-            max-width: 250px;
-            height: auto;
-        }
-
-        .header-search {
-            flex: 2;
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .header-search i {
-            margin-right: 10px;
-            color: #555;
-        }
-
-        .header-search input {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-        }
-
-        .header-actions {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-            gap: 15px;
-        }
-
-        .header-actions a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-        }
-
-        .header-actions a i {
-            margin-right: 5px;
-        }
-
-        .header-nav {
-            background-color: var(--primary-color);
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-        }
-
-        .header-nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 5px 10px;
-            font-weight: bold;
-        }
-
-        .header-nav .product-menu-toggle {
-            background-color: #fff;
-            color: var(--primary-color);
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        
-        main {
-            padding: 20px;
-        }
-        
-        .product-container {
-            display: flex;
-            gap: 20px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .product-image-section {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .product-image-section img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid var(--border-color);
-        }
-        
-        .product-info-section {
-            flex: 1.5;
-            padding: 0 20px;
-        }
-        
-        .product-info-section h1 {
-            color: var(--primary-color);
-            font-size: 1.8em;
-            margin-bottom: 10px;
-        }
-        
-        .product-info-section .details {
-            margin-bottom: 20px;
-        }
-        
-        .product-info-section .details div {
-            margin-bottom: 5px;
-        }
-
-        .price-container {
-            margin-bottom: 20px;
-        }
-
-        .price-container div {
-            margin-bottom: 10px;
-        }
-
-        .price-container label {
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #555;
-            display: block;
-        }
-
-        .price {
-            font-size: 2em;
-            color: var(--secondary-color);
-            font-weight: bold;
-        }
-
-        .installment {
-            color: #777;
-            font-size: 0.9em;
-        }
-        
-        .size-options {
-            margin-bottom: 20px;
-        }
-        
-        .size-options label {
-            font-weight: bold;
-        }
-        
-        .size-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 10px;
-        }
-        
-        .size-buttons button {
-            padding: 8px 12px;
-            border: 1px solid var(--border-color);
-            background-color: #eee;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        
-        .size-buttons button.selected {
-            background-color: var(--secondary-color);
-            color: #fff;
-            border-color: var(--secondary-color);
-        }
-        
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            gap: 10px;
-        }
-        
-        .quantity-input {
-            display: flex;
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .quantity-input button {
-            background-color: #eee;
-            border: none;
-            padding: 8px 12px;
-            cursor: pointer;
-        }
-        
-        .quantity-input input {
-            width: 50px;
-            text-align: center;
-            border: none;
-            padding: 8px 0;
-        }
-        
-        .action-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .action-buttons .add-to-cart {
-            background-color: #6c9f3e;
-            color: #fff;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        
-        .action-buttons .buy-now {
-            background-color: var(--primary-color);
-            color: #fff;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        
-        .footer-features {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            background-color: #fff;
-            padding: 40px;
-            margin-top: 20px;
-            border-radius: 8px;
-            text-align: center;
-        }
-        
-        .footer-features .feature-item i {
-            font-size: 3em;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-        
-        .footer-features .feature-item h4 {
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-        
-        .whatsapp-button-fixed {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25d366;
-            color: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            text-decoration: none;
-        }
-        
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-        }
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-left-color: var(--primary-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+            font-family: 'Poppins', sans-serif;
         }
     </style>
+    <!-- Font Awesome ve Google Fonts'u dahil etme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <header>
-        <div class="header-top">
-            <div class="header-logo">
-                <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="Baysu Yapı Logo">
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <!-- Başlık Bölümü -->
+    <header class="shadow-md">
+        <div class="bg-white p-4 flex flex-col md:flex-row items-center justify-between">
+            <!-- Logo -->
+            <div class="md:flex-1 text-center mb-4 md:mb-0">
+                <img src="https://placehold.co/250x50/004797/FFFFFF?text=BAYSU+YAPI+LOGO" alt="Baysu Yapı Logo" class="max-w-[250px] mx-auto">
             </div>
-            <div class="header-search">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Ürün Ara...">
+            <!-- Arama Kutusu -->
+            <div class="flex-grow md:flex-2 flex items-center w-full max-w-lg mx-auto md:mx-0 mb-4 md:mb-0">
+                <i class="fas fa-search text-gray-500 mr-2"></i>
+                <input type="text" placeholder="Ürün Ara..." class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
             </div>
-            <div class="header-actions">
-                <a href="sepet.html"><i class="fas fa-shopping-cart"></i> Sepet</a>
-                <a href="#"><i class="fas fa-user"></i> Hesabım</a>
-                <a href="#"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a>
+            <!-- Eylemler -->
+            <div class="flex-1 flex justify-center md:justify-end gap-4">
+                <a href="sepet.html" class="text-primary font-bold flex items-center hover:text-secondary transition-colors">
+                    <i class="fas fa-shopping-cart mr-1"></i> Sepet
+                </a>
+                <a href="#" class="text-primary font-bold flex items-center hover:text-secondary transition-colors">
+                    <i class="fas fa-user mr-1"></i> Hesabım
+                </a>
+                <a href="#" class="text-primary font-bold flex items-center hover:text-secondary transition-colors">
+                    <i class="fas fa-sign-out-alt mr-1"></i> Çıkış Yap
+                </a>
             </div>
         </div>
-        <nav class="header-nav">
-            <a href="index.html">Anasayfa</a>
-            <a href="#" class="product-menu-toggle">Ürünlerimiz +</a>
+        <!-- Navigasyon Çubuğu -->
+        <nav class="bg-primary text-white p-3 flex justify-center md:justify-between items-center flex-wrap">
+            <a href="index.html" class="p-2 font-bold hover:bg-secondary rounded-md transition-colors">Anasayfa</a>
+            <a href="#" class="p-2 font-bold hover:bg-secondary rounded-md transition-colors">Hakkımızda</a>
+            <a href="#" class="p-2 font-bold hover:bg-secondary rounded-md transition-colors">İletişim</a>
+            <a href="#" class="p-2 font-bold hover:bg-secondary rounded-md transition-colors">Blog</a>
+            <a href="#" class="p-2 bg-white text-primary font-bold rounded-md hover:bg-gray-200 transition-colors md:ml-auto">
+                Ürünlerimiz +
+            </a>
         </nav>
     </header>
 
-    <main>
-        <div class="product-container">
-            <div class="product-image-section">
-                <img src="siyah-seri-manson.png" alt="Siyah Seri Manşon">
+    <!-- Ana İçerik -->
+    <main class="container mx-auto p-4 md:p-8 flex-grow">
+        <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg flex flex-col lg:flex-row gap-8">
+            <!-- Ürün Resmi Bölümü -->
+            <div class="lg:w-1/2 flex justify-center items-center p-4">
+                <img src="https://placehold.co/600x600/000000/FFFFFF?text=Siyah+Seri+Man%C5%9Fon" alt="Siyah Seri Manşon" class="w-full max-w-sm rounded-lg border border-gray-200 shadow-md">
             </div>
 
-            <div class="product-info-section">
-                <h1>Siyah Seri Manşon</h1>
-                <div class="details">
-                    <div>Kategori : Siyah Seri Kaplinler</div>
-                    <div>Marka : Senkron</div>
-                    <div>Stok Kodu : Mevcut Değil</div>
+            <!-- Ürün Bilgisi ve Eylem Bölümü -->
+            <div class="lg:w-1/2 flex flex-col justify-center">
+                <h1 class="text-3xl md:text-4xl font-bold text-primary mb-2">Siyah Seri Manşon</h1>
+                <div class="text-gray-600 mb-6 space-y-1">
+                    <div><strong>Kategori:</strong> Siyah Seri Kaplinler</div>
+                    <div><strong>Marka:</strong> Senkron</div>
+                    <div><strong>Stok Kodu:</strong> Mevcut Değil</div>
                 </div>
                 
-                <div class="price-container">
-                    <div class="unit-price-wrapper">
-                        <label>Birim Fiyatı:</label>
-                        <span class="price" id="productPrice">Yükleniyor...</span>
+                <!-- Fiyat ve Taksit Bilgisi -->
+                <div class="mb-6 space-y-4">
+                    <div>
+                        <label class="text-gray-500 font-semibold text-lg">Birim Fiyatı:</label>
+                        <span class="text-secondary font-extrabold text-3xl block" id="productPrice">Yükleniyor...</span>
                     </div>
-                    <div class="total-price-wrapper" style="margin-top: 10px;">
-                        <label>Toplam Fiyat:</label>
-                        <span class="price" id="totalPrice">Yükleniyor...</span>
+                    <div>
+                        <label class="text-gray-500 font-semibold text-lg">Toplam Fiyat:</label>
+                        <span class="text-secondary font-extrabold text-3xl block" id="totalPrice">Yükleniyor...</span>
                     </div>
+                    <div class="text-gray-400 text-sm italic" id="installmentText"></div>
                 </div>
-                <div class="installment" id="installmentText" style="display:none;"></div>
-                
-                <div class="size-options">
-                    <label>Boyut:</label>
-                    <div class="size-buttons" id="sizeButtons">
+
+                <!-- Boyut Seçenekleri -->
+                <div class="mb-6">
+                    <label class="font-bold text-gray-700 block mb-2">Boyut:</label>
+                    <div class="flex flex-wrap gap-2" id="sizeButtons">
                         <!-- Boyut butonları buraya JavaScript ile eklenecek -->
+                        <p class="text-gray-500">Fiyatlar yükleniyor...</p>
                     </div>
                 </div>
-                
-                <div class="quantity-controls">
-                    <div class="quantity-input">
-                        <button id="decreaseBtn">-</button>
-                        <input type="number" id="quantityInput" value="1" min="1">
-                        <button id="increaseBtn">+</button>
+
+                <!-- Adet Kontrolleri ve Eylem Butonları -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                    <!-- Adet Kontrolü -->
+                    <div class="flex items-center border border-gray-300 rounded-md overflow-hidden w-full sm:w-auto">
+                        <button id="decreaseBtn" class="p-3 text-lg text-gray-600 hover:bg-gray-200 transition-colors">-</button>
+                        <input type="number" id="quantityInput" value="1" min="1" class="w-full sm:w-16 text-center border-none focus:outline-none p-2">
+                        <button id="increaseBtn" class="p-3 text-lg text-gray-600 hover:bg-gray-200 transition-colors">+</button>
                     </div>
-                    <div class="action-buttons">
-                        <button class="add-to-cart" id="addToCartBtn">Sepete Ekle</button>
-                        <a href="sepet.html"><button class="buy-now">Hemen Al</button></a>
+                    <!-- Eylem Butonları -->
+                    <div class="flex-grow flex gap-4">
+                        <button id="addToCartBtn" class="flex-1 bg-[#6c9f3e] text-white font-bold py-3 px-6 rounded-md hover:bg-opacity-90 transition-colors shadow-md">
+                            Sepete Ekle
+                        </button>
+                        <a href="sepet.html" class="flex-1">
+                            <button class="w-full bg-primary text-white font-bold py-3 px-6 rounded-md hover:bg-opacity-90 transition-colors shadow-md">
+                                Hemen Al
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="footer-features">
-            <div class="feature-item">
-                <i class="fas fa-truck"></i>
-                <h4>Hızlı Kolay Teslimat</h4>
-                <p>Ürünlerinizi anlaşmalı kargolarımız ile güvenle teslim ediyoruz.</p>
+        <!-- Altbilgi Özellikleri -->
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center">
+                <i class="fas fa-truck text-5xl text-primary mb-4"></i>
+                <h4 class="font-bold text-xl text-primary mb-2">Hızlı Kolay Teslimat</h4>
+                <p class="text-gray-600 text-sm">Ürünlerinizi anlaşmalı kargolarımız ile güvenle teslim ediyoruz.</p>
             </div>
-            <div class="feature-item">
-                <i class="fas fa-box-open"></i>
-                <h4>Özenli Paketleme</h4>
-                <p>Kaliteli ambalajlarla ve özenli paketlemeyle ürünlerinizin hasar görme riskini en aza indirdik.</p>
+            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center">
+                <i class="fas fa-box-open text-5xl text-primary mb-4"></i>
+                <h4 class="font-bold text-xl text-primary mb-2">Özenli Paketleme</h4>
+                <p class="text-gray-600 text-sm">Kaliteli ambalajlarla ve özenli paketlemeyle ürünlerinizin hasar görme riskini en aza indirdik.</p>
             </div>
-            <div class="feature-item">
-                <i class="fas fa-shield-alt"></i>
-                <h4>Güvenli Ödeme</h4>
-                <p>Alışverişlerinizde hızlı ve güvenli ödeme için 256 bit SSL sertifika ile korunuyorsunuz.</p>
+            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center">
+                <i class="fas fa-shield-alt text-5xl text-primary mb-4"></i>
+                <h4 class="font-bold text-xl text-primary mb-2">Güvenli Ödeme</h4>
+                <p class="text-gray-600 text-sm">Alışverişlerinizde hızlı ve güvenli ödeme için 256 bit SSL sertifika ile korunuyorsunuz.</p>
             </div>
-            <div class="feature-item">
-                <i class="fas fa-smile"></i>
-                <h4>Mutlu Müşteri</h4>
-                <p>1977 den beri kaliteli ürünler üreterek sizleri mutlu etmekten gurur duyuyoruz.</p>
+            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center">
+                <i class="fas fa-smile text-5xl text-primary mb-4"></i>
+                <h4 class="font-bold text-xl text-primary mb-2">Mutlu Müşteri</h4>
+                <p class="text-gray-600 text-sm">1977 den beri kaliteli ürünler üreterek sizleri mutlu etmekten gurur duyuyoruz.</p>
             </div>
         </div>
     </main>
-
-    <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCn%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum" class="whatsapp-button-fixed" target="_blank">
+    
+    <!-- Sabit WhatsApp Butonu -->
+    <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCn%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum" class="fixed bottom-5 right-5 bg-[#25d366] text-white rounded-full w-16 h-16 flex items-center justify-center text-3xl shadow-lg z-50 hover:scale-110 transition-transform" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
     
     <!-- Yükleme Göstergesi -->
-    <div id="loading-overlay" class="loading-overlay" style="display: none;">
-        <div class="spinner"></div>
+    <div id="loading-overlay" class="fixed inset-0 bg-white bg-opacity-80 flex items-center justify-center z-40 hidden">
+        <div class="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
     </div>
     
+    <!-- Özel Mesaj Kutusu -->
+    <div id="message-box" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white p-4 rounded-lg shadow-xl z-[2000] opacity-0 transition-opacity duration-500 ease-in-out hidden">
+    </div>
+
+    <!-- JavaScript Kodu -->
     <script type="module">
         // Firebase SDK'larını içe aktarın
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // Firebase ve Canvas değişkenlerini tanımlayın
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
         let db, auth, userId;
-
+        
         // HTML elementlerini alın
         const sizeButtonsContainer = document.getElementById('sizeButtons');
         const productPriceSpan = document.getElementById('productPrice');
@@ -455,10 +192,12 @@
         const decreaseBtn = document.getElementById('decreaseBtn');
         const addToCartBtn = document.getElementById('addToCartBtn');
         const loadingOverlay = document.getElementById('loading-overlay');
-        
+        const messageBox = document.getElementById('message-box');
+
+        // Ürün fiyatları ve seçili boyutu tutmak için değişkenler
         let selectedSize = null;
         let currentPrice = null;
-        let productVariations = {}; // Firebase'den gelen fiyatları depolamak için
+        let productVariations = {}; 
 
         // Yükleme ekranını gösterir
         function showLoading() {
@@ -469,6 +208,29 @@
         function hideLoading() {
             loadingOverlay.style.display = 'none';
         }
+        
+        // Özel bir mesaj kutusu gösterir
+        function showMessage(message, type = 'success') {
+            messageBox.textContent = message;
+            if (type === 'success') {
+                messageBox.classList.remove('bg-red-500');
+                messageBox.classList.add('bg-green-500');
+            } else {
+                messageBox.classList.remove('bg-green-500');
+                messageBox.classList.add('bg-red-500');
+            }
+            messageBox.classList.remove('hidden');
+            setTimeout(() => {
+                messageBox.style.opacity = 1;
+            }, 10);
+            
+            setTimeout(() => {
+                messageBox.style.opacity = 0;
+                setTimeout(() => {
+                    messageBox.classList.add('hidden');
+                }, 500);
+            }, 3000);
+        }
 
         // Firebase'i başlatın ve kimlik doğrulamasını yapın
         async function initializeFirebase() {
@@ -478,15 +240,16 @@
                 auth = getAuth(app);
                 db = getFirestore(app);
 
-                // Kimlik doğrulama dinleyicisi
+                // Firebase kimlik doğrulama dinleyicisi
                 onAuthStateChanged(auth, async (user) => {
                     if (user) {
+                        // Kullanıcı kimliği alındı
                         userId = user.uid;
                         console.log("Firebase Auth ile giriş yapıldı. User ID:", userId);
                         // Kullanıcı kimlik doğrulandıktan sonra veritabanı dinleyicisini başlatın
                         setupDatabaseListener();
                     } else {
-                        console.log("Kimlik doğrulama durumu değişti. Tekrar giriş yapılıyor...");
+                        // Kullanıcı oturumu kapalıysa anonim veya özel token ile giriş yapmayı deneyin
                         try {
                             if (initialAuthToken) {
                                 await signInWithCustomToken(auth, initialAuthToken);
@@ -495,10 +258,12 @@
                             }
                         } catch (error) {
                             console.error("Firebase Auth ile giriş yapılamadı:", error);
+                            hideLoading();
                         }
                     }
                 });
 
+                // Sayfa ilk yüklendiğinde kimlik doğrulama işlemini başlatın
                 if (initialAuthToken) {
                     await signInWithCustomToken(auth, initialAuthToken);
                 } else {
@@ -519,7 +284,6 @@
             }
             
             // Fiyat düzenleme panelinden gelen fiyatları dinle
-            // Ürün sayfasının ID'si (fiyat düzenleme panelindeki ID ile aynı olmalı)
             const productId = 'siyah-seri-manson'; // <-- Bu ID'yi değiştirmeyin!
             const docRef = doc(db, `artifacts/${appId}/users/${userId}/price_updates`, productId);
 
@@ -530,6 +294,10 @@
                     console.log("Fiyatlar veritabanından güncellendi.");
                 } else {
                     console.log("Bu ürün için veritabanında fiyat bilgisi bulunamadı.");
+                    sizeButtonsContainer.innerHTML = '<p class="text-gray-500">Bu ürün için fiyat bilgisi bulunamadı.</p>';
+                    productPriceSpan.textContent = 'N/A';
+                    totalPriceSpan.textContent = 'N/A';
+                    installmentText.textContent = '';
                 }
                 hideLoading();
             }, (error) => {
@@ -543,14 +311,15 @@
             sizeButtonsContainer.innerHTML = '';
             const sizes = Object.keys(variations);
             if (sizes.length === 0) {
-                 sizeButtonsContainer.innerHTML = '<p>Bu ürün için fiyat bilgisi bulunamadı.</p>';
-                 return;
+                sizeButtonsContainer.innerHTML = '<p class="text-gray-500">Bu ürün için fiyat bilgisi bulunamadı.</p>';
+                return;
             }
             
             sizes.forEach(size => {
                 const button = document.createElement('button');
                 button.textContent = size;
                 button.dataset.size = size;
+                button.className = 'px-4 py-2 border border-gray-300 rounded-md bg-gray-100 text-gray-800 hover:bg-secondary hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-secondary';
                 button.addEventListener('click', handleSizeSelection);
                 sizeButtonsContainer.appendChild(button);
             });
@@ -559,15 +328,25 @@
             if (sizes.length > 0) {
                 const firstButton = sizeButtonsContainer.querySelector('button');
                 if (firstButton) {
-                    firstButton.click();
+                    firstButton.classList.add('bg-secondary', 'text-white');
+                    selectedSize = firstButton.dataset.size;
+                    const price = productVariations[selectedSize];
+                    if (price) {
+                        updatePrice(price);
+                    }
                 }
             }
         }
         
         // Boyut seçimi olayını yönetir
         function handleSizeSelection(event) {
-            document.querySelectorAll('.size-buttons button').forEach(btn => btn.classList.remove('selected'));
-            event.target.classList.add('selected');
+            document.querySelectorAll('#sizeButtons button').forEach(btn => {
+                btn.classList.remove('bg-secondary', 'text-white');
+                btn.classList.add('bg-gray-100', 'text-gray-800');
+            });
+            event.target.classList.remove('bg-gray-100', 'text-gray-800');
+            event.target.classList.add('bg-secondary', 'text-white');
+
             selectedSize = event.target.dataset.size;
             
             const price = productVariations[selectedSize];
@@ -593,9 +372,8 @@
             productPriceSpan.textContent = `${currentPrice.toFixed(2).replace('.', ',')} TL`;
             
             const installmentPrice = (currentPrice / 12).toFixed(2);
-            installmentText.textContent = `*${installmentPrice.replace('.', ',')} TL'den başlayan taksitlerle!`;
-            installmentText.style.display = 'block';
-
+            installmentText.textContent = `*${installmentPrice.replace('.', ',')} TL'den başlayan 12 aya varan taksitlerle!`;
+            
             updateTotalPrice();
         }
 
@@ -615,7 +393,12 @@
         });
         
         // Adet girişine de dinleyici ekle
-        quantityInput.addEventListener('change', updateTotalPrice);
+        quantityInput.addEventListener('change', () => {
+            if (parseInt(quantityInput.value) < 1 || !quantityInput.value) {
+                quantityInput.value = 1;
+            }
+            updateTotalPrice();
+        });
 
         // Sepete ekle butonu
         addToCartBtn.addEventListener('click', () => {
@@ -629,6 +412,8 @@
                     quantity: quantity
                 };
                 
+                // localStorage yerine çok kullanıcılı bir ortam için Firestore'u kullanabilirsiniz.
+                // Bu örnek, basitlik için localStorage'u kullanmaya devam eder.
                 let cart = JSON.parse(localStorage.getItem('cart')) || [];
                 
                 const existingProductIndex = cart.findIndex(item => item.name === product.name && item.size === product.size);
@@ -640,64 +425,9 @@
 
                 localStorage.setItem('cart', JSON.stringify(cart));
                 
-                // alert yerine özel bir mesaj kutusu kullanın
-                const messageBox = document.createElement('div');
-                messageBox.style.cssText = `
-                    position: fixed;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    background-color: #4CAF50;
-                    color: white;
-                    padding: 15px 30px;
-                    border-radius: 8px;
-                    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-                    z-index: 2000;
-                    font-family: 'Poppins', sans-serif;
-                    opacity: 0;
-                    transition: opacity 0.5s ease-in-out;
-                `;
-                messageBox.textContent = `${product.size} boyutunda ${quantity} adet ${product.name} sepete eklendi!`;
-                document.body.appendChild(messageBox);
-
-                // Mesaj kutusunu görünür yap ve sonra kaybolmasını sağla
-                setTimeout(() => {
-                    messageBox.style.opacity = 1;
-                }, 10);
-                
-                setTimeout(() => {
-                    messageBox.style.opacity = 0;
-                    setTimeout(() => messageBox.remove(), 500);
-                }, 3000);
+                showMessage(`${product.size} boyutunda ${quantity} adet ${product.name} sepete eklendi!`, 'success');
             } else {
-                // alert yerine özel bir mesaj kutusu kullanın
-                const messageBox = document.createElement('div');
-                messageBox.style.cssText = `
-                    position: fixed;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    background-color: #f44336;
-                    color: white;
-                    padding: 15px 30px;
-                    border-radius: 8px;
-                    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-                    z-index: 2000;
-                    font-family: 'Poppins', sans-serif;
-                    opacity: 0;
-                    transition: opacity 0.5s ease-in-out;
-                `;
-                messageBox.textContent = 'Lütfen önce bir boyut seçiniz.';
-                document.body.appendChild(messageBox);
-                
-                setTimeout(() => {
-                    messageBox.style.opacity = 1;
-                }, 10);
-                
-                setTimeout(() => {
-                    messageBox.style.opacity = 0;
-                    setTimeout(() => messageBox.remove(), 500);
-                }, 3000);
+                showMessage('Lütfen önce bir boyut seçiniz.', 'error');
             }
         });
 
