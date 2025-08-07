@@ -558,61 +558,53 @@
             const secondaryCategoriesContainer = document.getElementById('secondary-categories-all');
             const tertiaryProductsContainer = document.getElementById('tertiary-products');
 
-            const toggleMainMenu = (e) => {
-                // Menü açıkken başka bir menü elemanına tıklanırsa kapanma
-                if (e && !mainMenuContainer.contains(e.target) && !e.target.closest('.menu-toggle, #menuToggleDesktop')) {
-                    if (mainMenuContainer.classList.contains('active')) {
-                        mainMenuContainer.classList.remove('active');
-                        if (window.innerWidth <= 768) {
-                            menuToggleMobile.classList.remove('active');
-                        }
-                        return;
+            const toggleMenuVisibility = (show) => {
+                if (show) {
+                    mainMenuContainer.classList.add('active');
+                    if (window.innerWidth <= 768) {
+                        menuToggleMobile.classList.add('active');
                     }
-                }
-                
-                // Menüyü açma-kapama
-                const isMenuOpen = mainMenuContainer.classList.toggle('active');
-                if (window.innerWidth <= 768) {
-                    menuToggleMobile.classList.toggle('active');
-                }
-
-                // Menü açıldığında sadece ana kategoriyi göster
-                if (isMenuOpen) {
-                    document.getElementById('primaryCategoryColumn').style.display = 'block';
+                } else {
+                    mainMenuContainer.classList.remove('active');
+                    if (window.innerWidth <= 768) {
+                        menuToggleMobile.classList.remove('active');
+                    }
+                    // Tüm alt menüleri ve aktiflikleri sıfırla
+                    document.getElementById('primaryCategoryColumn').style.display = 'none';
                     secondaryCategoriesContainer.style.display = 'none';
                     tertiaryProductsContainer.style.display = 'none';
+                    document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
+                    allProductLists.forEach(ul => ul.classList.remove('active'));
                 }
             };
             
-            const handlePrimaryCategoryClick = (categoryItem) => {
+            const handlePrimaryCategoryClick = (e) => {
+                e.stopPropagation();
                 const isActive = secondaryCategoriesContainer.style.display === 'block';
-
-                // Tüm aktiflikleri ve alt menüleri kaldır
+                
                 document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
                 allProductLists.forEach(ul => ul.classList.remove('active'));
                 tertiaryProductsContainer.style.display = 'none';
 
-                // İkincil menü açık değilse aç, açıksa kapat
                 if (!isActive) {
                     secondaryCategoriesContainer.style.display = 'block';
-                    categoryItem.classList.add('active');
+                    primaryCategoryItem.classList.add('active');
                 } else {
                     secondaryCategoriesContainer.style.display = 'none';
                 }
             };
 
-            const handleProductListClick = (categoryItem) => {
-                const targetProductsId = categoryItem.dataset.targetProducts + '-products';
+            const handleProductListClick = (e, item) => {
+                e.stopPropagation();
+                const targetProductsId = item.dataset.targetProducts + '-products';
                 const targetProducts = document.getElementById(targetProductsId);
-                const isActive = categoryItem.classList.contains('active');
+                const isActive = item.classList.contains('active');
             
-                // Diğer tüm alt kategori aktifliklerini ve ürün listelerini kaldır
                 secondaryCategoryItems.forEach(el => el.classList.remove('active'));
                 allProductLists.forEach(ul => ul.classList.remove('active'));
 
-                // Tıklanan öğe aktif değilse, aktif yap ve ürünleri göster
                 if (!isActive) {
-                    categoryItem.classList.add('active');
+                    item.classList.add('active');
                     tertiaryProductsContainer.style.display = 'block';
                     if (targetProducts) {
                         targetProducts.classList.add('active');
@@ -625,42 +617,33 @@
             // Menü açıp kapatma düğmeleri
             if (menuToggleMobile) {
                 menuToggleMobile.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Menü dışı tıklama olayını engelle
-                    toggleMainMenu();
+                    e.stopPropagation();
+                    toggleMenuVisibility(!mainMenuContainer.classList.contains('active'));
                 });
             }
             if (menuToggleDesktop) {
                 menuToggleDesktop.addEventListener('click', (e) => {
-                    e.preventDefault(); // Varsayılan link davranışını engelle
-                    e.stopPropagation(); // Menü dışı tıklama olayını engelle
-                    toggleMainMenu();
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleMenuVisibility(!mainMenuContainer.classList.contains('active'));
                 });
             }
 
             // Kaplinler (Ana kategori) tıklaması
             if (primaryCategoryItem) {
-                primaryCategoryItem.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Menü dışı tıklama olayını engelle
-                    handlePrimaryCategoryClick(primaryCategoryItem);
-                });
+                primaryCategoryItem.addEventListener('click', handlePrimaryCategoryClick);
             }
 
             // Alt kategori tıklamaları
             secondaryCategoryItems.forEach(item => {
-                item.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Menü dışı tıklama olayını engelle
-                    handleProductListClick(item);
-                });
+                item.addEventListener('click', (e) => handleProductListClick(e, item));
             });
 
             // Üst menü linkleri için kaydırma işlevi
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
-                    mainMenuContainer.classList.remove('active');
-                    if (window.innerWidth <= 768) {
-                        menuToggleMobile.classList.remove('active');
-                    }
+                    toggleMenuVisibility(false); // Menüyü kapat
                     document.querySelector(this.getAttribute('href')).scrollIntoView({
                         behavior: 'smooth'
                     });
@@ -669,21 +652,15 @@
 
             // Menü dışına tıklanıldığında menüyü kapat
             window.addEventListener('click', (e) => {
-                if (!mainMenuContainer.contains(e.target) && !e.target.closest('.menu-toggle, #menuToggleDesktop')) {
-                    mainMenuContainer.classList.remove('active');
-                    if (window.innerWidth <= 768) {
-                        menuToggleMobile.classList.remove('active');
-                    }
+                const isClickInsideMenu = mainMenuContainer.contains(e.target) || e.target.closest('.menu-toggle, #menuToggleDesktop');
+                if (!isClickInsideMenu) {
+                    toggleMenuVisibility(false);
                 }
             });
 
-            // Sayfa yüklendiğinde menüleri gizle
+            // Sayfa yüklendiğinde ve yeniden boyutlandığında menüleri gizle
             const initialSetup = () => {
-                mainMenuContainer.classList.remove('active');
-                menuToggleMobile.classList.remove('active');
-                document.getElementById('primaryCategoryColumn').style.display = 'none';
-                secondaryCategoriesContainer.style.display = 'none';
-                tertiaryProductsContainer.style.display = 'none';
+                toggleMenuVisibility(false);
             };
             
             window.addEventListener('resize', initialSetup);
