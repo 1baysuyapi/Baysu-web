@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baysu Yapı - Siyah Seri Manşon</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #004797;
@@ -302,6 +305,30 @@
             z-index: 1000;
             text-decoration: none;
         }
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--primary-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -343,11 +370,11 @@
                 <div class="price-container">
                     <div class="unit-price-wrapper">
                         <label>Birim Fiyatı:</label>
-                        <span class="price" id="productPrice">Lütfen boyut seçiniz.</span>
+                        <span class="price" id="productPrice">Yükleniyor...</span>
                     </div>
                     <div class="total-price-wrapper" style="margin-top: 10px;">
                         <label>Toplam Fiyat:</label>
-                        <span class="price" id="totalPrice">0,00 TL</span>
+                        <span class="price" id="totalPrice">Yükleniyor...</span>
                     </div>
                 </div>
                 <div class="installment" id="installmentText" style="display:none;"></div>
@@ -355,15 +382,7 @@
                 <div class="size-options">
                     <label>Boyut:</label>
                     <div class="size-buttons" id="sizeButtons">
-                        <button data-size="20mm" data-price="5.90">20mm</button>
-                        <button data-size="25mm" data-price="7.25">25mm</button>
-                        <button data-size="32mm" data-price="9.50">32mm</button>
-                        <button data-size="40mm" data-price="12.75">40mm</button>
-                        <button data-size="50mm" data-price="17.90">50mm</button>
-                        <button data-size="63mm" data-price="25.40">63mm</button>
-                        <button data-size="75mm" data-price="35.00">75mm</button>
-                        <button data-size="90mm" data-price="45.90">90mm</button>
-                        <button data-size="110mm" data-price="60.10">110mm</button>
+                        <!-- Boyut butonları buraya JavaScript ile eklenecek -->
                     </div>
                 </div>
                 
@@ -408,100 +427,282 @@
     <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCn%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum" class="whatsapp-button-fixed" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+    
+    <!-- Yükleme Göstergesi -->
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+    
+    <script type="module">
+        // Firebase SDK'larını içe aktarın
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sizeButtons = document.querySelectorAll('.size-buttons button');
-            const productPriceSpan = document.getElementById('productPrice');
-            const totalPriceSpan = document.getElementById('totalPrice'); // Yeni toplam fiyat alanı
-            const installmentText = document.getElementById('installmentText');
-            const quantityInput = document.getElementById('quantityInput');
-            const increaseBtn = document.getElementById('increaseBtn');
-            const decreaseBtn = document.getElementById('decreaseBtn');
-            const addToCartBtn = document.getElementById('addToCartBtn');
+        // Firebase ve Canvas değişkenlerini tanımlayın
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        let db, auth, userId;
 
-            let selectedSize = null;
-            let currentPrice = null;
+        // HTML elementlerini alın
+        const sizeButtonsContainer = document.getElementById('sizeButtons');
+        const productPriceSpan = document.getElementById('productPrice');
+        const totalPriceSpan = document.getElementById('totalPrice');
+        const installmentText = document.getElementById('installmentText');
+        const quantityInput = document.getElementById('quantityInput');
+        const increaseBtn = document.getElementById('increaseBtn');
+        const decreaseBtn = document.getElementById('decreaseBtn');
+        const addToCartBtn = document.getElementById('addToCartBtn');
+        const loadingOverlay = document.getElementById('loading-overlay');
+        
+        let selectedSize = null;
+        let currentPrice = null;
+        let productVariations = {}; // Firebase'den gelen fiyatları depolamak için
 
-            function updateTotalPrice() {
-                if (currentPrice !== null) {
-                    const quantity = parseInt(quantityInput.value);
-                    const total = currentPrice * quantity;
-                    totalPriceSpan.textContent = `${total.toFixed(2).replace('.', ',')} TL`;
-                } else {
-                    totalPriceSpan.textContent = "0,00 TL";
-                }
-            }
+        // Yükleme ekranını gösterir
+        function showLoading() {
+            loadingOverlay.style.display = 'flex';
+        }
 
-            function updatePrice(price) {
-                currentPrice = parseFloat(price);
-                productPriceSpan.textContent = `${currentPrice.toFixed(2).replace('.', ',')} TL`;
-                
-                const installmentPrice = (currentPrice / 12).toFixed(2);
-                installmentText.textContent = `*${installmentPrice.replace('.', ',')} TL'den başlayan taksitlerle!`;
-                installmentText.style.display = 'block';
+        // Yükleme ekranını gizler
+        function hideLoading() {
+            loadingOverlay.style.display = 'none';
+        }
 
-                updateTotalPrice(); // Boyut değişince toplam fiyatı da güncelle
-            }
+        // Firebase'i başlatın ve kimlik doğrulamasını yapın
+        async function initializeFirebase() {
+            try {
+                showLoading();
+                const app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
 
-            sizeButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    sizeButtons.forEach(btn => btn.classList.remove('selected'));
-                    this.classList.add('selected');
-                    selectedSize = this.dataset.size;
-                    const price = this.dataset.price;
-                    updatePrice(price);
-                });
-            });
-
-            increaseBtn.addEventListener('click', () => {
-                let currentQuantity = parseInt(quantityInput.value);
-                quantityInput.value = currentQuantity + 1;
-                updateTotalPrice(); // Adet artınca toplam fiyatı güncelle
-            });
-
-            decreaseBtn.addEventListener('click', () => {
-                let currentQuantity = parseInt(quantityInput.value);
-                if (currentQuantity > 1) {
-                    quantityInput.value = currentQuantity - 1;
-                    updateTotalPrice(); // Adet azalınca toplam fiyatı güncelle
-                }
-            });
-
-            addToCartBtn.addEventListener('click', () => {
-                if (selectedSize && currentPrice) {
-                    const quantity = parseInt(quantityInput.value);
-                    const productName = document.querySelector('h1').textContent.trim();
-                    const product = {
-                        name: productName,
-                        size: selectedSize,
-                        price: currentPrice,
-                        quantity: quantity
-                    };
-                    
-                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                    
-                    const existingProductIndex = cart.findIndex(item => item.name === product.name && item.size === product.size);
-                    if (existingProductIndex > -1) {
-                        cart[existingProductIndex].quantity += quantity;
+                // Kimlik doğrulama dinleyicisi
+                onAuthStateChanged(auth, async (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        console.log("Firebase Auth ile giriş yapıldı. User ID:", userId);
+                        // Kullanıcı kimlik doğrulandıktan sonra veritabanı dinleyicisini başlatın
+                        setupDatabaseListener();
                     } else {
-                        cart.push(product);
+                        console.log("Kimlik doğrulama durumu değişti. Tekrar giriş yapılıyor...");
+                        try {
+                            if (initialAuthToken) {
+                                await signInWithCustomToken(auth, initialAuthToken);
+                            } else {
+                                await signInAnonymously(auth);
+                            }
+                        } catch (error) {
+                            console.error("Firebase Auth ile giriş yapılamadı:", error);
+                        }
                     }
+                });
 
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                    
-                    alert(`${product.size} boyutunda ${quantity} adet ${product.name} sepete eklendi!`);
-                    
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
                 } else {
-                    alert('Lütfen önce bir boyut seçiniz.');
+                    await signInAnonymously(auth);
                 }
-            });
+            } catch (error) {
+                console.error("Firebase başlatılırken bir hata oluştu:", error);
+                hideLoading();
+            }
+        }
+        
+        // Veritabanı dinleyicisini kurar
+        function setupDatabaseListener() {
+            if (!db || !userId) {
+                console.error("Veritabanı veya kullanıcı kimliği hazır değil.");
+                hideLoading();
+                return;
+            }
+            
+            // Fiyat düzenleme panelinden gelen fiyatları dinle
+            // Ürün sayfasının ID'si (fiyat düzenleme panelindeki ID ile aynı olmalı)
+            const productId = 'siyah-seri-manson'; // <-- Bu ID'yi değiştirmeyin!
+            const docRef = doc(db, `artifacts/${appId}/users/${userId}/price_updates`, productId);
 
-            // Başlangıçta fiyatı ve taksit yazısını gizle
-            productPriceSpan.textContent = 'Lütfen boyut seçiniz.';
-            totalPriceSpan.textContent = '0,00 TL';
-            installmentText.style.display = 'none';
+            onSnapshot(docRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    productVariations = docSnap.data();
+                    renderSizeButtons(productVariations);
+                    console.log("Fiyatlar veritabanından güncellendi.");
+                } else {
+                    console.log("Bu ürün için veritabanında fiyat bilgisi bulunamadı.");
+                }
+                hideLoading();
+            }, (error) => {
+                console.error("Veritabanı dinleyicisinde hata:", error);
+                hideLoading();
+            });
+        }
+        
+        // Boyut butonlarını dinamik olarak oluşturur
+        function renderSizeButtons(variations) {
+            sizeButtonsContainer.innerHTML = '';
+            const sizes = Object.keys(variations);
+            if (sizes.length === 0) {
+                 sizeButtonsContainer.innerHTML = '<p>Bu ürün için fiyat bilgisi bulunamadı.</p>';
+                 return;
+            }
+            
+            sizes.forEach(size => {
+                const button = document.createElement('button');
+                button.textContent = size;
+                button.dataset.size = size;
+                button.addEventListener('click', handleSizeSelection);
+                sizeButtonsContainer.appendChild(button);
+            });
+            
+            // İlk boyutun otomatik olarak seçilmesi
+            if (sizes.length > 0) {
+                const firstButton = sizeButtonsContainer.querySelector('button');
+                if (firstButton) {
+                    firstButton.click();
+                }
+            }
+        }
+        
+        // Boyut seçimi olayını yönetir
+        function handleSizeSelection(event) {
+            document.querySelectorAll('.size-buttons button').forEach(btn => btn.classList.remove('selected'));
+            event.target.classList.add('selected');
+            selectedSize = event.target.dataset.size;
+            
+            const price = productVariations[selectedSize];
+            if (price) {
+                updatePrice(price);
+            }
+        }
+        
+        // Toplam fiyatı günceller
+        function updateTotalPrice() {
+            if (currentPrice !== null) {
+                const quantity = parseInt(quantityInput.value) || 1;
+                const total = currentPrice * quantity;
+                totalPriceSpan.textContent = `${total.toFixed(2).replace('.', ',')} TL`;
+            } else {
+                totalPriceSpan.textContent = '0,00 TL';
+            }
+        }
+
+        // Birim fiyatı ve taksit yazısını günceller
+        function updatePrice(price) {
+            currentPrice = parseFloat(price);
+            productPriceSpan.textContent = `${currentPrice.toFixed(2).replace('.', ',')} TL`;
+            
+            const installmentPrice = (currentPrice / 12).toFixed(2);
+            installmentText.textContent = `*${installmentPrice.replace('.', ',')} TL'den başlayan taksitlerle!`;
+            installmentText.style.display = 'block';
+
+            updateTotalPrice();
+        }
+
+        // Adet artırma/azaltma butonları
+        increaseBtn.addEventListener('click', () => {
+            let currentQuantity = parseInt(quantityInput.value) || 1;
+            quantityInput.value = currentQuantity + 1;
+            updateTotalPrice();
         });
+
+        decreaseBtn.addEventListener('click', () => {
+            let currentQuantity = parseInt(quantityInput.value) || 1;
+            if (currentQuantity > 1) {
+                quantityInput.value = currentQuantity - 1;
+                updateTotalPrice();
+            }
+        });
+        
+        // Adet girişine de dinleyici ekle
+        quantityInput.addEventListener('change', updateTotalPrice);
+
+        // Sepete ekle butonu
+        addToCartBtn.addEventListener('click', () => {
+            if (selectedSize && currentPrice) {
+                const quantity = parseInt(quantityInput.value);
+                const productName = document.querySelector('h1').textContent.trim();
+                const product = {
+                    name: productName,
+                    size: selectedSize,
+                    price: currentPrice,
+                    quantity: quantity
+                };
+                
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                
+                const existingProductIndex = cart.findIndex(item => item.name === product.name && item.size === product.size);
+                if (existingProductIndex > -1) {
+                    cart[existingProductIndex].quantity += quantity;
+                } else {
+                    cart.push(product);
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+                
+                // alert yerine özel bir mesaj kutusu kullanın
+                const messageBox = document.createElement('div');
+                messageBox.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 15px 30px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+                    z-index: 2000;
+                    font-family: 'Poppins', sans-serif;
+                    opacity: 0;
+                    transition: opacity 0.5s ease-in-out;
+                `;
+                messageBox.textContent = `${product.size} boyutunda ${quantity} adet ${product.name} sepete eklendi!`;
+                document.body.appendChild(messageBox);
+
+                // Mesaj kutusunu görünür yap ve sonra kaybolmasını sağla
+                setTimeout(() => {
+                    messageBox.style.opacity = 1;
+                }, 10);
+                
+                setTimeout(() => {
+                    messageBox.style.opacity = 0;
+                    setTimeout(() => messageBox.remove(), 500);
+                }, 3000);
+            } else {
+                // alert yerine özel bir mesaj kutusu kullanın
+                const messageBox = document.createElement('div');
+                messageBox.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background-color: #f44336;
+                    color: white;
+                    padding: 15px 30px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+                    z-index: 2000;
+                    font-family: 'Poppins', sans-serif;
+                    opacity: 0;
+                    transition: opacity 0.5s ease-in-out;
+                `;
+                messageBox.textContent = 'Lütfen önce bir boyut seçiniz.';
+                document.body.appendChild(messageBox);
+                
+                setTimeout(() => {
+                    messageBox.style.opacity = 1;
+                }, 10);
+                
+                setTimeout(() => {
+                    messageBox.style.opacity = 0;
+                    setTimeout(() => messageBox.remove(), 500);
+                }, 3000);
+            }
+        });
+
+        // Sayfa yüklendiğinde Firebase'i başlat
+        window.onload = initializeFirebase;
     </script>
 </body>
 </html>
