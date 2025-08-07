@@ -1,169 +1,41 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alışveriş Sepeti</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>Sepet Testi</title>
     <style>
-        /* Renkler ve Font */
-        :root {
-            --primary-color: #004797;
-            --secondary-color: #FF6B6B;
-            --background-color: #F8F9FA;
-            --card-background: #FFFFFF;
-            --text-color: #333333;
-            --light-text-color: #666666;
-            --border-color: #E0E0E0;
-            --border-radius: 12px;
-            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-
         body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
-        }
-
-        /* Başlık ve Navigasyon */
-        .header-main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: var(--card-background);
-            padding: 20px;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .logo {
-            width: 200px;
-            margin-bottom: 15px;
-        }
-        .search-and-actions {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            max-width: 900px;
-            justify-content: space-between;
-        }
-        .search-bar {
-            position: relative;
-            flex-grow: 1;
-            margin-right: 20px;
-        }
-        .search-bar input {
-            width: 100%;
-            padding: 12px 15px 12px 45px;
-            border: 1px solid var(--border-color);
-            border-radius: 50px;
-            font-size: 14px;
-        }
-        .search-bar .fas {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--light-text-color);
-        }
-        .header-actions {
-            display: flex;
-            gap: 20px;
-        }
-        .header-actions a {
-            text-decoration: none;
-            color: var(--primary-color);
-            font-weight: 600;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-        .header-actions a:hover {
-            color: var(--secondary-color);
-        }
-        .nav-bar {
-            background-color: var(--primary-color);
-            padding: 15px 20px;
-            width: 100%;
-        }
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-        }
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Sepet Sayfası İçeriği */
-        .cart-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 20px;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-        }
-        .cart-items {
-            background-color: var(--card-background);
+            font-family: sans-serif;
+            background: #f1f1f1;
             padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
         }
-        .cart-summary {
-            background-color: var(--card-background);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            position: sticky;
-            top: 100px;
-        }
-        .cart-items h2, .cart-summary h2 {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            margin-top: 0;
-            margin-bottom: 25px;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 15px;
-        }
-
         .cart-item {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
             display: flex;
             align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .cart-item:last-child {
-            border-bottom: none;
+            gap: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
         }
         .item-image {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             object-fit: cover;
             border-radius: 8px;
-            margin-right: 20px;
+            border: 2px solid #004797;
         }
         .item-details {
-            flex-grow: 1;
+            flex: 1;
         }
-        .item-details h4 {
-            margin: 0;
+        .item-name {
+            font-weight: bold;
             font-size: 1.2rem;
-            color: var(--text-color);
         }
-        .item-details p {
-            margin: 5px 0 0 0;
-            color: var(--light-text-color);
+        .item-desc {
             font-size: 0.9rem;
+            color: #555;
         }
         .item-quantity {
             display: flex;
@@ -171,352 +43,117 @@
             gap: 10px;
         }
         .quantity-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
             width: 30px;
             height: 30px;
             border-radius: 50%;
+            border: none;
+            background: #004797;
+            color: white;
+            font-size: 18px;
             cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         .quantity-input {
             width: 40px;
             text-align: center;
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
             padding: 5px;
             font-size: 1rem;
         }
         .item-price {
             font-size: 1.3rem;
             font-weight: bold;
-            color: var(--secondary-color);
-            width: 150px;
-            text-align: right;
+            color: #FF6B6B;
         }
-        .remove-btn {
-            background: none;
-            border: none;
-            color: var(--secondary-color);
+        .summary {
             font-size: 1.2rem;
-            cursor: pointer;
-            margin-left: 20px;
-        }
-        .cart-empty {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--light-text-color);
-            padding: 50px 0;
-        }
-        .cart-empty a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* Sepet Özeti */
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            font-size: 1rem;
-        }
-        .summary-total {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-top: 25px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 20px;
-        }
-        .summary-total span {
-            color: var(--secondary-color);
-        }
-        .checkout-btn {
-            display: block;
-            width: 100%;
-            padding: 18px;
-            background: var(--secondary-color);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            cursor: pointer;
             margin-top: 30px;
-            text-align: center;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        .checkout-btn:hover {
-            background-color: #E65A5A;
-        }
-        .continue-shopping-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background: #fff;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 15px;
-            text-align: center;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        .continue-shopping-btn:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .whatsapp-button {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease-in-out;
-            text-decoration: none;
-            font-size: 35px;
-        }
-        .whatsapp-button:hover {
-            transform: scale(1.1);
-        }
-        
-        /* Responsive Tasarım */
-        @media (max-width: 992px) {
-            .cart-container {
-                grid-template-columns: 1fr;
-            }
-            .cart-summary {
-                order: -1;
-            }
-            .search-and-actions {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .search-bar {
-                margin-right: 0;
-            }
-            .nav-links {
-                gap: 20px;
-            }
-        }
-        @media (max-width: 768px) {
-            .logo {
-                width: 150px;
-            }
-            .search-bar input {
-                padding: 10px 15px 10px 40px;
-            }
-            .nav-bar {
-                display: none;
-            }
-            .cart-item {
-                flex-wrap: wrap;
-                text-align: center;
-                justify-content: center;
-            }
-            .item-image {
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
-            .item-details {
-                text-align: center;
-                width: 100%;
-            }
-            .item-quantity {
-                justify-content: center;
-                margin-top: 10px;
-            }
-            .item-price, .remove-btn {
-                margin-top: 15px;
-            }
         }
     </style>
 </head>
 <body>
-    <header class="header-main">
-        <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="BAYSU LOGO" class="logo">
-        <div class="search-and-actions">
-            <div class="search-bar">
-                <input type="search" placeholder="Ürün Ara...">
-                <i class="fas fa-search"></i>
-            </div>
-            <div class="header-actions">
-                <a href="giris-yap.html"><i class="fas fa-user"></i> Giriş Yap</a>
-                <a href="sepet.html"><i class="fas fa-shopping-cart"></i> Sepet</a>
-            </div>
-        </div>
-    </header>
 
-    <nav class="nav-bar">
-        <div class="nav-links">
-            <a href="index.html">Anasayfa</a>
-            <a href="#">Ürünlerimiz</a>
-            <a href="#">Hakkımızda</a>
-            <a href="#">İletişim</a>
-        </div>
-    </nav>
+    <div id="cart-list"></div>
+    <div class="summary">
+        Toplam: <span id="total">0.00 TL</span>
+    </div>
 
-    <main>
-        <div class="cart-container">
-            <div class="cart-items">
-                <h2>Alışveriş Sepeti</h2>
-                <div id="cart-list">
-                    </div>
-                <div id="cart-empty" class="cart-empty" style="display: none;">
-                    Sepetinizde ürün bulunmamaktadır. <br><a href="index.html">Alışverişe Başla</a>
-                </div>
-            </div>
-
-            <div class="cart-summary">
-                <h2>Sipariş Özeti</h2>
-                <div class="summary-item">
-                    <span>Sepet Toplamı</span>
-                    <span id="subtotal">0.00 TL</span>
-                </div>
-                <div class="summary-item">
-                    <span>Kargo</span>
-                    <span>ALICI ÖDEMELİ</span>
-                </div>
-                <div class="summary-total">
-                    Toplam Tutar: <span id="total-price">0.00 TL</span>
-                </div>
-                <a href="odeme.html" class="checkout-btn">Ödeme Sayfasına Git</a>
-                <a href="index.html" class="continue-shopping-btn">Alışverişe Devam Et</a>
-            </div>
-        </div>
-    </main>
-    
-    <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum." class="whatsapp-button" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const cartList = document.getElementById('cart-list');
-            const cartEmpty = document.getElementById('cart-empty');
-            const subtotalSpan = document.getElementById('subtotal');
-            const totalPriceSpan = document.getElementById('total-price');
-            const checkoutButton = document.querySelector('.checkout-btn');
+        const cartList = document.getElementById("cart-list");
+        const totalSpan = document.getElementById("total");
 
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cart = JSON.parse(localStorage.getItem("cart")) || [{
+            id: "product-1",
+            name: "Siyah Seri Manson",
+            description: "Yüksek Kaliteli Plastik Kaplin",
+            price: 250.00,
+            quantity: 1,
+            image: "siyah-seri-manson.png" // doğru yerdeyse çalışır
+        }];
 
-            // Eğer sepet boşsa, örnek bir ürün ekleyelim (test için)
-            if (cart.length === 0) {
-                cart.push({
-                    id: 'product-1',
-                    name: 'Siyah Seri Manson',
-                    description: 'Yüksek Kaliteli Plastik Kaplin',
-                    price: 250.00,
-                    quantity: 1,
-                    image: 'siyah-seri-manson.png' // Doğru görsel adı
-                });
-                localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        function renderCart() {
+            cartList.innerHTML = "";
+            cart.forEach(item => {
+                const div = document.createElement("div");
+                div.className = "cart-item";
+                div.innerHTML = `
+                    <img src="${item.image}" class="item-image" alt="${item.name}">
+                    <div class="item-details">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-desc">${item.description}</div>
+                        <div class="item-quantity">
+                            <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                            <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}">
+                            <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                        </div>
+                    </div>
+                    <div class="item-price">${(item.price * item.quantity).toFixed(2)} TL</div>
+                `;
+                cartList.appendChild(div);
+            });
+
+            updateTotal();
+        }
+
+        function updateTotal() {
+            const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            totalSpan.textContent = total.toFixed(2) + " TL";
+        }
+
+        document.addEventListener("click", e => {
+            if (e.target.classList.contains("plus")) {
+                const id = e.target.dataset.id;
+                const item = cart.find(i => i.id === id);
+                item.quantity++;
+                localStorage.setItem("cart", JSON.stringify(cart));
+                renderCart();
             }
 
-            function renderCart() {
-                cartList.innerHTML = '';
-                if (cart.length === 0) {
-                    cartEmpty.style.display = 'block';
-                    cartList.style.display = 'none';
-                    checkoutButton.style.display = 'none';
-                } else {
-                    cartEmpty.style.display = 'none';
-                    cartList.style.display = 'block';
-                    checkoutButton.style.display = 'block';
-
-                    cart.forEach(item => {
-                        const cartItem = document.createElement('div');
-                        cartItem.classList.add('cart-item');
-                        cartItem.innerHTML = `
-                            <img src="${item.image}" alt="${item.name}" class="item-image">
-                            <div class="item-details">
-                                <h4>${item.name}</h4>
-                                <p>${item.description}</p>
-                            </div>
-                            <div class="item-quantity">
-                                <button class="quantity-btn minus" data-id="${item.id}">-</button>
-                                <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}">
-                                <button class="quantity-btn plus" data-id="${item.id}">+</button>
-                            </div>
-                            <span class="item-price">${(item.price * item.quantity).toFixed(2)} TL</span>
-                            <button class="remove-btn" data-id="${item.id}"><i class="fas fa-trash-alt"></i></button>
-                        `;
-                        cartList.appendChild(cartItem);
-                    });
-                }
-                updateSummary();
-            }
-
-            function updateSummary() {
-                const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-                subtotalSpan.textContent = subtotal.toFixed(2) + ' TL';
-                totalPriceSpan.textContent = subtotal.toFixed(2) + ' TL';
-            }
-
-            // Olay dinleyicilerini `renderCart` dışına taşıyoruz
-            document.addEventListener('click', (e) => {
-                if (e.target.closest('.plus')) {
-                    const id = e.target.closest('.plus').dataset.id;
-                    const item = cart.find(i => i.id === id);
-                    if (item) {
-                        item.quantity++;
-                        localStorage.setItem('cart', JSON.stringify(cart));
-                        renderCart();
-                    }
-                }
-                if (e.target.closest('.minus')) {
-                    const id = e.target.closest('.minus').dataset.id;
-                    const item = cart.find(i => i.id === id);
-                    if (item && item.quantity > 1) {
-                        item.quantity--;
-                        localStorage.setItem('cart', JSON.stringify(cart));
-                        renderCart();
-                    }
-                }
-                if (e.target.closest('.remove-btn')) {
-                    const id = e.target.closest('.remove-btn').dataset.id;
-                    cart = cart.filter(item => item.id !== id);
-                    localStorage.setItem('cart', JSON.stringify(cart));
+            if (e.target.classList.contains("minus")) {
+                const id = e.target.dataset.id;
+                const item = cart.find(i => i.id === id);
+                if (item.quantity > 1) {
+                    item.quantity--;
+                    localStorage.setItem("cart", JSON.stringify(cart));
                     renderCart();
                 }
-            });
-            
-            document.addEventListener('change', (e) => {
-                if (e.target.classList.contains('quantity-input')) {
-                    const id = e.target.dataset.id;
-                    let quantity = parseInt(e.target.value);
-                    if (quantity < 1 || isNaN(quantity)) {
-                        quantity = 1;
-                        e.target.value = 1;
-                    }
-                    const item = cart.find(i => i.id === id);
-                    if (item) {
-                        item.quantity = quantity;
-                        localStorage.setItem('cart', JSON.stringify(cart));
-                        renderCart();
-                    }
-                }
-            });
-
-            renderCart();
+            }
         });
+
+        document.addEventListener("change", e => {
+            if (e.target.classList.contains("quantity-input")) {
+                const id = e.target.dataset.id;
+                let val = parseInt(e.target.value);
+                if (isNaN(val) || val < 1) val = 1;
+                const item = cart.find(i => i.id === id);
+                item.quantity = val;
+                localStorage.setItem("cart", JSON.stringify(cart));
+                renderCart();
+            }
+        });
+
+        renderCart();
     </script>
+
 </body>
 </html>
