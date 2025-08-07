@@ -3,286 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baysu Yapı - Fiyat Yönetim Paneli</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Baysu Yapı - Fiyat Değiştirme Paneli</title>
+    <!-- Tailwind CSS'i CDN üzerinden dahil etme -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS'e özel renklerin ve fontun tanımlanması -->
     <style>
         :root {
             --primary-color: #004797;
             --secondary-color: #ff9900;
-            --bg-color: #f4f4f9;
-            --text-color: #333;
-            --border-color: #ddd;
+        }
+
+        .bg-primary { background-color: var(--primary-color); }
+        .text-primary { color: var(--primary-color); }
+        .border-primary { border-color: var(--primary-color); }
+        .bg-secondary { background-color: var(--secondary-color); }
+        .text-secondary { color: var(--secondary-color); }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary:hover {
+            background-color: #003673;
+        }
+        .input-text {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+            transition: border-color 0.3s ease;
+        }
+        .input-text:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(0, 71, 151, 0.2);
         }
 
         body {
-            font-family: 'Poppins', Arial, sans-serif;
-            background-color: var(--bg-color);
-            line-height: 1.6;
-            color: var(--text-color);
-        }
-
-        .login-container, .dashboard-container {
-            max-width: 500px;
-            margin: 80px auto;
-            padding: 30px;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.2em;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 1em;
-            transition: all 0.3s ease;
-            margin-bottom: 20px;
-        }
-
-        input:focus {
-            border-color: var(--primary-color);
-            outline: none;
-            box-shadow: 0 0 8px rgba(0, 71, 151, 0.2);
-        }
-
-        button {
-            width: 100%;
-            padding: 12px 25px;
-            background-color: var(--primary-color);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        button:hover {
-            background-color: #00366b;
-            transform: translateY(-2px);
-        }
-
-        #login-error {
-            color: #dc3545;
-            text-align: center;
-            margin-top: 15px;
-            display: none;
-        }
-
-        #products-list {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 20px;
-        }
-
-        .product-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            margin-bottom: 10px;
-            background-color: var(--bg-color);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        .product-item:hover {
-            background-color: #e9e9e9;
-        }
-        
-        .product-item strong {
-            font-size: 1.1em;
-        }
-
-        .product-item-action {
-            color: var(--primary-color);
-        }
-
-        .modal {
-            position: fixed;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-            display: none;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 90%;
-            max-width: 600px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            position: relative;
-        }
-        .close-button {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            color: #aaa;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .price-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .price-item {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .save-button {
-            background-color: #6c9f3e;
-        }
-        
-        .save-button:hover {
-            background-color: #5a8733;
-        }
-        
-        .add-product-section {
-            border-top: 1px solid var(--border-color);
-            margin-top: 30px;
-            padding-top: 20px;
-        }
-        
-        .add-product-section h2 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .add-product-section input {
-            margin-bottom: 10px;
-        }
-        
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: opacity 0.5s ease;
-        }
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-left-color: var(--primary-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+            font-family: 'Poppins', sans-serif;
         }
     </style>
+    <!-- Font Awesome ve Google Fonts'u dahil etme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <!-- Giriş Formu -->
-    <div id="login-section" class="login-container">
-        <h1>Yönetim Paneli Girişi</h1>
-        <input type="password" id="passwordInput" placeholder="Şifre Girin">
-        <button id="loginButton">Giriş Yap</button>
-        <div id="login-error">Yanlış şifre. Lütfen tekrar deneyin.</div>
-    </div>
+<body class="bg-gray-100 min-h-screen flex flex-col justify-center items-center p-4">
 
-    <!-- Panel Kontrol Paneli -->
-    <div id="dashboard-section" class="dashboard-container hidden" style="display: none;">
-        <h1>Ürün Fiyatlarını Yönet</h1>
-        <ul id="products-list">
-            <!-- Ürün listesi buraya JS ile eklenecek -->
-        </ul>
+    <!-- Ana Konteyner -->
+    <div class="bg-white p-8 md:p-12 rounded-xl shadow-lg w-full max-w-2xl">
+        <h1 class="text-3xl md:text-4xl font-bold text-primary mb-6 text-center">
+            Siyah Seri Manşon Fiyat Paneli
+        </h1>
+        <p class="text-center text-gray-600 mb-8">
+            Bu panelden ürün boyutlarına ait fiyatları güncelleyebilirsiniz.
+        </p>
 
-        <!-- Yeni Ürün Ekleme Bölümü -->
-        <div class="add-product-section">
-            <h2>Yeni Ürün Ekle</h2>
-            <input type="text" id="newProductNameInput" placeholder="Yeni Ürün Adı (örn: Kaplin Manşon)">
-            <input type="text" id="newProductSizesInput" placeholder="Boyutları Virgülle Ayırın (örn: 20,25,32)">
-            <button id="addProductButton">Ürünü Ekle</button>
-        </div>
-    </div>
-    
-    <!-- Fiyat Düzenleme Modalı -->
-    <div id="price-editor-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2 id="modalTitle" class="text-xl font-semibold mb-4 text-center text-blue-900"></h2>
-            <div id="price-list" class="price-list">
-                <!-- Fiyat giriş alanları buraya JavaScript ile eklenecek -->
+        <!-- Fiyat Formu -->
+        <form id="priceForm" class="space-y-6">
+            <!-- Boyut 1 -->
+            <div>
+                <label for="size_20x16" class="block font-semibold text-gray-700 mb-2">20x16 Fiyat (TL)</label>
+                <input type="number" id="size_20x16" name="20x16" placeholder="Örn: 25.50" step="0.01" class="input-text">
             </div>
-            <button id="saveButton" class="save-button">Fiyatları Kaydet</button>
-            <div id="status-message" class="text-center font-bold mt-4" style="display: none;"></div>
+
+            <!-- Boyut 2 -->
+            <div>
+                <label for="size_25x20" class="block font-semibold text-gray-700 mb-2">25x20 Fiyat (TL)</label>
+                <input type="number" id="size_25x20" name="25x20" placeholder="Örn: 30.00" step="0.01" class="input-text">
+            </div>
+
+            <!-- Boyut 3 -->
+            <div>
+                <label for="size_32x25" class="block font-semibold text-gray-700 mb-2">32x25 Fiyat (TL)</label>
+                <input type="number" id="size_32x25" name="32x25" placeholder="Örn: 45.75" step="0.01" class="input-text">
+            </div>
+
+            <!-- Boyut 4 -->
+            <div>
+                <label for="size_40x32" class="block font-semibold text-gray-700 mb-2">40x32 Fiyat (TL)</label>
+                <input type="number" id="size_40x32" name="40x32" placeholder="Örn: 60.25" step="0.01" class="input-text">
+            </div>
+
+            <!-- Kaydet Butonu -->
+            <button type="submit" id="saveButton" class="w-full btn-primary mt-8">
+                Fiyatları Kaydet
+            </button>
+        </form>
+        
+        <!-- User ID Bilgisi -->
+        <div class="mt-8 text-center text-gray-500 text-sm">
+            Kullanıcı ID: <span id="userIdDisplay" class="font-mono text-xs text-gray-600 break-all">Yükleniyor...</span>
         </div>
     </div>
     
     <!-- Yükleme Göstergesi -->
-    <div id="loading-overlay" class="loading-overlay" style="display: none;">
-        <div class="spinner"></div>
+    <div id="loading-overlay" class="fixed inset-0 bg-white bg-opacity-80 flex items-center justify-center z-40 hidden">
+        <div class="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+    </div>
+    
+    <!-- Özel Mesaj Kutusu -->
+    <div id="message-box" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white p-4 rounded-lg shadow-xl z-[2000] opacity-0 transition-opacity duration-500 ease-in-out hidden">
     </div>
 
+    <!-- JavaScript Kodu -->
     <script type="module">
         // Firebase SDK'larını içe aktarın
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, onSnapshot, setDoc, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // Firebase ve Canvas değişkenlerini tanımlayın
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
         let db, auth, userId;
-
-        // HTML elementlerini alın
-        const loginSection = document.getElementById('login-section');
-        const passwordInput = document.getElementById('passwordInput');
-        const loginButton = document.getElementById('loginButton');
-        const loginError = document.getElementById('login-error');
-        const dashboardSection = document.getElementById('dashboard-section');
-        const productsList = document.getElementById('products-list');
-        const priceEditorModal = document.getElementById('price-editor-modal');
-        const modalTitle = document.getElementById('modalTitle');
-        const priceListContainer = document.getElementById('price-list');
-        const saveButton = document.getElementById('saveButton');
-        const closeButton = document.querySelector('.close-button');
-        const statusMessage = document.getElementById('status-message');
-        const loadingOverlay = document.getElementById('loading-overlay');
-        const newProductNameInput = document.getElementById('newProductNameInput');
-        const newProductSizesInput = document.getElementById('newProductSizesInput');
-        const addProductButton = document.getElementById('addProductButton');
         
-        let currentProductId = null;
-        let currentProductData = {};
-
-        // Hardcoded şifre kontrolü
-        const ADMIN_PASSWORD = "adminpassword123"; // Burayı kendi şifrenizle değiştirin
+        // HTML elementlerini alın
+        const priceForm = document.getElementById('priceForm');
+        const saveButton = document.getElementById('saveButton');
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const messageBox = document.getElementById('message-box');
+        const userIdDisplay = document.getElementById('userIdDisplay');
 
         // Yükleme ekranını gösterir
         function showLoading() {
@@ -293,22 +140,46 @@
         function hideLoading() {
             loadingOverlay.style.display = 'none';
         }
+        
+        // Özel bir mesaj kutusu gösterir
+        function showMessage(message, type = 'success') {
+            messageBox.textContent = message;
+            if (type === 'success') {
+                messageBox.classList.remove('bg-red-500');
+                messageBox.classList.add('bg-green-500');
+            } else {
+                messageBox.classList.remove('bg-green-500');
+                messageBox.classList.add('bg-red-500');
+            }
+            messageBox.classList.remove('hidden');
+            setTimeout(() => {
+                messageBox.style.opacity = 1;
+            }, 10);
+            
+            setTimeout(() => {
+                messageBox.style.opacity = 0;
+                setTimeout(() => {
+                    messageBox.classList.add('hidden');
+                }, 500);
+            }, 3000);
+        }
 
         // Firebase'i başlatın ve kimlik doğrulamasını yapın
         async function initializeFirebase() {
             try {
+                showLoading();
                 const app = initializeApp(firebaseConfig);
                 auth = getAuth(app);
                 db = getFirestore(app);
-
+                
                 onAuthStateChanged(auth, async (user) => {
                     if (user) {
                         userId = user.uid;
+                        userIdDisplay.textContent = userId;
                         console.log("Firebase Auth ile giriş yapıldı. User ID:", userId);
-                        // Kullanıcı kimliği hazır olduğunda ürünleri yüklemeye başla
-                        setupProductListener();
+                        // Kullanıcı kimlik doğrulandıktan sonra verileri yükle
+                        await loadPrices();
                     } else {
-                        console.log("Kimlik doğrulama durumu değişti. Tekrar giriş yapılıyor...");
                         try {
                             if (initialAuthToken) {
                                 await signInWithCustomToken(auth, initialAuthToken);
@@ -317,210 +188,92 @@
                             }
                         } catch (error) {
                             console.error("Firebase Auth ile giriş yapılamadı:", error);
+                            hideLoading();
                         }
                     }
                 });
-
-                // Giriş işlemi için kimlik doğrulamasını başlat
+                
                 if (initialAuthToken) {
                     await signInWithCustomToken(auth, initialAuthToken);
                 } else {
                     await signInAnonymously(auth);
                 }
-
             } catch (error) {
                 console.error("Firebase başlatılırken bir hata oluştu:", error);
+                hideLoading();
             }
-        }
-
-        // Şifre kontrolünü yönetir
-        loginButton.addEventListener('click', () => {
-            if (passwordInput.value === ADMIN_PASSWORD) {
-                loginSection.style.display = 'none';
-                dashboardSection.style.display = 'block';
-                loginError.style.display = 'none';
-            } else {
-                loginError.style.display = 'block';
-            }
-        });
-
-        // Ürün listesini Firestore'dan dinler ve günceller
-        function setupProductListener() {
-            if (!db || !userId) {
-                return;
-            }
-            const productsCollectionRef = collection(db, `artifacts/${appId}/users/${userId}/products`);
-            onSnapshot(productsCollectionRef, (querySnapshot) => {
-                productsList.innerHTML = ''; // Listeyi temizle
-                if (querySnapshot.empty) {
-                    const noProductItem = document.createElement('li');
-                    noProductItem.textContent = "Hiç ürün bulunamadı. Lütfen bir ürün ekleyin.";
-                    noProductItem.className = "p-4 text-center text-gray-500";
-                    productsList.appendChild(noProductItem);
-                } else {
-                    querySnapshot.forEach((doc) => {
-                        const productData = doc.data();
-                        const productId = doc.id;
-                        const productName = productData.name;
-                        
-                        const productItem = document.createElement('li');
-                        productItem.classList.add('product-item');
-                        productItem.innerHTML = `
-                            <strong>${productName}</strong>
-                            <i class="fas fa-edit product-item-action"></i>
-                        `;
-                        
-                        productItem.addEventListener('click', () => {
-                            openPriceEditorModal(productId, productName, productData);
-                        });
-                        
-                        productsList.appendChild(productItem);
-                    });
-                }
-            }, (error) => {
-                console.error("Ürün listesi yüklenirken bir hata oluştu:", error);
-            });
-        }
-
-        // Fiyat düzenleme modalını açar
-        function openPriceEditorModal(productId, productName, productData) {
-            currentProductId = productId;
-            currentProductData = productData;
-            modalTitle.textContent = productName;
-            priceListContainer.innerHTML = '';
-            statusMessage.style.display = 'none';
-
-            const prices = productData.prices || {};
-            const sizes = productData.sizes || Object.keys(prices);
-
-            sizes.forEach(size => {
-                const priceItem = document.createElement('div');
-                priceItem.classList.add('price-item');
-                
-                const label = document.createElement('label');
-                label.textContent = `Boyut ${size} mm:`;
-                
-                const input = document.createElement('input');
-                input.type = 'number';
-                input.step = '0.01';
-                input.min = '0';
-                input.dataset.size = size;
-                input.value = prices[size] || '';
-                
-                priceItem.appendChild(label);
-                priceItem.appendChild(input);
-                priceListContainer.appendChild(priceItem);
-            });
-
-            priceEditorModal.style.display = 'flex';
         }
         
-        // Modal kapatma
-        closeButton.addEventListener('click', () => {
-            priceEditorModal.style.display = 'none';
-        });
-
-        window.addEventListener('click', (event) => {
-            if (event.target === priceEditorModal) {
-                priceEditorModal.style.display = 'none';
+        // Firestore'dan fiyatları yükler
+        async function loadPrices() {
+            if (!db || !userId) {
+                console.error("Veritabanı veya kullanıcı kimliği hazır değil.");
+                return;
             }
-        });
-
-        // Fiyatları kaydetme
-        saveButton.addEventListener('click', savePrices);
-
-        async function savePrices() {
-            if (!currentProductId || !db || !userId) {
-                showStatus('Lütfen önce bir ürün seçin.', 'error');
+            showLoading();
+            const productId = 'siyah-seri-manson';
+            const docRef = doc(db, `artifacts/${appId}/users/${userId}/price_updates`, productId);
+            
+            try {
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    for (const size in data) {
+                        const input = document.querySelector(`input[name="${size}"]`);
+                        if (input) {
+                            input.value = data[size];
+                        }
+                    }
+                    console.log("Fiyatlar başarıyla yüklendi.");
+                } else {
+                    console.log("Bu ürün için daha önce kaydedilmiş fiyat bilgisi bulunamadı.");
+                }
+            } catch (error) {
+                console.error("Fiyatlar yüklenirken bir hata oluştu:", error);
+                showMessage("Fiyatlar yüklenirken bir hata oluştu.", 'error');
+            } finally {
+                hideLoading();
+            }
+        }
+        
+        // Fiyatları Firestore'a kaydeder
+        async function savePrices(event) {
+            event.preventDefault();
+            
+            if (!db || !userId) {
+                showMessage("Veritabanı bağlantısı henüz hazır değil. Lütfen bekleyin.", 'error');
                 return;
             }
             
             showLoading();
-            const newPrices = {};
-            const priceInputs = priceListContainer.querySelectorAll('input[type="number"]');
-            priceInputs.forEach(input => {
-                const size = input.dataset.size;
-                const price = parseFloat(input.value);
-                if (!isNaN(price) && price >= 0) {
-                    newPrices[size] = price;
-                }
-            });
+            saveButton.disabled = true;
 
-            const docRef = doc(db, `artifacts/${appId}/users/${userId}/products`, currentProductId);
+            const productId = 'siyah-seri-manson';
+            const docRef = doc(db, `artifacts/${appId}/users/${userId}/price_updates`, productId);
+            
+            const formData = new FormData(priceForm);
+            const prices = {};
+            
+            formData.forEach((value, key) => {
+                prices[key] = parseFloat(value);
+            });
             
             try {
-                // Ürünün mevcut verilerini koruyarak sadece fiyatları günceller
-                await setDoc(docRef, { prices: newPrices }, { merge: true });
-                showStatus('Fiyatlar başarıyla kaydedildi!', 'success');
-                console.log("Fiyatlar başarıyla Firestore'a kaydedildi.");
+                await setDoc(docRef, prices);
+                console.log("Fiyatlar başarıyla kaydedildi.");
+                showMessage("Fiyatlar başarıyla kaydedildi!", 'success');
             } catch (error) {
                 console.error("Fiyatlar kaydedilirken bir hata oluştu:", error);
-                showStatus('Fiyatlar kaydedilirken bir hata oluştu.', 'error');
+                showMessage("Fiyatlar kaydedilirken bir hata oluştu.", 'error');
             } finally {
                 hideLoading();
-                setTimeout(() => {
-                    priceEditorModal.style.display = 'none';
-                }, 1500); // Modalı kısa bir süre sonra kapat
+                saveButton.disabled = false;
             }
         }
 
-        // Yeni ürün ekleme
-        addProductButton.addEventListener('click', async () => {
-            const productName = newProductNameInput.value.trim();
-            const productSizes = newProductSizesInput.value.split(',').map(s => s.trim()).filter(s => s);
-            
-            if (!productName) {
-                 // alert yerine modal kutusu kullanıldı.
-                const tempStatus = document.createElement('div');
-                tempStatus.textContent = 'Lütfen bir ürün adı girin.';
-                tempStatus.className = 'text-center text-red-500 font-bold mt-2';
-                addProductButton.parentNode.insertBefore(tempStatus, addProductButton.nextSibling);
-                setTimeout(() => tempStatus.remove(), 3000);
-                return;
-            }
-            
-            showLoading();
-            const docRef = doc(db, `artifacts/${appId}/users/${userId}/products`, productName.toLowerCase().replace(/\s/g, '-'));
-            
-            const newProductData = {
-                name: productName,
-                sizes: productSizes,
-                prices: {}
-            };
-            
-            try {
-                await setDoc(docRef, newProductData);
-                newProductNameInput.value = '';
-                newProductSizesInput.value = '';
-                
-                const tempStatus = document.createElement('div');
-                tempStatus.textContent = 'Ürün başarıyla eklendi!';
-                tempStatus.className = 'text-center text-green-500 font-bold mt-2';
-                addProductButton.parentNode.insertBefore(tempStatus, addProductButton.nextSibling);
-                setTimeout(() => tempStatus.remove(), 3000);
+        // Olay dinleyicilerini ekle
+        priceForm.addEventListener('submit', savePrices);
 
-            } catch (error) {
-                console.error("Ürün eklenirken bir hata oluştu:", error);
-                
-                const tempStatus = document.createElement('div');
-                tempStatus.textContent = 'Ürün eklenirken bir hata oluştu.';
-                tempStatus.className = 'text-center text-red-500 font-bold mt-2';
-                addProductButton.parentNode.insertBefore(tempStatus, addProductButton.nextSibling);
-                setTimeout(() => tempStatus.remove(), 3000);
-
-            } finally {
-                hideLoading();
-            }
-        });
-        
-        // Durum mesajını gösterir
-        function showStatus(message, type) {
-            statusMessage.textContent = message;
-            statusMessage.className = '';
-            statusMessage.classList.add(type);
-            statusMessage.style.display = 'block';
-        }
-        
         // Sayfa yüklendiğinde Firebase'i başlat
         window.onload = initializeFirebase;
     </script>
