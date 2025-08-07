@@ -297,6 +297,10 @@
                 box-shadow: var(--box-shadow);
                 border-top: 1px solid var(--border-color);
                 padding: 20px;
+                display: none !important; /* Masaüstünde başlangıçta gizli tut */
+            }
+            .main-menu-container.active {
+                display: flex !important;
             }
             .primary-category-column, .secondary-categories-column, .tertiary-products-column {
                 display: block;
@@ -536,12 +540,39 @@
             const allProductLists = document.querySelectorAll('.product-list');
 
             const toggleMenu = () => {
-                mainMenuContainer.classList.toggle('active');
-                if (window.innerWidth <= 768) {
-                    menuToggleMobile.classList.toggle('active');
+                const isMobile = window.innerWidth <= 768;
+                const isMenuOpen = mainMenuContainer.classList.contains('active');
+            
+                if (isMenuOpen) {
+                    mainMenuContainer.classList.remove('active');
+                    if (isMobile) {
+                        menuToggleMobile.classList.remove('active');
+                    }
+                } else {
+                    mainMenuContainer.classList.add('active');
+                    if (isMobile) {
+                        menuToggleMobile.classList.add('active');
+                    }
+                    // Menü açıldığında, kategorileri göster
+                    document.getElementById('primaryCategoryColumn').classList.add('active');
+                    document.getElementById('secondary-categories').classList.add('active');
+                    primaryCategoryItem.classList.add('active');
+                    
+                    // Masaüstünde açıldığında varsayılan olarak ilk alt kategorinin ürünlerini göster
+                    if (!isMobile) {
+                        const firstSecondaryItem = secondaryCategoryItems[0];
+                        if(firstSecondaryItem) {
+                            firstSecondaryItem.classList.add('active');
+                            const firstProductsId = firstSecondaryItem.dataset.targetProducts + '-products';
+                            const firstProducts = document.getElementById(firstProductsId);
+                            if(firstProducts) {
+                                firstProducts.classList.add('active');
+                            }
+                        }
+                    }
                 }
             };
-
+            
             const handleProductMenuClick = (item) => {
                 const targetProductsId = item.dataset.targetProducts + '-products';
                 const targetProducts = document.getElementById(targetProductsId);
@@ -550,7 +581,7 @@
                 document.querySelectorAll('[data-target-products]').forEach(el => el.classList.remove('active'));
                 allProductLists.forEach(ul => ul.classList.remove('active'));
                 document.getElementById('tertiary-products').classList.add('active');
-
+            
                 if (!isActive) {
                     item.classList.add('active');
                     if (targetProducts) {
@@ -572,37 +603,27 @@
                     e.preventDefault();
                     if (window.innerWidth > 768) {
                         toggleMenu();
-                        if (mainMenuContainer.classList.contains('active')) {
-                            // Masaüstü menü açıldığında varsayılan olarak ilk alt kategorinin ürünlerini göster
-                            const firstSecondaryItem = secondaryCategoryItems[0];
-                            if(firstSecondaryItem) {
-                                firstSecondaryItem.classList.add('active');
-                                const firstProductsId = firstSecondaryItem.dataset.targetProducts + '-products';
-                                const firstProducts = document.getElementById(firstProductsId);
-                                if(firstProducts) {
-                                    firstProducts.classList.add('active');
-                                }
-                            }
-                        }
                     }
                 });
             }
 
             // Mobil menüde "Kaplinler"e tıklayınca alt menüyü aç
-            primaryCategoryItem.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    const isActive = primaryCategoryItem.classList.contains('active');
-                    document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
-                    document.querySelectorAll('.secondary-categories-column').forEach(el => el.classList.remove('active'));
-                    document.querySelectorAll('.tertiary-products-column').forEach(el => el.classList.remove('active'));
-                    allProductLists.forEach(ul => ul.classList.remove('active'));
-                    
-                    if (!isActive) {
-                        primaryCategoryItem.classList.add('active');
-                        document.getElementById('secondary-categories').classList.add('active');
+            if (primaryCategoryItem) {
+                primaryCategoryItem.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        const isActive = primaryCategoryItem.classList.contains('active');
+                        document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
+                        document.querySelectorAll('.secondary-categories-column').forEach(el => el.classList.remove('active'));
+                        document.querySelectorAll('.tertiary-products-column').forEach(el => el.classList.remove('active'));
+                        allProductLists.forEach(ul => ul.classList.remove('active'));
+                        
+                        if (!isActive) {
+                            primaryCategoryItem.classList.add('active');
+                            document.getElementById('secondary-categories').classList.add('active');
+                        }
                     }
-                }
-            });
+                });
+            }
 
             // Alt kategori tıklamaları
             secondaryCategoryItems.forEach(item => {
@@ -623,18 +644,22 @@
                 });
             });
 
-            // Başlangıçta masaüstü menüsünü kapalı tut
-            const setDesktopMenu = () => {
-                if (window.innerWidth > 768) {
-                    mainMenuContainer.style.display = 'none';
-                    // Sadece "Ürünlerimiz" linkinin hoverında açılması için
-                } else {
-                    mainMenuContainer.style.display = 'none';
+            // Başlangıçta menüyü kapat
+            const initialSetup = () => {
+                mainMenuContainer.classList.remove('active');
+                if (window.innerWidth <= 768) {
+                    menuToggleMobile.classList.remove('active');
                 }
+                // Masaüstü menüsünün başlangıçta kapalı olması için
+                document.getElementById('primaryCategoryColumn').classList.remove('active');
+                document.getElementById('secondary-categories').classList.remove('active');
+                document.getElementById('tertiary-products').classList.remove('active');
+                document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
+                allProductLists.forEach(ul => ul.classList.remove('active'));
             };
-
-            window.addEventListener('resize', setDesktopMenu);
-            setDesktopMenu();
+            
+            window.addEventListener('resize', initialSetup);
+            initialSetup();
         });
     </script>
 </body>
