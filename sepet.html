@@ -415,10 +415,14 @@
             const totalPriceSpan = document.getElementById('total-price');
             const checkoutButton = document.querySelector('.checkout-btn');
 
+            // Sayfa her yüklendiğinde sepet verisini temizle
+            // Bu, test amaçlıdır ve bozuk veriyi temizlemek için faydalıdır.
+            // Gerçek bir uygulamada bu satırı kaldırmalısınız.
+            localStorage.removeItem('cart');
+
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
             // Eğer sepet boşsa, örnek bir ürün ekleyelim (test için)
-            // Bu kısım, resim yolu da dahil olmak üzere tüm verilerin doğru olduğundan emin olur.
             if (cart.length === 0) {
                 cart.push({
                     id: 'product-1',
@@ -426,7 +430,7 @@
                     description: 'Yüksek Kaliteli Plastik Kaplin',
                     price: 250.00,
                     quantity: 1,
-                    image: 'siyah-seri-manson.png' // Resim yolu doğru bir şekilde tanımlandı.
+                    image: 'siyah-seri-manson.png'
                 });
                 localStorage.setItem('cart', JSON.stringify(cart));
             }
