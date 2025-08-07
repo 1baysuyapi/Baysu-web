@@ -417,6 +417,19 @@
 
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+            // Eğer sepet boşsa, örnek bir ürün ekleyelim
+            if (cart.length === 0) {
+                cart.push({
+                    id: 'product-1',
+                    name: 'Siyah Seri Manson',
+                    description: 'Yüksek Kaliteli Plastik Kaplin',
+                    price: 250.00,
+                    quantity: 1,
+                    image: 'siyah-seri-manson.png' // Doğru görsel adı
+                });
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+
             function renderCart() {
                 cartList.innerHTML = '';
                 if (cart.length === 0) {
@@ -449,6 +462,7 @@
                     });
                 }
                 updateSummary();
+                attachEventListeners(); // Yeni fonksiyonu çağırıyoruz
             }
 
             function updateSummary() {
@@ -457,49 +471,58 @@
                 totalPriceSpan.textContent = subtotal.toFixed(2) + ' TL';
             }
 
-            cartList.addEventListener('click', (e) => {
-                if (e.target.classList.contains('plus')) {
-                    const id = e.target.dataset.id;
-                    const item = cart.find(i => i.id === id);
-                    if (item) {
-                        item.quantity++;
+            // Yeni olay dinleyicileri fonksiyonu
+            function attachEventListeners() {
+                document.querySelectorAll('.quantity-btn.plus').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const id = e.target.dataset.id;
+                        const item = cart.find(i => i.id === id);
+                        if (item) {
+                            item.quantity++;
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            renderCart();
+                        }
+                    });
+                });
+
+                document.querySelectorAll('.quantity-btn.minus').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const id = e.target.dataset.id;
+                        const item = cart.find(i => i.id === id);
+                        if (item && item.quantity > 1) {
+                            item.quantity--;
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            renderCart();
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('.remove-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const id = e.target.dataset.id;
+                        cart = cart.filter(item => item.id !== id);
                         localStorage.setItem('cart', JSON.stringify(cart));
                         renderCart();
-                    }
-                }
-                if (e.target.classList.contains('minus')) {
-                    const id = e.target.dataset.id;
-                    const item = cart.find(i => i.id === id);
-                    if (item && item.quantity > 1) {
-                        item.quantity--;
-                        localStorage.setItem('cart', JSON.stringify(cart));
-                        renderCart();
-                    }
-                }
-                if (e.target.classList.contains('remove-btn')) {
-                    const id = e.target.dataset.id;
-                    cart = cart.filter(item => item.id !== id);
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                    renderCart();
-                }
-            });
-            
-            cartList.addEventListener('change', (e) => {
-                if (e.target.classList.contains('quantity-input')) {
-                    const id = e.target.dataset.id;
-                    let quantity = parseInt(e.target.value);
-                    if (quantity < 1 || isNaN(quantity)) {
-                        quantity = 1;
-                        e.target.value = 1;
-                    }
-                    const item = cart.find(i => i.id === id);
-                    if (item) {
-                        item.quantity = quantity;
-                        localStorage.setItem('cart', JSON.stringify(cart));
-                        renderCart();
-                    }
-                }
-            });
+                    });
+                });
+                
+                document.querySelectorAll('.quantity-input').forEach(input => {
+                    input.addEventListener('change', (e) => {
+                        const id = e.target.dataset.id;
+                        let quantity = parseInt(e.target.value);
+                        if (quantity < 1 || isNaN(quantity)) {
+                            quantity = 1;
+                            e.target.value = 1;
+                        }
+                        const item = cart.find(i => i.id === id);
+                        if (item) {
+                            item.quantity = quantity;
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            renderCart();
+                        }
+                    });
+                });
+            }
 
             renderCart();
         });
