@@ -154,6 +154,10 @@
             margin-bottom: 5px;
         }
 
+        .price-container {
+            margin-bottom: 20px;
+        }
+
         .price {
             font-size: 2em;
             color: var(--secondary-color);
@@ -161,17 +165,9 @@
             margin-bottom: 5px;
         }
 
-        .old-price {
-            text-decoration: line-through;
-            color: #aaa;
-            font-size: 0.8em;
-            margin-left: 10px;
-        }
-
         .installment {
             color: #777;
             font-size: 0.9em;
-            margin-bottom: 20px;
         }
         
         .size-options {
@@ -195,6 +191,7 @@
             background-color: #eee;
             cursor: pointer;
             border-radius: 5px;
+            transition: background-color 0.3s;
         }
         
         .size-buttons button.selected {
@@ -334,33 +331,33 @@
                 </div>
                 
                 <div class="price-container">
-                    <span class="price">15,90 TL</span>
+                    <span class="price" id="productPrice">Lütfen boyut seçiniz.</span>
                 </div>
-                <div class="installment">*1,33 TL den başlayan taksitlerle!</div>
+                <div class="installment" id="installmentText" style="display:none;"></div>
                 
                 <div class="size-options">
                     <label>Boyut:</label>
-                    <div class="size-buttons">
-                        <button>20mm</button>
-                        <button>25mm</button>
-                        <button>32mm</button>
-                        <button>40mm</button>
-                        <button>50mm</button>
-                        <button>63mm</button>
-                        <button>75mm</button>
-                        <button>90mm</button>
-                        <button>110mm</button>
+                    <div class="size-buttons" id="sizeButtons">
+                        <button data-size="20mm" data-price="5.90">20mm</button>
+                        <button data-size="25mm" data-price="7.25">25mm</button>
+                        <button data-size="32mm" data-price="9.50">32mm</button>
+                        <button data-size="40mm" data-price="12.75">40mm</button>
+                        <button data-size="50mm" data-price="17.90">50mm</button>
+                        <button data-size="63mm" data-price="25.40">63mm</button>
+                        <button data-size="75mm" data-price="35.00">75mm</button>
+                        <button data-size="90mm" data-price="45.90">90mm</button>
+                        <button data-size="110mm" data-price="60.10">110mm</button>
                     </div>
                 </div>
                 
                 <div class="quantity-controls">
                     <div class="quantity-input">
-                        <button>-</button>
-                        <input type="text" value="1">
-                        <button>+</button>
+                        <button id="decreaseBtn">-</button>
+                        <input type="number" id="quantityInput" value="1" min="1">
+                        <button id="increaseBtn">+</button>
                     </div>
                     <div class="action-buttons">
-                        <a href="sepet.html"><button class="add-to-cart">Sepete Ekle</button></a>
+                        <button class="add-to-cart" id="addToCartBtn">Sepete Ekle</button>
                         <a href="sepet.html"><button class="buy-now">Hemen Al</button></a>
                     </div>
                 </div>
@@ -394,5 +391,89 @@
     <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCn%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum" class="whatsapp-button-fixed" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sizeButtons = document.querySelectorAll('.size-buttons button');
+            const productPriceSpan = document.getElementById('productPrice');
+            const installmentText = document.getElementById('installmentText');
+            const quantityInput = document.getElementById('quantityInput');
+            const increaseBtn = document.getElementById('increaseBtn');
+            const decreaseBtn = document.getElementById('decreaseBtn');
+            const addToCartBtn = document.getElementById('addToCartBtn');
+
+            let selectedSize = null;
+            let currentPrice = null;
+
+            function updatePrice(price) {
+                currentPrice = parseFloat(price);
+                productPriceSpan.textContent = `${currentPrice.toFixed(2).replace('.', ',')} TL`;
+                
+                const installmentPrice = (currentPrice / 12).toFixed(2);
+                installmentText.textContent = `*${installmentPrice.replace('.', ',')} TL'den başlayan taksitlerle!`;
+                installmentText.style.display = 'block';
+            }
+
+            sizeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    sizeButtons.forEach(btn => btn.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedSize = this.dataset.size;
+                    const price = this.dataset.price;
+                    updatePrice(price);
+                });
+            });
+
+            increaseBtn.addEventListener('click', () => {
+                let currentQuantity = parseInt(quantityInput.value);
+                quantityInput.value = currentQuantity + 1;
+            });
+
+            decreaseBtn.addEventListener('click', () => {
+                let currentQuantity = parseInt(quantityInput.value);
+                if (currentQuantity > 1) {
+                    quantityInput.value = currentQuantity - 1;
+                }
+            });
+
+            addToCartBtn.addEventListener('click', () => {
+                if (selectedSize && currentPrice) {
+                    const quantity = parseInt(quantityInput.value);
+                    const productName = document.querySelector('h1').textContent.split('(')[0].trim();
+                    const product = {
+                        name: productName,
+                        size: selectedSize,
+                        price: currentPrice,
+                        quantity: quantity
+                    };
+                    
+                    // Sepete ekleme işlemi
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    
+                    // Aynı ürünü (aynı boyut) bul ve adetini artır
+                    const existingProductIndex = cart.findIndex(item => item.name === product.name && item.size === product.size);
+                    if (existingProductIndex > -1) {
+                        cart[existingProductIndex].quantity += quantity;
+                    } else {
+                        cart.push(product);
+                    }
+
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    
+                    alert(`${product.size} boyutunda ${quantity} adet ${product.name} sepete eklendi!`);
+                    
+                    // İsteğe bağlı olarak sepet sayfasına yönlendirme
+                    // window.location.href = 'sepet.html';
+
+                } else {
+                    alert('Lütfen önce bir boyut seçiniz.');
+                }
+            });
+
+            // Başlangıçta fiyatı ve taksit yazısını gizle
+            productPriceSpan.textContent = 'Lütfen boyut seçiniz.';
+            installmentText.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
