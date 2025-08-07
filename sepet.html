@@ -176,9 +176,11 @@
         .arrow-icon {
             font-size: 0.8rem;
             color: var(--light-text-color);
+            transition: transform 0.3s;
         }
         .primary-category-item.active .arrow-icon, .secondary-category-item.active .arrow-icon {
             color: white;
+            transform: rotate(90deg);
         }
         .product-list {
             list-style: none;
@@ -496,7 +498,7 @@
                             <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
                         </div>
                     </div>
-                    <div class="secondary-categories-column" id="kaplin-sub-menu">
+                    <div class="secondary-categories-column" id="kaplin-sub-menu" style="display: none;">
                         <div class="secondary-category-item" data-target-products="mavi-seri">
                             <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
                         </div>
@@ -743,7 +745,7 @@
             // ÜRÜNLERİMİZ MENÜSÜ İÇİN EK KODLAR
             const menuToggle = document.getElementById('menuToggle');
             const mainMenuContainer = document.getElementById('mainMenuContainer');
-            const primaryCategoryColumn = document.getElementById('primaryCategoryColumn');
+            const primaryCategoryItems = document.querySelectorAll('.primary-category-item');
             const secondaryCategoriesColumns = document.querySelectorAll('.secondary-categories-column');
             const tertiaryProductsColumn = document.getElementById('tertiaryProductsColumn');
             const allProductLists = document.querySelectorAll('.product-list');
@@ -752,36 +754,58 @@
                 mainMenuContainer.classList.toggle('active');
                 menuToggle.classList.toggle('active');
             });
-
-            document.querySelectorAll('.primary-category-item').forEach(item => {
+            
+            primaryCategoryItems.forEach(item => {
                 item.addEventListener('click', () => {
-                    document.querySelectorAll('.primary-category-item').forEach(el => el.classList.remove('active'));
-                    item.classList.add('active');
-                    
-                    secondaryCategoriesColumns.forEach(el => el.classList.remove('active'));
-                    tertiaryProductsColumn.classList.remove('active');
-                    allProductLists.forEach(ul => ul.style.display = 'none');
-
                     const targetMenuId = item.dataset.targetMenu;
                     const targetMenu = document.getElementById(targetMenuId);
-                    if (targetMenu) {
-                        targetMenu.classList.add('active');
+
+                    // Eğer tıklanan zaten aktifse, kapat
+                    if (item.classList.contains('active')) {
+                        item.classList.remove('active');
+                        targetMenu.style.display = 'none';
+                        tertiaryProductsColumn.classList.remove('active');
+                        allProductLists.forEach(ul => ul.style.display = 'none');
+                    } else {
+                        // Diğerlerini kapat
+                        primaryCategoryItems.forEach(el => el.classList.remove('active'));
+                        secondaryCategoriesColumns.forEach(el => el.style.display = 'none');
+                        tertiaryProductsColumn.classList.remove('active');
+                        allProductLists.forEach(ul => ul.style.display = 'none');
+
+                        // Kendini aç
+                        item.classList.add('active');
+                        if (targetMenu) {
+                            targetMenu.style.display = 'block';
+                            targetMenu.classList.add('active');
+                        }
                     }
                 });
             });
 
             document.querySelectorAll('.secondary-category-item').forEach(item => {
                 item.addEventListener('click', () => {
-                    document.querySelectorAll('.secondary-category-item').forEach(el => el.classList.remove('active'));
-                    item.classList.add('active');
-
-                    allProductLists.forEach(ul => ul.style.display = 'none');
-                    
-                    const targetProductsId = item.dataset.target-products + '-products';
+                    const targetProductsId = item.dataset.targetProducts + '-products';
                     const targetProducts = document.getElementById(targetProductsId);
-                    if (targetProducts) {
-                         targetProducts.style.display = 'block';
-                         tertiaryProductsColumn.classList.add('active');
+
+                    // Eğer tıklanan zaten aktifse, kapat
+                    if (item.classList.contains('active')) {
+                        item.classList.remove('active');
+                        if (targetProducts) {
+                            targetProducts.style.display = 'none';
+                        }
+                        tertiaryProductsColumn.classList.remove('active');
+                    } else {
+                        // Diğerlerini kapat
+                        document.querySelectorAll('.secondary-category-item').forEach(el => el.classList.remove('active'));
+                        allProductLists.forEach(ul => ul.style.display = 'none');
+
+                        // Kendini ve ürünleri aç
+                        item.classList.add('active');
+                        if (targetProducts) {
+                             targetProducts.style.display = 'block';
+                             tertiaryProductsColumn.classList.add('active');
+                        }
                     }
                 });
             });
