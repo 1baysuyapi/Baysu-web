@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baysu Yapı - Fiyat Değiştirme Paneli</title>
+    <title>Baysu Yapı - Yönetim Paneli</title>
     <!-- Tailwind CSS'i CDN üzerinden dahil etme -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Tailwind CSS'e özel renklerin ve fontun tanımlanması -->
@@ -30,6 +30,18 @@
         .btn-primary:hover {
             background-color: #003673;
         }
+        .btn-secondary {
+            background-color: #f3f4f6;
+            color: #4b5563;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-secondary:hover {
+            background-color: #e5e7eb;
+        }
         .input-text {
             width: 100%;
             padding: 10px;
@@ -53,54 +65,89 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col justify-center items-center p-4">
+<body class="bg-gray-100 min-h-screen flex">
 
-    <!-- Ana Konteyner -->
-    <div class="bg-white p-8 md:p-12 rounded-xl shadow-lg w-full max-w-2xl">
-        <h1 class="text-3xl md:text-4xl font-bold text-primary mb-6 text-center">
-            Siyah Seri Manşon Fiyat Paneli
-        </h1>
-        <p class="text-center text-gray-600 mb-8">
-            Bu panelden ürün boyutlarına ait fiyatları güncelleyebilirsiniz.
-        </p>
-
-        <!-- Fiyat Formu -->
-        <form id="priceForm" class="space-y-6">
-            <!-- Boyut 1 -->
-            <div>
-                <label for="size_20x16" class="block font-semibold text-gray-700 mb-2">20x16 Fiyat (TL)</label>
-                <input type="number" id="size_20x16" name="20x16" placeholder="Örn: 25.50" step="0.01" class="input-text">
-            </div>
-
-            <!-- Boyut 2 -->
-            <div>
-                <label for="size_25x20" class="block font-semibold text-gray-700 mb-2">25x20 Fiyat (TL)</label>
-                <input type="number" id="size_25x20" name="25x20" placeholder="Örn: 30.00" step="0.01" class="input-text">
-            </div>
-
-            <!-- Boyut 3 -->
-            <div>
-                <label for="size_32x25" class="block font-semibold text-gray-700 mb-2">32x25 Fiyat (TL)</label>
-                <input type="number" id="size_32x25" name="32x25" placeholder="Örn: 45.75" step="0.01" class="input-text">
-            </div>
-
-            <!-- Boyut 4 -->
-            <div>
-                <label for="size_40x32" class="block font-semibold text-gray-700 mb-2">40x32 Fiyat (TL)</label>
-                <input type="number" id="size_40x32" name="40x32" placeholder="Örn: 60.25" step="0.01" class="input-text">
-            </div>
-
-            <!-- Kaydet Butonu -->
-            <button type="submit" id="saveButton" class="w-full btn-primary mt-8">
-                Fiyatları Kaydet
-            </button>
-        </form>
-        
-        <!-- User ID Bilgisi -->
-        <div class="mt-8 text-center text-gray-500 text-sm">
-            Kullanıcı ID: <span id="userIdDisplay" class="font-mono text-xs text-gray-600 break-all">Yükleniyor...</span>
+    <!-- Sol Kenar Çubuğu (Sidebar) -->
+    <aside class="w-64 bg-white shadow-xl h-screen sticky top-0 flex flex-col p-4 transition-all duration-300 ease-in-out">
+        <div class="flex items-center justify-center mb-6">
+            <img src="https://placehold.co/200x50/004797/FFFFFF?text=PANEL+LOGO" alt="Dashboard Logo" class="max-w-[200px]">
         </div>
-    </div>
+        <nav class="flex-1 space-y-2">
+            <a href="#" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg transition-colors font-medium">
+                <i class="fas fa-home w-5 mr-3"></i> Anasayfa
+            </a>
+            <a href="#" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg transition-colors font-medium">
+                <i class="fas fa-box w-5 mr-3"></i> Ürünler
+            </a>
+            <a href="#" class="flex items-center p-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors font-medium">
+                <i class="fas fa-edit w-5 mr-3"></i> Fiyat Değiştirme
+            </a>
+            <a href="#" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg transition-colors font-medium">
+                <i class="fas fa-shopping-cart w-5 mr-3"></i> Siparişler
+            </a>
+            <a href="#" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg transition-colors font-medium">
+                <i class="fas fa-users w-5 mr-3"></i> Kullanıcılar
+            </a>
+            <a href="#" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg transition-colors font-medium">
+                <i class="fas fa-cog w-5 mr-3"></i> Ayarlar
+            </a>
+        </nav>
+        <div class="mt-auto p-3 border-t border-gray-200 text-sm text-gray-500">
+             Kullanıcı ID: <span id="userIdDisplay" class="font-mono text-xs text-gray-600 break-all">Yükleniyor...</span>
+        </div>
+    </aside>
+
+    <!-- Ana İçerik Alanı -->
+    <main class="flex-1 p-4 md:p-8 overflow-y-auto">
+        <h1 class="text-3xl md:text-4xl font-bold text-primary mb-8">Yönetim Paneli</h1>
+        
+        <!-- Kart Alanı -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Fiyat Değiştirme Kartı (Kullanıcının çizdiği "FİYAT DEG" kartı) -->
+            <div class="bg-white p-6 rounded-xl shadow-lg w-full">
+                <h2 class="text-2xl font-bold text-primary mb-4">
+                    Siyah Seri Manşon Fiyatları
+                </h2>
+                <p class="text-gray-600 mb-4">
+                    Ürün boyutlarına ait fiyatları güncelleyebilirsiniz.
+                </p>
+                <form id="priceForm" class="space-y-4">
+                    <!-- Dinamik Olarak Oluşturulacak Giriş Alanları -->
+                    <div id="dynamicInputs" class="space-y-4">
+                        <p class="text-center text-gray-400">Fiyat bilgileri yükleniyor...</p>
+                    </div>
+                    
+                    <!-- Yeni Giriş Ekle Butonu -->
+                    <div class="flex justify-end mt-4">
+                        <button type="button" id="addInputButton" class="btn-secondary flex items-center gap-2 text-sm px-3 py-2">
+                            <i class="fas fa-plus"></i> Yeni Boyut Ekle
+                        </button>
+                    </div>
+
+                    <!-- Kaydet Butonu -->
+                    <button type="submit" id="saveButton" class="w-full btn-primary mt-6">
+                        Fiyatları Kaydet
+                    </button>
+                </form>
+            </div>
+
+            <!-- Diğer Kartlar (Çizime uygun olarak eklenen boş kartlar) -->
+            <div class="bg-white p-6 rounded-xl shadow-lg flex items-center justify-center">
+                <div class="text-center text-gray-400">Boş Kart 1</div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg flex items-center justify-center">
+                <div class="text-center text-gray-400">Boş Kart 2</div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg flex items-center justify-center col-span-1 sm:col-span-2">
+                <div class="text-center text-gray-400">Boş Kart 3</div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg flex items-center justify-center">
+                <div class="text-center text-gray-400">Boş Kart 4</div>
+            </div>
+
+        </div>
+    </main>
     
     <!-- Yükleme Göstergesi -->
     <div id="loading-overlay" class="fixed inset-0 bg-white bg-opacity-80 flex items-center justify-center z-40 hidden">
@@ -130,6 +177,8 @@
         const loadingOverlay = document.getElementById('loading-overlay');
         const messageBox = document.getElementById('message-box');
         const userIdDisplay = document.getElementById('userIdDisplay');
+        const dynamicInputsContainer = document.getElementById('dynamicInputs');
+        const addInputButton = document.getElementById('addInputButton');
 
         // Yükleme ekranını gösterir
         function showLoading() {
@@ -162,6 +211,22 @@
                     messageBox.classList.add('hidden');
                 }, 500);
             }, 3000);
+        }
+
+        // Yeni bir fiyat giriş alanı çifti oluşturur
+        function createPriceInput(size = '', price = '') {
+            const container = document.createElement('div');
+            container.className = "flex flex-col sm:flex-row items-center gap-2";
+            container.innerHTML = `
+                <input type="text" name="size" placeholder="Boyut (Örn: 20x16)" value="${size}" class="input-text w-full sm:w-1/3">
+                <input type="number" name="price" placeholder="Fiyat (TL)" step="0.01" value="${price}" class="input-text w-full sm:w-1/2 mt-2 sm:mt-0">
+                <button type="button" class="remove-btn bg-red-500 text-white p-2 rounded-md hover:bg-red-600 transition-colors mt-2 sm:mt-0"><i class="fas fa-trash"></i></button>
+            `;
+            const removeButton = container.querySelector('.remove-btn');
+            removeButton.addEventListener('click', () => {
+                container.remove();
+            });
+            return container;
         }
 
         // Firebase'i başlatın ve kimlik doğrulamasını yapın
@@ -204,7 +269,7 @@
             }
         }
         
-        // Firestore'dan fiyatları yükler
+        // Firestore'dan fiyatları yükler ve dinamik olarak giriş alanları oluşturur
         async function loadPrices() {
             if (!db || !userId) {
                 console.error("Veritabanı veya kullanıcı kimliği hazır değil.");
@@ -216,17 +281,17 @@
             
             try {
                 const docSnap = await getDoc(docRef);
+                dynamicInputsContainer.innerHTML = '';
                 if (docSnap.exists()) {
                     const data = docSnap.data();
                     for (const size in data) {
-                        const input = document.querySelector(`input[name="${size}"]`);
-                        if (input) {
-                            input.value = data[size];
-                        }
+                        const inputPair = createPriceInput(size, data[size]);
+                        dynamicInputsContainer.appendChild(inputPair);
                     }
                     console.log("Fiyatlar başarıyla yüklendi.");
                 } else {
-                    console.log("Bu ürün için daha önce kaydedilmiş fiyat bilgisi bulunamadı.");
+                    console.log("Bu ürün için daha önce kaydedilmiş fiyat bilgisi bulunamadı. Boş giriş alanları oluşturuluyor.");
+                    dynamicInputsContainer.appendChild(createPriceInput());
                 }
             } catch (error) {
                 console.error("Fiyatlar yüklenirken bir hata oluştu:", error);
@@ -251,13 +316,33 @@
             const productId = 'siyah-seri-manson';
             const docRef = doc(db, `artifacts/${appId}/users/${userId}/price_updates`, productId);
             
-            const formData = new FormData(priceForm);
             const prices = {};
-            
-            formData.forEach((value, key) => {
-                prices[key] = parseFloat(value);
+            const inputPairs = dynamicInputsContainer.querySelectorAll('div');
+            let hasError = false;
+
+            inputPairs.forEach(pair => {
+                const sizeInput = pair.querySelector('input[name="size"]');
+                const priceInput = pair.querySelector('input[name="price"]');
+                
+                if (sizeInput && priceInput) {
+                    const size = sizeInput.value.trim();
+                    const price = parseFloat(priceInput.value);
+
+                    if (size === '' || isNaN(price)) {
+                        hasError = true;
+                    } else {
+                        prices[size] = price;
+                    }
+                }
             });
             
+            if (hasError) {
+                showMessage("Lütfen tüm boyut ve fiyat alanlarını doğru bir şekilde doldurun.", 'error');
+                hideLoading();
+                saveButton.disabled = false;
+                return;
+            }
+
             try {
                 await setDoc(docRef, prices);
                 console.log("Fiyatlar başarıyla kaydedildi.");
@@ -272,6 +357,9 @@
         }
 
         // Olay dinleyicilerini ekle
+        addInputButton.addEventListener('click', () => {
+            dynamicInputsContainer.appendChild(createPriceInput());
+        });
         priceForm.addEventListener('submit', savePrices);
 
         // Sayfa yüklendiğinde Firebase'i başlat
