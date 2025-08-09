@@ -2,14 +2,17 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BAYSU YAPI VE SULAMA MALZEMELERİ</title>
+    <!-- Font Awesome CDN'sinde integrity attribute düzeltildi -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts - Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    
     <style>
-        /* Renkler ve Font */
+        /* Renkler ve Fontlar için CSS Değişkenleri */
         :root {
             --primary-color: #004797;
             --secondary-color: #FF6B6B;
@@ -22,6 +25,7 @@
             --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
+        /* Temel Stil Ayarları */
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -29,8 +33,12 @@
             background-color: var(--background-color);
             color: var(--text-color);
         }
+        
+        a {
+            text-decoration: none;
+        }
 
-        /* Başlık ve Navigasyon */
+        /* Başlık ve Navigasyon Bölümü */
         .header-main {
             display: flex;
             flex-direction: column;
@@ -39,37 +47,53 @@
             padding: 20px;
             border-bottom: 1px solid var(--border-color);
         }
+
         .logo {
             width: 200px;
             margin-bottom: 15px;
+            /* Logo görseli için geçici bir placeholder eklendi */
+            content: url('https://placehold.co/200x60/004797/ffffff?text=BAYSU+LOGO');
         }
+
         .search-and-actions {
             display: flex;
             align-items: center;
-            justify-content: center; /* Arama çubuğunu ortalamak için düzenlendi */
+            justify-content: center;
             width: 100%;
             max-width: 900px;
         }
+
         .search-bar {
             position: relative;
             flex-grow: 1;
-            max-width: 500px; /* Arama çubuğu genişliği sınırlandı */
+            max-width: 500px;
         }
+
         .search-bar input {
             width: 100%;
             padding: 12px 15px 12px 45px;
             border: 1px solid var(--border-color);
             border-radius: 50px;
             font-size: 14px;
+            transition: all 0.3s ease;
         }
+        
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(0, 71, 151, 0.2);
+        }
+
         .search-bar .fas {
             position: absolute;
             left: 20px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--light-text-color);
+            pointer-events: none;
         }
-
+        
+        /* Navigasyon Çubuğu */
         .nav-bar {
             background-color: var(--primary-color);
             padding: 15px 20px;
@@ -78,43 +102,49 @@
             top: 0;
             z-index: 1000;
         }
+
         .nav-content {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 40px;
             max-width: 1200px;
             margin: 0 auto;
         }
+        
         .nav-links {
-            display: flex;
+            display: none; /* Mobil için varsayılan olarak gizli */
             gap: 20px;
         }
+
         .nav-links a {
             color: #fff;
-            text-decoration: none;
             font-weight: 600;
             font-size: 16px;
             padding: 10px;
             transition: color 0.3s;
+            position: relative;
         }
+
         .nav-links a:hover {
             color: var(--secondary-color);
         }
+        
+        /* Menü Toggle Butonu */
         .menu-toggle {
-            display: none;
+            display: block; /* Mobil için varsayılan olarak görünür */
             color: #fff;
             font-weight: 600;
             font-size: 16px;
             cursor: pointer;
-            position: relative;
-            z-index: 11;
+            padding: 10px;
             transition: color 0.3s;
         }
+
         .menu-toggle.active {
             color: var(--secondary-color);
         }
 
+        /* Dropdown Menü İçeriği */
         .main-menu-container {
             display: none;
             position: absolute;
@@ -125,94 +155,108 @@
             box-shadow: var(--box-shadow);
             border-top: 1px solid var(--border-color);
             z-index: 9;
-            flex-wrap: wrap;
             padding: 20px;
         }
+
         .main-menu-container.active {
             display: flex;
         }
+        
         .menu-content {
             display: flex;
             width: 100%;
         }
-        
+
         .menu-column {
             flex: 1;
             padding: 15px;
             display: none;
-            max-height: 50vh; /* Menü yüksekliğini sınırlıyoruz */
-            overflow-y: auto; /* Kaydırma çubuğunu ekliyoruz */
+            max-height: 50vh;
+            overflow-y: auto;
+            border-left: 1px solid var(--border-color);
+            animation: fadeIn 0.3s ease;
         }
+        
+        /* İlk sütundaki sol kenarlığı kaldırma */
+        .menu-column:first-child {
+            border-left: none;
+        }
+
         .menu-column.active {
             display: block;
         }
-        
+
         .category-item {
             cursor: pointer;
             padding: 10px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, color 0.3s;
             border-radius: 8px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+        
         .category-item h3 {
             margin: 0;
             font-size: 1rem;
             color: var(--text-color);
             font-weight: 600;
+            transition: color 0.3s;
         }
+
         .category-item:hover {
             background-color: var(--background-color);
         }
+
         .category-item.active {
             background-color: var(--primary-color);
         }
-        .category-item.active h3 {
+        
+        .category-item.active h3, .category-item.active .arrow-icon {
             color: white;
         }
+
         .arrow-icon {
             font-size: 0.8rem;
             color: var(--light-text-color);
             transition: transform 0.3s;
         }
+
         .category-item.active .arrow-icon {
-            color: white;
             transform: rotate(90deg);
         }
+        
         .product-list {
             list-style: none;
             padding: 0;
             margin: 0;
             display: none;
         }
+
         .product-list.active {
             display: block;
         }
-        .product-list li {
-            margin-bottom: 5px;
-        }
+
         .product-list a {
             color: var(--text-color);
-            text-decoration: none;
             display: block;
             padding: 8px 10px;
             border-radius: 6px;
             transition: background-color 0.2s;
         }
+
         .product-list a:hover {
             background-color: var(--background-color);
         }
-        .desktop-only { display: block; }
-        .mobile-only { display: none; }
 
-        /* Anasayfa Boş Alan ve Hakkımızda/İletişim */
+        /* Ana Sayfa İçeriği */
         .page-content {
             padding: 20px;
             max-width: 1200px;
             margin: 20px auto;
             text-align: center;
         }
+
         .hero-section {
             display: flex;
             justify-content: center;
@@ -220,7 +264,9 @@
             height: 50vh;
             color: var(--light-text-color);
             font-size: 1.5rem;
+            text-align: center;
         }
+
         .about-section, .contact-section {
             background: var(--card-background);
             border-radius: var(--border-radius);
@@ -229,12 +275,14 @@
             margin-bottom: 40px;
             text-align: left;
         }
+
         .about-section h2, .contact-section h2 {
             font-size: 2rem;
             color: var(--primary-color);
             margin-bottom: 20px;
             text-align: center;
         }
+
         .about-section p, .contact-section p {
             line-height: 1.6;
             margin-bottom: 15px;
@@ -249,6 +297,8 @@
             font-size: 14px;
             text-align: center;
         }
+        
+        /* WhatsApp Butonu */
         .whatsapp-button {
             position: fixed;
             bottom: 30px;
@@ -264,104 +314,128 @@
             align-items: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease-in-out;
-            text-decoration: none;
             font-size: 35px;
         }
+        
         .whatsapp-button:hover {
             transform: scale(1.1);
         }
+        
+        /* Animasyonlar */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
 
         /* Responsive Tasarım */
+        /* Masaüstü için */
         @media (min-width: 769px) {
-            .nav-content {
-                justify-content: space-between;
-            }
             .nav-links {
                 display: flex;
             }
+            
             .menu-toggle {
                 display: none;
             }
-            .search-and-actions {
-              justify-content: center;
+            
+            .nav-content {
+                justify-content: space-between;
             }
+            
+            /* Ürünler linkine hover efekti için */
+            #menuToggleDesktop {
+                cursor: pointer;
+            }
+
             .main-menu-container {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                box-shadow: var(--box-shadow);
-                border-top: 1px solid var(--border-color);
+                display: none;
+                flex-direction: row;
+                justify-content: center;
+                gap: 20px;
                 padding: 20px;
-                display: none !important;
+                animation: fadeIn 0.3s ease-in-out;
             }
+
             .main-menu-container.active {
-                display: flex !important;
+                display: flex;
             }
+
+            .menu-content {
+                display: flex;
+                width: 100%;
+                max-width: 1200px;
+                gap: 20px;
+            }
+            
             .menu-column {
                 display: none;
+                flex-basis: 30%;
+                border: none;
+                border-right: 1px solid var(--border-color);
+                max-height: 60vh;
             }
-            .menu-column.active {
+
+            .menu-column:last-child {
+                border-right: none;
+            }
+
+            #primaryCategoryColumn.active,
+            #secondary-categories-all.active,
+            #tertiary-products.active {
                 display: block;
             }
+            
             .category-item.active {
                 background-color: var(--primary-color);
             }
-            .category-item.active h3 {
-                color: white;
-            }
-            .category-item.active .arrow-icon {
-                color: white;
-                transform: rotate(90deg);
-            }
-            .main-menu-container .menu-content {
-                display: flex;
-                width: 100%;
-            }
-            #primaryCategoryColumn.active {
-                display: block;
-                width: 30%;
-            }
-            #secondary-categories-all.active {
-                display: block;
-                width: 30%;
-            }
-            #tertiary-products.active {
-                display: block;
-                width: 40%;
-            }
         }
-
+        
+        /* Mobil için */
         @media (max-width: 768px) {
             .logo {
                 width: 150px;
             }
+            
             .search-bar input {
                 padding: 10px 15px 10px 40px;
             }
-            .nav-links {
-                display: none;
+            
+            .nav-content {
+                justify-content: flex-end;
             }
+            
             .menu-toggle {
-                display: block;
                 flex-grow: 1;
                 text-align: center;
-                padding: 10px;
             }
-            .search-and-actions {
-                width: 100%;
-                justify-content: center;
-            }
+            
             .main-menu-container {
                 flex-direction: column;
                 align-items: stretch;
+                padding: 10px;
             }
+            
             .menu-content {
                 flex-direction: column;
             }
+            
             .menu-column {
-                display: block;
+                padding: 10px;
                 width: 100%;
+                max-height: none;
+                border-left: none;
+            }
+            
+            .category-item.active .arrow-icon {
+                transform: rotate(90deg);
+            }
+            
+            .category-item h3 {
+                font-size: 0.9rem;
+            }
+            
+            .product-list a {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -369,7 +443,8 @@
 <body>
 
     <header class="header-main">
-        <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="BAYSU LOGO" class="logo">
+        <!-- Logo URL'si düzeltildi ve placeholder kullanıldı -->
+        <img src="https://placehold.co/200x60/004797/ffffff?text=BAYSU+LOGO" alt="BAYSU LOGO" class="logo">
         <div class="search-and-actions">
             <div class="search-bar">
                 <input type="search" placeholder="Ürün Ara..." id="searchInput">
@@ -386,8 +461,12 @@
                 <a href="#about-section">Hakkımızda</a>
                 <a href="#contact-section">İletişim</a>
             </div>
-            <div class="menu-toggle" id="menuToggle">Ürünlerimiz +</div>
+            <div class="menu-toggle" id="menuToggle">
+                <span id="menuText">Ürünlerimiz</span>
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
+        <!-- Menü içeriği, JavaScript ile kontrol edilecek -->
         <div class="main-menu-container" id="mainMenuContainer">
             <div class="menu-content">
                 
@@ -398,6 +477,7 @@
                 </div>
 
                 <div class="menu-column" id="secondary-categories-all">
+                    <!-- Bu sütundaki kategoriler, tıklama ile ilgili ürünleri gösterecek -->
                     <div class="category-item" data-target-products="mavi-seri">
                         <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
@@ -431,6 +511,7 @@
                 </div>
                 
                 <div class="menu-column" id="tertiary-products">
+                    <!-- Ürün listeleri data-target-products ile eşleşecek -->
                     <ul class="product-list" id="mavi-seri-products">
                         <li><a href="mavi-disi-kaplin.html">Mavi Seri Dişi Kaplin</a></li>
                         <li><a href="mavi-erkek-kaplin.html">Mavi Seri Erkek Kaplin</a></li>
@@ -543,110 +624,114 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const mainMenuContainer = document.getElementById('mainMenuContainer');
             const menuToggleMobile = document.getElementById('menuToggle');
             const menuToggleDesktop = document.getElementById('menuToggleDesktop');
-            const mainMenuContainer = document.getElementById('mainMenuContainer');
-            
             const primaryCategoryColumn = document.getElementById('primaryCategoryColumn');
             const secondaryCategoryColumn = document.getElementById('secondary-categories-all');
             const tertiaryProductsColumn = document.getElementById('tertiary-products');
 
-            const primaryCategoryItem = primaryCategoryColumn.querySelector('.category-item');
-            const secondaryCategoryItems = secondaryCategoryColumn.querySelectorAll('.category-item');
+            const allCategoryItems = document.querySelectorAll('.category-item');
             const allProductLists = tertiaryProductsColumn.querySelectorAll('.product-list');
 
             const isDesktop = () => window.innerWidth > 768;
 
+            // Menü durumunu sıfırlayan yardımcı fonksiyon
             const resetMenu = () => {
-                secondaryCategoryColumn.classList.remove('active');
-                tertiaryProductsColumn.classList.remove('active');
-                document.querySelectorAll('.category-item').forEach(item => item.classList.remove('active'));
+                allCategoryItems.forEach(item => item.classList.remove('active'));
                 allProductLists.forEach(list => list.classList.remove('active'));
+                
+                // Masaüstü için tüm sütunları gizle, mobil için aktif et
+                if (isDesktop()) {
+                    secondaryCategoryColumn.classList.remove('active');
+                    tertiaryProductsColumn.classList.remove('active');
+                } else {
+                    secondaryCategoryColumn.classList.remove('active');
+                    tertiaryProductsColumn.classList.remove('active');
+                }
             };
 
+            // Menü ana toggler fonksiyonu
             const toggleMainMenu = () => {
                 const isActive = mainMenuContainer.classList.toggle('active');
                 if (isActive) {
-                    primaryCategoryColumn.classList.add('active');
-                    if (menuToggleMobile) {
-                        menuToggleMobile.classList.add('active');
+                    if (isDesktop()) {
+                        // Masaüstü için varsayılan olarak ilk sütunu göster
+                        primaryCategoryColumn.classList.add('active');
+                        secondaryCategoryColumn.classList.add('active');
+                    } else {
+                        // Mobil için ilk sütunu göster, diğerlerini gizle
+                        primaryCategoryColumn.classList.add('active');
+                        resetMenu();
                     }
                 } else {
-                    primaryCategoryColumn.classList.remove('active');
-                    if (menuToggleMobile) {
-                        menuToggleMobile.classList.remove('active');
-                    }
-                    resetMenu();
-                }
-            };
-            
-            const handlePrimaryClick = () => {
-                const isSecondaryActive = secondaryCategoryColumn.classList.toggle('active');
-                
-                if (isSecondaryActive) {
-                    primaryCategoryItem.classList.add('active');
-                    // Diğer alt menüleri ve ürünleri sıfırla
-                    secondaryCategoryItems.forEach(el => el.classList.remove('active'));
-                    allProductLists.forEach(list => list.classList.remove('active'));
-                    tertiaryProductsColumn.classList.remove('active');
-                } else {
-                    primaryCategoryItem.classList.remove('active');
+                    // Menü kapanırken tüm alt menüleri sıfırla
                     resetMenu();
                 }
             };
 
-            const handleSecondaryClick = (item) => {
-                const targetProductsId = item.dataset.targetProducts + '-products';
-                const targetProductsList = document.getElementById(targetProductsId);
-                
-                const isActive = item.classList.contains('active');
-
-                // Önce diğer alt menü ve ürünleri sıfırla
-                secondaryCategoryItems.forEach(el => el.classList.remove('active'));
-                allProductLists.forEach(list => list.classList.remove('active'));
-                tertiaryProductsColumn.classList.remove('active');
-                
-                if (!isActive) {
-                    item.classList.add('active');
-                    tertiaryProductsColumn.classList.add('active');
-                    if (targetProductsList) {
-                        targetProductsList.classList.add('active');
-                    }
-                }
-            };
-
-            if (menuToggleMobile) {
-                menuToggleMobile.addEventListener('click', toggleMainMenu);
-            }
+            // Masaüstü menü için tıklama olayı
             if (menuToggleDesktop) {
                 menuToggleDesktop.addEventListener('click', (e) => {
                     e.preventDefault();
                     toggleMainMenu();
                 });
             }
-            if (primaryCategoryItem) {
-                primaryCategoryItem.addEventListener('click', handlePrimaryClick);
+
+            // Mobil menü için tıklama olayı
+            if (menuToggleMobile) {
+                menuToggleMobile.addEventListener('click', () => {
+                    toggleMainMenu();
+                });
             }
-            secondaryCategoryItems.forEach(item => {
-                item.addEventListener('click', () => handleSecondaryClick(item));
+
+            // Kategori öğelerine tıklama olaylarını ekle
+            allCategoryItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const parentColumn = item.closest('.menu-column');
+                    const targetProductsId = item.dataset.targetProducts;
+                    
+                    if (isDesktop()) {
+                        // Masaüstü için
+                        // Tüm kategorilerin aktif durumunu kaldır
+                        parentColumn.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
+                        item.classList.add('active');
+                        
+                        // İlgili ürün listesini göster, diğerlerini gizle
+                        allProductLists.forEach(list => list.classList.remove('active'));
+                        if (targetProductsId) {
+                            const targetList = document.getElementById(targetProductsId + '-products');
+                            if (targetList) {
+                                targetList.classList.add('active');
+                                tertiaryProductsColumn.classList.add('active');
+                            }
+                        }
+                    } else {
+                        // Mobil için (Accordion benzeri)
+                        const isActive = item.classList.toggle('active');
+                        const targetList = document.getElementById(targetProductsId + '-products');
+                        if (targetList) {
+                            targetList.classList.toggle('active');
+                        }
+                    }
+                });
             });
 
+            // Sayfa dışına tıklanıldığında menüyü kapat
             window.addEventListener('click', (e) => {
                 if (!mainMenuContainer.contains(e.target) && !e.target.closest('.nav-bar')) {
-                    mainMenuContainer.classList.remove('active');
-                    if (menuToggleMobile) {
-                        menuToggleMobile.classList.remove('active');
+                    if (mainMenuContainer.classList.contains('active')) {
+                         mainMenuContainer.classList.remove('active');
+                         resetMenu();
                     }
-                    resetMenu();
                 }
             });
 
+            // Ekran boyutu değiştiğinde menüyü sıfırla
             window.addEventListener('resize', () => {
-                mainMenuContainer.classList.remove('active');
-                if (menuToggleMobile) {
-                    menuToggleMobile.classList.remove('active');
-                }
-                resetMenu();
+                 mainMenuContainer.classList.remove('active');
+                 resetMenu();
             });
 
             // Sayfa yüklendiğinde menüyü sıfırla
