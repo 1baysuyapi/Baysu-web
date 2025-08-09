@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>BAYSU YAPI VE SULAMA MALZEMELERİ</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -46,14 +46,14 @@
         .search-and-actions {
             display: flex;
             align-items: center;
+            justify-content: center; /* Arama çubuğunu ortalamak için düzenlendi */
             width: 100%;
             max-width: 900px;
-            justify-content: space-between;
         }
         .search-bar {
             position: relative;
             flex-grow: 1;
-            margin-right: 20px;
+            max-width: 500px; /* Arama çubuğu genişliği sınırlandı */
         }
         .search-bar input {
             width: 100%;
@@ -69,20 +69,7 @@
             transform: translateY(-50%);
             color: var(--light-text-color);
         }
-        .header-actions {
-            display: flex;
-            gap: 20px;
-        }
-        .header-actions a {
-            text-decoration: none;
-            color: var(--primary-color);
-            font-weight: 600;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-        .header-actions a:hover {
-            color: var(--secondary-color);
-        }
+
         .nav-bar {
             background-color: var(--primary-color);
             padding: 15px 20px;
@@ -295,6 +282,9 @@
             .menu-toggle {
                 display: none;
             }
+            .search-and-actions {
+              justify-content: center;
+            }
             .main-menu-container {
                 position: absolute;
                 top: 100%;
@@ -358,7 +348,7 @@
                 text-align: center;
                 padding: 10px;
             }
-            .header-actions {
+            .search-and-actions {
                 width: 100%;
                 justify-content: center;
             }
@@ -384,10 +374,6 @@
             <div class="search-bar">
                 <input type="search" placeholder="Ürün Ara..." id="searchInput">
                 <i class="fas fa-search"></i>
-            </div>
-            <div class="header-actions">
-                <a href="giris-yap.html"><i class="fas fa-user"></i> Giriş Yap</a>
-                <a href="sepet.html"><i class="fas fa-shopping-cart"></i> Sepet</a>
             </div>
         </div>
     </header>
@@ -536,7 +522,7 @@
         </div>
         <section id="about-section" class="about-section">
             <h2>Hakkımızda</h2>
-            <p>Baysu Yapı ve Sulama Malzemeleri olarak, yılların tecrübesiyle sulama sektöründe güvenilir ve kaliteli ürünler sunmaktan gurur duyuyoruz. Müşteri memnuniyetini her zaman ön planda tutarak, geniş ürün yelpazemizle her türlü sulama ihtiyacınıza yönelik pratik ve dayanıklı çözümler üretiyoruz. Modern tarım teknolojilerini yakından takip ederek, ürünlerimizi sürekli geliştiriyor ve yeniliğe açık bir şekilde çalışmalarımıza devam ediyoruz.</p>
+            <p>Bayrakçı Sulama Ve ve Yapı Malzemeleri olarak, yılların tecrübesiyle sulama sektöründe güvenilir ve kaliteli ürünler sunmaktan gurur duyuyoruz. Müşteri memnuniyetini her zaman ön planda tutarak, geniş ürün yelpazemizle her türlü sulama ihtiyacınıza yönelik pratik ve dayanıklı çözümler üretiyoruz. Modern tarım teknolojilerini yakından takip ederek, ürünlerimizi sürekli geliştiriyor ve yeniliğe açık bir şekilde çalışmalarımıza devam ediyoruz.</p>
             <p>Misyonumuz, sürdürülebilir tarıma katkıda bulunmak ve su kaynaklarının verimli kullanımını teşvik etmektir. Vizyonumuz ise, sektörde öncü bir marka olarak, global pazarda adımızdan söz ettiren lider bir firma olmaktır.</p>
         </section>
         <section id="contact-section" class="contact-section">
@@ -629,12 +615,18 @@
                 }
             };
 
-            menuToggleMobile.addEventListener('click', toggleMainMenu);
-            menuToggleDesktop.addEventListener('click', (e) => {
-                e.preventDefault();
-                toggleMainMenu();
-            });
-            primaryCategoryItem.addEventListener('click', handlePrimaryClick);
+            if (menuToggleMobile) {
+                menuToggleMobile.addEventListener('click', toggleMainMenu);
+            }
+            if (menuToggleDesktop) {
+                menuToggleDesktop.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMainMenu();
+                });
+            }
+            if (primaryCategoryItem) {
+                primaryCategoryItem.addEventListener('click', handlePrimaryClick);
+            }
             secondaryCategoryItems.forEach(item => {
                 item.addEventListener('click', () => handleSecondaryClick(item));
             });
