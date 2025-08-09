@@ -1,474 +1,655 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baysu Yapı - Siyah Seri Manşon</title>
-    <!-- Tailwind CSS'i CDN üzerinden dahil etme -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Tailwind CSS'e özel renklerin ve fontun tanımlanması -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BAYSU YAPI VE SULAMA MALZEMELERİ</title>
+    <!-- Font Awesome ikonları için CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Poppins fontu için Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
     <style>
-        /* Define custom colors and font for the theme */
+        /* Renkler ve Font */
         :root {
             --primary-color: #004797;
-            --secondary-color: #ff9900;
+            --secondary-color: #FF6B6B;
+            --background-color: #F8F9FA;
+            --card-background: #FFFFFF;
+            --text-color: #333333;
+            --light-text-color: #666666;
+            --border-color: #E0E0E0;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
-
-        .bg-primary { background-color: var(--primary-color); }
-        .text-primary { color: var(--primary-color); }
-        .border-primary { border-color: var(--primary-color); }
-        .bg-secondary { background-color: var(--secondary-color); }
-        .text-secondary { color: var(--secondary-color); }
 
         body {
             font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        /* Başlık ve Navigasyon */
+        .header-main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: var(--card-background);
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .logo {
+            width: 200px;
+            margin-bottom: 15px;
+        }
+        .search-and-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 900px;
+        }
+        .search-bar {
+            position: relative;
+            flex-grow: 1;
+            max-width: 500px;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 14px;
+        }
+        .search-bar .fas {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-text-color);
+        }
+
+        .nav-bar {
+            background-color: var(--primary-color);
+            padding: 15px 20px;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .nav-links {
+            display: none; /* Varsayılan olarak gizli */
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 10px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        .menu-toggle {
+            display: block; /* Mobil görünümde göster */
+            color: #fff;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            z-index: 11;
+            transition: color 0.3s;
+            background: none;
+            border: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .menu-toggle.active {
+            color: var(--secondary-color);
+        }
+        .menu-toggle i {
+            font-size: 24px;
+        }
+
+        .main-menu-container {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-background);
+            box-shadow: var(--box-shadow);
+            border-top: 1px solid var(--border-color);
+            z-index: 9;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .main-menu-container.active {
+            display: flex;
+        }
+
+        .menu-content {
+            display: flex;
+            flex-direction: column; /* Mobil için dikey sıralama */
+            width: 100%;
+        }
+        
+        .menu-column {
+            flex: 1;
+            padding: 15px;
+            display: none; /* Varsayılan olarak gizli */
+            max-height: 50vh;
+            overflow-y: auto;
+        }
+        .menu-column.active {
+            display: block;
+            width: 100%;
+        }
+        
+        .category-item {
+            cursor: pointer;
+            padding: 10px;
+            transition: background-color 0.3s;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .category-item h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+        .category-item:hover {
+            background-color: var(--background-color);
+        }
+        .category-item.active {
+            background-color: var(--primary-color);
+        }
+        .category-item.active h3 {
+            color: white;
+        }
+        .arrow-icon {
+            font-size: 0.8rem;
+            color: var(--light-text-color);
+            transition: transform 0.3s;
+        }
+        .category-item.active .arrow-icon {
+            color: white;
+            transform: rotate(90deg);
+        }
+        .product-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: none;
+        }
+        .product-list.active {
+            display: block;
+        }
+        .product-list a {
+            color: var(--text-color);
+            text-decoration: none;
+            display: block;
+            padding: 8px 10px;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+        .product-list a:hover {
+            background-color: var(--background-color);
+        }
+
+        /* Anasayfa Boş Alan ve Hakkımızda/İletişim */
+        .page-content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .hero-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            color: var(--light-text-color);
+            font-size: 1.5rem;
+        }
+        .about-section, .contact-section {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        .about-section h2, .contact-section h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .about-section p, .contact-section p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 20px;
+            margin-top: 60px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            text-decoration: none;
+            font-size: 35px;
+        }
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive Tasarım */
+        @media (min-width: 769px) {
+            .nav-content {
+                justify-content: space-between;
+            }
+            .nav-links {
+                display: flex; /* Masaüstünde navigasyon linklerini göster */
+            }
+            .menu-toggle {
+                display: none; /* Masaüstünde menü açma kapama düğmesini gizle */
+            }
+            .search-and-actions {
+                justify-content: center;
+            }
+            .main-menu-container {
+                display: none !important; /* Masaüstü görünümde varsayılan olarak menüyü gizle */
+                flex-direction: row;
+                justify-content: center;
+                gap: 20px;
+            }
+            .main-menu-container.active {
+                display: flex !important;
+            }
+            .menu-content {
+                flex-direction: row;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .menu-column {
+                display: none;
+                max-height: 400px; /* Daha sabit bir yükseklik */
+            }
+            .menu-column.active {
+                display: block;
+            }
+            #primaryCategoryColumn.active {
+                width: 30%;
+            }
+            #secondary-categories-all.active {
+                width: 30%;
+            }
+            #tertiary-products.active {
+                width: 40%;
+            }
         }
     </style>
-    <!-- Font Awesome and Google Fonts included -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col">
+<body>
 
-    <!-- Header Section -->
-    <header class="shadow-md">
-        <div class="bg-white p-4 flex flex-col md:flex-row items-center justify-between">
-            <!-- Logo -->
-            <div class="md:flex-1 text-center mb-4 md:mb-0">
-                <!-- User's new logo image URL is used here -->
-                <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" 
-                     alt="Baysu Yapı Logo" 
-                     class="max-w-[250px] mx-auto">
-            </div>
-            <!-- Search Bar -->
-            <div class="flex-grow md:flex-2 flex items-center w-full max-w-lg mx-auto md:mx-0 mb-4 md:mb-0">
-                <i class="fas fa-search text-gray-500 mr-2"></i>
-                <input type="text" placeholder="Ürün Ara..." class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
-            </div>
-            <!-- Actions -->
-            <div class="flex-1 flex justify-center md:justify-end gap-4">
-                <a href="sepet.html" class="text-primary font-bold flex items-center hover:text-secondary transition-colors">
-                    <i class="fas fa-shopping-cart mr-1"></i> Sepet
-                </a>
-                <a href="#" class="text-primary font-bold flex items-center hover:text-secondary transition-colors">
-                    <i class="fas fa-user mr-1"></i> Hesabım
-                </a>
-                <a href="#" class="text-primary font-bold flex items-center hover:text-secondary transition-colors">
-                    <i class="fas fa-sign-out-alt mr-1"></i> Çıkış Yap
-                </a>
+    <header class="header-main">
+        <!-- Logo resminizi yer tutucu ile değiştirdim, siz kendi logonuzun URL'sini ekleyebilirsiniz. -->
+        <img src="https://placehold.co/200x50/004797/FFFFFF?text=BAYSU+LOGO" alt="BAYSU LOGO" class="logo">
+        <div class="search-and-actions">
+            <div class="search-bar">
+                <input type="search" placeholder="Ürün Ara..." id="searchInput">
+                <i class="fas fa-search"></i>
             </div>
         </div>
-        <!-- Navigation Bar -->
-        <nav class="bg-primary text-white p-3 flex justify-center md:justify-between items-center flex-wrap">
-            <a href="index.html" class="p-2 font-bold hover:bg-secondary rounded-md transition-colors">Anasayfa</a>
-            <a href="#" class="p-2 font-bold hover:bg-secondary rounded-md transition-colors">Hakkımızda</a>
-            <a href="#" class="p-2 font-bold hover:bg-secondary rounded-md transition-colors">İletişim</a>
-            <a href="#" class="p-2 font-bold hover:bg-secondary rounded-md transition-colors">Blog</a>
-            <a href="#" class="p-2 bg-white text-primary font-bold rounded-md hover:bg-gray-200 transition-colors md:ml-auto">
-                Ürünlerimiz +
-            </a>
-        </nav>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto p-4 md:p-8 flex-grow">
-        <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg flex flex-col lg:flex-row gap-8">
-            <!-- Product Image Section -->
-            <div class="lg:w-1/2 flex justify-center items-center p-4">
-                <!-- Kullanıcının isteği üzerine, görselin dosya adı buraya eklendi. Lütfen bu dosyayı web sitenizin doğru dizinine yerleştirdiğinizden emin olun. -->
-                <img src="siyah-seri-manson.png" 
-                     alt="Siyah Seri Manşon" 
-                     class="w-full max-w-sm rounded-lg border border-gray-200 shadow-md">
+    <nav class="nav-bar">
+        <div class="nav-content">
+            <div class="nav-links">
+                <a href="index.html">Anasayfa</a>
+                <a href="#" id="menuToggleDesktop">Ürünlerimiz</a>
+                <a href="#about-section">Hakkımızda</a>
+                <a href="#contact-section">İletişim</a>
             </div>
+            <!-- Mobil menü düğmesi için Font Awesome ikonu ekledim. -->
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i> Ürünlerimiz
+            </button>
+        </div>
+        <div class="main-menu-container" id="mainMenuContainer">
+            <div class="menu-content">
+                
+                <div class="menu-column" id="primaryCategoryColumn">
+                    <div class="category-item" data-target-menu="secondary-categories-all">
+                        <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                </div>
 
-            <!-- Product Info and Actions Section -->
-            <div class="lg:w-1/2 flex flex-col justify-center">
-                <h1 class="text-3xl md:text-4xl font-bold text-primary mb-2">Siyah Seri Manşon</h1>
-                <div class="text-gray-600 mb-6 space-y-1">
-                    <div><strong>Kategori:</strong> Siyah Seri Kaplinler</div>
-                    <div><strong>Marka:</strong> Senkron</div>
-                    <div><strong>Stok Kodu:</strong> Mevcut Değil</div>
+                <div class="menu-column" id="secondary-categories-all">
+                    <div class="category-item" data-target-products="mavi-seri">
+                        <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="category-item" data-target-products="siyah-seri">
+                        <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="category-item" data-target-products="kilitli-baglanti">
+                        <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="category-item" data-target-products="disli-sulama">
+                        <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="category-item" data-target-products="priz-kolyeler">
+                        <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="category-item" data-target-products="nipelli-seri">
+                        <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="category-item" data-target-products="vanalar">
+                        <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="category-item" data-target-products="vana-kutulari">
+                        <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="category-item" data-target-products="damlama-ek-parcalari">
+                        <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <div class="category-item" data-target-products="yedek-parcalar">
+                        <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
                 </div>
                 
-                <!-- Price and Installment Info -->
-                <div class="mb-6 space-y-4">
-                    <div>
-                        <label class="text-gray-500 font-semibold text-lg">Birim Fiyatı:</label>
-                        <span class="text-secondary font-extrabold text-3xl block" id="productPrice">Yükleniyor...</span>
-                    </div>
-                    <div>
-                        <label class="text-gray-500 font-semibold text-lg">Toplam Fiyat:</label>
-                        <span class="text-secondary font-extrabold text-3xl block" id="totalPrice">Yükleniyor...</span>
-                    </div>
-                    <div class="text-gray-400 text-sm italic" id="installmentText"></div>
-                </div>
-
-                <!-- Size Options -->
-                <div class="mb-6">
-                    <label class="font-bold text-gray-700 block mb-2">Boyut:</label>
-                    <div class="flex flex-wrap gap-2" id="sizeButtons">
-                        <!-- Boyut butonları Firebase'den dinamik olarak yüklenecektir -->
-                        <p class="text-gray-500">Boyut seçenekleri yükleniyor...</p>
-                    </div>
-                </div>
-
-                <!-- Quantity Controls and Action Buttons -->
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                    <!-- Quantity Control -->
-                    <div class="flex items-center border border-gray-300 rounded-md overflow-hidden w-full sm:w-auto">
-                        <button id="decreaseBtn" class="p-3 text-lg text-gray-600 hover:bg-gray-200 transition-colors">-</button>
-                        <input type="number" id="quantityInput" value="1" min="1" class="w-full sm:w-16 text-center border-none focus:outline-none p-2">
-                        <button id="increaseBtn" class="p-3 text-lg text-gray-600 hover:bg-gray-200 transition-colors">+</button>
-                    </div>
-                    <!-- Action Buttons -->
-                    <div class="flex-grow flex gap-4">
-                        <button id="addToCartBtn" class="flex-1 bg-[#6c9f3e] text-white font-bold py-3 px-6 rounded-md hover:bg-opacity-90 transition-colors shadow-md">
-                            Sepete Ekle
-                        </button>
-                        <a href="sepet.html" class="flex-1">
-                            <button class="w-full bg-primary text-white font-bold py-3 px-6 rounded-md hover:bg-opacity-90 transition-colors shadow-md">
-                                Hemen Al
-                            </button>
-                        </a>
-                    </div>
+                <div class="menu-column" id="tertiary-products">
+                    <ul class="product-list" id="mavi-seri-products">
+                        <li><a href="mavi-disi-kaplin.html">Mavi Seri Dişi Kaplin</a></li>
+                        <li><a href="mavi-erkek-kaplin.html">Mavi Seri Erkek Kaplin</a></li>
+                        <li><a href="mavi-dirsek-kaplin.html">Mavi Seri Dirsek Kaplin</a></li>
+                        <li><a href="mavi-disi-dirsek.html">Mavi Seri Dişi Dirsek</a></li>
+                        <li><a href="mavi-erkek-dirsek.html">Mavi Seri Erkek Dirsek</a></li>
+                        <li><a href="mavi-manson.html">Mavi Seri Manşon</a></li>
+                        <li><a href="mavi-tapa.html">Mavi Seri Tapa</a></li>
+                        <li><a href="mavi-erkek-te.html">Mavi Seri Erkek Te</a></li>
+                        <li><a href="mavi-disi-te.html">Mavi Seri Dişi Te</a></li>
+                        <li><a href="mavi-reduksiyon-te.html">Mavi Seri Redüksiyon Te</a></li>
+                        <li><a href="mavi-reduksiyon.html">Mavi Seri Redüksiyon</a></li>
+                        <li><a href="mavi-te.html">Mavi Seri Te</a></li>
+                    </ul>
+                    <ul class="product-list" id="siyah-seri-products">
+                        <li><a href="siyah-disi.html">Siyah Seri Dişi Kaplin</a></li>
+                        <li><a href="siyah-erkek-kaplin.html">Siyah Seri Erkek Kaplin</a></li>
+                        <li><a href="siyah-dirsek.html">Siyah Seri Dirsek Kaplin</a></li>
+                        <li><a href="siyah-disi-dirsek.html">Siyah Seri Dişi Dirsek</a></li>
+                        <li><a href="siyah-erkek-dirsek.html">Siyah Seri Erkek Dirsek</a></li>
+                        <li><a href="siyah-manson.html">Siyah Seri Manşon</a></li>
+                        <li><a href="siyah-tapa.html">Siyah Seri Tapa</a></li>
+                        <li><a href="siyah-erkek-te.html">Siyah Seri Erkek Te</a></li>
+                        <li><a href="siyah-disi-te.html">Siyah Seri Dişi Te</a></li>
+                        <li><a href="siyah-reduksiyon-te.html">Siyah Seri Redüksiyon Te</a></li>
+                        <li><a href="siyah-reduksiyon.html">Siyah Seri Redüksiyon</a></li>
+                        <li><a href="siyah-te.html">Siyah Seri Te</a></li>
+                    </ul>
+                    <ul class="product-list" id="kilitli-baglanti-products">
+                        <li><a href="kilitli-erkek-dirsek.html">Kilitli Bağlantı Erkek Dirsek</a></li>
+                        <li><a href="kilitli-dirsek.html">Kilitli Bağlantı Dirsek</a></li>
+                        <li><a href="kilitli-reduksiyon-dirsek.html">Kilitli Bağlantı Redüksiyon Dirsek</a></li>
+                        <li><a href="kilitli-te.html">Kilitli Bağlantı TE</a></li>
+                        <li><a href="kilitli-erkek-te.html">Kilitli Bağlantı Erkek TE</a></li>
+                    </ul>
+                    <ul class="product-list" id="disli-sulama-products">
+                        <li><a href="disli-disi-dirsek.html">Dişli Dişi Dirsek</a></li>
+                        <li><a href="disli-disi-nipel.html">Dişli Dişi Nipel</a></li>
+                        <li><a href="disli-disi-reduksiyon-dirsek.html">Dişli Dişi Redüksiyon Dirsek</a></li>
+                        <li><a href="erkek-disli-kor-tapa.html">Erkek Dişli Kör Tapa</a></li>
+                    </ul>
+                    <ul class="product-list" id="priz-kolyeler-products">
+                        <li><a href="priz-kolye.html">Priz Kolye</a></li>
+                        <li><a href="disi-nipelli-priz-kolye.html">Dişi Nipelli Priz Kolye</a></li>
+                        <li><a href="erkek-nipelli-priz-kolye.html">Erkek Nipelli Priz Kolye</a></li>
+                        <li><a href="kizakli-priz-kolye.html">Kızaklı Priz Kolye</a></li>
+                        <li><a href="cift-cikisli-priz-kolye.html">Çift Çıkışlı Priz Kolye</a></li>
+                    </ul>
+                    <ul class="product-list" id="nipelli-seri-products">
+                        <li><a href="nipelli-disi-priz-kolye.html">Dişi Nipelli Priz Kolye</a></li>
+                        <li><a href="nipelli-erkek-priz-kolye.html">Erkek Nipelli Priz Kolye</a></li>
+                        <li><a href="nipelli-erkek-te.html">Nipelli Erkek TE</a></li>
+                        <li><a href="nipelli-disi-dirsek.html">Nipelli Dişi Dirsek</a></li>
+                    </ul>
+                    <ul class="product-list" id="vanalar-products">
+                        <li><a href="disi-disi-vana.html">Dişi Dişi Vana</a></li>
+                        <li><a href="erkek-disi-vana.html">Erkek Dişi Vana</a></li>
+                        <li><a href="kaplin-disi-vana.html">Kaplin Dişi Vana</a></li>
+                        <li><a href="kaplin-erkek-vana.html">Kaplin Erkek Vana</a></li>
+                    </ul>
+                    <ul class="product-list" id="vana-kutulari-products">
+                        <li><a href="6-inc-vana-kutusu.html">6" Vana Kutusu</a></li>
+                        <li><a href="10-inc-vana-kutusu.html">10" Vana Kutusu</a></li>
+                        <li><a href="12-inc-vana-kutusu.html">12" Vana Kutusu</a></li>
+                        <li><a href="14-inc-vana-kutusu.html">14" Vana Kutusu</a></li>
+                    </ul>
+                    <ul class="product-list" id="damlama-ek-parcalari-products">
+                        <li><a href="cikis-mini-vana.html">Çıkış Mini Vana</a></li>
+                        <li><a href="debi-ayarli-damlatici-genis.html">Debi Ayarlı Damlatıcı Geniş Boşaltım</a></li>
+                        <li><a href="debi-ayarli-damlatici-kirmizi.html">Debi Ayarlı Damlatıcı Kırmızı</a></li>
+                        <li><a href="debi-ayarli-damlatici-yesil.html">Debi Ayarlı Damlatıcı Yeşil</a></li>
+                        <li><a href="duz-damlama-conta.html">Düz Damlama Conta</a></li>
+                        <li><a href="kanalli-conta.html">Kanallı Conta</a></li>
+                    </ul>
+                    <ul class="product-list" id="yedek-parcalar-products">
+                        <li><a href="kaplin-sikma-anahtari.html">Kaplin Sıkma Anahtarı</a></li>
+                        <li><a href="pah-acma-aparati.html">Pah Açma Aparatı</a></li>
+                        <li><a href="o-ring.html">O-Ring</a></li>
+                        <li><a href="abot-ustu-kaplin-dagitici.html">Abot Üstü Kaplin Dağıtıcı</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-        
-        <!-- Footer Features -->
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center">
-                <i class="fas fa-truck text-5xl text-primary mb-4"></i>
-                <h4 class="font-bold text-xl text-primary mb-2">Hızlı Kolay Teslimat</h4>
-                <p class="text-gray-600 text-sm">Ürünlerinizi anlaşmalı kargolarımız ile güvenle teslim ediyoruz.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center">
-                <i class="fas fa-box-open text-5xl text-primary mb-4"></i>
-                <h4 class="font-bold text-xl text-primary mb-2">Özenli Paketleme</h4>
-                <p class="text-gray-600 text-sm">Kaliteli ambalajlarla ve özenli paketlemeyle ürünlerinizin hasar görme riskini en aza indirdik.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center">
-                <i class="fas fa-shield-alt text-5xl text-primary mb-4"></i>
-                <h4 class="font-bold text-xl text-primary mb-2">Güvenli Ödeme</h4>
-                <p class="text-gray-600 text-sm">Alışverişlerinizde hızlı ve güvenli ödeme için 256 bit SSL sertifika ile korunuyorsunuz.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col items-center">
-                <i class="fas fa-smile text-5xl text-primary mb-4"></i>
-                <h4 class="font-bold text-xl text-primary mb-2">Mutlu Müşteri</h4>
-                <p class="text-gray-600 text-sm">2018'den beri kaliteli ürünler satarak sizleri mutlu etmekten gurur duyuyoruz.</p>
-            </div>
-        </div>
-    </main>
+    </nav>
     
-    <!-- Fixed WhatsApp Button -->
-    <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCn%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum" class="fixed bottom-5 right-5 bg-[#25d366] text-white rounded-full w-16 h-16 flex items-center justify-center text-3xl shadow-lg z-50 hover:scale-110 transition-transform" target="_blank">
+    <main class="page-content">
+        <div class="hero-section">
+            <p>Ürünlerimize göz atın ve sulama ihtiyaçlarınız için en iyi çözümleri keşfedin.</p>
+        </div>
+        <section id="about-section" class="about-section">
+            <h2>Hakkımızda</h2>
+            <p>Bayrakçı Sulama Ve ve Yapı Malzemeleri olarak, yılların tecrübesiyle sulama sektöründe güvenilir ve kaliteli ürünler sunmaktan gurur duyuyoruz. Müşteri memnuniyetini her zaman ön planda tutarak, geniş ürün yelpazemizle her türlü sulama ihtiyacınıza yönelik pratik ve dayanıklı çözümler üretiyoruz. Modern tarım teknolojilerini yakından takip ederek, ürünlerimizi sürekli geliştiriyor ve yeniliğe açık bir şekilde çalışmalarımıza devam ediyoruz.</p>
+            <p>Misyonumuz, sürdürülebilir tarıma katkıda bulunmak ve su kaynaklarının verimli kullanımını teşvik etmektir. Vizyonumuz ise, sektörde öncü bir marka olarak, global pazarda adımızdan söz ettiren lider bir firma olmaktır.</p>
+        </section>
+        <section id="contact-section" class="contact-section">
+            <h2>İletişim</h2>
+            <p><strong>Telefon:</strong> 0553 397 36 03</p>
+            <p><strong>E-posta:</strong> ebayrakci75@gmail.com</p>
+            <p><strong>Adres:</strong> Ankara, Türkiye</p>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2025 BAYSU YAPI VE SULAMA MALZEMELERİ - Tüm hakları saklıdır.
+    </footer>
+
+    <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum." class="whatsapp-button" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
-    
-    <!-- Loading Overlay -->
-    <div id="loading-overlay" class="fixed inset-0 bg-white bg-opacity-80 flex items-center justify-center z-40 hidden">
-        <div class="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-    </div>
-    
-    <!-- Custom Message Box -->
-    <div id="message-box" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white p-4 rounded-lg shadow-xl z-[2000] opacity-0 transition-opacity duration-500 ease-in-out hidden">
-    </div>
 
-    <!-- JavaScript for dynamic functionality -->
-    <script type="module">
-        // Import Firebase SDKs
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        // Define Firebase and Canvas global variables
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-        let db, auth, userId;
-        
-        // Get HTML elements
-        const sizeButtonsContainer = document.getElementById('sizeButtons');
-        const productPriceSpan = document.getElementById('productPrice');
-        const totalPriceSpan = document.getElementById('totalPrice');
-        const installmentText = document.getElementById('installmentText');
-        const quantityInput = document.getElementById('quantityInput');
-        const increaseBtn = document.getElementById('increaseBtn');
-        const decreaseBtn = document.getElementById('decreaseBtn');
-        const addToCartBtn = document.getElementById('addToCartBtn');
-        const loadingOverlay = document.getElementById('loading-overlay');
-        const messageBox = document.getElementById('message-box');
-
-        // Variables to hold product prices and selected size
-        let selectedSize = null;
-        let currentPrice = null;
-        let productVariations = {}; 
-
-        // Shows the loading overlay
-        function showLoading() {
-            loadingOverlay.style.display = 'flex';
-        }
-
-        // Hides the loading overlay
-        function hideLoading() {
-            loadingOverlay.style.display = 'none';
-        }
-        
-        // Shows a custom message box instead of alert()
-        function showMessage(message, type = 'success') {
-            messageBox.textContent = message;
-            if (type === 'success') {
-                messageBox.classList.remove('bg-red-500');
-                messageBox.classList.add('bg-green-500');
-            } else {
-                messageBox.classList.remove('bg-green-500');
-                messageBox.classList.add('bg-red-500');
-            }
-            messageBox.classList.remove('hidden');
-            setTimeout(() => {
-                messageBox.style.opacity = 1;
-            }, 10);
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggleMobile = document.getElementById('menuToggle');
+            const menuToggleDesktop = document.getElementById('menuToggleDesktop');
+            const mainMenuContainer = document.getElementById('mainMenuContainer');
             
-            setTimeout(() => {
-                messageBox.style.opacity = 0;
-                setTimeout(() => {
-                    messageBox.classList.add('hidden');
-                }, 500);
-            }, 3000);
-        }
+            const primaryCategoryColumn = document.getElementById('primaryCategoryColumn');
+            const secondaryCategoryColumn = document.getElementById('secondary-categories-all');
+            const tertiaryProductsColumn = document.getElementById('tertiary-products');
 
-        // Initializes Firebase and authenticates the user
-        async function initializeFirebase() {
-            try {
-                showLoading();
-                const app = initializeApp(firebaseConfig);
-                auth = getAuth(app);
-                db = getFirestore(app);
+            const primaryCategoryItem = primaryCategoryColumn.querySelector('.category-item');
+            const secondaryCategoryItems = secondaryCategoryColumn.querySelectorAll('.category-item');
+            const allProductLists = tertiaryProductsColumn.querySelectorAll('.product-list');
 
-                // Firebase auth state change listener
-                onAuthStateChanged(auth, async (user) => {
-                    if (user) {
-                        // User ID is obtained
-                        userId = user.uid;
-                        console.log("Logged in with Firebase Auth. User ID:", userId);
-                        
-                        // First, write the dummy data to ensure it exists
-                        await writeDummyData();
+            const isDesktop = () => window.innerWidth > 768;
 
-                        // Then, set up the listener to read the data
-                        setupDatabaseListener();
-                    } else {
-                        // If user is logged out, try to sign in anonymously or with a custom token
-                        try {
-                            if (initialAuthToken) {
-                                await signInWithCustomToken(auth, initialAuthToken);
-                            } else {
-                                await signInAnonymously(auth);
-                            }
-                        } catch (error) {
-                            console.error("Failed to log in with Firebase Auth:", error);
-                            hideLoading();
-                        }
-                    }
-                });
-
-            } catch (error) {
-                console.error("Error initializing Firebase:", error);
-                hideLoading();
-            }
-        }
-        
-        // Sets up the database listener to fetch product prices
-        function setupDatabaseListener() {
-            if (!db || !userId) {
-                console.error("Database or User ID is not ready.");
-                hideLoading();
-                return;
-            }
-            
-            // Product ID from the price panel
-            const productId = 'siyah-seri-manson';
-            // Firestore document path
-            const docRef = doc(db, `artifacts/${appId}/users/${userId}/price_updates`, productId);
-
-            // Listen for real-time updates on the price document
-            onSnapshot(docRef, (docSnap) => {
-                if (docSnap.exists()) {
-                    productVariations = docSnap.data();
-                    renderSizeButtons(productVariations);
-                    console.log("Prices updated from database.");
-                } else {
-                    console.log("No price information found for this product in the database.");
-                    sizeButtonsContainer.innerHTML = '<p class="text-gray-500">Bu ürün için fiyat bilgisi bulunamadı.</p>';
-                    productPriceSpan.textContent = 'N/A';
-                    totalPriceSpan.textContent = 'N/A';
-                    installmentText.textContent = '';
-                }
-                hideLoading();
-            }, (error) => {
-                console.error("Error in database listener:", error);
-                hideLoading();
-            });
-        }
-        
-        // Renders size buttons dynamically based on fetched data
-        function renderSizeButtons(variations) {
-            sizeButtonsContainer.innerHTML = '';
-            const sizes = Object.keys(variations);
-            if (sizes.length === 0) {
-                sizeButtonsContainer.innerHTML = '<p class="text-gray-500">Bu ürün için fiyat bilgisi bulunamadı.</p>';
-                return;
-            }
-            
-            sizes.forEach(size => {
-                const button = document.createElement('button');
-                button.textContent = size;
-                button.dataset.size = size;
-                button.className = 'px-4 py-2 border border-gray-300 rounded-md bg-gray-100 text-gray-800 hover:bg-secondary hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-secondary';
-                button.addEventListener('click', handleSizeSelection);
-                sizeButtonsContainer.appendChild(button);
-            });
-            
-            // Automatically select the first size on load
-            if (sizes.length > 0) {
-                const firstButton = sizeButtonsContainer.querySelector('button');
-                if (firstButton) {
-                    firstButton.classList.add('bg-secondary', 'text-white');
-                    selectedSize = firstButton.dataset.size;
-                    const price = productVariations[selectedSize];
-                    if (price) {
-                        updatePrice(price);
-                    }
-                }
-            }
-        }
-        
-        // Handles size button click event
-        function handleSizeSelection(event) {
-            document.querySelectorAll('#sizeButtons button').forEach(btn => {
-                btn.classList.remove('bg-secondary', 'text-white');
-                btn.classList.add('bg-gray-100', 'text-gray-800');
-            });
-            event.target.classList.remove('bg-gray-100', 'text-gray-800');
-            event.target.classList.add('bg-secondary', 'text-white');
-
-            selectedSize = event.target.dataset.size;
-            
-            const price = productVariations[selectedSize];
-            if (price) {
-                updatePrice(price);
-            }
-        }
-        
-        // Updates the total price based on quantity
-        function updateTotalPrice() {
-            if (currentPrice !== null) {
-                const quantity = parseInt(quantityInput.value) || 1;
-                const total = currentPrice * quantity;
-                totalPriceSpan.textContent = `${total.toFixed(2).replace('.', ',')} TL`;
-            } else {
-                totalPriceSpan.textContent = '0,00 TL';
-            }
-        }
-
-        // Updates the unit price and installment text
-        function updatePrice(price) {
-            currentPrice = parseFloat(price);
-            productPriceSpan.textContent = `${currentPrice.toFixed(2).replace('.', ',')} TL`;
-            
-            const installmentPrice = (currentPrice / 12).toFixed(2);
-            installmentText.textContent = `*${installmentPrice.replace('.', ',')} TL'den başlayan 12 aya varan taksitlerle!`;
-            
-            updateTotalPrice();
-        }
-
-        // Quantity increase/decrease buttons
-        increaseBtn.addEventListener('click', () => {
-            let currentQuantity = parseInt(quantityInput.value) || 1;
-            quantityInput.value = currentQuantity + 1;
-            updateTotalPrice();
-        });
-
-        decreaseBtn.addEventListener('click', () => {
-            let currentQuantity = parseInt(quantityInput.value) || 1;
-            if (currentQuantity > 1) {
-                quantityInput.value = currentQuantity - 1;
-                updateTotalPrice();
-            }
-        });
-        
-        // Listener for quantity input change
-        quantityInput.addEventListener('change', () => {
-            if (parseInt(quantityInput.value) < 1 || !quantityInput.value) {
-                quantityInput.value = 1;
-            }
-            updateTotalPrice();
-        });
-
-        // Add to cart button functionality
-        addToCartBtn.addEventListener('click', () => {
-            if (selectedSize && currentPrice) {
-                const quantity = parseInt(quantityInput.value);
-                const productName = document.querySelector('h1').textContent.trim();
-                const product = {
-                    name: productName,
-                    size: selectedSize,
-                    price: currentPrice,
-                    quantity: quantity
-                };
-                
-                // Using localStorage for simplicity. For a multi-user app, Firestore would be used for the cart.
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                
-                const existingProductIndex = cart.findIndex(item => item.name === product.name && item.size === product.size);
-                if (existingProductIndex > -1) {
-                    cart[existingProductIndex].quantity += quantity;
-                } else {
-                    cart.push(product);
-                }
-
-                localStorage.setItem('cart', JSON.stringify(cart));
-                
-                showMessage(`${product.size} boyutunda ${quantity} adet ${product.name} sepete eklendi!`, 'success');
-            } else {
-                showMessage('Lütfen önce bir boyut seçiniz.', 'error');
-            }
-        });
-
-        // Function to write dummy data to Firestore
-        async function writeDummyData() {
-            if (!db || !userId) {
-                console.error("Database or User ID is not ready for writing.");
-                return;
-            }
-
-            const dummyData = {
-                '20': 15.50,
-                '25': 20.75,
-                '32': 28.00,
-                '40': 35.25,
-                '50': 45.00,
-                '63': 55.75,
-                '75': 68.00,
-                '90': 85.50,
-                '110': 110.25
+            // Menüyü tamamen sıfırlayan fonksiyon
+            const resetMenu = () => {
+                secondaryCategoryColumn.classList.remove('active');
+                tertiaryProductsColumn.classList.remove('active');
+                primaryCategoryItem.classList.remove('active');
+                secondaryCategoryItems.forEach(item => item.classList.remove('active'));
+                allProductLists.forEach(list => list.classList.remove('active'));
             };
 
-            const productId = 'siyah-seri-manson';
-            const docRef = doc(db, `artifacts/${appId}/users/${userId}/price_updates`, productId);
+            // Ana menüyü açıp kapatan fonksiyon
+            const toggleMainMenu = () => {
+                const isActive = mainMenuContainer.classList.toggle('active');
+                if (isActive) {
+                    // Ana menü açıldığında ilk kategoriyi ve sütunu aktif hale getir
+                    primaryCategoryColumn.classList.add('active');
+                    primaryCategoryItem.classList.add('active');
+                } else {
+                    // Ana menü kapandığında tüm menüleri sıfırla
+                    resetMenu();
+                    primaryCategoryColumn.classList.remove('active');
+                }
+            };
+            
+            // Birincil kategoriye tıklandığında ikinci seviye menüyü açan fonksiyon
+            const handlePrimaryClick = () => {
+                const isSecondaryActive = secondaryCategoryColumn.classList.toggle('active');
+                tertiaryProductsColumn.classList.remove('active');
+                allProductLists.forEach(list => list.classList.remove('active'));
+                secondaryCategoryItems.forEach(item => item.classList.remove('active'));
+            };
 
-            try {
-                await setDoc(docRef, dummyData);
-                console.log("Dummy product data has been written to Firestore.");
-            } catch (e) {
-                console.error("Error writing document: ", e);
+            // İkincil kategoriye tıklandığında ürün listesini açan fonksiyon
+            const handleSecondaryClick = (item) => {
+                const targetProductsId = item.dataset.targetProducts + '-products';
+                const targetProductsList = document.getElementById(targetProductsId);
+                
+                // Önce tüm ikincil kategori ve ürün listelerinin aktifliğini kaldır
+                secondaryCategoryItems.forEach(el => el.classList.remove('active'));
+                allProductLists.forEach(list => list.classList.remove('active'));
+                
+                if (!item.classList.contains('active')) {
+                    item.classList.add('active');
+                    tertiaryProductsColumn.classList.add('active');
+                    if (targetProductsList) {
+                        targetProductsList.classList.add('active');
+                    }
+                } else {
+                    // Zaten aktifse, sadece deaktif et
+                    item.classList.remove('active');
+                    tertiaryProductsColumn.classList.remove('active');
+                    if (targetProductsList) {
+                        targetProductsList.classList.remove('active');
+                    }
+                }
+            };
+
+            // Olay dinleyicileri
+            if (menuToggleMobile) {
+                menuToggleMobile.addEventListener('click', (e) => {
+                    // Mobil menü açma kapama düğmesi
+                    e.stopPropagation(); // Olayın menü konteynerine yayılmasını engelle
+                    toggleMainMenu();
+                    menuToggleMobile.classList.toggle('active');
+                });
             }
-        }
 
-        // Initialize Firebase on window load
-        window.onload = initializeFirebase;
+            if (menuToggleDesktop) {
+                menuToggleDesktop.addEventListener('click', (e) => {
+                    // Masaüstü menü açma kapama düğmesi
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleMainMenu();
+                });
+            }
+            
+            if (primaryCategoryItem) {
+                primaryCategoryItem.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    handlePrimaryClick();
+                });
+            }
+            
+            secondaryCategoryItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    handleSecondaryClick(item);
+                });
+            });
+
+            // Menü dışında bir yere tıklandığında menüyü kapat
+            window.addEventListener('click', (e) => {
+                if (!mainMenuContainer.contains(e.target) && !e.target.closest('.nav-bar')) {
+                    mainMenuContainer.classList.remove('active');
+                    if (menuToggleMobile) {
+                        menuToggleMobile.classList.remove('active');
+                    }
+                    resetMenu();
+                }
+            });
+
+            // Ekran boyutu değiştiğinde menüyü sıfırla
+            window.addEventListener('resize', () => {
+                if (!isDesktop()) {
+                    mainMenuContainer.classList.remove('active');
+                    if (menuToggleMobile) {
+                        menuToggleMobile.classList.remove('active');
+                    }
+                    resetMenu();
+                } else {
+                     // Masaüstü görünümde nav linklerini göster
+                     document.querySelector('.nav-links').style.display = 'flex';
+                     menuToggleMobile.style.display = 'none';
+                }
+            });
+
+            // Sayfa yüklendiğinde ve yeniden boyutlandığında başlangıç durumunu ayarla
+            const initialSetup = () => {
+                if (isDesktop()) {
+                    document.querySelector('.nav-links').style.display = 'flex';
+                    if (menuToggleMobile) menuToggleMobile.style.display = 'none';
+                } else {
+                    document.querySelector('.nav-links').style.display = 'none';
+                    if (menuToggleMobile) menuToggleMobile.style.display = 'flex';
+                }
+            };
+
+            window.addEventListener('resize', initialSetup);
+            window.addEventListener('load', initialSetup);
+        });
     </script>
 </body>
 </html>
