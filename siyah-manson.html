@@ -366,7 +366,6 @@
             border-radius: 50px;
             cursor: default; /* Tıklanabilir olmadığını gösterir */
             transition: all 0.2s ease;
-            pointer-events: none; /* Tıklama olaylarını tamamen engeller */
         }
         
         .size-option:hover {
@@ -685,7 +684,8 @@
             const mainCategoryItem = document.querySelector('.main-category-item');
             const kaplinlerMenu = document.getElementById('kaplinler-menu');
             const subCategoryItems = document.querySelectorAll('#kaplinler-menu > .category-item');
-            
+            const searchInput = document.getElementById('searchInput');
+
             const toggleMainMenu = () => {
                 const isActive = mainMenuContainer.classList.toggle('active');
                 if (!isActive) {
@@ -785,6 +785,50 @@
                             productList.classList.remove('active');
                         }
                     });
+                }
+            });
+
+            // Arama çubuğu işlevselliği
+            searchInput.addEventListener('keyup', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const allProductItems = document.querySelectorAll('.product-list li');
+                const allCategoryHeaders = document.querySelectorAll('.category-item .category-header h3');
+
+                allProductItems.forEach(item => {
+                    const itemName = item.textContent.toLowerCase();
+                    if (itemName.includes(searchTerm)) {
+                        item.style.display = ''; // Eşleşiyorsa göster
+                    } else {
+                        item.style.display = 'none'; // Eşleşmiyorsa gizle
+                    }
+                });
+
+                allCategoryHeaders.forEach(header => {
+                    const categoryName = header.textContent.toLowerCase();
+                    const parentCategoryItem = header.closest('.category-item');
+                    const productList = parentCategoryItem.querySelector('.product-list');
+                    
+                    const hasVisibleProducts = Array.from(productList.children).some(productItem => productItem.style.display !== 'none');
+                    
+                    if (categoryName.includes(searchTerm) || hasVisibleProducts) {
+                         parentCategoryItem.style.display = '';
+                    } else {
+                         parentCategoryItem.style.display = 'none';
+                    }
+                });
+                
+                // Ana menüleri aç veya kapat
+                const mainCategoryList = document.querySelector('.category-group');
+                const hasVisibleCategories = Array.from(subCategoryItems).some(item => item.style.display !== 'none');
+                
+                if (searchTerm.length > 0 && hasVisibleCategories) {
+                    mainMenuContainer.classList.add('active');
+                    mainCategoryItem.classList.add('active');
+                    kaplinlerMenu.classList.add('active');
+                } else if (searchTerm.length === 0) {
+                    mainMenuContainer.classList.remove('active');
+                    mainCategoryItem.classList.remove('active');
+                    kaplinlerMenu.classList.remove('active');
                 }
             });
         });
