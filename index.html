@@ -152,14 +152,12 @@
             border-top: 1px solid var(--border-color);
             z-index: 9;
 
-            /* Yeni Eklenen Kod */
             max-height: calc(100vh - 100px); /* Ekran yüksekliğinden üst menüyü çıkar */
             overflow-y: auto; /* Dikey kaydırma çubuğu ekle */
         }
 
         .main-menu-container.active {
-            display: flex; /* Bu satırı block'tan flex'e çevirdik */
-            flex-direction: column;
+            display: block;
         }
 
         /* Menü içindeki kapsayıcıları Flexbox ile düzenleme */
@@ -283,6 +281,7 @@
         .product-list li a:hover {
             background-color: #f0f0f0;
         }
+
 
         /* Ana Sayfa İçeriği */
         .page-content {
