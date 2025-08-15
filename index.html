@@ -174,8 +174,13 @@
             justify-content: space-between;
             align-items: center;
             position: relative;
+            border-bottom: 1px solid var(--border-color);
         }
         
+        .category-item:last-child {
+            border-bottom: none;
+        }
+
         .category-item h3 {
             margin: 0;
             font-size: 1rem;
@@ -216,6 +221,14 @@
 
         .product-list.active {
             display: block;
+        }
+
+        .product-list li {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .product-list li:last-child {
+            border-bottom: none;
         }
 
         .product-list li a {
@@ -330,10 +343,6 @@
                 margin: 0 auto;
             }
             
-            .category-item {
-                border-bottom: 1px solid var(--border-color);
-            }
-
             .product-list {
                 padding-left: 20px;
             }
@@ -554,25 +563,24 @@
             const mainMenuContainer = document.getElementById('mainMenuContainer');
             const menuToggleMobile = document.getElementById('menuToggle');
             const menuToggleDesktop = document.getElementById('menuToggleDesktop');
-            const allCategoryItems = document.querySelectorAll('.category-item');
+            const kaplinlerItem = document.querySelector('[data-target-menu="kaplinler-menu"]');
+            const kaplinlerList = document.getElementById('kaplinler-menu');
+            const subCategoryItems = document.querySelectorAll('#kaplinler-menu > .category-item');
 
             const isDesktop = () => window.innerWidth > 768;
 
-            // Mobil ve Masaüstü Menü Açma/Kapatma
             const toggleMainMenu = () => {
                 mainMenuContainer.classList.toggle('active');
-                if (!mainMenuContainer.classList.contains('active')) {
-                    // Menü kapanırken tüm alt menüleri ve aktif sınıfları kapat
-                    allCategoryItems.forEach(item => item.classList.remove('active'));
-                    document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
-                } else if (!isDesktop()) {
-                    // Mobil'de açılırken Kaplinler menüsünü otomatik aç
-                    const kaplinlerItem = document.querySelector('[data-target-menu="kaplinler-menu"]');
-                    const kaplinlerList = document.getElementById('kaplinler-menu');
-                    if (kaplinlerItem && kaplinlerList) {
-                        kaplinlerItem.classList.add('active');
-                        kaplinlerList.classList.add('active');
-                    }
+                if (mainMenuContainer.classList.contains('active')) {
+                    // Ana menü açıldığında, Kaplinler menüsünü otomatik olarak aç
+                    kaplinlerItem.classList.add('active');
+                    kaplinlerList.classList.add('active');
+                } else {
+                    // Menü kapanırken tüm alt menüleri kapat
+                    kaplinlerItem.classList.remove('active');
+                    kaplinlerList.classList.remove('active');
+                    subCategoryItems.forEach(item => item.classList.remove('active'));
+                    document.querySelectorAll('.product-list:not(#kaplinler-menu)').forEach(list => list.classList.remove('active'));
                 }
             };
 
@@ -589,8 +597,8 @@
                 });
             }
 
-            // Kategori öğelerine tıklama olayları (Accordion mantığı)
-            allCategoryItems.forEach(item => {
+            // Alt kategori öğelerine tıklama olayları (Kaplinlerin altındaki menüler)
+            subCategoryItems.forEach(item => {
                 item.addEventListener('click', (e) => {
                     e.preventDefault();
                     const targetList = item.querySelector('.product-list');
@@ -599,9 +607,8 @@
                         // Tıklanan öğenin aktif durumunu değiştir
                         const isActive = item.classList.toggle('active');
 
-                        // Tüm diğer menüleri kapat
-                        const parentList = item.closest('ul');
-                        parentList.querySelectorAll('.category-item').forEach(otherItem => {
+                        // Tüm diğer alt menüleri kapat
+                        subCategoryItems.forEach(otherItem => {
                             if (otherItem !== item) {
                                 otherItem.classList.remove('active');
                                 const otherList = otherItem.querySelector('.product-list');
@@ -621,16 +628,20 @@
             window.addEventListener('click', (e) => {
                 if (!mainMenuContainer.contains(e.target) && !e.target.closest('.nav-bar')) {
                     mainMenuContainer.classList.remove('active');
-                    allCategoryItems.forEach(item => item.classList.remove('active'));
-                    document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
+                    kaplinlerItem.classList.remove('active');
+                    kaplinlerList.classList.remove('active');
+                    subCategoryItems.forEach(item => item.classList.remove('active'));
+                    document.querySelectorAll('.product-list:not(#kaplinler-menu)').forEach(list => list.classList.remove('active'));
                 }
             });
 
             // Ekran boyutu değiştiğinde menüyü sıfırla
             window.addEventListener('resize', () => {
                 mainMenuContainer.classList.remove('active');
-                allCategoryItems.forEach(item => item.classList.remove('active'));
-                document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
+                kaplinlerItem.classList.remove('active');
+                kaplinlerList.classList.remove('active');
+                subCategoryItems.forEach(item => item.classList.remove('active'));
+                document.querySelectorAll('.product-list:not(#kaplinler-menu)').forEach(list => list.classList.remove('active'));
             });
         });
     </script>
