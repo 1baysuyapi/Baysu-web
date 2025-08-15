@@ -156,8 +156,15 @@
         .main-menu-container.active {
             display: block;
         }
-        
-        /* Ana menü ve alt menü yapısı */
+
+        /* Menü içindeki kapsayıcıları Flexbox ile düzenleme */
+        .menu-content {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        /* Ana Kategori Başlığı */
         .main-category-item {
             width: 100%;
             box-sizing: border-box;
@@ -187,7 +194,7 @@
             transform: rotate(90deg);
         }
 
-        /* Alt menü listesi */
+        /* Kategori Grupları */
         .category-group {
             list-style: none;
             padding: 0;
@@ -199,6 +206,7 @@
             display: block;
         }
         
+        /* Alt Kategori Başlıkları */
         .category-item {
             cursor: pointer;
             padding: 10px 20px;
@@ -230,34 +238,60 @@
             transform: rotate(90deg);
         }
         
-        /* Alt ürün listesi - boşluk sorununu çözmek için yeniden düzenlendi */
+        /* Ürün Listesi */
         .product-list {
             list-style: none;
             padding: 0;
             margin: 0;
             display: none;
+            width: 100%;
         }
 
         .product-list.active {
             display: block;
         }
+        
+        /* Ürün listesi ve başlıklarını yan yana getirme */
+        .category-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0;
+        }
 
+        .category-item .category-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .product-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: none;
+            width: 100%;
+        }
+        
         .product-list li {
             border-bottom: 1px solid var(--border-color);
         }
-
-        .product-list li:last-child {
-            border-bottom: none;
-        }
-
+        
         .product-list li a {
-            color: var(--text-color);
             display: block;
-            padding: 8px 30px;
+            padding: 10px 40px;
+            color: var(--text-color);
+            transition: background-color 0.2s;
         }
+        
         .product-list li a:hover {
             background-color: #f0f0f0;
         }
+
 
         /* Ana Sayfa İçeriği */
         .page-content {
@@ -428,7 +462,9 @@
             </div>
             <ul class="category-group" id="kaplinler-menu">
                 <li class="category-item">
-                    <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
+                    <div class="category-header">
+                        <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
                     <ul class="product-list">
                         <li><a href="mavi-disi-kaplin.html">Mavi Seri Dişi Kaplin</a></li>
                         <li><a href="mavi-erkek-kaplin.html">Mavi Seri Erkek Kaplin</a></li>
@@ -445,7 +481,9 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
+                    <div class="category-header">
+                        <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
                     <ul class="product-list">
                         <li><a href="siyah-disi.html">Siyah Seri Dişi Kaplin</a></li>
                         <li><a href="siyah-erkek-kaplin.html">Siyah Seri Erkek Kaplin</a></li>
@@ -462,7 +500,9 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    <div class="category-header">
+                        <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
                     <ul class="product-list">
                         <li><a href="kilitli-erkek-dirsek.html">Kilitli Bağlantı Erkek Dirsek</a></li>
                         <li><a href="kilitli-dirsek.html">Kilitli Bağlantı Dirsek</a></li>
@@ -472,7 +512,9 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    <div class="category-header">
+                        <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
                     <ul class="product-list">
                         <li><a href="disli-disi-dirsek.html">Dişli Dişi Dirsek</a></li>
                         <li><a href="disli-disi-nipel.html">Dişli Dişi Nipel</a></li>
@@ -481,7 +523,9 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
+                    <div class="category-header">
+                        <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
                     <ul class="product-list">
                         <li><a href="priz-kolye.html">Priz Kolye</a></li>
                         <li><a href="disi-nipelli-priz-kolye.html">Dişi Nipelli Priz Kolye</a></li>
@@ -491,7 +535,9 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
+                    <div class="category-header">
+                        <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
                     <ul class="product-list">
                         <li><a href="nipelli-disi-priz-kolye.html">Dişi Nipelli Priz Kolye</a></li>
                         <li><a href="nipelli-erkek-priz-kolye.html">Erkek Nipelli Priz Kolye</a></li>
@@ -500,7 +546,9 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
+                    <div class="category-header">
+                        <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
                     <ul class="product-list">
                         <li><a href="disi-disi-vana.html">Dişi Dişi Vana</a></li>
                         <li><a href="erkek-disi-vana.html">Erkek Dişi Vana</a></li>
@@ -509,7 +557,9 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
+                    <div class="category-header">
+                        <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
                     <ul class="product-list">
                         <li><a href="6-inc-vana-kutusu.html">6" Vana Kutusu</a></li>
                         <li><a href="10-inc-vana-kutusu.html">10" Vana Kutusu</a></li>
@@ -518,7 +568,9 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    <div class="category-header">
+                        <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
                     <ul class="product-list">
                         <li><a href="cikis-mini-vana.html">Çıkış Mini Vana</a></li>
                         <li><a href="debi-ayarli-damlatici-genis.html">Debi Ayarlı Damlatıcı Geniş Boşaltım</a></li>
@@ -529,7 +581,9 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
+                    <div class="category-header">
+                        <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
                     <ul class="product-list">
                         <li><a href="kaplin-sikma-anahtari.html">Kaplin Sıkma Anahtarı</a></li>
                         <li><a href="pah-acma-aparati.html">Pah Açma Aparatı</a></li>
@@ -580,9 +634,12 @@
             mainCategoryItem.classList.add('active');
             kaplinlerMenu.classList.add('active');
             
-            // "Mavi Seri"nin de otomatik olarak açık gelmesini istiyorsan, bu satırı ekle
-            document.querySelector('.category-item').classList.add('active');
-            document.querySelector('.category-item .product-list').classList.add('active');
+            // "Mavi Seri"nin de otomatik olarak açık gelmesini sağla
+            const maviSeriItem = document.querySelector('.category-item h3');
+            if (maviSeriItem) {
+                maviSeriItem.closest('.category-item').classList.add('active');
+                maviSeriItem.closest('.category-item').querySelector('.product-list').classList.add('active');
+            }
 
             const toggleMainMenu = () => {
                 const isActive = mainMenuContainer.classList.toggle('active');
@@ -614,8 +671,8 @@
 
             // Kaplinler ana menüsüne tıklama
             mainCategoryItem.addEventListener('click', (e) => {
-                // Tıklanan öğe bir ürün linki değilse
                 if (e.target.tagName !== 'A' && !e.target.closest('a')) {
+                    e.preventDefault(); // Bu satır, tıklamanın linke gitmesini engeller
                     mainCategoryItem.classList.toggle('active');
                     kaplinlerMenu.classList.toggle('active');
                     
@@ -631,15 +688,14 @@
 
             // Alt kategori öğelerine tıklama (Mavi Seri, Siyah Seri vb.)
             subCategoryItems.forEach(item => {
-                item.addEventListener('click', (e) => {
-                    // Bu if kontrolü, sadece başlığa tıklandığında menünün açılıp kapanmasını sağlar
-                    if (e.target.tagName === 'H3' || e.target.tagName === 'SPAN') {
-                        e.preventDefault();
+                const header = item.querySelector('.category-header');
+                if (header) {
+                    header.addEventListener('click', (e) => {
                         const targetList = item.querySelector('.product-list');
                         if (targetList) {
-                            const isActive = item.classList.toggle('active');
+                            item.classList.toggle('active');
                             targetList.classList.toggle('active');
-
+                            
                             subCategoryItems.forEach(otherItem => {
                                 if (otherItem !== item) {
                                     otherItem.classList.remove('active');
@@ -650,8 +706,8 @@
                                 }
                             });
                         }
-                    }
-                });
+                    });
+                }
             });
 
             // Sayfa dışına tıklanıldığında menüyü kapat
