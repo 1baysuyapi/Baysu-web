@@ -151,10 +151,15 @@
             box-shadow: var(--box-shadow);
             border-top: 1px solid var(--border-color);
             z-index: 9;
+
+            /* Yeni Eklenen Kod */
+            max-height: calc(100vh - 100px); /* Ekran yüksekliğinden üst menüyü çıkar */
+            overflow-y: auto; /* Dikey kaydırma çubuğu ekle */
         }
 
         .main-menu-container.active {
-            display: block;
+            display: flex; /* Bu satırı block'tan flex'e çevirdik */
+            flex-direction: column;
         }
 
         /* Menü içindeki kapsayıcıları Flexbox ile düzenleme */
@@ -209,18 +214,27 @@
         /* Alt Kategori Başlıkları */
         .category-item {
             cursor: pointer;
-            padding: 10px 20px;
+            padding: 0;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
+            flex-direction: column;
+            align-items: flex-start;
             border-bottom: 1px solid var(--border-color);
+            position: relative;
         }
         
         .category-item:last-child {
             border-bottom: none;
         }
 
+        .category-item .category-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        
         .category-item h3 {
             margin: 0;
             font-size: 1rem;
@@ -251,36 +265,14 @@
             display: block;
         }
         
-        /* Ürün listesi ve başlıklarını yan yana getirme */
-        .category-item {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 0;
+        .product-list li {
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .product-list li:first-child {
+            border-top: none;
         }
 
-        .category-item .category-header {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .product-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: none;
-            width: 100%;
-        }
-        
-        .product-list li {
-            border-bottom: 1px solid var(--border-color);
-        }
-        
         .product-list li a {
             display: block;
             padding: 10px 40px;
@@ -291,7 +283,6 @@
         .product-list li a:hover {
             background-color: #f0f0f0;
         }
-
 
         /* Ana Sayfa İçeriği */
         .page-content {
@@ -635,10 +626,10 @@
             kaplinlerMenu.classList.add('active');
             
             // "Mavi Seri"nin de otomatik olarak açık gelmesini sağla
-            const maviSeriItem = document.querySelector('.category-item h3');
+            const maviSeriItem = document.querySelector('.category-item');
             if (maviSeriItem) {
-                maviSeriItem.closest('.category-item').classList.add('active');
-                maviSeriItem.closest('.category-item').querySelector('.product-list').classList.add('active');
+                maviSeriItem.classList.add('active');
+                maviSeriItem.querySelector('.product-list').classList.add('active');
             }
 
             const toggleMainMenu = () => {
@@ -672,7 +663,7 @@
             // Kaplinler ana menüsüne tıklama
             mainCategoryItem.addEventListener('click', (e) => {
                 if (e.target.tagName !== 'A' && !e.target.closest('a')) {
-                    e.preventDefault(); // Bu satır, tıklamanın linke gitmesini engeller
+                    e.preventDefault(); 
                     mainCategoryItem.classList.toggle('active');
                     kaplinlerMenu.classList.toggle('active');
                     
@@ -691,6 +682,7 @@
                 const header = item.querySelector('.category-header');
                 if (header) {
                     header.addEventListener('click', (e) => {
+                        e.preventDefault();
                         const targetList = item.querySelector('.product-list');
                         if (targetList) {
                             item.classList.toggle('active');
