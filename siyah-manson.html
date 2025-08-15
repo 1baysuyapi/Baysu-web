@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BAYSU YAPI VE SULAMA MALZEMELERİ</title>
-    <!-- Font Awesome ikonları için CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Poppins fontu için Google Fonts -->
+    <title>Siyah Manşon - BAYSU YAPI VE SULAMA MALZEMELERİ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    
     <style>
-        /* Renkler ve Font */
+        /* Renkler ve Fontlar için CSS Değişkenleri */
         :root {
             --primary-color: #004797;
             --secondary-color: #FF6B6B;
@@ -24,6 +23,7 @@
             --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
+        /* Temel Stil Ayarları */
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -31,8 +31,12 @@
             background-color: var(--background-color);
             color: var(--text-color);
         }
+        
+        a {
+            text-decoration: none;
+        }
 
-        /* Başlık ve Navigasyon */
+        /* Başlık ve Navigasyon Bölümü */
         .header-main {
             display: flex;
             flex-direction: column;
@@ -41,10 +45,12 @@
             padding: 20px;
             border-bottom: 1px solid var(--border-color);
         }
+
         .logo {
             width: 200px;
             margin-bottom: 15px;
         }
+
         .search-and-actions {
             display: flex;
             align-items: center;
@@ -52,26 +58,38 @@
             width: 100%;
             max-width: 900px;
         }
+
         .search-bar {
             position: relative;
             flex-grow: 1;
             max-width: 500px;
         }
+
         .search-bar input {
             width: 100%;
             padding: 12px 15px 12px 45px;
             border: 1px solid var(--border-color);
             border-radius: 50px;
             font-size: 14px;
+            transition: all 0.3s ease;
         }
+        
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(0, 71, 151, 0.2);
+        }
+
         .search-bar .fas {
             position: absolute;
             left: 20px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--light-text-color);
+            pointer-events: none;
         }
-
+        
+        /* Navigasyon Çubuğu */
         .nav-bar {
             background-color: var(--primary-color);
             padding: 15px 20px;
@@ -80,51 +98,49 @@
             top: 0;
             z-index: 1000;
         }
+
         .nav-content {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 40px;
             max-width: 1200px;
             margin: 0 auto;
         }
+        
         .nav-links {
-            display: none; /* Varsayılan olarak gizli */
+            display: none; /* Mobil için varsayılan olarak gizli */
+            gap: 20px;
         }
+
         .nav-links a {
             color: #fff;
-            text-decoration: none;
             font-weight: 600;
             font-size: 16px;
             padding: 10px;
             transition: color 0.3s;
+            position: relative;
         }
+
         .nav-links a:hover {
             color: var(--secondary-color);
         }
+        
+        /* Menü Toggle Butonu */
         .menu-toggle {
-            display: block; /* Mobil görünümde göster */
+            display: block; /* Mobil için varsayılan olarak görünür */
             color: #fff;
             font-weight: 600;
             font-size: 16px;
             cursor: pointer;
-            position: relative;
-            z-index: 11;
+            padding: 10px;
             transition: color 0.3s;
-            background: none;
-            border: none;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
+
         .menu-toggle.active {
             color: var(--secondary-color);
         }
-        .menu-toggle i {
-            font-size: 24px;
-        }
 
+        /* Dropdown Menü İçeriği */
         .main-menu-container {
             display: none;
             position: absolute;
@@ -135,117 +151,227 @@
             box-shadow: var(--box-shadow);
             border-top: 1px solid var(--border-color);
             z-index: 9;
-            flex-wrap: wrap;
-            padding: 20px;
-        }
-        .main-menu-container.active {
-            display: flex;
-        }
-
-        .menu-content {
-            display: flex;
-            flex-direction: column; /* Mobil için dikey sıralama */
-            width: 100%;
-        }
-        
-        .menu-column {
-            flex: 1;
-            padding: 15px;
-            display: none; /* Varsayılan olarak gizli */
-            max-height: 50vh;
+            max-height: calc(100vh - 100px);
             overflow-y: auto;
         }
-        .menu-column.active {
+
+        .main-menu-container.active {
             display: block;
+        }
+
+        /* Menü içindeki kapsayıcıları Flexbox ile düzenleme */
+        .menu-content {
+            display: flex;
+            flex-direction: column;
             width: 100%;
         }
-        
-        .category-item {
+
+        /* Ana Kategori Başlığı */
+        .main-category-item {
+            width: 100%;
+            box-sizing: border-box;
             cursor: pointer;
-            padding: 10px;
-            transition: background-color 0.3s;
-            border-radius: 8px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s;
         }
+
+        .main-category-item h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .main-category-item .arrow-icon {
+            font-size: 0.8rem;
+            color: var(--light-text-color);
+            transition: transform 0.3s;
+        }
+
+        .main-category-item.active .arrow-icon {
+            transform: rotate(90deg);
+        }
+
+        /* Kategori Grupları */
+        .category-group {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: none;
+        }
+
+        .category-group.active {
+            display: block;
+        }
+        
+        /* Alt Kategori Başlıkları */
+        .category-item {
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+        
+        .category-item:last-child {
+            border-bottom: none;
+        }
+
+        .category-item .category-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        
         .category-item h3 {
             margin: 0;
             font-size: 1rem;
             color: var(--text-color);
             font-weight: 600;
         }
-        .category-item:hover {
-            background-color: var(--background-color);
-        }
-        .category-item.active {
-            background-color: var(--primary-color);
-        }
-        .category-item.active h3 {
-            color: white;
-        }
-        .arrow-icon {
+        
+        .category-item .arrow-icon {
             font-size: 0.8rem;
             color: var(--light-text-color);
             transition: transform 0.3s;
         }
+        
         .category-item.active .arrow-icon {
-            color: white;
             transform: rotate(90deg);
         }
+        
+        /* Ürün Listesi */
         .product-list {
             list-style: none;
             padding: 0;
             margin: 0;
             display: none;
+            width: 100%;
         }
+
         .product-list.active {
             display: block;
         }
-        .product-list a {
-            color: var(--text-color);
-            text-decoration: none;
-            display: block;
-            padding: 8px 10px;
-            border-radius: 6px;
-            transition: background-color 0.2s;
+        
+        .product-list li {
+            border-top: 1px solid var(--border-color);
         }
-        .product-list a:hover {
-            background-color: var(--background-color);
+        
+        .product-list li:first-child {
+            border-top: none;
         }
 
-        /* Anasayfa Boş Alan ve Hakkımızda/İletişim */
-        .page-content {
+        .product-list li a {
+            display: block;
+            padding: 10px 40px;
+            color: var(--text-color);
+            transition: background-color 0.2s;
+        }
+        
+        .product-list li a:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Ürün Sayfası Stilleri */
+        .product-detail-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
             padding: 20px;
             max-width: 1200px;
             margin: 20px auto;
-            text-align: center;
-        }
-        .hero-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 50vh;
-            color: var(--light-text-color);
-            font-size: 1.5rem;
-        }
-        .about-section, .contact-section {
             background: var(--card-background);
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
-            padding: 40px;
-            margin-bottom: 40px;
-            text-align: left;
         }
-        .about-section h2, .contact-section h2 {
-            font-size: 2rem;
+
+        .product-image {
+            flex: 1 1 400px;
+            background-color: var(--background-color);
+            border-radius: var(--border-radius);
+            position: relative;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .zoom-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: var(--light-text-color);
+            cursor: pointer;
+        }
+
+        .product-info {
+            flex: 1 1 400px;
+            padding: 20px;
+        }
+
+        .product-category {
+            color: var(--light-text-color);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+            font-weight: 700;
             color: var(--primary-color);
+            margin-top: 5px;
             margin-bottom: 20px;
-            text-align: center;
         }
-        .about-section p, .contact-section p {
+        
+        .product-description {
             line-height: 1.6;
-            margin-bottom: 15px;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        .product-section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .size-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .size-option {
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .size-option.active, .size-option:hover {
+            border-color: var(--primary-color);
+            background-color: var(--primary-color);
+            color: #fff;
         }
 
         /* Footer */
@@ -257,6 +383,8 @@
             font-size: 14px;
             text-align: center;
         }
+        
+        /* WhatsApp Butonu */
         .whatsapp-button {
             position: fixed;
             bottom: 30px;
@@ -272,56 +400,79 @@
             align-items: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease-in-out;
-            text-decoration: none;
             font-size: 35px;
         }
+        
         .whatsapp-button:hover {
             transform: scale(1.1);
         }
+        
+        /* Animasyonlar */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
 
         /* Responsive Tasarım */
+        /* Masaüstü için */
         @media (min-width: 769px) {
+            .nav-links {
+                display: flex;
+            }
+            
+            .menu-toggle {
+                display: none;
+            }
+            
             .nav-content {
                 justify-content: space-between;
             }
-            .nav-links {
-                display: flex; /* Masaüstünde navigasyon linklerini göster */
-            }
-            .menu-toggle {
-                display: none; /* Masaüstünde menü açma kapama düğmesini gizle */
-            }
-            .search-and-actions {
-                justify-content: center;
-            }
+
             .main-menu-container {
-                display: none !important; /* Masaüstü görünümde varsayılan olarak menüyü gizle */
-                flex-direction: row;
-                justify-content: center;
-                gap: 20px;
+                left: 0;
+                right: 0;
             }
+
             .main-menu-container.active {
-                display: flex !important;
-            }
-            .menu-content {
-                flex-direction: row;
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-            .menu-column {
-                display: none;
-                max-height: 400px; /* Daha sabit bir yükseklik */
-            }
-            .menu-column.active {
                 display: block;
             }
-            #primaryCategoryColumn.active {
-                width: 30%;
+        }
+        
+        /* Mobil için */
+        @media (max-width: 768px) {
+            .logo {
+                width: 150px;
             }
-            #secondary-categories-all.active {
-                width: 30%;
+            
+            .search-bar input {
+                padding: 10px 15px 10px 40px;
             }
-            #tertiary-products.active {
-                width: 40%;
+            
+            .nav-content {
+                justify-content: flex-end;
+            }
+            
+            .menu-toggle {
+                flex-grow: 1;
+                text-align: center;
+            }
+            
+            .main-menu-container {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 0;
+            }
+            
+            .category-item h3 {
+                font-size: 0.9rem;
+            }
+            
+            .product-list li a {
+                font-size: 0.9rem;
+            }
+
+            .product-detail-container {
+                flex-direction: column;
             }
         }
     </style>
@@ -329,8 +480,7 @@
 <body>
 
     <header class="header-main">
-        <!-- Logo resminizi yer tutucu ile değiştirdim, siz kendi logonuzun URL'sini ekleyebilirsiniz. -->
-        <img src="https://placehold.co/200x50/004797/FFFFFF?text=BAYSU+LOGO" alt="BAYSU LOGO" class="logo">
+        <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="BAYSU LOGO" class="logo">
         <div class="search-and-actions">
             <div class="search-bar">
                 <input type="search" placeholder="Ürün Ara..." id="searchInput">
@@ -344,58 +494,22 @@
             <div class="nav-links">
                 <a href="index.html">Anasayfa</a>
                 <a href="#" id="menuToggleDesktop">Ürünlerimiz</a>
-                <a href="#about-section">Hakkımızda</a>
-                <a href="#contact-section">İletişim</a>
             </div>
-            <!-- Mobil menü düğmesi için Font Awesome ikonu ekledim. -->
-            <button class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i> Ürünlerimiz
-            </button>
+            <div class="menu-toggle" id="menuToggle">
+                <span id="menuText">Ürünlerimiz</span>
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
         <div class="main-menu-container" id="mainMenuContainer">
-            <div class="menu-content">
-                
-                <div class="menu-column" id="primaryCategoryColumn">
-                    <div class="category-item" data-target-menu="secondary-categories-all">
-                        <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                </div>
-
-                <div class="menu-column" id="secondary-categories-all">
-                    <div class="category-item" data-target-products="mavi-seri">
+            <div class="main-category-item">
+                <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
+            </div>
+            <ul class="category-group" id="kaplinler-menu">
+                <li class="category-item">
+                    <div class="category-header">
                         <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
-                    <div class="category-item" data-target-products="siyah-seri">
-                        <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                    <div class="category-item" data-target-products="kilitli-baglanti">
-                        <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                    <div class="category-item" data-target-products="disli-sulama">
-                        <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                    <div class="category-item" data-target-products="priz-kolyeler">
-                        <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                    <div class="category-item" data-target-products="nipelli-seri">
-                        <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                    <div class="category-item" data-target-products="vanalar">
-                        <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                    <div class="category-item" data-target-products="vana-kutulari">
-                        <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                    <div class="category-item" data-target-products="damlama-ek-parcalari">
-                        <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                    <div class="category-item" data-target-products="yedek-parcalar">
-                        <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                </div>
-                
-                <div class="menu-column" id="tertiary-products">
-                    <ul class="product-list" id="mavi-seri-products">
+                    <ul class="product-list">
                         <li><a href="mavi-disi-kaplin.html">Mavi Seri Dişi Kaplin</a></li>
                         <li><a href="mavi-erkek-kaplin.html">Mavi Seri Erkek Kaplin</a></li>
                         <li><a href="mavi-dirsek-kaplin.html">Mavi Seri Dirsek Kaplin</a></li>
@@ -409,7 +523,12 @@
                         <li><a href="mavi-reduksiyon.html">Mavi Seri Redüksiyon</a></li>
                         <li><a href="mavi-te.html">Mavi Seri Te</a></li>
                     </ul>
-                    <ul class="product-list" id="siyah-seri-products">
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
                         <li><a href="siyah-disi.html">Siyah Seri Dişi Kaplin</a></li>
                         <li><a href="siyah-erkek-kaplin.html">Siyah Seri Erkek Kaplin</a></li>
                         <li><a href="siyah-dirsek.html">Siyah Seri Dirsek Kaplin</a></li>
@@ -423,45 +542,80 @@
                         <li><a href="siyah-reduksiyon.html">Siyah Seri Redüksiyon</a></li>
                         <li><a href="siyah-te.html">Siyah Seri Te</a></li>
                     </ul>
-                    <ul class="product-list" id="kilitli-baglanti-products">
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
                         <li><a href="kilitli-erkek-dirsek.html">Kilitli Bağlantı Erkek Dirsek</a></li>
                         <li><a href="kilitli-dirsek.html">Kilitli Bağlantı Dirsek</a></li>
                         <li><a href="kilitli-reduksiyon-dirsek.html">Kilitli Bağlantı Redüksiyon Dirsek</a></li>
                         <li><a href="kilitli-te.html">Kilitli Bağlantı TE</a></li>
                         <li><a href="kilitli-erkek-te.html">Kilitli Bağlantı Erkek TE</a></li>
                     </ul>
-                    <ul class="product-list" id="disli-sulama-products">
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
                         <li><a href="disli-disi-dirsek.html">Dişli Dişi Dirsek</a></li>
                         <li><a href="disli-disi-nipel.html">Dişli Dişi Nipel</a></li>
                         <li><a href="disli-disi-reduksiyon-dirsek.html">Dişli Dişi Redüksiyon Dirsek</a></li>
                         <li><a href="erkek-disli-kor-tapa.html">Erkek Dişli Kör Tapa</a></li>
                     </ul>
-                    <ul class="product-list" id="priz-kolyeler-products">
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
                         <li><a href="priz-kolye.html">Priz Kolye</a></li>
                         <li><a href="disi-nipelli-priz-kolye.html">Dişi Nipelli Priz Kolye</a></li>
                         <li><a href="erkek-nipelli-priz-kolye.html">Erkek Nipelli Priz Kolye</a></li>
                         <li><a href="kizakli-priz-kolye.html">Kızaklı Priz Kolye</a></li>
                         <li><a href="cift-cikisli-priz-kolye.html">Çift Çıkışlı Priz Kolye</a></li>
                     </ul>
-                    <ul class="product-list" id="nipelli-seri-products">
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
                         <li><a href="nipelli-disi-priz-kolye.html">Dişi Nipelli Priz Kolye</a></li>
                         <li><a href="nipelli-erkek-priz-kolye.html">Erkek Nipelli Priz Kolye</a></li>
                         <li><a href="nipelli-erkek-te.html">Nipelli Erkek TE</a></li>
                         <li><a href="nipelli-disi-dirsek.html">Nipelli Dişi Dirsek</a></li>
                     </ul>
-                    <ul class="product-list" id="vanalar-products">
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
                         <li><a href="disi-disi-vana.html">Dişi Dişi Vana</a></li>
                         <li><a href="erkek-disi-vana.html">Erkek Dişi Vana</a></li>
                         <li><a href="kaplin-disi-vana.html">Kaplin Dişi Vana</a></li>
                         <li><a href="kaplin-erkek-vana.html">Kaplin Erkek Vana</a></li>
                     </ul>
-                    <ul class="product-list" id="vana-kutulari-products">
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
                         <li><a href="6-inc-vana-kutusu.html">6" Vana Kutusu</a></li>
                         <li><a href="10-inc-vana-kutusu.html">10" Vana Kutusu</a></li>
                         <li><a href="12-inc-vana-kutusu.html">12" Vana Kutusu</a></li>
                         <li><a href="14-inc-vana-kutusu.html">14" Vana Kutusu</a></li>
                     </ul>
-                    <ul class="product-list" id="damlama-ek-parcalari-products">
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
                         <li><a href="cikis-mini-vana.html">Çıkış Mini Vana</a></li>
                         <li><a href="debi-ayarli-damlatici-genis.html">Debi Ayarlı Damlatıcı Geniş Boşaltım</a></li>
                         <li><a href="debi-ayarli-damlatici-kirmizi.html">Debi Ayarlı Damlatıcı Kırmızı</a></li>
@@ -469,32 +623,49 @@
                         <li><a href="duz-damlama-conta.html">Düz Damlama Conta</a></li>
                         <li><a href="kanalli-conta.html">Kanallı Conta</a></li>
                     </ul>
-                    <ul class="product-list" id="yedek-parcalar-products">
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
                         <li><a href="kaplin-sikma-anahtari.html">Kaplin Sıkma Anahtarı</a></li>
                         <li><a href="pah-acma-aparati.html">Pah Açma Aparatı</a></li>
                         <li><a href="o-ring.html">O-Ring</a></li>
                         <li><a href="abot-ustu-kaplin-dagitici.html">Abot Üstü Kaplin Dağıtıcı</a></li>
                     </ul>
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
     </nav>
     
     <main class="page-content">
-        <div class="hero-section">
-            <p>Ürünlerimize göz atın ve sulama ihtiyaçlarınız için en iyi çözümleri keşfedin.</p>
+        <div class="product-detail-container">
+            <div class="product-image">
+                <i class="fas fa-search-plus zoom-icon"></i>
+                <img src="siyah-seri-manson.png" alt="Siyah Manşon">
+            </div>
+            <div class="product-info">
+                <div class="product-category">Siyah Seri</div>
+                <h1 class="product-title">Siyah Manşon</h1>
+                <div class="product-description">
+                    <p>Sulama sistemleriniz için yüksek dayanıklılığa sahip Siyah Manşon.</p>
+                </div>
+                
+                <div class="product-section-title">Size</div>
+                <div class="size-options">
+                    <div class="size-option active">20 MM.</div>
+                    <div class="size-option">25 MM.</div>
+                    <div class="size-option">32 MM.</div>
+                    <div class="size-option">40 MM.</div>
+                    <div class="size-option">50 MM.</div>
+                    <div class="size-option">63 MM.</div>
+                    <div class="size-option">75 MM.</div>
+                    <div class="size-option">90 MM.</div>
+                    <div class="size-option">110 MM.</div>
+                </div>
+            </div>
         </div>
-        <section id="about-section" class="about-section">
-            <h2>Hakkımızda</h2>
-            <p>Bayrakçı Sulama Ve ve Yapı Malzemeleri olarak, yılların tecrübesiyle sulama sektöründe güvenilir ve kaliteli ürünler sunmaktan gurur duyuyoruz. Müşteri memnuniyetini her zaman ön planda tutarak, geniş ürün yelpazemizle her türlü sulama ihtiyacınıza yönelik pratik ve dayanıklı çözümler üretiyoruz. Modern tarım teknolojilerini yakından takip ederek, ürünlerimizi sürekli geliştiriyor ve yeniliğe açık bir şekilde çalışmalarımıza devam ediyoruz.</p>
-            <p>Misyonumuz, sürdürülebilir tarıma katkıda bulunmak ve su kaynaklarının verimli kullanımını teşvik etmektir. Vizyonumuz ise, sektörde öncü bir marka olarak, global pazarda adımızdan söz ettiren lider bir firma olmaktır.</p>
-        </section>
-        <section id="contact-section" class="contact-section">
-            <h2>İletişim</h2>
-            <p><strong>Telefon:</strong> 0553 397 36 03</p>
-            <p><strong>E-posta:</strong> ebayrakci75@gmail.com</p>
-            <p><strong>Adres:</strong> Ankara, Türkiye</p>
-        </section>
     </main>
 
     <footer>
@@ -507,148 +678,114 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const mainMenuContainer = document.getElementById('mainMenuContainer');
             const menuToggleMobile = document.getElementById('menuToggle');
             const menuToggleDesktop = document.getElementById('menuToggleDesktop');
-            const mainMenuContainer = document.getElementById('mainMenuContainer');
+            const mainCategoryItem = document.querySelector('.main-category-item');
+            const kaplinlerMenu = document.getElementById('kaplinler-menu');
+            const subCategoryItems = document.querySelectorAll('#kaplinler-menu > .category-item');
             
-            const primaryCategoryColumn = document.getElementById('primaryCategoryColumn');
-            const secondaryCategoryColumn = document.getElementById('secondary-categories-all');
-            const tertiaryProductsColumn = document.getElementById('tertiary-products');
-
-            const primaryCategoryItem = primaryCategoryColumn.querySelector('.category-item');
-            const secondaryCategoryItems = secondaryCategoryColumn.querySelectorAll('.category-item');
-            const allProductLists = tertiaryProductsColumn.querySelectorAll('.product-list');
-
-            const isDesktop = () => window.innerWidth > 768;
-
-            // Menüyü tamamen sıfırlayan fonksiyon
-            const resetMenu = () => {
-                secondaryCategoryColumn.classList.remove('active');
-                tertiaryProductsColumn.classList.remove('active');
-                primaryCategoryItem.classList.remove('active');
-                secondaryCategoryItems.forEach(item => item.classList.remove('active'));
-                allProductLists.forEach(list => list.classList.remove('active'));
-            };
-
-            // Ana menüyü açıp kapatan fonksiyon
             const toggleMainMenu = () => {
                 const isActive = mainMenuContainer.classList.toggle('active');
-                if (isActive) {
-                    // Ana menü açıldığında ilk kategoriyi ve sütunu aktif hale getir
-                    primaryCategoryColumn.classList.add('active');
-                    primaryCategoryItem.classList.add('active');
-                } else {
-                    // Ana menü kapandığında tüm menüleri sıfırla
-                    resetMenu();
-                    primaryCategoryColumn.classList.remove('active');
+                if (!isActive) {
+                    mainCategoryItem.classList.remove('active');
+                    kaplinlerMenu.classList.remove('active');
+                    subCategoryItems.forEach(item => {
+                        item.classList.remove('active');
+                        const productList = item.querySelector('.product-list');
+                        if (productList) {
+                            productList.classList.remove('active');
+                        }
+                    });
                 }
             };
-            
-            // Birincil kategoriye tıklandığında ikinci seviye menüyü açan fonksiyon
-            const handlePrimaryClick = () => {
-                const isSecondaryActive = secondaryCategoryColumn.classList.toggle('active');
-                tertiaryProductsColumn.classList.remove('active');
-                allProductLists.forEach(list => list.classList.remove('active'));
-                secondaryCategoryItems.forEach(item => item.classList.remove('active'));
-            };
-
-            // İkincil kategoriye tıklandığında ürün listesini açan fonksiyon
-            const handleSecondaryClick = (item) => {
-                const targetProductsId = item.dataset.targetProducts + '-products';
-                const targetProductsList = document.getElementById(targetProductsId);
-                
-                // Önce tüm ikincil kategori ve ürün listelerinin aktifliğini kaldır
-                secondaryCategoryItems.forEach(el => el.classList.remove('active'));
-                allProductLists.forEach(list => list.classList.remove('active'));
-                
-                if (!item.classList.contains('active')) {
-                    item.classList.add('active');
-                    tertiaryProductsColumn.classList.add('active');
-                    if (targetProductsList) {
-                        targetProductsList.classList.add('active');
-                    }
-                } else {
-                    // Zaten aktifse, sadece deaktif et
-                    item.classList.remove('active');
-                    tertiaryProductsColumn.classList.remove('active');
-                    if (targetProductsList) {
-                        targetProductsList.classList.remove('active');
-                    }
-                }
-            };
-
-            // Olay dinleyicileri
-            if (menuToggleMobile) {
-                menuToggleMobile.addEventListener('click', (e) => {
-                    // Mobil menü açma kapama düğmesi
-                    e.stopPropagation(); // Olayın menü konteynerine yayılmasını engelle
-                    toggleMainMenu();
-                    menuToggleMobile.classList.toggle('active');
-                });
-            }
 
             if (menuToggleDesktop) {
                 menuToggleDesktop.addEventListener('click', (e) => {
-                    // Masaüstü menü açma kapama düğmesi
                     e.preventDefault();
-                    e.stopPropagation();
                     toggleMainMenu();
                 });
             }
-            
-            if (primaryCategoryItem) {
-                primaryCategoryItem.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    handlePrimaryClick();
+
+            if (menuToggleMobile) {
+                menuToggleMobile.addEventListener('click', () => {
+                    toggleMainMenu();
                 });
             }
-            
-            secondaryCategoryItems.forEach(item => {
-                item.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    handleSecondaryClick(item);
-                });
+
+            mainCategoryItem.addEventListener('click', (e) => {
+                if (e.target.tagName !== 'A' && !e.target.closest('a')) {
+                    e.preventDefault(); 
+                    mainCategoryItem.classList.toggle('active');
+                    kaplinlerMenu.classList.toggle('active');
+                    
+                    subCategoryItems.forEach(item => {
+                        item.classList.remove('active');
+                        const productList = item.querySelector('.product-list');
+                        if (productList) {
+                            productList.classList.remove('active');
+                        }
+                    });
+                }
             });
 
-            // Menü dışında bir yere tıklandığında menüyü kapat
+            subCategoryItems.forEach(item => {
+                const header = item.querySelector('.category-header');
+                if (header) {
+                    header.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetList = item.querySelector('.product-list');
+                        if (targetList) {
+                            item.classList.toggle('active');
+                            targetList.classList.toggle('active');
+                            
+                            subCategoryItems.forEach(otherItem => {
+                                if (otherItem !== item) {
+                                    otherItem.classList.remove('active');
+                                    const otherList = otherItem.querySelector('.product-list');
+                                    if (otherList) {
+                                        otherList.classList.remove('active');
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+
             window.addEventListener('click', (e) => {
                 if (!mainMenuContainer.contains(e.target) && !e.target.closest('.nav-bar')) {
-                    mainMenuContainer.classList.remove('active');
-                    if (menuToggleMobile) {
-                        menuToggleMobile.classList.remove('active');
+                    const isMenuOpen = mainMenuContainer.classList.contains('active');
+                    if (isMenuOpen) {
+                        mainMenuContainer.classList.remove('active');
+                        mainCategoryItem.classList.remove('active');
+                        kaplinlerMenu.classList.remove('active');
+                        subCategoryItems.forEach(item => {
+                            item.classList.remove('active');
+                            const productList = item.querySelector('.product-list');
+                            if (productList) {
+                                productList.classList.remove('active');
+                            }
+                        });
                     }
-                    resetMenu();
                 }
             });
 
-            // Ekran boyutu değiştiğinde menüyü sıfırla
             window.addEventListener('resize', () => {
-                if (!isDesktop()) {
+                const isMenuOpen = mainMenuContainer.classList.contains('active');
+                if (window.innerWidth >= 769 && isMenuOpen) {
                     mainMenuContainer.classList.remove('active');
-                    if (menuToggleMobile) {
-                        menuToggleMobile.classList.remove('active');
-                    }
-                    resetMenu();
-                } else {
-                     // Masaüstü görünümde nav linklerini göster
-                     document.querySelector('.nav-links').style.display = 'flex';
-                     menuToggleMobile.style.display = 'none';
+                    mainCategoryItem.classList.remove('active');
+                    kaplinlerMenu.classList.remove('active');
+                    subCategoryItems.forEach(item => {
+                        item.classList.remove('active');
+                        const productList = item.querySelector('.product-list');
+                        if (productList) {
+                            productList.classList.remove('active');
+                        }
+                    });
                 }
             });
-
-            // Sayfa yüklendiğinde ve yeniden boyutlandığında başlangıç durumunu ayarla
-            const initialSetup = () => {
-                if (isDesktop()) {
-                    document.querySelector('.nav-links').style.display = 'flex';
-                    if (menuToggleMobile) menuToggleMobile.style.display = 'none';
-                } else {
-                    document.querySelector('.nav-links').style.display = 'none';
-                    if (menuToggleMobile) menuToggleMobile.style.display = 'flex';
-                }
-            };
-
-            window.addEventListener('resize', initialSetup);
-            window.addEventListener('load', initialSetup);
         });
     </script>
 </body>
