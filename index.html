@@ -190,8 +190,8 @@
         /* Alt menü listesi */
         .category-group {
             list-style: none;
-            padding: 0; /* İç boşluğu sıfırla */
-            margin: 0; /* Dış boşluğu sıfırla */
+            padding: 0;
+            margin: 0;
             display: none;
         }
 
@@ -201,7 +201,7 @@
         
         .category-item {
             cursor: pointer;
-            padding: 10px 20px; /* İç boşluğu düzenle */
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -233,7 +233,7 @@
         /* Alt ürün listesi */
         .product-list {
             list-style: none;
-            padding: 0 0 0 20px;
+            padding: 0 0 0 20px; /* Sola boşluk vererek içeri al */
             margin: 0;
             display: none;
         }
@@ -254,6 +254,9 @@
             color: var(--text-color);
             display: block;
             padding: 8px 10px;
+        }
+        .product-list li a:hover {
+            background-color: #f0f0f0;
         }
 
         /* Ana Sayfa İçeriği */
@@ -605,25 +608,23 @@
 
             // Kaplinler ana menüsüne tıklama
             mainCategoryItem.addEventListener('click', (e) => {
-                // Sadece ana menüye tıklayınca alt menü açılsın
-                if (e.target.tagName !== 'A' && !e.target.closest('a')) {
-                    mainCategoryItem.classList.toggle('active');
-                    kaplinlerMenu.classList.toggle('active');
-                    
-                    subCategoryItems.forEach(item => {
-                        item.classList.remove('active');
-                        const productList = item.querySelector('.product-list');
-                        if (productList) {
-                            productList.classList.remove('active');
-                        }
-                    });
-                }
+                e.preventDefault();
+                mainCategoryItem.classList.toggle('active');
+                kaplinlerMenu.classList.toggle('active');
+                
+                subCategoryItems.forEach(item => {
+                    item.classList.remove('active');
+                    const productList = item.querySelector('.product-list');
+                    if (productList) {
+                        productList.classList.remove('active');
+                    }
+                });
             });
 
             // Alt kategori öğelerine tıklama (Mavi Seri, Siyah Seri vb.)
             subCategoryItems.forEach(item => {
                 item.addEventListener('click', (e) => {
-                    e.preventDefault(); // Bu satır, alt menü başlıklarına tıklanınca linke gitmesini engeller.
+                    e.preventDefault(); // Bu satır, alt menü başlıklarının linke gitmesini engeller.
                     const targetList = item.querySelector('.product-list');
 
                     if (targetList) {
