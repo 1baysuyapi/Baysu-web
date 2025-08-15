@@ -89,6 +89,39 @@
             pointer-events: none;
         }
         
+        /* Arama sonuçları listesi */
+        #searchResults {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+            box-shadow: var(--box-shadow);
+            z-index: 100;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        #searchResults.active {
+            display: block;
+        }
+
+        #searchResults a {
+            display: block;
+            padding: 10px 15px;
+            color: var(--text-color);
+            transition: background-color 0.2s;
+            text-decoration: none;
+        }
+
+        #searchResults a:hover {
+            background-color: #f0f0f0;
+        }
+
         /* Navigasyon Çubuğu */
         .nav-bar {
             background-color: var(--primary-color);
@@ -364,7 +397,7 @@
             padding: 10px 15px;
             border: 1px solid var(--border-color);
             border-radius: 50px;
-            cursor: default; /* Tıklanabilir olmadığını gösterir */
+            cursor: default;
             transition: all 0.2s ease;
         }
         
@@ -414,7 +447,6 @@
         }
 
         /* Responsive Tasarım */
-        /* Masaüstü için */
         @media (min-width: 769px) {
             .nav-links {
                 display: flex;
@@ -438,7 +470,6 @@
             }
         }
         
-        /* Mobil için */
         @media (max-width: 768px) {
             .logo {
                 width: 150px;
@@ -485,6 +516,7 @@
             <div class="search-bar">
                 <input type="search" placeholder="Ürün Ara..." id="searchInput">
                 <i class="fas fa-search"></i>
+                <div id="searchResults"></div>
             </div>
         </div>
     </header>
@@ -649,7 +681,9 @@
                 <div class="product-category">Siyah Seri</div>
                 <h1 class="product-title">Siyah Manşon</h1>
                 <div class="product-description">
-                    <p>Sulama sistemleriniz için yüksek dayanıklılığa sahip Siyah Manşon.</p>
+                    <p>
+                        Sulama sistemlerinizi bir üst seviyeye taşıyın! BAYSU'nun yüksek kaliteli Siyah Manşonları, en zorlu koşullara bile meydan okuyan benzersiz bir dayanıklılık sunar. Kolay montaj özelliği sayesinde zamandan tasarruf edin ve su sızıntılarını tamamen unutun. Tarım, bahçe ve endüstriyel projelerinizde güvenle kullanabileceğiniz bu manşonlar, uzun ömürlü ve sorunsuz bir performans için ideal seçiminiz olacak. Kaliteyi ve pratikliği bir arada arıyorsanız, doğru yerdesiniz.
+                    </p>
                 </div>
                 
                 <div class="product-section-title">Size</div>
@@ -685,6 +719,15 @@
             const kaplinlerMenu = document.getElementById('kaplinler-menu');
             const subCategoryItems = document.querySelectorAll('#kaplinler-menu > .category-item');
             const searchInput = document.getElementById('searchInput');
+            const searchResultsContainer = document.getElementById('searchResults');
+
+            const allProducts = [];
+            document.querySelectorAll('.product-list a').forEach(link => {
+                allProducts.push({
+                    name: link.textContent.trim(),
+                    url: link.href
+                });
+            });
 
             const toggleMainMenu = () => {
                 const isActive = mainMenuContainer.classList.toggle('active');
@@ -755,7 +798,7 @@
             });
 
             window.addEventListener('click', (e) => {
-                if (!mainMenuContainer.contains(e.target) && !e.target.closest('.nav-bar')) {
+                if (!mainMenuContainer.contains(e.target) && !e.target.closest('.nav-bar') && !searchInput.contains(e.target) && !searchResultsContainer.contains(e.target)) {
                     const isMenuOpen = mainMenuContainer.classList.contains('active');
                     if (isMenuOpen) {
                         mainMenuContainer.classList.remove('active');
@@ -769,6 +812,7 @@
                             }
                         });
                     }
+                    searchResultsContainer.classList.remove('active');
                 }
             });
 
@@ -788,47 +832,40 @@
                 }
             });
 
-            // Arama çubuğu işlevselliği
-            searchInput.addEventListener('keyup', (e) => {
-                const searchTerm = e.target.value.toLowerCase();
-                const allProductItems = document.querySelectorAll('.product-list li');
-                const allCategoryHeaders = document.querySelectorAll('.category-item .category-header h3');
-
-                allProductItems.forEach(item => {
-                    const itemName = item.textContent.toLowerCase();
-                    if (itemName.includes(searchTerm)) {
-                        item.style.display = ''; // Eşleşiyorsa göster
-                    } else {
-                        item.style.display = 'none'; // Eşleşmiyorsa gizle
-                    }
-                });
-
-                allCategoryHeaders.forEach(header => {
-                    const categoryName = header.textContent.toLowerCase();
-                    const parentCategoryItem = header.closest('.category-item');
-                    const productList = parentCategoryItem.querySelector('.product-list');
-                    
-                    const hasVisibleProducts = Array.from(productList.children).some(productItem => productItem.style.display !== 'none');
-                    
-                    if (categoryName.includes(searchTerm) || hasVisibleProducts) {
-                         parentCategoryItem.style.display = '';
-                    } else {
-                         parentCategoryItem.style.display = 'none';
-                    }
-                });
+            // Geliştirilmiş Arama Fonksiyonu
+            searchInput.addEventListener('keyup', () => {
+                const searchTerm = searchInput.value.toLowerCase();
+                searchResultsContainer.innerHTML = '';
                 
-                // Ana menüleri aç veya kapat
-                const mainCategoryList = document.querySelector('.category-group');
-                const hasVisibleCategories = Array.from(subCategoryItems).some(item => item.style.display !== 'none');
-                
-                if (searchTerm.length > 0 && hasVisibleCategories) {
-                    mainMenuContainer.classList.add('active');
-                    mainCategoryItem.classList.add('active');
-                    kaplinlerMenu.classList.add('active');
-                } else if (searchTerm.length === 0) {
-                    mainMenuContainer.classList.remove('active');
-                    mainCategoryItem.classList.remove('active');
-                    kaplinlerMenu.classList.remove('active');
+                if (searchTerm.length > 1) {
+                    const filteredProducts = allProducts.filter(product => product.name.toLowerCase().includes(searchTerm));
+                    
+                    if (filteredProducts.length > 0) {
+                        filteredProducts.forEach(product => {
+                            const resultItem = document.createElement('a');
+                            resultItem.href = product.url;
+                            resultItem.textContent = product.name;
+                            searchResultsContainer.appendChild(resultItem);
+                        });
+                        searchResultsContainer.classList.add('active');
+                    } else {
+                        searchResultsContainer.classList.remove('active');
+                    }
+                } else {
+                    searchResultsContainer.classList.remove('active');
+                }
+            });
+
+            // Arama çubuğu odak dışına çıkınca sonuçları kapatma
+            searchInput.addEventListener('blur', () => {
+                setTimeout(() => {
+                    searchResultsContainer.classList.remove('active');
+                }, 200);
+            });
+
+            searchInput.addEventListener('focus', () => {
+                if (searchInput.value.length > 1) {
+                    searchResultsContainer.classList.add('active');
                 }
             });
         });
