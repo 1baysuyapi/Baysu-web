@@ -422,7 +422,7 @@
 <body>
 
     <header class="header-main">
-        <img src="https://i.ibb.co/6y4sLdM/WhatsApp-Image-2025-07-25-at-23-57-21-1-Photoroom.png" alt="BAYSU LOGO" class="logo">
+        <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="BAYSU LOGO" class="logo">
         <div class="search-and-actions">
             <div class="search-bar">
                 <input type="search" placeholder="Ürün Ara..." id="searchInput">
@@ -617,17 +617,8 @@
             const kaplinlerMenu = document.getElementById('kaplinler-menu');
             const subCategoryItems = document.querySelectorAll('#kaplinler-menu > .category-item');
 
-            // Sayfa yüklendiğinde menüyü otomatik olarak aç
-            mainMenuContainer.classList.add('active');
-            mainCategoryItem.classList.add('active');
-            kaplinlerMenu.classList.add('active');
-            
-            // "Mavi Seri"nin de otomatik olarak açık gelmesini sağla
-            const maviSeriItem = document.querySelector('.category-item');
-            if (maviSeriItem) {
-                maviSeriItem.classList.add('active');
-                maviSeriItem.querySelector('.product-list').classList.add('active');
-            }
+            // Sayfa yüklendiğinde menünün otomatik açılmasını sağlayan kodu kaldırdım.
+            // Bu kod artık menü toggle olayına bağlanacak.
 
             const toggleMainMenu = () => {
                 const isActive = mainMenuContainer.classList.toggle('active');
@@ -702,13 +693,29 @@
             // Sayfa dışına tıklanıldığında menüyü kapat
             window.addEventListener('click', (e) => {
                 if (!mainMenuContainer.contains(e.target) && !e.target.closest('.nav-bar')) {
-                    toggleMainMenu();
+                    const isMenuOpen = mainMenuContainer.classList.contains('active');
+                    if (isMenuOpen) {
+                        mainMenuContainer.classList.remove('active');
+                        // Menü kapanırken alt kategorileri de kapat
+                        mainCategoryItem.classList.remove('active');
+                        kaplinlerMenu.classList.remove('active');
+                        subCategoryItems.forEach(item => {
+                            item.classList.remove('active');
+                            const productList = item.querySelector('.product-list');
+                            if (productList) {
+                                productList.classList.remove('active');
+                            }
+                        });
+                    }
                 }
             });
 
             // Ekran boyutu değiştiğinde menüyü sıfırla
             window.addEventListener('resize', () => {
-                toggleMainMenu();
+                const isMenuOpen = mainMenuContainer.classList.contains('active');
+                if (window.innerWidth >= 769 && isMenuOpen) {
+                    toggleMainMenu();
+                }
             });
         });
     </script>
