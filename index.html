@@ -146,7 +146,7 @@
             position: absolute;
             top: 100%;
             left: 0;
-            width: 100%;
+            width: 100%; /* Menüyü tam genişlikte yapar */
             background-color: var(--card-background);
             box-shadow: var(--box-shadow);
             border-top: 1px solid var(--border-color);
@@ -167,6 +167,7 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s;
         }
 
         .main-category-item h3 {
@@ -176,7 +177,17 @@
             font-weight: 600;
         }
 
-        /* Kaplinler altındaki kategoriler */
+        .main-category-item .arrow-icon {
+            font-size: 0.8rem;
+            color: var(--light-text-color);
+            transition: transform 0.3s;
+        }
+
+        .main-category-item.active .arrow-icon {
+            transform: rotate(90deg);
+        }
+
+        /* Alt menü listesi */
         .category-group {
             list-style: none;
             padding: 0 20px;
@@ -209,7 +220,7 @@
             font-weight: 600;
         }
         
-        .arrow-icon {
+        .category-item .arrow-icon {
             font-size: 0.8rem;
             color: var(--light-text-color);
             transition: transform 0.3s;
@@ -339,10 +350,7 @@
             }
 
             .main-menu-container.active {
-                display: flex;
-                flex-direction: column;
-                max-width: 400px; /* Menü genişliği için uygun bir boyut */
-                margin: 0 auto;
+                display: block; /* Blok olarak göster, tam genişlikte kalır */
             }
             
             .product-list {
@@ -372,7 +380,7 @@
             .main-menu-container {
                 flex-direction: column;
                 align-items: stretch;
-                padding: 0; /* Padding kaldırıldı */
+                padding: 0;
             }
             
             .category-item h3 {
@@ -415,7 +423,7 @@
             </div>
         </div>
         <div class="main-menu-container" id="mainMenuContainer">
-            <div class="main-category-item" data-target-menu="kaplinler-menu">
+            <div class="main-category-item">
                 <h3>KAPLİNLER <span class="arrow-icon">&#9658;</span></h3>
             </div>
             <ul class="category-group" id="kaplinler-menu">
@@ -567,11 +575,10 @@
             const kaplinlerMenu = document.getElementById('kaplinler-menu');
             const subCategoryItems = document.querySelectorAll('#kaplinler-menu > .category-item');
 
-            const isDesktop = () => window.innerWidth > 768;
-
             const toggleMainMenu = () => {
                 const isActive = mainMenuContainer.classList.toggle('active');
                 if (!isActive) {
+                    // Menü kapanırken tüm alt menüleri kapat
                     mainCategoryItem.classList.remove('active');
                     kaplinlerMenu.classList.remove('active');
                     subCategoryItems.forEach(item => item.classList.remove('active'));
@@ -596,6 +603,7 @@
             mainCategoryItem.addEventListener('click', () => {
                 mainCategoryItem.classList.toggle('active');
                 kaplinlerMenu.classList.toggle('active');
+                
                 // Kaplinler alt menüleri açılırken, alt alt menüleri kapat
                 subCategoryItems.forEach(item => {
                     item.classList.remove('active');
