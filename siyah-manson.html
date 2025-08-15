@@ -364,16 +364,16 @@
             padding: 10px 15px;
             border: 1px solid var(--border-color);
             border-radius: 50px;
-            cursor: default; /* cursor'ı varsayılan hale getir */
+            cursor: default; /* Tıklanabilir olmadığını gösterir */
             transition: all 0.2s ease;
+            pointer-events: none; /* Tıklama olaylarını tamamen engeller */
         }
-
-        /* Tıklanabilirlik ve hover efektlerini kaldırmak için aşağıdaki satırları yoruma aldım veya kaldırdım. */
-        /* .size-option.active, .size-option:hover {
+        
+        .size-option:hover {
             border-color: var(--primary-color);
             background-color: var(--primary-color);
             color: #fff;
-        } */
+        }
 
         /* Footer */
         footer {
