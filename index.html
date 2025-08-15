@@ -156,6 +156,11 @@
         .main-menu-container.active {
             display: block;
         }
+        
+        /* Menü içeriğinin kendisi için ayarlar */
+        .menu-content {
+            padding: 10px 0;
+        }
 
         /* Ana kategori (Kaplinler) stil ayarları */
         .main-category-item {
@@ -233,7 +238,7 @@
         /* Alt ürün listesi */
         .product-list {
             list-style: none;
-            padding: 0 0 0 20px; /* Sola boşluk vererek içeri al */
+            padding: 0;
             margin: 0;
             display: none;
         }
@@ -253,7 +258,7 @@
         .product-list li a {
             color: var(--text-color);
             display: block;
-            padding: 8px 10px;
+            padding: 8px 30px;
         }
         .product-list li a:hover {
             background-color: #f0f0f0;
@@ -360,10 +365,6 @@
             .main-menu-container.active {
                 display: block;
             }
-            
-            .product-list {
-                padding-left: 20px;
-            }
         }
         
         /* Mobil için */
@@ -397,10 +398,6 @@
             
             .product-list li a {
                 font-size: 0.9rem;
-            }
-
-            .product-list {
-                padding-left: 20px;
             }
         }
     </style>
@@ -583,13 +580,23 @@
             const kaplinlerMenu = document.getElementById('kaplinler-menu');
             const subCategoryItems = document.querySelectorAll('#kaplinler-menu > .category-item');
 
+            // Sayfa yüklendiğinde menüyü otomatik olarak aç
+            mainMenuContainer.classList.add('active');
+            mainCategoryItem.classList.add('active');
+            kaplinlerMenu.classList.add('active');
+
             const toggleMainMenu = () => {
                 const isActive = mainMenuContainer.classList.toggle('active');
                 if (!isActive) {
                     mainCategoryItem.classList.remove('active');
                     kaplinlerMenu.classList.remove('active');
-                    subCategoryItems.forEach(item => item.classList.remove('active'));
-                    document.querySelectorAll('.product-list').forEach(list => list.classList.remove('active'));
+                    subCategoryItems.forEach(item => {
+                        item.classList.remove('active');
+                        const productList = item.querySelector('.product-list');
+                        if (productList) {
+                            productList.classList.remove('active');
+                        }
+                    });
                 }
             };
 
@@ -608,26 +615,27 @@
 
             // Kaplinler ana menüsüne tıklama
             mainCategoryItem.addEventListener('click', (e) => {
-                e.preventDefault();
-                mainCategoryItem.classList.toggle('active');
-                kaplinlerMenu.classList.toggle('active');
-                
-                subCategoryItems.forEach(item => {
-                    item.classList.remove('active');
-                    const productList = item.querySelector('.product-list');
-                    if (productList) {
-                        productList.classList.remove('active');
-                    }
-                });
+                // Tıklanan öğe bir ürün linki değilse
+                if (e.target.tagName !== 'A' && !e.target.closest('a')) {
+                    mainCategoryItem.classList.toggle('active');
+                    kaplinlerMenu.classList.toggle('active');
+                    
+                    subCategoryItems.forEach(item => {
+                        item.classList.remove('active');
+                        const productList = item.querySelector('.product-list');
+                        if (productList) {
+                            productList.classList.remove('active');
+                        }
+                    });
+                }
             });
 
             // Alt kategori öğelerine tıklama (Mavi Seri, Siyah Seri vb.)
             subCategoryItems.forEach(item => {
                 item.addEventListener('click', (e) => {
-                    e.preventDefault(); // Bu satır, alt menü başlıklarının linke gitmesini engeller.
                     const targetList = item.querySelector('.product-list');
-
                     if (targetList) {
+                        e.preventDefault();
                         const isActive = item.classList.toggle('active');
                         targetList.classList.toggle('active');
 
