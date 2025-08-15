@@ -157,12 +157,7 @@
             display: block;
         }
         
-        /* Menü içeriğinin kendisi için ayarlar */
-        .menu-content {
-            padding: 10px 0;
-        }
-
-        /* Ana kategori (Kaplinler) stil ayarları */
+        /* Ana menü ve alt menü yapısı */
         .main-category-item {
             width: 100%;
             box-sizing: border-box;
@@ -235,7 +230,7 @@
             transform: rotate(90deg);
         }
         
-        /* Alt ürün listesi */
+        /* Alt ürün listesi - boşluk sorununu çözmek için yeniden düzenlendi */
         .product-list {
             list-style: none;
             padding: 0;
@@ -405,7 +400,7 @@
 <body>
 
     <header class="header-main">
-        <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="BAYSU LOGO" class="logo">
+        <img src="https://i.ibb.co/6y4sLdM/WhatsApp-Image-2025-07-25-at-23-57-21-1-Photoroom.png" alt="BAYSU LOGO" class="logo">
         <div class="search-and-actions">
             <div class="search-bar">
                 <input type="search" placeholder="Ürün Ara..." id="searchInput">
@@ -584,6 +579,10 @@
             mainMenuContainer.classList.add('active');
             mainCategoryItem.classList.add('active');
             kaplinlerMenu.classList.add('active');
+            
+            // "Mavi Seri"nin de otomatik olarak açık gelmesini istiyorsan, bu satırı ekle
+            document.querySelector('.category-item').classList.add('active');
+            document.querySelector('.category-item .product-list').classList.add('active');
 
             const toggleMainMenu = () => {
                 const isActive = mainMenuContainer.classList.toggle('active');
@@ -633,21 +632,24 @@
             // Alt kategori öğelerine tıklama (Mavi Seri, Siyah Seri vb.)
             subCategoryItems.forEach(item => {
                 item.addEventListener('click', (e) => {
-                    const targetList = item.querySelector('.product-list');
-                    if (targetList) {
+                    // Bu if kontrolü, sadece başlığa tıklandığında menünün açılıp kapanmasını sağlar
+                    if (e.target.tagName === 'H3' || e.target.tagName === 'SPAN') {
                         e.preventDefault();
-                        const isActive = item.classList.toggle('active');
-                        targetList.classList.toggle('active');
+                        const targetList = item.querySelector('.product-list');
+                        if (targetList) {
+                            const isActive = item.classList.toggle('active');
+                            targetList.classList.toggle('active');
 
-                        subCategoryItems.forEach(otherItem => {
-                            if (otherItem !== item) {
-                                otherItem.classList.remove('active');
-                                const otherList = otherItem.querySelector('.product-list');
-                                if (otherList) {
-                                    otherList.classList.remove('active');
+                            subCategoryItems.forEach(otherItem => {
+                                if (otherItem !== item) {
+                                    otherItem.classList.remove('active');
+                                    const otherList = otherItem.querySelector('.product-list');
+                                    if (otherList) {
+                                        otherList.classList.remove('active');
+                                    }
                                 }
-                            }
-                        });
+                            });
+                        }
                     }
                 });
             });
