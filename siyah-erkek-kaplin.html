@@ -100,7 +100,7 @@
             border-top: none;
             border-radius: 0 0 10px 10px;
             box-shadow: var(--box-shadow);
-            z-index: 1001; /* Z-index değeri yükseltildi */
+            z-index: 1001;
             max-height: 200px;
             overflow-y: auto;
             display: none;
@@ -141,7 +141,7 @@
         }
         
         .nav-links {
-            display: none; /* Mobil için varsayılan olarak gizli */
+            display: none;
             gap: 20px;
         }
 
@@ -160,7 +160,7 @@
         
         /* Menü Toggle Butonu */
         .menu-toggle {
-            display: block; /* Mobil için varsayılan olarak görünür */
+            display: block;
             color: #fff;
             font-weight: 600;
             font-size: 16px;
@@ -385,27 +385,30 @@
             font-weight: 600;
             margin-bottom: 10px;
         }
-
+        
+        /* Ölçü Kutuları için Yeni Kod */
         .size-options {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 20px;
         }
 
         .size-option {
-            padding: 10px 15px;
+            padding: 8px 12px;
             border: 1px solid var(--border-color);
             border-radius: 50px;
             cursor: default;
             transition: all 0.2s ease;
+            font-size: 0.9rem;
         }
-        
+
         .size-option:hover {
             border-color: var(--primary-color);
             background-color: var(--primary-color);
             color: #fff;
         }
+        /* Ölçü Kutuları Yeni Kod Sonu */
 
         /* Footer */
         footer {
@@ -682,7 +685,7 @@
                 <h1 class="product-title">Erkek</h1>
                 <div class="product-description">
                     <p>
-                        Senkron Erkek Kaplin, sulama sistemleriniz için güvenilir ve kolay bağlantı çözümleri sunar. Yüksek kaliteli malzemeden üretilmiştir, hızlı ve sızdırmaz bir montaj sağlar. Tarım, bahçe ve diğer sulama uygulamalarınızda borularınızı birleştirmek için idealdir. Dayanıklılığı ve uzun ömrü ile öne çıkar.
+                        BAYSU Siyah Seri Erkek Kaplin, sulama sistemleriniz için güvenilir ve kolay bağlantı çözümleri sunar. Yüksek kaliteli malzemeden üretilmiştir, hızlı ve sızdırmaz bir montaj sağlar. Tarım, bahçe ve diğer sulama uygulamalarınızda borularınızı birleştirmek için idealdir. Dayanıklılığı ve uzun ömrü ile öne çıkar.
                     </p>
                 </div>
                 
@@ -741,9 +744,7 @@
             const searchInput = document.getElementById('searchInput');
             const searchResultsContainer = document.getElementById('searchResults');
             
-            // Tüm ürünlerin listesi (tüm sayfalarda aynı olmalı)
             const allProducts = [
-                // Mavi Seri
                 { name: "Mavi Seri Dişi Kaplin", url: "mavi-disi-kaplin.html" },
                 { name: "Mavi Seri Erkek Kaplin", url: "mavi-erkek-kaplin.html" },
                 { name: "Mavi Seri Dirsek Kaplin", url: "mavi-dirsek-kaplin.html" },
@@ -756,8 +757,6 @@
                 { name: "Mavi Seri Redüksiyon Te", url: "mavi-reduksiyon-te.html" },
                 { name: "Mavi Seri Redüksiyon", url: "mavi-reduksiyon.html" },
                 { name: "Mavi Seri Te", url: "mavi-te.html" },
-                
-                // Siyah Seri
                 { name: "Siyah Seri Dişi Kaplin", url: "siyah-disi-kaplin.html" },
                 { name: "Siyah Seri Erkek Kaplin", url: "siyah-erkek-kaplin.html" },
                 { name: "Siyah Seri Dirsek Kaplin", url: "siyah-dirsek.html" },
@@ -770,8 +769,6 @@
                 { name: "Siyah Seri Redüksiyon Te", url: "siyah-reduksiyon-te.html" },
                 { name: "Siyah Seri Redüksiyon", url: "siyah-reduksiyon.html" },
                 { name: "Siyah Seri Te", url: "siyah-te.html" },
-
-                // Diğerleri
                 { name: "Kilitli Bağlantı Erkek Dirsek", url: "kilitli-erkek-dirsek.html" },
                 { name: "Kilitli Bağlantı Dirsek", url: "kilitli-dirsek.html" },
                 { name: "Kilitli Bağlantı Redüksiyon Dirsek", url: "kilitli-reduksiyon-dirsek.html" },
@@ -825,14 +822,12 @@
                 });
             }
 
-            // Ana kategoriye tıklayınca alt menüyü açma/kapama
             mainCategoryItem.addEventListener('click', (e) => {
                 e.preventDefault();
                 mainCategoryItem.classList.toggle('active');
                 kaplinlerMenu.classList.toggle('active');
             });
 
-            // Alt kategorilere tıklayınca ürün listesini açma/kapama
             subCategoryItems.forEach(item => {
                 const header = item.querySelector('.category-header');
                 const productList = item.querySelector('.product-list');
@@ -842,7 +837,6 @@
                         item.classList.toggle('active');
                         productList.classList.toggle('active');
 
-                        // Diğer açık alt kategorileri kapatma
                         subCategoryItems.forEach(otherItem => {
                             if (otherItem !== item) {
                                 otherItem.classList.remove('active');
@@ -889,7 +883,6 @@
                 }
             });
 
-            // Geliştirilmiş Arama Fonksiyonu
             searchInput.addEventListener('keyup', () => {
                 const searchTerm = searchInput.value.toLowerCase();
                 searchResultsContainer.innerHTML = '';
@@ -913,7 +906,6 @@
                 }
             });
 
-            // Arama çubuğu odak dışına çıkınca sonuçları kapatma
             searchInput.addEventListener('blur', () => {
                 setTimeout(() => {
                     searchResultsContainer.classList.remove('active');
