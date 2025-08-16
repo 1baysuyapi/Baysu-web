@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dişi - BAYSU YAPI VE SULAMA MALZEMELERİ</title>
+    <title>Siyah Seri Dişi Kaplin - BAYSU YAPI VE SULAMA MALZEMELERİ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -561,7 +561,7 @@
                         <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href="siyah-disi.html">Siyah Seri Dişi Kaplin</a></li>
+                        <li><a href="siyah-disi-kaplin.html">Siyah Seri Dişi Kaplin</a></li>
                         <li><a href="siyah-erkek-kaplin.html">Siyah Seri Erkek Kaplin</a></li>
                         <li><a href="siyah-dirsek.html">Siyah Seri Dirsek Kaplin</a></li>
                         <li><a href="siyah-disi-dirsek.html">Siyah Seri Dişi Dirsek</a></li>
@@ -682,7 +682,7 @@
                 <h1 class="product-title">Dişi</h1>
                 <div class="product-description">
                     <p>
-                        BAYSU Siyah Dişi Kaplin, sulama sistemleriniz için üstün bağlantı çözümleri sunar. Yüksek kaliteli malzemeden üretilmiştir, kolayca monte edilir ve sızdırmaz bir bağlantı sağlar. Tarım, bahçe ve diğer sulama uygulamalarınızda güvenle kullanabilirsiniz. Dayanıklılığı ve uzun ömrü ile öne çıkar.
+                        Senkron Dişi Kaplin, sulama sistemleriniz için mükemmel dayanıklılık ve kolay montaj imkanı sunar. Yüksek kaliteli malzemeden üretilmiştir, kolayca monte edilir ve sızdırmaz bir bağlantı sağlar. Tarım, bahçe ve diğer sulama uygulamalarınızda güvenle kullanabilirsiniz. Dayanıklılığı ve uzun ömrü ile öne çıkar.
                     </p>
                 </div>
                 
@@ -740,28 +740,76 @@
             const subCategoryItems = document.querySelectorAll('#kaplinler-menu > .category-item');
             const searchInput = document.getElementById('searchInput');
             const searchResultsContainer = document.getElementById('searchResults');
+            
+            // Tüm ürünlerin listesi (tüm sayfalarda aynı olmalı)
+            const allProducts = [
+                // Mavi Seri
+                { name: "Mavi Seri Dişi Kaplin", url: "mavi-disi-kaplin.html" },
+                { name: "Mavi Seri Erkek Kaplin", url: "mavi-erkek-kaplin.html" },
+                { name: "Mavi Seri Dirsek Kaplin", url: "mavi-dirsek-kaplin.html" },
+                { name: "Mavi Seri Dişi Dirsek", url: "mavi-disi-dirsek.html" },
+                { name: "Mavi Seri Erkek Dirsek", url: "mavi-erkek-dirsek.html" },
+                { name: "Mavi Seri Manşon", url: "mavi-manson.html" },
+                { name: "Mavi Seri Tapa", url: "mavi-tapa.html" },
+                { name: "Mavi Seri Erkek Te", url: "mavi-erkek-te.html" },
+                { name: "Mavi Seri Dişi Te", url: "mavi-disi-te.html" },
+                { name: "Mavi Seri Redüksiyon Te", url: "mavi-reduksiyon-te.html" },
+                { name: "Mavi Seri Redüksiyon", url: "mavi-reduksiyon.html" },
+                { name: "Mavi Seri Te", url: "mavi-te.html" },
+                
+                // Siyah Seri
+                { name: "Siyah Seri Dişi Kaplin", url: "siyah-disi-kaplin.html" },
+                { name: "Siyah Seri Erkek Kaplin", url: "siyah-erkek-kaplin.html" },
+                { name: "Siyah Seri Dirsek Kaplin", url: "siyah-dirsek.html" },
+                { name: "Siyah Seri Dişi Dirsek", url: "siyah-disi-dirsek.html" },
+                { name: "Siyah Seri Erkek Dirsek", url: "siyah-erkek-dirsek.html" },
+                { name: "Siyah Seri Manşon", url: "siyah-manson.html" },
+                { name: "Siyah Seri Tapa", url: "siyah-tapa.html" },
+                { name: "Siyah Seri Erkek Te", url: "siyah-erkek-te.html" },
+                { name: "Siyah Seri Dişi Te", url: "siyah-disi-te.html" },
+                { name: "Siyah Seri Redüksiyon Te", url: "siyah-reduksiyon-te.html" },
+                { name: "Siyah Seri Redüksiyon", url: "siyah-reduksiyon.html" },
+                { name: "Siyah Seri Te", url: "siyah-te.html" },
 
-            const allProducts = [];
-            document.querySelectorAll('.product-list a').forEach(link => {
-                allProducts.push({
-                    name: link.textContent.trim(),
-                    url: link.href
-                });
-            });
+                // Diğerleri
+                { name: "Kilitli Bağlantı Erkek Dirsek", url: "kilitli-erkek-dirsek.html" },
+                { name: "Kilitli Bağlantı Dirsek", url: "kilitli-dirsek.html" },
+                { name: "Kilitli Bağlantı Redüksiyon Dirsek", url: "kilitli-reduksiyon-dirsek.html" },
+                { name: "Kilitli Bağlantı TE", url: "kilitli-te.html" },
+                { name: "Kilitli Bağlantı Erkek TE", url: "kilitli-erkek-te.html" },
+                { name: "Dişli Dişi Dirsek", url: "disli-disi-dirsek.html" },
+                { name: "Dişli Dişi Nipel", url: "disli-disi-nipel.html" },
+                { name: "Dişli Dişi Redüksiyon Dirsek", url: "disli-disi-reduksiyon-dirsek.html" },
+                { name: "Erkek Dişli Kör Tapa", url: "erkek-disli-kor-tapa.html" },
+                { name: "Priz Kolye", url: "priz-kolye.html" },
+                { name: "Dişi Nipelli Priz Kolye", url: "disi-nipelli-priz-kolye.html" },
+                { name: "Erkek Nipelli Priz Kolye", url: "erkek-nipelli-priz-kolye.html" },
+                { name: "Kızaklı Priz Kolye", url: "kizakli-priz-kolye.html" },
+                { name: "Çift Çıkışlı Priz Kolye", url: "cift-cikisli-priz-kolye.html" },
+                { name: "Nipelli Erkek TE", url: "nipelli-erkek-te.html" },
+                { name: "Nipelli Dişi Dirsek", url: "nipelli-disi-dirsek.html" },
+                { name: "Dişi Dişi Vana", url: "disi-disi-vana.html" },
+                { name: "Erkek Dişi Vana", url: "erkek-disi-vana.html" },
+                { name: "Kaplin Dişi Vana", url: "kaplin-disi-vana.html" },
+                { name: "Kaplin Erkek Vana", url: "kaplin-erkek-vana.html" },
+                { name: "6\" Vana Kutusu", url: "6-inc-vana-kutusu.html" },
+                { name: "10\" Vana Kutusu", url: "10-inc-vana-kutusu.html" },
+                { name: "12\" Vana Kutusu", url: "12-inc-vana-kutusu.html" },
+                { name: "14\" Vana Kutusu", url: "14-inc-vana-kutusu.html" },
+                { name: "Çıkış Mini Vana", url: "cikis-mini-vana.html" },
+                { name: "Debi Ayarlı Damlatıcı Geniş Boşaltım", url: "debi-ayarli-damlatici-genis.html" },
+                { name: "Debi Ayarlı Damlatıcı Kırmızı", url: "debi-ayarli-damlatici-kirmizi.html" },
+                { name: "Debi Ayarlı Damlatıcı Yeşil", url: "debi-ayarli-damlatici-yesil.html" },
+                { name: "Düz Damlama Conta", url: "duz-damlama-conta.html" },
+                { name: "Kanallı Conta", url: "kanalli-conta.html" },
+                { name: "Kaplin Sıkma Anahtarı", url: "kaplin-sikma-anahtari.html" },
+                { name: "Pah Açma Aparatı", url: "pah-acma-aparati.html" },
+                { name: "O-Ring", url: "o-ring.html" },
+                { name: "Abot Üstü Kaplin Dağıtıcı", url: "abot-ustu-kaplin-dagitici.html" }
+            ];
 
             const toggleMainMenu = () => {
-                const isActive = mainMenuContainer.classList.toggle('active');
-                if (!isActive) {
-                    mainCategoryItem.classList.remove('active');
-                    kaplinlerMenu.classList.remove('active');
-                    subCategoryItems.forEach(item => {
-                        item.classList.remove('active');
-                        const productList = item.querySelector('.product-list');
-                        if (productList) {
-                            productList.remove('active');
-                        }
-                    });
-                }
+                mainMenuContainer.classList.toggle('active');
             };
 
             if (menuToggleDesktop) {
@@ -777,15 +825,107 @@
                 });
             }
 
+            // Ana kategoriye tıklayınca alt menüyü açma/kapama
             mainCategoryItem.addEventListener('click', (e) => {
-                if (e.target.tagName !== 'A' && !e.target.closest('a')) {
-                    e.preventDefault(); 
-                    mainCategoryItem.classList.toggle('active');
-                    kaplinlerMenu.classList.toggle('active');
-                    
+                e.preventDefault();
+                mainCategoryItem.classList.toggle('active');
+                kaplinlerMenu.classList.toggle('active');
+            });
+
+            // Alt kategorilere tıklayınca ürün listesini açma/kapama
+            subCategoryItems.forEach(item => {
+                const header = item.querySelector('.category-header');
+                const productList = item.querySelector('.product-list');
+                if (header && productList) {
+                    header.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        item.classList.toggle('active');
+                        productList.classList.toggle('active');
+
+                        // Diğer açık alt kategorileri kapatma
+                        subCategoryItems.forEach(otherItem => {
+                            if (otherItem !== item) {
+                                otherItem.classList.remove('active');
+                                const otherList = otherItem.querySelector('.product-list');
+                                if (otherList) {
+                                    otherList.classList.remove('active');
+                                }
+                            }
+                        });
+                    });
+                }
+            });
+
+            window.addEventListener('click', (e) => {
+                if (!mainMenuContainer.contains(e.target) && !e.target.closest('.nav-bar')) {
+                    const isMenuOpen = mainMenuContainer.classList.contains('active');
+                    if (isMenuOpen) {
+                        mainMenuContainer.classList.remove('active');
+                        mainCategoryItem.classList.remove('active');
+                        kaplinlerMenu.classList.remove('active');
+                        subCategoryItems.forEach(item => {
+                            item.classList.remove('active');
+                            const productList = item.querySelector('.product-list');
+                            if (productList) {
+                                productList.classList.remove('active');
+                            }
+                        });
+                    }
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 769) {
+                    mainMenuContainer.classList.remove('active');
+                    mainCategoryItem.classList.remove('active');
+                    kaplinlerMenu.classList.remove('active');
                     subCategoryItems.forEach(item => {
                         item.classList.remove('active');
                         const productList = item.querySelector('.product-list');
                         if (productList) {
-                            productList.remove('active');
+                            productList.classList.remove('active');
                         }
+                    });
+                }
+            });
+
+            // Geliştirilmiş Arama Fonksiyonu
+            searchInput.addEventListener('keyup', () => {
+                const searchTerm = searchInput.value.toLowerCase();
+                searchResultsContainer.innerHTML = '';
+                
+                if (searchTerm.length > 1) {
+                    const filteredProducts = allProducts.filter(product => product.name.toLowerCase().includes(searchTerm));
+                    
+                    if (filteredProducts.length > 0) {
+                        filteredProducts.forEach(product => {
+                            const resultItem = document.createElement('a');
+                            resultItem.href = product.url;
+                            resultItem.textContent = product.name;
+                            searchResultsContainer.appendChild(resultItem);
+                        });
+                        searchResultsContainer.classList.add('active');
+                    } else {
+                        searchResultsContainer.classList.remove('active');
+                    }
+                } else {
+                    searchResultsContainer.classList.remove('active');
+                }
+            });
+
+            // Arama çubuğu odak dışına çıkınca sonuçları kapatma
+            searchInput.addEventListener('blur', () => {
+                setTimeout(() => {
+                    searchResultsContainer.classList.remove('active');
+                }, 200);
+            });
+
+            searchInput.addEventListener('focus', () => {
+                if (searchInput.value.length > 1) {
+                    searchResultsContainer.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
