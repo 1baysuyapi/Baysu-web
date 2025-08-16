@@ -100,7 +100,7 @@
             border-top: none;
             border-radius: 0 0 10px 10px;
             box-shadow: var(--box-shadow);
-            z-index: 1001; /* Z-index değeri yükseltildi */
+            z-index: 1001;
             max-height: 200px;
             overflow-y: auto;
             display: none;
@@ -141,7 +141,7 @@
         }
         
         .nav-links {
-            display: none; /* Mobil için varsayılan olarak gizli */
+            display: none;
             gap: 20px;
         }
 
@@ -160,7 +160,7 @@
         
         /* Menü Toggle Butonu */
         .menu-toggle {
-            display: block; /* Mobil için varsayılan olarak görünür */
+            display: block;
             color: #fff;
             font-weight: 600;
             font-size: 16px;
@@ -308,6 +308,9 @@
             padding: 10px 40px;
             color: var(--text-color);
             transition: background-color 0.2s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .product-list li a:hover {
@@ -400,12 +403,20 @@
             cursor: default;
             transition: all 0.2s ease;
             font-size: 14px; 
+            white-space: nowrap;
         }
         
         .size-option:hover {
             border-color: var(--primary-color);
             background-color: var(--primary-color);
             color: #fff;
+        }
+        
+        /* Sadece bu sayfaya özel ölçü boyutu değişikliği */
+        .size-options .size-option {
+            font-size: 18px; /* Ölçülerin yeni yazı boyutu */
+            padding: 12px 20px; /* İç boşluklar */
+            border-width: 2px; /* Kenarlık kalınlığı */
         }
 
         /* Footer */
@@ -689,7 +700,16 @@
                 
                 <div class="product-section-title">Ölçüler</div>
                 <div class="size-options">
-                    </div>
+                    <div class="size-option">20</div>
+                    <div class="size-option">25</div>
+                    <div class="size-option">32</div>
+                    <div class="size-option">40</div>
+                    <div class="size-option">50</div>
+                    <div class="size-option">63</div>
+                    <div class="size-option">75</div>
+                    <div class="size-option">90</div>
+                    <div class="size-option">110</div>
+                </div>
             </div>
         </div>
     </main>
