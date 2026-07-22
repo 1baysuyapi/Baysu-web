@@ -131,12 +131,15 @@
                     <!-- Dinamik Sepet İçeriği -->
                 </div>
                 <div class="cart-footer">
-                    <div class="cart-total-row">
-                        <span>Toplam Tutar:</span>
-                        <span class="cart-total-amount" id="cartTotalAmount">0.00 ₺</span>
+                    <div class="cart-total-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-top: 1px solid #E2E8F0;">
+                        <span style="font-weight: 600; color: #1E293B;">Liste Fiyatı Toplamı:</span>
+                        <span class="cart-total-amount" id="cartTotalAmount" style="font-weight: 700; color: #1D4ED8; font-size: 1.15rem;">0.00 ₺</span>
                     </div>
-                    <button class="whatsapp-order-btn" id="sendWhatsAppOrderBtn">
-                        <i class="fab fa-whatsapp" style="font-size: 20px;"></i> WhatsApp ile Siparişi Gönder
+                    <div style="background: #EFF6FF; border: 1px dashed #3B82F6; border-radius: 8px; padding: 10px 12px; margin: 10px 0; font-size: 12px; color: #1E40AF; text-align: center; line-height: 1.4;">
+                         <strong>Toptan İskonto Fırsatı:</strong> Bu tutar liste fiyatıdır. Sipariş miktarınıza göre <strong>yüksek iskonto</strong> düşülecektir!
+                    </div>
+                    <button class="whatsapp-order-btn" id="sendWhatsAppOrderBtn" style="background: #25D366; color: #fff; border: none; padding: 14px; border-radius: 10px; font-weight: 700; width: 100%; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);">
+                        <i class="fab fa-whatsapp" style="font-size: 22px;"></i> İskontolu Fiyat Teklifi Al (WhatsApp)
                     </button>
                     <button class="clear-cart-btn" id="clearCartBtn">Sepeti Temizle</button>
                 </div>
@@ -326,11 +329,11 @@
         const timestamp = getFormattedTimestamp();
 
         let text = `📋 *BAYRAKÇI SULAMA VE YAPI MALZEMELERİ*\n`;
-        text += `*SİPARİŞ / TEKLİF TALEBİ*\n`;
+        text += `*İSKONTOLU FİYAT TEKLİFİ VE SİPARİŞ TALEBİ*\n`;
         text += `--------------------------------------------------\n`;
         text += `📅 *Tarih:* ${timestamp}\n`;
         text += `--------------------------------------------------\n\n`;
-        text += `*ÜRÜN İSMİ | EBAT | BİRİM FİYATI | MİKTAR | TUTAR*\n`;
+        text += `*ÜRÜN İSMİ | EBAT | LİSTE FİYATI | MİKTAR | TUTAR*\n`;
         text += `--------------------------------------------------\n`;
 
         let totalSum = 0;
@@ -344,9 +347,10 @@
         });
 
         text += `--------------------------------------------------\n`;
-        text += `💰 *GENEL TOPLAM SİPARİŞ TUTARI:* ${totalSum.toFixed(2)} TL\n`;
+        text += ` *TOPLAM LİSTE FİYATI:* ${totalSum.toFixed(2)} TL\n`;
+        text += `💡 *İSKONTO TALEBİ:* Ürün miktarlarımıza ve projemize özel iskonto oranınız ile net iskontolu fiyat teklifinizi öğrenmek istiyoruz.\n`;
         text += `--------------------------------------------------\n`;
-        text += `Lütfen ürün stok teyidini ve teslimat bilgisini iletiniz.`;
+        text += `Lütfen ürün stok teyidi ile birlikte iskontolu net fiyat teklifinizi iletiniz.`;
 
         // Siparişi Tüm Geçmiş Arşive Ekle ve Aktif Sepeti Sıfırla
         const newOrderRecord = {
@@ -489,6 +493,18 @@
                 }
             }
         });
+    });
+
+    // Güvenlik Koruması: Anti-Clickjacking & XSS Filtreleme
+    try {
+        if (window.top !== window.self) {
+            window.top.location = window.self.location;
+        }
+    } catch (e) {}
+
+    // Dış Bağlantılara Güvenlik Etiketi (rel="noopener noreferrer") Ekle
+    document.querySelectorAll('a[target="_blank"]').forEach(a => {
+        a.setAttribute('rel', 'noopener noreferrer');
     });
 
     // Global Erişim API
