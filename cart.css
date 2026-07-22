@@ -28,19 +28,23 @@
 
 /* Ürün Fiyat & Ebat Tablosu */
 .table-responsive {
-    width: 100%;
-    overflow-x: auto;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
     -webkit-overflow-scrolling: touch;
-    margin-top: 20px;
+    margin-top: 25px;
     background: #ffffff;
     border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
     border: 1px solid #E2E8F0;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .product-size-table {
     width: 100%;
-    min-width: 620px; /* Mobilde sütunların sıkışmasını önler */
+    min-width: 600px;
     border-collapse: collapse;
     text-align: left;
     font-size: 14px;
