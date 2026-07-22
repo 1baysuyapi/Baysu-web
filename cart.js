@@ -255,7 +255,7 @@
         }
     }
 
-    // WhatsApp Sipariş Gönderimi (Mesaj Tablo Formatı + Arşivleme & Sepeti Sıfırlama)
+    // WhatsApp Sipariş Gönderimi (Özel Tablo Formatı: ÜRÜN İSMİ | EBAT | BİRİM FİYATI | KALEM TUTARI)
     function sendWhatsAppOrder() {
         const cart = getCart();
         if (cart.length === 0) {
@@ -265,14 +265,13 @@
 
         const timestamp = getFormattedTimestamp();
 
-        // 1. WhatsApp Tablo Formatlı Mesaj Metni
+        // 1. WhatsApp Tam İstenen Tablo Şablonu
         let text = `📋 *BAYRAKÇI SULAMA VE YAPI MALZEMELERİ*\n`;
         text += `*SİPARİŞ / TEKLİF TALEBİ*\n`;
         text += `--------------------------------------------------\n`;
-        text += `📅 *Tarih & Saat:* ${timestamp}\n`;
+        text += `📅 *Tarih:* ${timestamp}\n`;
         text += `--------------------------------------------------\n\n`;
-        text += `*SİPARİŞ TABLOSU:*\n\n`;
-        text += `*ÜRÜN ADI | EBAT | ADET | B.FİYAT | TUTAR*\n`;
+        text += `*ÜRÜN İSMİ | EBAT | BİRİM FİYATI | KALEM TUTARI*\n`;
         text += `--------------------------------------------------\n`;
 
         let totalSum = 0;
@@ -280,11 +279,7 @@
         cart.forEach((item, idx) => {
             const itemTotal = (item.price * item.quantity).toFixed(2);
             totalSum += parseFloat(itemTotal);
-            text += `${idx + 1}. *${item.productName}*\n`;
-            text += `   • Ebat: ${item.size} | Ç.Adedi: ${item.boxQty}\n`;
-            text += `   • Miktar: ${item.quantity} Paket/Çuval\n`;
-            text += `   • Birim Fiyat: ${item.price.toFixed(2)} ₺\n`;
-            text += `   • Kalem Tutarı: ${itemTotal} ₺\n\n`;
+            text += `${idx + 1}. ${item.productName} | ${item.size} | ${item.quantity} Pkt x ${item.price.toFixed(2)} ₺ | ${itemTotal} ₺\n`;
         });
 
         text += `--------------------------------------------------\n`;
