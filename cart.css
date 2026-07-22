@@ -1,0 +1,429 @@
+/* =========================================================
+   BAYSU YAPI - SEPET VE ÜRÜN TABLOSU MODERN CSS (cart.css)
+   ========================================================= */
+
+/* Ürün Fiyat & Ebat Tablosu */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid #E2E8F0;
+}
+
+.product-size-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+}
+
+.product-size-table thead {
+    background: linear-gradient(135deg, #004797 0%, #002d62 100%);
+    color: #ffffff;
+}
+
+.product-size-table th {
+    padding: 16px 20px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border: none;
+}
+
+.product-size-table tbody tr {
+    border-bottom: 1px solid #F1F5F9;
+    transition: background-color 0.2s ease;
+}
+
+.product-size-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.product-size-table tbody tr:hover {
+    background-color: #F8FAFC;
+}
+
+.product-size-table td {
+    padding: 14px 20px;
+    vertical-align: middle;
+}
+
+.size-badge {
+    background: #EFF6FF;
+    color: #004797;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 8px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.box-qty-badge {
+    color: #64748B;
+    font-weight: 500;
+}
+
+.price-tag {
+    font-size: 16px;
+    font-weight: 700;
+    color: #004797;
+}
+
+/* Adet (Miktar) Seçici */
+.qty-selector {
+    display: inline-flex;
+    align-items: center;
+    background: #F1F5F9;
+    border-radius: 8px;
+    padding: 2px;
+    border: 1px solid #CBD5E1;
+}
+
+.qty-btn {
+    background: #ffffff;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 16px;
+    color: #1E293B;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.qty-btn:hover {
+    background: #004797;
+    color: #ffffff;
+}
+
+.qty-input {
+    width: 45px;
+    text-align: center;
+    border: none;
+    background: transparent;
+    font-weight: 600;
+    font-size: 14px;
+    color: #1E293B;
+    -moz-appearance: textfield;
+}
+
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Sepete Ekle Butonu */
+.add-to-cart-btn {
+    background: #004797;
+    color: #ffffff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(0, 71, 151, 0.2);
+}
+
+.add-to-cart-btn:hover {
+    background: #003366;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 71, 151, 0.3);
+}
+
+.add-to-cart-btn.added {
+    background: #10B981 !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+}
+
+/* Floating Cart Toggle Button */
+.floating-cart-trigger {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    z-index: 1900;
+    background: linear-gradient(135deg, #004797 0%, #002d62 100%);
+    color: #ffffff;
+    padding: 14px 22px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 30px rgba(0, 71, 151, 0.35);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.floating-cart-trigger:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 71, 151, 0.45);
+}
+
+.cart-count-badge {
+    background: #FF6B35;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    min-width: 24px;
+    text-align: center;
+}
+
+/* Cart Drawer Modal */
+.cart-drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 3000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cart-drawer-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: -450px;
+    width: 100%;
+    max-width: 450px;
+    height: 100vh;
+    background: #ffffff;
+    z-index: 3001;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cart-drawer.active {
+    right: 0;
+}
+
+.cart-header {
+    background: linear-gradient(135deg, #004797 0%, #002d62 100%);
+    color: #ffffff;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.cart-close-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.cart-timestamp-bar {
+    background: #EFF6FF;
+    padding: 10px 24px;
+    border-bottom: 1px solid #DBEAFE;
+    font-size: 13px;
+    color: #1E40AF;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cart-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 24px;
+}
+
+.cart-empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #94A3B8;
+}
+
+.cart-empty-state i {
+    font-size: 50px;
+    margin-bottom: 15px;
+    color: #CBD5E1;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #F1F5F9;
+    gap: 12px;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-info h4 {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+    color: #1E293B;
+    font-weight: 600;
+}
+
+.cart-item-meta {
+    font-size: 12px;
+    color: #64748B;
+}
+
+.cart-item-price {
+    font-size: 14px;
+    font-weight: 700;
+    color: #004797;
+    margin-top: 4px;
+}
+
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.remove-cart-item {
+    color: #EF4444;
+    background: #FEE2E2;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.remove-cart-item:hover {
+    background: #FCA5A5;
+}
+
+.cart-footer {
+    padding: 20px 24px;
+    border-top: 1px solid #E2E8F0;
+    background: #F8FAFC;
+}
+
+.cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1E293B;
+}
+
+.cart-total-amount {
+    font-size: 20px;
+    color: #004797;
+}
+
+.whatsapp-order-btn {
+    width: 100%;
+    background: #25D366;
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    transition: all 0.25s ease;
+}
+
+.whatsapp-order-btn:hover {
+    background: #20BA5A;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+.clear-cart-btn {
+    width: 100%;
+    margin-top: 10px;
+    background: transparent;
+    color: #94A3B8;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 6px;
+    text-decoration: underline;
+}
+
+.clear-cart-btn:hover {
+    color: #EF4444;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 600px) {
+    .product-size-table th, .product-size-table td {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+    
+    .add-to-cart-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .floating-cart-trigger {
+        bottom: 90px;
+        right: 15px;
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+}
