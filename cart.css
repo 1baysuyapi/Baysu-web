@@ -1,4 +1,4 @@
-﻿/* =========================================================
+/* =========================================================
    BAYSU YAPI - SEPET VE ÜRÜN TABLOSU MODERN CSS (cart.css)
    ========================================================= */
 
@@ -129,6 +129,7 @@
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
+    user-select: none;
 }
 
 .qty-btn:hover {
@@ -137,19 +138,26 @@
 }
 
 .qty-input {
-    width: 42px;
+    width: 44px;
     text-align: center;
     border: none;
     background: transparent;
     font-weight: 600;
     font-size: 14px;
     color: #1E293B;
+    appearance: none;
+    -webkit-appearance: none;
     -moz-appearance: textfield;
+    outline: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0 2px;
 }
 
 .qty-input::-webkit-outer-spin-button,
 .qty-input::-webkit-inner-spin-button {
     -webkit-appearance: none;
+    appearance: none;
     margin: 0;
 }
 
