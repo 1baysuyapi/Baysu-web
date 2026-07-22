@@ -57,16 +57,6 @@
     function injectCartUI() {
         if (document.getElementById('cartDrawerOverlay')) return;
 
-        // Anasayfaya Dön Butonunu Ürün Detay Sayfalarına Otomatik Ekle
-        const productDetail = document.querySelector('.product-detail-container');
-        if (productDetail && !document.querySelector('.back-home-bar')) {
-            const backBtn = document.createElement('a');
-            backBtn.href = 'index.html';
-            backBtn.className = 'back-home-bar';
-            backBtn.innerHTML = `<i class="fas fa-arrow-left"></i> Anasayfaya Dön`;
-            productDetail.parentNode.insertBefore(backBtn, productDetail);
-        }
-
         // Floating Cart Trigger (Sağ Alt Buton)
         const triggerHtml = `
             <div class="floating-cart-trigger" id="floatingCartBtn" title="Sepetimi Görüntüle">
@@ -142,7 +132,7 @@
         renderCartItems();
     }
 
-    // Sepet İçeriğini Çizdir (Aktif Ürünler + Arşivlenmiş Son Sipariş)
+    // Sepet İçeriğini Çizdir
     function renderCartItems() {
         const cartBody = document.getElementById('cartBody');
         const cartTotalAmount = document.getElementById('cartTotalAmount');
@@ -176,9 +166,9 @@
                         </div>
                         <div class="cart-item-actions">
                             <div class="qty-selector" style="transform: scale(0.9);">
-                                <button class="qty-btn" onclick="window.BaysuCart.changeQty(${index}, -1)">-</button>
+                                <button class="qty-btn" onclick="window.BaysuCart.changeQty(${index}, -1)">&minus;</button>
                                 <span style="padding: 0 8px; font-weight: 700;">${item.quantity}</span>
-                                <button class="qty-btn" onclick="window.BaysuCart.changeQty(${index}, 1)">+</button>
+                                <button class="qty-btn" onclick="window.BaysuCart.changeQty(${index}, 1)">&plus;</button>
                             </div>
                             <button class="remove-cart-item" onclick="window.BaysuCart.removeItem(${index})" title="Sil">
                                 <i class="fas fa-trash"></i>
@@ -189,7 +179,7 @@
             }).join('');
         }
 
-        // Eğer daha önce gönderilmiş arşivlenmiş sipariş varsa altında göster
+        // Arşivlenmiş son sipariş
         if (archivedOrder && archivedOrder.items && archivedOrder.items.length > 0) {
             html += `
                 <div class="archived-order-box">
@@ -214,7 +204,7 @@
         }
     }
 
-    // Ürün Ekleme
+    // Ürün Ekleme (Kesinlikle Tekil Ekler)
     function addItem(productName, size, boxQty, price, quantity) {
         let cart = getCart();
         const existingIndex = cart.findIndex(item => item.productName === productName && item.size === size);
@@ -255,7 +245,7 @@
         }
     }
 
-    // WhatsApp Sipariş Gönderimi (Özel Tablo Formatı: ÜRÜN İSMİ | EBAT | BİRİM FİYATI | KALEM TUTARI)
+    // WhatsApp Sipariş Gönderimi
     function sendWhatsAppOrder() {
         const cart = getCart();
         if (cart.length === 0) {
@@ -265,7 +255,6 @@
 
         const timestamp = getFormattedTimestamp();
 
-        // 1. WhatsApp Tam İstenen Tablo Şablonu
         let text = `📋 *BAYRAKÇI SULAMA VE YAPI MALZEMELERİ*\n`;
         text += `*SİPARİŞ / TEKLİF TALEBİ*\n`;
         text += `--------------------------------------------------\n`;
@@ -287,7 +276,7 @@
         text += `--------------------------------------------------\n`;
         text += `Lütfen ürün stok teyidini ve teslimat bilgisini iletiniz.`;
 
-        // 2. Siparişi Arşivle ve Aktif Sepeti Sıfırla
+        // Siparişi Arşivle ve Aktif Sepeti Sıfırla
         const archiveData = {
             timestamp: timestamp,
             items: cart,
@@ -303,7 +292,6 @@
 
         updateCartUI();
 
-        // 3. WhatsApp Yönlendirme
         const encodedText = encodeURIComponent(text);
         const whatsappUrl = `https://wa.me/905533973603?text=${encodedText}`;
 
@@ -311,28 +299,26 @@
     }
 
     // Sayfa Yüklendiğinde Başlat
+    let isInitialized = false;
+
     document.addEventListener('DOMContentLoaded', () => {
+        if (isInitialized) return;
+        isInitialized = true;
+
         injectCartUI();
         updateCartUI();
 
-        // Tablodaki miktar butonları (+ / -)
+        // Tablodaki Miktar Artırma/Azaltma ve Sepete Ekle Butonları Listener'ı
         document.body.addEventListener('click', (e) => {
-            const qtyBtn = e.target.closest('.qty-btn');
-            if (qtyBtn && qtyBtn.closest('.product-size-table')) {
-                const selector = qtyBtn.closest('.qty-selector');
-                const input = selector.querySelector('.qty-input');
-                let val = parseInt(input.value) || 1;
-
-                if (qtyBtn.classList.contains('qty-minus')) {
-                    if (val > 1) input.value = val - 1;
-                } else if (qtyBtn.classList.contains('qty-plus')) {
-                    input.value = val + 1;
-                }
-            }
-
-            // Sepete Ekle Butonu
             const addBtn = e.target.closest('.add-to-cart-btn');
             if (addBtn) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Çift tıklamayı engelle (debouncing lock)
+                if (addBtn.disabled) return;
+                addBtn.disabled = true;
+
                 const productName = addBtn.getAttribute('data-product');
                 const size = addBtn.getAttribute('data-size');
                 const boxQty = addBtn.getAttribute('data-box');
@@ -341,6 +327,7 @@
                 const qtyInput = row ? row.querySelector('.qty-input') : null;
                 const quantity = qtyInput ? (parseInt(qtyInput.value) || 1) : 1;
 
+                // Tam 1 defa ekle!
                 addItem(productName, size, boxQty, price, quantity);
 
                 // Görsel geri bildirim
@@ -351,7 +338,8 @@
                 setTimeout(() => {
                     addBtn.classList.remove('added');
                     addBtn.innerHTML = originalText;
-                }, 1500);
+                    addBtn.disabled = false;
+                }, 800);
             }
         });
     });
