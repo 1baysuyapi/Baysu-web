@@ -1,4 +1,4 @@
-﻿/* =========================================================
+/* =========================================================
    BAYSU YAPI - CİHAZA ÖZEL SEPET VE WHATSAPP SİPARİŞ JS (cart.js)
    ========================================================= */
 
@@ -162,13 +162,13 @@
                         <div class="cart-item-info">
                             <h4>${item.productName}</h4>
                             <div class="cart-item-meta">Ebat: <strong>${item.size}</strong> | Çuval Adedi: <strong>${item.boxQty}</strong></div>
-                            <div class="cart-item-price">${item.quantity} Paket x ${item.price.toFixed(2)} ₺ = <strong>${itemTotal} ₺</strong></div>
+                            <div class="cart-item-price">${item.quantity} Paket x ${item.price.toFixed(2)} TL = <strong>${itemTotal} TL</strong></div>
                         </div>
                         <div class="cart-item-actions">
                             <div class="qty-selector" style="transform: scale(0.9);">
-                                <button class="qty-btn" onclick="window.BaysuCart.changeQty(${index}, -1)">&minus;</button>
+                                <button class="qty-btn" onclick="window.BaysuCart.changeQty(${index}, -1)">-</button>
                                 <span style="padding: 0 8px; font-weight: 700;">${item.quantity}</span>
-                                <button class="qty-btn" onclick="window.BaysuCart.changeQty(${index}, 1)">&plus;</button>
+                                <button class="qty-btn" onclick="window.BaysuCart.changeQty(${index}, 1)">+</button>
                             </div>
                             <button class="remove-cart-item" onclick="window.BaysuCart.removeItem(${index})" title="Sil">
                                 <i class="fas fa-trash"></i>
@@ -187,11 +187,11 @@
                     <div style="font-size: 11px; color: #64748B; margin-bottom: 8px;">Gönderim Tarihi: ${archivedOrder.timestamp}</div>
                     ${archivedOrder.items.map(item => `
                         <div class="archived-item-line">
-                            • <strong>${item.productName}</strong> (${item.size}) - ${item.quantity} Pkt x ${item.price.toFixed(2)} ₺ = ${(item.price * item.quantity).toFixed(2)} ₺
+                            • <strong>${item.productName}</strong> (${item.size}) - ${item.quantity} Pkt x ${item.price.toFixed(2)} TL = ${(item.price * item.quantity).toFixed(2)} TL
                         </div>
                     `).join('')}
                     <div style="font-weight: 700; color: #059669; font-size: 13px; margin-top: 8px;">
-                        Arşivlenen Toplam Tutar: ${archivedOrder.totalSum.toFixed(2)} ₺
+                        Arşivlenen Toplam Tutar: ${archivedOrder.totalSum.toFixed(2)} TL
                     </div>
                 </div>
             `;
@@ -200,11 +200,11 @@
         cartBody.innerHTML = html;
 
         if (cartTotalAmount) {
-            cartTotalAmount.textContent = totalSum.toFixed(2) + ' ₺';
+            cartTotalAmount.textContent = totalSum.toFixed(2) + ' TL';
         }
     }
 
-    // Ürün Ekleme (Kesinlikle Tekil Ekler)
+    // Ürün Ekleme
     function addItem(productName, size, boxQty, price, quantity) {
         let cart = getCart();
         const existingIndex = cart.findIndex(item => item.productName === productName && item.size === size);
@@ -268,11 +268,11 @@
         cart.forEach((item, idx) => {
             const itemTotal = (item.price * item.quantity).toFixed(2);
             totalSum += parseFloat(itemTotal);
-            text += `${idx + 1}. ${item.productName} | ${item.size} | ${item.quantity} Pkt x ${item.price.toFixed(2)} ₺ | ${itemTotal} ₺\n`;
+            text += `${idx + 1}. ${item.productName} | ${item.size} | ${item.quantity} Pkt x ${item.price.toFixed(2)} TL | ${itemTotal} TL\n`;
         });
 
         text += `--------------------------------------------------\n`;
-        text += `💰 *GENEL TOPLAM SİPARİŞ TUTARI:* ${totalSum.toFixed(2)} ₺\n`;
+        text += `💰 *GENEL TOPLAM SİPARİŞ TUTARI:* ${totalSum.toFixed(2)} TL\n`;
         text += `--------------------------------------------------\n`;
         text += `Lütfen ürün stok teyidini ve teslimat bilgisini iletiniz.`;
 
@@ -308,14 +308,34 @@
         injectCartUI();
         updateCartUI();
 
-        // Tablodaki Miktar Artırma/Azaltma ve Sepete Ekle Butonları Listener'ı
+        // Tablodaki Miktar + / - Butonları & Sepete Ekle Butonları
         document.body.addEventListener('click', (e) => {
+            // Tablodaki + ve - Butonları Tıklaması
+            const qtyBtn = e.target.closest('.qty-btn');
+            if (qtyBtn && qtyBtn.closest('.qty-selector')) {
+                e.preventDefault();
+                e.stopPropagation();
+                const selector = qtyBtn.closest('.qty-selector');
+                const input = selector.querySelector('.qty-input');
+                if (input) {
+                    let currentVal = parseInt(input.value) || 1;
+                    if (qtyBtn.classList.contains('qty-plus') || qtyBtn.textContent.trim() === '+') {
+                        input.value = currentVal + 1;
+                    } else if (qtyBtn.classList.contains('qty-minus') || qtyBtn.textContent.trim() === '-') {
+                        if (currentVal > 1) {
+                            input.value = currentVal - 1;
+                        }
+                    }
+                }
+                return;
+            }
+
+            // Sepete Ekle Butonu
             const addBtn = e.target.closest('.add-to-cart-btn');
             if (addBtn) {
                 e.preventDefault();
                 e.stopPropagation();
 
-                // Çift tıklamayı engelle (debouncing lock)
                 if (addBtn.disabled) return;
                 addBtn.disabled = true;
 
@@ -327,10 +347,8 @@
                 const qtyInput = row ? row.querySelector('.qty-input') : null;
                 const quantity = qtyInput ? (parseInt(qtyInput.value) || 1) : 1;
 
-                // Tam 1 defa ekle!
                 addItem(productName, size, boxQty, price, quantity);
 
-                // Görsel geri bildirim
                 const originalText = addBtn.innerHTML;
                 addBtn.classList.add('added');
                 addBtn.innerHTML = `<i class="fas fa-check"></i> Eklendi!`;
