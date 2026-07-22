@@ -3,12 +3,13 @@
    ========================================================= */
 
 (function () {
-    const STORAGE_KEY = 'baysu_user_cart';
+    const ACTIVE_STORAGE_KEY = 'baysu_user_cart';
+    const ARCHIVE_STORAGE_KEY = 'baysu_archived_order';
 
-    // Cihaza özel localStorage sepetini getir
+    // Cihaza özel aktif sepeti getir
     function getCart() {
         try {
-            const data = localStorage.getItem(STORAGE_KEY);
+            const data = localStorage.getItem(ACTIVE_STORAGE_KEY);
             return data ? JSON.parse(data) : [];
         } catch (e) {
             console.error('LocalStorage okuma hatası:', e);
@@ -16,17 +17,27 @@
         }
     }
 
-    // Sepeti localStorage'a kaydet
+    // Sepeti kaydet
     function saveCart(cart) {
         try {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+            localStorage.setItem(ACTIVE_STORAGE_KEY, JSON.stringify(cart));
             updateCartUI();
         } catch (e) {
             console.error('LocalStorage yazma hatası:', e);
         }
     }
 
-    // Tarih ve Saati Türkçe Olarak Formatla
+    // Arşivlenmiş son siparişi al
+    function getArchivedOrder() {
+        try {
+            const data = localStorage.getItem(ARCHIVE_STORAGE_KEY);
+            return data ? JSON.parse(data) : null;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    // Tarih ve Saati Türkçe Formatla
     function getFormattedTimestamp() {
         const now = new Date();
         const months = [
@@ -42,9 +53,19 @@
         return `${day} ${month} ${year} - ${hours}:${minutes}`;
     }
 
-    // UI Bileşenlerini Enjekte Et (Floating Cart Trigger & Cart Drawer)
+    // UI Bileşenlerini Enjekte Et
     function injectCartUI() {
         if (document.getElementById('cartDrawerOverlay')) return;
+
+        // Anasayfaya Dön Butonunu Ürün Detay Sayfalarına Otomatik Ekle
+        const productDetail = document.querySelector('.product-detail-container');
+        if (productDetail && !document.querySelector('.back-home-bar')) {
+            const backBtn = document.createElement('a');
+            backBtn.href = 'index.html';
+            backBtn.className = 'back-home-bar';
+            backBtn.innerHTML = `<i class="fas fa-arrow-left"></i> Anasayfaya Dön`;
+            productDetail.parentNode.insertBefore(backBtn, productDetail);
+        }
 
         // Floating Cart Trigger (Sağ Alt Buton)
         const triggerHtml = `
@@ -68,7 +89,7 @@
                     <span>Tarih: <strong id="cartTimestamp">${getFormattedTimestamp()}</strong></span>
                 </div>
                 <div class="cart-body" id="cartBody">
-                    <!-- Dinamik Sepet Ürünleri -->
+                    <!-- Dinamik Sepet İçeriği -->
                 </div>
                 <div class="cart-footer">
                     <div class="cart-total-row">
@@ -121,52 +142,72 @@
         renderCartItems();
     }
 
-    // Sepet İçeriğini Çizdir
+    // Sepet İçeriğini Çizdir (Aktif Ürünler + Arşivlenmiş Son Sipariş)
     function renderCartItems() {
         const cartBody = document.getElementById('cartBody');
         const cartTotalAmount = document.getElementById('cartTotalAmount');
         if (!cartBody) return;
 
         const cart = getCart();
+        const archivedOrder = getArchivedOrder();
+        let totalSum = 0;
+
+        let html = '';
 
         if (cart.length === 0) {
-            cartBody.innerHTML = `
+            html += `
                 <div class="cart-empty-state">
                     <i class="fas fa-shopping-basket"></i>
-                    <p style="font-weight: 600; color: #64748B;">Sepetinizde ürün bulunmamaktadır.</p>
+                    <p style="font-weight: 600; color: #64748B;">Aktif sepetiniz boş.</p>
                     <p style="font-size: 13px;">Ürün sayfalarından ölçü seçip "Sepete Ekle" butonuna basarak sipariş oluşturabilirsiniz.</p>
                 </div>
             `;
-            if (cartTotalAmount) cartTotalAmount.textContent = '0.00 ₺';
-            return;
+        } else {
+            html += cart.map((item, index) => {
+                const itemTotal = (item.price * item.quantity).toFixed(2);
+                totalSum += parseFloat(itemTotal);
+
+                return `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h4>${item.productName}</h4>
+                            <div class="cart-item-meta">Ebat: <strong>${item.size}</strong> | Çuval Adedi: <strong>${item.boxQty}</strong></div>
+                            <div class="cart-item-price">${item.quantity} Paket x ${item.price.toFixed(2)} ₺ = <strong>${itemTotal} ₺</strong></div>
+                        </div>
+                        <div class="cart-item-actions">
+                            <div class="qty-selector" style="transform: scale(0.9);">
+                                <button class="qty-btn" onclick="window.BaysuCart.changeQty(${index}, -1)">-</button>
+                                <span style="padding: 0 8px; font-weight: 700;">${item.quantity}</span>
+                                <button class="qty-btn" onclick="window.BaysuCart.changeQty(${index}, 1)">+</button>
+                            </div>
+                            <button class="remove-cart-item" onclick="window.BaysuCart.removeItem(${index})" title="Sil">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
 
-        let totalSum = 0;
-
-        cartBody.innerHTML = cart.map((item, index) => {
-            const itemTotal = (item.price * item.quantity).toFixed(2);
-            totalSum += parseFloat(itemTotal);
-
-            return `
-                <div class="cart-item">
-                    <div class="cart-item-info">
-                        <h4>${item.productName}</h4>
-                        <div class="cart-item-meta">Ebat: <strong>${item.size}</strong> | Çuval Adedi: <strong>${item.boxQty}</strong></div>
-                        <div class="cart-item-price">${item.quantity} x ${item.price.toFixed(2)} ₺ = <strong>${itemTotal} ₺</strong></div>
-                    </div>
-                    <div class="cart-item-actions">
-                        <div class="qty-selector" style="transform: scale(0.9);">
-                            <button class="qty-btn" onclick="window.BaysuCart.changeQty(${index}, -1)">-</button>
-                            <span style="padding: 0 8px; font-weight: 700;">${item.quantity}</span>
-                            <button class="qty-btn" onclick="window.BaysuCart.changeQty(${index}, 1)">+</button>
+        // Eğer daha önce gönderilmiş arşivlenmiş sipariş varsa altında göster
+        if (archivedOrder && archivedOrder.items && archivedOrder.items.length > 0) {
+            html += `
+                <div class="archived-order-box">
+                    <h4><i class="fas fa-check-circle"></i> Son WhatsApp'a Gönderilen Sipariş (Arşiv)</h4>
+                    <div style="font-size: 11px; color: #64748B; margin-bottom: 8px;">Gönderim Tarihi: ${archivedOrder.timestamp}</div>
+                    ${archivedOrder.items.map(item => `
+                        <div class="archived-item-line">
+                            • <strong>${item.productName}</strong> (${item.size}) - ${item.quantity} Pkt x ${item.price.toFixed(2)} ₺ = ${(item.price * item.quantity).toFixed(2)} ₺
                         </div>
-                        <button class="remove-cart-item" onclick="window.BaysuCart.removeItem(${index})" title="Sil">
-                            <i class="fas fa-trash"></i>
-                        </button>
+                    `).join('')}
+                    <div style="font-weight: 700; color: #059669; font-size: 13px; margin-top: 8px;">
+                        Arşivlenen Toplam Tutar: ${archivedOrder.totalSum.toFixed(2)} ₺
                     </div>
                 </div>
             `;
-        }).join('');
+        }
+
+        cartBody.innerHTML = html;
 
         if (cartTotalAmount) {
             cartTotalAmount.textContent = totalSum.toFixed(2) + ' ₺';
@@ -214,40 +255,60 @@
         }
     }
 
-    // WhatsApp Sipariş Gönderimi (Tarih ve Formatlı Liste)
+    // WhatsApp Sipariş Gönderimi (Mesaj Tablo Formatı + Arşivleme & Sepeti Sıfırlama)
     function sendWhatsAppOrder() {
         const cart = getCart();
         if (cart.length === 0) {
-            alert('Sepetiniz boş! Lütfen önce ürün ekleyin.');
+            alert('Aktif sepetiniz boş! Lütfen önce sipariş verilecek ürünleri ekleyin.');
             return;
         }
 
         const timestamp = getFormattedTimestamp();
+
+        // 1. WhatsApp Tablo Formatlı Mesaj Metni
         let text = `📋 *BAYRAKÇI SULAMA VE YAPI MALZEMELERİ*\n`;
         text += `*SİPARİŞ / TEKLİF TALEBİ*\n`;
-        text += `-------------------------------------------\n`;
-        text += `📅 *Tarih:* ${timestamp}\n`;
-        text += `-------------------------------------------\n\n`;
-        text += `📦 *SİPARİŞ VERİLEN ÜRÜNLER:*\n\n`;
+        text += `--------------------------------------------------\n`;
+        text += `📅 *Tarih & Saat:* ${timestamp}\n`;
+        text += `--------------------------------------------------\n\n`;
+        text += `*SİPARİŞ TABLOSU:*\n\n`;
+        text += `*ÜRÜN ADI | EBAT | ADET | B.FİYAT | TUTAR*\n`;
+        text += `--------------------------------------------------\n`;
 
         let totalSum = 0;
 
         cart.forEach((item, idx) => {
             const itemTotal = (item.price * item.quantity).toFixed(2);
             totalSum += parseFloat(itemTotal);
-            text += `${idx + 1}️⃣ *${item.productName}*\n`;
-            text += `   • Ebat: ${item.size}\n`;
-            text += `   • Çuval/Ambalaj Adedi: ${item.boxQty}\n`;
-            text += `   • Sipariş Miktarı: ${item.quantity} Paket/Çuval\n`;
+            text += `${idx + 1}. *${item.productName}*\n`;
+            text += `   • Ebat: ${item.size} | Ç.Adedi: ${item.boxQty}\n`;
+            text += `   • Miktar: ${item.quantity} Paket/Çuval\n`;
             text += `   • Birim Fiyat: ${item.price.toFixed(2)} ₺\n`;
             text += `   • Kalem Tutarı: ${itemTotal} ₺\n\n`;
         });
 
-        text += `-------------------------------------------\n`;
-        text += `💰 *GENEL TOPLAM TUTAR:* ${totalSum.toFixed(2)} ₺\n`;
-        text += `-------------------------------------------\n`;
-        text += `Lütfen ürün stok ve teslimat teyidini bildiriniz.`;
+        text += `--------------------------------------------------\n`;
+        text += `💰 *GENEL TOPLAM SİPARİŞ TUTARI:* ${totalSum.toFixed(2)} ₺\n`;
+        text += `--------------------------------------------------\n`;
+        text += `Lütfen ürün stok teyidini ve teslimat bilgisini iletiniz.`;
 
+        // 2. Siparişi Arşivle ve Aktif Sepeti Sıfırla
+        const archiveData = {
+            timestamp: timestamp,
+            items: cart,
+            totalSum: totalSum
+        };
+
+        try {
+            localStorage.setItem(ARCHIVE_STORAGE_KEY, JSON.stringify(archiveData));
+            localStorage.removeItem(ACTIVE_STORAGE_KEY);
+        } catch (e) {
+            console.error('Arşiv hatası:', e);
+        }
+
+        updateCartUI();
+
+        // 3. WhatsApp Yönlendirme
         const encodedText = encodeURIComponent(text);
         const whatsappUrl = `https://wa.me/905533973603?text=${encodedText}`;
 
@@ -259,7 +320,7 @@
         injectCartUI();
         updateCartUI();
 
-        // Miktar artı/eksi butonlarının çalıştırılması (Sayfadaki tablolarda)
+        // Tablodaki miktar butonları (+ / -)
         document.body.addEventListener('click', (e) => {
             const qtyBtn = e.target.closest('.qty-btn');
             if (qtyBtn && qtyBtn.closest('.product-size-table')) {
@@ -274,7 +335,7 @@
                 }
             }
 
-            // Sepete Ekle Butonuna Tıklama
+            // Sepete Ekle Butonu
             const addBtn = e.target.closest('.add-to-cart-btn');
             if (addBtn) {
                 const productName = addBtn.getAttribute('data-product');
@@ -287,7 +348,7 @@
 
                 addItem(productName, size, boxQty, price, quantity);
 
-                // Buton Efekti (Görsel geri bildirim)
+                // Görsel geri bildirim
                 const originalText = addBtn.innerHTML;
                 addBtn.classList.add('added');
                 addBtn.innerHTML = `<i class="fas fa-check"></i> Eklendi!`;
