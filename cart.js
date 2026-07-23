@@ -1,3 +1,13 @@
+function parsePrice(str) {
+    if (!str) return 0;
+    var cleaned = str.toString().replace(/[^0-9.,]/g, '');
+    if (cleaned.indexOf('.') > -1 && cleaned.indexOf(',') > -1) {
+        cleaned = cleaned.replace(/\./g, '').replace(',', '.');
+    } else if (cleaned.indexOf(',') > -1) {
+        cleaned = cleaned.replace(',', '.');
+    }
+    return parseFloat(cleaned) || 0;
+}
 /* =========================================================
    BAYSU YAPI - CİHAZA ÖZEL SEPET VE WHATSAPP SİPARİŞ JS (cart.js)
    ========================================================= */
