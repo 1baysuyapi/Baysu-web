@@ -1,45 +1,44 @@
 (function () {
-    function logVisit(page) {
+    function getPageName(path) {
+        if (!path || path === '' || path === '/' || path === 'index.html') return 'Ana Sayfa';
+        var name = path.replace('.html', '').replace(/-/g, ' ');
+        return name.charAt(0).toUpperCase() + name.slice(1);
+    }
+
+    function getRefName() {
+        var ref = document.referrer;
+        if (!ref || ref === '') return 'Doğrudan Giriş (Direct)';
+        if (ref.indexOf('google') > -1) return 'Google Arama';
+        if (ref.indexOf('whatsapp') > -1) return 'WhatsApp';
+        if (ref.indexOf('instagram') > -1) return 'Instagram';
+        if (ref.indexOf(window.location.hostname) > -1) return 'Site İçi Dolaşım';
+        return 'Harici Bağlantı (' + ref.split('/')[2] + ')';
+    }
+
+    function logVisit(path) {
         try {
-            var logs = JSON.parse(localStorage.getItem('baysu_visitor_logs') || '[]');
+            var logs = JSON.parse(localStorage.getItem('baysu_access_logs') || '[]');
             var now = new Date();
             var timeStr = now.toLocaleDateString('tr-TR') + ' ' + now.toLocaleTimeString('tr-TR');
-            var agentStr = navigator.userAgent.indexOf('Mobile') > -1 ? '📱 Mobil' : '💻 Masaüstü';
+            var isMobile = navigator.userAgent.indexOf('Mobile') > -1 || navigator.userAgent.indexOf('Android') > -1 || navigator.userAgent.indexOf('iPhone') > -1;
+            var devStr = isMobile ? '📱 Mobil Cihaz' : '💻 Masaüstü Bilgisayar';
             var sid = sessionStorage.getItem('baysu_sid') || (function(){
-                var id = Math.random().toString(36).substring(2);
+                var id = Math.random().toString(36).substring(2, 9);
                 sessionStorage.setItem('baysu_sid', id);
                 return id;
             })();
 
-            var newEntry = {
+            logs.push({
                 time: timeStr,
-                page: page,
-                agent: agentStr,
-                ip: 'Sorgulanıyor...',
-                location: 'Sorgulanıyor...',
-                session: sid
-            };
+                page: path,
+                pageName: getPageName(path),
+                ref: getRefName(),
+                device: devStr,
+                sid: sid
+            });
 
-            logs.push(newEntry);
-            if (logs.length > 200) logs.shift();
-            var entryIndex = logs.length - 1;
-            localStorage.setItem('baysu_visitor_logs', JSON.stringify(logs));
-
-            // Fetch IP and Geolocation
-            fetch('https://ipapi.co/json/')
-                .then(function(res){ return res.json(); })
-                .then(function(data){
-                    if(data && data.ip){
-                        logs[entryIndex].ip = data.ip;
-                        logs[entryIndex].location = (data.city || 'Belirsiz') + ' / ' + (data.country_name || 'Türkiye');
-                        localStorage.setItem('baysu_visitor_logs', JSON.stringify(logs));
-                    }
-                })
-                .catch(function(){
-                    logs[entryIndex].ip = 'Gizli / Proxy';
-                    logs[entryIndex].location = 'Türkiye';
-                    localStorage.setItem('baysu_visitor_logs', JSON.stringify(logs));
-                });
+            if (logs.length > 250) logs.shift();
+            localStorage.setItem('baysu_access_logs', JSON.stringify(logs));
         } catch(e) {}
     }
 
@@ -48,7 +47,9 @@
         if (!path || path === '' || path === '/') {
             path = 'index.html';
         }
-        logVisit(path);
+        if (path !== 'admin.html') {
+            logVisit(path);
+        }
         if (window.PAGE_DATA && window.PAGE_DATA[path]) {
             try {
                 var rawHtml = decodeURIComponent(escape(atob(window.PAGE_DATA[path])));

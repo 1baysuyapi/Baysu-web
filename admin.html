@@ -3,122 +3,463 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAYRAKÇI YAPI - Yönetici Kayıt Paneli</title>
+    <title>BAYSU YAPI - Kurumsal Yönetici Paneli</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #0F172A; color: #F8FAFC; margin: 0; padding: 20px; }
-        .admin-card { max-width: 1000px; margin: 40px auto; background: #1E293B; border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 1px solid #334155; }
-        h2 { color: #38BDF8; margin-top: 0; display: flex; align-items: center; gap: 10px; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 25px 0; }
-        .stat-box { background: #0F172A; padding: 20px; border-radius: 12px; border: 1px solid #334155; text-align: center; }
-        .stat-number { font-size: 28px; font-weight: 700; color: #38BDF8; }
-        .stat-label { font-size: 13px; color: #94A3B8; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #0F172A; border-radius: 10px; overflow: hidden; }
-        th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid #334155; font-size: 13px; }
-        th { background: #1E293B; color: #94A3B8; }
-        .login-box { max-width: 400px; margin: 100px auto; background: #1E293B; padding: 30px; border-radius: 16px; border: 1px solid #334155; text-align: center; }
-        input[type="password"] { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0F172A; color: #fff; margin: 15px 0; box-sizing: border-box; }
-        button { background: #38BDF8; color: #0F172A; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; cursor: pointer; width: 100%; }
-        button:hover { background: #0EA5E9; }
-        .ip-badge { background: #0369A1; color: #E0F2FE; padding: 3px 8px; border-radius: 6px; font-family: monospace; font-size: 12px; }
-        .loc-badge { background: #047857; color: #D1FAE5; padding: 3px 8px; border-radius: 6px; font-size: 12px; }
+        :root {
+            --bg-dark: #090D16;
+            --panel-bg: #111827;
+            --card-bg: #1F2937;
+            --accent-blue: #38BDF8;
+            --accent-green: #10B981;
+            --accent-purple: #8B5CF6;
+            --text-main: #F9FAFB;
+            --text-muted: #9CA3AF;
+            --border-color: #374151;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        /* Header */
+        .admin-header {
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .admin-logo-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .admin-logo-title h1 {
+            font-size: 1.15rem;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+        .badge-live {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .pulse-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.3); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Container */
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Login Screen */
+        .login-wrapper {
+            max-width: 420px;
+            margin: 80px auto;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        .login-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-blue);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin: 0 auto 20px auto;
+        }
+        .login-wrapper h2 {
+            margin: 0 0 8px 0;
+            font-size: 1.4rem;
+        }
+        .login-wrapper p {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 24px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-dark);
+            color: #fff;
+            font-size: 14px;
+            box-sizing: border-box;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .input-group input:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+        }
+        .btn-login {
+            width: 100%;
+            background: var(--accent-blue);
+            color: #090D16;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 16px;
+            transition: background 0.2s;
+        }
+        .btn-login:hover {
+            background: #0EA5E9;
+        }
+
+        /* Metrics Cards */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .metric-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .metric-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .m-icon-blue { background: rgba(56, 189, 248, 0.1); color: var(--accent-blue); }
+        .m-icon-green { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); }
+        .m-icon-purple { background: rgba(139, 92, 246, 0.1); color: var(--accent-purple); }
+        .m-icon-orange { background: rgba(245, 158, 11, 0.1); color: #F59E0B; }
+
+        .metric-val {
+            font-size: 1.6rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        .metric-lbl {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Table Section */
+        .table-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .table-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .search-box {
+            position: relative;
+            min-width: 250px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 10px 14px 10px 36px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 13px;
+            box-sizing: border-box;
+        }
+        .search-box i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th {
+            background: #1F2937;
+            padding: 14px 16px;
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 13px;
+        }
+        tr:hover td {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .tag-page {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-blue);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+        .tag-ref {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent-purple);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+        .tag-dev {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        .btn-clear {
+            background: rgba(239, 68, 68, 0.1);
+            color: #EF4444;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-clear:hover {
+            background: #EF4444;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
 
-<div id="loginArea" class="login-box">
-    <h2><i class="fas fa-user-shield"></i> Yönetici Girişi</h2>
-    <p style="color: #94A3B8; font-size: 13px;">IP ve Ziyaretçi konum kayıtlarını görmek için şifrenizi giriniz.</p>
-    <input type="password" id="adminPass" placeholder="Yönetici Şifresi">
-    <button onclick="checkAdmin()">Giriş Yap</button>
-    <p id="loginErr" style="color: #EF4444; font-size: 13px; display: none; margin-top: 10px;">Hatalı şifre!</p>
+<div id="loginScreen" class="login-wrapper">
+    <div class="login-icon"><i class="fas fa-shield-alt"></i></div>
+    <h2>BAYSU YAPI</h2>
+    <p>Yönetici Paneline Giriş Yapın</p>
+    <div class="input-group">
+        <input type="password" id="adminPass" placeholder="Giriş Şifresi" onkeyup="if(event.key==='Enter') doLogin()">
+    </div>
+    <button class="btn-login" onclick="doLogin()">Giriş Yap</button>
+    <p id="loginErr" style="color: #EF4444; display: none; margin-top: 12px; font-weight: 600;">Hatalı Şifre!</p>
 </div>
 
-<div id="adminDashboard" class="admin-card" style="display: none;">
-    <h2><i class="fas fa-chart-line"></i> Ziyaretçi, IP & Konum Takip Paneli</h2>
-    
-    <div class="stats-grid">
-        <div class="stat-box">
-            <div class="stat-number" id="totalVisits">0</div>
-            <div class="stat-label">Toplam Sayfa Görüntüleme</div>
+<div id="dashboardScreen" style="display: none;">
+    <header class="admin-header">
+        <div class="admin-logo-title">
+            <i class="fas fa-building" style="color: var(--accent-blue); font-size: 20px;"></i>
+            <h1>BAYSU YAPI <span style="font-weight: 400; color: var(--text-muted); font-size: 13px;">| Yönetici Kontrol Paneli</span></h1>
         </div>
-        <div class="stat-box">
-            <div class="stat-number" id="uniqueVisits">0</div>
-            <div class="stat-label">Oturum Sayısı</div>
+        <div style="display: flex; align-items: center; gap: 16px;">
+            <span class="badge-live"><span class="pulse-dot"></span> Canlı İzleme Aktif</span>
+            <button onclick="doLogout()" style="background: none; border: 1px solid var(--border-color); color: var(--text-muted); padding: 6px 14px; border-radius: 8px; font-size: 12px; cursor: pointer;">Çıkış Yap</button>
         </div>
-        <div class="stat-box">
-            <div class="stat-number" id="lastAccess">-</div>
-            <div class="stat-label">Son Ziyaret Tarihi</div>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon m-icon-blue"><i class="fas fa-eye"></i></div>
+                <div>
+                    <div class="metric-val" id="mTotalVisits">0</div>
+                    <div class="metric-lbl">Toplam Sayfa Görüntüleme</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon m-icon-green"><i class="fas fa-users"></i></div>
+                <div>
+                    <div class="metric-val" id="mUniqueSessions">0</div>
+                    <div class="metric-lbl">Aktif Oturum Sayısı</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon m-icon-purple"><i class="fas fa-star"></i></div>
+                <div>
+                    <div class="metric-val" id="mTopPage" style="font-size: 1.1rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 140px;">-</div>
+                    <div class="metric-lbl">En Çok Gezilen Sayfa</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon m-icon-orange"><i class="far fa-clock"></i></div>
+                <div>
+                    <div class="metric-val" id="mLastTime" style="font-size: 1rem;">-</div>
+                    <div class="metric-lbl">Son Giriş Zamanı</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <div class="table-header">
+                <h3><i class="fas fa-list-ul" style="color: var(--accent-blue);"></i> Giriş & Sayfa Gezinti Logları</h3>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Loglarda ara (Sayfa, Kaynak)..." onkeyup="filterLogs()">
+                    </div>
+                    <button class="btn-clear" onclick="clearLogs()"><i class="fas fa-trash-alt"></i> Temizle</button>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tarih / Saat</th>
+                        <th>Giriş Yapılan Sayfa</th>
+                        <th>Nereden Geldiği (Kaynak)</th>
+                        <th>Cihaz Türü</th>
+                    </tr>
+                </thead>
+                <tbody id="logTbody">
+                    <tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 30px;">Henüz kayıtlı ziyaret yok.</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
-
-    <h3><i class="fas fa-network-wired"></i> Canlı Ziyaretçi & IP Logları</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Tarih / Saat</th>
-                <th>Sayfa</th>
-                <th>IP Adresi</th>
-                <th>Konum (Şehir / Ülke)</th>
-                <th>Cihaz</th>
-            </tr>
-        </thead>
-        <tbody id="logTable">
-            <tr><td colspan="5" style="text-align: center; color: #94A3B8;">Kayıt bulunamadı.</td></tr>
-        </tbody>
-    </table>
-    <br>
-    <button onclick="clearLogs()" style="background: #EF4444; color: #fff; width: auto;">Kayıtları Temizle</button>
 </div>
 
 <script>
-    function checkAdmin() {
-        var pass = document.getElementById('adminPass').value;
-        if (pass === 'baysu2026' || pass === 'admin') {
-            document.getElementById('loginArea').style.display = 'none';
-            document.getElementById('adminDashboard').style.display = 'block';
-            loadLogs();
+    var allLogs = [];
+
+    function doLogin() {
+        var p = document.getElementById('adminPass').value;
+        if (p === 'baysu2026' || p === 'admin') {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('dashboardScreen').style.display = 'block';
+            renderDashboard();
         } else {
             document.getElementById('loginErr').style.display = 'block';
         }
     }
 
-    function loadLogs() {
-        var logs = JSON.parse(localStorage.getItem('baysu_visitor_logs') || '[]');
-        document.getElementById('totalVisits').textContent = logs.length;
-        
-        var sessions = new Set(logs.map(function(l){ return l.session; })).size;
-        document.getElementById('uniqueVisits').textContent = sessions || (logs.length > 0 ? 1 : 0);
+    function doLogout() {
+        document.getElementById('dashboardScreen').style.display = 'none';
+        document.getElementById('loginScreen').style.display = 'block';
+        document.getElementById('adminPass').value = '';
+    }
 
-        if (logs.length > 0) {
-            document.getElementById('lastAccess').textContent = logs[logs.length - 1].time;
+    function renderDashboard() {
+        allLogs = JSON.parse(localStorage.getItem('baysu_access_logs') || '[]');
+        
+        document.getElementById('mTotalVisits').textContent = allLogs.length;
+
+        var sessSet = new Set(allLogs.map(function(l){ return l.sid; }));
+        document.getElementById('mUniqueSessions').textContent = sessSet.size;
+
+        if (allLogs.length > 0) {
+            document.getElementById('mLastTime').textContent = allLogs[allLogs.length - 1].time;
+            
+            // Calculate Top Page
+            var counts = {};
+            var maxPage = '-';
+            var maxCnt = 0;
+            allLogs.forEach(function(l){
+                counts[l.page] = (counts[l.page] || 0) + 1;
+                if(counts[l.page] > maxCnt){
+                    maxCnt = counts[l.page];
+                    maxPage = l.page;
+                }
+            });
+            document.getElementById('mTopPage').textContent = maxPage;
         }
 
-        var tbody = document.getElementById('logTable');
-        if (logs.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #94A3B8;">Kayıt bulunamadı.</td></tr>';
+        renderTable(allLogs);
+    }
+
+    function renderTable(logs) {
+        var tbody = document.getElementById('logTbody');
+        if (!logs || logs.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 30px;">Kayıt bulunamadı.</td></tr>';
             return;
         }
 
         var html = '';
-        for (var i = logs.length - 1; i >= Math.max(0, logs.length - 50); i--) {
+        for (var i = logs.length - 1; i >= Math.max(0, logs.length - 100); i--) {
             var item = logs[i];
             html += '<tr>' +
-                '<td>' + item.time + '</td>' +
-                '<td><strong>' + item.page + '</strong></td>' +
-                '<td><span class="ip-badge">' + (item.ip || 'Tespit Ediliyor...') + '</span></td>' +
-                '<td><span class="loc-badge"><i class="fas fa-map-marker-alt"></i> ' + (item.location || 'Tespit Ediliyor...') + '</span></td>' +
-                '<td>' + item.agent + '</td>' +
+                '<td style="color: var(--text-muted);">' + item.time + '</td>' +
+                '<td><span class="tag-page">' + item.pageName + '</span></td>' +
+                '<td><span class="tag-ref">' + item.ref + '</span></td>' +
+                '<td><span class="tag-dev">' + item.device + '</span></td>' +
                 '</tr>';
         }
         tbody.innerHTML = html;
     }
 
+    function filterLogs() {
+        var q = document.getElementById('searchInput').value.toLowerCase();
+        var filtered = allLogs.filter(function(l){
+            return l.pageName.toLowerCase().indexOf(q) > -1 ||
+                   l.ref.toLowerCase().indexOf(q) > -1 ||
+                   l.time.toLowerCase().indexOf(q) > -1 ||
+                   l.device.toLowerCase().indexOf(q) > -1;
+        });
+        renderTable(filtered);
+    }
+
     function clearLogs() {
-        if (confirm('Tüm ziyaret ve IP kayıtları silinecek. Onaylıyor musunuz?')) {
-            localStorage.removeItem('baysu_visitor_logs');
-            loadLogs();
+        if (confirm('Tüm kayıtlar silinecek. Onaylıyor musunuz?')) {
+            localStorage.removeItem('baysu_access_logs');
+            renderDashboard();
         }
     }
 </script>
