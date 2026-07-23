@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-    
     <style>
         /* Renkler ve Fontlar için CSS Değişkenleri */
         :root {
@@ -23,7 +22,6 @@
             --border-radius: 12px;
             --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
-
         /* Temel Stil Ayarları */
         body {
             font-family: 'Poppins', sans-serif;
@@ -32,11 +30,9 @@
             background-color: var(--background-color);
             color: var(--text-color);
         }
-        
         a {
             text-decoration: none;
         }
-
         /* Başlık ve Navigasyon Bölümü */
         .header-main {
             display: flex;
@@ -46,12 +42,10 @@
             padding: 20px;
             border-bottom: 1px solid var(--border-color);
         }
-
         .logo {
             width: 200px;
             margin-bottom: 15px;
         }
-
         .search-and-actions {
             display: flex;
             align-items: center;
@@ -59,13 +53,11 @@
             width: 100%;
             max-width: 900px;
         }
-
         .search-bar {
             position: relative;
             flex-grow: 1;
             max-width: 500px;
         }
-
         .search-bar input {
             width: 100%;
             padding: 12px 15px 12px 45px;
@@ -74,13 +66,11 @@
             font-size: 14px;
             transition: all 0.3s ease;
         }
-        
         .search-bar input:focus {
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 5px rgba(0, 71, 151, 0.2);
         }
-
         .search-bar .fas {
             position: absolute;
             left: 20px;
@@ -89,7 +79,6 @@
             color: var(--light-text-color);
             pointer-events: none;
         }
-        
         /* Arama sonuçları listesi */
         #searchResults {
             position: absolute;
@@ -106,11 +95,9 @@
             overflow-y: auto;
             display: none;
         }
-
         #searchResults.active {
             display: block;
         }
-
         #searchResults a {
             display: block;
             padding: 10px 15px;
@@ -118,11 +105,9 @@
             transition: background-color 0.2s;
             text-decoration: none;
         }
-
         #searchResults a:hover {
             background-color: #f0f0f0;
         }
-
         /* Navigasyon Çubuğu */
         .nav-bar {
             background-color: var(--primary-color);
@@ -132,7 +117,6 @@
             top: 0;
             z-index: 1000;
         }
-
         .nav-content {
             display: flex;
             justify-content: center;
@@ -140,12 +124,10 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        
         .nav-links {
             display: none;
             gap: 20px;
         }
-
         .nav-links a {
             color: #fff;
             font-weight: 600;
@@ -154,11 +136,9 @@
             transition: color 0.3s;
             position: relative;
         }
-
         .nav-links a:hover {
             color: var(--secondary-color);
         }
-        
         /* Menü Toggle Butonu */
         .menu-toggle {
             display: block;
@@ -169,11 +149,9 @@
             padding: 10px;
             transition: color 0.3s;
         }
-
         .menu-toggle.active {
             color: var(--secondary-color);
         }
-
         /* Dropdown Menü İçeriği */
         .main-menu-container {
             display: none;
@@ -188,18 +166,15 @@
             max-height: calc(100vh - 100px);
             overflow-y: auto;
         }
-
         .main-menu-container.active {
             display: block;
         }
-
         /* Menü içindeki kapsayıcıları Flexbox ile düzenleme */
         .menu-content {
             display: flex;
             flex-direction: column;
             width: 100%;
         }
-
         /* Ana Kategori Başlığı */
         .main-category-item {
             width: 100%;
@@ -212,24 +187,20 @@
             border-bottom: 1px solid var(--border-color);
             transition: background-color 0.3s;
         }
-
         .main-category-item h3 {
             margin: 0;
             font-size: 1rem;
             color: var(--text-color);
             font-weight: 600;
         }
-
         .main-category-item .arrow-icon {
             font-size: 0.8rem;
             color: var(--light-text-color);
             transition: transform 0.3s;
         }
-
         .main-category-item.active .arrow-icon {
             transform: rotate(90deg);
         }
-
         /* Kategori Grupları */
         .category-group {
             list-style: none;
@@ -237,11 +208,9 @@
             margin: 0;
             display: none;
         }
-
         .category-group.active {
             display: block;
         }
-        
         /* Alt Kategori Başlıkları */
         .category-item {
             cursor: pointer;
@@ -252,11 +221,9 @@
             border-bottom: 1px solid var(--border-color);
             position: relative;
         }
-        
         .category-item:last-child {
             border-bottom: none;
         }
-
         .category-item .category-header {
             width: 100%;
             display: flex;
@@ -265,24 +232,20 @@
             padding: 10px 20px;
             cursor: pointer;
         }
-        
         .category-item h3 {
             margin: 0;
             font-size: 1rem;
             color: var(--text-color);
             font-weight: 600;
         }
-        
         .category-item .arrow-icon {
             font-size: 0.8rem;
             color: var(--light-text-color);
             transition: transform 0.3s;
         }
-        
         .category-item.active .arrow-icon {
             transform: rotate(90deg);
         }
-        
         /* Ürün Listesi */
         .product-list {
             list-style: none;
@@ -291,19 +254,15 @@
             display: none;
             width: 100%;
         }
-
         .product-list.active {
             display: block;
         }
-        
         .product-list li {
             border-top: 1px solid var(--border-color);
         }
-        
         .product-list li:first-child {
             border-top: none;
         }
-
         .product-list li a {
             display: block;
             padding: 10px 40px;
@@ -313,11 +272,9 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        
         .product-list li a:hover {
             background-color: #f0f0f0;
         }
-
         /* Ürün Sayfası Stilleri */
         .product-detail-container {
             display: flex;
@@ -330,7 +287,6 @@
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
         }
-
         .product-image {
             flex: 1 1 400px;
             background-color: var(--background-color);
@@ -342,14 +298,12 @@
             align-items: center;
             min-height: 400px;
         }
-        
         .product-image img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
             border-radius: 8px;
         }
-        
         .zoom-icon {
             position: absolute;
             top: 20px;
@@ -358,18 +312,15 @@
             color: var(--light-text-color);
             cursor: pointer;
         }
-
         .product-info {
             flex: 1 1 400px;
             padding: 20px;
         }
-
         .product-category {
             color: var(--light-text-color);
             font-size: 1rem;
             font-weight: 500;
         }
-
         .product-title {
             font-size: 2.5rem;
             font-weight: 700;
@@ -377,26 +328,22 @@
             margin-top: 5px;
             margin-bottom: 20px;
         }
-        
         .product-description {
             line-height: 1.6;
             color: var(--text-color);
             margin-bottom: 20px;
         }
-
         .product-section-title {
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 10px;
         }
-
         .size-options {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             margin-bottom: 20px;
         }
-
         .size-option {
             padding: 12px 20px;
             border: 1px solid var(--border-color);
@@ -406,13 +353,11 @@
             font-size: 16px;
             white-space: nowrap;
         }
-        
         .size-option:hover {
             border-color: var(--primary-color);
             background-color: var(--primary-color);
             color: #fff;
         }
-
         /* Footer */
         footer {
             background: #000;
@@ -422,7 +367,6 @@
             font-size: 14px;
             text-align: center;
         }
-        
         /* WhatsApp Butonu */
         .whatsapp-button {
             position: fixed;
@@ -441,91 +385,74 @@
             transition: transform 0.3s ease-in-out;
             font-size: 35px;
         }
-        
         .whatsapp-button:hover {
             transform: scale(1.1);
         }
-        
         /* Animasyonlar */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to  { opacity: 1; transform: translateY(0); }
         }
-
         /* Responsive Tasarım */
         @media (min-width: 769px) {
             .nav-links {
                 display: flex;
             }
-            
             .menu-toggle {
                 display: none;
             }
-            
             .nav-content {
                 justify-content: space-between;
             }
-
             .main-menu-container {
                 left: 0;
                 right: 0;
             }
-
             .main-menu-container.active {
                 display: block;
             }
         }
-        
         @media (max-width: 768px) {
             .logo {
                 width: 150px;
             }
-            
             .search-bar input {
                 padding: 10px 15px 10px 40px;
             }
-            
             .nav-content {
                 justify-content: flex-end;
             }
-            
             .menu-toggle {
                 flex-grow: 1;
                 text-align: center;
             }
-            
             .main-menu-container {
                 flex-direction: column;
                 align-items: stretch;
                 padding: 0;
             }
-            
             .main-category-item {
                 padding: 10px 10px;
             }
-
             .category-item h3 {
                 font-size: 0.9rem;
             }
-            
             .category-item .category-header {
                 padding: 10px 10px;
             }
-
             .product-list li a {
                 padding: 10px 20px;
                 font-size: 0.9rem;
             }
-
             .product-detail-container {
                 flex-direction: column;
             }
         }
     </style>
     <link rel="stylesheet" href="cart.css?v=11" />
+    <script src="security.js" defer></script>
 </head>
-<body>
-
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
     <header class="header-main">
         <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="BAYRAKÇI LOGO" class="logo">
         <div class="search-and-actions">
@@ -536,7 +463,6 @@
             </div>
         </div>
     </header>
-
     <nav class="nav-bar">
         <div class="nav-content">
             <div class="nav-links">
@@ -688,7 +614,6 @@
             </ul>
         </div>
     </nav>
-    
     <main class="page-content">
         <div class="product-detail-container">
             <div class="product-image">
@@ -703,7 +628,6 @@
                         Dişli Dişi Dirsek, sulama sistemlerinde boru hatlarını 90 derecelik açıyla yönlendirmek için kullanılan bir ek parçadır. Dişli bağlantı noktaları, güvenli ve sızdırmaz bir montaj sağlar. Dayanıklı malzemeden üretilmiştir ve yüksek basınç altında bile uzun ömürlü performans sunar. Bahçe, tarım ve peyzaj sulama projelerinde boru yönlendirmeleri için ideal bir çözümdür.
                     </p>
                 </div>
-                
                 <div class="product-section-title">Fiyat ve Ölçü Listesi</div>
 <div class="table-responsive">
     <div class="discount-notice-box" style="background: linear-gradient(135deg, #EFF6FF, #DBEAFE); border: 2px solid #3B82F6; border-radius: 14px; padding: 18px 22px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);">
@@ -879,20 +803,16 @@
         </tbody>
     </table>
 </div>
-
             </div>
             </div>
         </div>
     </main>
-
     <footer>
         &copy; 2025 BAYRAKÇI SULAMA VE YAPI MALZEMELERİ - Tüm hakları saklıdır.
     </footer>
-
     <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum." class="whatsapp-button" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
-
     <script src="products.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -904,31 +824,26 @@
             const subCategoryItems = document.querySelectorAll('#kaplinler-menu > .category-item');
             const searchInput = document.getElementById('searchInput');
             const searchResultsContainer = document.getElementById('searchResults');
-            
             const toggleMainMenu = () => {
                 mainMenuContainer.classList.toggle('active');
             };
-
             if (menuToggleDesktop) {
                 menuToggleDesktop.addEventListener('click', (e) => {
                     e.preventDefault();
                     toggleMainMenu();
                 });
             }
-
             if (menuToggleMobile) {
                 menuToggleMobile.addEventListener('click', () => {
                     toggleMainMenu();
                 });
             }
-
             // Ana kategoriye tıklayınca alt menüyü açma/kapama
             mainCategoryItem.addEventListener('click', (e) => {
                 e.preventDefault();
                 mainCategoryItem.classList.toggle('active');
                 kaplinlerMenu.classList.toggle('active');
             });
-
             // Alt kategorilere tıklayınca ürün listesini açma/kapama
             subCategoryItems.forEach(item => {
                 const header = item.querySelector('.category-header');
@@ -938,7 +853,6 @@
                         e.preventDefault();
                         item.classList.toggle('active');
                         productList.classList.toggle('active');
-
                         // Diğer açık alt kategorileri kapatma
                         subCategoryItems.forEach(otherItem => {
                             if (otherItem !== item) {
@@ -952,7 +866,6 @@
                     });
                 }
             });
-
             window.addEventListener('click', (e) => {
                 if (!mainMenuContainer.contains(e.target) && !e.target.closest('.nav-bar')) {
                     const isMenuOpen = mainMenuContainer.classList.contains('active');
@@ -970,7 +883,6 @@
                     }
                 }
             });
-
             window.addEventListener('resize', () => {
                 if (window.innerWidth >= 769) {
                     mainMenuContainer.classList.remove('active');
@@ -985,15 +897,12 @@
                     });
                 }
             });
-
             // Geliştirilmiş Arama Fonksiyonu
             searchInput.addEventListener('keyup', () => {
                 const searchTerm = searchInput.value.toLowerCase();
                 searchResultsContainer.innerHTML = '';
-                
                 if (searchTerm.length > 1) {
                     const filteredProducts = allProducts.filter(product => product.name.toLowerCase().includes(searchTerm));
-                    
                     if (filteredProducts.length > 0) {
                         filteredProducts.forEach(product => {
                             const resultItem = document.createElement('a');
@@ -1014,14 +923,12 @@
                     searchResultsContainer.classList.remove('active');
                 }
             });
-
             // Arama çubuğu odak dışına çıkınca sonuçları kapatma
             searchInput.addEventListener('blur', () => {
                 setTimeout(() => {
                     searchResultsContainer.classList.remove('active');
                 }, 200);
             });
-
             searchInput.addEventListener('focus', () => {
                 if (searchInput.value.length > 1) {
                     searchResultsContainer.classList.add('active');
@@ -1032,7 +939,3 @@
     <script src="cart.js?v=11"></script>
 </body>
 </html>
-
-
-
-
