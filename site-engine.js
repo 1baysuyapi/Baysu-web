@@ -5,20 +5,41 @@
             var now = new Date();
             var timeStr = now.toLocaleDateString('tr-TR') + ' ' + now.toLocaleTimeString('tr-TR');
             var agentStr = navigator.userAgent.indexOf('Mobile') > -1 ? '📱 Mobil' : '💻 Masaüstü';
-            
-            logs.push({
+            var sid = sessionStorage.getItem('baysu_sid') || (function(){
+                var id = Math.random().toString(36).substring(2);
+                sessionStorage.setItem('baysu_sid', id);
+                return id;
+            })();
+
+            var newEntry = {
                 time: timeStr,
                 page: page,
                 agent: agentStr,
-                session: sessionStorage.getItem('baysu_sid') || (function(){
-                    var sid = Math.random().toString(36).substring(2);
-                    sessionStorage.setItem('baysu_sid', sid);
-                    return sid;
-                })()
-            });
+                ip: 'Sorgulanıyor...',
+                location: 'Sorgulanıyor...',
+                session: sid
+            };
 
+            logs.push(newEntry);
             if (logs.length > 200) logs.shift();
+            var entryIndex = logs.length - 1;
             localStorage.setItem('baysu_visitor_logs', JSON.stringify(logs));
+
+            // Fetch IP and Geolocation
+            fetch('https://ipapi.co/json/')
+                .then(function(res){ return res.json(); })
+                .then(function(data){
+                    if(data && data.ip){
+                        logs[entryIndex].ip = data.ip;
+                        logs[entryIndex].location = (data.city || 'Belirsiz') + ' / ' + (data.country_name || 'Türkiye');
+                        localStorage.setItem('baysu_visitor_logs', JSON.stringify(logs));
+                    }
+                })
+                .catch(function(){
+                    logs[entryIndex].ip = 'Gizli / Proxy';
+                    logs[entryIndex].location = 'Türkiye';
+                    localStorage.setItem('baysu_visitor_logs', JSON.stringify(logs));
+                });
         } catch(e) {}
     }
 
