@@ -1655,5 +1655,98 @@
             });
         });
     </script>
+
+    <script id="baysu-universal-cart-fix">
+        function incrementQty(btn) {
+            var input = btn.previousElementSibling;
+            if (input) input.value = parseInt(input.value || 1) + 1;
+        }
+        function decrementQty(btn) {
+            var input = btn.nextElementSibling;
+            if (input && parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
+        }
+
+        window.addToCart = function(code, name, price, qtyOrBtn, btnEl) {
+            var qty = 1;
+            var btn = null;
+
+            if (typeof qtyOrBtn === 'number') {
+                qty = qtyOrBtn;
+                btn = btnEl;
+            } else if (typeof qtyOrBtn === 'object' && qtyOrBtn !== null) {
+                btn = qtyOrBtn;
+            }
+
+            if (btn && btn.closest) {
+                var tr = btn.closest('tr');
+                if (tr) {
+                    var input = tr.querySelector('.qty-input, input[type="number"]');
+                    if (input) qty = parseInt(input.value) || 1;
+                }
+            }
+
+            var cart = [];
+            try {
+                cart = JSON.parse(localStorage.getItem('baysu_cart') || '[]');
+            } catch(e) { cart = []; }
+
+            var existingIndex = -1;
+            for (var i = 0; i < cart.length; i++) {
+                if (cart[i].code === code || (cart[i].name === name && cart[i].price === price)) {
+                    existingIndex = i;
+                    break;
+                }
+            }
+
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity = (cart[existingIndex].quantity || 1) + qty;
+            } else {
+                cart.push({
+                    code: code,
+                    name: name,
+                    price: price,
+                    quantity: qty
+                });
+            }
+
+            localStorage.setItem('baysu_cart', JSON.stringify(cart));
+
+            // Update badge counters
+            var totalCount = 0;
+            cart.forEach(function(item) { totalCount += (item.quantity || 1); });
+            document.querySelectorAll('.cart-count, .cart-badge, #cartCount, .basket-badge').forEach(function(el) {
+                el.textContent = totalCount;
+                el.style.display = totalCount > 0 ? 'inline-block' : 'none';
+            });
+
+            // Visual feedback on button
+            if (btn) {
+                var origHtml = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> Ekledi!';
+                btn.style.background = '#10B981';
+                setTimeout(function() {
+                    btn.innerHTML = origHtml;
+                    btn.style.background = '#004797';
+                }, 1500);
+            }
+        };
+
+        function addToCartWithQty(code, title, price, btn) {
+            window.addToCart(code, title, price, btn);
+        }
+
+        // Initialize cart badge on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                var cart = JSON.parse(localStorage.getItem('baysu_cart') || '[]');
+                var totalCount = 0;
+                cart.forEach(function(item) { totalCount += (item.quantity || 1); });
+                document.querySelectorAll('.cart-count, .cart-badge, #cartCount, .basket-badge').forEach(function(el) {
+                    el.textContent = totalCount;
+                    if (totalCount > 0) el.style.display = 'inline-block';
+                });
+            } catch(e) {}
+        });
+    </script>
 </body>
 </html>
