@@ -475,36 +475,196 @@
     color: #EF4444;
 }
 
-/* Mobil Cihazlar Özel Uyum (Phone Responsive Optimization) */
+/* Mobil Cihazlar Özel Uyum (Phone & Mobile Responsive Optimization) */
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
 @media (max-width: 768px) {
+    body {
+        padding: 0 !important;
+    }
+    
+    .header-main {
+        padding: 10px 12px !important;
+    }
+    
+    .logo {
+        width: 130px !important;
+        max-width: 55% !important;
+    }
+
+    .search-and-actions {
+        width: 100% !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+
+    .search-bar {
+        width: 100% !important;
+    }
+    
+    .product-detail-container {
+        padding: 12px 10px !important;
+        margin: 10px auto !important;
+        border-radius: 12px !important;
+        gap: 15px !important;
+        box-sizing: border-box !important;
+        width: calc(100% - 16px) !important;
+    }
+    
+    .product-image {
+        min-height: 200px !important;
+        max-height: 280px !important;
+        padding: 10px !important;
+        flex: 1 1 100% !important;
+    }
+
+    .product-image img {
+        max-height: 240px !important;
+    }
+
+    .product-info {
+        padding: 5px !important;
+        flex: 1 1 100% !important;
+    }
+    
+    .product-title {
+        font-size: 1.3rem !important;
+        line-height: 1.3 !important;
+        margin-top: 4px !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .product-category {
+        font-size: 12px !important;
+    }
+    
+    .product-description p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+    }
+    
+    .product-section-title {
+        font-size: 1.1rem !important;
+        margin-top: 15px !important;
+        margin-bottom: 8px !important;
+    }
+    
+    /* Mobil Tablo Görünümü */
     .table-responsive {
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        margin-top: 12px !important;
+        border-radius: 12px !important;
+        padding: 0 !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+    
+    .product-size-table {
+        min-width: 540px !important;
     }
     
     .product-size-table th {
-        padding: 12px 14px;
-        font-size: 12px;
+        padding: 12px 8px !important;
+        font-size: 11px !important;
     }
     
     .product-size-table td {
-        padding: 12px 14px;
-        font-size: 13px;
+        padding: 10px 8px !important;
+        font-size: 12px !important;
+    }
+
+    .product-size-table th:first-child,
+    .product-size-table td:first-child {
+        padding-left: 14px !important;
+    }
+    
+    .product-size-table th:last-child,
+    .product-size-table td:last-child {
+        padding-right: 14px !important;
+    }
+    
+    .size-badge {
+        padding: 4px 8px !important;
+        font-size: 12px !important;
+        border-radius: 6px !important;
+    }
+    
+    .box-qty-badge {
+        font-size: 11px !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        display: block !important;
+        max-width: 130px !important;
+    }
+    
+    .price-tag {
+        font-size: 13px !important;
+    }
+    
+    .qty-selector {
+        padding: 1px !important;
+        border-radius: 6px !important;
+    }
+    
+    .qty-btn {
+        width: 26px !important;
+        height: 26px !important;
+        font-size: 13px !important;
+    }
+    
+    .qty-input {
+        width: 28px !important;
+        font-size: 12px !important;
     }
     
     .add-to-cart-btn {
-        padding: 8px 14px;
-        font-size: 12px;
+        padding: 7px 10px !important;
+        font-size: 11px !important;
+        border-radius: 6px !important;
+    }
+
+    .discount-notice-box {
+        padding: 12px 14px !important;
+        border-radius: 10px !important;
+        margin-bottom: 15px !important;
+    }
+
+    .discount-notice-box h3 {
+        font-size: 13px !important;
+    }
+
+    .discount-notice-box p {
+        font-size: 11px !important;
     }
     
+    /* Mobil Yüzen Butonlar (WhatsApp & Sepet) */
+    .whatsapp-button {
+        bottom: 18px !important;
+        right: 15px !important;
+        width: 48px !important;
+        height: 48px !important;
+        font-size: 26px !important;
+    }
+
     .floating-cart-trigger {
-        bottom: 85px;
-        right: 15px;
-        padding: 12px 18px;
-        font-size: 13px;
+        bottom: 74px !important;
+        right: 15px !important;
+        padding: 10px 14px !important;
+        font-size: 12px !important;
+        border-radius: 30px !important;
     }
     
     .cart-drawer {
-        max-width: 100%;
+        width: 100vw !important;
+        max-width: 100vw !important;
+    }
+
+    footer {
+        padding: 15px 10px !important;
+        font-size: 12px !important;
+        margin-top: 30px !important;
     }
 }
