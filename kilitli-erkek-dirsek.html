@@ -1835,6 +1835,8 @@
         });
     </script>
 
+    
+
     <script id="baysu-whatsapp-order-handler">
         window.sendCartToWhatsApp = function() {
             var cart = [];
@@ -1847,8 +1849,23 @@
                 return;
             }
 
-            var message = "*BAYRAKÇI SULAMA VE YAPI MALZEMELERİ - SİPARİŞ TALEBİ*\n\n";
-            message += "*Sipariş Edilen Ürünler:*\n";
+            var now = new Date();
+            var day = String(now.getDate()).padStart(2, '0');
+            var months = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+            var month = months[now.getMonth()];
+            var year = now.getFullYear();
+            var hours = String(now.getHours()).padStart(2, '0');
+            var minutes = String(now.getMinutes()).padStart(2, '0');
+            var dateStr = day + ' ' + month + ' ' + year + ' - ' + hours + ':' + minutes;
+
+            var message = "📋 *BAYRAKÇI SULAMA VE YAPI MALZEMELERİ*\n";
+            message += "*İSKONTOLU FİYAT TEKLİFİ VE SİPARİŞ TALEBİ*\n";
+            message += "--------------------------------------------------\n";
+            message += "📅 *Tarih:* " + dateStr + "\n";
+            message += "--------------------------------------------------\n\n";
+            message += "*ÜRÜN İSMİ | EBAT | LİSTE FİYATI | MİKTAR | TUTAR*\n";
+            message += "--------------------------------------------------\n";
+
             var grandTotal = 0;
 
             cart.forEach(function(item, index) {
@@ -1857,31 +1874,56 @@
                 var lineTotal = price * qty;
                 grandTotal += lineTotal;
 
-                var name = item.name || 'Ürün';
                 var code = item.code || '';
-                
-                // If code is not already in name string, inject (Kod: XXX)
-                if (code && name.indexOf('Kod:') === -1) {
-                    name = name.replace(code, '').trim();
-                    name = name + ' (Kod: ' + code + ')';
+                var rawName = item.name || 'Ürün';
+
+                var name = rawName;
+                var ebat = '';
+
+                // Extract Ebat if present in name
+                if (name.indexOf('- Ebat:') > -1) {
+                    var parts = name.split('- Ebat:');
+                    name = parts[0].trim();
+                    ebat = parts[1].trim();
+                } else if (name.indexOf('Ebat:') > -1) {
+                    var parts = name.split('Ebat:');
+                    name = parts[0].replace(/-\s*$/, '').trim();
+                    ebat = parts[1].trim();
                 }
 
-                message += (index + 1) + ". " + name + "\n";
-                message += "   └ Adet: " + qty + " | Birim Fiyat: " + price.toFixed(2) + " TL | Tutar: " + lineTotal.toFixed(2) + " TL\n\n";
+                // Clean (Kod: XXX) from product name if present
+                if (name.indexOf('(Kod:') > -1) {
+                    var codeMatch = name.match(/\(Kod:\s*([^)]+)\)/);
+                    if (codeMatch && codeMatch[1]) {
+                        code = codeMatch[1].trim();
+                    }
+                    name = name.split('(Kod:')[0].trim();
+                }
+
+                // Build line exact: 1. KOD 236 | Sintine Depo Rekoru | Ebat: 3/4 | 80.00 TL | 1 Adet | 80.00 TL
+                var line = (index + 1) + ". KOD " + (code ? code : '---') + " | " + name;
+                if (ebat) {
+                    line += " | Ebat: " + ebat;
+                }
+                line += " | " + price.toFixed(2) + " TL | " + qty + " Adet | " + lineTotal.toFixed(2) + " TL";
+
+                message += line + "\n";
             });
 
-            message += "*Genel Toplam:* " + grandTotal.toFixed(2) + " TL\n\n";
-            message += "Lütfen siparişimin onayını ve teslimat detaylarını iletiniz.";
+            message += "--------------------------------------------------\n";
+            message += "💰 *TOPLAM LİSTE FİYATI:* " + grandTotal.toFixed(2) + " TL\n";
+            message += "🎁 *İSKONTO TALEBİ:* Ürün miktarlarımıza ve projemize özel iskonto oranınız ile net iskontolu fiyat teklifinizi öğrenmek istiyoruz.\n";
+            message += "--------------------------------------------------\n";
+            message += "Lütfen ürün stok teyidi ile birlikte iskontolu net fiyat teklifinizi iletiniz.";
 
             var encodedMessage = encodeURIComponent(message);
             var waUrl = "https://wa.me/905324965835?text=" + encodedMessage;
             window.open(waUrl, '_blank');
         };
 
-        // Attach listener to any WhatsApp checkout buttons
         document.addEventListener('click', function(e) {
             var btn = e.target.closest('#sendCartToWhatsApp, .checkout-whatsapp-btn, .btn-whatsapp-order, a[href*="wa.me"]');
-            if (btn && btn.classList.contains('checkout-whatsapp-btn')) {
+            if (btn && (btn.id === 'sendCartToWhatsApp' || btn.classList.contains('checkout-whatsapp-btn') || btn.classList.contains('btn-whatsapp-order'))) {
                 e.preventDefault();
                 e.stopPropagation();
                 window.sendCartToWhatsApp();
