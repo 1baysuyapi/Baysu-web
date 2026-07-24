@@ -911,6 +911,8 @@
 
     
 
+    
+
     <style id="baysu-exact-user-design-css">
         /* 2-Column Product Detail Layout */
         .page-content {
@@ -1005,23 +1007,24 @@
             font-weight: 800 !important;
             color: #004797 !important;
             margin-bottom: 12px !important;
+            text-align: left !important;
         }
 
-        /* Responsive Table Wrapper - Zero Top Gap & Centered Layout */
+        /* Responsive Table Wrapper - Left Aligned Under Title & 0 Top Gap */
         .table-responsive {
             width: 100% !important;
             overflow-x: auto !important;
             -webkit-overflow-scrolling: touch !important;
-            margin: 0 auto 20px auto !important;
+            margin: 0 0 20px 0 !important; /* Left aligned under title */
             border-radius: 12px !important;
             border: 1px solid #CBD5E1 !important;
-            background: #004797 !important; /* Seamless background matching header */
+            background: #004797 !important; /* Matches navy header perfectly - ZERO white gap above th */
             box-shadow: 0 4px 15px rgba(0, 71, 151, 0.05) !important;
         }
 
         .price-table {
             width: 100% !important;
-            border-collapse: collapse !important; /* Eliminates white line gap above th */
+            border-collapse: collapse !important; /* Eliminates white gap above header */
             border-spacing: 0 !important;
             border: none !important;
             margin: 0 !important;
@@ -1034,9 +1037,10 @@
             font-weight: 700 !important;
             padding: 12px 14px !important;
             font-size: 0.85rem !important;
-            text-align: center !important; /* Centered headers */
+            text-align: center !important;
             white-space: nowrap !important;
             border: none !important;
+            margin: 0 !important;
         }
 
         .price-table td {
@@ -1044,7 +1048,7 @@
             border-bottom: 1px solid #E2E8F0 !important;
             font-size: 0.88rem !important;
             vertical-align: middle !important;
-            text-align: center !important; /* Centered content */
+            text-align: center !important;
             white-space: nowrap !important;
             border-left: none !important;
             border-right: none !important;
