@@ -910,8 +910,10 @@
 
     
 
+    
+
     <style id="baysu-exact-user-design-css">
-        /* 2-Column Product Detail Layout Matching User Screenshot */
+        /* 2-Column Product Detail Layout */
         .page-content {
             padding-bottom: 120px !important; /* Fix overlap bug: guarantees table is never covered by floating cart or WA buttons */
         }
@@ -1006,40 +1008,47 @@
             margin-bottom: 12px !important;
         }
 
+        /* Responsive Table Wrapper - Zero Top Gap & Centered Layout */
         .table-responsive {
             width: 100% !important;
-            max-width: 720px !important; /* Compact table width - no giant empty gaps */
             overflow-x: auto !important;
             -webkit-overflow-scrolling: touch !important;
-            margin-bottom: 20px !important;
+            margin: 0 auto 20px auto !important;
+            border-radius: 12px !important;
+            border: 1px solid #CBD5E1 !important;
+            background: #004797 !important; /* Seamless background matching header */
+            box-shadow: 0 4px 15px rgba(0, 71, 151, 0.05) !important;
         }
 
         .price-table {
             width: 100% !important;
-            max-width: 720px !important;
-            border-collapse: separate !important;
+            border-collapse: collapse !important; /* Eliminates white line gap above th */
             border-spacing: 0 !important;
-            border-radius: 12px !important;
-            overflow: hidden !important;
-            border: 1px solid #CBD5E1 !important;
+            border: none !important;
+            margin: 0 !important;
+            background: #ffffff !important;
         }
 
         .price-table th {
             background: linear-gradient(135deg, #004797 0%, #002D62 100%) !important;
             color: #ffffff !important;
             font-weight: 700 !important;
-            padding: 10px 14px !important;
+            padding: 12px 14px !important;
             font-size: 0.85rem !important;
-            text-align: left !important;
+            text-align: center !important; /* Centered headers */
             white-space: nowrap !important;
+            border: none !important;
         }
 
         .price-table td {
-            padding: 9px 14px !important;
+            padding: 10px 14px !important;
             border-bottom: 1px solid #E2E8F0 !important;
             font-size: 0.88rem !important;
             vertical-align: middle !important;
+            text-align: center !important; /* Centered content */
             white-space: nowrap !important;
+            border-left: none !important;
+            border-right: none !important;
         }
 
         .price-table tbody tr:last-child td {
@@ -1071,6 +1080,7 @@
             border: 1px solid #CBD5E1 !important;
             border-radius: 8px !important;
             padding: 2px !important;
+            margin: 0 auto !important;
         }
         .qty-btn {
             width: 26px !important;
@@ -1108,6 +1118,7 @@
             transition: all 0.2s ease !important;
             box-shadow: 0 3px 10px rgba(0, 71, 151, 0.18) !important;
             white-space: nowrap !important;
+            margin: 0 auto !important;
         }
         .btn-add-cart-custom:hover {
             background: #002D62 !important;
