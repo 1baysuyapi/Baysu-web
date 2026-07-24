@@ -1796,21 +1796,7 @@
         </div>
     </div>
     <script>
-        function openKvkkModal(e) {
-            if (e) e.preventDefault();
-            var modal = document.getElementById('kvkkModalBackdrop');
-            if (modal) modal.classList.add('active');
-        }
-        function closeKvkkModal() {
-            var modal = document.getElementById('kvkkModalBackdrop');
-            if (modal) modal.classList.remove('active');
-        }
-        document.addEventListener('click', function(e) {
-            if (e.target && e.target.getAttribute && (e.target.getAttribute('href') === '#kvkk' || e.target.classList.contains('kvkk-trigger') || (e.target.innerText && e.target.innerText.indexOf('KVKK') > -1))) {
-                openKvkkModal(e);
-            }
-        });
-    </script>
+        </script>
 
     
 
@@ -2197,6 +2183,24 @@
                 e.preventDefault();
                 e.stopPropagation();
                 window.sendCartToWhatsApp();
+            }
+        });
+    </script>
+
+    <script id="baysu-kvkk-clean-handler">
+        function openKvkkModal(e) {
+            if (e) e.preventDefault();
+            var modal = document.getElementById('kvkkModalBackdrop');
+            if (modal) modal.classList.add('active');
+        }
+        function closeKvkkModal() {
+            var modal = document.getElementById('kvkkModalBackdrop');
+            if (modal) modal.classList.remove('active');
+        }
+        document.addEventListener('click', function(e) {
+            var kvkkBtn = e.target.closest('a[href*="kvkk"], .kvkk-link, .kvkk-trigger, #kvkkLink, button.kvkk-btn');
+            if (kvkkBtn) {
+                openKvkkModal(e);
             }
         });
     </script>
