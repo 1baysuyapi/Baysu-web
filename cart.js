@@ -44,7 +44,6 @@ function parsePrice(str) {
             const listData = localStorage.getItem(ARCHIVE_LIST_KEY);
             let list = listData ? JSON.parse(listData) : [];
             
-            // Eski tekli arşiv verisi varsa listeye aktar ve eskiyi kaldır
             const oldData = localStorage.getItem(OLD_SINGLE_ARCHIVE_KEY);
             if (oldData) {
                 try {
@@ -68,8 +67,8 @@ function parsePrice(str) {
     function saveArchivedOrder(orderData) {
         try {
             let list = getArchivedOrders();
-            list.unshift(orderData); // En son siparişi başa ekle
-            if (list.length > 50) list = list.slice(0, 50); // En fazla 50 sipariş sakla
+            list.unshift(orderData);
+            if (list.length > 50) list = list.slice(0, 50);
             localStorage.setItem(ARCHIVE_LIST_KEY, JSON.stringify(list));
         } catch (e) {
             console.error('Arşiv kaydetme hatası:', e);
@@ -87,7 +86,6 @@ function parsePrice(str) {
         }
     }
 
-    // Tarih ve Saati Türkçe Formatla
     function getFormattedTimestamp() {
         const now = new Date();
         const months = [
@@ -103,7 +101,6 @@ function parsePrice(str) {
         return `${day} ${month} ${year} - ${hours}:${minutes}`;
     }
 
-    // Metin Temizleme Yardımcısı
     function sanitizeAttr(str) {
         if (!str) return '';
         return String(str)
@@ -112,11 +109,9 @@ function parsePrice(str) {
             .trim();
     }
 
-    // UI Bileşenlerini Enjekte Et
     function injectCartUI() {
         if (document.getElementById('cartDrawerOverlay')) return;
 
-        // Floating Cart Trigger (Sağ Alt Buton)
         const triggerHtml = `
             <div class="floating-cart-trigger" id="floatingCartBtn" title="Sepetimi Görüntüle">
                 <i class="fas fa-shopping-basket" style="font-size: 18px;"></i>
@@ -125,7 +120,6 @@ function parsePrice(str) {
             </div>
         `;
 
-        // Cart Drawer Overlay & Panel
         const drawerHtml = `
             <div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
             <div class="cart-drawer" id="cartDrawer">
@@ -159,7 +153,6 @@ function parsePrice(str) {
         document.body.insertAdjacentHTML('beforeend', triggerHtml);
         document.body.insertAdjacentHTML('beforeend', drawerHtml);
 
-        // Event Listener'lar
         document.getElementById('floatingCartBtn').addEventListener('click', openCartDrawer);
         document.getElementById('cartCloseBtn').addEventListener('click', closeCartDrawer);
         document.getElementById('cartDrawerOverlay').addEventListener('click', closeCartDrawer);
@@ -175,15 +168,16 @@ function parsePrice(str) {
         document.getElementById('cartTimestamp').textContent = getFormattedTimestamp();
         document.getElementById('cartDrawerOverlay').classList.add('active');
         document.getElementById('cartDrawer').classList.add('active');
+        document.body.classList.add('cart-drawer-open'); // Hides WhatsApp button while cart is open
         renderCartItems();
     }
 
     function closeCartDrawer() {
         document.getElementById('cartDrawerOverlay').classList.remove('active');
         document.getElementById('cartDrawer').classList.remove('active');
+        document.body.classList.remove('cart-drawer-open'); // Brings WhatsApp button back
     }
 
-    // Sepet Görünümünü Güncelle
     function updateCartUI() {
         const cart = getCart();
         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -194,7 +188,6 @@ function parsePrice(str) {
         renderCartItems();
     }
 
-    // Sepet İçeriğini Çizdir
     function renderCartItems() {
         const cartBody = document.getElementById('cartBody');
         const cartTotalAmount = document.getElementById('cartTotalAmount');
@@ -242,7 +235,6 @@ function parsePrice(str) {
             }).join('');
         }
 
-        // Tüm Geçmiş Siparişler (Arşiv Listesi)
         if (archivedOrders && archivedOrders.length > 0) {
             html += `
                 <div class="archived-order-section" style="margin-top: 25px; padding-top: 15px; border-top: 2px dashed #CBD5E1;">
@@ -276,14 +268,12 @@ function parsePrice(str) {
             cartTotalAmount.textContent = totalSum.toFixed(2) + ' TL';
         }
 
-        // Arşivi temizle butonu dinleyicisi
         const clearArchiveBtn = document.getElementById('clearArchiveBtn');
         if (clearArchiveBtn) {
             clearArchiveBtn.addEventListener('click', clearArchivedOrders);
         }
     }
 
-    // Ürün Ekleme
     function addItem(productName, size, boxQty, price, quantity) {
         let cart = getCart();
         const cleanName = sanitizeAttr(productName);
@@ -307,7 +297,6 @@ function parsePrice(str) {
         saveCart(cart);
     }
 
-    // Miktar Değiştirme (Tekli adım garanti)
     function changeQty(index, delta) {
         let cart = getCart();
         if (cart[index]) {
@@ -319,7 +308,6 @@ function parsePrice(str) {
         }
     }
 
-    // Ürün Silme
     function removeItem(index) {
         let cart = getCart();
         if (cart[index]) {
@@ -328,7 +316,6 @@ function parsePrice(str) {
         }
     }
 
-    // WhatsApp Sipariş Gönderimi
     function sendWhatsAppOrder() {
         const cart = getCart();
         if (cart.length === 0) {
@@ -362,7 +349,6 @@ function parsePrice(str) {
         text += `--------------------------------------------------\n`;
         text += `Lütfen ürün stok teyidi ile birlikte iskontolu net fiyat teklifinizi iletiniz.`;
 
-        // Siparişi Tüm Geçmiş Arşive Ekle ve Aktif Sepeti Sıfırla
         const newOrderRecord = {
             id: Date.now(),
             timestamp: timestamp,
@@ -384,7 +370,6 @@ function parsePrice(str) {
         window.open(whatsappUrl, '_blank');
     }
 
-    // Sayfa Yüklendiğinde Başlat
     let isInitialized = false;
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -394,7 +379,6 @@ function parsePrice(str) {
         injectCartUI();
         updateCartUI();
 
-        // Input değişimlerinde doğrudan yazılan değerleri doğrula
         document.body.addEventListener('change', (e) => {
             if (e.target.classList.contains('qty-input')) {
                 let val = parseInt(e.target.value);
@@ -406,12 +390,9 @@ function parsePrice(str) {
             }
         });
 
-        // Tüm Tıklama Olayları için Çakışmasız Tekil Yönetici (Single Event Dispatcher)
         document.body.addEventListener('click', (e) => {
-            // Çift çalışmayı önleme bayrağı
             if (e._handledByBaysuCart) return;
 
-            // 1. Sepet Çekmecesindeki (Drawer) Miktar Butonları (+/-)
             const drawerBtn = e.target.closest('.drawer-qty-btn');
             if (drawerBtn) {
                 e.preventDefault();
@@ -425,7 +406,6 @@ function parsePrice(str) {
                 return;
             }
 
-            // 2. Sepet Çekmecesindeki Ürün Silme Butonu
             const removeBtn = e.target.closest('.remove-cart-item');
             if (removeBtn) {
                 e.preventDefault();
@@ -438,7 +418,6 @@ function parsePrice(str) {
                 return;
             }
 
-            // 3. Ürün Tablosundaki (Sayfa İçindeki) Miktar + / - Butonları
             const tableQtyBtn = e.target.closest('.qty-selector .qty-btn');
             if (tableQtyBtn) {
                 e.preventDefault();
@@ -460,7 +439,6 @@ function parsePrice(str) {
                 return;
             }
 
-            // 4. Sepete Ekle Butonu
             const addBtn = e.target.closest('.add-to-cart-btn');
             if (addBtn) {
                 e.preventDefault();
@@ -491,33 +469,19 @@ function parsePrice(str) {
                 }, 800);
                 return;
             }
-
-            const link = e.target.closest('a');
-            if (link) {
-                const href = link.getAttribute('href');
-                const missingPages = [];
-                if (href && missingPages.includes(href)) {
-                    e.preventDefault();
-                    e._handledByBaysuCart = true;
-                    alert('Bu ürün çeşidi henüz kataloğumuza yüklenme aşamasındadır.');
-                }
-            }
         });
     });
 
-    // Güvenlik Koruması: Anti-Clickjacking & XSS Filtreleme
     try {
         if (window.top !== window.self) {
             window.top.location = window.self.location;
         }
     } catch (e) {}
 
-    // Dış Bağlantılara Güvenlik Etiketi (rel="noopener noreferrer") Ekle
     document.querySelectorAll('a[target="_blank"]').forEach(a => {
         a.setAttribute('rel', 'noopener noreferrer');
     });
 
-    // Global Erişim API
     window.BaysuCart = {
         addItem,
         changeQty,
