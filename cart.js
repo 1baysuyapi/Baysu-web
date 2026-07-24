@@ -425,7 +425,7 @@ function parsePrice(str) {
         updateCartUI();
 
         const encodedText = encodeURIComponent(text);
-        const whatsappUrl = `https://wa.me/905324965835?text=${encodedText}`;
+        const whatsappUrl = `https://wa.me/905533973603?text=${encodedText}`;
 
         window.open(whatsappUrl, '_blank');
     }
