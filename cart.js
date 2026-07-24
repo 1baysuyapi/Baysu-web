@@ -92,7 +92,7 @@ function parsePrice(str) {
             'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
             'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'
         ];
-        const day = now.getDate();
+        const day = String(now.getDate()).padStart(2, '0');
         const month = months[now.getMonth()];
         const year = now.getFullYear();
         const hours = String(now.getHours()).padStart(2, '0');
@@ -168,14 +168,14 @@ function parsePrice(str) {
         document.getElementById('cartTimestamp').textContent = getFormattedTimestamp();
         document.getElementById('cartDrawerOverlay').classList.add('active');
         document.getElementById('cartDrawer').classList.add('active');
-        document.body.classList.add('cart-drawer-open'); // Hides WhatsApp button while cart is open
+        document.body.classList.add('cart-drawer-open');
         renderCartItems();
     }
 
     function closeCartDrawer() {
         document.getElementById('cartDrawerOverlay').classList.remove('active');
         document.getElementById('cartDrawer').classList.remove('active');
-        document.body.classList.remove('cart-drawer-open'); // Brings WhatsApp button back
+        document.body.classList.remove('cart-drawer-open');
     }
 
     function updateCartUI() {
@@ -274,7 +274,7 @@ function parsePrice(str) {
         }
     }
 
-    function addItem(productName, size, boxQty, price, quantity) {
+    function addItem(productName, size, boxQty, price, quantity, code) {
         let cart = getCart();
         const cleanName = sanitizeAttr(productName);
         const cleanSize = sanitizeAttr(size);
@@ -284,13 +284,15 @@ function parsePrice(str) {
 
         if (existingIndex > -1) {
             cart[existingIndex].quantity += parsedQty;
+            if (code) cart[existingIndex].code = code;
         } else {
             cart.push({
                 productName: cleanName,
                 size: cleanSize,
                 boxQty: boxQty || '-',
                 price: parseFloat(price) || 0,
-                quantity: parsedQty
+                quantity: parsedQty,
+                code: code || ''
             });
         }
 
@@ -335,17 +337,67 @@ function parsePrice(str) {
 
         let totalSum = 0;
 
+        const sizeToCodeMap = {
+            '3/4': '236',
+            '3/4"': '236',
+            '1': '237',
+            '1"': '237',
+            '1 1/4': '238',
+            '1 1/4"': '238',
+            '1 1/2': '239',
+            '1 1/2"': '239'
+        };
+
         cart.forEach((item, idx) => {
-            const itemTotal = (item.price * item.quantity).toFixed(2);
+            const price = parseFloat(item.price || 0);
+            const qty = parseInt(item.quantity || 1);
+            const itemTotal = (price * qty).toFixed(2);
             totalSum += parseFloat(itemTotal);
-            const cleanName = sanitizeAttr(item.productName);
-            const cleanSize = sanitizeAttr(item.size);
-            text += `${idx + 1}. ${cleanName} | Ebat: ${cleanSize} | ${item.price.toFixed(2)} TL | ${item.quantity} Adet | ${itemTotal} TL\n`;
+
+            let cleanName = sanitizeAttr(item.productName || 'Sintine Depo Rekoru');
+            let cleanSize = sanitizeAttr(item.size || '');
+            let code = item.code || '';
+
+            if (!cleanSize) {
+                if (cleanName.indexOf('1 1/4') > -1) cleanSize = '1 1/4';
+                else if (cleanName.indexOf('1 1/2') > -1) cleanSize = '1 1/2';
+                else if (cleanName.indexOf('3/4') > -1) cleanSize = '3/4';
+                else if (cleanName.indexOf(' 1') > -1 || cleanName === '1') cleanSize = '1';
+            }
+
+            cleanName = cleanName.replace('3/4', '').replace('1 1/4', '').replace('1 1/2', '').replace('1', '').replace(/-\s*$/, '').trim();
+            if (!cleanName) cleanName = 'Sintine Depo Rekoru';
+
+            if (!code) {
+                if (cleanSize && sizeToCodeMap[cleanSize]) {
+                    code = sizeToCodeMap[cleanSize];
+                } else if (Math.abs(price - 80) < 0.1 && (cleanSize.indexOf('3/4') > -1)) {
+                    code = '236';
+                } else if (Math.abs(price - 80) < 0.1 && (cleanSize === '1' || cleanSize === '1"' || cleanSize.indexOf('3/4') === -1)) {
+                    code = '237';
+                } else if (Math.abs(price - 115) < 0.1) {
+                    code = '238';
+                } else if (Math.abs(price - 130) < 0.1) {
+                    code = '239';
+                } else {
+                    code = '236';
+                }
+            }
+
+            cleanSize = cleanSize.replace(/"/g, '').trim();
+
+            let line = `${idx + 1}. KOD ${code} | ${cleanName}`;
+            if (cleanSize) {
+                line += ` | Ebat: ${cleanSize}`;
+            }
+            line += ` | ${price.toFixed(2)} TL | ${qty} Adet | ${itemTotal} TL`;
+
+            text += line + `\n`;
         });
 
         text += `--------------------------------------------------\n`;
         text += ` *TOPLAM LİSTE FİYATI:* ${totalSum.toFixed(2)} TL\n`;
-        text += `💡 *İSKONTO TALEBİ:* Ürün miktarlarımıza ve projemize özel iskonto oranınız ile net iskontolu fiyat teklifinizi öğrenmek istiyoruz.\n`;
+        text += `🎁 *İSKONTO TALEBİ:* Ürün miktarlarımıza ve projemize özel iskonto oranınız ile net iskontolu fiyat teklifinizi öğrenmek istiyoruz.\n`;
         text += `--------------------------------------------------\n`;
         text += `Lütfen ürün stok teyidi ile birlikte iskontolu net fiyat teklifinizi iletiniz.`;
 
@@ -365,7 +417,7 @@ function parsePrice(str) {
         updateCartUI();
 
         const encodedText = encodeURIComponent(text);
-        const whatsappUrl = `https://wa.me/905533973603?text=${encodedText}`;
+        const whatsappUrl = `https://wa.me/905324965835?text=${encodedText}`;
 
         window.open(whatsappUrl, '_blank');
     }
@@ -452,11 +504,12 @@ function parsePrice(str) {
                 const size = addBtn.getAttribute('data-size');
                 const boxQty = addBtn.getAttribute('data-box');
                 const price = addBtn.getAttribute('data-price');
+                const code = addBtn.getAttribute('data-code');
                 const row = addBtn.closest('tr');
                 const qtyInput = row ? row.querySelector('.qty-input') : null;
                 const quantity = qtyInput ? (parseInt(qtyInput.value) || 1) : 1;
 
-                addItem(productName, size, boxQty, price, quantity);
+                addItem(productName, size, boxQty, price, quantity, code);
 
                 const originalText = addBtn.innerHTML;
                 addBtn.classList.add('added');
