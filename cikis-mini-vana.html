@@ -1680,6 +1680,8 @@
 
     
 
+    
+
     <script id="baysu-whatsapp-order-handler">
         window.sendCartToWhatsApp = function() {
             var cart = [];
@@ -1711,40 +1713,61 @@
 
             var grandTotal = 0;
 
+            var sizeToCodeMap = {
+                '3/4': '236',
+                '3/4"': '236',
+                '1': '237',
+                '1"': '237',
+                '1 1/4': '238',
+                '1 1/4"': '238',
+                '1 1/2': '239',
+                '1 1/2"': '239'
+            };
+
             cart.forEach(function(item, index) {
                 var qty = item.quantity || 1;
                 var price = parseFloat(item.price || 0);
                 var lineTotal = price * qty;
                 grandTotal += lineTotal;
 
+                var rawName = item.name || 'Sintine Depo Rekoru';
                 var code = item.code || '';
-                var rawName = item.name || 'Ürün';
-
                 var name = rawName;
                 var ebat = '';
 
-                // Extract Ebat if present in name
-                if (name.indexOf('- Ebat:') > -1) {
-                    var parts = name.split('- Ebat:');
-                    name = parts[0].trim();
-                    ebat = parts[1].trim();
-                } else if (name.indexOf('Ebat:') > -1) {
+                if (name.indexOf('Ebat:') > -1) {
                     var parts = name.split('Ebat:');
                     name = parts[0].replace(/-\s*$/, '').trim();
                     ebat = parts[1].trim();
+                } else if (name.indexOf('-') > -1) {
+                    var parts = name.split('-');
+                    name = parts[0].trim();
+                    ebat = parts[1].trim();
                 }
 
-                // Clean (Kod: XXX) from product name if present
-                if (name.indexOf('(Kod:') > -1) {
-                    var codeMatch = name.match(/\(Kod:\s*([^)]+)\)/);
-                    if (codeMatch && codeMatch[1]) {
-                        code = codeMatch[1].trim();
-                    }
+                if (name.indexOf('Kod:') > -1) {
+                    var m = name.match(/Kod:\s*([0-9A-Za-z-]+)/);
+                    if (m && m[1]) code = m[1];
                     name = name.split('(Kod:')[0].trim();
                 }
 
-                // Build line exact: 1. KOD 236 | Sintine Depo Rekoru | Ebat: 3/4 | 80.00 TL | 1 Adet | 80.00 TL
-                var line = (index + 1) + ". KOD " + (code ? code : '---') + " | " + name;
+                if (!code) {
+                    if (ebat && sizeToCodeMap[ebat]) {
+                        code = sizeToCodeMap[ebat];
+                    } else if (Math.abs(price - 80) < 0.1 && ebat.indexOf('3/4') > -1) {
+                        code = '236';
+                    } else if (Math.abs(price - 80) < 0.1 && (ebat === '1' || ebat === '1"')) {
+                        code = '237';
+                    } else if (Math.abs(price - 115) < 0.1) {
+                        code = '238';
+                    } else if (Math.abs(price - 130) < 0.1) {
+                        code = '239';
+                    } else {
+                        code = '236';
+                    }
+                }
+
+                var line = (index + 1) + ". KOD " + code + " | " + name;
                 if (ebat) {
                     line += " | Ebat: " + ebat;
                 }
