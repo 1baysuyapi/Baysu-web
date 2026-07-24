@@ -912,6 +912,8 @@
 
     
 
+    
+
     <style id="baysu-exact-user-design-css">
         /* 2-Column Product Detail Layout Matching User Screenshot */
         .page-content {
@@ -1376,7 +1378,7 @@
     </div>
 </div>
 <div class="table-responsive-wrapper">
-<table class="product-size-table">
+<table class="price-table">
                         <thead>
                             <tr>
                                 <th>EBAT</th>
@@ -1388,70 +1390,70 @@
                         </thead>
                                                 <tbody>
             <tr>
-                <td><span class="size-badge">16x16</span></td>
-                <td><span class="box-qty-badge">800 Adet (Poşet: 100)</span></td>
-                <td><span class="price-tag">30,45 TL</span></td>
+                <td><span class="ebat-pill">16x16</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">800 Adet (Poşet: 100)</span></td>
+                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">30,45 TL</span></td>
                 <td>
-                    <div class="qty-selector">
-                        <button class="qty-btn qty-minus" type="button">-</button>
+                    <div class="qty-stepper">
+                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                         <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn qty-plus" type="button">+</button>
+                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn" type="button" data-product="CİKİS MİNİ VANA" data-size="16x16" data-box="800 Adet (Poşet: 100)" data-price="30.45">
-                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="CİKİS MİNİ VANA" data-size="16x16" data-box="800 Adet (Poşet: 100)" data-price="30.45">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
-                <td><span class="size-badge">20x20</span></td>
-                <td><span class="box-qty-badge">600 Adet (Poşet: 100)</span></td>
-                <td><span class="price-tag">33,38 TL</span></td>
+                <td><span class="ebat-pill">20x20</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">600 Adet (Poşet: 100)</span></td>
+                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">33,38 TL</span></td>
                 <td>
-                    <div class="qty-selector">
-                        <button class="qty-btn qty-minus" type="button">-</button>
+                    <div class="qty-stepper">
+                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                         <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn qty-plus" type="button">+</button>
+                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn" type="button" data-product="CİKİS MİNİ VANA" data-size="20x20" data-box="600 Adet (Poşet: 100)" data-price="33.38">
-                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="CİKİS MİNİ VANA" data-size="20x20" data-box="600 Adet (Poşet: 100)" data-price="33.38">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
-                <td><span class="size-badge">16x25</span></td>
-                <td><span class="box-qty-badge">600 Adet (Poşet: 100)</span></td>
-                <td><span class="price-tag">39,68 TL</span></td>
+                <td><span class="ebat-pill">16x25</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">600 Adet (Poşet: 100)</span></td>
+                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">39,68 TL</span></td>
                 <td>
-                    <div class="qty-selector">
-                        <button class="qty-btn qty-minus" type="button">-</button>
+                    <div class="qty-stepper">
+                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                         <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn qty-plus" type="button">+</button>
+                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn" type="button" data-product="CİKİS MİNİ VANA" data-size="16x25" data-box="600 Adet (Poşet: 100)" data-price="39.68">
-                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="CİKİS MİNİ VANA" data-size="16x25" data-box="600 Adet (Poşet: 100)" data-price="39.68">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
-                <td><span class="size-badge">20x25</span></td>
-                <td><span class="box-qty-badge">600 Adet (Poşet: 100)</span></td>
-                <td><span class="price-tag">39,68 TL</span></td>
+                <td><span class="ebat-pill">20x25</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">600 Adet (Poşet: 100)</span></td>
+                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">39,68 TL</span></td>
                 <td>
-                    <div class="qty-selector">
-                        <button class="qty-btn qty-minus" type="button">-</button>
+                    <div class="qty-stepper">
+                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                         <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn qty-plus" type="button">+</button>
+                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn" type="button" data-product="CİKİS MİNİ VANA" data-size="20x25" data-box="600 Adet (Poşet: 100)" data-price="39.68">
-                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="CİKİS MİNİ VANA" data-size="20x25" data-box="600 Adet (Poşet: 100)" data-price="39.68">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>

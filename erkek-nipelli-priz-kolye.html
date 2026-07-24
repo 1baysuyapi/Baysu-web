@@ -933,6 +933,8 @@
 
     
 
+    
+
     <style id="baysu-exact-user-design-css">
         /* 2-Column Product Detail Layout Matching User Screenshot */
         .page-content {
@@ -1399,7 +1401,7 @@
     </div>
 </div>
 <div class="table-responsive-wrapper">
-<table class="product-size-table">
+<table class="price-table">
                         <thead>
                             <tr>
                                 <th>EBAT</th>
@@ -1411,87 +1413,87 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><span class="size-badge">50x1"</span></td>
-                                <td><span class="box-qty-badge">-</span></td>
-                                <td><span class="price-tag">384,94 TL</span></td>
+                                <td><span class="ebat-pill">50x1"</span></td>
+                                <td><span style="color: #64748B; font-weight: 600;">-</span></td>
+                                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">384,94 TL</span></td>
                                 <td>
-                                    <div class="qty-selector">
-                                        <button class="qty-btn qty-minus" type="button">-</button>
+                                    <div class="qty-stepper">
+                                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                                         <input type="number" value="1" min="1" class="qty-input">
-                                        <button class="qty-btn qty-plus" type="button">+</button>
+                                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add-to-cart-btn" type="button" data-product="Erkek Nipelli Priz Kolye" data-size="50x1&quot;" data-box="-" data-price="384.94">
-                                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="Erkek Nipelli Priz Kolye" data-size="50x1&quot;" data-box="-" data-price="384.94">
+                                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                                     </button>
                                 </td>
                             </tr>
                             <tr>
-                                <td><span class="size-badge">63x1"</span></td>
-                                <td><span class="box-qty-badge">-</span></td>
-                                <td><span class="price-tag">395,71 TL</span></td>
+                                <td><span class="ebat-pill">63x1"</span></td>
+                                <td><span style="color: #64748B; font-weight: 600;">-</span></td>
+                                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">395,71 TL</span></td>
                                 <td>
-                                    <div class="qty-selector">
-                                        <button class="qty-btn qty-minus" type="button">-</button>
+                                    <div class="qty-stepper">
+                                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                                         <input type="number" value="1" min="1" class="qty-input">
-                                        <button class="qty-btn qty-plus" type="button">+</button>
+                                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add-to-cart-btn" type="button" data-product="Erkek Nipelli Priz Kolye" data-size="63x1&quot;" data-box="-" data-price="395.71">
-                                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="Erkek Nipelli Priz Kolye" data-size="63x1&quot;" data-box="-" data-price="395.71">
+                                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                                     </button>
                                 </td>
                             </tr>
                             <tr>
-                                <td><span class="size-badge">75x1"</span></td>
-                                <td><span class="box-qty-badge">-</span></td>
-                                <td><span class="price-tag">433,96 TL</span></td>
+                                <td><span class="ebat-pill">75x1"</span></td>
+                                <td><span style="color: #64748B; font-weight: 600;">-</span></td>
+                                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">433,96 TL</span></td>
                                 <td>
-                                    <div class="qty-selector">
-                                        <button class="qty-btn qty-minus" type="button">-</button>
+                                    <div class="qty-stepper">
+                                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                                         <input type="number" value="1" min="1" class="qty-input">
-                                        <button class="qty-btn qty-plus" type="button">+</button>
+                                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add-to-cart-btn" type="button" data-product="Erkek Nipelli Priz Kolye" data-size="75x1&quot;" data-box="-" data-price="433.96">
-                                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="Erkek Nipelli Priz Kolye" data-size="75x1&quot;" data-box="-" data-price="433.96">
+                                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                                     </button>
                                 </td>
                             </tr>
                             <tr>
-                                <td><span class="size-badge">90x1"</span></td>
-                                <td><span class="box-qty-badge">-</span></td>
-                                <td><span class="price-tag">-</span></td>
+                                <td><span class="ebat-pill">90x1"</span></td>
+                                <td><span style="color: #64748B; font-weight: 600;">-</span></td>
+                                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">-</span></td>
                                 <td>
-                                    <div class="qty-selector">
-                                        <button class="qty-btn qty-minus" type="button">-</button>
+                                    <div class="qty-stepper">
+                                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                                         <input type="number" value="1" min="1" class="qty-input">
-                                        <button class="qty-btn qty-plus" type="button">+</button>
+                                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add-to-cart-btn" type="button" data-product="Erkek Nipelli Priz Kolye" data-size="90x1&quot;" data-box="-" data-price="0.00">
-                                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="Erkek Nipelli Priz Kolye" data-size="90x1&quot;" data-box="-" data-price="0.00">
+                                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                                     </button>
                                 </td>
                             </tr>
                             <tr>
-                                <td><span class="size-badge">110x1"</span></td>
-                                <td><span class="box-qty-badge">-</span></td>
-                                <td><span class="price-tag">492,74 TL</span></td>
+                                <td><span class="ebat-pill">110x1"</span></td>
+                                <td><span style="color: #64748B; font-weight: 600;">-</span></td>
+                                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">492,74 TL</span></td>
                                 <td>
-                                    <div class="qty-selector">
-                                        <button class="qty-btn qty-minus" type="button">-</button>
+                                    <div class="qty-stepper">
+                                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                                         <input type="number" value="1" min="1" class="qty-input">
-                                        <button class="qty-btn qty-plus" type="button">+</button>
+                                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add-to-cart-btn" type="button" data-product="Erkek Nipelli Priz Kolye" data-size="110x1&quot;" data-box="-" data-price="492.74">
-                                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="Erkek Nipelli Priz Kolye" data-size="110x1&quot;" data-box="-" data-price="492.74">
+                                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                                     </button>
                                 </td>
                             </tr>

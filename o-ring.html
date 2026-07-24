@@ -912,6 +912,8 @@
 
     
 
+    
+
     <style id="baysu-exact-user-design-css">
         /* 2-Column Product Detail Layout Matching User Screenshot */
         .page-content {
@@ -1376,7 +1378,7 @@
     </div>
 </div>
 <div class="table-responsive-wrapper">
-<table class="product-size-table">
+<table class="price-table">
                         <thead>
                             <tr>
                                 <th>EBAT</th>
@@ -1388,155 +1390,155 @@
                         </thead>
                                                 <tbody>
             <tr>
-                <td><span class="size-badge">20</span></td>
-                <td><span class="box-qty-badge">1000 Adet</span></td>
-                <td><span class="price-tag">4,14 TL</span></td>
+                <td><span class="ebat-pill">20</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">1000 Adet</span></td>
+                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">4,14 TL</span></td>
                 <td>
-                    <div class="qty-selector">
-                        <button class="qty-btn qty-minus" type="button">-</button>
+                    <div class="qty-stepper">
+                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                         <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn qty-plus" type="button">+</button>
+                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn" type="button" data-product="O RİNG" data-size="20" data-box="1000 Adet" data-price="4.14">
-                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="O RİNG" data-size="20" data-box="1000 Adet" data-price="4.14">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
-                <td><span class="size-badge">25</span></td>
-                <td><span class="box-qty-badge">1000 Adet</span></td>
-                <td><span class="price-tag">7,16 TL</span></td>
+                <td><span class="ebat-pill">25</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">1000 Adet</span></td>
+                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">7,16 TL</span></td>
                 <td>
-                    <div class="qty-selector">
-                        <button class="qty-btn qty-minus" type="button">-</button>
+                    <div class="qty-stepper">
+                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                         <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn qty-plus" type="button">+</button>
+                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn" type="button" data-product="O RİNG" data-size="25" data-box="1000 Adet" data-price="7.16">
-                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="O RİNG" data-size="25" data-box="1000 Adet" data-price="7.16">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
-                <td><span class="size-badge">32</span></td>
-                <td><span class="box-qty-badge">1000 Adet</span></td>
-                <td><span class="price-tag">9,49 TL</span></td>
+                <td><span class="ebat-pill">32</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">1000 Adet</span></td>
+                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">9,49 TL</span></td>
                 <td>
-                    <div class="qty-selector">
-                        <button class="qty-btn qty-minus" type="button">-</button>
+                    <div class="qty-stepper">
+                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                         <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn qty-plus" type="button">+</button>
+                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn" type="button" data-product="O RİNG" data-size="32" data-box="1000 Adet" data-price="9.49">
-                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="O RİNG" data-size="32" data-box="1000 Adet" data-price="9.49">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
-                <td><span class="size-badge">40</span></td>
-                <td><span class="box-qty-badge">500 Adet</span></td>
-                <td><span class="price-tag">14,06 TL</span></td>
+                <td><span class="ebat-pill">40</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">500 Adet</span></td>
+                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">14,06 TL</span></td>
                 <td>
-                    <div class="qty-selector">
-                        <button class="qty-btn qty-minus" type="button">-</button>
+                    <div class="qty-stepper">
+                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                         <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn qty-plus" type="button">+</button>
+                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn" type="button" data-product="O RİNG" data-size="40" data-box="500 Adet" data-price="14.06">
-                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="O RİNG" data-size="40" data-box="500 Adet" data-price="14.06">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
-                <td><span class="size-badge">50</span></td>
-                <td><span class="box-qty-badge">500 Adet</span></td>
-                <td><span class="price-tag">25,01 TL</span></td>
+                <td><span class="ebat-pill">50</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">500 Adet</span></td>
+                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">25,01 TL</span></td>
                 <td>
-                    <div class="qty-selector">
-                        <button class="qty-btn qty-minus" type="button">-</button>
+                    <div class="qty-stepper">
+                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                         <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn qty-plus" type="button">+</button>
+                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn" type="button" data-product="O RİNG" data-size="50" data-box="500 Adet" data-price="25.01">
-                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="O RİNG" data-size="50" data-box="500 Adet" data-price="25.01">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
-                <td><span class="size-badge">63</span></td>
-                <td><span class="box-qty-badge">500 Adet</span></td>
-                <td><span class="price-tag">28,89 TL</span></td>
+                <td><span class="ebat-pill">63</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">500 Adet</span></td>
+                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">28,89 TL</span></td>
                 <td>
-                    <div class="qty-selector">
-                        <button class="qty-btn qty-minus" type="button">-</button>
+                    <div class="qty-stepper">
+                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                         <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn qty-plus" type="button">+</button>
+                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn" type="button" data-product="O RİNG" data-size="63" data-box="500 Adet" data-price="28.89">
-                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="O RİNG" data-size="63" data-box="500 Adet" data-price="28.89">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
-                <td><span class="size-badge">75</span></td>
-                <td><span class="box-qty-badge">250 Adet</span></td>
-                <td><span class="price-tag">49,06 TL</span></td>
+                <td><span class="ebat-pill">75</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">250 Adet</span></td>
+                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">49,06 TL</span></td>
                 <td>
-                    <div class="qty-selector">
-                        <button class="qty-btn qty-minus" type="button">-</button>
+                    <div class="qty-stepper">
+                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                         <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn qty-plus" type="button">+</button>
+                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn" type="button" data-product="O RİNG" data-size="75" data-box="250 Adet" data-price="49.06">
-                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="O RİNG" data-size="75" data-box="250 Adet" data-price="49.06">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
-                <td><span class="size-badge">90</span></td>
-                <td><span class="box-qty-badge">250 Adet</span></td>
-                <td><span class="price-tag">69,86 TL</span></td>
+                <td><span class="ebat-pill">90</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">250 Adet</span></td>
+                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">69,86 TL</span></td>
                 <td>
-                    <div class="qty-selector">
-                        <button class="qty-btn qty-minus" type="button">-</button>
+                    <div class="qty-stepper">
+                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                         <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn qty-plus" type="button">+</button>
+                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn" type="button" data-product="O RİNG" data-size="90" data-box="250 Adet" data-price="69.86">
-                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="O RİNG" data-size="90" data-box="250 Adet" data-price="69.86">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
-                <td><span class="size-badge">110</span></td>
-                <td><span class="box-qty-badge">250 Adet</span></td>
-                <td><span class="price-tag">116,78 TL</span></td>
+                <td><span class="ebat-pill">110</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">250 Adet</span></td>
+                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">116,78 TL</span></td>
                 <td>
-                    <div class="qty-selector">
-                        <button class="qty-btn qty-minus" type="button">-</button>
+                    <div class="qty-stepper">
+                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                         <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn qty-plus" type="button">+</button>
+                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn" type="button" data-product="O RİNG" data-size="110" data-box="250 Adet" data-price="116.78">
-                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="O RİNG" data-size="110" data-box="250 Adet" data-price="116.78">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>

@@ -912,6 +912,8 @@
 
     
 
+    
+
     <style id="baysu-exact-user-design-css">
         /* 2-Column Product Detail Layout Matching User Screenshot */
         .page-content {
@@ -1376,7 +1378,7 @@
     </div>
 </div>
 <div class="table-responsive-wrapper">
-<table class="product-size-table">
+<table class="price-table">
                         <thead>
                             <tr>
                                 <th>EBAT</th>
@@ -1388,19 +1390,19 @@
                         </thead>
                                                 <tbody>
             <tr>
-                <td><span class="size-badge">0-100 L/h</span></td>
-                <td><span class="box-qty-badge">10000 Adet (Poşet: 250)</span></td>
-                <td><span class="price-tag">1,55 TL</span></td>
+                <td><span class="ebat-pill">0-100 L/h</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">10000 Adet (Poşet: 250)</span></td>
+                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">1,55 TL</span></td>
                 <td>
-                    <div class="qty-selector">
-                        <button class="qty-btn qty-minus" type="button">-</button>
+                    <div class="qty-stepper">
+                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
                         <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn qty-plus" type="button">+</button>
+                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn" type="button" data-product="DEBİ AYARLİ DAMLATİCİ KİRMİZİ" data-size="0-100 L/h" data-box="10000 Adet (Poşet: 250)" data-price="1.55">
-                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="DEBİ AYARLİ DAMLATİCİ KİRMİZİ" data-size="0-100 L/h" data-box="10000 Adet (Poşet: 250)" data-price="1.55">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
