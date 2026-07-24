@@ -1345,12 +1345,18 @@
     
     
     
+    
     <style id="baysu-orig-ui-style">
         #mainMenuContainer, .main-menu-container {
+            display: none !important;
             max-height: 65vh !important;
             padding: 8px 12px !important;
             box-sizing: border-box !important;
         }
+        #mainMenuContainer.active, .main-menu-container.active {
+            display: block !important;
+        }
+
         .main-category-header {
             width: 100% !important;
             box-sizing: border-box !important;
@@ -1463,19 +1469,33 @@
     <script id="baysu-orig-ui-script">
         document.addEventListener('DOMContentLoaded', function() {
             function toggleCatalogMenu(e) {
-                if (e) { e.preventDefault(); e.stopPropagation(); }
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
                 var menu = document.getElementById('mainMenuContainer');
                 if (menu) {
-                    menu.classList.toggle('active');
+                    if (menu.classList.contains('active') || menu.style.display === 'block') {
+                        menu.classList.remove('active');
+                        menu.style.display = 'none';
+                    } else {
+                        menu.classList.add('active');
+                        menu.style.display = 'block';
+                    }
                 }
             }
 
-            var btn1 = document.getElementById('menuToggle');
-            var btn2 = document.getElementById('menuToggleDesktop');
-            if (btn1) btn1.addEventListener('click', toggleCatalogMenu);
-            if (btn2) btn2.addEventListener('click', toggleCatalogMenu);
+            document.querySelectorAll('#menuToggle, #menuToggleDesktop, .menu-toggle, a.dropdown-toggle').forEach(function(btn) {
+                btn.onclick = toggleCatalogMenu;
+            });
 
             document.body.addEventListener('click', function(e) {
+                var toggleBtn = e.target.closest('#menuToggle, #menuToggleDesktop, .menu-toggle, a.dropdown-toggle');
+                if (toggleBtn) {
+                    toggleCatalogMenu(e);
+                    return;
+                }
+
                 var mainHeader = e.target.closest('.main-category-header');
                 if (mainHeader) {
                     e.preventDefault();
