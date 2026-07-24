@@ -1135,20 +1135,67 @@
                     <table class="price-table">
                         <thead>
                             <tr>
+                                <th>KOD</th>
                                 <th>EBAT</th>
-                                <th>ÇUVAL ADEDİ</th>
+                                <th>AMBALAJ</th>
                                 <th>FİYAT (TL)</th>
+                                <th>MİKTAR</th>
                                 <th>İŞLEM</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="4" style="text-align: center; padding: 25px; color: #64748B; font-weight: 600;">
-                                    <i class="fas fa-boxes" style="font-size: 28px; color: #004797; margin-bottom: 8px; display: block;"></i>
-                                    Bu ürünün ebat ve fiyat listesi kataloğumuza güncellenmektedir.<br>
-                                    <a href="https://wa.me/905533973603?text=Merhaba,%20Çift Taraflı Depo Rekoru%20ürünü%20için%20özel%20fiyat%20teklifi%20almak%20istiyorum." target="_blank" style="color: #059669; font-weight: 700; text-decoration: underline; margin-top: 6px; display: inline-block;">
-                                        WhatsApp Üzerinden Anında Stok ve Fiyat Teyidi Alınız
-                                    </a>
+                                <td style="font-weight: 700; color: #64748B;">326</td>
+                                <td><span class="ebat-pill">1/2"</span></td>
+                                <td>-</td>
+                                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">65,00 TL</span></td>
+                                <td>
+                                    <div class="qty-stepper">
+                                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
+                                        <input type="number" class="qty-input" value="1" min="1">
+                                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="add-to-cart-btn btn-add-cart-custom" data-code="326" data-product="Çift Taraflı Depo Rekoru" data-size="1/2" data-box="-" data-price="65.00">
+                                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 700; color: #64748B;">327</td>
+                                <td><span class="ebat-pill">3/4"</span></td>
+                                <td>-</td>
+                                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">72,00 TL</span></td>
+                                <td>
+                                    <div class="qty-stepper">
+                                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
+                                        <input type="number" class="qty-input" value="1" min="1">
+                                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="add-to-cart-btn btn-add-cart-custom" data-code="327" data-product="Çift Taraflı Depo Rekoru" data-size="3/4" data-box="-" data-price="72.00">
+                                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 700; color: #64748B;">328</td>
+                                <td><span class="ebat-pill">1"</span></td>
+                                <td>-</td>
+                                <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">78,00 TL</span></td>
+                                <td>
+                                    <div class="qty-stepper">
+                                        <button type="button" class="qty-btn" onclick="decrementQty(this)">-</button>
+                                        <input type="number" class="qty-input" value="1" min="1">
+                                        <button type="button" class="qty-btn" onclick="incrementQty(this)">+</button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="add-to-cart-btn btn-add-cart-custom" data-code="328" data-product="Çift Taraflı Depo Rekoru" data-size="1" data-box="-" data-price="78.00">
+                                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                                    </button>
                                 </td>
                             </tr>
                         </tbody>
@@ -1805,6 +1852,8 @@
             }
         });
     </script>
+
+    
 
     <script id="baysu-whatsapp-order-handler">
         window.sendCartToWhatsApp = function() {
