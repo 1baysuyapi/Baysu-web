@@ -1,13 +1,1652 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dişli Dişi Dirsek - BAYRAKÇI SULAMA VE YAPI MALZEMELERİ</title>
-<script src="security.js" defer></script>
-<script src="data.js?v=639205364285413537" defer></script>
-<script src="site-engine.js?v=639205364285413537" defer></script>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dişli Dişi Dirsek - BAYRAKÇI SULAMA VE YAPI MALZEMELERİ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        
+        :root {
+            --primary-color: #004797;
+            --secondary-color: #FF6B6B;
+            --background-color: #F8F9FA;
+            --card-background: #FFFFFF;
+            --text-color: #333333;
+            --light-text-color: #666666;
+            --border-color: #E0E0E0;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        a {
+            text-decoration: none;
+        }
+        
+        .header-main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: var(--card-background);
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .logo {
+            width: 200px;
+            margin-bottom: 15px;
+        }
+        .search-and-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 900px;
+        }
+        .search-bar {
+            position: relative;
+            flex-grow: 1;
+            max-width: 500px;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(0, 71, 151, 0.2);
+        }
+        .search-bar .fas {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-text-color);
+            pointer-events: none;
+        }
+        
+        #searchResults {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+            box-shadow: var(--box-shadow);
+            z-index: 1001;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+        #searchResults.active {
+            display: block;
+        }
+        #searchResults a {
+            display: block;
+            padding: 10px 15px;
+            color: var(--text-color);
+            transition: background-color 0.2s;
+            text-decoration: none;
+        }
+        #searchResults a:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .nav-bar {
+            background-color: var(--primary-color);
+            padding: 15px 20px;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .nav-links {
+            display: none;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: #fff;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 10px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .menu-toggle {
+            display: block;
+            color: #fff;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 10px;
+            transition: color 0.3s;
+        }
+        .menu-toggle.active {
+            color: var(--secondary-color);
+        }
+        
+        .main-menu-container {
+    z-index: 99999 !important;
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-background);
+            box-shadow: var(--box-shadow);
+            border-top: 1px solid var(--border-color);
+            z-index: 99999 !important;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+        .main-menu-container.active {
+ display: block !important;
+ z-index: 99999 !important;
+
+            display: block;
+        }
+        
+        .menu-content {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .main-category-item {
+            width: 100%;
+            box-sizing: border-box;
+            cursor: pointer;
+            padding: 10px 25px; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s;
+        }
+        .main-category-item h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+        .main-category-item .arrow-icon {
+            font-size: 0.8rem;
+            color: var(--light-text-color);
+            transition: transform 0.3s;
+        }
+        .main-category-item.active .arrow-icon {
+            transform: rotate(90deg);
+        }
+        
+        .category-group {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: none;
+        }
+        .category-group.active {
+            display: block;
+        }
+        
+        .category-item {
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+        .category-item:last-child {
+            border-bottom: none;
+        }
+        .category-item .category-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .category-item h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+        .category-item .arrow-icon {
+            font-size: 0.8rem;
+            color: var(--light-text-color);
+            transition: transform 0.3s;
+        }
+        .category-item.active .arrow-icon {
+            transform: rotate(90deg);
+        }
+        
+        .product-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: none;
+            width: 100%;
+        }
+        .product-list.active {
+            display: block;
+        }
+        .product-list li {
+            border-top: 1px solid var(--border-color);
+        }
+        .product-list li:first-child {
+            border-top: none;
+        }
+        .product-list li a {
+            display: block;
+            padding: 10px 40px;
+            color: var(--text-color);
+            transition: background-color 0.2s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .product-list li a:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .product-detail-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        .product-image {
+            flex: 1 1 400px;
+            background-color: var(--background-color);
+            border-radius: var(--border-radius);
+            position: relative;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+        }
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .zoom-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: var(--light-text-color);
+            cursor: pointer;
+        }
+        .product-info {
+            flex: 1 1 400px;
+            padding: 20px;
+        }
+        .product-category {
+            color: var(--light-text-color);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .product-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+        .product-description {
+            line-height: 1.6;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+        .product-section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .size-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .size-option {
+            padding: 12px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            cursor: default;
+            transition: all 0.2s ease;
+            font-size: 16px;
+            white-space: nowrap;
+        }
+        .size-option:hover {
+            border-color: var(--primary-color);
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 20px;
+            margin-top: 60px;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            font-size: 35px;
+        }
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to  { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (min-width: 769px) {
+            .nav-links {
+                display: flex;
+            }
+            .menu-toggle {
+                display: none;
+            }
+            .nav-content {
+                justify-content: space-between;
+            }
+            .main-menu-container {
+    z-index: 99999 !important;
+                left: 0;
+                right: 0;
+            
+ z-index: 99999 !important;}
+            .main-menu-container.active {
+ display: block !important;
+ z-index: 99999 !important;
+
+                display: block;
+            }
+        }
+        @media (max-width: 768px) {
+            .logo {
+                width: 150px;
+            }
+            .search-bar input {
+                padding: 10px 15px 10px 40px;
+            }
+            .nav-content {
+                justify-content: flex-end;
+            }
+            .menu-toggle {
+                flex-grow: 1;
+                text-align: center;
+            }
+            .main-menu-container {
+    z-index: 99999 !important;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 0;
+            
+ z-index: 99999 !important;}
+            .main-category-item {
+                padding: 10px 10px;
+            }
+            .category-item h3 {
+                font-size: 0.9rem;
+            }
+            .category-item .category-header {
+                padding: 10px 10px;
+            }
+            .product-list li a {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            .product-detail-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="cart.css?v=11" />
+    <script src="security.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.main-menu-container { z-index: 99999 !important; }
+.main-menu-container.active { display: block !important; }
+.kaplinler-menu { display: none; }
+.kaplinler-menu.active { display: block !important; }
+.product-list { display: none; }
+.product-list.active { display: block !important; }
+</style>
+
+<style id="baysu-root-cause-css">
+.main-menu-container {
+    z-index: 99999 !important;
+}
+.main-menu-container.active {
+    display: block !important;
+}
+
+/* Category group / Kaplinler menu */
+.category-group, 
+#kaplinler-menu {
+    display: none;
+}
+.category-group.active, 
+#kaplinler-menu.active {
+    display: block !important;
+}
+
+/* Product list accordion */
+.product-list {
+    display: none;
+}
+.product-list.active {
+    display: block !important;
+}
+</style>
+
+
+    <style id="baysu-mobile-perfection-css">
+        /* Mobile Logo Enhancement */
+        .logo, .logo-wrapper img {
+            max-height: 58px !important;
+            width: auto !important;
+            object-fit: contain !important;
+        }
+        @media (max-width: 768px) {
+            .logo, .logo-wrapper img {
+                max-height: 52px !important;
+                max-width: 220px !important;
+            }
+            .header-main {
+                padding: 10px 15px !important;
+            }
+        }
+
+        /* Top Action Buttons (Geri Dön, Ana Sayfa, Tüm Ürünler) */
+        .page-nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0 20px 0;
+            flex-wrap: wrap;
+        }
+        .btn-nav-action {
+            background: #ffffff;
+            color: #0288d1;
+            border: 1px solid #0288d1;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .btn-nav-action:hover, .btn-nav-action:active {
+            background: #0288d1;
+            color: #ffffff;
+        }
+
+        /* WhatsApp Button positioning - Avoid overlap with Cart Bar on mobile */
+        .whatsapp-float-wrapper {
+            position: fixed !important;
+            bottom: 25px !important;
+            left: 20px !important;
+            right: auto !important;
+            z-index: 9999 !important;
+        }
+        @media (max-width: 768px) {
+            .whatsapp-float-wrapper {
+                bottom: 80px !important;
+                left: 15px !important;
+                right: auto !important;
+            }
+            .whatsapp-button {
+                width: 52px !important;
+                height: 52px !important;
+                font-size: 26px !important;
+            }
+        }
+
+        /* Product Table Mobile Responsive Container */
+        .table-responsive-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            background: #ffffff;
+            border: 1px solid #E2E8F0;
+        }
+        .table-responsive-wrapper table {
+            width: 100%;
+            min-width: 620px; /* Ensures Sepete Ekle button is never squeezed out */
+            border-collapse: collapse;
+        }
+
+        /* KVKK Modal Styles */
+        .kvkk-modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.6);
+            z-index: 999999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+        .kvkk-modal-backdrop.active {
+            display: flex;
+        }
+        .kvkk-modal-content {
+            background: #ffffff;
+            border-radius: 16px;
+            max-width: 650px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            position: relative;
+        }
+        .kvkk-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #64748B;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <style id="baysu-deep-mobile-css">
+        html, body {
+            overflow-x: hidden !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        input[type="text"], input[type="search"], input[type="number"], select, textarea {
+            font-size: 16px !important;
+        }
+
+        .logo, .logo-wrapper img {
+            max-height: 55px !important;
+            width: auto !important;
+            object-fit: contain !important;
+        }
+
+        /* HIDE TOP NAV BAR ON PC / DESKTOP SCREENS */
+        .top-nav-bar {
+            display: none !important;
+        }
+
+        /* WHATSAPP FLOATING BUTTON - POSITIONED SAFE FROM FLOATING CART ON PC AND MOBILE */
+        .whatsapp-float-wrapper, #whatsappFloatWrapper, .whatsapp-button-container {
+            position: fixed !important;
+            bottom: 140px !important;
+            right: 25px !important;
+            left: auto !important;
+            z-index: 999999 !important;
+            display: flex !important;
+            align-items: center !important;
+            transition: all 0.3s ease !important;
+        }
+        .whatsapp-button {
+            width: 52px !important;
+            height: 52px !important;
+            font-size: 28px !important;
+            border-radius: 50% !important;
+            background-color: #25D366 !important;
+            color: #ffffff !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45) !important;
+        }
+
+        /* HIDE WHATSAPP BUTTON INSTANTLY WHEN CART DRAWER IS OPEN (PC & MOBILE) */
+        body.cart-drawer-open .whatsapp-float-wrapper,
+        body.cart-drawer-open #whatsappFloatWrapper,
+        body.cart-drawer-open .whatsapp-button-container,
+        body.cart-drawer-open .whatsapp-button {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
+
+        .table-responsive-wrapper {
+            width: 100% !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+            margin: 15px 0 25px 0 !important;
+            border-radius: 12px !important;
+            border: 1px solid #CBD5E1 !important;
+            background: #ffffff !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+        }
+        .table-responsive-wrapper table {
+            width: 100% !important;
+            min-width: 600px !important;
+            border-collapse: collapse !important;
+        }
+
+        /* 2-TIER ACCORDION MENU CONTAINER */
+        #mainMenuContainer, .main-menu-container {
+            display: none;
+            position: absolute !important;
+            top: 100% !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            background-color: #ffffff !important;
+            box-shadow: 0 12px 35px rgba(0, 71, 151, 0.15) !important;
+            border-top: 1px solid #E2E8F0 !important;
+            z-index: 99999 !important;
+            max-height: 70vh !important;
+            overflow-y: auto !important;
+            padding: 12px 20px !important;
+        }
+        #mainMenuContainer.active, .main-menu-container.active {
+            display: block !important;
+        }
+
+        /* Tier 1: Main Category Header (KAPLİNLER VE EK PARÇALARI) */
+        .main-category-item {
+            width: 100% !important;
+            cursor: pointer !important;
+            padding: 11px 15px !important;
+            background: #F1F5F9 !important;
+            border: 1px solid #CBD5E1 !important;
+            border-radius: 8px !important;
+            margin-bottom: 6px !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            user-select: none !important;
+            transition: all 0.2s ease !important;
+        }
+        .main-category-item:hover, .main-category-item.active {
+            background: #E0F2FE !important;
+            border-color: #0288d1 !important;
+        }
+        .main-category-item h2, .main-category-item h3 {
+            margin: 0 !important;
+            font-size: 15px !important;
+            color: #004797 !important;
+            font-weight: 700 !important;
+        }
+
+        /* Tier 2: Category Groups */
+        .category-group {
+            display: none !important;
+            padding: 12px !important;
+            margin: 0 0 10px 0 !important;
+            background: #FFFFFF !important;
+            border: 1px solid #E2E8F0 !important;
+            border-radius: 8px !important;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
+            gap: 10px !important;
+        }
+        .main-category-item.active + .category-group,
+        .main-category-item.active .category-group {
+            display: grid !important;
+        }
+
+        .category-item {
+            background: #F8FAFC !important;
+            border: 1px solid #E2E8F0 !important;
+            border-radius: 6px !important;
+            overflow: hidden !important;
+        }
+        .category-header {
+            padding: 10px 12px !important;
+            cursor: pointer !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            background: #FFFFFF !important;
+            user-select: none !important;
+        }
+        .category-header h3 {
+            margin: 0 !important;
+            font-size: 14px !important;
+            font-weight: 700 !important;
+            color: #0F172A !important;
+        }
+
+        .product-list {
+            display: none !important;
+            list-style: none !important;
+            padding: 6px 0 !important;
+            margin: 0 !important;
+            background: #F8FAFC !important;
+            border-top: 1px solid #E2E8F0 !important;
+        }
+        .category-item.active .product-list {
+            display: block !important;
+        }
+        .product-list li a {
+            display: block !important;
+            padding: 6px 14px !important;
+            color: #475569 !important;
+            font-size: 13px !important;
+            text-decoration: none !important;
+        }
+        .product-list li a:hover {
+            background: #E0F2FE !important;
+            color: #0288d1 !important;
+            font-weight: 600 !important;
+        }
+
+        /* SHOW TOP NAV BAR ONLY ON MOBILE SCREENS (MAX-WIDTH: 768PX) */
+        @media (max-width: 768px) {
+            .top-nav-bar {
+                display: flex !important;
+                background: #F8FAFC !important;
+                border-bottom: 1px solid #E2E8F0 !important;
+                padding: 8px 10px !important;
+                gap: 8px !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+            }
+            .nav-pill-btn {
+                flex: 1 !important;
+                justify-content: center !important;
+                padding: 10px 4px !important;
+                font-size: 13px !important;
+                background: #ffffff !important;
+                color: #0288d1 !important;
+                border: 1px solid #0288d1 !important;
+                border-radius: 8px !important;
+                font-weight: 700 !important;
+                cursor: pointer !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                gap: 6px !important;
+                text-decoration: none !important;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.05) !important;
+            }
+            .nav-pill-btn:hover, .nav-pill-btn:active {
+                background: #0288d1 !important;
+                color: #ffffff !important;
+            }
+
+            .whatsapp-float-wrapper, #whatsappFloatWrapper, .whatsapp-button-container {
+                bottom: 130px !important;
+                right: 15px !important;
+            }
+            .whatsapp-button {
+                width: 48px !important;
+                height: 48px !important;
+                font-size: 25px !important;
+            }
+
+            .header-main {
+                padding: 10px 12px !important;
+                flex-direction: column !important;
+                gap: 10px !important;
+                align-items: center !important;
+            }
+            .logo-wrapper, .logo {
+                max-height: 48px !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            .search-and-actions {
+                width: 100% !important;
+                flex-direction: column !important;
+                gap: 10px !important;
+            }
+            .search-bar input {
+                width: 100% !important;
+                height: 44px !important;
+                border-radius: 22px !important;
+                padding-left: 42px !important;
+                font-size: 15px !important;
+            }
+
+            .category-group {
+                display: none !important;
+                flex-direction: column !important;
+            }
+            .main-category-item.active + .category-group,
+            .main-category-item.active .category-group {
+                display: flex !important;
+            }
+        }
+    </style>
+
+    
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+    <header class="header-main">
+        <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="BAYRAKÇI LOGO" class="logo">
+        <div class="search-and-actions">
+            <div class="search-bar">
+                <input type="search" placeholder="Ürün Ara..." id="searchInput">
+                <i class="fas fa-search"></i>
+                <div id="searchResults"></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="top-nav-bar">
+        <button onclick="history.back()" type="button" class="nav-pill-btn"><i class="fas fa-arrow-left"></i> Geri Dön</button>
+        <a href="index.html" class="nav-pill-btn"><i class="fas fa-home"></i> Ana Sayfa</a>
+        <button id="menuToggle" type="button" class="nav-pill-btn menu-toggle" style="background:#0288d1; color:#ffffff;"><i class="fas fa-bars"></i> TÜM ÜRÜNLERİMİZ</button>
+    </div>
+    <nav class="nav-bar">
+        <div class="nav-content">
+            <div class="nav-links">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="javascript:void(0)" class="dropdown-toggle" id="menuToggleDesktop">Ürünlerimiz</a>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <span id="menuText">Ürünlerimiz</span>
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <div class="main-menu-container" id="mainMenuContainer">
+            <!-- MAIN CATEGORY 1: KAPLİNLER VE EK PARÇALARI (CLOSED BY DEFAULT) -->
+            <div class="main-category-header">
+                <h3>KAPLİNLER VE EK PARÇALARI <span class="arrow-icon">&#9658;</span></h3>
+            </div>
+            <ul class="category-group" id="kaplinler-group">
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="mavi-disi-kaplin.html">Mavi Seri Dişi Kaplin</a></li>
+                        <li><a href="mavi-erkek-kaplin.html">Mavi Seri Erkek Kaplin</a></li>
+                        <li><a href="mavi-dirsek-kaplin.html">Mavi Seri Dirsek Kaplin</a></li>
+                        <li><a href="mavi-disi-dirsek.html">Mavi Seri Dişi Dirsek</a></li>
+                        <li><a href="mavi-erkek-dirsek.html">Mavi Seri Erkek Dirsek</a></li>
+                        <li><a href="mavi-manson.html">Mavi Seri Manşon</a></li>
+                        <li><a href="mavi-tapa.html">Mavi Seri Tapa</a></li>
+                        <li><a href="mavi-erkek-te.html">Mavi Seri Erkek Te</a></li>
+                        <li><a href="mavi-disi-te.html">Mavi Seri Dişi Te</a></li>
+                        <li><a href="mavi-reduksiyon-te.html">Mavi Seri Redüksiyon Te</a></li>
+                        <li><a href="mavi-reduksiyon.html">Mavi Seri Redüksiyon</a></li>
+                        <li><a href="mavi-te.html">Mavi Seri Te</a></li>
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="siyah-disi.html">Siyah Seri Dişi Kaplin</a></li>
+                        <li><a href="siyah-erkek-kaplin.html">Siyah Seri Erkek Kaplin</a></li>
+                        <li><a href="siyah-dirsek.html">Siyah Seri Dirsek Kaplin</a></li>
+                        <li><a href="siyah-disi-dirsek.html">Siyah Seri Dişi Dirsek</a></li>
+                        <li><a href="siyah-erkek-dirsek.html">Siyah Seri Erkek Dirsek</a></li>
+                        <li><a href="siyah-manson.html">Siyah Seri Manşon</a></li>
+                        <li><a href="siyah-tapa.html">Siyah Seri Tapa</a></li>
+                        <li><a href="siyah-erkek-te.html">Siyah Seri Erkek Te</a></li>
+                        <li><a href="siyah-disi-te.html">Siyah Seri Dişi Te</a></li>
+                        <li><a href="siyah-reduksiyon-te.html">Siyah Seri Redüksiyon Te</a></li>
+                        <li><a href="siyah-reduksiyon.html">Siyah Seri Redüksiyon</a></li>
+                        <li><a href="siyah-te.html">Siyah Seri Te</a></li>
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="kilitli-erkek-adaptor.html">Kilitli Bağlantı Erkek Adaptör</a></li>
+                        <li><a href="kilitli-erkek-dirsek.html">Kilitli Bağlantı Erkek Dirsek</a></li>
+                        <li><a href="kilitli-dirsek.html">Kilitli Bağlantı Dirsek</a></li>
+                        <li><a href="kilitli-reduksiyon-dirsek.html">Kilitli Bağlantı Redüksiyon Dirsek</a></li>
+                        <li><a href="kilitli-te.html">Kilitli Bağlantı TE</a></li>
+                        <li><a href="kilitli-erkek-te.html">Kilitli Bağlantı Erkek TE</a></li>
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="disli-disi-dirsek.html">Dişli Dişi Dirsek</a></li>
+                        <li><a href="disli-disi-nipel.html">Dişli Dişi Nipel</a></li>
+                        <li><a href="disli-disi-reduksiyon-dirsek.html">Dişli Dişi Redüksiyon Dirsek</a></li>
+                        <li><a href="erkek-disli-kor-tapa.html">Erkek Dişli Kör Tapa</a></li>
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="priz-kolye.html">Priz Kolye</a></li>
+                        <li><a href="disi-nipelli-priz-kolye.html">Dişi Nipelli Priz Kolye</a></li>
+                        <li><a href="erkek-nipelli-priz-kolye.html">Erkek Nipelli Priz Kolye</a></li>
+                        <li><a href="kizakli-priz-kolye.html">Kızaklı Priz Kolye</a></li>
+                        <li><a href="cift-cikisli-priz-kolye.html">Çift Çıkışlı Priz Kolye</a></li>
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="nipelli-disi-priz-kolye.html">Dişi Nipelli Priz Kolye</a></li>
+                        <li><a href="nipelli-erkek-priz-kolye.html">Erkek Nipelli Priz Kolye</a></li>
+                        <li><a href="nipelli-erkek-te.html">Nipelli Erkek TE</a></li>
+                        <li><a href="nipelli-disi-dirsek.html">Nipelli Dişi Dirsek</a></li>
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Vanalar Ve Kutular <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="disi-disi-vana.html">Dişi Dişi Vana</a></li>
+                        <li><a href="erkek-disi-vana.html">Erkek Dişi Vana</a></li>
+                        <li><a href="kaplin-disi-vana.html">Kaplin Dişi Vana</a></li>
+                        <li><a href="kaplin-erkek-vana.html">Kaplin Erkek Vana</a></li>
+                        <li><a href="cikis-mini-vana.html">Çıkış Mini Vana</a></li>
+                        <li><a href="6-inc-vana-kutusu.html">6" Vana Kutusu</a></li>
+                        <li><a href="10-inc-vana-kutusu.html">10" Vana Kutusu</a></li>
+                        <li><a href="12-inc-vana-kutusu.html">12" Vana Kutusu</a></li>
+                        <li><a href="14-inc-vana-kutusu.html">14" Vana Kutusu</a></li>
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Damla Sulama Ve Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="debi-ayarli-damlatici-yesil.html">Debi Ayarlı Damlatıcı (Yeşil)</a></li>
+                        <li><a href="debi-ayarli-damlatici-kirmizi.html">Debi Ayarlı Damlatıcı (Kırmızı)</a></li>
+                        <li><a href="debi-ayarli-damlatici-genis.html">Debi Ayarlı Damlatıcı (Geniş)</a></li>
+                        <li><a href="duz-damlama-conta.html">Düz Damlama Conta</a></li>
+                        <li><a href="kanalli-conta.html">Kanallı Conta</a></li>
+                        <li><a href="kaplin-sikma-anahtari.html">Kaplin Sıkma Anahtarı</a></li>
+                        <li><a href="pah-acma-aparati.html">Pah Açma Aparatı</a></li>
+                        <li><a href="o-ring.html">O-Ring</a></li>
+                        <li><a href="abot-ustu-kaplin-dagitici.html">Abot Üstü Kaplin Dağıtıcı</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- MAIN CATEGORY 2: BAHÇE SULAMA EKİPMANLARI (CLOSED BY DEFAULT) -->
+            <div class="main-category-header">
+                <h3>BAHÇE SULAMA EKİPMANLARI <span class="arrow-icon">&#9658;</span></h3>
+            </div>
+            <ul class="category-group" id="bahce-sulama-group">
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Bahçe Ekipmanları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="fiskiyeler.html">Fıskiyeler</a></li>
+                        <li><a href="tabancalar.html">Tabancalar</a></li>
+                        <li><a href="rainbird.html">Rainbird</a></li>
+                        <li><a href="batara.html">Batara</a></li>
+                        <li><a href="hortum-rekorlari.html">Hortum Rekorları</a></li>
+                        <li><a href="klepeler.html">Klepeler</a></li>
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Depo Rekorları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="ozel-depo-rekoru.html">Özel Depo Rekoru</a></li>
+                        <li><a href="depo-rekoru.html">Depo Rekoru</a></li>
+                        <li><a href="sintine-depo-rekoru.html">Sintine Depo Rekoru</a></li>
+                        <li><a href="cift-tarafli-depo-rekoru.html">Çift Taraflı Depo Rekoru</a></li>
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Hortum Ekipmanları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="hortum-ekipmanlari.html">Hortum Ekipmanları</a></li>
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>PVC Küresel Vana <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="pvc-kuresel-vana.html">PVC Küresel Vana</a></li>
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Filtreler <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="filtreler.html">Filtreler</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+<main class="page-content">
+        <div class="product-detail-container">
+            <div class="product-image">
+                <i class="fas fa-search-plus zoom-icon"></i>
+                <img src="disli-disi-dirsek.png" alt="Dişli Dişi Dirsek">
+            </div>
+            <div class="product-info">
+                <div class="product-category">Dişli Sulama Ek Parçaları</div>
+                <h1 class="product-title">Dişli Dişi Dirsek</h1>
+                <div class="product-description">
+                    <p>
+                        Dişli Dişi Dirsek, sulama sistemlerinde boru hatlarını 90 derecelik açıyla yönlendirmek için kullanılan bir ek parçadır. Dişli bağlantı noktaları, güvenli ve sızdırmaz bir montaj sağlar. Dayanıklı malzemeden üretilmiştir ve yüksek basınç altında bile uzun ömürlü performans sunar. Bahçe, tarım ve peyzaj sulama projelerinde boru yönlendirmeleri için ideal bir çözümdür.
+                    </p>
+                </div>
+                <div class="product-section-title">Fiyat ve Ölçü Listesi</div>
+<div class="table-responsive">
+    <div class="discount-notice-box" style="background: linear-gradient(135deg, #EFF6FF, #DBEAFE); border: 2px solid #3B82F6; border-radius: 14px; padding: 18px 22px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 14px; flex: 1; min-width: 260px;">
+            <div style="background: #3B82F6; color: #fff; width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">
+                <i class="fas fa-percent"></i>
+            </div>
+            <div>
+                <h4 style="margin: 0 0 4px 0; color: #1E3A8A; font-size: 1.05rem; font-weight: 700;"><i class="fas fa-tags"></i> Sipariş Adedinize Özel İSKONTO Düşülmektedir!</h4>
+                <p style="margin: 0; color: #1E40AF; font-size: 0.88rem; line-height: 1.45;">
+                    Aşağıdaki tabloda belirtilen fiyatlar <strong>Senkron Plastik Liste Fiyatları</strong>dır. Almak istediğiniz ürün miktarına ve sipariş adedinize göre <strong>özel iskontolu net fiyat</strong> teklifi almak için ürünleri sepete ekleyip WhatsApp teklif butonuna basabilir veya doğrudan arayabilirsiniz.
+                </p>
+            </div>
+        </div>
+        <a href="https://wa.me/905533973603?text=Merhaba,%20Baysu%20Yapı%20web%20sitenizdeki%20Senkron%20Plastik%20ürünleri%20için%20sipariş%20miktarıma%20özel%20iskontolu%20net%20fiyat%20teklifi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" style="background: #25D366; color: #ffffff; text-decoration: none; padding: 12px 20px; border-radius: 10px; font-weight: bold; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); white-space: nowrap;">
+            <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Özel İskonto Sorunuz
+        </a>
+    </div>
+</div>
+    </div>
+</div>
+    </div>
+</div>
+    </div>
+</div>
+    </div>
+</div>
+<div class="table-responsive-wrapper">
+<table class="product-size-table">
+        <thead>
+            <tr>
+                <th>EBAT</th>
+                <th>Ç. ADEDİ</th>
+                <th>FİYAT (TL)</th>
+                <th>MİKTAR</th>
+                <th>İŞLEM</th>
+            </tr>
+        </thead>
+                                <tbody>
+            <tr>
+                <td><span class="size-badge">1/2"x1/2"</span></td>
+                <td><span class="box-qty-badge">950 Adet (Poşet: 25)</span></td>
+                <td><span class="price-tag">36,90 TL</span></td>
+                <td>
+                    <div class="qty-selector">
+                        <button class="qty-btn qty-minus" type="button">-</button>
+                        <input type="number" value="1" min="1" class="qty-input">
+                        <button class="qty-btn qty-plus" type="button">+</button>
+                    </div>
+                </td>
+                <td>
+                    <button class="add-to-cart-btn" type="button" data-product="DİSLİ DİSİ DİRSEK" data-size="1/2&quot;x1/2&quot;" data-box="950 Adet (Poşet: 25)" data-price="36.90">
+                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="size-badge">3/4"x3/4"</span></td>
+                <td><span class="box-qty-badge">500 Adet (Poşet: 20)</span></td>
+                <td><span class="price-tag">51,15 TL</span></td>
+                <td>
+                    <div class="qty-selector">
+                        <button class="qty-btn qty-minus" type="button">-</button>
+                        <input type="number" value="1" min="1" class="qty-input">
+                        <button class="qty-btn qty-plus" type="button">+</button>
+                    </div>
+                </td>
+                <td>
+                    <button class="add-to-cart-btn" type="button" data-product="DİSLİ DİSİ DİRSEK" data-size="3/4&quot;x3/4&quot;" data-box="500 Adet (Poşet: 20)" data-price="51.15">
+                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="size-badge">1"x1"</span></td>
+                <td><span class="box-qty-badge">360 Adet (Poşet: 20)</span></td>
+                <td><span class="price-tag">59,85 TL</span></td>
+                <td>
+                    <div class="qty-selector">
+                        <button class="qty-btn qty-minus" type="button">-</button>
+                        <input type="number" value="1" min="1" class="qty-input">
+                        <button class="qty-btn qty-plus" type="button">+</button>
+                    </div>
+                </td>
+                <td>
+                    <button class="add-to-cart-btn" type="button" data-product="DİSLİ DİSİ DİRSEK" data-size="1&quot;x1&quot;" data-box="360 Adet (Poşet: 20)" data-price="59.85">
+                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="size-badge">1 1/4"x1 1/4"</span></td>
+                <td><span class="box-qty-badge">300 Adet (Poşet: 10)</span></td>
+                <td><span class="price-tag">93,98 TL</span></td>
+                <td>
+                    <div class="qty-selector">
+                        <button class="qty-btn qty-minus" type="button">-</button>
+                        <input type="number" value="1" min="1" class="qty-input">
+                        <button class="qty-btn qty-plus" type="button">+</button>
+                    </div>
+                </td>
+                <td>
+                    <button class="add-to-cart-btn" type="button" data-product="DİSLİ DİSİ DİRSEK" data-size="1 1/4&quot;x1 1/4&quot;" data-box="300 Adet (Poşet: 10)" data-price="93.98">
+                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="size-badge">1 1/2"x1 1/2"</span></td>
+                <td><span class="box-qty-badge">125 Adet (Poşet: 5)</span></td>
+                <td><span class="price-tag">142,50 TL</span></td>
+                <td>
+                    <div class="qty-selector">
+                        <button class="qty-btn qty-minus" type="button">-</button>
+                        <input type="number" value="1" min="1" class="qty-input">
+                        <button class="qty-btn qty-plus" type="button">+</button>
+                    </div>
+                </td>
+                <td>
+                    <button class="add-to-cart-btn" type="button" data-product="DİSLİ DİSİ DİRSEK" data-size="1 1/2&quot;x1 1/2&quot;" data-box="125 Adet (Poşet: 5)" data-price="142.50">
+                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="size-badge">2"x2"</span></td>
+                <td><span class="box-qty-badge">72 Adet (Poşet: 3)</span></td>
+                <td><span class="price-tag">198,68 TL</span></td>
+                <td>
+                    <div class="qty-selector">
+                        <button class="qty-btn qty-minus" type="button">-</button>
+                        <input type="number" value="1" min="1" class="qty-input">
+                        <button class="qty-btn qty-plus" type="button">+</button>
+                    </div>
+                </td>
+                <td>
+                    <button class="add-to-cart-btn" type="button" data-product="DİSLİ DİSİ DİRSEK" data-size="2&quot;x2&quot;" data-box="72 Adet (Poşet: 3)" data-price="198.68">
+                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="size-badge">2 1/2"x2 1/2"</span></td>
+                <td><span class="box-qty-badge">50 Adet</span></td>
+                <td><span class="price-tag">339,23 TL</span></td>
+                <td>
+                    <div class="qty-selector">
+                        <button class="qty-btn qty-minus" type="button">-</button>
+                        <input type="number" value="1" min="1" class="qty-input">
+                        <button class="qty-btn qty-plus" type="button">+</button>
+                    </div>
+                </td>
+                <td>
+                    <button class="add-to-cart-btn" type="button" data-product="DİSLİ DİSİ DİRSEK" data-size="2 1/2&quot;x2 1/2&quot;" data-box="50 Adet" data-price="339.23">
+                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="size-badge">3"x3"</span></td>
+                <td><span class="box-qty-badge">30 Adet</span></td>
+                <td><span class="price-tag">530,10 TL</span></td>
+                <td>
+                    <div class="qty-selector">
+                        <button class="qty-btn qty-minus" type="button">-</button>
+                        <input type="number" value="1" min="1" class="qty-input">
+                        <button class="qty-btn qty-plus" type="button">+</button>
+                    </div>
+                </td>
+                <td>
+                    <button class="add-to-cart-btn" type="button" data-product="DİSLİ DİSİ DİRSEK" data-size="3&quot;x3&quot;" data-box="30 Adet" data-price="530.10">
+                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="size-badge">4"x4"</span></td>
+                <td><span class="box-qty-badge">15 Adet</span></td>
+                <td><span class="price-tag">689,10 TL</span></td>
+                <td>
+                    <div class="qty-selector">
+                        <button class="qty-btn qty-minus" type="button">-</button>
+                        <input type="number" value="1" min="1" class="qty-input">
+                        <button class="qty-btn qty-plus" type="button">+</button>
+                    </div>
+                </td>
+                <td>
+                    <button class="add-to-cart-btn" type="button" data-product="DİSLİ DİSİ DİRSEK" data-size="4&quot;x4&quot;" data-box="15 Adet" data-price="689.10">
+                        <i class="fas fa-cart-plus"></i> Sepete Ekle
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+            </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy; 2025 BAYRAKÇI SULAMA VE YAPI MALZEMELERİ - Tüm hakları saklıdır.
+    </footer>
+    <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum." class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <script src="products.js"></script>
+    
+    <script src="cart.js?v=11"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script id="baysu-perfect-menu-js">
+(function() {
+    function init2TierBaysuMenu() {
+        var menuContainer = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
+        var triggers = document.querySelectorAll('#menuToggle, #menuToggleNav, #menuToggleDesktop, #menuToggleMobile, .menu-toggle');
+
+        if (!menuContainer) return;
+
+        // Menu Toggle Button Action
+        triggers.forEach(function(btn) {
+            if (!btn) return;
+            btn.style.cursor = 'pointer';
+            btn.onclick = function(e) {
+                if (e) { e.preventDefault(); e.stopPropagation(); }
+                var isActive = menuContainer.classList.contains('active') || menuContainer.style.display === 'block';
+                if (isActive) {
+                    menuContainer.classList.remove('active');
+                    menuContainer.style.display = 'none';
+                } else {
+                    menuContainer.classList.add('active');
+                    menuContainer.style.display = 'block';
+                    menuContainer.style.zIndex = '999999';
+                }
+            };
+        });
+
+        // Tier 1: Main Category Click Handler (KAPLİNLER VE EK PARÇALARI)
+        var mainCategories = document.querySelectorAll('.main-category-item');
+        mainCategories.forEach(function(mainCat) {
+            mainCat.style.cursor = 'pointer';
+            mainCat.onclick = function(e) {
+                if (e) { e.preventDefault(); e.stopPropagation(); }
+
+                var targetGroup = mainCat.nextElementSibling || mainCat.querySelector('.category-group');
+                var isExpanded = mainCat.classList.contains('active');
+
+                // Collapse all other main categories first for a clean accordion
+                mainCategories.forEach(function(other) {
+                    other.classList.remove('active');
+                    var otherGroup = other.nextElementSibling || other.querySelector('.category-group');
+                    if (otherGroup) {
+                        otherGroup.classList.remove('active');
+                        otherGroup.style.display = 'none';
+                    }
+                });
+
+                if (!isExpanded) {
+                    mainCat.classList.add('active');
+                    if (targetGroup) {
+                        targetGroup.classList.add('active');
+                        var isMobile = window.innerWidth <= 768;
+                        targetGroup.style.display = isMobile ? 'flex' : 'grid';
+                    }
+                }
+            };
+        });
+
+        // Tier 2: Sub Category Click Handler (Mavi Seri, Siyah Seri, Priz Kolyeler)
+        var subHeaders = document.querySelectorAll('.category-header, .category-item');
+        subHeaders.forEach(function(subHdr) {
+            subHdr.style.cursor = 'pointer';
+            subHdr.onclick = function(e) {
+                if (e && e.target && (e.target.tagName === 'A' || e.target.closest('a'))) return; // Allow product link navigation
+
+                if (e) { e.preventDefault(); e.stopPropagation(); }
+
+                var subItem = subHdr.closest('.category-item') || subHdr;
+                var prodList = subItem.querySelector('.product-list');
+                var isExpanded = subItem.classList.contains('active');
+
+                if (isExpanded) {
+                    subItem.classList.remove('active');
+                    if (prodList) prodList.style.display = 'none';
+                } else {
+                    subItem.classList.add('active');
+                    if (prodList) prodList.style.display = 'block';
+                }
+            };
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init2TierBaysuMenu);
+    } else {
+        init2TierBaysuMenu();
+    }
+})();
+</script>
+
+
+    <div id="kvkkModalBackdrop" class="kvkk-modal-backdrop">
+        <div class="kvkk-modal-content">
+            <span class="kvkk-modal-close" onclick="closeKvkkModal()">&times;</span>
+            <h2 style="color:#004797; margin-top:0;"><i class="fas fa-user-shield"></i> KVKK Aydınlatma Metni</h2>
+            <hr style="border:0; border-top:1px solid #E2E8F0; margin:15px 0;">
+            <div style="font-size:14px; line-height:1.7; color:#334155;">
+                <p><strong>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ</strong> olarak kişisel verilerinizin güvenliği hususuna azami hassasiyet göstermekteyiz. 6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) uyarınca, web sitemizi ziyaret eden ve hizmetlerimizden faydalanan tüm kullanıcılarımızın kişisel verileri yasal mevzuata uygun olarak işlenmektedir.</p>
+                <h4 style="color:#0288d1; margin-top:15px;">1. İşlenen Kişisel Veriler ve Amaçları</h4>
+                <p>Sitemizde sipariş verme, whatsapp ile iletişim kurma ve teklif alma süreçlerinde paylaştığınız ad, soyad, telefon numarası ve adres bilgileri yalnızca siparişinizin tamamlanması, teslimatın yapılması ve müşteri memnuniyeti amacıyla işlenir.</p>
+                <h4 style="color:#0288d1; margin-top:15px;">2. Kişisel Verilerin Aktarılması</h4>
+                <p>Kişisel verileriniz 3. şahıslara veya kurumlar ile ticari amaçla kesinlikle paylaşılmaz. Yalnızca yasal zorunluluk hallerinde yetkili kamu kurumlarına aktarılabilir.</p>
+                <h4 style="color:#0288d1; margin-top:15px;">3. KVKK Kapsamındaki Haklarınız</h4>
+                <p>KVKK'nın 11. maddesi uyarınca bize başvurarak kişisel verilerinizin işlenip işlenmediğini öğrenme, silinmesini veya düzeltilmesini talep etme hakkına sahipsiniz.</p>
+                <p style="margin-top:20px; text-align:right;"><button onclick="closeKvkkModal()" style="background:#0288d1; color:#fff; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer;">Anladım, Kapat</button></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function openKvkkModal(e) {
+            if (e) e.preventDefault();
+            var modal = document.getElementById('kvkkModalBackdrop');
+            if (modal) modal.classList.add('active');
+        }
+        function closeKvkkModal() {
+            var modal = document.getElementById('kvkkModalBackdrop');
+            if (modal) modal.classList.remove('active');
+        }
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.getAttribute && (e.target.getAttribute('href') === '#kvkk' || e.target.classList.contains('kvkk-trigger') || (e.target.innerText && e.target.innerText.indexOf('KVKK') > -1))) {
+                openKvkkModal(e);
+            }
+        });
+    </script>
+
+    
+
+    
+
+    
+    
+    
+    
+    <style id="baysu-orig-ui-style">
+        #mainMenuContainer, .main-menu-container {
+            max-height: 65vh !important;
+            padding: 8px 12px !important;
+            box-sizing: border-box !important;
+        }
+        .main-category-header {
+            width: 100% !important;
+            box-sizing: border-box !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 12px 18px !important;
+            margin-bottom: 8px !important;
+            background: #FFFFFF !important;
+            border: 1.5px solid #004797 !important;
+            border-radius: 8px !important;
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+            user-select: none !important;
+        }
+        .main-category-header:hover, .main-category-header.active {
+            background: #E0F2FE !important;
+        }
+        .main-category-header h3 {
+            margin: 0 !important;
+            font-size: 0.95rem !important;
+            font-weight: 700 !important;
+            color: #004797 !important;
+        }
+        .main-category-header .arrow-icon {
+            font-size: 0.8rem !important;
+            color: #004797 !important;
+            transition: transform 0.3s ease !important;
+        }
+        .main-category-header.active .arrow-icon {
+            transform: rotate(90deg) !important;
+        }
+
+        .category-group {
+            display: none !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 0 12px 0 !important;
+        }
+        .category-group.active {
+            display: flex !important;
+        }
+        .category-item {
+            width: 100% !important;
+            box-sizing: border-box !important;
+            display: flex !important;
+            flex-direction: column !important;
+            border: 1px solid #CBD5E1 !important;
+            border-radius: 8px !important;
+            background: #FFFFFF !important;
+            overflow: hidden !important;
+            transition: all 0.2s ease !important;
+        }
+        .category-header {
+            width: 100% !important;
+            box-sizing: border-box !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 10px 16px !important;
+            cursor: pointer !important;
+            background: #FFFFFF !important;
+            transition: background 0.2s ease !important;
+        }
+        .category-header:hover {
+            background: #F8FAFC !important;
+        }
+        .category-header h3 {
+            margin: 0 !important;
+            font-size: 0.9rem !important;
+            color: #004797 !important;
+            font-weight: 700 !important;
+        }
+        .category-header .arrow-icon {
+            font-size: 0.75rem !important;
+            color: #64748B !important;
+            transition: transform 0.3s ease !important;
+        }
+        .category-item.active .category-header .arrow-icon {
+            transform: rotate(90deg) !important;
+        }
+
+        .product-list {
+            display: none !important;
+            list-style: none !important;
+            padding: 4px 0 !important;
+            margin: 0 !important;
+            background: #F8FAFC !important;
+            border-top: 1px solid #E2E8F0 !important;
+        }
+        .category-item.active .product-list {
+            display: block !important;
+        }
+        .product-list li a {
+            display: block !important;
+            padding: 6px 25px !important;
+            color: #334155 !important;
+            font-size: 13px !important;
+            text-decoration: none !important;
+            transition: all 0.2s ease !important;
+        }
+        .product-list li a:hover {
+            background: #E0F2FE !important;
+            color: #0288d1 !important;
+            font-weight: 600 !important;
+        }
+    </style>
+    <script id="baysu-orig-ui-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            function toggleCatalogMenu(e) {
+                if (e) { e.preventDefault(); e.stopPropagation(); }
+                var menu = document.getElementById('mainMenuContainer');
+                if (menu) {
+                    menu.classList.toggle('active');
+                }
+            }
+
+            var btn1 = document.getElementById('menuToggle');
+            var btn2 = document.getElementById('menuToggleDesktop');
+            if (btn1) btn1.addEventListener('click', toggleCatalogMenu);
+            if (btn2) btn2.addEventListener('click', toggleCatalogMenu);
+
+            document.body.addEventListener('click', function(e) {
+                var mainHeader = e.target.closest('.main-category-header');
+                if (mainHeader) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var nextGroup = mainHeader.nextElementSibling;
+                    if (nextGroup && nextGroup.classList.contains('category-group')) {
+                        mainHeader.classList.toggle('active');
+                        nextGroup.classList.toggle('active');
+                    }
+                    return;
+                }
+
+                var subHeader = e.target.closest('.category-header');
+                if (subHeader) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var parentItem = subHeader.closest('.category-item');
+                    if (parentItem) {
+                        parentItem.classList.toggle('active');
+                    }
+                    return;
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -935,8 +935,8 @@
             </div>
         </div>
         <div class="main-menu-container" id="mainMenuContainer">
-            <!-- TIER 1: MAIN CATEGORY 1 -->
-            <div class="main-category-item" data-target="kaplinler-group">
+            <!-- MAIN CATEGORY 1: KAPLİNLER VE EK PARÇALARI (CLOSED BY DEFAULT) -->
+            <div class="main-category-header">
                 <h3>KAPLİNLER VE EK PARÇALARI <span class="arrow-icon">&#9658;</span></h3>
             </div>
             <ul class="category-group" id="kaplinler-group">
@@ -1059,11 +1059,24 @@
                 </li>
             </ul>
 
-            <!-- TIER 1: MAIN CATEGORY 2 -->
-            <div class="main-category-item" data-target="bahce-sulama-group">
-                <h3>BAHÇE SULAMA SİSTEMLERİ <span class="arrow-icon">&#9658;</span></h3>
+            <!-- MAIN CATEGORY 2: BAHÇE SULAMA EKİPMANLARI (CLOSED BY DEFAULT) -->
+            <div class="main-category-header">
+                <h3>BAHÇE SULAMA EKİPMANLARI <span class="arrow-icon">&#9658;</span></h3>
             </div>
             <ul class="category-group" id="bahce-sulama-group">
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Bahçe Ekipmanları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="fiskiyeler.html">Fıskiyeler</a></li>
+                        <li><a href="tabancalar.html">Tabancalar</a></li>
+                        <li><a href="rainbird.html">Rainbird</a></li>
+                        <li><a href="batara.html">Batara</a></li>
+                        <li><a href="hortum-rekorlari.html">Hortum Rekorları</a></li>
+                        <li><a href="klepeler.html">Klepeler</a></li>
+                    </ul>
+                </li>
                 <li class="category-item">
                     <div class="category-header">
                         <h3>Depo Rekorları <span class="arrow-icon">&#9658;</span></h3>
@@ -1073,6 +1086,30 @@
                         <li><a href="depo-rekoru.html">Depo Rekoru</a></li>
                         <li><a href="sintine-depo-rekoru.html">Sintine Depo Rekoru</a></li>
                         <li><a href="cift-tarafli-depo-rekoru.html">Çift Taraflı Depo Rekoru</a></li>
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Hortum Ekipmanları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="hortum-ekipmanlari.html">Hortum Ekipmanları</a></li>
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>PVC Küresel Vana <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="pvc-kuresel-vana.html">PVC Küresel Vana</a></li>
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <div class="category-header">
+                        <h3>Filtreler <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="filtreler.html">Filtreler</a></li>
                     </ul>
                 </li>
             </ul>
@@ -1396,52 +1433,128 @@
 
     
 
-    <style id="baysu-2tier-accordion-style">
-        .main-category-item {
-            padding: 12px 18px !important;
-            background: #F1F5F9 !important;
-            border: 1px solid #CBD5E1 !important;
-            border-radius: 8px !important;
-            margin-bottom: 8px !important;
-            cursor: pointer !important;
+    
+
+    
+    
+    
+    
+    <style id="baysu-orig-ui-style">
+        #mainMenuContainer, .main-menu-container {
+            max-height: 65vh !important;
+            padding: 8px 12px !important;
+            box-sizing: border-box !important;
+        }
+        .main-category-header {
+            width: 100% !important;
+            box-sizing: border-box !important;
             display: flex !important;
             justify-content: space-between !important;
             align-items: center !important;
-            user-select: none !important;
+            padding: 12px 18px !important;
+            margin-bottom: 8px !important;
+            background: #FFFFFF !important;
+            border: 1.5px solid #004797 !important;
+            border-radius: 8px !important;
+            cursor: pointer !important;
             transition: all 0.2s ease !important;
+            user-select: none !important;
         }
-        .main-category-item:hover, .main-category-item.active {
+        .main-category-header:hover, .main-category-header.active {
             background: #E0F2FE !important;
-            border-color: #0288d1 !important;
         }
-        .main-category-item h3 {
+        .main-category-header h3 {
             margin: 0 !important;
-            font-size: 15px !important;
-            color: #004797 !important;
+            font-size: 0.95rem !important;
             font-weight: 700 !important;
-        }
-        .main-category-item .arrow-icon {
-            font-size: 12px !important;
-            transition: transform 0.3s ease !important;
             color: #004797 !important;
         }
-        .main-category-item.active .arrow-icon {
+        .main-category-header .arrow-icon {
+            font-size: 0.8rem !important;
+            color: #004797 !important;
+            transition: transform 0.3s ease !important;
+        }
+        .main-category-header.active .arrow-icon {
             transform: rotate(90deg) !important;
         }
 
         .category-group {
             display: none !important;
-            padding: 10px !important;
-            margin-bottom: 12px !important;
-            background: #FFFFFF !important;
-            border: 1px solid #E2E8F0 !important;
-            border-radius: 8px !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 0 12px 0 !important;
         }
         .category-group.active {
+            display: flex !important;
+        }
+        .category-item {
+            width: 100% !important;
+            box-sizing: border-box !important;
+            display: flex !important;
+            flex-direction: column !important;
+            border: 1px solid #CBD5E1 !important;
+            border-radius: 8px !important;
+            background: #FFFFFF !important;
+            overflow: hidden !important;
+            transition: all 0.2s ease !important;
+        }
+        .category-header {
+            width: 100% !important;
+            box-sizing: border-box !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 10px 16px !important;
+            cursor: pointer !important;
+            background: #FFFFFF !important;
+            transition: background 0.2s ease !important;
+        }
+        .category-header:hover {
+            background: #F8FAFC !important;
+        }
+        .category-header h3 {
+            margin: 0 !important;
+            font-size: 0.9rem !important;
+            color: #004797 !important;
+            font-weight: 700 !important;
+        }
+        .category-header .arrow-icon {
+            font-size: 0.75rem !important;
+            color: #64748B !important;
+            transition: transform 0.3s ease !important;
+        }
+        .category-item.active .category-header .arrow-icon {
+            transform: rotate(90deg) !important;
+        }
+
+        .product-list {
+            display: none !important;
+            list-style: none !important;
+            padding: 4px 0 !important;
+            margin: 0 !important;
+            background: #F8FAFC !important;
+            border-top: 1px solid #E2E8F0 !important;
+        }
+        .category-item.active .product-list {
             display: block !important;
         }
+        .product-list li a {
+            display: block !important;
+            padding: 6px 25px !important;
+            color: #334155 !important;
+            font-size: 13px !important;
+            text-decoration: none !important;
+            transition: all 0.2s ease !important;
+        }
+        .product-list li a:hover {
+            background: #E0F2FE !important;
+            color: #0288d1 !important;
+            font-weight: 600 !important;
+        }
     </style>
-    <script id="baysu-2tier-accordion-script">
+    <script id="baysu-orig-ui-script">
         document.addEventListener('DOMContentLoaded', function() {
             function toggleCatalogMenu(e) {
                 if (e) { e.preventDefault(); e.stopPropagation(); }
@@ -1457,28 +1570,14 @@
             if (btn2) btn2.addEventListener('click', toggleCatalogMenu);
 
             document.body.addEventListener('click', function(e) {
-                var mainItem = e.target.closest('.main-category-item');
-                if (mainItem) {
+                var mainHeader = e.target.closest('.main-category-header');
+                if (mainHeader) {
                     e.preventDefault();
                     e.stopPropagation();
-                    
-                    var targetId = mainItem.getAttribute('data-target');
-                    var targetGroup = targetId ? document.getElementById(targetId) : mainItem.nextElementSibling;
-
-                    var isAlreadyActive = mainItem.classList.contains('active');
-
-                    document.querySelectorAll('.main-category-item').forEach(function(m) {
-                        m.classList.remove('active');
-                    });
-                    document.querySelectorAll('.category-group').forEach(function(g) {
-                        g.classList.remove('active');
-                    });
-
-                    if (!isAlreadyActive) {
-                        mainItem.classList.add('active');
-                        if (targetGroup) {
-                            targetGroup.classList.add('active');
-                        }
+                    var nextGroup = mainHeader.nextElementSibling;
+                    if (nextGroup && nextGroup.classList.contains('category-group')) {
+                        mainHeader.classList.toggle('active');
+                        nextGroup.classList.toggle('active');
                     }
                     return;
                 }
