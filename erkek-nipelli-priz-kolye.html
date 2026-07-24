@@ -935,6 +935,8 @@
 
     
 
+    
+
     <style id="baysu-exact-user-design-css">
         /* 2-Column Product Detail Layout Matching User Screenshot */
         .page-content {
@@ -943,31 +945,34 @@
 
         .product-detail-container {
             display: grid !important;
-            grid-template-columns: 380px 1fr !important;
-            gap: 35px !important;
+            grid-template-columns: 360px 1fr !important;
+            gap: 30px !important;
             align-items: start !important;
             background: #ffffff !important;
             border-radius: 16px !important;
-            padding: 30px !important;
+            padding: 25px !important;
             box-shadow: 0 10px 30px rgba(0, 71, 151, 0.08) !important;
             border: 1px solid #E2E8F0 !important;
             margin-bottom: 40px !important;
+            max-width: 1200px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
         }
 
         .product-image {
             background: #F8FAFC !important;
             border-radius: 14px !important;
-            padding: 25px !important;
+            padding: 20px !important;
             border: 1px solid #E2E8F0 !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            min-height: 320px !important;
+            min-height: 280px !important;
         }
 
         .product-main-image {
             max-width: 100% !important;
-            max-height: 320px !important;
+            max-height: 280px !important;
             object-fit: contain !important;
             transition: transform 0.3s ease !important;
         }
@@ -990,53 +995,55 @@
         }
 
         .product-title {
-            font-size: 1.8rem !important;
+            font-size: 1.75rem !important;
             font-weight: 800 !important;
             color: #004797 !important;
-            margin: 0 0 14px 0 !important;
+            margin: 0 0 12px 0 !important;
             line-height: 1.25 !important;
         }
 
         .short-desc-box {
             background: #F8FAFC !important;
             border-left: 4px solid #004797 !important;
-            padding: 14px 18px !important;
+            padding: 12px 16px !important;
             border-radius: 0 10px 10px 0 !important;
             color: #475569 !important;
-            font-size: 0.95rem !important;
+            font-size: 0.92rem !important;
             line-height: 1.5 !important;
-            margin-bottom: 18px !important;
+            margin-bottom: 16px !important;
         }
 
         .discount-badge-bar {
             background: #ECFDF5 !important;
             border: 1px solid #A7F3D0 !important;
-            padding: 12px 16px !important;
+            padding: 10px 14px !important;
             border-radius: 10px !important;
             color: #065F46 !important;
-            font-size: 0.9rem !important;
+            font-size: 0.88rem !important;
             display: flex !important;
             align-items: center !important;
             gap: 10px !important;
-            margin-bottom: 22px !important;
+            margin-bottom: 18px !important;
         }
 
         .product-section-title {
-            font-size: 1.15rem !important;
+            font-size: 1.1rem !important;
             font-weight: 800 !important;
             color: #004797 !important;
-            margin-bottom: 14px !important;
+            margin-bottom: 12px !important;
         }
 
         .table-responsive {
             width: 100% !important;
+            max-width: 720px !important; /* Compact table width - no giant empty gaps */
             overflow-x: auto !important;
             -webkit-overflow-scrolling: touch !important;
-            margin-bottom: 25px !important;
+            margin-bottom: 20px !important;
         }
 
         .price-table {
             width: 100% !important;
+            max-width: 720px !important;
             border-collapse: separate !important;
             border-spacing: 0 !important;
             border-radius: 12px !important;
@@ -1048,16 +1055,18 @@
             background: linear-gradient(135deg, #004797 0%, #002D62 100%) !important;
             color: #ffffff !important;
             font-weight: 700 !important;
-            padding: 13px 15px !important;
-            font-size: 0.9rem !important;
+            padding: 10px 14px !important;
+            font-size: 0.85rem !important;
             text-align: left !important;
+            white-space: nowrap !important;
         }
 
         .price-table td {
-            padding: 12px 15px !important;
+            padding: 9px 14px !important;
             border-bottom: 1px solid #E2E8F0 !important;
-            font-size: 0.9rem !important;
+            font-size: 0.88rem !important;
             vertical-align: middle !important;
+            white-space: nowrap !important;
         }
 
         .price-table tbody tr:last-child td {
@@ -1075,10 +1084,10 @@
             background: #EFF6FF !important;
             color: #1D4ED8 !important;
             border: 1px solid #BFDBFE !important;
-            padding: 5px 12px !important;
+            padding: 4px 10px !important;
             border-radius: 20px !important;
             font-weight: 700 !important;
-            font-size: 0.85rem !important;
+            font-size: 0.82rem !important;
             display: inline-block !important;
         }
 
@@ -1091,23 +1100,23 @@
             padding: 2px !important;
         }
         .qty-btn {
-            width: 28px !important;
-            height: 28px !important;
+            width: 26px !important;
+            height: 26px !important;
             border: none !important;
             background: #ffffff !important;
             color: #004797 !important;
             font-weight: 800 !important;
             border-radius: 6px !important;
             cursor: pointer !important;
-            font-size: 15px !important;
+            font-size: 14px !important;
         }
         .qty-input {
-            width: 38px !important;
+            width: 34px !important;
             border: none !important;
             background: transparent !important;
             text-align: center !important;
             font-weight: 700 !important;
-            font-size: 14px !important;
+            font-size: 13px !important;
             color: #1E293B !important;
         }
 
@@ -1115,16 +1124,16 @@
             background: #004797 !important;
             color: #ffffff !important;
             border: none !important;
-            padding: 9px 16px !important;
+            padding: 7px 14px !important;
             border-radius: 8px !important;
             font-weight: 700 !important;
-            font-size: 0.85rem !important;
+            font-size: 0.82rem !important;
             cursor: pointer !important;
             display: inline-flex !important;
             align-items: center !important;
             gap: 6px !important;
             transition: all 0.2s ease !important;
-            box-shadow: 0 4px 12px rgba(0, 71, 151, 0.2) !important;
+            box-shadow: 0 3px 10px rgba(0, 71, 151, 0.18) !important;
             white-space: nowrap !important;
         }
         .btn-add-cart-custom:hover {
@@ -1144,21 +1153,21 @@
         @media (max-width: 900px) {
             .product-detail-container {
                 grid-template-columns: 1fr !important;
-                padding: 18px !important;
-                gap: 20px !important;
+                padding: 16px !important;
+                gap: 18px !important;
             }
             .product-image {
-                min-height: 240px !important;
-                padding: 15px !important;
+                min-height: 220px !important;
+                padding: 12px !important;
             }
             .product-main-image {
-                max-height: 240px !important;
+                max-height: 220px !important;
             }
             .product-title {
-                font-size: 1.4rem !important;
+                font-size: 1.35rem !important;
             }
             .price-table {
-                min-width: 580px !important;
+                min-width: 520px !important;
             }
         }
     </style>
