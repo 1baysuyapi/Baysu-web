@@ -1650,6 +1650,8 @@
 
     
 
+    
+
     <script id="baysu-global-cart-handler">
         function incrementQty(btn) {
             var input = btn.previousElementSibling;
@@ -1667,16 +1669,18 @@
                 e.stopPropagation();
 
                 var tr = btn.closest('tr');
-                var code = btn.getAttribute('data-code') || (tr && tr.cells[0] ? tr.cells[0].innerText.trim() : '236');
+                var code = btn.getAttribute('data-code') || (tr && tr.cells[0] ? tr.cells[0].innerText.trim() : '');
                 var product = btn.getAttribute('data-product') || 'Ürün';
-                var size = btn.getAttribute('data-size') || (tr && tr.querySelector('.ebat-pill') ? tr.querySelector('.ebat-pill').innerText.trim() : '');
+                var size = btn.getAttribute('data-size') || (tr && tr.querySelector('.ebat-pill, .size-badge') ? tr.querySelector('.ebat-pill, .size-badge').innerText.trim() : '');
                 var priceStr = btn.getAttribute('data-price');
                 var price = priceStr ? parseFloat(priceStr) : 80.00;
 
                 var qtyInput = tr ? tr.querySelector('.qty-input, input[type="number"]') : null;
                 var qty = qtyInput ? (parseInt(qtyInput.value) || 1) : 1;
 
-                var title = product + (size ? ' ' + size : '');
+                var codeLabel = code ? ' (Kod: ' + code + ')' : '';
+                var sizeLabel = size ? ' - Ebat: ' + size : '';
+                var title = product + codeLabel + sizeLabel;
 
                 // Update localStorage cart
                 var cart = [];
