@@ -1,7 +1,12 @@
 (function () {
-    // 1. Right Click Disable
+    // Detect mobile device
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+    // 1. Right Click Disable (Desktop only, don't break touch selection on mobile)
     document.addEventListener('contextmenu', function (e) {
-        e.preventDefault();
+        if (!isMobile) {
+            e.preventDefault();
+        }
     }, false);
 
     // 2. Keyboard Shortcuts Block (F12, Ctrl+Shift+I/J/C, Ctrl+U, Ctrl+S)
@@ -15,32 +20,4 @@
             return false;
         }
     }, false);
-
-    // 3. DevTools Open Detection via Dimension & Performance Difference
-    var threshold = 160;
-    function checkDevTools() {
-        var widthDiff = window.outerWidth - window.innerWidth > threshold;
-        var heightDiff = window.outerHeight - window.innerHeight > threshold;
-
-        if (widthDiff || heightDiff) {
-            blockPage();
-        }
-    }
-
-    function blockPage() {
-        if (document.body) {
-            document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#0F172A;color:#FFFFFF;font-family:sans-serif;font-weight:700;font-size:22px;text-align:center;padding:20px;">🔒 GÜVENLİK UYARISI: Kod ve Sayfa İnceleme Yetkiniz Bulunmamaktadır.</div>';
-        }
-    }
-
-    // 4. Continuous Anti-Debugging & Console Clearing Trap
-    setInterval(function () {
-        (function () {
-            return false;
-        })
-        ["constructor"]("debugger")
-        ["call"]();
-        console.clear();
-        checkDevTools();
-    }, 100);
 })();
