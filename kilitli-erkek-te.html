@@ -1814,6 +1814,26 @@
 
     
 
+    
+
+    <script id="baysu-kvkk-clean-handler">
+        function openKvkkModal(e) {
+            if (e) e.preventDefault();
+            var modal = document.getElementById('kvkkModalBackdrop');
+            if (modal) modal.classList.add('active');
+        }
+        function closeKvkkModal() {
+            var modal = document.getElementById('kvkkModalBackdrop');
+            if (modal) modal.classList.remove('active');
+        }
+        document.addEventListener('click', function(e) {
+            var kvkkBtn = e.target.closest('a[href*="kvkk"], .kvkk-link, .kvkk-trigger, #kvkkLink, button.kvkk-btn');
+            if (kvkkBtn) {
+                openKvkkModal(e);
+            }
+        });
+    </script>
+
     <script id="baysu-whatsapp-order-handler">
         window.sendCartToWhatsApp = function() {
             var cart = [];
@@ -1895,7 +1915,7 @@
             message += "Lütfen ürün stok teyidi ile birlikte iskontolu net fiyat teklifinizi iletiniz.";
 
             var encodedMessage = encodeURIComponent(message);
-            var waUrl = "https://wa.me/905533973603?text=" + encodedMessage;
+            var waUrl = "https://wa.me/905324965835?text=" + encodedMessage;
             window.open(waUrl, '_blank');
         };
 
@@ -1906,24 +1926,6 @@
                 e.preventDefault();
                 e.stopPropagation();
                 window.sendCartToWhatsApp();
-            }
-        });
-    </script>
-
-    <script id="baysu-kvkk-clean-handler">
-        function openKvkkModal(e) {
-            if (e) e.preventDefault();
-            var modal = document.getElementById('kvkkModalBackdrop');
-            if (modal) modal.classList.add('active');
-        }
-        function closeKvkkModal() {
-            var modal = document.getElementById('kvkkModalBackdrop');
-            if (modal) modal.classList.remove('active');
-        }
-        document.addEventListener('click', function(e) {
-            var kvkkBtn = e.target.closest('a[href*="kvkk"], .kvkk-link, .kvkk-trigger, #kvkkLink, button.kvkk-btn');
-            if (kvkkBtn) {
-                openKvkkModal(e);
             }
         });
     </script>
