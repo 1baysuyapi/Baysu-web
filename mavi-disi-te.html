@@ -2224,5 +2224,59 @@
             } catch(err) {}
         });
     </script>
+
+    <script id="baysu-whatsapp-order-handler">
+        window.sendCartToWhatsApp = function() {
+            var cart = [];
+            try {
+                cart = JSON.parse(localStorage.getItem('baysu_cart') || '[]');
+            } catch(e) { cart = []; }
+
+            if (cart.length === 0) {
+                alert('Sepetinizde ürün bulunmamaktadır.');
+                return;
+            }
+
+            var message = "*BAYRAKÇI SULAMA VE YAPI MALZEMELERİ - SİPARİŞ TALEBİ*\n\n";
+            message += "*Sipariş Edilen Ürünler:*\n";
+            var grandTotal = 0;
+
+            cart.forEach(function(item, index) {
+                var qty = item.quantity || 1;
+                var price = parseFloat(item.price || 0);
+                var lineTotal = price * qty;
+                grandTotal += lineTotal;
+
+                var name = item.name || 'Ürün';
+                var code = item.code || '';
+                
+                // If code is not already in name string, inject (Kod: XXX)
+                if (code && name.indexOf('Kod:') === -1) {
+                    name = name.replace(code, '').trim();
+                    name = name + ' (Kod: ' + code + ')';
+                }
+
+                message += (index + 1) + ". " + name + "\n";
+                message += "   └ Adet: " + qty + " | Birim Fiyat: " + price.toFixed(2) + " TL | Tutar: " + lineTotal.toFixed(2) + " TL\n\n";
+            });
+
+            message += "*Genel Toplam:* " + grandTotal.toFixed(2) + " TL\n\n";
+            message += "Lütfen siparişimin onayını ve teslimat detaylarını iletiniz.";
+
+            var encodedMessage = encodeURIComponent(message);
+            var waUrl = "https://wa.me/905324965835?text=" + encodedMessage;
+            window.open(waUrl, '_blank');
+        };
+
+        // Attach listener to any WhatsApp checkout buttons
+        document.addEventListener('click', function(e) {
+            var btn = e.target.closest('#sendCartToWhatsApp, .checkout-whatsapp-btn, .btn-whatsapp-order, a[href*="wa.me"]');
+            if (btn && btn.classList.contains('checkout-whatsapp-btn')) {
+                e.preventDefault();
+                e.stopPropagation();
+                window.sendCartToWhatsApp();
+            }
+        });
+    </script>
 </body>
 </html>
