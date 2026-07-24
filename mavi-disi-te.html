@@ -2127,7 +2127,9 @@
         });
     </script>
 
-    <script id="baysu-universal-cart-fix">
+    
+
+    <script id="baysu-global-cart-handler">
         function incrementQty(btn) {
             var input = btn.previousElementSibling;
             if (input) input.value = parseInt(input.value || 1) + 1;
@@ -2137,86 +2139,85 @@
             if (input && parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
         }
 
-        window.addToCart = function(code, name, price, qtyOrBtn, btnEl) {
-            var qty = 1;
-            var btn = null;
-
-            if (typeof qtyOrBtn === 'number') {
-                qty = qtyOrBtn;
-                btn = btnEl;
-            } else if (typeof qtyOrBtn === 'object' && qtyOrBtn !== null) {
-                btn = qtyOrBtn;
-            }
-
-            if (btn && btn.closest) {
-                var tr = btn.closest('tr');
-                if (tr) {
-                    var input = tr.querySelector('.qty-input, input[type="number"]');
-                    if (input) qty = parseInt(input.value) || 1;
-                }
-            }
-
-            var cart = [];
-            try {
-                cart = JSON.parse(localStorage.getItem('baysu_cart') || '[]');
-            } catch(e) { cart = []; }
-
-            var existingIndex = -1;
-            for (var i = 0; i < cart.length; i++) {
-                if (cart[i].code === code || (cart[i].name === name && cart[i].price === price)) {
-                    existingIndex = i;
-                    break;
-                }
-            }
-
-            if (existingIndex > -1) {
-                cart[existingIndex].quantity = (cart[existingIndex].quantity || 1) + qty;
-            } else {
-                cart.push({
-                    code: code,
-                    name: name,
-                    price: price,
-                    quantity: qty
-                });
-            }
-
-            localStorage.setItem('baysu_cart', JSON.stringify(cart));
-
-            // Update badge counters
-            var totalCount = 0;
-            cart.forEach(function(item) { totalCount += (item.quantity || 1); });
-            document.querySelectorAll('.cart-count, .cart-badge, #cartCount, .basket-badge').forEach(function(el) {
-                el.textContent = totalCount;
-                el.style.display = totalCount > 0 ? 'inline-block' : 'none';
-            });
-
-            // Visual feedback on button
+        document.addEventListener('click', function(e) {
+            var btn = e.target.closest('.add-to-cart-btn, .btn-add-cart-custom');
             if (btn) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                var tr = btn.closest('tr');
+                var code = btn.getAttribute('data-code') || (tr && tr.cells[0] ? tr.cells[0].innerText.trim() : '236');
+                var product = btn.getAttribute('data-product') || 'Ürün';
+                var size = btn.getAttribute('data-size') || (tr && tr.querySelector('.ebat-pill') ? tr.querySelector('.ebat-pill').innerText.trim() : '');
+                var priceStr = btn.getAttribute('data-price');
+                var price = priceStr ? parseFloat(priceStr) : 80.00;
+
+                var qtyInput = tr ? tr.querySelector('.qty-input, input[type="number"]') : null;
+                var qty = qtyInput ? (parseInt(qtyInput.value) || 1) : 1;
+
+                var title = product + (size ? ' ' + size : '');
+
+                // Update localStorage cart
+                var cart = [];
+                try { cart = JSON.parse(localStorage.getItem('baysu_cart') || '[]'); } catch(err) { cart = []; }
+
+                var existingIdx = -1;
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].code === code || cart[i].name === title) {
+                        existingIdx = i;
+                        break;
+                    }
+                }
+                if (existingIdx > -1) {
+                    cart[existingIdx].quantity = (cart[existingIdx].quantity || 1) + qty;
+                } else {
+                    cart.push({
+                        code: code,
+                        name: title,
+                        price: price,
+                        quantity: qty
+                    });
+                }
+                localStorage.setItem('baysu_cart', JSON.stringify(cart));
+
+                // Update navbar cart badge counters
+                var totalCount = 0;
+                cart.forEach(function(item) { totalCount += (item.quantity || 1); });
+                document.querySelectorAll('.cart-count, .cart-badge, #cartCount, .basket-badge, .cart-quantity').forEach(function(el) {
+                    el.textContent = totalCount;
+                    el.style.display = totalCount > 0 ? 'inline-block' : 'none';
+                });
+
+                // Open cart modal/sidebar if present
+                var cartModal = document.getElementById('cartModal') || document.querySelector('.cart-sidebar, .cart-drawer, #cart-drawer');
+                if (cartModal) {
+                    cartModal.classList.add('active', 'open', 'show');
+                    cartModal.style.display = 'block';
+                }
+
+                // Button visual feedback animation
                 var origHtml = btn.innerHTML;
                 btn.innerHTML = '<i class="fas fa-check"></i> Ekledi!';
                 btn.style.background = '#10B981';
+                btn.style.color = '#FFFFFF';
                 setTimeout(function() {
                     btn.innerHTML = origHtml;
                     btn.style.background = '#004797';
                 }, 1500);
             }
-        };
+        });
 
-        function addToCartWithQty(code, title, price, btn) {
-            window.addToCart(code, title, price, btn);
-        }
-
-        // Initialize cart badge on page load
+        // Initialize cart badge count on DOM ready
         document.addEventListener('DOMContentLoaded', function() {
             try {
                 var cart = JSON.parse(localStorage.getItem('baysu_cart') || '[]');
                 var totalCount = 0;
                 cart.forEach(function(item) { totalCount += (item.quantity || 1); });
-                document.querySelectorAll('.cart-count, .cart-badge, #cartCount, .basket-badge').forEach(function(el) {
+                document.querySelectorAll('.cart-count, .cart-badge, #cartCount, .basket-badge, .cart-quantity').forEach(function(el) {
                     el.textContent = totalCount;
                     if (totalCount > 0) el.style.display = 'inline-block';
                 });
-            } catch(e) {}
+            } catch(err) {}
         });
     </script>
 </body>
