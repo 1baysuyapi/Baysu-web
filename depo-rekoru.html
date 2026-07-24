@@ -1135,68 +1135,20 @@
                     <table class="price-table">
                         <thead>
                             <tr>
-                                <th>KOD</th>
                                 <th>EBAT</th>
-                                <th>KOLİ ADEDİ</th>
-                                <th>FİYAT</th>
-                                <th>SEPETE EKLE</th>
+                                <th>ÇUVAL ADEDİ</th>
+                                <th>FİYAT (TL)</th>
+                                <th>İŞLEM</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="product-code">236</td>
-                                <td>3/4"</td>
-                                <td>350 Adet</td>
-                                <td><span class="price-value">80,00 TL</span></td>
-                                <td>
-                                    <div class="cart-action-group" style="display: flex; align-items: center; gap: 8px;">
-                                        <input type="number" class="qty-input" value="1" min="1" style="width: 55px; padding: 6px; text-align: center; border: 1px solid #CBD5E1; border-radius: 6px;">
-                                        <button class="add-to-cart-btn" onclick="addToCart('236', 'Depo Rekoru 3/4"', 80.00, this)" style="background: #004797; color: #FFF; border: none; padding: 8px 14px; border-radius: 6px; font-weight: 600; cursor: pointer;">
-                                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="product-code">237</td>
-                                <td>1"</td>
-                                <td>200 Adet</td>
-                                <td><span class="price-value">80,00 TL</span></td>
-                                <td>
-                                    <div class="cart-action-group" style="display: flex; align-items: center; gap: 8px;">
-                                        <input type="number" class="qty-input" value="1" min="1" style="width: 55px; padding: 6px; text-align: center; border: 1px solid #CBD5E1; border-radius: 6px;">
-                                        <button class="add-to-cart-btn" onclick="addToCart('237', 'Depo Rekoru 1"', 80.00, this)" style="background: #004797; color: #FFF; border: none; padding: 8px 14px; border-radius: 6px; font-weight: 600; cursor: pointer;">
-                                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="product-code">238</td>
-                                <td>1 1/4"</td>
-                                <td>125 Adet</td>
-                                <td><span class="price-value">115,00 TL</span></td>
-                                <td>
-                                    <div class="cart-action-group" style="display: flex; align-items: center; gap: 8px;">
-                                        <input type="number" class="qty-input" value="1" min="1" style="width: 55px; padding: 6px; text-align: center; border: 1px solid #CBD5E1; border-radius: 6px;">
-                                        <button class="add-to-cart-btn" onclick="addToCart('238', 'Depo Rekoru 1 1/4"', 115.00, this)" style="background: #004797; color: #FFF; border: none; padding: 8px 14px; border-radius: 6px; font-weight: 600; cursor: pointer;">
-                                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="product-code">239</td>
-                                <td>1 1/2"</td>
-                                <td>125 Adet</td>
-                                <td><span class="price-value">130,00 TL</span></td>
-                                <td>
-                                    <div class="cart-action-group" style="display: flex; align-items: center; gap: 8px;">
-                                        <input type="number" class="qty-input" value="1" min="1" style="width: 55px; padding: 6px; text-align: center; border: 1px solid #CBD5E1; border-radius: 6px;">
-                                        <button class="add-to-cart-btn" onclick="addToCart('239', 'Depo Rekoru 1 1/2"', 130.00, this)" style="background: #004797; color: #FFF; border: none; padding: 8px 14px; border-radius: 6px; font-weight: 600; cursor: pointer;">
-                                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
-                                        </button>
-                                    </div>
+                                <td colspan="4" style="text-align: center; padding: 25px; color: #64748B; font-weight: 600;">
+                                    <i class="fas fa-boxes" style="font-size: 28px; color: #004797; margin-bottom: 8px; display: block;"></i>
+                                    Bu ürünün ebat ve fiyat listesi kataloğumuza güncellenmektedir.<br>
+                                    <a href="https://wa.me/905324965835?text=Merhaba,%20Depo Rekoru%20ürünü%20için%20özel%20fiyat%20teklifi%20almak%20istiyorum." target="_blank" style="color: #059669; font-weight: 700; text-decoration: underline; margin-top: 6px; display: inline-block;">
+                                        WhatsApp Üzerinden Anında Stok ve Fiyat Teyidi Alınız
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
@@ -1637,5 +1589,123 @@
             }
         }
     </style>
+
+    <style id="baysu-table-screenshot-css">
+        .price-table {
+            width: 100% !important;
+            border-collapse: separate !important;
+            border-spacing: 0 !important;
+            border-radius: 10px !important;
+            overflow: hidden !important;
+            border: 1px solid #CBD5E1 !important;
+            margin-top: 10px !important;
+        }
+        .price-table thead tr {
+            background: linear-gradient(135deg, #004797 0%, #002D62 100%) !important;
+        }
+        .price-table thead th {
+            color: #FFFFFF !important;
+            font-weight: 700 !important;
+            font-size: 0.85rem !important;
+            letter-spacing: 0.5px !important;
+            text-transform: uppercase !important;
+            padding: 13px 16px !important;
+            border: none !important;
+            text-align: left !important;
+        }
+        .price-table tbody tr {
+            border-bottom: 1px solid #E2E8F0 !important;
+            transition: background 0.15s ease !important;
+        }
+        .price-table tbody tr:hover {
+            background: #F8FAFC !important;
+        }
+        .price-table tbody td {
+            padding: 12px 16px !important;
+            vertical-align: middle !important;
+            color: #334155 !important;
+            font-size: 0.92rem !important;
+            border-bottom: 1px solid #F1F5F9 !important;
+        }
+        .ebat-pill {
+            background: #EFF6FF !important;
+            border: 1px solid #DBEAFE !important;
+            color: #004797 !important;
+            font-weight: 700 !important;
+            padding: 5px 12px !important;
+            border-radius: 6px !important;
+            display: inline-block !important;
+            font-size: 0.9rem !important;
+        }
+        .qty-stepper {
+            display: inline-flex !important;
+            align-items: center !important;
+            border: 1px solid #CBD5E1 !important;
+            border-radius: 8px !important;
+            overflow: hidden !important;
+            background: #F8FAFC !important;
+        }
+        .qty-btn {
+            border: none !important;
+            background: transparent !important;
+            padding: 6px 12px !important;
+            cursor: pointer !important;
+            color: #475569 !important;
+            font-weight: bold !important;
+            font-size: 1rem !important;
+            transition: background 0.15s ease !important;
+        }
+        .qty-btn:hover {
+            background: #E2E8F0 !important;
+        }
+        .qty-input {
+            width: 40px !important;
+            border: none !important;
+            text-align: center !important;
+            background: transparent !important;
+            font-weight: 600 !important;
+            color: #1E293B !important;
+            font-size: 0.95rem !important;
+            -moz-appearance: textfield !important;
+        }
+        .qty-input::-webkit-outer-spin-button, .qty-input::-webkit-inner-spin-button {
+            -webkit-appearance: none !important;
+            margin: 0 !important;
+        }
+        .btn-add-cart-custom {
+            background: #004797 !important;
+            color: #FFFFFF !important;
+            border: none !important;
+            padding: 9px 18px !important;
+            border-radius: 8px !important;
+            font-weight: 600 !important;
+            font-size: 0.88rem !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 7px !important;
+            transition: background 0.2s ease !important;
+        }
+        .btn-add-cart-custom:hover {
+            background: #003370 !important;
+        }
+    </style>
+    <script id="baysu-stepper-script">
+        function incrementQty(btn) {
+            var input = btn.previousElementSibling;
+            if (input) input.value = parseInt(input.value || 1) + 1;
+        }
+        function decrementQty(btn) {
+            var input = btn.nextElementSibling;
+            if (input && parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
+        }
+        function addToCartWithQty(code, title, price, btn) {
+            var stepper = btn.closest('tr').querySelector('.qty-input');
+            var qty = stepper ? parseInt(stepper.value || 1) : 1;
+            if (typeof addToCart === 'function') {
+                addToCart(code, title, price, btn);
+            }
+        }
+    </script>
 </body>
 </html>
