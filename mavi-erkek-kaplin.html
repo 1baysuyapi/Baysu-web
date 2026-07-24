@@ -905,6 +905,213 @@
     </style>
 
     
+
+    <style id="baysu-2col-and-mobile-css">
+        /* 2-Column Product Detail Layout */
+        .product-detail-container {
+            display: grid !important;
+            grid-template-columns: 380px 1fr !important;
+            gap: 35px !important;
+            align-items: start !important;
+            background: #ffffff !important;
+            border-radius: 16px !important;
+            padding: 30px !important;
+            box-shadow: 0 10px 30px rgba(0, 71, 151, 0.08) !important;
+            border: 1px solid #E2E8F0 !important;
+            margin-bottom: 35px !important;
+        }
+
+        .product-image {
+            background: #F8FAFC !important;
+            border-radius: 14px !important;
+            padding: 20px !important;
+            border: 1px solid #E2E8F0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-height: 320px !important;
+        }
+
+        .product-main-image {
+            max-width: 100% !important;
+            max-height: 320px !important;
+            object-fit: contain !important;
+            transition: transform 0.3s ease !important;
+        }
+        .product-main-image:hover {
+            transform: scale(1.04) !important;
+        }
+
+        .product-info {
+            display: flex !important;
+            flex-direction: column !important;
+        }
+
+        .product-category {
+            font-size: 0.85rem !important;
+            font-weight: 700 !important;
+            color: #0288d1 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+            margin-bottom: 6px !important;
+        }
+
+        .product-title {
+            font-size: 1.8rem !important;
+            font-weight: 800 !important;
+            color: #004797 !important;
+            margin: 0 0 12px 0 !important;
+            line-height: 1.25 !important;
+        }
+
+        .short-desc-box {
+            background: #F1F5F9 !important;
+            border-left: 4px solid #004797 !important;
+            padding: 12px 16px !important;
+            border-radius: 0 8px 8px 0 !important;
+            color: #475569 !important;
+            font-size: 0.95rem !important;
+            line-height: 1.5 !important;
+            margin-bottom: 16px !important;
+        }
+
+        .discount-badge-bar {
+            background: #ECFDF5 !important;
+            border: 1px solid #A7F3D0 !important;
+            padding: 10px 14px !important;
+            border-radius: 10px !important;
+            color: #065F46 !important;
+            font-size: 0.9rem !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            margin-bottom: 20px !important;
+        }
+
+        .price-table {
+            width: 100% !important;
+            border-collapse: separate !important;
+            border-spacing: 0 !important;
+            border-radius: 12px !important;
+            overflow: hidden !important;
+            border: 1px solid #CBD5E1 !important;
+        }
+
+        .price-table th {
+            background: linear-gradient(135deg, #004797 0%, #002D62 100%) !important;
+            color: #ffffff !important;
+            font-weight: 700 !important;
+            padding: 12px 14px !important;
+            font-size: 0.9rem !important;
+            text-align: left !important;
+        }
+
+        .price-table td {
+            padding: 12px 14px !important;
+            border-bottom: 1px solid #E2E8F0 !important;
+            font-size: 0.9rem !important;
+            vertical-align: middle !important;
+        }
+
+        .price-table tbody tr:nth-child(even) {
+            background-color: #F8FAFC !important;
+        }
+        .price-table tbody tr:hover {
+            background-color: #EFF6FF !important;
+        }
+
+        .ebat-pill {
+            background: #EFF6FF !important;
+            color: #1D4ED8 !important;
+            border: 1px solid #BFDBFE !important;
+            padding: 4px 10px !important;
+            border-radius: 20px !important;
+            font-weight: 700 !important;
+            font-size: 0.85rem !important;
+            display: inline-block !important;
+        }
+
+        .qty-stepper {
+            display: inline-flex !important;
+            align-items: center !important;
+            background: #F1F5F9 !important;
+            border: 1px solid #CBD5E1 !important;
+            border-radius: 8px !important;
+            padding: 2px !important;
+        }
+        .qty-btn {
+            width: 28px !important;
+            height: 28px !important;
+            border: none !important;
+            background: #ffffff !important;
+            color: #004797 !important;
+            font-weight: 800 !important;
+            border-radius: 6px !important;
+            cursor: pointer !important;
+            font-size: 15px !important;
+        }
+        .qty-input {
+            width: 40px !important;
+            border: none !important;
+            background: transparent !important;
+            text-align: center !important;
+            font-weight: 700 !important;
+            font-size: 14px !important;
+            color: #1E293B !important;
+        }
+
+        .btn-add-cart-custom {
+            background: #004797 !important;
+            color: #ffffff !important;
+            border: none !important;
+            padding: 9px 16px !important;
+            border-radius: 8px !important;
+            font-weight: 700 !important;
+            font-size: 0.85rem !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            transition: all 0.2s ease !important;
+            box-shadow: 0 4px 12px rgba(0, 71, 151, 0.2) !important;
+        }
+        .btn-add-cart-custom:hover {
+            background: #002D62 !important;
+            transform: translateY(-1px) !important;
+        }
+
+        /* Mobile Phone Responsiveness */
+        @media (max-width: 900px) {
+            .product-detail-container {
+                grid-template-columns: 1fr !important;
+                padding: 18px !important;
+                gap: 20px !important;
+            }
+            .product-image {
+                min-height: 240px !important;
+                padding: 15px !important;
+            }
+            .product-main-image {
+                max-height: 240px !important;
+            }
+            .product-title {
+                font-size: 1.4rem !important;
+            }
+            .table-responsive {
+                width: 100% !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+            }
+            .price-table {
+                min-width: 580px !important;
+            }
+        }
+
+        /* KVKK Modal Mobile & Z-Index Fix */
+        .kvkk-modal-backdrop, #kvkkModal, #kvkkModalBackdrop {
+            z-index: 9999999 !important;
+        }
+    </style>
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
     <header class="header-main">
@@ -2172,23 +2379,7 @@
 
     
 
-    <script id="baysu-kvkk-clean-handler">
-        function openKvkkModal(e) {
-            if (e) e.preventDefault();
-            var modal = document.getElementById('kvkkModalBackdrop');
-            if (modal) modal.classList.add('active');
-        }
-        function closeKvkkModal() {
-            var modal = document.getElementById('kvkkModalBackdrop');
-            if (modal) modal.classList.remove('active');
-        }
-        document.addEventListener('click', function(e) {
-            var kvkkBtn = e.target.closest('a[href*="kvkk"], .kvkk-link, .kvkk-trigger, #kvkkLink, button.kvkk-btn');
-            if (kvkkBtn) {
-                openKvkkModal(e);
-            }
-        });
-    </script>
+    
 
     
 
@@ -2284,6 +2475,42 @@
                 e.preventDefault();
                 e.stopPropagation();
                 window.sendCartToWhatsApp();
+            }
+        });
+    </script>
+
+    <script id="baysu-universal-kvkk-handler">
+        window.openKvkkModal = function(e) {
+            if (e) {
+                try { e.preventDefault(); e.stopPropagation(); } catch(err){}
+            }
+            var m1 = document.getElementById('kvkkModal');
+            var m2 = document.getElementById('kvkkModalBackdrop');
+            if (m1) { m1.style.display = 'block'; m1.classList.add('active'); }
+            if (m2) { m2.style.display = 'flex'; m2.classList.add('active'); }
+        };
+
+        window.closeKvkkModal = function(e) {
+            if (e) {
+                try { e.preventDefault(); e.stopPropagation(); } catch(err){}
+            }
+            var m1 = document.getElementById('kvkkModal');
+            var m2 = document.getElementById('kvkkModalBackdrop');
+            if (m1) { m1.style.display = 'none'; m1.classList.remove('active'); }
+            if (m2) { m2.style.display = 'none'; m2.classList.remove('active'); }
+        };
+
+        document.addEventListener('click', function(e) {
+            var target = e.target;
+            if (!target) return;
+
+            var kvkkBtn = target.closest('#kvkkBtn, #closeKvkkX, .kvkk-link, .kvkk-trigger, a[href*="kvkk"], [onclick*="KvkkModal"]');
+            if (kvkkBtn) {
+                if (kvkkBtn.id === 'closeKvkkX' || (kvkkBtn.getAttribute('onclick') && kvkkBtn.getAttribute('onclick').indexOf('close') > -1)) {
+                    window.closeKvkkModal(e);
+                } else {
+                    window.openKvkkModal(e);
+                }
             }
         });
     </script>
