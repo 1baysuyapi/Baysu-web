@@ -2842,153 +2842,7 @@
         });
     </script>
 
-    <script id="baysu-search-engine">
-    (function() {
-        var products = [
-        {name:"Fıskiyeler",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"fiskiyeler.html"},
-        {name:"Tabancalar",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"tabancalar.html"},
-        {name:"Rainbird",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"rainbird.html"},
-        {name:"Batara",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"batara.html"},
-        {name:"Hortum Rekorları",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"hortum-rekorlari.html"},
-        {name:"Klepeler",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"klepeler.html"},
-        {name:"Hortum Ekipmanları",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"hortum-ekipmanlari.html"},
-        {name:"PVC Küresel Vana",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"pvc-kuresel-vana.html"},
-        {name:"Filtreler",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"filtreler.html"},
-        {name:"10\" Vana Kutusu",cat:"Vana Kutuları",url:"10-inc-vana-kutusu.html"},
-        {name:"12\" Vana Kutusu",cat:"Vana Kutuları",url:"12-inc-vana-kutusu.html"},
-        {name:"14\" Jumbo Vana Kutusu",cat:"Vana Kutuları",url:"14-inc-vana-kutusu.html"},
-        {name:"6\" Vana Kutusu",cat:"Vana Kutuları",url:"6-inc-vana-kutusu.html"},
-        {name:"Abot Üstü Kaplin Dağıtıcı",cat:"Yedek Parçalar",url:"abot-ustu-kaplin-dagitici.html"},
-        {name:"Çift Çıkışlı Priz Kolye",cat:"Kaplinler ve Ek Parçaları - Priz Kolyeler",url:"cift-cikisli-priz-kolye.html"},
-        {name:"Çıkış Mini Vana",cat:"Damlama Ek Parçaları",url:"cikis-mini-vana.html"},
-        {name:"Debi Ayarlı Damlatıcı Geniş Boşaltım",cat:"Damlama Ek Parçaları",url:"debi-ayarli-damlatici-genis.html"},
-        {name:"Debi Ayarlı Damlatıcı Kırmızı",cat:"Damlama Ek Parçaları",url:"debi-ayarli-damlatici-kirmizi.html"},
-        {name:"Debi Ayarlı Damlatıcı Yeşil",cat:"Damlama Ek Parçaları",url:"debi-ayarli-damlatici-yesil.html"},
-        {name:"Dişi Dişi Vana",cat:"Vanalar",url:"disi-disi-vana.html"},
-        {name:"Dişi Nipelli Priz Kolye",cat:"Kaplinler ve Ek Parçaları - Priz Kolyeler",url:"disi-nipelli-priz-kolye.html"},
-        {name:"Dişli Dişi Dirsek",cat:"Dişli Sulama Ek Parçaları",url:"disli-disi-dirsek.html"},
-        {name:"Dişli Dişi Nipel",cat:"Dişli Sulama Ek Parçaları",url:"disli-disi-nipel.html"},
-        {name:"Dişli Dişi Redüksiyon Dirsek",cat:"Dişli Sulama Ek Parçaları",url:"disli-disi-reduksiyon-dirsek.html"},
-        {name:"Düz Damlama Conta",cat:"Damlama Ek Parçaları",url:"duz-damlama-conta.html"},
-        {name:"Erkek Dişi Vana",cat:"Vanalar",url:"erkek-disi-vana.html"},
-        {name:"Erkek Dişli Kör Tapa",cat:"Dişli Sulama Ek Parçaları",url:"erkek-disli-kor-tapa.html"},
-        {name:"Erkek Nipelli Priz Kolye",cat:"Kaplinler ve Ek Parçaları - Priz Kolyeler",url:"erkek-nipelli-priz-kolye.html"},
-        {name:"Kanallı Conta",cat:"Damlama Ek Parçaları",url:"kanalli-conta.html"},
-        {name:"Kaplin Dişi Vana",cat:"Vanalar",url:"kaplin-disi-vana.html"},
-        {name:"Kaplin Erkek Vana",cat:"Vanalar",url:"kaplin-erkek-vana.html"},
-        {name:"Kaplin Sıkma Anahtarı",cat:"Yedek Parçalar",url:"kaplin-sikma-anahtari.html"},
-        {name:"Kilitli Bağlantı Dirsek",cat:"Kilitli BaÄŸlantı Parçaları",url:"kilitli-dirsek.html"},
-        {name:"Erkek Adaptör",cat:"Kilitli BaÄŸlantı Parçaları",url:"kilitli-erkek-adaptor.html"},
-        {name:"Kilitli Bağlantı Erkek Dirsek",cat:"Kilitli BaÄŸlantı Parçaları",url:"kilitli-erkek-dirsek.html"},
-        {name:"Kilitli Bağlantı Erkek TE",cat:"Kilitli BaÄŸlantı Parçaları",url:"kilitli-erkek-te.html"},
-        {name:"Kilitli Bağlantı Redüksiyon Dirsek",cat:"Kilitli BaÄŸlantı Parçaları",url:"kilitli-reduksiyon-dirsek.html"},
-        {name:"Kilitli Bağlantı TE",cat:"Kilitli BaÄŸlantı Parçaları",url:"kilitli-te.html"},
-        {name:"Kızaklı Priz Kolye",cat:"Kaplinler ve Ek Parçaları - Priz Kolyeler",url:"kizakli-priz-kolye.html"},
-        {name:"Mavi Dirsek",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"mavi-dirsek-kaplin.html"},
-        {name:"Mavi Dişi Dirsek",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"mavi-disi-dirsek.html"},
-        {name:"Mavi Dişi",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"mavi-disi-kaplin.html"},
-        {name:"Mavi Dişi Te",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"mavi-disi-te.html"},
-        {name:"Mavi Seri Erkek Dirsek",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"mavi-erkek-dirsek.html"},
-        {name:"Mavi Erkek Kaplin",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"mavi-erkek-kaplin.html"},
-        {name:"Mavi Seri Erkek Te",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"mavi-erkek-te.html"},
-        {name:"Mavi Seri Manşon",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"mavi-manson.html"},
-        {name:"Mavi Seri Redüksiyon Te",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"mavi-reduksiyon-te.html"},
-        {name:"Mavi Redüksiyon",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"mavi-reduksiyon.html"},
-        {name:"Mavi Seri Tapa",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"mavi-tapa.html"},
-        {name:"Mavi Te",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",url:"mavi-te.html"},
-        {name:"Nipelli Dişi Dirsek",cat:"Kaplinler ve Ek Parçaları - Nipelli Seri",url:"nipelli-disi-dirsek.html"},
-        {name:"Nipelli Dişi Priz Kolye",cat:"Kaplinler ve Ek Parçaları - Nipelli Seri",url:"nipelli-disi-priz-kolye.html"},
-        {name:"Nipelli Erkek Priz Kolye",cat:"Kaplinler ve Ek Parçaları - Nipelli Seri",url:"nipelli-erkek-priz-kolye.html"},
-        {name:"Nipelli Erkek TE",cat:"Kaplinler ve Ek Parçaları - Nipelli Seri",url:"nipelli-erkek-te.html"},
-        {name:"O-Ring Conta",cat:"Yedek Parçalar",url:"o-ring.html"},
-        {name:"Pah Açma Aparatı",cat:"Yedek Parçalar",url:"pah-acma-aparati.html"},
-        {name:"Priz Kolye",cat:"Kaplinler ve Ek Parçaları - Priz Kolyeler",url:"priz-kolye.html"},
-        {name:"Dirsek",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",url:"siyah-dirsek.html"},
-        {name:"Dişi Dirsek",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",url:"siyah-disi-dirsek.html"},
-        {name:"Dişi Te",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",url:"siyah-disi-te.html"},
-        {name:"Dişi",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",url:"siyah-disi.html"},
-        {name:"Erkek Dirsek",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",url:"siyah-erkek-dirsek.html"},
-        {name:"Erkek",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",url:"siyah-erkek-kaplin.html"},
-        {name:"Erkek Te",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",url:"siyah-erkek-te.html"},
-        {name:"Manşon",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",url:"siyah-manson.html"},
-        {name:"Redüksiyon Te",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",url:"siyah-reduksiyon-te.html"},
-        {name:"Redüksiyon",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",url:"siyah-reduksiyon.html"},
-        {name:"Tapa",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",url:"siyah-tapa.html"},
-        {name:"Te",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",url:"siyah-te.html"},
-        {name:"Özel Depo Rekoru",cat:"Bahçe Sulama Sistemleri - Depo Rekorları",url:"ozel-depo-rekoru.html"},
-        {name:"Depo Rekoru",cat:"Bahçe Sulama Sistemleri - Depo Rekorları",url:"depo-rekoru.html"},
-        {name:"Sintine Depo Rekoru",cat:"Bahçe Sulama Sistemleri - Depo Rekorları",url:"sintine-depo-rekoru.html"},
-        {name:"Çift Taraflı Depo Rekoru",cat:"Bahçe Sulama Sistemleri - Depo Rekorları",url:"cift-tarafli-depo-rekoru.html"}
-        ];
-
-        function initSearch() {
-            var input = document.getElementById('searchInput');
-            var resultsDiv = document.getElementById('searchResults');
-            if (!input || !resultsDiv) return;
-
-            // Style the results dropdown
-            resultsDiv.style.cssText = 'position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #CBD5E1;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.15);max-height:350px;overflow-y:auto;z-index:999999;display:none;margin-top:6px;';
-
-            input.addEventListener('input', function() {
-                var query = input.value.trim().toLowerCase();
-                if (query.length < 2) {
-                    resultsDiv.style.display = 'none';
-                    resultsDiv.innerHTML = '';
-                    return;
-                }
-
-                var filtered = products.filter(function(p) {
-                    return p.name.toLowerCase().indexOf(query) > -1 || p.cat.toLowerCase().indexOf(query) > -1;
-                });
-
-                if (filtered.length === 0) {
-                    resultsDiv.innerHTML = '<div style="padding:14px 18px;color:#94A3B8;font-size:14px;"><i class="fas fa-search" style="margin-right:8px;"></i>Sonuç bulunamadı</div>';
-                    resultsDiv.style.display = 'block';
-                    return;
-                }
-
-                var html = '';
-                var maxResults = Math.min(filtered.length, 10);
-                for (var i = 0; i < maxResults; i++) {
-                    var p = filtered[i];
-                    html += '<a href="' + p.url + '" style="display:flex;align-items:center;gap:10px;padding:12px 18px;color:#1E293B;text-decoration:none;font-size:14px;border-bottom:1px solid #F1F5F9;transition:background 0.15s;"';
-                    html += ' onmouseover="this.style.background=\'#EFF6FF\'" onmouseout="this.style.background=\'transparent\'">';
-                    html += '<i class="fas fa-cube" style="color:#004797;font-size:12px;"></i>';
-                    html += '<div><strong style="color:#004797;">' + p.name + '</strong>';
-                    html += '<div style="font-size:11px;color:#94A3B8;margin-top:2px;">' + p.cat + '</div></div></a>';
-                }
-
-                if (filtered.length > 10) {
-                    html += '<div style="padding:10px 18px;color:#64748B;font-size:12px;text-align:center;background:#F8FAFC;">+' + (filtered.length - 10) + ' sonuç daha...</div>';
-                }
-
-                resultsDiv.innerHTML = html;
-                resultsDiv.style.display = 'block';
-            });
-
-            // Close on click outside
-            document.addEventListener('click', function(e) {
-                if (!input.contains(e.target) && !resultsDiv.contains(e.target)) {
-                    resultsDiv.style.display = 'none';
-                }
-            });
-
-            // Close on Escape
-            input.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    resultsDiv.style.display = 'none';
-                    input.blur();
-                }
-            });
-        }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initSearch);
-        } else {
-            initSearch();
-        }
-    })();
-    </script>
+    
     <script id="baysu-global-cart-handler">
         function incrementQty(btn) {
             var input = btn.previousElementSibling;
@@ -3080,6 +2934,178 @@
                 }, 1500);
             }
         });
+    </script>
+
+    <script id="baysu-search-engine">
+    (function() {
+        var products = [
+        {name:"Fıskiyeler",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-manson.png",url:"fiskiyeler.html"},
+        {name:"Tabancalar",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-manson.png",url:"tabancalar.html"},
+        {name:"Rainbird",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-manson.png",url:"rainbird.html"},
+        {name:"Batara",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-manson.png",url:"batara.html"},
+        {name:"Hortum Rekorları",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-manson.png",url:"hortum-rekorlari.html"},
+        {name:"Klepeler",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-manson.png",url:"klepeler.html"},
+        {name:"Hortum Ekipmanları",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-manson.png",url:"hortum-ekipmanlari.html"},
+        {name:"PVC Küresel Vana",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-manson.png",url:"pvc-kuresel-vana.html"},
+        {name:"Filtreler",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-manson.png",url:"filtreler.html"},
+        {name:"10\" Vana Kutusu",cat:"Vana Kutuları",img:"10-inc-vana-kutusu.png",url:"10-inc-vana-kutusu.html"},
+        {name:"12\" Vana Kutusu",cat:"Vana Kutuları",img:"12-inc-vana-kutusu.png",url:"12-inc-vana-kutusu.html"},
+        {name:"14\" Jumbo Vana Kutusu",cat:"Vana Kutuları",img:"14-inc-vana-kutusu.png",url:"14-inc-vana-kutusu.html"},
+        {name:"6\" Vana Kutusu",cat:"Vana Kutuları",img:"6-inc-vana-kutusu.png",url:"6-inc-vana-kutusu.html"},
+        {name:"Abot Üstü Kaplin Dağıtıcı",cat:"Yedek Parçalar",img:"abot-ustu-kaplin-dagitici.png",url:"abot-ustu-kaplin-dagitici.html"},
+        {name:"Çift Çıkışlı Priz Kolye",cat:"Kaplinler ve Ek Parçaları - Priz Kolyeler",img:"cift-cikisli-priz-kolye.png",url:"cift-cikisli-priz-kolye.html"},
+        {name:"Çıkış Mini Vana",cat:"Damlama Ek Parçaları",img:"cikis-mini-vana.png",url:"cikis-mini-vana.html"},
+        {name:"Debi Ayarlı Damlatıcı Geniş Boşaltım",cat:"Damlama Ek Parçaları",img:"debi-ayarli-damlatici-genis.png",url:"debi-ayarli-damlatici-genis.html"},
+        {name:"Debi Ayarlı Damlatıcı Kırmızı",cat:"Damlama Ek Parçaları",img:"debi-ayarli-damlatici-kirmizi.png",url:"debi-ayarli-damlatici-kirmizi.html"},
+        {name:"Debi Ayarlı Damlatıcı Yeşil",cat:"Damlama Ek Parçaları",img:"debi-ayarli-damlatici-yesil.png",url:"debi-ayarli-damlatici-yesil.html"},
+        {name:"Dişi Dişi Vana",cat:"Vanalar",img:"disi-disi-vana.png",url:"disi-disi-vana.html"},
+        {name:"Dişi Nipelli Priz Kolye",cat:"Kaplinler ve Ek Parçaları - Priz Kolyeler",img:"disi-nipelli-priz-kolye.png",url:"disi-nipelli-priz-kolye.html"},
+        {name:"Dişli Dişi Dirsek",cat:"Dişli Sulama Ek Parçaları",img:"disli-disi-dirsek.png",url:"disli-disi-dirsek.html"},
+        {name:"Dişli Dişi Nipel",cat:"Dişli Sulama Ek Parçaları",img:"disli-disi-nipel.png",url:"disli-disi-nipel.html"},
+        {name:"Dişli Dişi Redüksiyon Dirsek",cat:"Dişli Sulama Ek Parçaları",img:"disli-disi-reduksiyon-dirsek.png",url:"disli-disi-reduksiyon-dirsek.html"},
+        {name:"Düz Damlama Conta",cat:"Damlama Ek Parçaları",img:"duz-damlama-conta.png",url:"duz-damlama-conta.html"},
+        {name:"Erkek Dişi Vana",cat:"Vanalar",img:"erkek-disi-vana.png",url:"erkek-disi-vana.html"},
+        {name:"Erkek Dişli Kör Tapa",cat:"Dişli Sulama Ek Parçaları",img:"erkek-disli-kor-tapa.png",url:"erkek-disli-kor-tapa.html"},
+        {name:"Erkek Nipelli Priz Kolye",cat:"Kaplinler ve Ek Parçaları - Priz Kolyeler",img:"erkek-nipelli-priz-kolye.png",url:"erkek-nipelli-priz-kolye.html"},
+        {name:"Kanallı Conta",cat:"Damlama Ek Parçaları",img:"kanalli-conta.png",url:"kanalli-conta.html"},
+        {name:"Kaplin Dişi Vana",cat:"Vanalar",img:"kaplin-disi-vana.png",url:"kaplin-disi-vana.html"},
+        {name:"Kaplin Erkek Vana",cat:"Vanalar",img:"kaplin-erkek-vana.png",url:"kaplin-erkek-vana.html"},
+        {name:"Kaplin Sıkma Anahtarı",cat:"Yedek Parçalar",img:"kaplin-sikma-anahtari.png",url:"kaplin-sikma-anahtari.html"},
+        {name:"Kilitli Bağlantı Dirsek",cat:"Kilitli BaÄŸlantı Parçaları",img:"kilitli-dirsek.png",url:"kilitli-dirsek.html"},
+        {name:"Erkek Adaptör",cat:"Kilitli BaÄŸlantı Parçaları",img:"kilitli-erkek-adaptor.png",url:"kilitli-erkek-adaptor.html"},
+        {name:"Kilitli Bağlantı Erkek Dirsek",cat:"Kilitli BaÄŸlantı Parçaları",img:"kilitli-erkek-dirsek.png",url:"kilitli-erkek-dirsek.html"},
+        {name:"Kilitli Bağlantı Erkek TE",cat:"Kilitli BaÄŸlantı Parçaları",img:"kilitli-erkek-te.png",url:"kilitli-erkek-te.html"},
+        {name:"Kilitli Bağlantı Redüksiyon Dirsek",cat:"Kilitli BaÄŸlantı Parçaları",img:"kilitli-reduksiyon-dirsek.png",url:"kilitli-reduksiyon-dirsek.html"},
+        {name:"Kilitli Bağlantı TE",cat:"Kilitli BaÄŸlantı Parçaları",img:"kilitli-te.png",url:"kilitli-te.html"},
+        {name:"Kızaklı Priz Kolye",cat:"Kaplinler ve Ek Parçaları - Priz Kolyeler",img:"kizakli-priz-kolye.png",url:"kizakli-priz-kolye.html"},
+        {name:"Mavi Dirsek",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-dirsek-kaplin.png",url:"mavi-dirsek-kaplin.html"},
+        {name:"Mavi Dişi Dirsek",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-disi-dirsek.png",url:"mavi-disi-dirsek.html"},
+        {name:"Mavi Dişi",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavidisi.png",url:"mavi-disi-kaplin.html"},
+        {name:"Mavi Dişi Te",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-disi-te.png",url:"mavi-disi-te.html"},
+        {name:"Mavi Seri Erkek Dirsek",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-erkek-dirsek.png",url:"mavi-erkek-dirsek.html"},
+        {name:"Mavi Erkek Kaplin",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-erkek-kaplin.png",url:"mavi-erkek-kaplin.html"},
+        {name:"Mavi Seri Erkek Te",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-erkek-te.png",url:"mavi-erkek-te.html"},
+        {name:"Mavi Seri Manşon",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-manson.png",url:"mavi-manson.html"},
+        {name:"Mavi Seri Redüksiyon Te",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-reduksiyon-te.png",url:"mavi-reduksiyon-te.html"},
+        {name:"Mavi Redüksiyon",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-reduksiyon.png",url:"mavi-reduksiyon.html"},
+        {name:"Mavi Seri Tapa",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-tapa.png",url:"mavi-tapa.html"},
+        {name:"Mavi Te",cat:"Kaplinler ve Ek Parçaları - Mavi Seri",img:"mavi-te.png",url:"mavi-te.html"},
+        {name:"Nipelli Dişi Dirsek",cat:"Kaplinler ve Ek Parçaları - Nipelli Seri",img:"nipelli-disi-dirsek.png",url:"nipelli-disi-dirsek.html"},
+        {name:"Nipelli Dişi Priz Kolye",cat:"Kaplinler ve Ek Parçaları - Nipelli Seri",img:"nipelli-disi-priz-kolye.png",url:"nipelli-disi-priz-kolye.html"},
+        {name:"Nipelli Erkek Priz Kolye",cat:"Kaplinler ve Ek Parçaları - Nipelli Seri",img:"nipelli-erkek-priz-kolye.png",url:"nipelli-erkek-priz-kolye.html"},
+        {name:"Nipelli Erkek TE",cat:"Kaplinler ve Ek Parçaları - Nipelli Seri",img:"nipelli-erkek-te.png",url:"nipelli-erkek-te.html"},
+        {name:"O-Ring Conta",cat:"Yedek Parçalar",img:"o-ring.png",url:"o-ring.html"},
+        {name:"Pah Açma Aparatı",cat:"Yedek Parçalar",img:"pah-acma-aparati.png",url:"pah-acma-aparati.html"},
+        {name:"Priz Kolye",cat:"Kaplinler ve Ek Parçaları - Priz Kolyeler",img:"priz-kolye.png",url:"priz-kolye.html"},
+        {name:"Dirsek",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",img:"siyah-seri-dirsek.PNG",url:"siyah-dirsek.html"},
+        {name:"Dişi Dirsek",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",img:"siyah-seri-disi-dirsek.png",url:"siyah-disi-dirsek.html"},
+        {name:"Dişi Te",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",img:"siyah-seri-disi-te.png",url:"siyah-disi-te.html"},
+        {name:"Dişi",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",img:"siyah-seri-disi.png",url:"siyah-disi.html"},
+        {name:"Erkek Dirsek",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",img:"siyah-seri-erkek-dirsek.png",url:"siyah-erkek-dirsek.html"},
+        {name:"Erkek",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",img:"siyah-seri-erkek.png",url:"siyah-erkek-kaplin.html"},
+        {name:"Erkek Te",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",img:"siyah-seri-erkek-te.png",url:"siyah-erkek-te.html"},
+        {name:"Manşon",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",img:"siyah-seri-manson.png",url:"siyah-manson.html"},
+        {name:"Redüksiyon Te",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",img:"siyah-reduksiyon-te.png",url:"siyah-reduksiyon-te.html"},
+        {name:"Redüksiyon",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",img:"siyah-reduksiyon.png",url:"siyah-reduksiyon.html"},
+        {name:"Tapa",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",img:"siyah-seri-tapa.png",url:"siyah-tapa.html"},
+        {name:"Te",cat:"Kaplinler ve Ek Parçaları - Siyah Seri",img:"siyah-te.png",url:"siyah-te.html"},
+        {name:"Özel Depo Rekoru",cat:"Bahçe Sulama Sistemleri - Depo Rekorları",img:"Özel Depo Rekoru.png",url:"ozel-depo-rekoru.html"},
+        {name:"Depo Rekoru",cat:"Bahçe Sulama Sistemleri - Depo Rekorları",img:"Depo Rekoru.png",url:"depo-rekoru.html"},
+        {name:"Sintine Depo Rekoru",cat:"Bahçe Sulama Sistemleri - Depo Rekorları",img:"Sintine.png",url:"sintine-depo-rekoru.html"},
+        {name:"Çift Taraflı Depo Rekoru",cat:"Bahçe Sulama Sistemleri - Depo Rekorları",img:"Çift Taraflı Depo Rekoru.png",url:"cift-tarafli-depo-rekoru.html"}
+        ];
+
+        function normalizeTr(str) {
+            if (!str) return '';
+            return str.toString().toLowerCase()
+                .replace(/ı/g, 'i')
+                .replace(/ğ/g, 'g')
+                .replace(/ü/g, 'u')
+                .replace(/ş/g, 's')
+                .replace(/ö/g, 'o')
+                .replace(/ç/g, 'c')
+                .trim();
+        }
+
+        function initSearch() {
+            var input = document.getElementById('searchInput');
+            var resultsDiv = document.getElementById('searchResults');
+            if (!input || !resultsDiv) return;
+
+            resultsDiv.style.cssText = 'position:absolute;top:100%;left:0;right:0;background:#ffffff;border:1px solid #CBD5E1;border-radius:14px;box-shadow:0 12px 35px rgba(0,71,151,0.18);max-height:420px;overflow-y:auto;z-index:9999999;display:none;margin-top:8px;padding:6px 0;';
+
+            input.addEventListener('input', function() {
+                var rawQuery = input.value.trim();
+                var query = normalizeTr(rawQuery);
+
+                if (query.length < 2) {
+                    resultsDiv.style.display = 'none';
+                    resultsDiv.innerHTML = '';
+                    return;
+                }
+
+                // Title matches first, category matches second
+                var titleMatches = [];
+                var categoryMatches = [];
+
+                products.forEach(function(p) {
+                    var normName = normalizeTr(p.name);
+                    var normCat = normalizeTr(p.cat);
+
+                    if (normName.indexOf(query) > -1) {
+                        titleMatches.push(p);
+                    } else if (normCat.indexOf(query) > -1) {
+                        categoryMatches.push(p);
+                    }
+                });
+
+                var matches = titleMatches.concat(categoryMatches);
+
+                if (matches.length === 0) {
+                    resultsDiv.innerHTML = '<div style="padding:16px 20px;color:#64748B;font-size:14px;text-align:center;"><i class="fas fa-search" style="margin-right:8px;color:#94A3B8;"></i><strong>"' + rawQuery + '"</strong> ile eşleşen ürün bulunamadı.</div>';
+                    resultsDiv.style.display = 'block';
+                    return;
+                }
+
+                var html = '';
+                matches.forEach(function(p) {
+                    var imgHtml = p.img ? '<img src="' + p.img + '" alt="" style="width:36px;height:36px;object-fit:contain;background:#F8FAFC;border-radius:6px;padding:2px;border:1px solid #E2E8F0;">' : '<i class="fas fa-cube" style="color:#004797;font-size:16px;"></i>';
+
+                    html += '<a href="' + p.url + '" style="display:flex;align-items:center;gap:12px;padding:10px 16px;color:#1E293B;text-decoration:none;font-size:14px;border-bottom:1px solid #F1F5F9;transition:background 0.15s ease;"';
+                    html += ' onmouseover="this.style.background=\'#EFF6FF\'" onmouseout="this.style.background=\'transparent\'">';
+                    html += imgHtml;
+                    html += '<div style="flex:1;min-width:0;">';
+                    html += '<div style="color:#004797;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + p.name + '</div>';
+                    html += '<div style="font-size:11px;color:#64748B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;">' + p.cat + '</div>';
+                    html += '</div>';
+                    html += '<i class="fas fa-chevron-right" style="color:#CBD5E1;font-size:12px;"></i>';
+                    html += '</a>';
+                });
+
+                resultsDiv.innerHTML = html;
+                resultsDiv.style.display = 'block';
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!input.contains(e.target) && !resultsDiv.contains(e.target)) {
+                    resultsDiv.style.display = 'none';
+                }
+            });
+
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    resultsDiv.style.display = 'none';
+                    input.blur();
+                }
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initSearch);
+        } else {
+            initSearch();
+        }
+    })();
     </script>
 </body>
 </html>
