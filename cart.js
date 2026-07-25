@@ -1,4 +1,4 @@
-function parsePrice(str) {
+﻿function parsePrice(str) {
     if (!str) return 0;
     var cleaned = str.toString().replace(/[^0-9.,]/g, '');
     if (cleaned.indexOf('.') > -1 && cleaned.indexOf(',') > -1) {
@@ -321,19 +321,19 @@ function parsePrice(str) {
     function sendWhatsAppOrder() {
         const cart = getCart();
         if (cart.length === 0) {
-            alert('Aktif sepetiniz boş! Lütfen önce sipariş verilecek ürünleri ekleyin.');
+            alert('Aktif sepetiniz boÅŸ! LÃ¼tfen Ã¶nce sipariÅŸ verilecek Ã¼rÃ¼nleri ekleyin.');
             return;
         }
 
         const timestamp = getFormattedTimestamp();
 
-        let text = `📋 *BAYRAKÇI SULAMA VE YAPI MALZEMELERİ*\n`;
-        text += `*İSKONTOLU FİYAT TEKLİFİ VE SİPARİŞ TALEBİ*\n`;
-        text += `--------------------------------------------------\n`;
-        text += `📅 *Tarih:* ${timestamp}\n`;
-        text += `--------------------------------------------------\n\n`;
-        text += `*ÜRÜN İSMİ | EBAT | LİSTE FİYATI | MİKTAR | TUTAR*\n`;
-        text += `--------------------------------------------------\n`;
+        let text = ğŸ“‹ *BAYRAKÃ‡I SULAMA VE YAPI MALZEMELERÄ°*\n;
+        text += *Ä°SKONTOLU FÄ°YAT TEKLÄ°FÄ° VE SÄ°PARÄ°Å TALEBÄ°*\n;
+        text += --------------------------------------------------\n;
+        text += ğŸ“… *Tarih:* \n;
+        text += --------------------------------------------------\n\n;
+        text += *ÃœRÃœN Ä°SMÄ° | EBAT | LÄ°STE FÄ°YATI | MÄ°KTAR | TUTAR*\n;
+        text += --------------------------------------------------\n;
 
         let totalSum = 0;
 
@@ -364,52 +364,35 @@ function parsePrice(str) {
             const itemTotal = (price * qty).toFixed(2);
             totalSum += parseFloat(itemTotal);
 
-            let cleanName = sanitizeAttr(item.productName || 'Sintine Depo Rekoru');
-            let cleanSize = sanitizeAttr(item.size || '');
-            let code = item.code || '';
+            let cleanName = sanitizeAttr(item.productName || 'ÃœrÃ¼n');
+            let cleanSize = sanitizeAttr(item.size || '').replace(/"/g, '').trim();
+            let code = (item.code || '').trim();
 
-            if (!cleanSize) {
-                if (cleanName.indexOf('1 1/4') > -1) cleanSize = '1 1/4';
-                else if (cleanName.indexOf('1 1/2') > -1) cleanSize = '1 1/2';
-                else if (cleanName.indexOf('3/4') > -1) cleanSize = '3/4';
-                else if (cleanName.indexOf(' 1') > -1 || cleanName === '1') cleanSize = '1';
-            }
-
-            cleanName = cleanName.replace('3/4', '').replace('1 1/4', '').replace('1 1/2', '').replace('1', '').replace(/-\s*$/, '').trim();
-            if (!cleanName) cleanName = 'Sintine Depo Rekoru';
-
-            if (!code) {
+            // Mapped code fallback ONLY for standard Depo Rekoru if code is missing
+            if (!code && cleanName.toLowerCase().indexOf('depo rekoru') > -1) {
                 if (cleanSize && sizeToCodeMap[cleanSize]) {
                     code = sizeToCodeMap[cleanSize];
-                } else if (Math.abs(price - 80) < 0.1 && (cleanSize.indexOf('3/4') > -1)) {
-                    code = '236';
-                } else if (Math.abs(price - 80) < 0.1 && (cleanSize === '1' || cleanSize === '1"' || cleanSize.indexOf('3/4') === -1)) {
-                    code = '237';
-                } else if (Math.abs(price - 115) < 0.1) {
-                    code = '238';
-                } else if (Math.abs(price - 130) < 0.1) {
-                    code = '239';
-                } else {
-                    code = '236';
                 }
             }
 
-            cleanSize = cleanSize.replace(/"/g, '').trim();
-
-            let line = `${idx + 1}. KOD ${code} | ${cleanName}`;
-            if (cleanSize) {
-                line += ` | Ebat: ${cleanSize}`;
+            let line = ${idx + 1}. ;
+            if (code) {
+                line += KOD  | ;
             }
-            line += ` | ${price.toFixed(2)} TL | ${qty} Adet | ${itemTotal} TL`;
+            line += ${cleanName};
+            if (cleanSize) {
+                line +=  | Ebat: ;
+            }
+            line +=  |  TL |  Adet |  TL;
 
-            text += line + `\n`;
+            text += line + \n;
         });
 
-        text += `--------------------------------------------------\n`;
-        text += ` *TOPLAM LİSTE FİYATI:* ${totalSum.toFixed(2)} TL\n`;
-        text += `🎁 *İSKONTO TALEBİ:* Ürün miktarlarımıza ve projemize özel iskonto oranınız ile net iskontolu fiyat teklifinizi öğrenmek istiyoruz.\n`;
-        text += `--------------------------------------------------\n`;
-        text += `Lütfen ürün stok teyidi ile birlikte iskontolu net fiyat teklifinizi iletiniz.`;
+        text += --------------------------------------------------\n;
+        text +=  ğŸ’° *TOPLAM LÄ°STE FÄ°YATI:*  TL\n;
+        text += ğŸ *Ä°SKONTO TALEBÄ°:* ÃœrÃ¼n miktarlarÄ±mÄ±za ve projemize Ã¶zel iskonto oranÄ±nÄ±z ile net iskontolu fiyat teklifinizi Ã¶ÄŸrenmek istiyoruz.\n;
+        text += --------------------------------------------------\n;
+        text += LÃ¼tfen Ã¼rÃ¼n stok teyidi ile birlikte iskontolu net fiyat teklifinizi iletiniz.;
 
         const newOrderRecord = {
             id: Date.now(),
@@ -427,8 +410,7 @@ function parsePrice(str) {
         updateCartUI();
 
         const encodedText = encodeURIComponent(text);
-        const whatsappUrl = `https://wa.me/905533973603?text=${encodedText}`;
-
+        const whatsappUrl = https://wa.me/905533973603?text=;
         window.open(whatsappUrl, '_blank');
     }
 
