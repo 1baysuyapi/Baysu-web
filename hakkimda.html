@@ -893,6 +893,15 @@
             }
         }
     </style>
+    <style id="baysu-cart-drawer-z-index-fix">
+        /* Guarantee Cart Drawer & Overlay sit on top of navbar and everything else */
+        .cart-drawer-overlay, #cartDrawerOverlay {
+            z-index: 9999999 !important;
+        }
+        .cart-drawer, #cartDrawer {
+            z-index: 99999999 !important;
+        }
+    </style>
 </head>
 <body class="bg-gray-950 text-white font-sans" oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
     <nav class="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
