@@ -1369,11 +1369,30 @@
 
     
 
+    
+
     <style id="baysu-absolute-final-fix-css">
-        /* 1. Page Body & Container background: CLEAN LIGHT GRAY (#F8FAFC), ZERO BLUE ON BODY */
-        html, body, .page-content, main, .main-content, .container, .wrapper, section {
+        /* 1. Page Body & Main Container background: CLEAN LIGHT GRAY (#F8FAFC) */
+        html, body, .page-content, main, .main-content, .container, .wrapper {
             background-color: #F8FAFC !important;
             background: #F8FAFC !important;
+        }
+
+        /* 2. Hero Banner Gradient Restoration */
+        .hero-banner {
+            background: linear-gradient(135deg, #0B2545 0%, #134074 55%, #1D4ED8 100%) !important;
+            color: #FFFFFF !important;
+        }
+        .hero-banner h1, .hero-banner p, .hero-banner span, .hero-banner div, .hero-banner li {
+            color: #FFFFFF !important;
+        }
+        .hero-banner p {
+            opacity: 0.95 !important;
+        }
+
+        .user-video-presentation {
+            background: #0F172A !important;
+            color: #F8FAFC !important;
         }
 
         .header-main {
@@ -1382,7 +1401,7 @@
             border-bottom: 1px solid #E2E8F0 !important;
         }
 
-        /* 2. Top Navigation Bar Strip: Solid #004797 Blue Strip */
+        /* 3. Top Navigation Bar Strip: Solid #004797 Blue Strip */
         .nav-bar {
             background-color: #004797 !important;
             background: #004797 !important;
@@ -1428,7 +1447,7 @@
             border-radius: 6px !important;
         }
 
-        /* 3. Product Card Container: Clean White Card */
+        /* 4. Product Card Container: Clean White Card */
         .product-detail-container {
             background: #FFFFFF !important;
             box-shadow: 0 4px 25px rgba(0,0,0,0.06) !important;
@@ -1438,7 +1457,7 @@
             border-radius: 16px !important;
         }
 
-        /* 4. OPENED CATALOG MENU CONTAINER (#mainMenuContainer): CLEAN WHITE, ZERO BLUE OUTSIDE */
+        /* 5. OPENED CATALOG MENU CONTAINER (#mainMenuContainer): CLEAN WHITE, ZERO BLUE OUTSIDE */
         #mainMenuContainer, .main-menu-container {
             background-color: #FFFFFF !important;
             background: #FFFFFF !important;
@@ -1859,7 +1878,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     
-    <script src="cart.js?v=639206705671350289"></script>
+    <script src="cart.js?v=639206707463171583"></script>
 
 
 
@@ -2797,6 +2816,8 @@
         }
     })();
     </script>
+
+    
 
     
 
