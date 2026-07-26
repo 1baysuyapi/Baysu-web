@@ -1725,7 +1725,7 @@
         <div class="nav-content">
             <div class="nav-links">
                 <a href="index.html"><i class="fas fa-home" style="margin-right: 6px;"></i>Ana Sayfa</a>
-                <a href="javascript:void(0)" class="dropdown-toggle" id="menuToggleDesktop"><i class="fas fa-th-large" style="margin-right: 6px;"></i>Ürün Kataloğu</a>
+                <a href="javascript:void(0)" class="dropdown-toggle" id="menuToggleDesktop" onclick="toggleCatalogMenu(event)"><i class="fas fa-th-large"></i> Ürünlerimiz</a>
                 <a href="#about-section"><i class="fas fa-info-circle" style="margin-right: 6px;"></i>Hakkımızda</a>
                 <a href="#contact-section"><i class="fas fa-envelope" style="margin-right: 6px;"></i>İletişim</a>
             </div>
@@ -2843,6 +2843,36 @@
             initSearch();
         }
     })();
+    </script>
+
+    <script id="baysu-robust-menu-toggle-script">
+        function toggleCatalogMenu(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
+            if (menu) {
+                var isHidden = (menu.style.display === 'none' || window.getComputedStyle(menu).display === 'none' || !menu.classList.contains('active'));
+                if (isHidden) {
+                    menu.classList.add('active');
+                    menu.style.display = 'block';
+                    try { menu.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch(err) {}
+                } else {
+                    menu.classList.remove('active');
+                    menu.style.display = 'none';
+                }
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var triggers = document.querySelectorAll('#menuToggle, #menuToggleNav, #menuToggleDesktop, #menuToggleMobile, .menu-toggle, a.dropdown-toggle, .nav-links a[href*="javascript"], .nav-links a:nth-child(2)');
+            triggers.forEach(function(btn) {
+                btn.onclick = toggleCatalogMenu;
+            });
+        });
     </script>
 </body>
 </html>
