@@ -1813,7 +1813,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     
-    <script src="cart.js?v=639206757750219007"></script>
+    <script src="cart.js?v=639206758234781312"></script>
 
 
 
@@ -2820,6 +2820,10 @@
 
     
 
+    
+
+    
+
     <style id="baysu-final-bulletproof-css">
         /* PAGE BODY BACKGROUND IS CLEAN LIGHT GRAY (#F8FAFC) */
         html, body {
@@ -2914,37 +2918,33 @@
             display: block !important;
         }
 
-        /* PRODUCT IMAGE ON LEFT, PRODUCT INFO ON RIGHT */
+        /* USER HAND-DRAWN SPEC:
+           1. TOP: ENLARGED PRODUCT GALLERY (Fills width, big image, no empty right gap)
+           2. MIDDLE: PRODUCT INFO (Category, Title, Features button, Discount badge) BELOW IMAGE
+        */
         .product-top-row {
             display: flex !important;
-            flex-wrap: wrap !important;
-            gap: 35px !important;
+            flex-direction: column !important;
+            width: 100% !important;
+            gap: 20px !important;
             margin-bottom: 25px !important;
-            align-items: center !important;
         }
 
         .product-gallery {
-            flex: 1 1 400px !important;
-            max-width: 500px !important;
             width: 100% !important;
+            max-width: 100% !important;
             background: #F8FAFC !important;
             border: 1px solid #E2E8F0 !important;
             border-radius: 16px !important;
-            padding: 25px !important;
+            padding: 30px !important;
             display: flex !important;
             justify-content: center !important;
             align-items: center !important;
             box-shadow: 0 4px 15px rgba(0,0,0,0.04) !important;
-            order: 1 !important;
+            box-sizing: border-box !important;
         }
 
-        .product-info {
-            flex: 1 1 340px !important;
-            min-width: 280px !important;
-            order: 2 !important;
-        }
-
-        /* ENLARGED PRODUCT IMAGE ON LEFT (420px max-height) */
+        /* ENLARGED PRODUCT IMAGE (420px max-height) */
         .product-main-image {
             max-height: 420px !important;
             height: auto !important;
@@ -2955,10 +2955,30 @@
         }
 
         .product-gallery:hover .product-main-image {
-            transform: scale(1.06) !important;
+            transform: scale(1.05) !important;
         }
 
-        /* COMPACT TABLE SPACING FOR DESKTOP & LANDSCAPE MOBILE FIT */
+        .product-info {
+            width: 100% !important;
+            margin-top: 10px !important;
+        }
+
+        .product-category {
+            font-size: 0.85rem !important;
+            font-weight: 700 !important;
+            color: #0288D1 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        .product-title {
+            font-size: 1.85rem !important;
+            font-weight: 800 !important;
+            color: #0F172A !important;
+            margin: 6px 0 12px 0 !important;
+        }
+
+        /* Full Width Table */
         .table-responsive {
             width: 100% !important;
             overflow-x: auto !important;
@@ -2978,7 +2998,7 @@
         .price-table th, .price-table td {
             text-align: center !important;
             vertical-align: middle !important;
-            padding: 8px 6px !important; /* Compact padding for sleek fit */
+            padding: 8px 6px !important;
             font-size: 13.5px !important;
         }
 
@@ -2991,19 +3011,13 @@
             background: transparent !important;
         }
 
-        /* Mobile & Mobile Landscape Formatting */
-        @media (max-width: 900px) {
+        /* Mobile Formatting */
+        @media (max-width: 768px) {
             .product-detail-container {
                 padding: 15px !important;
             }
             .product-gallery {
-                flex: 1 1 100% !important;
-                max-width: 100% !important;
-                order: 1 !important;
-                margin-bottom: 15px !important;
-            }
-            .product-info {
-                order: 2 !important;
+                padding: 15px !important;
             }
             .product-main-image {
                 max-height: 280px !important;
