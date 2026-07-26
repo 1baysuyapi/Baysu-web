@@ -1633,7 +1633,11 @@
             <div class="product-info">
                 <div class="product-category">Dişli Sulama Ek Parçaları</div>
                 <h1 class="product-title">Dişli Dişi Nipel</h1>
-                <div class="short-desc-box">
+                
+                <button type="button" class="btn-features-toggle" onclick="toggleProductFeatures(this)" style="background: #EFF6FF; color: #004797; border: 1.5px solid #004797; padding: 8px 18px; border-radius: 20px; font-weight: 700; font-size: 13.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin: 10px 0; transition: all 0.2s ease;">
+                    <i class="fas fa-list-check"></i> Ürün Özellikleri <i class="fas fa-chevron-down toggle-icon" style="font-size: 11px; transition: transform 0.2s ease;"></i>
+                </button>
+                <div class="product-features-box" style="display: none; background: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 12px; padding: 14px 16px; font-size: 13.5px; color: #334155; line-height: 1.5; margin-bottom: 12px;">
                     Dişli Dişi Nipel, iki farklı dişli bağlantıya sahip boruyu birleştirmek için kullanılan bir ek parçadır. Dişli Dişi Nipel, iki tarafındaki dişli bağlantılar sayesinde, boru tesisatında esnek ve güvenli bir bağlantı sağlar. Yüksek dayanıklılığa sahip malzemeden üretilmiştir ve çeşitli sulama sistemlerinde güvenle kullanılabilir.
                 </div>
                 <div class="discount-badge-bar">
@@ -1821,7 +1825,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     
-    <script src="cart.js?v=639206744905159565"></script>
+    <script src="cart.js?v=639206746202247638"></script>
 
 
 
@@ -2814,6 +2818,8 @@
 
     
 
+    
+
     <style id="baysu-final-bulletproof-css">
         /* PAGE BODY BACKGROUND IS CLEAN LIGHT GRAY (#F8FAFC) */
         html, body {
@@ -2861,12 +2867,6 @@
             padding: 0 15px !important;
         }
 
-        .nav-links {
-            display: flex !important;
-            gap: 20px !important;
-            align-items: center !important;
-        }
-
         .nav-links a {
             color: #FFFFFF !important;
             font-weight: 700 !important;
@@ -2879,12 +2879,7 @@
             white-space: nowrap !important;
         }
 
-        .nav-links a:hover {
-            color: #FF6B6B !important;
-            background: rgba(255, 255, 255, 0.12) !important;
-        }
-
-        /* Hero Banner Styling */
+        /* Hero Banner */
         .hero-banner {
             background: linear-gradient(135deg, #0B2545 0%, #134074 55%, #1D4ED8 100%) !important;
             border-radius: 20px !important;
@@ -2904,7 +2899,7 @@
             color: #FFFFFF !important;
         }
 
-        /* Product Card Container & Full Width Table Placement */
+        /* Product Card Container */
         .product-detail-container {
             background-color: #FFFFFF !important;
             background: #FFFFFF !important;
@@ -2919,23 +2914,48 @@
             display: block !important;
         }
 
+        /* Swapped Layout: Product Info on LEFT, Product Gallery on RIGHT */
         .product-top-row {
             display: flex !important;
             flex-wrap: wrap !important;
             gap: 35px !important;
             margin-bottom: 25px !important;
-            align-items: flex-start !important;
-        }
-
-        .product-gallery {
-            flex: 0 0 380px !important;
-            max-width: 420px !important;
-            width: 100% !important;
+            align-items: center !important;
         }
 
         .product-info {
-            flex: 1 1 300px !important;
+            flex: 1 1 340px !important;
             min-width: 280px !important;
+            order: 1 !important;
+        }
+
+        .product-gallery {
+            flex: 1 1 420px !important;
+            max-width: 520px !important;
+            width: 100% !important;
+            background: #F8FAFC !important;
+            border: 1px solid #E2E8F0 !important;
+            border-radius: 16px !important;
+            padding: 25px !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04) !important;
+            order: 2 !important;
+        }
+
+        /* LARGER PRODUCT IMAGE (380px max-height) */
+        .product-main-image {
+            max-height: 380px !important;
+            height: auto !important;
+            width: auto !important;
+            max-width: 100% !important;
+            object-fit: contain !important;
+            transition: transform 0.3s ease !important;
+        }
+
+        .product-gallery:hover .product-main-image {
+            transform: scale(1.06) !important;
         }
 
         /* Full Width Table (Spans across entire card bottom, no empty left space) */
@@ -2970,7 +2990,7 @@
             background: transparent !important;
         }
 
-        /* Mobile Navbar: Fit single 'Ürünlerimiz' button centered */
+        /* Mobile Navbar: Single centered 'Ürünlerimiz' button */
         @media (max-width: 768px) {
             .product-detail-container {
                 padding: 15px !important;
@@ -2978,6 +2998,14 @@
             .product-gallery {
                 flex: 1 1 100% !important;
                 max-width: 100% !important;
+                order: 1 !important;
+                margin-bottom: 15px !important;
+            }
+            .product-info {
+                order: 2 !important;
+            }
+            .product-main-image {
+                max-height: 260px !important;
             }
             .nav-bar {
                 display: block !important;
@@ -3045,5 +3073,21 @@
             padding-bottom: 100px !important;
         }
     </style>
+
+    <script id="baysu-features-toggle-script">
+        function toggleProductFeatures(btn) {
+            var box = btn.nextElementSibling;
+            if (box && box.classList.contains('product-features-box')) {
+                var icon = btn.querySelector('.toggle-icon');
+                if (box.style.display === 'none' || !box.style.display) {
+                    box.style.display = 'block';
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                } else {
+                    box.style.display = 'none';
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                }
+            }
+        }
+    </script>
 </body>
 </html>
