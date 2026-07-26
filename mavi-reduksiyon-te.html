@@ -2212,7 +2212,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     
-    <script src="cart.js?v=639206728076665769"></script>
+    <script src="cart.js?v=639206739085911180"></script>
 
 
 
@@ -3201,6 +3201,8 @@
 
     
 
+    
+
     <style id="baysu-final-bulletproof-css">
         /* PAGE BODY BACKGROUND IS CLEAN LIGHT GRAY (#F8FAFC) */
         html, body {
@@ -3224,7 +3226,7 @@
             width: 100% !important;
         }
 
-        /* Top Navigation Bar Strip: Uniform Solid #004797 Blue Strip */
+        /* Top Navigation Bar Strip: Solid #004797 Blue Strip */
         .nav-bar {
             background-color: #004797 !important;
             background: #004797 !important;
@@ -3339,56 +3341,97 @@
             box-sizing: border-box !important;
         }
 
-        /* Mobile Navbar: Fit 3 items (Ürünlerimiz, Hakkımızda, İletişim) without scrolling */
+        /* Desktop Table Styling */
+        .table-responsive {
+            width: 100% !important;
+            overflow-x: auto !important;
+            margin-top: 15px !important;
+            border-radius: 12px !important;
+            border: 1px solid #E2E8F0 !important;
+        }
+
+        .price-table {
+            width: 100% !important;
+            border-collapse: collapse !important;
+        }
+
+        .price-table th, .price-table td {
+            text-align: center !important;
+            vertical-align: middle !important;
+        }
+
+        /* MOBILE DIRECTIVES:
+           1. Single centered button 'Ürünlerimiz' on mobile blue navbar strip.
+           2. Price table fits 100% on mobile without horizontal scrolling.
+        */
         @media (max-width: 768px) {
             .nav-bar {
                 display: block !important;
-                padding: 4px 0 !important;
+                padding: 6px 0 !important;
                 overflow-x: hidden !important;
+                width: 100% !important;
             }
             .nav-content {
-                justify-content: space-around !important;
+                justify-content: center !important;
                 width: 100% !important;
                 padding: 0 !important;
             }
             .nav-links {
                 display: flex !important;
-                justify-content: space-around !important;
+                justify-content: center !important;
                 align-items: center !important;
                 width: 100% !important;
-                gap: 2px !important;
+                gap: 0 !important;
             }
+            /* Hide Ana Sayfa, Hakkımızda, İletişim on mobile so ONLY Ürünlerimiz is shown centered */
             .nav-links a {
-                font-size: 13px !important;
-                padding: 8px 6px !important;
-                white-space: nowrap !important;
-            }
-            /* Hide Ana Sayfa in mobile navbar so 3 items fit perfectly */
-            .nav-links a:first-child {
                 display: none !important;
             }
+            .nav-links a.dropdown-toggle, .nav-links a#menuToggleDesktop, .nav-links a[onclick*="toggleCatalogMenu"], .nav-links a:nth-child(2) {
+                display: inline-flex !important;
+                font-size: 15px !important;
+                font-weight: 800 !important;
+                padding: 8px 24px !important;
+                background: rgba(255, 255, 255, 0.18) !important;
+                border-radius: 20px !important;
+                margin: 0 auto !important;
+                text-align: center !important;
+                justify-content: center !important;
+            }
 
-            /* Mobile Price Table Responsiveness Fix */
+            /* Mobile Table Fitting 100% Without Horizontal Scroll */
             .table-responsive {
                 width: 100% !important;
-                overflow-x: auto !important;
-                -webkit-overflow-scrolling: touch !important;
+                overflow-x: visible !important;
                 margin-top: 10px !important;
                 border-radius: 10px !important;
                 border: 1px solid #CBD5E1 !important;
+                padding: 0 !important;
             }
             .price-table {
                 width: 100% !important;
-                min-width: 500px !important;
-                font-size: 12px !important;
+                min-width: 100% !important;
+                max-width: 100% !important;
+                table-layout: fixed !important;
+                font-size: 11px !important;
             }
             .price-table th, .price-table td {
-                padding: 7px 5px !important;
-                font-size: 12px !important;
+                padding: 6px 2px !important;
+                font-size: 11px !important;
+                text-align: center !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+            }
+            .price-table .qty-stepper {
+                scale: 0.8 !important;
+                transform-origin: center !important;
+                margin: 0 auto !important;
             }
             .price-table .btn-add-cart-custom {
-                padding: 6px 8px !important;
-                font-size: 11px !important;
+                padding: 6px 4px !important;
+                font-size: 10px !important;
+                gap: 2px !important;
+                border-radius: 6px !important;
             }
         }
 

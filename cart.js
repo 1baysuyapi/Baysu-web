@@ -75,17 +75,6 @@ function parsePrice(str) {
         }
     }
 
-    // Geçmiş sipariş arşivini temizle
-    function clearArchivedOrders() {
-        if (confirm('Tüm geçmiş sipariş arşiviniz silinecektir. Emin misiniz?')) {
-            try {
-                localStorage.removeItem(ARCHIVE_LIST_KEY);
-                localStorage.removeItem(OLD_SINGLE_ARCHIVE_KEY);
-                renderCartItems();
-            } catch (e) {}
-        }
-    }
-
     function getFormattedTimestamp() {
         const now = new Date();
         const months = [
@@ -194,9 +183,7 @@ function parsePrice(str) {
         if (!cartBody) return;
 
         const cart = getCart();
-        const archivedOrders = getArchivedOrders();
         let totalSum = 0;
-
         let html = '';
 
         if (cart.length === 0) {
@@ -213,20 +200,26 @@ function parsePrice(str) {
                 totalSum += parseFloat(itemTotal);
                 const cleanSize = sanitizeAttr(item.size);
 
+                let qtyMeta = '';
+                if (item.paketQty && item.paketQty !== '-') {
+                    qtyMeta += `Paket: <strong>${item.paketQty}</strong> | `;
+                }
+                qtyMeta += `Koli: <strong>${item.boxQty || '-'}</strong>`;
+
                 return `
                     <div class="cart-item">
                         <div class="cart-item-info">
                             <h4>${sanitizeAttr(item.productName)}</h4>
-                            <div class="cart-item-meta">Ebat: <strong>${cleanSize}</strong> | Çuval Adedi: <strong>${item.boxQty || '-'}</strong></div>
+                            <div class="cart-item-meta">Ebat: <strong>${cleanSize}</strong> | ${qtyMeta}</div>
                             <div class="cart-item-price">${item.quantity} Adet x ${item.price.toFixed(2)} TL = <strong>${itemTotal} TL</strong></div>
                         </div>
                         <div class="cart-item-actions">
                             <div class="drawer-qty-selector" style="display: inline-flex; align-items: center; background: #F1F5F9; border-radius: 8px; padding: 2px; border: 1px solid #CBD5E1;">
                                 <button type="button" class="drawer-qty-btn" data-action="minus" data-index="${index}" style="width: 28px; height: 28px; border: none; background: #fff; border-radius: 6px; font-weight: bold; cursor: pointer;">-</button>
-                                <span style="padding: 0 10px; font-weight: 700; font-size: 14px;">${item.quantity}</span>
+                                <span style="padding: 0 8px; font-weight: 700; font-size: 13px;">${item.quantity}</span>
                                 <button type="button" class="drawer-qty-btn" data-action="plus" data-index="${index}" style="width: 28px; height: 28px; border: none; background: #fff; border-radius: 6px; font-weight: bold; cursor: pointer;">+</button>
                             </div>
-                            <button class="remove-cart-item" data-remove-index="${index}" style="background: none; border: none; color: #EF4444; cursor: pointer; font-size: 16px; margin-left: 10px;" title="Sil">
+                            <button class="remove-cart-item" data-remove-index="${index}" style="background: none; border: none; color: #EF4444; cursor: pointer; font-size: 16px; margin-left: 8px;" title="Sil">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>
@@ -235,64 +228,39 @@ function parsePrice(str) {
             }).join('');
         }
 
-        if (archivedOrders && archivedOrders.length > 0) {
-            html += `
-                <div class="archived-order-section" style="margin-top: 25px; padding-top: 15px; border-top: 2px dashed #CBD5E1;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                        <h4 style="margin: 0; font-size: 14px; color: #004797; font-weight: 700;"><i class="fas fa-history"></i> Geçmiş Siparişler (${archivedOrders.length})</h4>
-                        <button type="button" id="clearArchiveBtn" style="background: none; border: none; color: #64748B; font-size: 11px; cursor: pointer; text-decoration: underline;">Arşivi Temizle</button>
-                    </div>
-                    ${archivedOrders.map((order, orderIdx) => `
-                        <div class="archived-order-box" style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 12px; margin-bottom: 12px;">
-                            <div style="font-size: 12px; font-weight: 700; color: #1E293B; margin-bottom: 6px; display: flex; justify-content: space-between;">
-                                <span>📋 Sipariş #${archivedOrders.length - orderIdx}</span>
-                                <span style="color: #64748B; font-weight: 500; font-size: 11px;"><i class="far fa-clock"></i> ${order.timestamp}</span>
-                            </div>
-                            ${(order.items || []).map(item => `
-                                <div class="archived-item-line" style="font-size: 12px; color: #475569; margin-bottom: 4px;">
-                                    • <strong>${sanitizeAttr(item.productName)}</strong> (${sanitizeAttr(item.size)}) - ${item.quantity} Adet x ${item.price.toFixed(2)} TL = ${(item.price * item.quantity).toFixed(2)} TL
-                                </div>
-                            `).join('')}
-                            <div style="font-weight: 700; color: #059669; font-size: 13px; margin-top: 8px; text-align: right; border-top: 1px solid #E2E8F0; padding-top: 6px;">
-                                Sipariş Tutarı: ${order.totalSum ? order.totalSum.toFixed(2) : '0.00'} TL
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-        }
-
         cartBody.innerHTML = html;
 
         if (cartTotalAmount) {
-            cartTotalAmount.textContent = totalSum.toFixed(2) + ' TL';
-        }
-
-        const clearArchiveBtn = document.getElementById('clearArchiveBtn');
-        if (clearArchiveBtn) {
-            clearArchiveBtn.addEventListener('click', clearArchivedOrders);
+            cartTotalAmount.textContent = `${totalSum.toFixed(2)} ₺`;
         }
     }
 
-    function addItem(productName, size, boxQty, price, quantity, code) {
+    function addItem(productName, size, boxQty, price, quantity, code, stepVal, paketQty) {
         let cart = getCart();
         const cleanName = sanitizeAttr(productName);
         const cleanSize = sanitizeAttr(size);
-        const parsedQty = Math.max(1, parseInt(quantity) || 1);
+        const step = parseInt(stepVal) || 1;
+        const min = step;
+        const parsedQty = Math.max(min, parseInt(quantity) || min);
 
         const existingIndex = cart.findIndex(item => sanitizeAttr(item.productName) === cleanName && sanitizeAttr(item.size) === cleanSize);
 
         if (existingIndex > -1) {
             cart[existingIndex].quantity += parsedQty;
             if (code) cart[existingIndex].code = code;
+            cart[existingIndex].step = step;
+            if (paketQty) cart[existingIndex].paketQty = paketQty;
         } else {
             cart.push({
                 productName: cleanName,
                 size: cleanSize,
                 boxQty: boxQty || '-',
+                paketQty: paketQty || '-',
                 price: parseFloat(price) || 0,
                 quantity: parsedQty,
-                code: code || ''
+                code: code || '',
+                step: step,
+                min: min
             });
         }
 
@@ -302,9 +270,13 @@ function parsePrice(str) {
     function changeQty(index, delta) {
         let cart = getCart();
         if (cart[index]) {
-            cart[index].quantity += delta;
-            if (cart[index].quantity <= 0) {
+            var step = cart[index].step || 1;
+            var min = cart[index].min || step;
+            var newQty = cart[index].quantity + (delta * step);
+            if (newQty < min) {
                 cart.splice(index, 1);
+            } else {
+                cart[index].quantity = newQty;
             }
             saveCart(cart);
         }
@@ -337,102 +309,38 @@ function parsePrice(str) {
 
         let totalSum = 0;
 
-        const sizeToCodeMap = {
-            '1/2': '275',
-            '1/2"': '275',
-            '3/4': '276',
-            '3/4"': '276',
-            '1': '277',
-            '1"': '277',
-            '1 1/4': '278',
-            '1 1/4"': '278',
-            '1 1/2': '279',
-            '1 1/2"': '279',
-            '2': '280',
-            '2"': '280',
-            '3': '281',
-            '3"': '281',
-            '4': '282',
-            '4"': '282',
-            '2 1/2': '324',
-            '2 1/2"': '324'
-        };
-
-        cart.forEach((item, idx) => {
-            const price = parseFloat(item.price || 0);
-            const qty = parseInt(item.quantity || 1);
-            const itemTotal = (price * qty).toFixed(2);
-            totalSum += parseFloat(itemTotal);
-
-            let cleanName = sanitizeAttr(item.productName || 'Ürün');
-            let cleanSize = sanitizeAttr(item.size || '').replace(/"/g, '').trim();
-            let code = (item.code || '').trim();
-
-            if (!code && cleanName.toLowerCase().indexOf('depo rekoru') > -1) {
-                if (cleanSize && sizeToCodeMap[cleanSize]) {
-                    code = sizeToCodeMap[cleanSize];
-                }
-            }
-
-            let line = `${idx + 1}. `;
-            if (code) {
-                line += `KOD ${code} | `;
-            }
-            line += `${cleanName}`;
-            if (cleanSize) {
-                line += ` | Ebat: ${cleanSize}`;
-            }
-            line += ` | ${price.toFixed(2)} TL | ${qty} Adet | ${itemTotal} TL`;
-
-            text += line + `\n`;
+        cart.forEach((item, i) => {
+            const itemTotal = item.price * item.quantity;
+            totalSum += itemTotal;
+            const codeStr = item.code ? ` (Kod: ${item.code})` : '';
+            text += `${i + 1}. *${item.productName}*${codeStr}\n`;
+            text += `   Ebat: ${item.size} | Koli: ${item.boxQty}\n`;
+            text += `   Birim Fiyat: ${item.price.toFixed(2)} TL\n`;
+            text += `   Miktar: *${item.quantity} Adet*\n`;
+            text += `   Tutar: *${itemTotal.toFixed(2)} TL*\n\n`;
         });
 
         text += `--------------------------------------------------\n`;
-        text += ` *TOPLAM LİSTE FİYATI:* ${totalSum.toFixed(2)} TL\n`;
-        text += `🎁 *İSKONTO TALEBİ:* Ürün miktarlarımıza ve projemize özel iskonto oranınız ile net iskontolu fiyat teklifinizi öğrenmek istiyoruz.\n`;
+        text += `💰 *TOPLAM LİSTE TUTARI:* *${totalSum.toFixed(2)} TL*\n`;
         text += `--------------------------------------------------\n`;
-        text += `Lütfen ürün stok teyidi ile birlikte iskontolu net fiyat teklifinizi iletiniz.`;
-
-        const newOrderRecord = {
-            id: Date.now(),
-            timestamp: timestamp,
-            items: cart,
-            totalSum: totalSum
-        };
-
-        saveArchivedOrder(newOrderRecord);
-
-        try {
-            localStorage.removeItem(ACTIVE_STORAGE_KEY);
-        } catch (e) {}
-
-        updateCartUI();
+        text += `⚠️ *Not:* Yukarıdaki tutar liste fiyatıdır. Sipariş miktarımıza göre özel toptan iskonto teklifinizi rica ederiz.`;
 
         const encodedText = encodeURIComponent(text);
         const whatsappUrl = `https://wa.me/905533973603?text=${encodedText}`;
 
+        saveArchivedOrder({
+            id: 'ORD-' + Date.now(),
+            date: timestamp,
+            items: cart,
+            totalSum: totalSum.toFixed(2)
+        });
+
         window.open(whatsappUrl, '_blank');
     }
 
-    let isInitialized = false;
-
     document.addEventListener('DOMContentLoaded', () => {
-        if (isInitialized) return;
-        isInitialized = true;
-
         injectCartUI();
         updateCartUI();
-
-        document.body.addEventListener('change', (e) => {
-            if (e.target.classList.contains('qty-input')) {
-                let val = parseInt(e.target.value);
-                if (isNaN(val) || val < 1) {
-                    e.target.value = 1;
-                } else {
-                    e.target.value = val;
-                }
-            }
-        });
 
         document.body.addEventListener('click', (e) => {
             if (e._handledByBaysuCart) return;
@@ -462,21 +370,26 @@ function parsePrice(str) {
                 return;
             }
 
-            const tableQtyBtn = e.target.closest('.qty-selector .qty-btn');
+            const tableQtyBtn = e.target.closest('.qty-selector .qty-btn, .qty-stepper .qty-btn');
             if (tableQtyBtn) {
                 e.preventDefault();
                 e.stopPropagation();
                 e._handledByBaysuCart = true;
 
-                const selector = tableQtyBtn.closest('.qty-selector');
+                const selector = tableQtyBtn.closest('.qty-selector, .qty-stepper');
                 const input = selector ? selector.querySelector('.qty-input') : null;
                 if (input) {
-                    let currentVal = parseInt(input.value) || 1;
+                    let step = parseInt(input.getAttribute('step')) || 1;
+                    let min = parseInt(input.getAttribute('min')) || step;
+                    let currentVal = parseInt(input.value) || step;
+
                     if (tableQtyBtn.classList.contains('qty-plus') || tableQtyBtn.textContent.trim() === '+') {
-                        input.value = currentVal + 1;
+                        input.value = currentVal + step;
                     } else if (tableQtyBtn.classList.contains('qty-minus') || tableQtyBtn.textContent.trim() === '-') {
-                        if (currentVal > 1) {
-                            input.value = currentVal - 1;
+                        if (currentVal - step >= min) {
+                            input.value = currentVal - step;
+                        } else {
+                            input.value = min;
                         }
                     }
                 }
@@ -495,13 +408,17 @@ function parsePrice(str) {
                 const productName = addBtn.getAttribute('data-product');
                 const size = addBtn.getAttribute('data-size');
                 const boxQty = addBtn.getAttribute('data-box');
+                const paketQty = addBtn.getAttribute('data-paket');
                 const price = addBtn.getAttribute('data-price');
                 const code = addBtn.getAttribute('data-code');
                 const row = addBtn.closest('tr');
                 const qtyInput = row ? row.querySelector('.qty-input') : null;
-                const quantity = qtyInput ? (parseInt(qtyInput.value) || 1) : 1;
 
-                addItem(productName, size, boxQty, price, quantity, code);
+                const stepAttr = qtyInput ? qtyInput.getAttribute('step') : null;
+                const stepVal = parseInt(stepAttr) || 1;
+                const quantity = qtyInput ? (parseInt(qtyInput.value) || stepVal) : stepVal;
+
+                addItem(productName, size, boxQty, price, quantity, code, stepVal, paketQty);
 
                 const originalText = addBtn.innerHTML;
                 addBtn.classList.add('added');
@@ -534,6 +451,5 @@ function parsePrice(str) {
         sendWhatsAppOrder,
         getCart,
         getArchivedOrders,
-        clearArchivedOrders
     };
 })();
