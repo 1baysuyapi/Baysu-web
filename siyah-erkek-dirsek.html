@@ -1354,9 +1354,11 @@
 
     
 
-    <style id="baysu-perfect-user-fixes-css">
-        /* 1. Body & Page background light soft gray, NOT blue */
-        body, html, .page-content, main, .main-content {
+    
+
+    <style id="baysu-outer-margins-and-mobile-toggle-css">
+        /* 1. Left, right, body, outer page background is CLEAN LIGHT GRAY (#F8FAFC), NOT BLUE */
+        html, body, .page-content, main, .main-content, .container, .wrapper {
             background-color: #F8FAFC !important;
             background: #F8FAFC !important;
         }
@@ -1367,7 +1369,7 @@
             border-bottom: 1px solid #E2E8F0 !important;
         }
 
-        /* 2. Top nav bar is solid blue #004797 */
+        /* 2. Top nav bar itself is solid blue (#004797) */
         .nav-bar {
             background-color: #004797 !important;
             background: #004797 !important;
@@ -1417,9 +1419,23 @@
             background: #FFFFFF !important;
             box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
             border: 1px solid #E2E8F0 !important;
+            margin: 20px auto !important;
+            max-width: 1200px !important;
         }
 
-        /* 3. Mobile Display of Blue Nav Bar (Ana Sayfa, Ürünlerimiz, Hakkımızda, İletişim) */
+        /* 3. Mobile catalog menu container active display fix */
+        #mainMenuContainer.active, .main-menu-container.active {
+            display: block !important;
+            position: relative !important;
+            z-index: 99999 !important;
+            width: 100% !important;
+            background: #FFFFFF !important;
+            margin-bottom: 20px !important;
+            border-radius: 12px !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important;
+        }
+
+        /* Mobile navbar styling */
         @media (max-width: 768px) {
             .nav-bar {
                 display: block !important;
@@ -1445,7 +1461,6 @@
             }
         }
 
-        /* 4. Footer padding so floating cart/WhatsApp never overlaps KVKK links */
         footer {
             padding-bottom: 100px !important;
         }
@@ -2200,7 +2215,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     
-    <script src="cart.js?v=639206702077986942"></script>
+    <script src="cart.js?v=639206704235981721"></script>
 
 
 
@@ -3141,7 +3156,9 @@
 
     
 
-    <script id="baysu-no-scroll-toggle-script">
+    
+
+    <script id="baysu-mobile-click-toggle-script">
         function toggleCatalogMenu(e) {
             if (e) {
                 e.preventDefault();
@@ -3166,6 +3183,9 @@
             var triggers = document.querySelectorAll('#menuToggle, #menuToggleNav, #menuToggleDesktop, #menuToggleMobile, .menu-toggle, a.dropdown-toggle, .nav-links a[href*="javascript"], .nav-links a:nth-child(2)');
             triggers.forEach(function(btn) {
                 btn.onclick = toggleCatalogMenu;
+                btn.ontouchend = function(e) {
+                    toggleCatalogMenu(e);
+                };
             });
         });
     </script>
