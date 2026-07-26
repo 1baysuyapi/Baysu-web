@@ -1367,9 +1367,11 @@
 
     
 
-    <style id="baysu-outer-margins-and-mobile-toggle-css">
-        /* 1. Left, right, body, outer page background is CLEAN LIGHT GRAY (#F8FAFC), NOT BLUE */
-        html, body, .page-content, main, .main-content, .container, .wrapper {
+    
+
+    <style id="baysu-absolute-final-fix-css">
+        /* 1. Page Body & Container background: CLEAN LIGHT GRAY (#F8FAFC), ZERO BLUE ON BODY */
+        html, body, .page-content, main, .main-content, .container, .wrapper, section {
             background-color: #F8FAFC !important;
             background: #F8FAFC !important;
         }
@@ -1380,11 +1382,11 @@
             border-bottom: 1px solid #E2E8F0 !important;
         }
 
-        /* 2. Top nav bar itself is solid blue (#004797) */
+        /* 2. Top Navigation Bar Strip: Solid #004797 Blue Strip */
         .nav-bar {
             background-color: #004797 !important;
             background: #004797 !important;
-            padding: 10px 15px !important;
+            padding: 8px 15px !important;
             width: 100% !important;
             position: sticky !important;
             top: 0 !important;
@@ -1426,27 +1428,65 @@
             border-radius: 6px !important;
         }
 
+        /* 3. Product Card Container: Clean White Card */
         .product-detail-container {
             background: #FFFFFF !important;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.06) !important;
             border: 1px solid #E2E8F0 !important;
             margin: 20px auto !important;
             max-width: 1200px !important;
+            border-radius: 16px !important;
         }
 
-        /* 3. Mobile catalog menu container active display fix */
+        /* 4. OPENED CATALOG MENU CONTAINER (#mainMenuContainer): CLEAN WHITE, ZERO BLUE OUTSIDE */
+        #mainMenuContainer, .main-menu-container {
+            background-color: #FFFFFF !important;
+            background: #FFFFFF !important;
+            border: 1px solid #CBD5E1 !important;
+            border-radius: 12px !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12) !important;
+            padding: 15px !important;
+            max-width: 1200px !important;
+            margin: 10px auto 25px auto !important;
+        }
+
         #mainMenuContainer.active, .main-menu-container.active {
             display: block !important;
             position: relative !important;
             z-index: 99999 !important;
-            width: 100% !important;
+            background-color: #FFFFFF !important;
             background: #FFFFFF !important;
-            margin-bottom: 20px !important;
-            border-radius: 12px !important;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important;
         }
 
-        /* Mobile navbar styling */
+        /* Main Category Header inside opened menu */
+        .main-category-header {
+            background: #FFFFFF !important;
+            border: 1.5px solid #CBD5E1 !important;
+            border-radius: 10px !important;
+            padding: 14px 20px !important;
+            margin-bottom: 10px !important;
+            color: #004797 !important;
+        }
+
+        .main-category-header:hover {
+            background: #F1F5F9 !important;
+            border-color: #004797 !important;
+        }
+
+        .main-category-header h3 {
+            color: #004797 !important;
+            font-weight: 700 !important;
+            font-size: 1rem !important;
+        }
+
+        /* Category Items inside accordion */
+        .category-item {
+            background: #FFFFFF !important;
+            border: 1px solid #E2E8F0 !important;
+            border-radius: 8px !important;
+        }
+
+        /* Mobile Navbar Adjustments */
         @media (max-width: 768px) {
             .nav-bar {
                 display: block !important;
@@ -1466,9 +1506,6 @@
             .nav-links a {
                 font-size: 13px !important;
                 padding: 6px 8px !important;
-            }
-            .top-nav-bar {
-                display: flex !important;
             }
         }
 
@@ -1840,7 +1877,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     
-    <script src="cart.js?v=639206704235981721"></script>
+    <script src="cart.js?v=639206705671350289"></script>
 
 
 
@@ -2778,6 +2815,8 @@
         }
     })();
     </script>
+
+    
 
     
 
