@@ -2389,6 +2389,19 @@
                 display: none !important;
             }
         }
+    
+        /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
+        .top-nav-bar {
+            display: none !important;
+        }
+        @media (max-width: 768px) {
+            .top-nav-bar {
+                display: flex !important;
+            }
+            .nav-bar {
+                display: none !important;
+            }
+        }
     </style>
 
     <script id="baysu-features-toggle-script">
