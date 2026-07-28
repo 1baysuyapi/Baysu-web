@@ -894,13 +894,7 @@
         }
     </style>
 
-    <style id="baysu-hide-duplicate-navbar-mobile">
-        @media (max-width: 768px) {
-            .nav-bar {
-                display: none !important;
-            }
-        }
-    </style>
+    
     <style id="baysu-cart-drawer-z-index-fix">
         /* Guarantee Cart Drawer & Overlay sit on top of navbar and everything else */
         .cart-drawer-overlay, #cartDrawerOverlay {
@@ -926,6 +920,26 @@
     
 
     
+
+    <style id="baysu-pc-mobile-nav-toggle-css">
+        /* Default PC / Desktop */
+        .top-nav-bar {
+            display: none !important;
+        }
+        .nav-bar {
+            display: block !important;
+        }
+
+        /* Mobile Layout */
+        @media (max-width: 768px) {
+            .top-nav-bar {
+                display: flex !important;
+            }
+            .nav-bar {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
   <body class="flex justify-center items-center h-screen overflow-hidden bg-white font-sans text-center px-6" oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
     <div class="w-full">

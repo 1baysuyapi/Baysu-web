@@ -1342,13 +1342,7 @@
         }
     </style>
 
-    <style id="baysu-hide-duplicate-navbar-mobile">
-        @media (max-width: 768px) {
-            .nav-bar {
-                display: none !important;
-            }
-        }
-    </style>
+    
     <style id="baysu-cart-drawer-z-index-fix">
         /* Guarantee Cart Drawer & Overlay sit on top of navbar and everything else */
         .cart-drawer-overlay, #cartDrawerOverlay {
@@ -1374,6 +1368,26 @@
     
 
     
+
+    <style id="baysu-pc-mobile-nav-toggle-css">
+        /* Default PC / Desktop */
+        .top-nav-bar {
+            display: none !important;
+        }
+        .nav-bar {
+            display: block !important;
+        }
+
+        /* Mobile Layout */
+        @media (max-width: 768px) {
+            .top-nav-bar {
+                display: flex !important;
+            }
+            .nav-bar {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
     <header class="header-main">
@@ -1535,7 +1549,7 @@
             <ul class="category-group" id="bahce-sulama-group">
                 <li class="category-item">
                     <a href="bahce-ekipmanlari.html" style="text-decoration: none !important; display: block !important; width: 100% !important;">
-                        <div class="category-header" style="padding: 12px 30px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; background: #FFFFFF !important; user-select: none !important; border-bottom: 1px solid #E2E8F0 !important; cursor: pointer !important;">
+                        <div class="category-header" style="padding: 12px 30px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; background: #FFFFFF !important; user-select: none !important; border-bottom: 1px solid #E2E8F0 !important; cursor: pointer !important;" onmouseover="this.style.background='#F1F5F9'" onmouseout="this.style.background='#FFFFFF'">
                             <h3 style="margin: 0 !important; font-size: 14px !important; font-weight: 700 !important; color: #0F172A !important; font-family: 'Poppins', sans-serif !important;">Bahçe Ekipmanları</h3>
                         </div>
                     </a>
@@ -1819,7 +1833,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     
-    <script src="cart.js?v=639208460330691473"></script>
+    <script src="cart.js?v=639208775807954866"></script>
 
 
 

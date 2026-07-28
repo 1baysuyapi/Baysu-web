@@ -1683,9 +1683,25 @@
 
     
 
-    
+    <style id="baysu-pc-mobile-nav-toggle-css">
+        /* Default PC / Desktop */
+        .top-nav-bar {
+            display: none !important;
+        }
+        .nav-bar {
+            display: block !important;
+        }
 
-    
+        /* Mobile Layout */
+        @media (max-width: 768px) {
+            .top-nav-bar {
+                display: flex !important;
+            }
+            .nav-bar {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
     <header class="header-main">
@@ -1702,9 +1718,6 @@
             </div>
         </div>
     </header>
-    <div class="top-nav-bar" style="display: flex !important; justify-content: center !important; width: 100% !important; padding: 8px 15px !important;">
-        <button id="menuToggle" onclick="toggleCatalogMenu(event)" type="button" class="nav-pill-btn menu-toggle" style="background:#004797; color:#ffffff; width: 100% !important; max-width: 100% !important; flex: 1 !important; text-align: center !important; justify-content: center !important;"><i class="fas fa-boxes"></i> ÜRÜNLERİMİZ</button>
-    </div>
     <nav class="nav-bar">
         <div class="nav-content">
             <div class="nav-links">
@@ -1850,7 +1863,7 @@
             <ul class="category-group" id="bahce-sulama-group">
                 <li class="category-item">
                     <a href="bahce-ekipmanlari.html" style="text-decoration: none !important; display: block !important; width: 100% !important;">
-                        <div class="category-header" style="padding: 12px 30px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; background: #FFFFFF !important; user-select: none !important; border-bottom: 1px solid #E2E8F0 !important; cursor: pointer !important;">
+                        <div class="category-header" style="padding: 12px 30px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; background: #FFFFFF !important; user-select: none !important; border-bottom: 1px solid #E2E8F0 !important; cursor: pointer !important;" onmouseover="this.style.background='#F1F5F9'" onmouseout="this.style.background='#FFFFFF'">
                             <h3 style="margin: 0 !important; font-size: 14px !important; font-weight: 700 !important; color: #0F172A !important; font-family: 'Poppins', sans-serif !important;">Bahçe Ekipmanları</h3>
                         </div>
                     </a>
@@ -2089,7 +2102,7 @@
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
-    <script src="cart.js?v=639208460330691473"></script>
+    <script src="cart.js?v=639208775807954866"></script>
     
 
 
