@@ -1685,8 +1685,22 @@
 
     
 
-    <style id="baysu-hide-duplicate-navbar-mobile">
+    
+
+    <style id="baysu-pc-mobile-nav-toggle-css">
+        /* Default: PC / Desktop */
+        .top-nav-bar {
+            display: none !important;
+        }
+        .nav-bar {
+            display: block !important;
+        }
+
+        /* Mobile Layout */
         @media (max-width: 768px) {
+            .top-nav-bar {
+                display: flex !important;
+            }
             .nav-bar {
                 display: none !important;
             }
