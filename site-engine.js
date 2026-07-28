@@ -42,6 +42,68 @@
         } catch(e) {}
     }
 
+    // GLOBAL MENU TOGGLE - defined at window scope BEFORE document.write
+    window.toggleCatalogMenu = function(e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
+        if (!menu) return;
+        if (menu.classList.contains('active') || menu.style.display === 'block') {
+            menu.classList.remove('active');
+            menu.style.display = 'none';
+        } else {
+            menu.classList.add('active');
+            menu.style.display = 'block';
+            menu.style.zIndex = '999999';
+        }
+    };
+
+    // GLOBAL ACCORDION SETUP - bind after DOM is ready
+    window._baysuSetupAccordion = function() {
+        // Bind toggle triggers
+        var triggers = document.querySelectorAll('#menuToggle, #menuToggleNav, #menuToggleDesktop, #menuToggleMobile, .menu-toggle, .dropdown-toggle');
+        for (var i = 0; i < triggers.length; i++) {
+            triggers[i].style.cursor = 'pointer';
+            // Use addEventListener so it doesn't override onclick attribute
+            (function(btn) {
+                btn.addEventListener('click', function(e) {
+                    window.toggleCatalogMenu(e);
+                });
+            })(triggers[i]);
+        }
+
+        // Accordion: main category headers & sub-headers
+        var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
+        if (menu) {
+            menu.addEventListener('click', function(e) {
+                var mainHeader = e.target.closest('.main-category-header');
+                if (mainHeader) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var nextGroup = mainHeader.nextElementSibling;
+                    if (nextGroup && nextGroup.classList.contains('category-group')) {
+                        mainHeader.classList.toggle('active');
+                        nextGroup.classList.toggle('active');
+                    }
+                    return;
+                }
+                var subHeader = e.target.closest('.category-header');
+                if (subHeader) {
+                    if (e.target.closest('a[href]')) {
+                        var href = e.target.closest('a[href]').getAttribute('href');
+                        if (href && href !== '#' && href !== 'javascript:void(0)') return;
+                    }
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var parentItem = subHeader.closest('.category-item');
+                    if (parentItem) {
+                        parentItem.classList.toggle('active');
+                    }
+                    return;
+                }
+            });
+        }
+    };
+
     document.addEventListener('DOMContentLoaded', function () {
         var path = window.location.pathname.split('/').pop().toLowerCase();
         if (!path || path === '' || path === '/') {
@@ -64,9 +126,31 @@
                 document.open();
                 document.write(rawHtml);
                 document.close();
+
+                // RE-DEFINE global toggleCatalogMenu after document.write (it wipes window properties on some browsers)
+                window.toggleCatalogMenu = function(e) {
+                    if (e) { e.preventDefault(); e.stopPropagation(); }
+                    var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
+                    if (!menu) return;
+                    if (menu.classList.contains('active') || menu.style.display === 'block') {
+                        menu.classList.remove('active');
+                        menu.style.display = 'none';
+                    } else {
+                        menu.classList.add('active');
+                        menu.style.display = 'block';
+                        menu.style.zIndex = '999999';
+                    }
+                };
+
+                // Setup accordion after the new document is ready
+                window._baysuSetupAccordion();
+
             } catch (e) {
                 console.error(e);
             }
+        } else {
+            // No SPA page found - we are on the raw HTML page, just setup accordion
+            window._baysuSetupAccordion();
         }
     });
 })();
