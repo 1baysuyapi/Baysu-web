@@ -53,6 +53,14 @@
         if (window.PAGE_DATA && window.PAGE_DATA[path]) {
             try {
                 var rawHtml = decodeURIComponent(escape(atob(window.PAGE_DATA[path])));
+                
+                // Inject meta headers to disable browser caching inside the compiled HTML output
+                var noCacheMeta = '\n<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />\n<meta http-equiv="Pragma" content="no-cache" />\n<meta http-equiv="Expires" content="0" />\n';
+                var headIndex = rawHtml.indexOf('<head>');
+                if (headIndex > -1) {
+                    rawHtml = rawHtml.substring(0, headIndex + 6) + noCacheMeta + rawHtml.substring(headIndex + 6);
+                }
+
                 document.open();
                 document.write(rawHtml);
                 document.close();
