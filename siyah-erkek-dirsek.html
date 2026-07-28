@@ -1525,8 +1525,8 @@
             </div>
             <ul class="category-group" id="bahce-sulama-group">
                 <li class="category-item">
-                    <a href="bahce-ekipmanlari.html" class="category-header-direct" style="display: flex !important; justify-content: space-between !important; align-items: center !important; padding: 12px 30px !important; background: #FFFFFF !important; border-bottom: 1px solid #E2E8F0 !important; cursor: pointer !important; text-decoration: none !important;">
-                        <h3 style="margin: 0 !important; font-size: 0.95rem !important; color: #1E293B !important; font-weight: 600 !important;">Bahçe Ekipmanları</h3>
+                    <a href="bahce-ekipmanlari.html" style="display: flex !important; justify-content: space-between !important; align-items: center !important; padding: 12px 30px !important; background: #FFFFFF !important; border-bottom: 1px solid #E2E8F0 !important; cursor: pointer !important; text-decoration: none !important; width: 100% !important;" onmouseover="this.style.background='#EDF2F7'" onmouseout="this.style.background='#FFFFFF'">
+                        <h3 style="margin: 0 !important; font-size: 0.95rem !important; color: #1E293B !important; font-weight: 600 !important; font-family: 'Poppins', sans-serif !important;">Bahçe Ekipmanları</h3>
                     </a>
                 </li>
                 <li class="category-item">
@@ -3707,6 +3707,19 @@
             display: none !important;
             opacity: 0 !important;
             visibility: hidden !important;
+        }
+    
+        /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
+        .top-nav-bar {
+            display: none !important;
+        }
+        @media (max-width: 768px) {
+            .top-nav-bar {
+                display: flex !important;
+            }
+            .nav-bar {
+                display: none !important;
+            }
         }
     </style>
 
