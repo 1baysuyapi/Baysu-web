@@ -1627,10 +1627,7 @@
     </nav>
 
 
-    
-
-    
-    <style id="bahce-ekipmanlari-interactive-css">
+    <style id="bahce-ekipmanlari-catalog-css">
         .catalog-container {
             max-width: 1200px;
             margin: 20px auto;
@@ -1667,43 +1664,39 @@
         }
 
         .product-grid {
-            display: grid !important;
-            grid-template-columns: repeat(4, 1fr) !important;
-            gap: 20px !important;
-            align-items: start !important;
-            padding: 10px 0 !important;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
         }
 
         .product-card {
-            background: #FFFFFF !important;
-            border: 1px solid #E2E8F0 !important;
-            border-radius: 14px !important;
-            overflow: hidden !important;
-            position: relative !important;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            cursor: default !important;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04) !important;
-            display: flex !important;
-            flex-direction: column !important;
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: default;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
         }
 
         .product-card:hover {
-            transform: translateY(-4px) !important;
-            box-shadow: 0 12px 30px rgba(0,71,151,0.12) !important;
-            border-color: #93C5FD !important;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,71,151,0.12);
+            border-color: #93C5FD;
         }
 
         .product-code-badge {
             position: absolute;
-            top: 12px;
-            left: 12px;
+            top: 10px;
+            left: 10px;
             background: #004797;
-            color: #FFFFFF;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 800;
             padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            z-index: 10;
+            border-radius: 8px;
+            z-index: 2;
             box-shadow: 0 2px 6px rgba(0,71,151,0.3);
         }
 
@@ -1740,120 +1733,79 @@
             background: #FFFFFF;
         }
 
-        /* Hover action section - opens on hover */
-        .product-hover-details {
-            max-height: 0 !important;
-            overflow: hidden !important;
-            transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out !important;
-            background: #F8FAFC !important;
-            border-top: 1px solid #E2E8F0 !important;
-            padding: 0 12px !important;
-            font-size: 0.8rem !important;
-            color: #475569 !important;
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 8px !important;
-            box-sizing: border-box !important;
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 15px auto 0;
+            padding: 0 15px;
+            font-size: 0.85rem;
+            color: #64748B;
+        }
+        .breadcrumb a {
+            color: #004797;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .breadcrumb span {
+            margin: 0 6px;
+            color: #94A3B8;
         }
 
-        .product-card:hover .product-hover-details {
-            max-height: 160px !important; /* Opens panel */
-            padding: 12px !important;
-        }
-
-        .hover-info-row {
-            display: flex !important;
-            justify-content: space-between !important;
-            font-weight: 600 !important;
-        }
-        .hover-info-row span {
-            color: #1E293B !important;
-            font-weight: 700 !important;
-        }
-
-        /* Quantity Stepper & Cart Button */
-        .hover-action-row {
-            display: flex !important;
-            align-items: center !important;
-            gap: 8px !important;
-            margin-top: 4px !important;
-            width: 100% !important;
-        }
-
-        .qty-stepper {
-            display: inline-flex !important;
-            align-items: center !important;
-            background: #EFF6FF !important;
-            border: 1px solid #BFDBFE !important;
-            border-radius: 8px !important;
-            padding: 2px !important;
-        }
-
-        .qty-btn {
-            width: 24px !important;
-            height: 24px !important;
-            border: none !important;
-            background: #ffffff !important;
-            color: #004797 !important;
-            font-weight: 800 !important;
-            border-radius: 6px !important;
-            cursor: pointer !important;
-            font-size: 13px !important;
-        }
-
-        .qty-input {
-            width: 30px !important;
-            border: none !important;
-            background: transparent !important;
-            text-align: center !important;
-            font-weight: 700 !important;
-            font-size: 12px !important;
-            color: #1E293B !important;
-        }
-
-        .btn-add-cart-custom {
-            flex: 1 !important;
-            background: #004797 !important;
-            color: #ffffff !important;
-            border: none !important;
-            padding: 8px 10px !important;
-            border-radius: 8px !important;
-            font-weight: 700 !important;
-            font-size: 0.78rem !important;
-            cursor: pointer !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 4px !important;
-            transition: all 0.2s ease !important;
-            box-shadow: 0 2px 6px rgba(0,71,151,0.15) !important;
-        }
-
-        .btn-add-cart-custom:hover {
-            background: #002D62 !important;
-        }
-
+        /* Mobile 2 columns */
         @media (max-width: 768px) {
             .product-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 10px !important;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
             }
-            /* Always display hover details on mobile as simple static footer */
-            .product-hover-details {
-                max-height: none !important;
-                padding: 10px !important;
-                background: #F8FAFC !important;
+            .catalog-header {
+                padding: 18px 16px;
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
             }
-            .hover-action-row {
-                flex-direction: column !important;
-                gap: 6px !important;
+            .catalog-header h1 {
+                font-size: 1.3rem;
             }
-            .btn-add-cart-custom {
-                width: 100% !important;
+            .product-card-name {
+                font-size: 0.78rem;
+                padding: 8px 10px 12px;
+            }
+            .product-code-badge {
+                font-size: 11px;
+                padding: 3px 8px;
+            }
+            .product-card-img {
+                padding: 10px;
+            }
+        }
+
+        /* Mobile landscape 3 columns */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+            .catalog-header {
+                padding: 12px 16px;
+            }
+            .catalog-header h1 {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Tablet 3 columns */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 14px;
             }
         }
     </style>
-<div class="breadcrumb">
+
+    <div class="breadcrumb">
         <a href="index.html">Ana Sayfa</a>
         <span>›</span>
         <a href="#">Bahçe Sulama Ekipmanları</a>
@@ -1867,1811 +1819,665 @@
             <div class="product-count"><i class="fas fa-boxes"></i> 82 Ürün</div>
         </div>
 
-        <div class="product-grid" id="bahce-ekipmanlari-grid">
-                <div class="product-card" data-code="129">
+        <div class="product-grid">
+
+                <div class="product-card">
                     <div class="product-code-badge">129</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Jumbo El Süzeği.png" alt="Jumbo El Süzeği" loading="lazy">
                     </div>
                     <div class="product-card-name">Jumbo El Süzeği</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('129', 'Jumbo El Süzeği', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="130">
+                <div class="product-card">
                     <div class="product-code-badge">130</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/El Süzeği.png" alt="El Süzeği" loading="lazy">
                     </div>
                     <div class="product-card-name">El Süzeği</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('130', 'El Süzeği', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="131">
+                <div class="product-card">
                     <div class="product-code-badge">131</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Uzun El Süzeği Dirsekli.png" alt="Uzun El Süzeği Dirsekli" loading="lazy">
                     </div>
                     <div class="product-card-name">Uzun El Süzeği Dirsekli</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('131', 'Uzun El Süzeği Dirsekli', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="132">
+                <div class="product-card">
                     <div class="product-code-badge">132</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Lüks El Süzeği.png" alt="Lüks El Süzeği" loading="lazy">
                     </div>
                     <div class="product-card-name">Lüks El Süzeği</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('132', 'Lüks El Süzeği', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="133">
+                <div class="product-card">
                     <div class="product-code-badge">133</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Uzun El Süzeği.png" alt="Uzun El Süzeği" loading="lazy">
                     </div>
                     <div class="product-card-name">Uzun El Süzeği</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('133', 'Uzun El Süzeği', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="134">
+                <div class="product-card">
                     <div class="product-code-badge">134</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Büyük Uzun El Süzeği.png" alt="Büyük Uzun El Süzeği" loading="lazy">
                     </div>
                     <div class="product-card-name">Büyük Uzun El Süzeği</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('134', 'Büyük Uzun El Süzeği', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="135">
+                <div class="product-card">
                     <div class="product-code-badge">135</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Büyük Uzun El Süzeği Dirsekli.png" alt="Büyük Uzun El Süzeği Dirsekli" loading="lazy">
                     </div>
                     <div class="product-card-name">Büyük Uzun El Süzeği Dirsekli</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('135', 'Büyük Uzun El Süzeği Dirsekli', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="136">
+                <div class="product-card">
                     <div class="product-code-badge">136</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Süzek Kafası.png" alt="Süzek Kafası" loading="lazy">
                     </div>
                     <div class="product-card-name">Süzek Kafası</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('136', 'Süzek Kafası', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="137">
+                <div class="product-card">
                     <div class="product-code-badge">137</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/İki Kollu Çim Fıskiyesi.png" alt="İki Kollu Çim Fıskiyesi" loading="lazy">
                     </div>
                     <div class="product-card-name">İki Kollu Çim Fıskiyesi</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('137', 'İki Kollu Çim Fıskiyesi', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="138">
+                <div class="product-card">
                     <div class="product-code-badge">138</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Üç Kollu Çim Fıskiyesi.png" alt="Üç Kollu Çim Fıskiyesi" loading="lazy">
                     </div>
                     <div class="product-card-name">Üç Kollu Çim Fıskiyesi</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('138', 'Üç Kollu Çim Fıskiyesi', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="139">
+                <div class="product-card">
                     <div class="product-code-badge">139</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Dört Kollu Çim Fıskiyesi.png" alt="Dört Kollu Çim Fıskiyesi" loading="lazy">
                     </div>
                     <div class="product-card-name">Dört Kollu Çim Fıskiyesi</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('139', 'Dört Kollu Çim Fıskiyesi', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="140">
+                <div class="product-card">
                     <div class="product-code-badge">140</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Beş Kollu Çim Fıskiyesi.png" alt="Beş Kollu Çim Fıskiyesi" loading="lazy">
                     </div>
                     <div class="product-card-name">Beş Kollu Çim Fıskiyesi</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('140', 'Beş Kollu Çim Fıskiyesi', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="141">
+                <div class="product-card">
                     <div class="product-code-badge">141</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Süper Üç Kollu Çim Fıskiyesi.png" alt="Süper Üç Kollu Çim Fıskiyesi" loading="lazy">
                     </div>
                     <div class="product-card-name">Süper Üç Kollu Çim Fıskiyesi</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('141', 'Süper Üç Kollu Çim Fıskiyesi', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="142">
+                <div class="product-card">
                     <div class="product-code-badge">142</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Turbo Üç Kollu Çim Fıskiyesi.png" alt="Turbo Üç Kollu Çim Fıskiyesi" loading="lazy">
                     </div>
                     <div class="product-card-name">Turbo Üç Kollu Çim Fıskiyesi</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('142', 'Turbo Üç Kollu Çim Fıskiyesi', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="143">
+                <div class="product-card">
                     <div class="product-code-badge">143</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Uzun Meme Üç Kollu Çim Fıskiyesi.png" alt="Uzun Meme Üç Kollu Çim Fıskiyesi" loading="lazy">
                     </div>
                     <div class="product-card-name">Uzun Meme Üç Kollu Çim Fıskiyesi</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('143', 'Uzun Meme Üç Kollu Çim Fıskiyesi', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="144">
+                <div class="product-card">
                     <div class="product-code-badge">144</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Madeni Döner Çim Fıskiyesi.png" alt="Madeni Döner Çim Fıskiyesi" loading="lazy">
                     </div>
                     <div class="product-card-name">Madeni Döner Çim Fıskiyesi</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('144', 'Madeni Döner Çim Fıskiyesi', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="145">
+                <div class="product-card">
                     <div class="product-code-badge">145</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Sehpa Turbo Üç Kollu Fıskiye.png" alt="Sehpa Turbo Üç Kollu Fıskiye" loading="lazy">
                     </div>
                     <div class="product-card-name">Sehpa Turbo Üç Kollu Fıskiye</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('145', 'Sehpa Turbo Üç Kollu Fıskiye', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="146">
+                <div class="product-card">
                     <div class="product-code-badge">146</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Sehpa Beş Kollu Çim Fıskiye.png" alt="Sehpa Beş Kollu Çim Fıskiye" loading="lazy">
                     </div>
                     <div class="product-card-name">Sehpa Beş Kollu Çim Fıskiye</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('146', 'Sehpa Beş Kollu Çim Fıskiye', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="147">
+                <div class="product-card">
                     <div class="product-code-badge">147</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Plastik Tarla Sulama Fıskiye.png" alt="Plastik Tarla Sulama Fıskiye" loading="lazy">
                     </div>
                     <div class="product-card-name">Plastik Tarla Sulama Fıskiye</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('147', 'Plastik Tarla Sulama Fıskiye', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="148">
+                <div class="product-card">
                     <div class="product-code-badge">148</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Metal Tarla Sulama Fıskiye.png" alt="Metal Tarla Sulama Fıskiye" loading="lazy">
                     </div>
                     <div class="product-card-name">Metal Tarla Sulama Fıskiye</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('148', 'Metal Tarla Sulama Fıskiye', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="149">
+                <div class="product-card">
                     <div class="product-code-badge">149</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Açılı Plastik Tarla Sulama Fıskiye.png" alt="Açılı Plastik Tarla Sulama Fıskiye" loading="lazy">
                     </div>
                     <div class="product-card-name">Açılı Plastik Tarla Sulama Fıskiye</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('149', 'Açılı Plastik Tarla Sulama Fıskiye', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="150">
+                <div class="product-card">
                     <div class="product-code-badge">150</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Açılı Fıskiye  Yerli Turuncu.png" alt="Açılı Fıskiye Yerli Turuncu" loading="lazy">
                     </div>
                     <div class="product-card-name">Açılı Fıskiye Yerli Turuncu</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('150', 'Açılı Fıskiye Yerli Turuncu', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="151">
+                <div class="product-card">
                     <div class="product-code-badge">151</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Açılı Fıskiye   Yerli Siyah.png" alt="Açılı Fıskiye Yerli Siyah" loading="lazy">
                     </div>
                     <div class="product-card-name">Açılı Fıskiye Yerli Siyah</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('151', 'Açılı Fıskiye Yerli Siyah', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="152">
+                <div class="product-card">
                     <div class="product-code-badge">152</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Jumbo Açılı Fıskiye.png" alt="Jumbo Açılı Fıskiye" loading="lazy">
                     </div>
                     <div class="product-card-name">Jumbo Açılı Fıskiye</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('152', 'Jumbo Açılı Fıskiye', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="153">
+                <div class="product-card">
                     <div class="product-code-badge">153</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/İthal Açılı Metal Fıskiye.png" alt="İthal Açılı Metal Fıskiye" loading="lazy">
                     </div>
                     <div class="product-card-name">İthal Açılı Metal Fıskiye</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('153', 'İthal Açılı Metal Fıskiye', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="154">
+                <div class="product-card">
                     <div class="product-code-badge">154</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Açısız Çat Çat Fıskiye.png" alt="Açısız Çat Çat Fıskiye" loading="lazy">
                     </div>
                     <div class="product-card-name">Açısız Çat Çat Fıskiye</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('154', 'Açısız Çat Çat Fıskiye', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="155">
+                <div class="product-card">
                     <div class="product-code-badge">155</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Kazıklı Açılı Fıskiye.png" alt="Kazıklı Açılı Fıskiye" loading="lazy">
                     </div>
                     <div class="product-card-name">Kazıklı Açılı Fıskiye</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('155', 'Kazıklı Açılı Fıskiye', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="156">
+                <div class="product-card">
                     <div class="product-code-badge">156</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Su Tabancası.png" alt="Su Tabancası" loading="lazy">
                     </div>
                     <div class="product-card-name">Su Tabancası</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('156', 'Su Tabancası', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="157">
+                <div class="product-card">
                     <div class="product-code-badge">157</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Süzek Tabanca.png" alt="Süzek Tabanca" loading="lazy">
                     </div>
                     <div class="product-card-name">Süzek Tabanca</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('157', 'Süzek Tabanca', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="158">
+                <div class="product-card">
                     <div class="product-code-badge">158</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Metal Su Tabancası.png" alt="Metal Su Tabancası" loading="lazy">
                     </div>
                     <div class="product-card-name">Metal Su Tabancası</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('158', 'Metal Su Tabancası', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="159">
+                <div class="product-card">
                     <div class="product-code-badge">159</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Krom 6 Nozul Tabanca.png" alt="Krom 6 Nozul Tabanca" loading="lazy">
                     </div>
                     <div class="product-card-name">Krom 6 Nozul Tabanca</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('159', 'Krom 6 Nozul Tabanca', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="160">
+                <div class="product-card">
                     <div class="product-code-badge">160</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Lüks Rekorlu 6 Nozul Tabanca.png" alt="Lüks Rekorlu 6 Nozul Tabanca" loading="lazy">
                     </div>
                     <div class="product-card-name">Lüks Rekorlu 6 Nozul Tabanca</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('160', 'Lüks Rekorlu 6 Nozul Tabanca', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="161">
+                <div class="product-card">
                     <div class="product-code-badge">161</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/İthal 6 Nozul Tabanca.png" alt="İthal 6 Nozul Tabanca" loading="lazy">
                     </div>
                     <div class="product-card-name">İthal 6 Nozul Tabanca</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('161', 'İthal 6 Nozul Tabanca', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="162">
+                <div class="product-card">
                     <div class="product-code-badge">162</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/İthal 6 Nozul Metal Tabanca.png" alt="İthal 6 Nozul Metal Tabanca" loading="lazy">
                     </div>
                     <div class="product-card-name">İthal 6 Nozul Metal Tabanca</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('162', 'İthal 6 Nozul Metal Tabanca', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="163">
+                <div class="product-card">
                     <div class="product-code-badge">163</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/6 Fonksiyonlu Su Tabancası Seti.png" alt="6 Fonksiyonlu Su Tabancası Seti" loading="lazy">
                     </div>
                     <div class="product-card-name">6 Fonksiyonlu Su Tabancası Seti</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('163', '6 Fonksiyonlu Su Tabancası Seti', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="164">
+                <div class="product-card">
                     <div class="product-code-badge">164</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/1-2" Lüks Rekorlu Su Tabancası.png" alt="1/2" Lüks Rekorlu Su Tabancası" loading="lazy">
                     </div>
                     <div class="product-card-name">1/2" Lüks Rekorlu Su Tabancası</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('164', '1/2" Lüks Rekorlu Su Tabancası', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="165">
+                <div class="product-card">
                     <div class="product-code-badge">165</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/3-4" Lüks Rekorlu Su Tabancası.png" alt="3/4" Lüks Rekorlu Su Tabancası" loading="lazy">
                     </div>
                     <div class="product-card-name">3/4" Lüks Rekorlu Su Tabancası</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('165', '3/4" Lüks Rekorlu Su Tabancası', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="166">
+                <div class="product-card">
                     <div class="product-code-badge">166</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/1-2" Lüks Rekorlu Süzek Tabanca.png" alt="1/2" Lüks Rekorlu Süzek Tabanca" loading="lazy">
                     </div>
                     <div class="product-card-name">1/2" Lüks Rekorlu Süzek Tabanca</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('166', '1/2" Lüks Rekorlu Süzek Tabanca', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="167">
+                <div class="product-card">
                     <div class="product-code-badge">167</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/3-4" Lüks Rekorlu Süzek Tabanca.png" alt="3/4" Lüks Rekorlu Süzek Tabanca" loading="lazy">
                     </div>
                     <div class="product-card-name">3/4" Lüks Rekorlu Süzek Tabanca</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('167', '3/4" Lüks Rekorlu Süzek Tabanca', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="168">
+                <div class="product-card">
                     <div class="product-code-badge">168</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Tetikli Su Tabancası Rekorlu.png" alt="Tetikli Su Tabancası Rekorlu" loading="lazy">
                     </div>
                     <div class="product-card-name">Tetikli Su Tabancası Rekorlu</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('168', 'Tetikli Su Tabancası Rekorlu', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="169">
+                <div class="product-card">
                     <div class="product-code-badge">169</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Tetikli Su Tabancası Jaklı.png" alt="Tetikli Su Tabancası Jaklı" loading="lazy">
                     </div>
                     <div class="product-card-name">Tetikli Su Tabancası Jaklı</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('169', 'Tetikli Su Tabancası Jaklı', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="170">
+                <div class="product-card">
                     <div class="product-code-badge">170</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Tetikli Su Tabancası 1-2" Lüks Rekorlu.png" alt="Tetikli Su Tabancası 1/2" Lüks Rekorlu" loading="lazy">
                     </div>
                     <div class="product-card-name">Tetikli Su Tabancası 1/2" Lüks Rekorlu</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('170', 'Tetikli Su Tabancası 1/2" Lüks Rekorlu', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="171">
+                <div class="product-card">
                     <div class="product-code-badge">171</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Tetikli Su Tabancası 3-4" Lüks Rekorlu.png" alt="Tetikli Su Tabancası 3/4" Lüks Rekorlu" loading="lazy">
                     </div>
                     <div class="product-card-name">Tetikli Su Tabancası 3/4" Lüks Rekorlu</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('171', 'Tetikli Su Tabancası 3/4" Lüks Rekorlu', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="172">
+                <div class="product-card">
                     <div class="product-code-badge">172</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Tetikli Süzek Tabancası Rekorlu.png" alt="Tetikli Süzek Tabancası Rekorlu" loading="lazy">
                     </div>
                     <div class="product-card-name">Tetikli Süzek Tabancası Rekorlu</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('172', 'Tetikli Süzek Tabancası Rekorlu', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="173">
+                <div class="product-card">
                     <div class="product-code-badge">173</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Tetikli Süzek Tabancası Jaklı.png" alt="Tetikli Süzek Tabancası Jaklı" loading="lazy">
                     </div>
                     <div class="product-card-name">Tetikli Süzek Tabancası Jaklı</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('173', 'Tetikli Süzek Tabancası Jaklı', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="174">
+                <div class="product-card">
                     <div class="product-code-badge">174</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Tetikli Süzek Tabancası 1-2" Lüks Rekorlu.png" alt="Tetikli Süzek Tabancası 1/2" Lüks Rekorlu" loading="lazy">
                     </div>
                     <div class="product-card-name">Tetikli Süzek Tabancası 1/2" Lüks Rekorlu</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('174', 'Tetikli Süzek Tabancası 1/2" Lüks Rekorlu', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="175">
+                <div class="product-card">
                     <div class="product-code-badge">175</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Tetikli Süzek Tabancası 3-4" Lüks Rekorlu.png" alt="Tetikli Süzek Tabancası 3/4" Lüks Rekorlu" loading="lazy">
                     </div>
                     <div class="product-card-name">Tetikli Süzek Tabancası 3/4" Lüks Rekorlu</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('175', 'Tetikli Süzek Tabancası 3/4" Lüks Rekorlu', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="176">
+                <div class="product-card">
                     <div class="product-code-badge">176</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/İthal Tetikli Su Tabancası.png" alt="İthal Tetikli Su Tabancası" loading="lazy">
                     </div>
                     <div class="product-card-name">İthal Tetikli Su Tabancası</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('176', 'İthal Tetikli Su Tabancası', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="177">
+                <div class="product-card">
                     <div class="product-code-badge">177</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Hortum Lansı.png" alt="Hortum Lansı" loading="lazy">
                     </div>
                     <div class="product-card-name">Hortum Lansı</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('177', 'Hortum Lansı', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="178">
+                <div class="product-card">
                     <div class="product-code-badge">178</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/1-2 Ayarlı Hortum Lansı.png" alt="1/2" Ayarlı Hortum Lansı" loading="lazy">
                     </div>
                     <div class="product-card-name">1/2" Ayarlı Hortum Lansı</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('178', '1/2" Ayarlı Hortum Lansı', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="179">
+                <div class="product-card">
                     <div class="product-code-badge">179</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/3-4" Ayarlı Hortum Lansı.png" alt="3/4" Ayarlı Hortum Lansı" loading="lazy">
                     </div>
                     <div class="product-card-name">3/4" Ayarlı Hortum Lansı</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('179', '3/4" Ayarlı Hortum Lansı', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="180">
+                <div class="product-card">
                     <div class="product-code-badge">180</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Ayarlı Lans Seti.png" alt="Ayarlı Lans Seti" loading="lazy">
                     </div>
                     <div class="product-card-name">Ayarlı Lans Seti</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('180', 'Ayarlı Lans Seti', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="181">
+                <div class="product-card">
                     <div class="product-code-badge">181</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/1-2" Lüks Rekor.png" alt="1/2" Lüks Rekor" loading="lazy">
                     </div>
                     <div class="product-card-name">1/2" Lüks Rekor</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('181', '1/2" Lüks Rekor', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="182">
+                <div class="product-card">
                     <div class="product-code-badge">182</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/3-4" • 1-2" Lüks Rekor.png" alt="3/4" - 1/2" Lüks Rekor" loading="lazy">
                     </div>
                     <div class="product-card-name">3/4" - 1/2" Lüks Rekor</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('182', '3/4" - 1/2" Lüks Rekor', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="183">
+                <div class="product-card">
                     <div class="product-code-badge">183</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/3-4" Jak Adaptörü.png" alt="3/4" Jak Adaptörü" loading="lazy">
                     </div>
                     <div class="product-card-name">3/4" Jak Adaptörü</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('183', '3/4" Jak Adaptörü', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="184">
+                <div class="product-card">
                     <div class="product-code-badge">184</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Çift Taraflı Jak Adaptör.png" alt="Çift Taraflı Jak Adaptör" loading="lazy">
                     </div>
                     <div class="product-card-name">Çift Taraflı Jak Adaptör</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('184', 'Çift Taraflı Jak Adaptör', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="185">
+                <div class="product-card">
                     <div class="product-code-badge">185</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/1-2" PVC Maşon.png" alt="1/2" PVC Maşon" loading="lazy">
                     </div>
                     <div class="product-card-name">1/2" PVC Maşon</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('185', '1/2" PVC Maşon', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="186">
+                <div class="product-card">
                     <div class="product-code-badge">186</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/1-2" PVC Nipel.png" alt="1/2" PVC Nipel" loading="lazy">
                     </div>
                     <div class="product-card-name">1/2" PVC Nipel</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('186', '1/2" PVC Nipel', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="187">
+                <div class="product-card">
                     <div class="product-code-badge">187</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/1-2" Uzatma Borusu.png" alt="1/2" Uzatma Borusu" loading="lazy">
                     </div>
                     <div class="product-card-name">1/2" Uzatma Borusu</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('187', '1/2" Uzatma Borusu', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="188">
+                <div class="product-card">
                     <div class="product-code-badge">188</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/1-2" • 5-8" Hortum Y.png" alt="1/2" - 5/8" Hortum Y" loading="lazy">
                     </div>
                     <div class="product-card-name">1/2" - 5/8" Hortum Y</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('188', '1/2" - 5/8" Hortum Y', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="189">
+                <div class="product-card">
                     <div class="product-code-badge">189</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/1-2" • 3-4" • 1" 2'li Jak Dağıtıcı.png" alt="2'li Jak Dağıtıcı" loading="lazy">
                     </div>
                     <div class="product-card-name">2'li Jak Dağıtıcı</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('189', '2'li Jak Dağıtıcı', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="190">
+                <div class="product-card">
                     <div class="product-code-badge">190</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/1-2" • 3-4" • 1" 4'lü Jak Dağıtıcı.png" alt="4'lü Jak Dağıtıcı" loading="lazy">
                     </div>
                     <div class="product-card-name">4'lü Jak Dağıtıcı</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('190', '4'lü Jak Dağıtıcı', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="191">
+                <div class="product-card">
                     <div class="product-code-badge">191</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Kazık Ayak.png" alt="Kazık Ayak" loading="lazy">
                     </div>
                     <div class="product-card-name">Kazık Ayak</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('191', 'Kazık Ayak', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="192">
+                <div class="product-card">
                     <div class="product-code-badge">192</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Jaklı Kazık Ayak.png" alt="Jaklı Kazık Ayak" loading="lazy">
                     </div>
                     <div class="product-card-name">Jaklı Kazık Ayak</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('192', 'Jaklı Kazık Ayak', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="193">
+                <div class="product-card">
                     <div class="product-code-badge">193</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Sehpa Ayak.png" alt="Sehpa Ayak" loading="lazy">
                     </div>
                     <div class="product-card-name">Sehpa Ayak</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('193', 'Sehpa Ayak', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="194">
+                <div class="product-card">
                     <div class="product-code-badge">194</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Jumbo Ayak.png" alt="Jumbo Ayak" loading="lazy">
                     </div>
                     <div class="product-card-name">Jumbo Ayak</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('194', 'Jumbo Ayak', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="195">
+                <div class="product-card">
                     <div class="product-code-badge">195</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Metal Fıskiye Kazığı.png" alt="Metal Fıskiye Kazığı" loading="lazy">
                     </div>
                     <div class="product-card-name">Metal Fıskiye Kazığı</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('195', 'Metal Fıskiye Kazığı', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="196">
+                <div class="product-card">
                     <div class="product-code-badge">196</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Çift Taraflı Plastik Kazık.png" alt="Çift Taraflı Plastik Kazık" loading="lazy">
                     </div>
                     <div class="product-card-name">Çift Taraflı Plastik Kazık</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('196', 'Çift Taraflı Plastik Kazık', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="197">
+                <div class="product-card">
                     <div class="product-code-badge">197</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/1-2" Klima Çatalı.png" alt="1/2" Klima Çatalı" loading="lazy">
                     </div>
                     <div class="product-card-name">1/2" Klima Çatalı</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('197', '1/2" Klima Çatalı', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="198">
+                <div class="product-card">
                     <div class="product-code-badge">198</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Klepe.png" alt="Klepe" loading="lazy">
                     </div>
                     <div class="product-card-name">Klepe</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('198', 'Klepe', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="199">
+                <div class="product-card">
                     <div class="product-code-badge">199</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Damlama Filtresi.png" alt="Damlama Filtresi" loading="lazy">
                     </div>
                     <div class="product-card-name">Damlama Filtresi</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('199', 'Damlama Filtresi', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="200">
+                <div class="product-card">
                     <div class="product-code-badge">200</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/PVC Bidon Musluğu.png" alt="PVC Bidon Musluğu" loading="lazy">
                     </div>
                     <div class="product-card-name">PVC Bidon Musluğu</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('200', 'PVC Bidon Musluğu', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="201">
+                <div class="product-card">
                     <div class="product-code-badge">201</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Plastik Hortum Askısı.png" alt="Plastik Hortum Askısı" loading="lazy">
                     </div>
                     <div class="product-card-name">Plastik Hortum Askısı</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('201', 'Plastik Hortum Askısı', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="202">
+                <div class="product-card">
                     <div class="product-code-badge">202</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Metal Hortum Askısı.png" alt="Metal Hortum Askısı" loading="lazy">
                     </div>
                     <div class="product-card-name">Metal Hortum Askısı</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('202', 'Metal Hortum Askısı', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="203">
+                <div class="product-card">
                     <div class="product-code-badge">203</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Duvar Tipi Hortum Askısı.png" alt="Duvar Tipi Hortum Askısı" loading="lazy">
                     </div>
                     <div class="product-card-name">Duvar Tipi Hortum Askısı</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('203', 'Duvar Tipi Hortum Askısı', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="204">
+                <div class="product-card">
                     <div class="product-code-badge">204</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Hortum Arabası   Cabbar.png" alt="Hortum Arabası Cabbar" loading="lazy">
                     </div>
                     <div class="product-card-name">Hortum Arabası Cabbar</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('204', 'Hortum Arabası Cabbar', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="205">
+                <div class="product-card">
                     <div class="product-code-badge">205</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Hortum Tanburu.png" alt="Hortum Tanburu" loading="lazy">
                     </div>
                     <div class="product-card-name">Hortum Tanburu</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('205', 'Hortum Tanburu', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="206">
+                <div class="product-card">
                     <div class="product-code-badge">206</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Fide Kazığı Plastik.png" alt="Fide Kazığı Plastik" loading="lazy">
                     </div>
                     <div class="product-card-name">Fide Kazığı Plastik</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('206', 'Fide Kazığı Plastik', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="207">
+                <div class="product-card">
                     <div class="product-code-badge">207</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Bitki Destek Çubuğu.png" alt="Bitki Destek Çubuğu" loading="lazy">
                     </div>
                     <div class="product-card-name">Bitki Destek Çubuğu</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('207', 'Bitki Destek Çubuğu', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="208">
+                <div class="product-card">
                     <div class="product-code-badge">208</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/Plastik Çim Ayırıcı.png" alt="Plastik Çim Ayırıcı" loading="lazy">
                     </div>
                     <div class="product-card-name">Plastik Çim Ayırıcı</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('208', 'Plastik Çim Ayırıcı', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="209">
+                <div class="product-card">
                     <div class="product-code-badge">209</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/3-4" Vantuz.png" alt="3/4" Vantuz" loading="lazy">
                     </div>
                     <div class="product-card-name">3/4" Vantuz</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('209', '3/4" Vantuz', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="product-card" data-code="210">
+                <div class="product-card">
                     <div class="product-code-badge">210</div>
                     <div class="product-card-img">
                         <img src="bahce-ekipmanlari-img/1" Vantuz.png" alt="1" Vantuz" loading="lazy">
                     </div>
                     <div class="product-card-name">1" Vantuz</div>
-                    <div class="product-hover-details">
-                        <div class="hover-info-row">Koli Adedi: <span class="koli-val">25</span></div>
-                        <div class="hover-info-row">Ambalaj: <span class="ambalaj-val">-</span></div>
-                        <div class="hover-action-row">
-                            <div class="qty-stepper">
-                                <button type="button" class="qty-btn" onclick="var i=this.nextElementSibling; var v=parseInt(i.value)||1; if(v>1)i.value=v-1;">-</button>
-                                <input type="text" value="1" class="qty-input" readonly>
-                                <button type="button" class="qty-btn" onclick="var i=this.previousElementSibling; var v=parseInt(i.value)||1; i.value=v+1;">+</button>
-                            </div>
-                            <button type="button" class="btn-add-cart-custom" onclick="addCustomGridItemToCart('210', '1" Vantuz', this)">
-                                <i class="fas fa-shopping-cart"></i> Ekle
-                            </button>
-                        </div>
-                    </div>
                 </div>
-</div>
+
+        </div>
     </div>
 </main>
 
@@ -3682,7 +2488,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     
-    <script src="cart.js?v=639208792013916515"></script>
+    <script src="cart.js?v=639208795984932680"></script>
 
 
 
@@ -5278,6 +4084,19 @@
         
     
         
+    
+        /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
+        .top-nav-bar {
+            display: none !important;
+        }
+        @media (max-width: 768px) {
+            .top-nav-bar {
+                display: flex !important;
+            }
+            .nav-bar {
+                display: none !important;
+            }
+        }
     
         /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
         .top-nav-bar {
