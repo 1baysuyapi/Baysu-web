@@ -1378,6 +1378,23 @@
     
 
     
+
+    <script id="baysu-global-toggle">
+    // GLOBAL toggleCatalogMenu - must be at window scope for onclick=" attributes
+    window.toggleCatalogMenu = function(e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
+        if (!menu) return;
+        if (menu.classList.contains('active') || menu.style.display === 'block') {
+            menu.classList.remove('active');
+            menu.style.display = 'none';
+        } else {
+            menu.classList.add('active');
+            menu.style.display = 'block';
+            menu.style.zIndex = '999999';
+        }
+    };
+    </script>
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
     <header class="header-main">
@@ -1815,7 +1832,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     
-    <script src="cart.js?v=639208800151680372"></script>
+    <script src="cart.js?v=639208804121284121"></script>
 
 
 
@@ -1837,94 +1854,7 @@
 
 
 
-<script id="baysu-perfect-menu-js">
-(function() {
-    function init2TierBaysuMenu() {
-        var menuContainer = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
-        var triggers = document.querySelectorAll('#menuToggle, #menuToggleNav, #menuToggleDesktop, #menuToggleMobile, .menu-toggle');
 
-        if (!menuContainer) return;
-
-        // Menu Toggle Button Action
-        triggers.forEach(function(btn) {
-            if (!btn) return;
-            btn.style.cursor = 'pointer';
-            btn.onclick = function(e) {
-                if (e) { e.preventDefault(); e.stopPropagation(); }
-                var isActive = menuContainer.classList.contains('active') || menuContainer.style.display === 'block';
-                if (isActive) {
-                    menuContainer.classList.remove('active');
-                    menuContainer.style.display = 'none';
-                } else {
-                    menuContainer.classList.add('active');
-                    menuContainer.style.display = 'block';
-                    menuContainer.style.zIndex = '999999';
-                }
-            };
-        });
-
-        // Tier 1: Main Category Click Handler (KAPLİNLER VE EK PARÇALARI)
-        var mainCategories = document.querySelectorAll('.main-category-item');
-        mainCategories.forEach(function(mainCat) {
-            mainCat.style.cursor = 'pointer';
-            mainCat.onclick = function(e) {
-                if (e) { e.preventDefault(); e.stopPropagation(); }
-
-                var targetGroup = mainCat.nextElementSibling || mainCat.querySelector('.category-group');
-                var isExpanded = mainCat.classList.contains('active');
-
-                // Collapse all other main categories first for a clean accordion
-                mainCategories.forEach(function(other) {
-                    other.classList.remove('active');
-                    var otherGroup = other.nextElementSibling || other.querySelector('.category-group');
-                    if (otherGroup) {
-                        otherGroup.classList.remove('active');
-                        otherGroup.style.display = 'none';
-                    }
-                });
-
-                if (!isExpanded) {
-                    mainCat.classList.add('active');
-                    if (targetGroup) {
-                        targetGroup.classList.add('active');
-                        var isMobile = window.innerWidth <= 768;
-                        targetGroup.style.display = isMobile ? 'flex' : 'grid';
-                    }
-                }
-            };
-        });
-
-        // Tier 2: Sub Category Click Handler (Mavi Seri, Siyah Seri, Priz Kolyeler)
-        var subHeaders = document.querySelectorAll('.category-header, .category-item');
-        subHeaders.forEach(function(subHdr) {
-            subHdr.style.cursor = 'pointer';
-            subHdr.onclick = function(e) {
-                if (e && e.target && (e.target.tagName === 'A' || e.target.closest('a'))) return; // Allow product link navigation
-
-                if (e) { e.preventDefault(); e.stopPropagation(); }
-
-                var subItem = subHdr.closest('.category-item') || subHdr;
-                var prodList = subItem.querySelector('.product-list');
-                var isExpanded = subItem.classList.contains('active');
-
-                if (isExpanded) {
-                    subItem.classList.remove('active');
-                    if (prodList) prodList.style.display = 'none';
-                } else {
-                    subItem.classList.add('active');
-                    if (prodList) prodList.style.display = 'block';
-                }
-            };
-        });
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init2TierBaysuMenu);
-    } else {
-        init2TierBaysuMenu();
-    }
-})();
-</script>
 
 
     <div id="kvkkModalBackdrop" class="kvkk-modal-backdrop">
@@ -2076,61 +2006,7 @@
             font-weight: 600 !important;
         }
     </style>
-    <script id="baysu-orig-ui-script">
-        document.addEventListener('DOMContentLoaded', function() {
-            function toggleCatalogMenu(e) {
-                if (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-                var menu = document.getElementById('mainMenuContainer');
-                if (menu) {
-                    if (menu.classList.contains('active') || menu.style.display === 'block') {
-                        menu.classList.remove('active');
-                        menu.style.display = 'none';
-                    } else {
-                        menu.classList.add('active');
-                        menu.style.display = 'block';
-                    }
-                }
-            }
-
-            document.querySelectorAll('#menuToggle, #menuToggleDesktop, .menu-toggle, a.dropdown-toggle').forEach(function(btn) {
-                btn.onclick = toggleCatalogMenu;
-            });
-
-            document.body.addEventListener('click', function(e) {
-                var toggleBtn = e.target.closest('#menuToggle, #menuToggleDesktop, .menu-toggle, a.dropdown-toggle');
-                if (toggleBtn) {
-                    toggleCatalogMenu(e);
-                    return;
-                }
-
-                var mainHeader = e.target.closest('.main-category-header');
-                if (mainHeader) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    var nextGroup = mainHeader.nextElementSibling;
-                    if (nextGroup && nextGroup.classList.contains('category-group')) {
-                        mainHeader.classList.toggle('active');
-                        nextGroup.classList.toggle('active');
-                    }
-                    return;
-                }
-
-                var subHeader = e.target.closest('.category-header');
-                if (subHeader) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    var parentItem = subHeader.closest('.category-item');
-                    if (parentItem) {
-                        parentItem.classList.toggle('active');
-                    }
-                    return;
-                }
-            });
-        });
-    </script>
+    
 
     <style id="baysu-new-product-layout-css">
         .product-detail-container {
@@ -3502,6 +3378,19 @@
                 display: none !important;
             }
         }
+    
+        /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
+        .top-nav-bar {
+            display: none !important;
+        }
+        @media (max-width: 768px) {
+            .top-nav-bar {
+                display: flex !important;
+            }
+            .nav-bar {
+                display: none !important;
+            }
+        }
     </style>
 
     <script id="baysu-features-toggle-script">
@@ -3518,6 +3407,47 @@
                 }
             }
         }
+    </script>
+
+    <script id="baysu-accordion-handler">
+    document.addEventListener('DOMContentLoaded', function() {
+        // Bind toggle triggers (redundant safety for elements without onclick attr)
+        var triggers = document.querySelectorAll('#menuToggle, #menuToggleNav, #menuToggleDesktop, #menuToggleMobile, .menu-toggle, .dropdown-toggle');
+        for (var i = 0; i < triggers.length; i++) {
+            triggers[i].style.cursor = 'pointer';
+            triggers[i].addEventListener('click', window.toggleCatalogMenu);
+        }
+
+        // Accordion: main category headers
+        var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
+        if (menu) {
+            menu.addEventListener('click', function(e) {
+                var mainHeader = e.target.closest('.main-category-header');
+                if (mainHeader) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var nextGroup = mainHeader.nextElementSibling;
+                    if (nextGroup && nextGroup.classList.contains('category-group')) {
+                        mainHeader.classList.toggle('active');
+                        nextGroup.classList.toggle('active');
+                    }
+                    return;
+                }
+                var subHeader = e.target.closest('.category-header');
+                if (subHeader) {
+                    // Skip direct links (like Bahce Ekipmanlari)
+                    if (e.target.closest('a[href]') && e.target.closest('a[href]').getAttribute('href') !== '#' && e.target.closest('a[href]').getAttribute('href') !== 'javascript:void(0)') return;
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var parentItem = subHeader.closest('.category-item');
+                    if (parentItem) {
+                        parentItem.classList.toggle('active');
+                    }
+                    return;
+                }
+            });
+        }
+    });
     </script>
 </body>
 </html>
