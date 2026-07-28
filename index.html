@@ -1693,22 +1693,7 @@
 
     
 
-    <script id="baysu-global-toggle">
-    // GLOBAL toggleCatalogMenu - must be at window scope for onclick=" attributes
-    window.toggleCatalogMenu = function(e) {
-        if (e) { e.preventDefault(); e.stopPropagation(); }
-        var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
-        if (!menu) return;
-        if (menu.classList.contains('active') || menu.style.display === 'block') {
-            menu.classList.remove('active');
-            menu.style.display = 'none';
-        } else {
-            menu.classList.add('active');
-            menu.style.display = 'block';
-            menu.style.zIndex = '999999';
-        }
-    };
-    </script>
+    
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
     <header class="header-main">
@@ -2737,10 +2722,10 @@
                 var isHidden = (menu.style.display === 'none' || window.getComputedStyle(menu).display === 'none' || !menu.classList.contains('active'));
                 if (isHidden) {
                     menu.classList.add('active');
-                    menu.style.display = 'block';
+                    menu.classList.add('active');
                 } else {
                     menu.classList.remove('active');
-                    menu.style.display = 'none';
+                    menu.classList.remove('active');
                 }
             } else {
                 window.location.href = 'index.html';
@@ -3493,45 +3478,6 @@
         }
     </script>
 
-    <script id="baysu-accordion-handler">
-    document.addEventListener('DOMContentLoaded', function() {
-        // Bind toggle triggers (redundant safety for elements without onclick attr)
-        var triggers = document.querySelectorAll('#menuToggle, #menuToggleNav, #menuToggleDesktop, #menuToggleMobile, .menu-toggle, .dropdown-toggle');
-        for (var i = 0; i < triggers.length; i++) {
-            triggers[i].style.cursor = 'pointer';
-            triggers[i].addEventListener('click', window.toggleCatalogMenu);
-        }
-
-        // Accordion: main category headers
-        var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
-        if (menu) {
-            menu.addEventListener('click', function(e) {
-                var mainHeader = e.target.closest('.main-category-header');
-                if (mainHeader) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    var nextGroup = mainHeader.nextElementSibling;
-                    if (nextGroup && nextGroup.classList.contains('category-group')) {
-                        mainHeader.classList.toggle('active');
-                        nextGroup.classList.toggle('active');
-                    }
-                    return;
-                }
-                var subHeader = e.target.closest('.category-header');
-                if (subHeader) {
-                    // Skip direct links (like Bahce Ekipmanlari)
-                    if (e.target.closest('a[href]') && e.target.closest('a[href]').getAttribute('href') !== '#' && e.target.closest('a[href]').getAttribute('href') !== 'javascript:void(0)') return;
-                    e.preventDefault();
-                    e.stopPropagation();
-                    var parentItem = subHeader.closest('.category-item');
-                    if (parentItem) {
-                        parentItem.classList.toggle('active');
-                    }
-                    return;
-                }
-            });
-        }
-    });
-    </script>
+    
 </body>
 </html>

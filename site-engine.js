@@ -42,28 +42,51 @@
         } catch(e) {}
     }
 
-    // GLOBAL MENU TOGGLE - defined at window scope BEFORE document.write
+    // =============================================
+    // GLOBAL MENU TOGGLE - uses ONLY classList
+    // CSS has .active { display: block !important }
+    // so we MUST use classList, NOT style.display
+    // =============================================
     window.toggleCatalogMenu = function(e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
         var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
         if (!menu) return;
-        if (menu.classList.contains('active') || menu.style.display === 'block') {
-            menu.classList.remove('active');
-            menu.style.display = 'none';
-        } else {
-            menu.classList.add('active');
-            menu.style.display = 'block';
-            menu.style.zIndex = '999999';
+        menu.classList.toggle('active');
+    };
+
+    // =============================================
+    // PRODUCT CARD CLICK TOGGLE (for mobile)
+    // Only ONE card open at a time
+    // =============================================
+    window._baysuSetupProductCards = function() {
+        var cards = document.querySelectorAll('.product-card');
+        for (var i = 0; i < cards.length; i++) {
+            (function(card) {
+                card.addEventListener('click', function(e) {
+                    // Don't toggle if clicking on buttons/inputs inside
+                    if (e.target.closest('.qty-btn') || e.target.closest('.qty-input') || e.target.closest('.btn-add-cart-custom')) return;
+                    
+                    var wasActive = card.classList.contains('card-active');
+                    // Close ALL other cards first
+                    var allCards = document.querySelectorAll('.product-card.card-active');
+                    for (var j = 0; j < allCards.length; j++) {
+                        allCards[j].classList.remove('card-active');
+                    }
+                    // Toggle current card
+                    if (!wasActive) {
+                        card.classList.add('card-active');
+                    }
+                });
+            })(cards[i]);
         }
     };
 
-    // GLOBAL ACCORDION SETUP - bind after DOM is ready
+    // =============================================
+    // ACCORDION SETUP
+    // =============================================
     window._baysuSetupAccordion = function() {
-        // Bind toggle triggers
         var triggers = document.querySelectorAll('#menuToggle, #menuToggleNav, #menuToggleDesktop, #menuToggleMobile, .menu-toggle, .dropdown-toggle');
         for (var i = 0; i < triggers.length; i++) {
-            triggers[i].style.cursor = 'pointer';
-            // Use addEventListener so it doesn't override onclick attribute
             (function(btn) {
                 btn.addEventListener('click', function(e) {
                     window.toggleCatalogMenu(e);
@@ -71,7 +94,6 @@
             })(triggers[i]);
         }
 
-        // Accordion: main category headers & sub-headers
         var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
         if (menu) {
             menu.addEventListener('click', function(e) {
@@ -116,7 +138,6 @@
             try {
                 var rawHtml = decodeURIComponent(escape(atob(window.PAGE_DATA[path])));
                 
-                // Inject meta headers to disable browser caching inside the compiled HTML output
                 var noCacheMeta = '\n<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />\n<meta http-equiv="Pragma" content="no-cache" />\n<meta http-equiv="Expires" content="0" />\n';
                 var headIndex = rawHtml.indexOf('<head>');
                 if (headIndex > -1) {
@@ -127,30 +148,23 @@
                 document.write(rawHtml);
                 document.close();
 
-                // RE-DEFINE global toggleCatalogMenu after document.write (it wipes window properties on some browsers)
+                // Re-define after document.write
                 window.toggleCatalogMenu = function(e) {
                     if (e) { e.preventDefault(); e.stopPropagation(); }
                     var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
                     if (!menu) return;
-                    if (menu.classList.contains('active') || menu.style.display === 'block') {
-                        menu.classList.remove('active');
-                        menu.style.display = 'none';
-                    } else {
-                        menu.classList.add('active');
-                        menu.style.display = 'block';
-                        menu.style.zIndex = '999999';
-                    }
+                    menu.classList.toggle('active');
                 };
 
-                // Setup accordion after the new document is ready
                 window._baysuSetupAccordion();
+                window._baysuSetupProductCards();
 
             } catch (e) {
                 console.error(e);
             }
         } else {
-            // No SPA page found - we are on the raw HTML page, just setup accordion
             window._baysuSetupAccordion();
+            window._baysuSetupProductCards();
         }
     });
 })();

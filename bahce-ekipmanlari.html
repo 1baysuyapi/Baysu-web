@@ -1379,22 +1379,7 @@
 
     
 
-    <script id="baysu-global-toggle">
-    // GLOBAL toggleCatalogMenu - must be at window scope for onclick=" attributes
-    window.toggleCatalogMenu = function(e) {
-        if (e) { e.preventDefault(); e.stopPropagation(); }
-        var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
-        if (!menu) return;
-        if (menu.classList.contains('active') || menu.style.display === 'block') {
-            menu.classList.remove('active');
-            menu.style.display = 'none';
-        } else {
-            menu.classList.add('active');
-            menu.style.display = 'block';
-            menu.style.zIndex = '999999';
-        }
-    };
-    </script>
+    
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
     <header class="header-main">
@@ -4556,10 +4541,10 @@
                 var isHidden = (menu.style.display === 'none' || window.getComputedStyle(menu).display === 'none' || !menu.classList.contains('active'));
                 if (isHidden) {
                     menu.classList.add('active');
-                    menu.style.display = 'block';
+                    menu.classList.add('active');
                 } else {
                     menu.classList.remove('active');
-                    menu.style.display = 'none';
+                    menu.classList.remove('active');
                 }
             } else {
                 window.location.href = 'index.html';
@@ -5312,7 +5297,12 @@
         }
     </script>
 
-    <style id="bahce-hover-inject-css">
+    
+
+    
+
+    <style id="bahce-card-css">
+        /* Desktop: hover to expand */
         .product-hover-details {
             max-height: 0 !important;
             overflow: hidden !important;
@@ -5328,6 +5318,11 @@
             box-sizing: border-box !important;
         }
         .product-card:hover .product-hover-details {
+            max-height: 160px !important;
+            padding: 12px !important;
+        }
+        /* Click-based active: works on both mobile AND desktop */
+        .product-card.card-active .product-hover-details {
             max-height: 160px !important;
             padding: 12px !important;
         }
@@ -5356,15 +5351,15 @@
             padding: 2px !important;
         }
         .qty-btn {
-            width: 24px !important;
-            height: 24px !important;
+            width: 28px !important;
+            height: 28px !important;
             border: none !important;
             background: #ffffff !important;
             color: #004797 !important;
             font-weight: 800 !important;
             border-radius: 6px !important;
             cursor: pointer !important;
-            font-size: 13px !important;
+            font-size: 14px !important;
         }
         .qty-input {
             width: 30px !important;
@@ -5396,68 +5391,40 @@
             background: #002D62 !important;
         }
         .product-card-price {
-            padding: 4px 12px 8px;
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: #004797;
-            background: #EFF6FF;
-            text-align: center;
+            padding: 4px 12px 8px !important;
+            font-size: 0.85rem !important;
+            font-weight: 700 !important;
+            color: #004797 !important;
+            background: #EFF6FF !important;
+            text-align: center !important;
+        }
+        .product-card {
+            cursor: pointer !important;
+            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+        }
+        .product-card.card-active {
+            transform: scale(1.02) !important;
+            box-shadow: 0 8px 25px rgba(0,71,151,0.2) !important;
+            border: 2px solid #004797 !important;
         }
         @media (max-width: 768px) {
-            .product-hover-details {
-                max-height: none !important;
-                padding: 10px !important;
-                background: #F8FAFC !important;
+            /* Mobile: NO hover expand, ONLY click (.card-active) */
+            .product-card:hover .product-hover-details {
+                max-height: 0 !important;
+                padding: 0 12px !important;
+            }
+            .product-card.card-active .product-hover-details {
+                max-height: 200px !important;
+                padding: 12px !important;
             }
             .hover-action-row {
-                flex-direction: column !important;
-                gap: 6px !important;
+                flex-direction: row !important;
+                gap: 8px !important;
             }
             .btn-add-cart-custom {
-                width: 100% !important;
+                flex: 1 !important;
             }
         }
     </style>
-
-    <script id="baysu-accordion-handler">
-    document.addEventListener('DOMContentLoaded', function() {
-        // Bind toggle triggers (redundant safety for elements without onclick attr)
-        var triggers = document.querySelectorAll('#menuToggle, #menuToggleNav, #menuToggleDesktop, #menuToggleMobile, .menu-toggle, .dropdown-toggle');
-        for (var i = 0; i < triggers.length; i++) {
-            triggers[i].style.cursor = 'pointer';
-            triggers[i].addEventListener('click', window.toggleCatalogMenu);
-        }
-
-        // Accordion: main category headers
-        var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
-        if (menu) {
-            menu.addEventListener('click', function(e) {
-                var mainHeader = e.target.closest('.main-category-header');
-                if (mainHeader) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    var nextGroup = mainHeader.nextElementSibling;
-                    if (nextGroup && nextGroup.classList.contains('category-group')) {
-                        mainHeader.classList.toggle('active');
-                        nextGroup.classList.toggle('active');
-                    }
-                    return;
-                }
-                var subHeader = e.target.closest('.category-header');
-                if (subHeader) {
-                    // Skip direct links (like Bahce Ekipmanlari)
-                    if (e.target.closest('a[href]') && e.target.closest('a[href]').getAttribute('href') !== '#' && e.target.closest('a[href]').getAttribute('href') !== 'javascript:void(0)') return;
-                    e.preventDefault();
-                    e.stopPropagation();
-                    var parentItem = subHeader.closest('.category-item');
-                    if (parentItem) {
-                        parentItem.classList.toggle('active');
-                    }
-                    return;
-                }
-            });
-        }
-    });
-    </script>
 </body>
 </html>
