@@ -663,8 +663,7 @@
         }
 
         /* HIDE TOP NAV BAR ON PC / DESKTOP SCREENS */
-        .top-nav-bar { display: none !important; 
-            display: none !important;
+        .top-nav-bar { display: none !important;
         }
 
         /* WHATSAPP FLOATING BUTTON - POSITIONED SAFE FROM FLOATING CART ON PC AND MOBILE */
@@ -828,8 +827,7 @@
 
         /* SHOW TOP NAV BAR ONLY ON MOBILE SCREENS (MAX-WIDTH: 768PX) */
         @media (max-width: 768px) {
-            .top-nav-bar { display: none !important; 
-                display: flex !important;
+            .top-nav-bar { 
                 background: #F8FAFC !important;
                 border-bottom: 1px solid #E2E8F0 !important;
                 padding: 8px 10px !important;
@@ -1536,8 +1534,10 @@
             </div>
             <ul class="category-group" id="bahce-sulama-group">
                 <li class="category-item">
-                    <a href="bahce-ekipmanlari.html" style="display: flex !important; justify-content: space-between !important; align-items: center !important; padding: 12px 30px !important; background: #FFFFFF !important; border-bottom: 1px solid #E2E8F0 !important; cursor: pointer !important; text-decoration: none !important; width: 100% !important;" onmouseover="this.style.background='#EDF2F7'" onmouseout="this.style.background='#FFFFFF'">
-                        <h3 style="margin: 0 !important; font-size: 0.95rem !important; color: #1E293B !important; font-weight: 600 !important; font-family: 'Poppins', sans-serif !important;">Bahçe Ekipmanları</h3>
+                    <a href="bahce-ekipmanlari.html" style="text-decoration: none !important; display: block !important; width: 100% !important;">
+                        <div class="category-header" style="padding: 12px 30px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; background: #FFFFFF !important; user-select: none !important; border-bottom: 1px solid #E2E8F0 !important; cursor: pointer !important;">
+                            <h3 style="margin: 0 !important; font-size: 14px !important; font-weight: 700 !important; color: #0F172A !important; font-family: 'Poppins', sans-serif !important;">Bahçe Ekipmanları</h3>
+                        </div>
                     </a>
                 </li>
                 <li class="category-item">
@@ -3093,8 +3093,7 @@
             }
 
             /* Top nav bar mobile pills */
-            .top-nav-bar { display: none !important; 
-                display: flex !important;
+            .top-nav-bar { 
                 padding: 8px 10px !important;
                 gap: 8px !important;
             }
@@ -3159,8 +3158,7 @@
             }
 
             /* Top nav pills compact */
-            .top-nav-bar { display: none !important; 
-                display: flex !important;
+            .top-nav-bar { 
                 padding: 4px 8px !important;
                 gap: 6px !important;
             }
