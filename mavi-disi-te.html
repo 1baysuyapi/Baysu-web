@@ -1370,6 +1370,26 @@
     
 
     
+
+    <style id="baysu-pc-mobile-nav-toggle-css">
+        /* PC/Desktop View: Hide mobile bar, show main navbar */
+        .top-nav-bar {
+            display: none !important;
+        }
+        .nav-bar {
+            display: block !important;
+        }
+
+        /* Mobile Portrait & Landscape View: Show mobile bar, hide main navbar */
+        @media screen and (max-width: 768px), screen and (max-height: 500px) and (orientation: landscape) {
+            .top-nav-bar {
+                display: flex !important;
+            }
+            .nav-bar {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
     <header class="header-main">
@@ -3867,31 +3887,9 @@
             visibility: hidden !important;
         }
     
-        /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
-        .top-nav-bar {
-            display: none !important;
-        }
-        @media (max-width: 768px) {
-            .top-nav-bar {
-                display: flex !important;
-            }
-            .nav-bar {
-                display: none !important;
-            }
-        }
+        
     
-        /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
-        .top-nav-bar {
-            display: none !important;
-        }
-        @media (max-width: 768px) {
-            .top-nav-bar {
-                display: flex !important;
-            }
-            .nav-bar {
-                display: none !important;
-            }
-        }
+        
     </style>
 
     <script id="baysu-features-toggle-script">
