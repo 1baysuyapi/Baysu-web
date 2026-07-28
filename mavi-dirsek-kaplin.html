@@ -3403,5 +3403,22 @@
     </script>
 
     
+
+    <style id="baysu-accordion-css">
+        .main-category-header { cursor: pointer !important; }
+        .main-category-header:hover { background: #E0F2FE !important; }
+        .main-category-header.active { background: #E0F2FE !important; border-color: #0288d1 !important; }
+        .main-category-header.active + .category-group { display: grid !important; }
+        .main-category-header.active .arrow-icon { transform: rotate(90deg) !important; }
+        .category-group { display: none !important; }
+        .category-group.active { display: grid !important; }
+        .product-list { display: none; }
+        .category-item.active .product-list { display: block !important; }
+        .category-item.active .category-header { background: #F1F5F9 !important; }
+        @media (max-width: 768px) {
+            .main-category-header.active + .category-group { display: flex !important; flex-direction: column !important; }
+            .category-group.active { display: flex !important; flex-direction: column !important; }
+        }
+    </style>
 </body>
 </html>
