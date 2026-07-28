@@ -921,25 +921,7 @@
 
     
 
-    <style id="baysu-pc-mobile-nav-toggle-css">
-        /* Default PC / Desktop */
-        .top-nav-bar {
-            display: none !important;
-        }
-        .nav-bar {
-            display: block !important;
-        }
-
-        /* Mobile Layout */
-        @media (max-width: 768px) {
-            .top-nav-bar {
-                display: flex !important;
-            }
-            .nav-bar {
-                display: none !important;
-            }
-        }
-    </style>
+    
 </head>
   <body class="flex justify-center items-center h-screen overflow-hidden bg-white font-sans text-center px-6" oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
     <div class="w-full">
@@ -2346,6 +2328,19 @@
             display: none !important;
             opacity: 0 !important;
             visibility: hidden !important;
+        }
+    
+        /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
+        .top-nav-bar {
+            display: none !important;
+        }
+        @media (max-width: 768px) {
+            .top-nav-bar {
+                display: flex !important;
+            }
+            .nav-bar {
+                display: none !important;
+            }
         }
     
         /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
