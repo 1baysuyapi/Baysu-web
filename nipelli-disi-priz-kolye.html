@@ -1735,7 +1735,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     
-    <script src="cart.js?v=639208785209544951"></script>
+    <script src="cart.js?v=639208786394212022"></script>
 
 
 
@@ -3331,6 +3331,19 @@
         
     
         
+    
+        /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
+        .top-nav-bar {
+            display: none !important;
+        }
+        @media (max-width: 768px) {
+            .top-nav-bar {
+                display: flex !important;
+            }
+            .nav-bar {
+                display: none !important;
+            }
+        }
     
         /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
         .top-nav-bar {
