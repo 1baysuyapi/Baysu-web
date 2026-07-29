@@ -73,10 +73,11 @@
     // FULL ACCORDION SETUP
     // =============================================
     window._baysuSetupAccordion = function() {
-        // Bind menu toggle buttons
+        // Bind menu toggle buttons (ONLY if they do not have an onclick attribute)
         var triggers = document.querySelectorAll('#menuToggle, #menuToggleNav, #menuToggleDesktop, #menuToggleMobile, .menu-toggle, .dropdown-toggle');
         for (var i = 0; i < triggers.length; i++) {
             (function(btn) {
+                if (btn.hasAttribute('onclick')) return; // Avoid double triggering!
                 btn.addEventListener('click', function(e) { window.toggleCatalogMenu(e); });
             })(triggers[i]);
         }
