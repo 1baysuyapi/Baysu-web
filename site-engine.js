@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
     function getPageName(path) {
         if (!path || path === '' || path === '/' || path === 'index.html') return 'Ana Sayfa';
         var name = path.replace('.html', '').replace(/-/g, ' ');
@@ -7,12 +7,12 @@
 
     function getRefName() {
         var ref = document.referrer;
-        if (!ref || ref === '') return 'Doğrudan Giriş (Direct)';
+        if (!ref || ref === '') return 'DoÄŸrudan GiriÅŸ (Direct)';
         if (ref.indexOf('google') > -1) return 'Google Arama';
         if (ref.indexOf('whatsapp') > -1) return 'WhatsApp';
         if (ref.indexOf('instagram') > -1) return 'Instagram';
-        if (ref.indexOf(window.location.hostname) > -1) return 'Site İçi Dolaşım';
-        return 'Harici Bağlantı (' + ref.split('/')[2] + ')';
+        if (ref.indexOf(window.location.hostname) > -1) return 'Site Ä°Ã§i DolaÅŸÄ±m';
+        return 'Harici BaÄŸlantÄ± (' + ref.split('/')[2] + ')';
     }
 
     function logVisit(path) {
@@ -21,7 +21,7 @@
             var now = new Date();
             var timeStr = now.toLocaleDateString('tr-TR') + ' ' + now.toLocaleTimeString('tr-TR');
             var isMobile = navigator.userAgent.indexOf('Mobile') > -1 || navigator.userAgent.indexOf('Android') > -1 || navigator.userAgent.indexOf('iPhone') > -1;
-            var devStr = isMobile ? '📱 Mobil Cihaz' : '💻 Masaüstü Bilgisayar';
+            var devStr = isMobile ? 'ğŸ“± Mobil Cihaz' : 'ğŸ’» MasaÃ¼stÃ¼ Bilgisayar';
             var sid = sessionStorage.getItem('baysu_sid') || (function(){
                 var id = Math.random().toString(36).substring(2, 9);
                 sessionStorage.setItem('baysu_sid', id);
@@ -40,7 +40,15 @@
         if (e) { e.preventDefault(); e.stopPropagation(); }
         var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
         if (!menu) return;
-        menu.classList.toggle('active');
+        
+        if (menu.classList.contains('active') || menu.style.getPropertyValue('display') === 'block') {
+            menu.classList.remove('active');
+            menu.style.setProperty('display', 'none', 'important');
+        } else {
+            menu.classList.add('active');
+            menu.style.setProperty('display', 'block', 'important');
+            menu.style.setProperty('z-index', '999999', 'important');
+        }
     };
 
     // =============================================
