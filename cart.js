@@ -372,6 +372,8 @@ function parsePrice(str) {
 
             const tableQtyBtn = e.target.closest('.qty-selector .qty-btn, .qty-stepper .qty-btn');
             if (tableQtyBtn) {
+                // Skip if button already has inline onclick (prevent double increment)
+                if (tableQtyBtn.hasAttribute('onclick')) return;
                 e.preventDefault();
                 e.stopPropagation();
                 e._handledByBaysuCart = true;
