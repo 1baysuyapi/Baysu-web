@@ -36,18 +36,35 @@
     // =============================================
     // GLOBAL MENU TOGGLE
     // =============================================
+    // Visual error debugging to catch any javascript errors and display them
+    window.onerror = function(msg, url, line) {
+        var errDiv = document.createElement('div');
+        errDiv.style = 'position:fixed;bottom:0;left:0;width:100%;background:rgba(255,0,0,0.9);color:white;padding:10px;z-index:9999999;font-family:monospace;font-size:12px;max-height:150px;overflow:auto;';
+        errDiv.innerText = 'JS Error: ' + msg + ' at ' + url + ':' + line;
+        document.body.appendChild(errDiv);
+        return false;
+    };
+
     window.toggleCatalogMenu = function(e) {
-        if (e) { e.preventDefault(); e.stopPropagation(); }
+        if (e) { 
+            try { e.preventDefault(); } catch(err){}
+            try { e.stopPropagation(); } catch(err){}
+        }
         var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
-        if (!menu) return;
+        if (!menu) {
+            console.error('Menu element mainMenuContainer not found!');
+            return;
+        }
         
-        if (menu.classList.contains('active') || menu.style.getPropertyValue('display') === 'block') {
-            menu.classList.remove('active');
-            menu.style.setProperty('display', 'none', 'important');
-        } else {
-            menu.classList.add('active');
+        // Toggle active class
+        menu.classList.toggle('active');
+        
+        // Force display style update to bypass any CSS !important rule
+        if (menu.classList.contains('active')) {
             menu.style.setProperty('display', 'block', 'important');
             menu.style.setProperty('z-index', '999999', 'important');
+        } else {
+            menu.style.setProperty('display', 'none', 'important');
         }
     };
 
@@ -171,16 +188,18 @@
 
                 // Re-define after document.write
                 window.toggleCatalogMenu = function(e) {
-                    if (e) { e.preventDefault(); e.stopPropagation(); }
+                    if (e) { 
+                        try { e.preventDefault(); } catch(err){}
+                        try { e.stopPropagation(); } catch(err){}
+                    }
                     var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
                     if (!menu) return;
-                    if (menu.classList.contains('active') || menu.style.getPropertyValue('display') === 'block') {
-                        menu.classList.remove('active');
-                        menu.style.setProperty('display', 'none', 'important');
-                    } else {
-                        menu.classList.add('active');
+                    menu.classList.toggle('active');
+                    if (menu.classList.contains('active')) {
                         menu.style.setProperty('display', 'block', 'important');
                         menu.style.setProperty('z-index', '999999', 'important');
+                    } else {
+                        menu.style.setProperty('display', 'none', 'important');
                     }
                 };
 
