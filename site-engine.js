@@ -169,6 +169,12 @@
     };
 
     document.addEventListener('DOMContentLoaded', function () {
+        if (window.__baysu_written) {
+            // Already written by the engine, do not write again! Just set up behaviors.
+            window._baysuSetupAccordion();
+            window._baysuSetupProductCards();
+            return;
+        }
         var path = window.location.pathname.split('/').pop().toLowerCase();
         if (!path || path === '' || path === '/') { path = 'index.html'; }
         if (path !== 'admin.html') { logVisit(path); }
@@ -182,6 +188,7 @@
                     rawHtml = rawHtml.substring(0, headIndex + 6) + noCacheMeta + rawHtml.substring(headIndex + 6);
                 }
 
+                window.__baysu_written = true;
                 document.open();
                 document.write(rawHtml);
                 document.close();
