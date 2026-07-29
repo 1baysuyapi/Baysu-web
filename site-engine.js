@@ -173,7 +173,14 @@
                     if (e) { e.preventDefault(); e.stopPropagation(); }
                     var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
                     if (!menu) return;
-                    menu.classList.toggle('active');
+                    if (menu.classList.contains('active') || menu.style.getPropertyValue('display') === 'block') {
+                        menu.classList.remove('active');
+                        menu.style.setProperty('display', 'none', 'important');
+                    } else {
+                        menu.classList.add('active');
+                        menu.style.setProperty('display', 'block', 'important');
+                        menu.style.setProperty('z-index', '999999', 'important');
+                    }
                 };
 
                 window._baysuSetupAccordion();
