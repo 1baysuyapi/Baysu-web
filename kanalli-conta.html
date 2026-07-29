@@ -2516,37 +2516,7 @@
 
     
 
-    <script id="baysu-mobile-click-toggle-script">
-        function toggleCatalogMenu(e) {
-            if (e) {
-                e.preventDefault();
-                e.stopPropagation();
-            }
-            var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
-            if (menu) {
-                var isHidden = (menu.style.display === 'none' || window.getComputedStyle(menu).display === 'none' || !menu.classList.contains('active'));
-                if (isHidden) {
-                    menu.classList.add('active');
-                    menu.classList.add('active');
-                } else {
-                    menu.classList.remove('active');
-                    menu.classList.remove('active');
-                }
-            } else {
-                window.location.href = 'index.html';
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            var triggers = document.querySelectorAll('#menuToggle, #menuToggleNav, #menuToggleDesktop, #menuToggleMobile, .menu-toggle, a.dropdown-toggle, .nav-links a[href*="javascript"], .nav-links a:nth-child(2)');
-            triggers.forEach(function(btn) {
-                btn.onclick = toggleCatalogMenu;
-                btn.ontouchend = function(e) {
-                    toggleCatalogMenu(e);
-                };
-            });
-        });
-    </script>
+    
 
     
 
