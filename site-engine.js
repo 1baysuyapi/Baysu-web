@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     function getPageName(path) {
         if (!path || path === '' || path === '/' || path === 'index.html') return 'Ana Sayfa';
         var name = path.replace('.html', '').replace(/-/g, ' ');
@@ -168,15 +168,24 @@
         }
     };
 
-    document.addEventListener('DOMContentLoaded', function () {
-        if (window.__baysu_written) {
-            // Already written by the engine, do not write again! Just set up behaviors.
+    function init() {
+        // If document.body is null, the script is executing synchronously during parsing of the written document.
+        // Return early and let DOMContentLoaded trigger the initialization once parsing is complete!
+        if (!document.body) {
+            return;
+        }
+
+        var path = window.location.pathname.split('/').pop().toLowerCase();
+        if (!path || path === '' || path === '/') { path = 'index.html'; }
+
+        // Stateless check: if the page already has content elements (like headers, menus, or navs),
+        // then the document has already been written. Do not write again, just bind event listeners!
+        if (document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container') || document.querySelector('header')) {
             window._baysuSetupAccordion();
             window._baysuSetupProductCards();
             return;
         }
-        var path = window.location.pathname.split('/').pop().toLowerCase();
-        if (!path || path === '' || path === '/') { path = 'index.html'; }
+
         if (path !== 'admin.html') { logVisit(path); }
 
         if (window.PAGE_DATA && window.PAGE_DATA[path]) {
@@ -219,5 +228,11 @@
             window._baysuSetupAccordion();
             window._baysuSetupProductCards();
         }
-    });
+    }
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        init();
+    } else {
+        document.addEventListener('DOMContentLoaded', init);
+    }
 })();
