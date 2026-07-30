@@ -175,8 +175,16 @@
             return;
         }
 
-        var path = window.location.pathname.split('/').pop().toLowerCase();
-        if (!path || path === '' || path === '/') { path = 'index.html'; }
+        var pathname = window.location.pathname;
+        if (pathname.length > 1 && pathname.charAt(pathname.length - 1) === '/') {
+            pathname = pathname.substring(0, pathname.length - 1);
+        }
+        var path = pathname.split('/').pop().toLowerCase();
+        if (!path || path === '') { 
+            path = 'index.html'; 
+        } else if (path.indexOf('.html') === -1) {
+            path += '.html';
+        }
 
         // Stateless check: if the page already has content elements (like headers, menus, or navs),
         // then the document has already been written. Do not write again, just bind event listeners!
