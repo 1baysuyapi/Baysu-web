@@ -466,3 +466,17 @@ window.closeKvkkModal = function() {
     if (modal) modal.classList.remove('active');
 };
 
+// Toggle Product Features
+window.toggleProductFeatures = function(btn) {
+    var box = btn.nextElementSibling;
+    if (box && box.classList.contains('product-features-box')) {
+        var icon = btn.querySelector('.toggle-icon');
+        if (box.style.display === 'none' || !box.style.display) {
+            box.style.display = 'block';
+            if (icon) icon.style.transform = 'rotate(180deg)';
+        } else {
+            box.style.display = 'none';
+            if (icon) icon.style.transform = 'rotate(0deg)';
+        }
+    }
+};
