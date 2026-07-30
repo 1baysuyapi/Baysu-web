@@ -835,29 +835,9 @@ html, body {
             box-sizing: border-box !important;
         }
 
-        /* ===== NAV BAR: Blue #004797 Strip ===== */
-        .nav-bar {
-            background-color: #004797 !important;
-            background: #004797 !important;
-            padding: 0 !important;
-            width: 100% !important;
-            display: flex !important; justify-content: center !important; align-items: center !important;
-            top: 0 !important;
-            z-index: 10000 !important;
-            display: block !important;
-            box-shadow: 0 4px 12px rgba(0,71,151,0.18) !important;
-            box-sizing: border-box !important;
-        }
+        
 
-        .nav-content {
-            background: transparent !important;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            max-width: 1200px !important;
-            margin: 0 auto !important;
-            padding: 0 15px !important;
-        }
+        
 
         .nav-links a {
             color: #FFFFFF !important;
@@ -1086,24 +1066,9 @@ html, body {
                 font-size: 14px !important;
             }
 
-            /*
-             * CRITICAL FIX: Do NOT hide .nav-bar on mobile!
-             * The #mainMenuContainer (product catalog) lives inside .nav-bar.
-             * Hiding .nav-bar kills the entire catalog menu.
-             * Instead: hide only .nav-content (desktop links) and keep .nav-bar
-             * as a minimal container so catalog menu still works.
-             */
-            .nav-bar {
-                display: block !important;
-                padding: 0 !important;
-                min-height: 0 !important;
-                box-shadow: none !important;
-            }
+            
 
-            /* Hide desktop nav links on mobile */
-            .nav-content {
-                display: none !important;
-            }
+            
 
             /* Catalog menu still works from inside nav-bar */
             #mainMenuContainer, .main-menu-container {
@@ -1196,11 +1161,7 @@ html, body {
                 font-size: 10px !important;
             }
 
-            /* Top nav bar mobile pills */
-            .top-nav-bar { 
-                padding: 8px 10px !important;
-                gap: 8px !important;
-            }
+            
 
             .nav-pill-btn {
                 flex: 1 !important;
@@ -1250,22 +1211,11 @@ html, body {
                 font-size: 13px !important;
             }
 
-            /* Nav bar: keep visible but minimal so catalog menu works */
-            .nav-bar {
-                padding: 0 !important;
-                min-height: 0 !important;
-                box-shadow: none !important;
-            }
+            
 
-            .nav-content {
-                display: none !important;
-            }
+            
 
-            /* Top nav pills compact */
-            .top-nav-bar { 
-                padding: 4px 8px !important;
-                gap: 6px !important;
-            }
+            
 
             .nav-pill-btn {
                 padding: 5px 6px !important;
@@ -1384,109 +1334,29 @@ html, body {
     
         
     
-        /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
-        .top-nav-bar {
-            display: none !important;
-        }
-        @media (max-width: 768px) {
-            .top-nav-bar {
-                display: flex !important;
-            }
-            .nav-bar {
-                display: none !important;
-            }
-        }
+        
+        
     
-        /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
-        .top-nav-bar {
-            display: none !important;
-        }
-        @media (max-width: 768px) {
-            .top-nav-bar {
-                display: flex !important;
-            }
-            .nav-bar {
-                display: none !important;
-            }
-        }
+        
+        
     
-        /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
-        .top-nav-bar {
-            display: none !important;
-        }
-        @media (max-width: 768px) {
-            .top-nav-bar {
-                display: flex !important;
-            }
-            .nav-bar {
-                display: none !important;
-            }
-        }
+        
+        
     
-        /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
-        .top-nav-bar {
-            display: none !important;
-        }
-        @media (max-width: 768px) {
-            .top-nav-bar {
-                display: flex !important;
-            }
-            .nav-bar {
-                display: none !important;
-            }
-        }
+        
+        
     
-        /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
-        .top-nav-bar {
-            display: none !important;
-        }
-        @media (max-width: 768px) {
-            .top-nav-bar {
-                display: flex !important;
-            }
-            .nav-bar {
-                display: none !important;
-            }
-        }
+        
+        
     
-        /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
-        .top-nav-bar {
-            display: none !important;
-        }
-        @media (max-width: 768px) {
-            .top-nav-bar {
-                display: flex !important;
-            }
-            .nav-bar {
-                display: none !important;
-            }
-        }
+        
+        
     
-        /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
-        .top-nav-bar {
-            display: none !important;
-        }
-        @media (max-width: 768px) {
-            .top-nav-bar {
-                display: flex !important;
-            }
-            .nav-bar {
-                display: none !important;
-            }
-        }
+        
+        
     
-        /* Ensure top-nav-bar is strictly hidden on desktop PC and visible on mobile */
-        .top-nav-bar {
-            display: none !important;
-        }
-        @media (max-width: 768px) {
-            .top-nav-bar {
-                display: flex !important;
-            }
-            .nav-bar {
-                display: none !important;
-            }
-        }
+        
+        
     
 
     
@@ -1530,6 +1400,8 @@ html, body {
     width: 90%;
     position: relative;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    max-height: 80vh !important;
+    overflow-y: auto !important;
 }
 .kvkk-modal-close {
     position: absolute;
@@ -1538,5 +1410,6 @@ html, body {
     cursor: pointer;
     color: #64748B;
 }
+
 
 
