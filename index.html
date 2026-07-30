@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8" />
@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="cart.css?v=1785445087573" />
+    <link rel="stylesheet" href="cart.css?v=999" />
     
     <style>
         /* Renkler ve Fontlar için CSS Değişkenleri */
@@ -1119,7 +1119,7 @@
     </main>
 
     <footer>
-        &copy; 2026 <strong>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ</strong> - Tüm Hakları Saklıdır.
+        &copy; 2026 <strong>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ</strong> - Tüm Hakları Saklıdır. | <a href="javascript:void(0)" onclick="openKvkkModal()" style="color: #94A3B8; text-decoration: underline; font-size: 13px;">KVKK Aydınlatma Metni</a>
     </footer>
 
     <!-- WhatsApp Floating Action -->
@@ -1130,7 +1130,25 @@
         <a href="https://wa.me/905533973603?text=Merhaba,%20Baysu%20Yap%C4%B1%20web%20sitenizden%20ürünleriniz%20hakkında%20bilgi%20almak%20istiyorum." class="whatsapp-button" target="_blank" title="WhatsApp ile İletişime Geçin">
             <i class="fab fa-whatsapp"></i>
         </a>
-    <script src="cart.js?v=1785445087573"></script>
+    <div id="kvkkModalBackdrop" class="kvkk-modal-backdrop">
+        <div class="kvkk-modal-content">
+            <span class="kvkk-modal-close" onclick="closeKvkkModal()">&times;</span>
+            <h2 style="color:#004797; margin-top:0;"><i class="fas fa-user-shield"></i> KVKK Aydınlatma Metni</h2>
+            <hr style="border:0; border-top:1px solid #E2E8F0; margin:15px 0;">
+            <div style="font-size:14px; line-height:1.7; color:#334155;">
+                <p><strong>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ</strong> olarak kişisel verilerinizin güvenliği hususuna azami hassasiyet göstermekteyiz. 6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) uyarınca, web sitemizi ziyaret eden ve hizmetlerimizden faydalanan tüm kullanıcılarımızın kişisel verileri yasal mevzuata uygun olarak işlenmektedir.</p>
+                <h4 style="color:#0288d1; margin-top:15px;">1. İşlenen Kişisel Veriler ve Amaçları</h4>
+                <p>Sitemizde sipariş verme, whatsapp ile iletişim kurma ve teklif alma süreçlerinde paylaştığınız ad, soyad, telefon numarası ve adres bilgileri yalnızca siparişinizin tamamlanması, teslimatın yapılması ve müşteri memnuniyeti amacıyla işlenir.</p>
+                <h4 style="color:#0288d1; margin-top:15px;">2. Kişisel Verilerin Aktarılması</h4>
+                <p>Kişisel verileriniz 3. şahıslara veya kurumlar ile ticari amaçla kesinlikle paylaşılmaz. Yalnızca yasal zorunluluk hallerinde yetkili kamu kurumlarına aktarılabilir.</p>
+                <h4 style="color:#0288d1; margin-top:15px;">3. KVKK Kapsamındaki Haklarınız</h4>
+                <p>KVKK'nın 11. maddesi uyarınca bize başvurarak kişisel verilerinizin işlenip işlenmediğini öğrenme, silinmesini veya düzeltilmesini talep etme hakkına sahipsiniz.</p>
+                <p style="margin-top:20px; text-align:right;"><button onclick="closeKvkkModal()" style="background:#0288d1; color:#fff; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer;">Anladım, Kapat</button></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="cart.js?v=999"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const mainMenuContainer = document.getElementById('mainMenuContainer');
