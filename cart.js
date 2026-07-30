@@ -480,3 +480,13 @@ window.toggleProductFeatures = function(btn) {
         }
     }
 };
+
+// Quantity Stepper
+window.incrementQty = function(btn) {
+    var input = btn.previousElementSibling;
+    if (input) input.value = parseInt(input.value || 1) + 1;
+};
+window.decrementQty = function(btn) {
+    var input = btn.nextElementSibling;
+    if (input && parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
+};
