@@ -831,11 +831,11 @@
         <div class="nav-content">
             <div class="nav-links">
                 <a href='/'><i class="fas fa-home" style="margin-right: 6px;"></i>Ana Sayfa</a>
-                <a href="#" id="menuToggleDesktop"><i class="fas fa-th-large" style="margin-right: 6px;"></i>Ürün Kataloğu</a>
+                <a href="javascript:void(0)" id="menuToggleDesktop" onclick="window.baysuToggleMenu(event)"><i class="fas fa-th-large" style="margin-right: 6px;"></i>Ürün Kataloğu</a>
                 <a href="#about-section"><i class="fas fa-info-circle" style="margin-right: 6px;"></i>Hakkımızda</a>
                 <a href="#contact-section"><i class="fas fa-envelope" style="margin-right: 6px;"></i>İletişim</a>
             </div>
-            <div class="menu-toggle" id="menuToggle">
+            <div class="menu-toggle" id="menuToggle" onclick="window.baysuToggleMenu(event)">
                 <i class="fas fa-bars"></i>
                 <span id="menuText">Tüm Ürün Kataloğu</span>
             </div>
@@ -1150,7 +1150,34 @@
             }
         });
 
-        // Event Delegation ile MenÃ¼ YÃ¶netimi (Daha gÃ¼venilir)
+        // Global function for Menu Toggle
+        window.baysuToggleMenu = function(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            const mainMenuContainer = document.getElementById('mainMenuContainer');
+            if (mainMenuContainer) {
+                const isActive = mainMenuContainer.classList.toggle('active');
+                if (isActive) {
+                    mainMenuContainer.style.setProperty('display', 'block', 'important');
+                    mainMenuContainer.style.setProperty('z-index', '999999', 'important');
+                } else {
+                    mainMenuContainer.style.setProperty('display', 'none', 'important');
+                    const mci = document.querySelector('.main-category-item');
+                    if (mci) mci.classList.remove('active');
+                    const kaplinlerMenu = document.getElementById('kaplinler-menu');
+                    if (kaplinlerMenu) kaplinlerMenu.classList.remove('active');
+                    document.querySelectorAll('.category-item').forEach(item => {
+                        item.classList.remove('active');
+                        const productList = item.querySelector('.product-list');
+                        if (productList) productList.classList.remove('active');
+                    });
+                }
+            }
+        };
+
+        // Event Delegation ile Menü Yönetimi (Daha güvenilir)
         document.addEventListener('click', (e) => {
             const menuToggleMobile = e.target.closest('#menuToggle');
             const menuToggleDesktop = e.target.closest('#menuToggleDesktop');
@@ -1160,8 +1187,8 @@
             const mainMenuContainer = document.getElementById('mainMenuContainer');
             const kaplinlerMenu = document.getElementById('kaplinler-menu');
             
-            // Ana menÃ¼yÃ¼ aÃ§/kapat (butonlar)
-            if (menuToggleMobile || menuToggleDesktop || (heroCatalogBtn && !e.target.closest('#mainMenuContainer'))) {
+            // Ana menüyü aç/kapat (butonlar)
+            if (heroCatalogBtn && !e.target.closest('#mainMenuContainer')) {
                 e.preventDefault();
                 if (mainMenuContainer) {
                     const isActive = mainMenuContainer.classList.toggle('active');
@@ -1174,7 +1201,8 @@
                             const productList = item.querySelector('.product-list');
                             if (productList) productList.classList.remove('active');
                         });
-                    } else if (heroCatalogBtn) {
+                    } else {
+                        mainMenuContainer.style.setProperty('display', 'block', 'important');
                         mainMenuContainer.scrollIntoView({ behavior: 'smooth' });
                     }
                 }
@@ -1288,6 +1316,7 @@
     </script>
 </body>
 </html>
+
 
 
 

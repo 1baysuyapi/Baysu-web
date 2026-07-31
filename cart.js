@@ -219,7 +219,7 @@ function parsePrice(str) {
                                 <span style="padding: 0 8px; font-weight: 700; font-size: 13px;">${item.quantity}</span>
                                 <button type="button" class="drawer-qty-btn" data-action="plus" data-index="${index}" style="width: 28px; height: 28px; border: none; background: #fff; border-radius: 6px; font-weight: bold; cursor: pointer;">+</button>
                             </div>
-                            <button class="remove-cart-item" data-remove-index="${index}" style="background: none; border: none; color: #EF4444; cursor: pointer; font-size: 16px; margin-left: 8px;" title="Sil">
+                            <button type="button" class="remove-cart-item" onclick="window.baysuRemoveItem(${index})" style="background: none; border: none; color: #EF4444; cursor: pointer; font-size: 16px; margin-left: 8px;" title="Sil">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>
@@ -282,13 +282,13 @@ function parsePrice(str) {
         }
     }
 
-    function removeItem(index) {
+    window.baysuRemoveItem = function(index) {
         let cart = getCart();
         if (cart[index]) {
             cart.splice(index, 1);
             saveCart(cart);
         }
-    }
+    };
 
     function sendWhatsAppOrder() {
         const cart = getCart();
@@ -358,17 +358,6 @@ function parsePrice(str) {
                 return;
             }
 
-            const removeBtn = e.target.closest('.remove-cart-item');
-            if (removeBtn) {
-                e.preventDefault();
-                e.stopPropagation();
-                e._handledByBaysuCart = true;
-                const idx = parseInt(removeBtn.getAttribute('data-remove-index'));
-                if (!isNaN(idx)) {
-                    removeItem(idx);
-                }
-                return;
-            }
 
             const tableQtyBtn = e.target.closest('.qty-selector .qty-btn, .qty-stepper .qty-btn');
             if (tableQtyBtn) {
