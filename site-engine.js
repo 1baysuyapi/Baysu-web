@@ -234,3 +234,30 @@
         document.addEventListener('DOMContentLoaded', init);
     }
 })();
+// Global Cart Listener for dynamically loaded Image Products
+document.addEventListener('click', function(e) {
+    if (e.target.closest('.btn-add-to-cart')) {
+        const btn = e.target.closest('.btn-add-to-cart');
+        const card = btn.closest('.product-card');
+        if (!card) return;
+        
+        const codeElem = card.querySelector('.product-code-badge');
+        const nameElem = card.querySelector('h3');
+        const priceElem = card.querySelector('.product-price');
+        const infoSpans = card.querySelectorAll('.hover-info-row span');
+        const qtyElem = card.querySelector('.qty-selector input');
+        
+        if (codeElem && nameElem && priceElem && infoSpans.length >= 2 && qtyElem) {
+            const code = codeElem.innerText.trim();
+            const name = nameElem.innerText.trim();
+            const priceText = priceElem.innerText.trim().replace('â‚º', '').trim();
+            const boxQty = infoSpans[0].innerText.trim();
+            const packaging = infoSpans[1].innerText.trim();
+            const qty = qtyElem.value;
+            
+            if (window.baysuAddToCartImageProduct) {
+                window.baysuAddToCartImageProduct(code, name, priceText, boxQty, packaging, qty);
+            }
+        }
+    }
+});
