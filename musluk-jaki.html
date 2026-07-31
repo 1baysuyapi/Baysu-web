@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musluk JakÄ± Ve RekorlarÄ± - BAYRAKÃ‡I SULAMA VE YAPI MALZEMELERÄ°</title>
+<script src="security.js"></script>
+<script src="data.js?v=1019"></script>
+<script src="site-engine.js?v=1019"></script>
+<style>
+/* Grid Styles */
+.image-product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+.image-product-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+.image-product-card:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.ipc-code {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #f8f9fa;
+    color: #e63946;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-bottom-right-radius: 8px;
+    border-right: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    z-index: 2;
+}
+.ipc-img-container {
+    height: 180px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ipc-img-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.ipc-title {
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    border-top: 1px solid #e0e0e0;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+}
+/* Hover Reveal Section */
+.ipc-details {
+    background: #f8f9fa;
+    padding: 15px;
+    border-top: 1px solid #e0e0e0;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+}
+.image-product-card:hover .ipc-details {
+    display: flex;
+}
+.ipc-info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #555;
+}
+.ipc-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #e63946;
+    text-align: right;
+}
+.ipc-add-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+.ipc-add-btn:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+</style>
+</head>
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+
+    <main class="page-content">
+        <div class="breadcrumb">
+            <a href="index.html">Ana Sayfa</a> &gt; <span>BahÃ§e Sulama Sistemleri</span> &gt; <span>Musluk JakÄ± Ve RekorlarÄ±</span>
+        </div>
+
+        <section class="products-section">
+            <h1 class="section-title">Musluk JakÄ± Ve RekorlarÄ±</h1>
+            <div class="image-product-grid">                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ400</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/musluk-jaki/1-2%E2%80%9D%20Jak%20Ekleme.png" alt="1-2” Jak Ekleme" loading="lazy">
+                    </div>
+                    <div class="ipc-title">1-2” Jak Ekleme</div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ400', '1-2” Jak Ekleme', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ401</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/musluk-jaki/1-2%E2%80%9D%20Jak%20Rekoru.png" alt="1-2” Jak Rekoru" loading="lazy">
+                    </div>
+                    <div class="ipc-title">1-2” Jak Rekoru</div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ401', '1-2” Jak Rekoru', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ402</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/musluk-jaki/1-2%E2%80%9D%20Stoplu%20Jak%20Ekleme.png" alt="1-2” Stoplu Jak Ekleme" loading="lazy">
+                    </div>
+                    <div class="ipc-title">1-2” Stoplu Jak Ekleme</div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ402', '1-2” Stoplu Jak Ekleme', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ403</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/musluk-jaki/3-4%E2%80%9D%20%E2%80%A2%201-2%E2%80%9D%20Jak%20Rekoru.png" alt="3-4” • 1-2” Jak Rekoru" loading="lazy">
+                    </div>
+                    <div class="ipc-title">3-4” • 1-2” Jak Rekoru</div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ403', '3-4” • 1-2” Jak Rekoru', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ404</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/musluk-jaki/3-4%E2%80%9D%20Jak%20Ekleme.png" alt="3-4” Jak Ekleme" loading="lazy">
+                    </div>
+                    <div class="ipc-title">3-4” Jak Ekleme</div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ404', '3-4” Jak Ekleme', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ405</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/musluk-jaki/3-4%E2%80%9D%20Jak%20Rekoru.png" alt="3-4” Jak Rekoru" loading="lazy">
+                    </div>
+                    <div class="ipc-title">3-4” Jak Rekoru</div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ405', '3-4” Jak Rekoru', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ406</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/musluk-jaki/3-4%E2%80%9D%20Stoplu%20Jak%20Ekleme.png" alt="3-4” Stoplu Jak Ekleme" loading="lazy">
+                    </div>
+                    <div class="ipc-title">3-4” Stoplu Jak Ekleme</div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ406', '3-4” Stoplu Jak Ekleme', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ407</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/musluk-jaki/Batarya%20Hortum%20Rekoru.png" alt="Batarya Hortum Rekoru" loading="lazy">
+                    </div>
+                    <div class="ipc-title">Batarya Hortum Rekoru</div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ407', 'Batarya Hortum Rekoru', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ408</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/musluk-jaki/Batarya%20Jak%20Rekoru.png" alt="Batarya Jak Rekoru" loading="lazy">
+                    </div>
+                    <div class="ipc-title">Batarya Jak Rekoru</div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ408', 'Batarya Jak Rekoru', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ409</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/musluk-jaki/Mix%20Batarya%20Hortum%20Rekoru.png" alt="Mix Batarya Hortum Rekoru" loading="lazy">
+                    </div>
+                    <div class="ipc-title">Mix Batarya Hortum Rekoru</div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ409', 'Mix Batarya Hortum Rekoru', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ410</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/musluk-jaki/Mix%20Batarya%20Jak%20Rekoru.png" alt="Mix Batarya Jak Rekoru" loading="lazy">
+                    </div>
+                    <div class="ipc-title">Mix Batarya Jak Rekoru</div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ410', 'Mix Batarya Jak Rekoru', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ411</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/musluk-jaki/Otomatik%20Kelep%C3%A7eli%20Musluk%20Ba%C4%9Flant%C4%B1s%C4%B1.png" alt="Otomatik Kelepçeli Musluk Bağlantısı" loading="lazy">
+                    </div>
+                    <div class="ipc-title">Otomatik Kelepçeli Musluk Bağlantısı</div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ411', 'Otomatik Kelepçeli Musluk Bağlantısı', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ412</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/musluk-jaki/PP%20K%C3%BCresel%20Vana%20.png" alt="PP Küresel Vana " loading="lazy">
+                    </div>
+                    <div class="ipc-title">PP Küresel Vana </div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ412', 'PP Küresel Vana ', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>            </div>
+        </section>
+    </main>
+
+</body>
+</html>

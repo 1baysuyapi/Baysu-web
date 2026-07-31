@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hortum Ek ParÃ§alarÄ± - BAYRAKÃ‡I SULAMA VE YAPI MALZEMELERÄ°</title>
+<script src="security.js"></script>
+<script src="data.js?v=1019"></script>
+<script src="site-engine.js?v=1019"></script>
+<style>
+/* Grid Styles */
+.image-product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+.image-product-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+.image-product-card:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.ipc-code {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #f8f9fa;
+    color: #e63946;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-bottom-right-radius: 8px;
+    border-right: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    z-index: 2;
+}
+.ipc-img-container {
+    height: 180px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ipc-img-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.ipc-title {
+    padding: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    border-top: 1px solid #e0e0e0;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+}
+/* Hover Reveal Section */
+.ipc-details {
+    background: #f8f9fa;
+    padding: 15px;
+    border-top: 1px solid #e0e0e0;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+}
+.image-product-card:hover .ipc-details {
+    display: flex;
+}
+.ipc-info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #555;
+}
+.ipc-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #e63946;
+    text-align: right;
+}
+.ipc-add-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+.ipc-add-btn:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+</style>
+</head>
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+
+    <main class="page-content">
+        <div class="breadcrumb">
+            <a href="index.html">Ana Sayfa</a> &gt; <span>BahÃ§e Sulama Sistemleri</span> &gt; <span>Hortum Ek ParÃ§alarÄ±</span>
+        </div>
+
+        <section class="products-section">
+            <h1 class="section-title">Hortum Ek ParÃ§alarÄ±</h1>
+            <div class="image-product-grid">                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ300</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/hortum-ek-parcalari/Ayarl%C4%B1%20Hortum%20Eki.png" alt="Ayarlı Hortum Eki" loading="lazy">
+                    </div>
+                    <div class="ipc-title">Ayarlı Hortum Eki</div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ300', 'Ayarlı Hortum Eki', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ301</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/hortum-ek-parcalari/Ayarl%C4%B1%20Hortum%20TE.png" alt="Ayarlı Hortum TE" loading="lazy">
+                    </div>
+                    <div class="ipc-title">Ayarlı Hortum TE</div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ301', 'Ayarlı Hortum TE', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ302</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/hortum-ek-parcalari/Hortum%20Eki.png" alt="Hortum Eki" loading="lazy">
+                    </div>
+                    <div class="ipc-title">Hortum Eki</div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ302', 'Hortum Eki', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ303</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/hortum-ek-parcalari/Hortum%20Rediksiyonu.png" alt="Hortum Rediksiyonu" loading="lazy">
+                    </div>
+                    <div class="ipc-title">Hortum Rediksiyonu</div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ303', 'Hortum Rediksiyonu', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>                <div class="image-product-card">
+                    <div class="ipc-code">Ãœ304</div>
+                    <div class="ipc-img-container">
+                        <img src="images/bahce/hortum-ek-parcalari/Hortum%20TE.png" alt="Hortum TE" loading="lazy">
+                    </div>
+                    <div class="ipc-title">Hortum TE</div>
+                    <div class="ipc-details">
+                        <div class="ipc-info-row">
+                            <span>Koli Adedi:</span>
+                            <strong>100</strong>
+                        </div>
+                        <div class="ipc-info-row">
+                            <span>Ambalaj:</span>
+                            <strong>Paket</strong>
+                        </div>
+                        <div class="ipc-price">50.00 TL</div>
+                        
+                        <button class="ipc-add-btn" onclick="if(window.baysuAddToCartImageProduct) window.baysuAddToCartImageProduct('Ãœ304', 'Hortum TE', 50.00, 100, 'Paket')">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </div>
+                </div>            </div>
+        </section>
+    </main>
+
+</body>
+</html>

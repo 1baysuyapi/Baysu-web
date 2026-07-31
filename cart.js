@@ -312,12 +312,11 @@ function parsePrice(str) {
         cart.forEach((item, i) => {
             const itemTotal = item.price * item.quantity;
             totalSum += itemTotal;
-            const codeStr = item.code ? ` (Kod: ${item.code})` : '';
-            text += `${i + 1}. *${item.productName}*${codeStr}\n`;
-            text += `   Ebat: ${item.size} | Koli: ${item.boxQty}\n`;
-            text += `   Birim Fiyat: ${item.price.toFixed(2)} TL\n`;
-            text += `   Miktar: *${item.quantity} Adet*\n`;
-            text += `   Tutar: *${itemTotal.toFixed(2)} TL*\n\n`;
+            if (item.code) {
+                text += `*${item.code}* | ${item.productName} | ${item.price.toFixed(2)} TL | ${item.quantity} Adet | ${itemTotal.toFixed(2)} TL\n`;
+            } else {
+                text += `*${item.size}* | ${item.productName} | ${item.price.toFixed(2)} TL | ${item.quantity} Adet | ${itemTotal.toFixed(2)} TL\n`;
+            }
         });
 
         text += `--------------------------------------------------\n`;
@@ -449,6 +448,13 @@ function parsePrice(str) {
 window.openKvkkModal = function() {
     const modal = document.getElementById('kvkkModalBackdrop');
     if (modal) modal.classList.add('active');
+};
+
+// Image Product Add to Cart Logic
+window.baysuAddToCartImageProduct = function(code, name, price, boxQty, packaging) {
+    if (window.BaysuCart && window.BaysuCart.addItem) {
+        window.BaysuCart.addItem(name, packaging, boxQty, price, 1, code, 1, 1);
+    }
 };
 window.closeKvkkModal = function() {
     const modal = document.getElementById('kvkkModalBackdrop');

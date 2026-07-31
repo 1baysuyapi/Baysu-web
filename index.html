@@ -977,6 +977,40 @@
                     </ul>
                 </li>
             </ul>
+            
+            <div class="main-category-item" onclick="if(event.target.closest('a'))return; event.preventDefault(); event.stopPropagation(); this.classList.toggle('active'); var m = document.getElementById('bahce-menu'); if(m) { m.classList.toggle('active'); m.style.setProperty('display', m.classList.contains('active') ? 'grid' : 'none', 'important'); }">
+                <h3>BAHÇE SULAMA SİSTEMLERİ <span class="arrow-icon">&#9658;</span></h3>
+            </div>
+            <ul class="category-group" id="bahce-menu">
+                <li class="category-item">
+                    <a href="bahce-ekipmanlari.html" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+                        <div class="category-header">
+                            <h3>Bahçe Ekipmanları</h3>
+                        </div>
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="depo-rekorlari.html" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+                        <div class="category-header">
+                            <h3>Depo Rekorları</h3>
+                        </div>
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="hortum-ek-parcalari.html" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+                        <div class="category-header">
+                            <h3>Hortum Ek Parçaları</h3>
+                        </div>
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="musluk-jaki.html" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+                        <div class="category-header">
+                            <h3>Musluk Jakı Ve Rekorları</h3>
+                        </div>
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
     
