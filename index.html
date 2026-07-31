@@ -831,7 +831,7 @@
         <div class="nav-content">
             <div class="nav-links">
                 <a href='/'><i class="fas fa-home" style="margin-right: 6px;"></i>Ana Sayfa</a>
-                <a href="javascript:void(0)" id="menuToggleDesktop" onclick="window.baysuToggleMenu(event)"><i class="fas fa-th-large" style="margin-right: 6px;"></i>Ürün Kataloğu</a>
+                <a href="javascript:void(0)" id="menuToggleDesktop" onclick="event.preventDefault(); event.stopPropagation(); var m = document.getElementById('mainMenuContainer'); if(m) { var isActive = m.classList.toggle('active'); m.style.setProperty('display', isActive ? 'block' : 'none', 'important'); m.style.setProperty('z-index', '999999', 'important'); }"><i class="fas fa-th-large" style="margin-right: 6px;"></i>Ürün Kataloğu</a>
                 <a href="#about-section"><i class="fas fa-info-circle" style="margin-right: 6px;"></i>Hakkımızda</a>
                 <a href="#contact-section"><i class="fas fa-envelope" style="margin-right: 6px;"></i>İletişim</a>
             </div>
@@ -841,12 +841,12 @@
             </div>
         </div>
         <div class="main-menu-container" id="mainMenuContainer">
-            <div class="main-category-item" onclick="window.baysuToggleAccordion(this, event)">
+            <div class="main-category-item" onclick="if(event.target.closest('a'))return; event.preventDefault(); event.stopPropagation(); this.classList.toggle('active'); var m = document.getElementById('kaplinler-menu'); if(m) { m.classList.toggle('active'); m.style.setProperty('display', m.classList.contains('active') ? 'grid' : 'none', 'important'); }">
                 <h3>KAPLİNLER VE EK PARÇALARI <span class="arrow-icon">&#9658;</span></h3>
             </div>
             <ul class="category-group" id="kaplinler-menu">
                 <li class="category-item">
-                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
                         <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -865,7 +865,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
                         <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -884,7 +884,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
                         <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -897,7 +897,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
                         <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -908,7 +908,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
                         <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -920,7 +920,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
                         <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -931,7 +931,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
                         <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -942,7 +942,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
                         <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -953,7 +953,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
                         <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -966,7 +966,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
                         <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
