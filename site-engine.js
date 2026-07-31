@@ -234,3 +234,25 @@
         document.addEventListener('DOMContentLoaded', init);
     }
 })();
+window.addToCart = function(btn) {
+    var pName = btn.getAttribute('data-product');
+    var pSize = btn.getAttribute('data-size');
+    var pBox = btn.getAttribute('data-box');
+    var pPrice = parseFloat(btn.getAttribute('data-price'));
+    var input = btn.parentElement.querySelector('.ipc-qty-input');
+    var qty = 1;
+    if (input) qty = parseInt(input.value) || 1;
+    
+    if (window.BaysuCart && window.BaysuCart.addItem) {
+        window.BaysuCart.addItem(pName, pSize, pBox, pPrice, qty, pSize, 1, 1);
+        var originalHTML = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Eklendi';
+        btn.style.background = '#10B981';
+        setTimeout(function() {
+            btn.innerHTML = originalHTML;
+            btn.style.background = '#004595';
+        }, 1500);
+    } else {
+        alert(pName + " eklendi!");
+    }
+};
