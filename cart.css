@@ -1,4 +1,4 @@
-﻿/* =========================================================
+/* =========================================================
    BAYSU YAPI - SEPET VE ÜRÜN TABLOSU MODERN CSS (cart.css)
    ========================================================= */
 
@@ -851,25 +851,7 @@ html, body {
             white-space: nowrap !important;
         }
 
-        /* ===== HERO BANNER ===== */
-        .hero-banner {
-            background: linear-gradient(135deg, #0B2545 0%, #134074 55%, #1D4ED8 100%) !important;
-            border-radius: 20px !important;
-            padding: 35px !important;
-            margin: 20px auto !important;
-            color: #FFFFFF !important;
-            max-width: 1200px !important;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
-            box-sizing: border-box !important;
-        }
 
-        .hero-content-wrapper, .hero-banner .hero-content-wrapper, .hero-banner div:not(.btn-primary):not(.btn-secondary) {
-            background: transparent !important;
-        }
-
-        .hero-banner h1, .hero-banner p, .hero-banner span, .hero-banner i {
-            color: #FFFFFF !important;
-        }
 
         /* ===== PRODUCT DETAIL CONTAINER: Single Column Layout ===== */
         .product-detail-container {
