@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="cart.css?v=1017" />
+    <link rel="stylesheet" href="cart.css?v=1018" />
     
     <style>
         /* Renkler ve Fontlar için CSS Değişkenleri */
@@ -841,12 +841,12 @@
             </div>
         </div>
         <div class="main-menu-container" id="mainMenuContainer">
-            <div class="main-category-item">
+            <div class="main-category-item" onclick="window.baysuToggleAccordion(this, event)">
                 <h3>KAPLİNLER VE EK PARÇALARI <span class="arrow-icon">&#9658;</span></h3>
             </div>
             <ul class="category-group" id="kaplinler-menu">
                 <li class="category-item">
-                    <div class="category-header">
+                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
                         <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -865,7 +865,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
+                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
                         <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -884,7 +884,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
+                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
                         <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -897,7 +897,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
+                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
                         <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -908,7 +908,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
+                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
                         <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -920,7 +920,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
+                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
                         <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -931,7 +931,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
+                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
                         <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -942,7 +942,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
+                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
                         <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -953,7 +953,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
+                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
                         <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -966,7 +966,7 @@
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
+                    <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
                         <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
@@ -1140,7 +1140,7 @@
         </div>
     </div>
 
-    <script src="cart.js?v=1017"></script>
+    <script src="cart.js?v=1018"></script>
         <script>
         // HakkÄ±mÄ±zda ve Ä°letiÅŸim linklerini sadece ana sayfada gÃ¶ster
         document.addEventListener('DOMContentLoaded', () => {
@@ -1177,6 +1177,36 @@
             }
         };
 
+        window.baysuToggleAccordion = function(element, e) {
+            if (e && e.target && (e.target.tagName === 'A' || e.target.closest('a'))) return;
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            element.classList.toggle('active');
+            const kaplinlerMenu = document.getElementById('kaplinler-menu');
+            if (kaplinlerMenu) kaplinlerMenu.classList.toggle('active');
+        };
+
+        window.baysuToggleSubAccordion = function(element, e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            const item = element.closest('.category-item');
+            if (!item) return;
+            
+            const targetList = item.querySelector('.product-list');
+            if (targetList) {
+                const isActive = item.classList.toggle('active');
+                if (isActive) {
+                    targetList.classList.add('active');
+                } else {
+                    targetList.classList.remove('active');
+                }
+            }
+        };
+
         // Event Delegation ile Menü Yönetimi (Daha güvenilir)
         document.addEventListener('click', (e) => {
             const menuToggleMobile = e.target.closest('#menuToggle');
@@ -1209,17 +1239,7 @@
                 return;
             }
 
-            // Kaplinler ana kategorisine tÄ±klandÄ±ÄŸÄ±nda
-            if (mainCategoryItem) {
-                if (e.target.tagName !== 'A' && !e.target.closest('a')) {
-                    e.preventDefault(); 
-                    mainCategoryItem.classList.toggle('active');
-                    if (kaplinlerMenu) kaplinlerMenu.classList.toggle('active');
-                }
-                return;
-            }
-
-            // Alt kategorilere (Mavi Seri, vb.) tÄ±klandÄ±ÄŸÄ±nda
+            // Kategori akordiyon aç/kapat
             if (categoryHeader) {
                 e.preventDefault();
                 const item = categoryHeader.closest('.category-item');
@@ -1228,7 +1248,7 @@
                     item.classList.toggle('active');
                     targetList.classList.toggle('active');
                     
-                    // DiÄŸerlerini kapat
+                    // Diğerlerini kapat
                     document.querySelectorAll('.category-item').forEach(otherItem => {
                         if (otherItem !== item) {
                             otherItem.classList.remove('active');
@@ -1316,6 +1336,7 @@
     </script>
 </body>
 </html>
+
 
 
 

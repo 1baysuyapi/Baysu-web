@@ -112,6 +112,7 @@
         var mainHeaders = document.querySelectorAll('.main-category-header, .main-category-item');
         for (var i = 0; i < mainHeaders.length; i++) {
             (function(header) {
+                if (header.hasAttribute('onclick')) return; // Avoid double triggering!
                 header.style.cursor = 'pointer';
                 header.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -139,6 +140,7 @@
         var subHeaders = document.querySelectorAll('.category-header');
         for (var i = 0; i < subHeaders.length; i++) {
             (function(header) {
+                if (header.hasAttribute('onclick')) return; // Avoid double triggering!
                 header.addEventListener('click', function(e) {
                     // Allow direct links to work (like Bahce Ekipmanlari)
                     var link = e.target.closest('a[href]');
@@ -224,6 +226,38 @@
                         menu.style.setProperty('z-index', '999999', 'important');
                     } else {
                         menu.style.setProperty('display', 'none', 'important');
+                    }
+                };
+
+                window.baysuToggleMenu = window.toggleCatalogMenu;
+
+                window.baysuToggleAccordion = function(element, e) {
+                    if (e && e.target && (e.target.tagName === 'A' || e.target.closest('a'))) return;
+                    if (e) {
+                        try { e.preventDefault(); } catch(err){}
+                        try { e.stopPropagation(); } catch(err){}
+                    }
+                    element.classList.toggle('active');
+                    var kaplinlerMenu = document.getElementById('kaplinler-menu');
+                    if (kaplinlerMenu) kaplinlerMenu.classList.toggle('active');
+                };
+
+                window.baysuToggleSubAccordion = function(element, e) {
+                    if (e) {
+                        try { e.preventDefault(); } catch(err){}
+                        try { e.stopPropagation(); } catch(err){}
+                    }
+                    var item = element.closest('.category-item');
+                    if (!item) return;
+                    
+                    var targetList = item.querySelector('.product-list');
+                    if (targetList) {
+                        var isActive = item.classList.toggle('active');
+                        if (isActive) {
+                            targetList.classList.add('active');
+                        } else {
+                            targetList.classList.remove('active');
+                        }
                     }
                 };
 
