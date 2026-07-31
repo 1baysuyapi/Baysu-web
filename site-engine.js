@@ -146,7 +146,7 @@
                     var link = e.target.closest('a[href]');
                     if (link) {
                         var href = link.getAttribute('href');
-                        if (href && href !== '#' && href !== 'javascript:void(0)' && href.indexOf('.html') > -1) {
+                        if (href && href !== '#' && href !== 'javascript:void(0)') {
                             return; // Let the link navigate
                         }
                     }
