@@ -1,10 +1,12 @@
 $ErrorActionPreference = "Stop"
 
-$indexContent = Get-Content 'index.html' -Raw -Encoding UTF8
+$indexPath = Join-Path (Get-Location) 'index.html'
+$indexContent = [System.IO.File]::ReadAllText($indexPath, [System.Text.Encoding]::UTF8)
 $indexTop = $indexContent.Substring(0, $indexContent.IndexOf('<main class="page-content">') + 27)
 $indexBottom = $indexContent.Substring($indexContent.IndexOf('</main>'))
 
-$dataJsContent = Get-Content 'data.js' -Raw -Encoding UTF8
+$dataJsPath = Join-Path (Get-Location) 'data.js'
+$dataJsContent = [System.IO.File]::ReadAllText($dataJsPath, [System.Text.Encoding]::UTF8)
 
 # Find all keys manually
 $lines = $dataJsContent -split "`n"
@@ -51,5 +53,5 @@ foreach ($line in $lines) {
 }
 
 $finalContent = $newLines -join "`n"
-Set-Content 'data.js' -Value $finalContent -Encoding UTF8
+[System.IO.File]::WriteAllText($dataJsPath, $finalContent, [System.Text.Encoding]::UTF8)
 Write-Host "Rebuilt $count payloads in data.js using line matching."
