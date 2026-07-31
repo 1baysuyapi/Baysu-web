@@ -1,9 +1,9 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BAYRAKÃ‡I SULAMA VE YAPI MALZEMELERÄ°</title>
+    <title>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="cart.css?v=1018" />
     
     <style>
-        /* Renkler ve Fontlar iÃ§in CSS DeÄŸiÅŸkenleri */
+        /* Renkler ve Fontlar için CSS Değişkenleri */
         :root {
             --primary-color: #0b1727;
             --primary-hover: #002952;
@@ -26,7 +26,7 @@
             --hover-shadow: 0 20px 35px -5px rgba(0, 71, 151, 0.15);
         }
 
-        /* Temel Stil AyarlarÄ± */
+        /* Temel Stil Ayarları */
         * {
             box-sizing: border-box;
         }
@@ -45,7 +45,7 @@
             color: inherit;
         }
 
-        /* BaÅŸlÄ±k ve Navigasyon BÃ¶lÃ¼mÃ¼ */
+        /* Başlık ve Navigasyon Bölümü */
         .header-main {
             display: flex;
             flex-direction: column;
@@ -116,7 +116,7 @@
             pointer-events: none;
         }
 
-        /* CanlÄ± Arama SonuÃ§larÄ± Dropdown */
+        /* Canlı Arama Sonuçları Dropdown */
         .search-results {
             position: absolute;
             top: calc(100% + 8px);
@@ -165,7 +165,7 @@
             color: var(--text-color);
         }
         
-        /* Navigasyon Ã‡ubuÄŸu */
+        /* Navigasyon Çubuğu */
         .nav-bar {
             background: linear-gradient(135deg, #0b1727 0%, #002952 100%);
             padding: 0 20px;
@@ -219,7 +219,7 @@
             width: 100%;
         }
         
-        /* MenÃ¼ Toggle Butonu */
+        /* Menü Toggle Butonu */
         .menu-toggle {
             display: flex;
             align-items: center;
@@ -236,7 +236,7 @@
             color: #FFAE96;
         }
 
-        /* Dropdown MenÃ¼ Ä°Ã§eriÄŸi */
+        /* Dropdown Menü İçeriği */
         .main-menu-container {
             display: none;
             position: absolute;
@@ -289,7 +289,7 @@
             transform: rotate(90deg);
         }
 
-        /* Kategori GruplarÄ± */
+        /* Kategori Grupları */
         .category-group {
             list-style: none;
             padding: 0;
@@ -371,7 +371,7 @@
             padding-left: 55px;
         }
 
-        /* Ana Sayfa Ä°Ã§eriÄŸi */
+        /* Ana Sayfa İçeriği */
         .page-content {
             padding: 0 20px 40px 20px;
             max-width: 1240px;
@@ -456,7 +456,7 @@
             transform: translateY(-2px);
         }
 
-        /* Ã–ne Ã‡Ä±kan ÃœrÃ¼nler BÃ¶lÃ¼mÃ¼ */
+        /* Öne Çıkan Ürünler Bölümü */
         .featured-section {
             margin: 40px 0;
         }
@@ -479,7 +479,7 @@
             font-size: 1rem;
         }
 
-        /* Kategori Filtre ButonlarÄ± */
+        /* Kategori Filtre Butonları */
         .filter-container {
             display: flex;
             justify-content: center;
@@ -507,7 +507,7 @@
             box-shadow: 0 4px 12px rgba(0, 71, 151, 0.2);
         }
 
-        /* ÃœrÃ¼n KartlarÄ± Grid YapÄ±sÄ± */
+        /* Ürün Kartları Grid Yapısı */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -750,7 +750,7 @@
             50% { transform: translateX(-6px); }
         }
 
-        /* Responsive TasarÄ±m */
+        /* Responsive Tasarım */
         @media (min-width: 769px) {
             .nav-links {
                 display: flex;
@@ -820,7 +820,7 @@
         </div>
         <div class="search-and-actions">
             <div class="search-bar">
-                <input type="search" placeholder="ÃœrÃ¼n adÄ± yazÄ±n (Ã–rn: Mavi Seri, Kaplin, Dirsek, Vana)..." id="searchInput" autocomplete="off">
+                <input type="search" placeholder="Ürün adı yazın (Örn: Mavi Seri, Kaplin, Dirsek, Vana)..." id="searchInput" autocomplete="off">
                 <i class="fas fa-search"></i>
                 <div class="search-results" id="searchResults"></div>
             </div>
@@ -831,18 +831,18 @@
         <div class="nav-content">
             <div class="nav-links">
                 <a href='/'><i class="fas fa-home" style="margin-right: 6px;"></i>Ana Sayfa</a>
-                <a href="javascript:void(0)" id="menuToggleDesktop" onclick="window.baysuToggleMenu(event)"><i class="fas fa-th-large" style="margin-right: 6px;"></i>ÃœrÃ¼n KataloÄŸu</a>
-                <a href="#about-section"><i class="fas fa-info-circle" style="margin-right: 6px;"></i>HakkÄ±mÄ±zda</a>
-                <a href="#contact-section"><i class="fas fa-envelope" style="margin-right: 6px;"></i>Ä°letiÅŸim</a>
+                <a href="javascript:void(0)" id="menuToggleDesktop" onclick="window.baysuToggleMenu(event)"><i class="fas fa-th-large" style="margin-right: 6px;"></i>Ürün Kataloğu</a>
+                <a href="#about-section"><i class="fas fa-info-circle" style="margin-right: 6px;"></i>Hakkımızda</a>
+                <a href="#contact-section"><i class="fas fa-envelope" style="margin-right: 6px;"></i>İletişim</a>
             </div>
             <div class="menu-toggle" id="menuToggle" onclick="window.baysuToggleMenu(event)">
                 <i class="fas fa-bars"></i>
-                <span id="menuText">TÃ¼m ÃœrÃ¼n KataloÄŸu</span>
+                <span id="menuText">Tüm Ürün Kataloğu</span>
             </div>
         </div>
         <div class="main-menu-container" id="mainMenuContainer">
             <div class="main-category-item" onclick="window.baysuToggleAccordion(this, event)">
-                <h3>KAPLÄ°NLER VE EK PARÃ‡ALARI <span class="arrow-icon">&#9658;</span></h3>
+                <h3>KAPLİNLER VE EK PARÇALARI <span class="arrow-icon">&#9658;</span></h3>
             </div>
             <ul class="category-group" id="kaplinler-menu">
                 <li class="category-item">
@@ -850,17 +850,17 @@
                         <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href='/mavi-disi-kaplin'>Mavi Seri DiÅŸi Kaplin</a></li>
+                        <li><a href='/mavi-disi-kaplin'>Mavi Seri Dişi Kaplin</a></li>
                         <li><a href='/mavi-erkek-kaplin'>Mavi Seri Erkek Kaplin</a></li>
                         <li><a href='/mavi-dirsek-kaplin'>Mavi Seri Dirsek Kaplin</a></li>
-                        <li><a href='/mavi-disi-dirsek'>Mavi Seri DiÅŸi Dirsek</a></li>
+                        <li><a href='/mavi-disi-dirsek'>Mavi Seri Dişi Dirsek</a></li>
                         <li><a href='/mavi-erkek-dirsek'>Mavi Seri Erkek Dirsek</a></li>
-                        <li><a href='/mavi-manson'>Mavi Seri ManÅŸon</a></li>
+                        <li><a href='/mavi-manson'>Mavi Seri Manşon</a></li>
                         <li><a href='/mavi-tapa'>Mavi Seri Tapa</a></li>
                         <li><a href='/mavi-erkek-te'>Mavi Seri Erkek Te</a></li>
-                        <li><a href='/mavi-disi-te'>Mavi Seri DiÅŸi Te</a></li>
-                        <li><a href='/mavi-reduksiyon-te'>Mavi Seri RedÃ¼ksiyon Te</a></li>
-                        <li><a href='/mavi-reduksiyon'>Mavi Seri RedÃ¼ksiyon</a></li>
+                        <li><a href='/mavi-disi-te'>Mavi Seri Dişi Te</a></li>
+                        <li><a href='/mavi-reduksiyon-te'>Mavi Seri Redüksiyon Te</a></li>
+                        <li><a href='/mavi-reduksiyon'>Mavi Seri Redüksiyon</a></li>
                         <li><a href='/mavi-te'>Mavi Seri Te</a></li>
                     </ul>
                 </li>
@@ -869,42 +869,42 @@
                         <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href='/siyah-disi'>Siyah Seri DiÅŸi Kaplin</a></li>
+                        <li><a href='/siyah-disi'>Siyah Seri Dişi Kaplin</a></li>
                         <li><a href='/siyah-erkek-kaplin'>Siyah Seri Erkek Kaplin</a></li>
                         <li><a href='/siyah-dirsek'>Siyah Seri Dirsek Kaplin</a></li>
-                        <li><a href='/siyah-disi-dirsek'>Siyah Seri DiÅŸi Dirsek</a></li>
+                        <li><a href='/siyah-disi-dirsek'>Siyah Seri Dişi Dirsek</a></li>
                         <li><a href='/siyah-erkek-dirsek'>Siyah Seri Erkek Dirsek</a></li>
-                        <li><a href='/siyah-manson'>Siyah Seri ManÅŸon</a></li>
+                        <li><a href='/siyah-manson'>Siyah Seri Manşon</a></li>
                         <li><a href='/siyah-tapa'>Siyah Seri Tapa</a></li>
                         <li><a href='/siyah-erkek-te'>Siyah Seri Erkek Te</a></li>
-                        <li><a href='/siyah-disi-te'>Siyah Seri DiÅŸi Te</a></li>
-                        <li><a href='/siyah-reduksiyon-te'>Siyah Seri RedÃ¼ksiyon Te</a></li>
-                        <li><a href='/siyah-reduksiyon'>Siyah Seri RedÃ¼ksiyon</a></li>
+                        <li><a href='/siyah-disi-te'>Siyah Seri Dişi Te</a></li>
+                        <li><a href='/siyah-reduksiyon-te'>Siyah Seri Redüksiyon Te</a></li>
+                        <li><a href='/siyah-reduksiyon'>Siyah Seri Redüksiyon</a></li>
                         <li><a href='/siyah-te'>Siyah Seri Te</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
                     <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
-                        <h3>Kilitli BaÄŸlantÄ± ParÃ§alarÄ± <span class="arrow-icon">&#9658;</span></h3>
+                        <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href="kilitli-erkek-adaptÃ¶r.html">Kilitli BaÄŸlantÄ± Erkek AdaptÃ¶r</a></li>
-                        <li><a href='/kilitli-erkek-dirsek'>Kilitli BaÄŸlantÄ± Erkek Dirsek</a></li>
-                        <li><a href='/kilitli-dirsek'>Kilitli BaÄŸlantÄ± Dirsek</a></li>
-                        <li><a href='/kilitli-reduksiyon-dirsek'>Kilitli BaÄŸlantÄ± RedÃ¼ksiyon Dirsek</a></li>
-                        <li><a href='/kilitli-te'>Kilitli BaÄŸlantÄ± TE</a></li>
-                        <li><a href='/kilitli-erkek-te'>Kilitli BaÄŸlantÄ± Erkek TE</a></li>
+                        <li><a href="kilitli-erkek-adaptör.html">Kilitli Bağlantı Erkek Adaptör</a></li>
+                        <li><a href='/kilitli-erkek-dirsek'>Kilitli Bağlantı Erkek Dirsek</a></li>
+                        <li><a href='/kilitli-dirsek'>Kilitli Bağlantı Dirsek</a></li>
+                        <li><a href='/kilitli-reduksiyon-dirsek'>Kilitli Bağlantı Redüksiyon Dirsek</a></li>
+                        <li><a href='/kilitli-te'>Kilitli Bağlantı TE</a></li>
+                        <li><a href='/kilitli-erkek-te'>Kilitli Bağlantı Erkek TE</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
                     <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
-                        <h3>DiÅŸli Sulama Ek ParÃ§alarÄ± <span class="arrow-icon">&#9658;</span></h3>
+                        <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href='/disli-disi-dirsek'>DiÅŸli DiÅŸi Dirsek</a></li>
-                        <li><a href='/disli-disi-nipel'>DiÅŸli DiÅŸi Nipel</a></li>
-                        <li><a href='/disli-disi-reduksiyon-dirsek'>DiÅŸli DiÅŸi RedÃ¼ksiyon Dirsek</a></li>
-                        <li><a href='/erkek-disli-kor-tapa'>Erkek DiÅŸli KÃ¶r Tapa</a></li>
+                        <li><a href='/disli-disi-dirsek'>Dişli Dişi Dirsek</a></li>
+                        <li><a href='/disli-disi-nipel'>Dişli Dişi Nipel</a></li>
+                        <li><a href='/disli-disi-reduksiyon-dirsek'>Dişli Dişi Redüksiyon Dirsek</a></li>
+                        <li><a href='/erkek-disli-kor-tapa'>Erkek Dişli Kör Tapa</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
@@ -913,10 +913,10 @@
                     </div>
                     <ul class="product-list">
                         <li><a href='/priz-kolye'>Priz Kolye</a></li>
-                        <li><a href='/disi-nipelli-priz-kolye'>DiÅŸi Nipelli Priz Kolye</a></li>
+                        <li><a href='/disi-nipelli-priz-kolye'>Dişi Nipelli Priz Kolye</a></li>
                         <li><a href='/erkek-nipelli-priz-kolye'>Erkek Nipelli Priz Kolye</a></li>
-                        <li><a href='/kizakli-priz-kolye'>KÄ±zaklÄ± Priz Kolye</a></li>
-                        <li><a href='/cift-cikisli-priz-kolye'>Ã‡ift Ã‡Ä±kÄ±ÅŸlÄ± Priz Kolye</a></li>
+                        <li><a href='/kizakli-priz-kolye'>Kızaklı Priz Kolye</a></li>
+                        <li><a href='/cift-cikisli-priz-kolye'>Çift Çıkışlı Priz Kolye</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
@@ -924,10 +924,10 @@
                         <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href='/nipelli-disi-priz-kolye'>DiÅŸi Nipelli Priz Kolye</a></li>
+                        <li><a href='/nipelli-disi-priz-kolye'>Dişi Nipelli Priz Kolye</a></li>
                         <li><a href='/nipelli-erkek-priz-kolye'>Erkek Nipelli Priz Kolye</a></li>
                         <li><a href='/nipelli-erkek-te'>Nipelli Erkek TE</a></li>
-                        <li><a href='/nipelli-disi-dirsek'>Nipelli DiÅŸi Dirsek</a></li>
+                        <li><a href='/nipelli-disi-dirsek'>Nipelli Dişi Dirsek</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
@@ -935,15 +935,15 @@
                         <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href='/disi-disi-vana'>DiÅŸi DiÅŸi Vana</a></li>
-                        <li><a href='/erkek-disi-vana'>Erkek DiÅŸi Vana</a></li>
-                        <li><a href='/kaplin-disi-vana'>Kaplin DiÅŸi Vana</a></li>
+                        <li><a href='/disi-disi-vana'>Dişi Dişi Vana</a></li>
+                        <li><a href='/erkek-disi-vana'>Erkek Dişi Vana</a></li>
+                        <li><a href='/kaplin-disi-vana'>Kaplin Dişi Vana</a></li>
                         <li><a href='/kaplin-erkek-vana'>Kaplin Erkek Vana</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
                     <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
-                        <h3>Vana KutularÄ± <span class="arrow-icon">&#9658;</span></h3>
+                        <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
                         <li><a href='/6-inc-vana-kutusu'>6" Vana Kutusu</a></li>
@@ -954,26 +954,26 @@
                 </li>
                 <li class="category-item">
                     <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
-                        <h3>Damlama Ek ParÃ§alarÄ± <span class="arrow-icon">&#9658;</span></h3>
+                        <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href='/cikis-mini-vana'>Ã‡Ä±kÄ±ÅŸ Mini Vana</a></li>
-                        <li><a href='/debi-ayarli-damlatici-genis'>Debi AyarlÄ± DamlatÄ±cÄ± GeniÅŸ BoÅŸaltÄ±m</a></li>
-                        <li><a href='/debi-ayarli-damlatici-kirmizi'>Debi AyarlÄ± DamlatÄ±cÄ± KÄ±rmÄ±zÄ±</a></li>
-                        <li><a href='/debi-ayarli-damlatici-yesil'>Debi AyarlÄ± DamlatÄ±cÄ± YeÅŸil</a></li>
-                        <li><a href='/duz-damlama-conta'>DÃ¼z Damlama Conta</a></li>
-                        <li><a href='/kanalli-conta'>KanallÄ± Conta</a></li>
+                        <li><a href='/cikis-mini-vana'>Çıkış Mini Vana</a></li>
+                        <li><a href='/debi-ayarli-damlatici-genis'>Debi Ayarlı Damlatıcı Geniş Boşaltım</a></li>
+                        <li><a href='/debi-ayarli-damlatici-kirmizi'>Debi Ayarlı Damlatıcı Kırmızı</a></li>
+                        <li><a href='/debi-ayarli-damlatici-yesil'>Debi Ayarlı Damlatıcı Yeşil</a></li>
+                        <li><a href='/duz-damlama-conta'>Düz Damlama Conta</a></li>
+                        <li><a href='/kanalli-conta'>Kanallı Conta</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
                     <div class="category-header" onclick="window.baysuToggleSubAccordion(this, event)">
-                        <h3>Yedek ParÃ§alar <span class="arrow-icon">&#9658;</span></h3>
+                        <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href='/kaplin-sikma-anahtari'>Kaplin SÄ±kma AnahtarÄ±</a></li>
-                        <li><a href='/pah-acma-aparati'>Pah AÃ§ma AparatÄ±</a></li>
+                        <li><a href='/kaplin-sikma-anahtari'>Kaplin Sıkma Anahtarı</a></li>
+                        <li><a href='/pah-acma-aparati'>Pah Açma Aparatı</a></li>
                         <li><a href='/o-ring'>O-Ring</a></li>
-                        <li><a href='/abot-ustu-kaplin-dagitici'>Abot ÃœstÃ¼ Kaplin DaÄŸÄ±tÄ±cÄ±</a></li>
+                        <li><a href='/abot-ustu-kaplin-dagitici'>Abot Üstü Kaplin Dağıtıcı</a></li>
                     </ul>
                 </li>
             </ul>
@@ -987,40 +987,40 @@
             <!-- Left Content (Texts) -->
             <div style="flex: 1; min-width: 300px; position: relative; z-index: 2;">
                 <div style="display: inline-block; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); padding: 6px 16px; border-radius: 30px; color: #e2e8f0; font-size: 13px; font-weight: 700; margin-bottom: 15px; letter-spacing: 0.5px; text-transform: uppercase;">
-                    <i class="fas fa-award" style="margin-right: 6px;"></i> TÃœRKÄ°YE'NÄ°N GÃœVENÄ°LÄ°R SULAMA MARKASI
+                    <i class="fas fa-award" style="margin-right: 6px;"></i> TÜRKİYE'NİN GÜVENİLİR SULAMA MARKASI
                 </div>
                 
-                <h1 style="font-size: 2.2rem; font-weight: 800; margin: 0 0 10px 0; letter-spacing: -0.5px; line-height: 1.2;">BAYRAKÃ‡I SULAMA VE YAPI MALZEMELERÄ°</h1>
+                <h1 style="font-size: 2.2rem; font-weight: 800; margin: 0 0 10px 0; letter-spacing: -0.5px; line-height: 1.2;">BAYRAKÇI SULAMA VE YAPI MALZEMELERİ</h1>
                 
-                <p style="color: #cbd5e1; font-size: 1.05rem; max-width: 650px; margin: 0 0 20px 0; line-height: 1.5;">YÃ¼ksek basÄ±nÃ§ dayanÄ±mlÄ± (PN16) Mavi & Siyah Seri Kaplinler, Priz Kolyeler, Vanalar ve tÃ¼m sulama parÃ§alarÄ±nda dayanÄ±klÄ± ve uzun Ã¶mÃ¼rlÃ¼ boru baÄŸlantÄ± Ã§Ã¶zÃ¼mleri.</p>
+                <p style="color: #cbd5e1; font-size: 1.05rem; max-width: 650px; margin: 0 0 20px 0; line-height: 1.5;">Yüksek basınç dayanımlı (PN16) Mavi & Siyah Seri Kaplinler, Priz Kolyeler, Vanalar ve tüm sulama parçalarında dayanıklı ve uzun ömürlü boru bağlantı çözümleri.</p>
 
                 <!-- Badges Row -->
                 <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
                     <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
-                        <i class="fas fa-check-circle" style="color: #ffffff;"></i> PN16 YÃ¼ksek BasÄ±nÃ§ DayanÄ±mÄ±
+                        <i class="fas fa-check-circle" style="color: #ffffff;"></i> PN16 Yüksek Basınç Dayanımı
                     </span>
                     <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
-                        <i class="fas fa-check-circle" style="color: #ffffff;"></i> UV KorumalÄ± %100 Orijinal Hammadde
+                        <i class="fas fa-check-circle" style="color: #ffffff;"></i> UV Korumalı %100 Orijinal Hammadde
                     </span>
                     <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
-                        <i class="fas fa-check-circle" style="color: #ffffff;"></i> SÄ±zdÄ±rmazlÄ±k Garantili
+                        <i class="fas fa-check-circle" style="color: #ffffff;"></i> Sızdırmazlık Garantili
                     </span>
                     <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
-                        <i class="fas fa-flag-checkered" style="color: #ffffff;"></i> %100 YERLÄ° ÃœRETÄ°M
+                        <i class="fas fa-flag-checkered" style="color: #ffffff;"></i> %100 YERLİ ÜRETİM
                     </span>
                     <span style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
-                        <i class="fas fa-shipping-fast" style="color: #ffffff;"></i> AYNI GÃœN HIZLI KARGO
+                        <i class="fas fa-shipping-fast" style="color: #ffffff;"></i> AYNI GÜN HIZLI KARGO
                     </span>
                 </div>
 
                 <a href="https://wa.me/905533973603?text=Merhaba,%20Baysu%20Yap%C4%B1%20web%20sitenizden%20%C3%BCr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" style="display: inline-flex; background: #047857; border: 1px solid #059669; padding: 10px 20px; border-radius: 50px; font-size: 14px; font-weight: 600; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(4,120,87,0.3); color: #ffffff; text-decoration: none; cursor: pointer; transition: all 0.2s ease;">
-                    <i class="fab fa-whatsapp" style="font-size: 18px;"></i> SÄ°PARÄ°Å & DESTEK: 0553 397 36 03
+                    <i class="fab fa-whatsapp" style="font-size: 18px;"></i> SİPARİŞ & DESTEK: 0553 397 36 03
                 </a>
             </div>
 
             <!-- Right Logo -->
             <div style="flex: 0 0 auto; width: 450px; display: flex; justify-content: center; align-items: center; position: relative; z-index: 1;">
-                <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="Baysu YapÄ± Logo" style="width: 100%; max-width: 450px; opacity: 0.22; filter: brightness(0) invert(1); pointer-events: none;" />
+                <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="Baysu Yapı Logo" style="width: 100%; max-width: 450px; opacity: 0.22; filter: brightness(0) invert(1); pointer-events: none;" />
             </div>
 
         </section>
@@ -1028,65 +1028,65 @@
         <!-- Senkron Video Section -->
         <section class="video-section" style="background: linear-gradient(135deg, #0b1727 0%, #002952 100%); color: white; padding: 60px 20px; text-align: center; border-radius: var(--border-radius); margin: 40px 0; box-shadow: var(--box-shadow);">
             <div style="display: inline-block; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); padding: 6px 16px; border-radius: 30px; color: #38BDF8; font-size: 13px; font-weight: 700; margin-bottom: 20px; letter-spacing: 0.5px;">
-                <i class="fas fa-play-circle" style="margin-right: 6px;"></i> MONTAJ & UYGULAMA REHBERÄ°
+                <i class="fas fa-play-circle" style="margin-right: 6px;"></i> MONTAJ & UYGULAMA REHBERİ
             </div>
             <h2 style="font-size: 2.2rem; font-weight: 700; margin: 0 0 15px 0;">Senkron Plastik Kolay Montaj Conta Sistemleri</h2>
-            <p style="color: #94A3B8; font-size: 1.1rem; max-width: 800px; margin: 0 auto 35px auto; line-height: 1.6;">32mm - 63mm arasÄ± Konik Conta ve 75mm - 110mm arasÄ± KÃ¶rÃ¼klÃ¼ Conta teknolojisi ile basÄ±nca dayanÄ±klÄ±, sÄ±zdÄ±rmaz kaplin montaj kÄ±lavuzu.</p>
+            <p style="color: #94A3B8; font-size: 1.1rem; max-width: 800px; margin: 0 auto 35px auto; line-height: 1.6;">32mm - 63mm arası Konik Conta ve 75mm - 110mm arası Körüklü Conta teknolojisi ile basınca dayanıklı, sızdırmaz kaplin montaj kılavuzu.</p>
             
             <div style="max-width: 1000px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 4px solid rgba(255, 255, 255, 0.05); background: #000; position: relative;">
                 <video width="100%" height="auto" autoplay muted loop playsinline disablePictureInPicture style="display: block; pointer-events: none;">
                     <source src="senkron-montaj-35mb.mp4" type="video/mp4">
-                    TarayÄ±cÄ±nÄ±z video etiketini desteklemiyor.
+                    Tarayıcınız video etiketini desteklemiyor.
                 </video>
             </div>
         </section>
 
-        <!-- Neden BayrakÃ§Ä± Sulama? avantajlar bÃ¶lÃ¼mÃ¼ -->
+        <!-- Neden Bayrakçı Sulama? avantajlar bölümü -->
         <section style="margin: 40px 0;">
             <div class="section-title">
-                <h2>Neden BayrakÃ§Ä± Sulama?</h2>
-                <p>Sulama sektÃ¶rÃ¼nde yÃ¼ksek kalite, sÄ±zdÄ±rmazlÄ±k ve Ã¼retici fiyat avantajÄ±</p>
+                <h2>Neden Bayrakçı Sulama?</h2>
+                <p>Sulama sektöründe yüksek kalite, sızdırmazlık ve üretici fiyat avantajı</p>
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
                 <div style="background: #ffffff; padding: 25px 20px; border-radius: 16px; border: 1px solid var(--border-color); text-align: center; box-shadow: var(--box-shadow);">
                     <i class="fas fa-shield-alt" style="font-size: 36px; color: var(--primary-color); margin-bottom: 15px;"></i>
-                    <h3 style="font-size: 1.1rem; margin: 0 0 8px 0;">PN16 BasÄ±nÃ§ DayanÄ±mÄ±</h3>
-                    <p style="font-size: 0.9rem; color: var(--light-text-color); margin: 0;">YÃ¼ksek basÄ±nÃ§lÄ± sulama sistemlerinde sÄ±fÄ±r sÄ±zdÄ±rmazlÄ±k garantisi.</p>
+                    <h3 style="font-size: 1.1rem; margin: 0 0 8px 0;">PN16 Basınç Dayanımı</h3>
+                    <p style="font-size: 0.9rem; color: var(--light-text-color); margin: 0;">Yüksek basınçlı sulama sistemlerinde sıfır sızdırmazlık garantisi.</p>
                 </div>
                 <div style="background: #ffffff; padding: 25px 20px; border-radius: 16px; border: 1px solid var(--border-color); text-align: center; box-shadow: var(--box-shadow);">
                     <i class="fas fa-sun" style="font-size: 36px; color: #F59E0B; margin-bottom: 15px;"></i>
-                    <h3 style="font-size: 1.1rem; margin: 0 0 8px 0;">UV KorumalÄ± Malzeme</h3>
-                    <p style="font-size: 0.9rem; color: var(--light-text-color); margin: 0;">GÃ¼neÅŸ Ä±ÅŸÄ±ÄŸÄ±na, Ã§atlamaya ve dÄ±ÅŸ iklim ÅŸartlarÄ±na ekstra direnÃ§li yapÄ±.</p>
+                    <h3 style="font-size: 1.1rem; margin: 0 0 8px 0;">UV Korumalı Malzeme</h3>
+                    <p style="font-size: 0.9rem; color: var(--light-text-color); margin: 0;">Güneş ışığına, çatlamaya ve dış iklim şartlarına ekstra dirençli yapı.</p>
                 </div>
                 <div style="background: #ffffff; padding: 25px 20px; border-radius: 16px; border: 1px solid var(--border-color); text-align: center; box-shadow: var(--box-shadow);">
                     <i class="fas fa-tags" style="font-size: 36px; color: #10B981; margin-bottom: 15px;"></i>
-                    <h3 style="font-size: 1.1rem; margin: 0 0 8px 0;">DoÄŸrudan Ãœretici FiyatÄ±</h3>
-                    <p style="font-size: 0.9rem; color: var(--light-text-color); margin: 0;">Fabrikadan halka toptan ve perakende en uygun fiyat avantajÄ±.</p>
+                    <h3 style="font-size: 1.1rem; margin: 0 0 8px 0;">Doğrudan Üretici Fiyatı</h3>
+                    <p style="font-size: 0.9rem; color: var(--light-text-color); margin: 0;">Fabrikadan halka toptan ve perakende en uygun fiyat avantajı.</p>
                 </div>
                 <div style="background: #ffffff; padding: 25px 20px; border-radius: 16px; border: 1px solid var(--border-color); text-align: center; box-shadow: var(--box-shadow);">
                     <i class="fas fa-truck-loading" style="font-size: 36px; color: #6366F1; margin-bottom: 15px;"></i>
-                    <h3 style="font-size: 1.1rem; margin: 0 0 8px 0;">Stoktan HÄ±zlÄ± Sevkiyat</h3>
-                    <p style="font-size: 0.9rem; color: var(--light-text-color); margin: 0;">SipariÅŸleriniz aynÄ± gÃ¼n Ã¶zenle ambalajlanÄ±p kargoya teslim edilir.</p>
+                    <h3 style="font-size: 1.1rem; margin: 0 0 8px 0;">Stoktan Hızlı Sevkiyat</h3>
+                    <p style="font-size: 0.9rem; color: var(--light-text-color); margin: 0;">Siparişleriniz aynı gün özenle ambalajlanıp kargoya teslim edilir.</p>
                 </div>
             </div>
         </section>
 
-        <!-- HakkÄ±mÄ±zda BÃ¶lÃ¼mÃ¼ -->
+        <!-- Hakkımızda Bölümü -->
         <section id="about-section" class="about-section">
-            <h2>HakkÄ±mÄ±zda</h2>
-            <p>BayrakÃ§Ä± Sulama ve YapÄ± Malzemeleri olarak, yÄ±llarÄ±n tecrÃ¼besiyle sulama sektÃ¶rÃ¼nde gÃ¼venilir ve kaliteli Ã¼rÃ¼nler sunmaktan gurur duyuyoruz. MÃ¼ÅŸteri memnuniyetini her zaman Ã¶n planda tutarak, geniÅŸ Ã¼rÃ¼n yelpazemizle her tÃ¼rlÃ¼ sulama ihtiyacÄ±nÄ±za yÃ¶nelik pratik ve dayanÄ±klÄ± Ã§Ã¶zÃ¼mler Ã¼retiyoruz. Modern tarÄ±m teknolojilerini yakÄ±ndan takip ederek, Ã¼rÃ¼nlerimizi sÃ¼rekli geliÅŸtiriyor ve yeniliÄŸe aÃ§Ä±k bir ÅŸekilde Ã§alÄ±ÅŸmalarÄ±mÄ±za devam ediyoruz.</p>
-            <p>Misyonumuz, sÃ¼rdÃ¼rÃ¼lebilir tarÄ±ma katkÄ±da bulunmak ve su kaynaklarÄ±nÄ±n verimli kullanÄ±mÄ±nÄ± teÅŸvik etmektir. Vizyonumuz ise, sektÃ¶rde Ã¶ncÃ¼ bir marka olarak, global pazarda adÄ±mÄ±zdan sÃ¶z ettiren lider bir firma olmaktÄ±r.</p>
+            <h2>Hakkımızda</h2>
+            <p>Bayrakçı Sulama ve Yapı Malzemeleri olarak, yılların tecrübesiyle sulama sektöründe güvenilir ve kaliteli ürünler sunmaktan gurur duyuyoruz. Müşteri memnuniyetini her zaman ön planda tutarak, geniş ürün yelpazemizle her türlü sulama ihtiyacınıza yönelik pratik ve dayanıklı çözümler üretiyoruz. Modern tarım teknolojilerini yakından takip ederek, ürünlerimizi sürekli geliştiriyor ve yeniliğe açık bir şekilde çalışmalarımıza devam ediyoruz.</p>
+            <p>Misyonumuz, sürdürülebilir tarıma katkıda bulunmak ve su kaynaklarının verimli kullanımını teşvik etmektir. Vizyonumuz ise, sektörde öncü bir marka olarak, global pazarda adımızdan söz ettiren lider bir firma olmaktır.</p>
         </section>
 
-        <!-- Ä°letiÅŸim BÃ¶lÃ¼mÃ¼ -->
+        <!-- İletişim Bölümü -->
         <section id="contact-section" class="contact-section">
-            <h2>Ä°letiÅŸim</h2>
-            <p>ÃœrÃ¼nlerimiz, fiyat teklifleri ve toplu sipariÅŸleriniz iÃ§in bizimle doÄŸrudan iletiÅŸime geÃ§ebilirsiniz.</p>
+            <h2>İletişim</h2>
+            <p>Ürünlerimiz, fiyat teklifleri ve toplu siparişleriniz için bizimle doğrudan iletişime geçebilirsiniz.</p>
             <div class="contact-info-grid">
                 <div class="contact-card">
                     <i class="fas fa-phone-alt"></i>
                     <div>
-                        <h4>MÃ¼ÅŸteri HattÄ±</h4>
+                        <h4>Müşteri Hattı</h4>
                         <p>0553 397 36 03</p>
                     </div>
                 </div>
@@ -1101,7 +1101,7 @@
                     <i class="fas fa-map-marker-alt"></i>
                     <div>
                         <h4>Konum</h4>
-                        <p>Ankara, TÃ¼rkiye</p>
+                        <p>Ankara, Türkiye</p>
                     </div>
                 </div>
             </div>
@@ -1109,15 +1109,15 @@
     </main>
 
     <footer>
-        &copy; 2026 <strong>BAYRAKÃ‡I SULAMA VE YAPI MALZEMELERÄ°</strong> - TÃ¼m HaklarÄ± SaklÄ±dÄ±r. | <a href="javascript:void(0)" onclick="openKvkkModal()" style="color: #94A3B8; text-decoration: underline; font-size: 13px;">KVKK AydÄ±nlatma Metni</a>
+        &copy; 2026 <strong>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ</strong> - Tüm Hakları Saklıdır. | <a href="javascript:void(0)" onclick="openKvkkModal()" style="color: #94A3B8; text-decoration: underline; font-size: 13px;">KVKK Aydınlatma Metni</a>
     </footer>
 
     <!-- WhatsApp Floating Action -->
     <div class="whatsapp-float-wrapper">
         <div class="whatsapp-tooltip">
-            ğŸ’¬ Fiyat Teklifi AlÄ±n!
+            ?? Fiyat Teklifi Alın!
         </div>
-        <a href="https://wa.me/905533973603?text=Merhaba,%20Baysu%20Yap%C4%B1%20web%20sitenizden%20Ã¼rÃ¼nleriniz%20hakkÄ±nda%20bilgi%20almak%20istiyorum." class="whatsapp-button" target="_blank" title="WhatsApp ile Ä°letiÅŸime GeÃ§in">
+        <a href="https://wa.me/905533973603?text=Merhaba,%20Baysu%20Yap%C4%B1%20web%20sitenizden%20ürünleriniz%20hakkında%20bilgi%20almak%20istiyorum." class="whatsapp-button" target="_blank" title="WhatsApp ile İletişime Geçin">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
@@ -1125,24 +1125,24 @@
     <div id="kvkkModalBackdrop" class="kvkk-modal-backdrop">
         <div class="kvkk-modal-content">
             <span class="kvkk-modal-close" onclick="closeKvkkModal()">&times;</span>
-            <h2 style="color:#004797; margin-top:0;"><i class="fas fa-user-shield"></i> KVKK AydÄ±nlatma Metni</h2>
+            <h2 style="color:#004797; margin-top:0;"><i class="fas fa-user-shield"></i> KVKK Aydınlatma Metni</h2>
             <hr style="border:0; border-top:1px solid #E2E8F0; margin:15px 0;">
             <div style="font-size:14px; line-height:1.7; color:#334155;">
-                <p><strong>BAYRAKÃ‡I SULAMA VE YAPI MALZEMELERÄ°</strong> olarak kiÅŸisel verilerinizin gÃ¼venliÄŸi hususuna azami hassasiyet gÃ¶stermekteyiz. 6698 sayÄ±lÄ± KiÅŸisel Verilerin KorunmasÄ± Kanunu (â€œKVKKâ€) uyarÄ±nca, web sitemizi ziyaret eden ve hizmetlerimizden faydalanan tÃ¼m kullanÄ±cÄ±larÄ±mÄ±zÄ±n kiÅŸisel verileri yasal mevzuata uygun olarak iÅŸlenmektedir.</p>
-                <h4 style="color:#0288d1; margin-top:15px;">1. Ä°ÅŸlenen KiÅŸisel Veriler ve AmaÃ§larÄ±</h4>
-                <p>Sitemizde sipariÅŸ verme, whatsapp ile iletiÅŸim kurma ve teklif alma sÃ¼reÃ§lerinde paylaÅŸtÄ±ÄŸÄ±nÄ±z ad, soyad, telefon numarasÄ± ve adres bilgileri yalnÄ±zca sipariÅŸinizin tamamlanmasÄ±, teslimatÄ±n yapÄ±lmasÄ± ve mÃ¼ÅŸteri memnuniyeti amacÄ±yla iÅŸlenir.</p>
-                <h4 style="color:#0288d1; margin-top:15px;">2. KiÅŸisel Verilerin AktarÄ±lmasÄ±</h4>
-                <p>KiÅŸisel verileriniz 3. ÅŸahÄ±slara veya kurumlar ile ticari amaÃ§la kesinlikle paylaÅŸÄ±lmaz. YalnÄ±zca yasal zorunluluk hallerinde yetkili kamu kurumlarÄ±na aktarÄ±labilir.</p>
-                <h4 style="color:#0288d1; margin-top:15px;">3. KVKK KapsamÄ±ndaki HaklarÄ±nÄ±z</h4>
-                <p>KVKK'nÄ±n 11. maddesi uyarÄ±nca bize baÅŸvurarak kiÅŸisel verilerinizin iÅŸlenip iÅŸlenmediÄŸini Ã¶ÄŸrenme, silinmesini veya dÃ¼zeltilmesini talep etme hakkÄ±na sahipsiniz.</p>
-                <p style="margin-top:20px; text-align:right;"><button onclick="closeKvkkModal()" style="background:#0288d1; color:#fff; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer;">AnladÄ±m, Kapat</button></p>
+                <p><strong>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ</strong> olarak kişisel verilerinizin güvenliği hususuna azami hassasiyet göstermekteyiz. 6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) uyarınca, web sitemizi ziyaret eden ve hizmetlerimizden faydalanan tüm kullanıcılarımızın kişisel verileri yasal mevzuata uygun olarak işlenmektedir.</p>
+                <h4 style="color:#0288d1; margin-top:15px;">1. İşlenen Kişisel Veriler ve Amaçları</h4>
+                <p>Sitemizde sipariş verme, whatsapp ile iletişim kurma ve teklif alma süreçlerinde paylaştığınız ad, soyad, telefon numarası ve adres bilgileri yalnızca siparişinizin tamamlanması, teslimatın yapılması ve müşteri memnuniyeti amacıyla işlenir.</p>
+                <h4 style="color:#0288d1; margin-top:15px;">2. Kişisel Verilerin Aktarılması</h4>
+                <p>Kişisel verileriniz 3. şahıslara veya kurumlar ile ticari amaçla kesinlikle paylaşılmaz. Yalnızca yasal zorunluluk hallerinde yetkili kamu kurumlarına aktarılabilir.</p>
+                <h4 style="color:#0288d1; margin-top:15px;">3. KVKK Kapsamındaki Haklarınız</h4>
+                <p>KVKK'nın 11. maddesi uyarınca bize başvurarak kişisel verilerinizin işlenip işlenmediğini öğrenme, silinmesini veya düzeltilmesini talep etme hakkına sahipsiniz.</p>
+                <p style="margin-top:20px; text-align:right;"><button onclick="closeKvkkModal()" style="background:#0288d1; color:#fff; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer;">Anladım, Kapat</button></p>
             </div>
         </div>
     </div>
 
-    <script src="cart.js?v=1018"></script>
+    <script src="cart.js?v=1019"></script>
         <script>
-        // HakkÃ„Â±mÃ„Â±zda ve Ã„Â°letiÃ…Å¸im linklerini sadece ana sayfada gÃƒÂ¶ster
+        // HakkÄ±mÄ±zda ve Ä°letiÅŸim linklerini sadece ana sayfada gÃ¶ster
         document.addEventListener('DOMContentLoaded', () => {
             const path = window.location.pathname;
             if (path !== '/' && path !== '/index.html' && !path.endsWith('/Baysu-web/') && !path.endsWith('/Baysu-web/index.html')) {
@@ -1207,7 +1207,7 @@
             }
         };
 
-        // Event Delegation ile MenÃ¼ YÃ¶netimi (Daha gÃ¼venilir)
+        // Event Delegation ile Menü Yönetimi (Daha güvenilir)
         document.addEventListener('click', (e) => {
             const menuToggleMobile = e.target.closest('#menuToggle');
             const menuToggleDesktop = e.target.closest('#menuToggleDesktop');
@@ -1217,7 +1217,7 @@
             const mainMenuContainer = document.getElementById('mainMenuContainer');
             const kaplinlerMenu = document.getElementById('kaplinler-menu');
             
-            // Ana menÃ¼yÃ¼ aÃ§/kapat (butonlar)
+            // Ana menüyü aç/kapat (butonlar)
             if (heroCatalogBtn && !e.target.closest('#mainMenuContainer')) {
                 e.preventDefault();
                 if (mainMenuContainer) {
@@ -1239,7 +1239,7 @@
                 return;
             }
 
-            // Kategori akordiyon aÃ§/kapat
+            // Kategori akordiyon aç/kapat
             if (categoryHeader) {
                 e.preventDefault();
                 const item = categoryHeader.closest('.category-item');
@@ -1248,7 +1248,7 @@
                     item.classList.toggle('active');
                     targetList.classList.toggle('active');
                     
-                    // DiÄŸerlerini kapat
+                    // Diğerlerini kapat
                     document.querySelectorAll('.category-item').forEach(otherItem => {
                         if (otherItem !== item) {
                             otherItem.classList.remove('active');
@@ -1260,14 +1260,14 @@
                 return;
             }
 
-            // Sayfa dÃ„Â±Ã…Å¸Ã„Â±na tÃ„Â±klandÃ„Â±Ã„Å¸Ã„Â±nda menÃƒÂ¼yÃƒÂ¼ kapat
+            // Sayfa dÄ±ÅŸÄ±na tÄ±klandÄ±ÄŸÄ±nda menÃ¼yÃ¼ kapat
             if (mainMenuContainer && mainMenuContainer.classList.contains('active')) {
                 if (!mainMenuContainer.contains(e.target) && !e.target.closest('.nav-bar') && !e.target.closest('#heroCatalogBtn')) {
                     mainMenuContainer.classList.remove('active');
                 }
             }
             
-            // Sayfa dÃ„Â±Ã…Å¸Ã„Â±na tÃ„Â±klandÃ„Â±Ã„Å¸Ã„Â±nda arama sonuÃƒÂ§larÃ„Â±nÃ„Â± kapat
+            // Sayfa dÄ±ÅŸÄ±na tÄ±klandÄ±ÄŸÄ±nda arama sonuÃ§larÄ±nÄ± kapat
             const searchInput = document.getElementById('searchInput');
             const searchResults = document.getElementById('searchResults');
             if (searchResults && searchResults.classList.contains('active')) {
@@ -1293,7 +1293,7 @@
             }
         });
 
-        // CanlÃ„Â± Arama (Instant Live Search)
+        // CanlÄ± Arama (Instant Live Search)
         document.addEventListener('DOMContentLoaded', () => {
             const searchInput = document.getElementById('searchInput');
             const searchResults = document.getElementById('searchResults');
@@ -1325,7 +1325,7 @@
                     } else {
                         searchResults.innerHTML = 
                             <div class="search-result-item" style="color: #94A3B8; justify-content: center;">
-                                AradÃ„Â±Ã„Å¸Ã„Â±nÃ„Â±z ÃƒÂ¼rÃƒÂ¼n bulunamadÃ„Â±.
+                                AradÄ±ÄŸÄ±nÄ±z Ã¼rÃ¼n bulunamadÄ±.
                             </div>
                         ;
                         searchResults.classList.add('active');

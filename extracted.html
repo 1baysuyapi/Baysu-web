@@ -1,9 +1,9 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BAYRAKÃ‡I SULAMA VE YAPI MALZEMELERÄ°</title>
+    <title>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="cart.css?v=11" />
     
     <style>
-        /* Renkler ve Fontlar iÃ§in CSS DeÄŸiÅŸkenleri */
+        /* Renkler ve Fontlar için CSS Değişkenleri */
         :root {
             --primary-color: #0b1727;
             --primary-hover: #002952;
@@ -26,7 +26,7 @@
             --hover-shadow: 0 20px 35px -5px rgba(0, 71, 151, 0.15);
         }
 
-        /* Temel Stil AyarlarÄ± */
+        /* Temel Stil Ayarları */
         * {
             box-sizing: border-box;
         }
@@ -45,7 +45,7 @@
             color: inherit;
         }
 
-        /* BaÅŸlÄ±k ve Navigasyon BÃ¶lÃ¼mÃ¼ */
+        /* Başlık ve Navigasyon Bölümü */
         .header-main {
             display: flex;
             flex-direction: column;
@@ -116,7 +116,7 @@
             pointer-events: none;
         }
 
-        /* CanlÄ± Arama SonuÃ§larÄ± Dropdown */
+        /* Canlı Arama Sonuçları Dropdown */
         .search-results {
             position: absolute;
             top: calc(100% + 8px);
@@ -165,7 +165,7 @@
             color: var(--text-color);
         }
         
-        /* Navigasyon Ã‡ubuÄŸu */
+        /* Navigasyon Çubuğu */
         .nav-bar {
             background: linear-gradient(135deg, #0b1727 0%, #002952 100%);
             padding: 0 20px;
@@ -219,7 +219,7 @@
             width: 100%;
         }
         
-        /* MenÃ¼ Toggle Butonu */
+        /* Menü Toggle Butonu */
         .menu-toggle {
             display: flex;
             align-items: center;
@@ -236,7 +236,7 @@
             color: #FFAE96;
         }
 
-        /* Dropdown MenÃ¼ Ä°Ã§eriÄŸi */
+        /* Dropdown Menü İçeriği */
         .main-menu-container {
             display: none;
             position: absolute;
@@ -289,7 +289,7 @@
             transform: rotate(90deg);
         }
 
-        /* Kategori GruplarÄ± */
+        /* Kategori Grupları */
         .category-group {
             list-style: none;
             padding: 0;
@@ -371,7 +371,7 @@
             padding-left: 55px;
         }
 
-        /* Ana Sayfa Ä°Ã§eriÄŸi */
+        /* Ana Sayfa İçeriği */
         .page-content {
             padding: 0 20px 40px 20px;
             max-width: 1240px;
@@ -456,7 +456,7 @@
             transform: translateY(-2px);
         }
 
-        /* Ã–ne Ã‡Ä±kan ÃœrÃ¼nler BÃ¶lÃ¼mÃ¼ */
+        /* Öne Çıkan Ürünler Bölümü */
         .featured-section {
             margin: 40px 0;
         }
@@ -479,7 +479,7 @@
             font-size: 1rem;
         }
 
-        /* Kategori Filtre ButonlarÄ± */
+        /* Kategori Filtre Butonları */
         .filter-container {
             display: flex;
             justify-content: center;
@@ -507,7 +507,7 @@
             box-shadow: 0 4px 12px rgba(0, 71, 151, 0.2);
         }
 
-        /* ÃœrÃ¼n KartlarÄ± Grid YapÄ±sÄ± */
+        /* Ürün Kartları Grid Yapısı */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -750,7 +750,7 @@
             50% { transform: translateX(-6px); }
         }
 
-        /* Responsive TasarÄ±m */
+        /* Responsive Tasarım */
         @media (min-width: 769px) {
             .nav-links {
                 display: flex;
@@ -820,7 +820,7 @@
         </div>
         <div class="search-and-actions">
             <div class="search-bar">
-                <input type="search" placeholder="ÃœrÃ¼n adÄ± yazÄ±n (Ã–rn: Mavi Seri, Kaplin, Dirsek, Vana)..." id="searchInput" autocomplete="off">
+                <input type="search" placeholder="Ürün adı yazın (Örn: Mavi Seri, Kaplin, Dirsek, Vana)..." id="searchInput" autocomplete="off">
                 <i class="fas fa-search"></i>
                 <div class="search-results" id="searchResults"></div>
             </div>
@@ -831,16 +831,16 @@
         <div class="nav-content">
             <div class="nav-links">
                 <a href='/'><i class="fas fa-home" style="margin-right: 6px;"></i>Ana Sayfa</a>
-                <a href="#" id="menuToggleDesktop"><i class="fas fa-th-large" style="margin-right: 6px;"></i>ÃœrÃ¼n KataloÄŸu</a>
+                <a href="#" id="menuToggleDesktop"><i class="fas fa-th-large" style="margin-right: 6px;"></i>Ürün Kataloğu</a>
                 </div>
             <div class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
-                <span id="menuText">TÃ¼m ÃœrÃ¼n KataloÄŸu</span>
+                <span id="menuText">Tüm Ürün Kataloğu</span>
             </div>
         </div>
         <div class="main-menu-container" id="mainMenuContainer">
             <div class="main-category-item">
-                <h3>KAPLÄ°NLER VE EK PARÃ‡ALARI <span class="arrow-icon">&#9658;</span></h3>
+                <h3>KAPLİNLER VE EK PARÇALARI <span class="arrow-icon">&#9658;</span></h3>
             </div>
             <ul class="category-group" id="kaplinler-menu">
                 <li class="category-item">
@@ -848,17 +848,17 @@
                         <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href='/mavi-disi-kaplin'>Mavi Seri DiÅŸi Kaplin</a></li>
+                        <li><a href='/mavi-disi-kaplin'>Mavi Seri Dişi Kaplin</a></li>
                         <li><a href='/mavi-erkek-kaplin'>Mavi Seri Erkek Kaplin</a></li>
                         <li><a href='/mavi-dirsek-kaplin'>Mavi Seri Dirsek Kaplin</a></li>
-                        <li><a href='/mavi-disi-dirsek'>Mavi Seri DiÅŸi Dirsek</a></li>
+                        <li><a href='/mavi-disi-dirsek'>Mavi Seri Dişi Dirsek</a></li>
                         <li><a href='/mavi-erkek-dirsek'>Mavi Seri Erkek Dirsek</a></li>
-                        <li><a href='/mavi-manson'>Mavi Seri ManÅŸon</a></li>
+                        <li><a href='/mavi-manson'>Mavi Seri Manşon</a></li>
                         <li><a href='/mavi-tapa'>Mavi Seri Tapa</a></li>
                         <li><a href='/mavi-erkek-te'>Mavi Seri Erkek Te</a></li>
-                        <li><a href='/mavi-disi-te'>Mavi Seri DiÅŸi Te</a></li>
-                        <li><a href='/mavi-reduksiyon-te'>Mavi Seri RedÃ¼ksiyon Te</a></li>
-                        <li><a href='/mavi-reduksiyon'>Mavi Seri RedÃ¼ksiyon</a></li>
+                        <li><a href='/mavi-disi-te'>Mavi Seri Dişi Te</a></li>
+                        <li><a href='/mavi-reduksiyon-te'>Mavi Seri Redüksiyon Te</a></li>
+                        <li><a href='/mavi-reduksiyon'>Mavi Seri Redüksiyon</a></li>
                         <li><a href='/mavi-te'>Mavi Seri Te</a></li>
                     </ul>
                 </li>
@@ -867,42 +867,42 @@
                         <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href='/siyah-disi'>Siyah Seri DiÅŸi Kaplin</a></li>
+                        <li><a href='/siyah-disi'>Siyah Seri Dişi Kaplin</a></li>
                         <li><a href='/siyah-erkek-kaplin'>Siyah Seri Erkek Kaplin</a></li>
                         <li><a href='/siyah-dirsek'>Siyah Seri Dirsek Kaplin</a></li>
-                        <li><a href='/siyah-disi-dirsek'>Siyah Seri DiÅŸi Dirsek</a></li>
+                        <li><a href='/siyah-disi-dirsek'>Siyah Seri Dişi Dirsek</a></li>
                         <li><a href='/siyah-erkek-dirsek'>Siyah Seri Erkek Dirsek</a></li>
-                        <li><a href='/siyah-manson'>Siyah Seri ManÅŸon</a></li>
+                        <li><a href='/siyah-manson'>Siyah Seri Manşon</a></li>
                         <li><a href='/siyah-tapa'>Siyah Seri Tapa</a></li>
                         <li><a href='/siyah-erkek-te'>Siyah Seri Erkek Te</a></li>
-                        <li><a href='/siyah-disi-te'>Siyah Seri DiÅŸi Te</a></li>
-                        <li><a href='/siyah-reduksiyon-te'>Siyah Seri RedÃ¼ksiyon Te</a></li>
-                        <li><a href='/siyah-reduksiyon'>Siyah Seri RedÃ¼ksiyon</a></li>
+                        <li><a href='/siyah-disi-te'>Siyah Seri Dişi Te</a></li>
+                        <li><a href='/siyah-reduksiyon-te'>Siyah Seri Redüksiyon Te</a></li>
+                        <li><a href='/siyah-reduksiyon'>Siyah Seri Redüksiyon</a></li>
                         <li><a href='/siyah-te'>Siyah Seri Te</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
                     <div class="category-header">
-                        <h3>Kilitli BaÄŸlantÄ± ParÃ§alarÄ± <span class="arrow-icon">&#9658;</span></h3>
+                        <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href="kilitli-erkek-adaptÃ¶r.html">Kilitli BaÄŸlantÄ± Erkek AdaptÃ¶r</a></li>
-                        <li><a href='/kilitli-erkek-dirsek'>Kilitli BaÄŸlantÄ± Erkek Dirsek</a></li>
-                        <li><a href='/kilitli-dirsek'>Kilitli BaÄŸlantÄ± Dirsek</a></li>
-                        <li><a href='/kilitli-reduksiyon-dirsek'>Kilitli BaÄŸlantÄ± RedÃ¼ksiyon Dirsek</a></li>
-                        <li><a href='/kilitli-te'>Kilitli BaÄŸlantÄ± TE</a></li>
-                        <li><a href='/kilitli-erkek-te'>Kilitli BaÄŸlantÄ± Erkek TE</a></li>
+                        <li><a href="kilitli-erkek-adaptör.html">Kilitli Bağlantı Erkek Adaptör</a></li>
+                        <li><a href='/kilitli-erkek-dirsek'>Kilitli Bağlantı Erkek Dirsek</a></li>
+                        <li><a href='/kilitli-dirsek'>Kilitli Bağlantı Dirsek</a></li>
+                        <li><a href='/kilitli-reduksiyon-dirsek'>Kilitli Bağlantı Redüksiyon Dirsek</a></li>
+                        <li><a href='/kilitli-te'>Kilitli Bağlantı TE</a></li>
+                        <li><a href='/kilitli-erkek-te'>Kilitli Bağlantı Erkek TE</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
                     <div class="category-header">
-                        <h3>DiÅŸli Sulama Ek ParÃ§alarÄ± <span class="arrow-icon">&#9658;</span></h3>
+                        <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href='/disli-disi-dirsek'>DiÅŸli DiÅŸi Dirsek</a></li>
-                        <li><a href='/disli-disi-nipel'>DiÅŸli DiÅŸi Nipel</a></li>
-                        <li><a href='/disli-disi-reduksiyon-dirsek'>DiÅŸli DiÅŸi RedÃ¼ksiyon Dirsek</a></li>
-                        <li><a href='/erkek-disli-kor-tapa'>Erkek DiÅŸli KÃ¶r Tapa</a></li>
+                        <li><a href='/disli-disi-dirsek'>Dişli Dişi Dirsek</a></li>
+                        <li><a href='/disli-disi-nipel'>Dişli Dişi Nipel</a></li>
+                        <li><a href='/disli-disi-reduksiyon-dirsek'>Dişli Dişi Redüksiyon Dirsek</a></li>
+                        <li><a href='/erkek-disli-kor-tapa'>Erkek Dişli Kör Tapa</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
@@ -911,10 +911,10 @@
                     </div>
                     <ul class="product-list">
                         <li><a href='/priz-kolye'>Priz Kolye</a></li>
-                        <li><a href='/disi-nipelli-priz-kolye'>DiÅŸi Nipelli Priz Kolye</a></li>
+                        <li><a href='/disi-nipelli-priz-kolye'>Dişi Nipelli Priz Kolye</a></li>
                         <li><a href='/erkek-nipelli-priz-kolye'>Erkek Nipelli Priz Kolye</a></li>
-                        <li><a href='/kizakli-priz-kolye'>KÄ±zaklÄ± Priz Kolye</a></li>
-                        <li><a href='/cift-cikisli-priz-kolye'>Ã‡ift Ã‡Ä±kÄ±ÅŸlÄ± Priz Kolye</a></li>
+                        <li><a href='/kizakli-priz-kolye'>Kızaklı Priz Kolye</a></li>
+                        <li><a href='/cift-cikisli-priz-kolye'>Çift Çıkışlı Priz Kolye</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
@@ -922,10 +922,10 @@
                         <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href='/nipelli-disi-priz-kolye'>DiÅŸi Nipelli Priz Kolye</a></li>
+                        <li><a href='/nipelli-disi-priz-kolye'>Dişi Nipelli Priz Kolye</a></li>
                         <li><a href='/nipelli-erkek-priz-kolye'>Erkek Nipelli Priz Kolye</a></li>
                         <li><a href='/nipelli-erkek-te'>Nipelli Erkek TE</a></li>
-                        <li><a href='/nipelli-disi-dirsek'>Nipelli DiÅŸi Dirsek</a></li>
+                        <li><a href='/nipelli-disi-dirsek'>Nipelli Dişi Dirsek</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
@@ -933,15 +933,15 @@
                         <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href='/disi-disi-vana'>DiÅŸi DiÅŸi Vana</a></li>
-                        <li><a href='/erkek-disi-vana'>Erkek DiÅŸi Vana</a></li>
-                        <li><a href='/kaplin-disi-vana'>Kaplin DiÅŸi Vana</a></li>
+                        <li><a href='/disi-disi-vana'>Dişi Dişi Vana</a></li>
+                        <li><a href='/erkek-disi-vana'>Erkek Dişi Vana</a></li>
+                        <li><a href='/kaplin-disi-vana'>Kaplin Dişi Vana</a></li>
                         <li><a href='/kaplin-erkek-vana'>Kaplin Erkek Vana</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
                     <div class="category-header">
-                        <h3>Vana KutularÄ± <span class="arrow-icon">&#9658;</span></h3>
+                        <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
                         <li><a href='/6-inc-vana-kutusu'>6" Vana Kutusu</a></li>
@@ -952,26 +952,26 @@
                 </li>
                 <li class="category-item">
                     <div class="category-header">
-                        <h3>Damlama Ek ParÃ§alarÄ± <span class="arrow-icon">&#9658;</span></h3>
+                        <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href='/cikis-mini-vana'>Ã‡Ä±kÄ±ÅŸ Mini Vana</a></li>
-                        <li><a href='/debi-ayarli-damlatici-genis'>Debi AyarlÄ± DamlatÄ±cÄ± GeniÅŸ BoÅŸaltÄ±m</a></li>
-                        <li><a href='/debi-ayarli-damlatici-kirmizi'>Debi AyarlÄ± DamlatÄ±cÄ± KÄ±rmÄ±zÄ±</a></li>
-                        <li><a href='/debi-ayarli-damlatici-yesil'>Debi AyarlÄ± DamlatÄ±cÄ± YeÅŸil</a></li>
-                        <li><a href='/duz-damlama-conta'>DÃ¼z Damlama Conta</a></li>
-                        <li><a href='/kanalli-conta'>KanallÄ± Conta</a></li>
+                        <li><a href='/cikis-mini-vana'>Çıkış Mini Vana</a></li>
+                        <li><a href='/debi-ayarli-damlatici-genis'>Debi Ayarlı Damlatıcı Geniş Boşaltım</a></li>
+                        <li><a href='/debi-ayarli-damlatici-kirmizi'>Debi Ayarlı Damlatıcı Kırmızı</a></li>
+                        <li><a href='/debi-ayarli-damlatici-yesil'>Debi Ayarlı Damlatıcı Yeşil</a></li>
+                        <li><a href='/duz-damlama-conta'>Düz Damlama Conta</a></li>
+                        <li><a href='/kanalli-conta'>Kanallı Conta</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
                     <div class="category-header">
-                        <h3>Yedek ParÃ§alar <span class="arrow-icon">&#9658;</span></h3>
+                        <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href='/kaplin-sikma-anahtari'>Kaplin SÄ±kma AnahtarÄ±</a></li>
-                        <li><a href='/pah-acma-aparati'>Pah AÃ§ma AparatÄ±</a></li>
+                        <li><a href='/kaplin-sikma-anahtari'>Kaplin Sıkma Anahtarı</a></li>
+                        <li><a href='/pah-acma-aparati'>Pah Açma Aparatı</a></li>
                         <li><a href='/o-ring'>O-Ring</a></li>
-                        <li><a href='/abot-ustu-kaplin-dagitici'>Abot ÃœstÃ¼ Kaplin DaÄŸÄ±tÄ±cÄ±</a></li>
+                        <li><a href='/abot-ustu-kaplin-dagitici'>Abot Üstü Kaplin Dağıtıcı</a></li>
                     </ul>
                 </li>
             </ul>
@@ -980,39 +980,39 @@
     
     <main class="page-content"><div class="product-detail-container">
             <div class="product-image">
-                <img src="mavidisi.png" alt="Mavi DiÅŸi" class="product-main-image">
+                <img src="mavidisi.png" alt="Mavi Dişi" class="product-main-image">
             </div>
             <div class="product-info">
-                <div class="product-category">Kaplinler ve Ek ParÃ§alarÄ± - Mavi Seri</div>
-                <h1 class="product-title">Mavi DiÅŸi</h1>
+                <div class="product-category">Kaplinler ve Ek Parçaları - Mavi Seri</div>
+                <h1 class="product-title">Mavi Dişi</h1>
                 
                 <button type="button" class="btn-features-toggle" onclick="toggleProductFeatures(this)" style="background: #EFF6FF; color: #004797; border: 1.5px solid #004797; padding: 8px 18px; border-radius: 20px; font-weight: 700; font-size: 13.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin: 10px 0; transition: all 0.2s ease;">
-                    <i class="fas fa-list-check"></i> ÃœrÃ¼n Ã–zellikleri <i class="fas fa-chevron-down toggle-icon" style="font-size: 11px; transition: transform 0.2s ease;"></i>
+                    <i class="fas fa-list-check"></i> Ürün Özellikleri <i class="fas fa-chevron-down toggle-icon" style="font-size: 11px; transition: transform 0.2s ease;"></i>
                 </button>
                 <div class="product-features-box" style="display: none; background: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 12px; padding: 14px 16px; font-size: 13.5px; color: #334155; line-height: 1.5; margin-bottom: 12px;">
-                    Mavi DiÅŸi Kaplin, polietilen (PE) borular ile diÅŸli baÄŸlantÄ± elemanlarÄ± arasÄ±nda sÄ±zdÄ±rmaz bir geÃ§iÅŸ saÄŸlamak iÃ§in kullanÄ±lÄ±r. YÃ¼ksek kaliteli polipropilen (PP) hammaddeden Ã¼retilmiÅŸ olup, darbelere ve basÄ±nca karÅŸÄ± son derece dayanÄ±klÄ±dÄ±r. Ã–zel tasarÄ±mÄ± sayesinde borulardaki Â± 0.5 mm'ye kadar olan ovalite ve Ã¶lÃ§Ã¼ farklÄ±lÄ±klarÄ±nÄ± telafi eder. UV Ä±ÅŸÄ±nlarÄ±na karÅŸÄ± direnÃ§li yapÄ±sÄ±, uzun Ã¶mÃ¼rlÃ¼ kullanÄ±m sunar.
+                    Mavi Dişi Kaplin, polietilen (PE) borular ile dişli bağlantı elemanları arasında sızdırmaz bir geçiş sağlamak için kullanılır. Yüksek kaliteli polipropilen (PP) hammaddeden üretilmiş olup, darbelere ve basınca karşı son derece dayanıklıdır. Özel tasarımı sayesinde borulardaki ± 0.5 mm'ye kadar olan ovalite ve ölçü farklılıklarını telafi eder. UV ışınlarına karşı dirençli yapısı, uzun ömürlü kullanım sunar.
                 </div>
                 <div class="discount-badge-bar">
                     <i class="fas fa-percentage" style="font-size: 16px; color: #10B981;"></i>
-                    <span><strong>Ã–zel Ä°skonto FÄ±rsatÄ±:</strong> Toplu alÄ±mlarda ve sepete ekleyeceÄŸiniz tÃ¼m Ã¼rÃ¼nlerde sepette Ã¶zel iskonto uygulanÄ±r.</span>
+                    <span><strong>Özel İskonto Fırsatı:</strong> Toplu alımlarda ve sepete ekleyeceğiniz tüm ürünlerde sepette özel iskonto uygulanır.</span>
                 </div>
-                <div class="product-section-title" style="font-size: 1.1rem; font-weight: 700; color: #004797; margin-bottom: 12px;">Ã–lÃ§Ã¼ ve Fiyat Listesi</div>
+                <div class="product-section-title" style="font-size: 1.1rem; font-weight: 700; color: #004797; margin-bottom: 12px;">Ölçü ve Fiyat Listesi</div>
                 <div class="table-responsive">
                     <table class="price-table">
 
         <thead>
             <tr>
                 <th>EBAT</th>
-                <th>Ã‡. ADEDÄ°</th>
-                <th>FÄ°YAT (TL)</th>
-                <th>MÄ°KTAR</th>
-                <th>Ä°ÅLEM</th>
+                <th>Ç. ADEDİ</th>
+                <th>FİYAT (TL)</th>
+                <th>MİKTAR</th>
+                <th>İŞLEM</th>
             </tr>
         </thead>
                                 <tbody>
             <tr>
                 <td><span class="ebat-pill">20x1/2"</span></td>
-                <td><span style="color: #64748B; font-weight: 600;">225 Adet (PoÅŸet: 25)</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">225 Adet (Poşet: 25)</span></td>
                 <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">28,27 TL</span></td>
                 <td>
                     <div class="qty-stepper">
@@ -1022,14 +1022,14 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="20x1/2&quot;" data-box="225 Adet (PoÅŸet: 25)" data-price="28.27">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="20x1/2&quot;" data-box="225 Adet (Poşet: 25)" data-price="28.27">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
                 <td><span class="ebat-pill">20x3/4"</span></td>
-                <td><span style="color: #64748B; font-weight: 600;">200 Adet (PoÅŸet: 20)</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">200 Adet (Poşet: 20)</span></td>
                 <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">29,00 TL</span></td>
                 <td>
                     <div class="qty-stepper">
@@ -1039,14 +1039,14 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="20x3/4&quot;" data-box="200 Adet (PoÅŸet: 20)" data-price="29.00">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="20x3/4&quot;" data-box="200 Adet (Poşet: 20)" data-price="29.00">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
                 <td><span class="ebat-pill">20x1"</span></td>
-                <td><span style="color: #64748B; font-weight: 600;">180 Adet (PoÅŸet: 20)</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">180 Adet (Poşet: 20)</span></td>
                 <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">30,21 TL</span></td>
                 <td>
                     <div class="qty-stepper">
@@ -1056,14 +1056,14 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="20x1&quot;" data-box="180 Adet (PoÅŸet: 20)" data-price="30.21">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="20x1&quot;" data-box="180 Adet (Poşet: 20)" data-price="30.21">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
                 <td><span class="ebat-pill">25x1/2"</span></td>
-                <td><span style="color: #64748B; font-weight: 600;">160 Adet (PoÅŸet: 10)</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">160 Adet (Poşet: 10)</span></td>
                 <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">40,42 TL</span></td>
                 <td>
                     <div class="qty-stepper">
@@ -1073,14 +1073,14 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="25x1/2&quot;" data-box="160 Adet (PoÅŸet: 10)" data-price="40.42">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="25x1/2&quot;" data-box="160 Adet (Poşet: 10)" data-price="40.42">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
                 <td><span class="ebat-pill">25x3/4"</span></td>
-                <td><span style="color: #64748B; font-weight: 600;">160 Adet (PoÅŸet: 10)</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">160 Adet (Poşet: 10)</span></td>
                 <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">38,80 TL</span></td>
                 <td>
                     <div class="qty-stepper">
@@ -1090,14 +1090,14 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="25x3/4&quot;" data-box="160 Adet (PoÅŸet: 10)" data-price="38.80">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="25x3/4&quot;" data-box="160 Adet (Poşet: 10)" data-price="38.80">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
                 <td><span class="ebat-pill">25x1"</span></td>
-                <td><span style="color: #64748B; font-weight: 600;">160 Adet (PoÅŸet: 10)</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">160 Adet (Poşet: 10)</span></td>
                 <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">41,15 TL</span></td>
                 <td>
                     <div class="qty-stepper">
@@ -1107,14 +1107,14 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="25x1&quot;" data-box="160 Adet (PoÅŸet: 10)" data-price="41.15">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="25x1&quot;" data-box="160 Adet (Poşet: 10)" data-price="41.15">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
                 <td><span class="ebat-pill">32x1/2"</span></td>
-                <td><span style="color: #64748B; font-weight: 600;">100 Adet (PoÅŸet: 10)</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">100 Adet (Poşet: 10)</span></td>
                 <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">53,30 TL</span></td>
                 <td>
                     <div class="qty-stepper">
@@ -1124,14 +1124,14 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="32x1/2&quot;" data-box="100 Adet (PoÅŸet: 10)" data-price="53.30">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="32x1/2&quot;" data-box="100 Adet (Poşet: 10)" data-price="53.30">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
                 <td><span class="ebat-pill">32x3/4"</span></td>
-                <td><span style="color: #64748B; font-weight: 600;">100 Adet (PoÅŸet: 10)</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">100 Adet (Poşet: 10)</span></td>
                 <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">51,68 TL</span></td>
                 <td>
                     <div class="qty-stepper">
@@ -1141,14 +1141,14 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="32x3/4&quot;" data-box="100 Adet (PoÅŸet: 10)" data-price="51.68">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="32x3/4&quot;" data-box="100 Adet (Poşet: 10)" data-price="51.68">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
             </tr>
             <tr>
                 <td><span class="ebat-pill">32x1"</span></td>
-                <td><span style="color: #64748B; font-weight: 600;">100 Adet (PoÅŸet: 10)</span></td>
+                <td><span style="color: #64748B; font-weight: 600;">100 Adet (Poşet: 10)</span></td>
                 <td><span style="color: #004797; font-weight: 800; font-size: 1.05rem;">50,22 TL</span></td>
                 <td>
                     <div class="qty-stepper">
@@ -1158,7 +1158,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="32x1&quot;" data-box="100 Adet (PoÅŸet: 10)" data-price="50.22">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="32x1&quot;" data-box="100 Adet (Poşet: 10)" data-price="50.22">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1175,7 +1175,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="40x3/4&quot;" data-paket="50 Adet" data-box="50 Adet" data-price="89.02">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="40x3/4&quot;" data-paket="50 Adet" data-box="50 Adet" data-price="89.02">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1192,7 +1192,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="40x1&quot;" data-paket="50 Adet" data-box="50 Adet" data-price="86.67">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="40x1&quot;" data-paket="50 Adet" data-box="50 Adet" data-price="86.67">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1209,7 +1209,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="40x1 1/4&quot;" data-paket="50 Adet" data-box="50 Adet" data-price="83.67">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="40x1 1/4&quot;" data-paket="50 Adet" data-box="50 Adet" data-price="83.67">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1226,7 +1226,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="50x1&quot;" data-paket="30 Adet" data-box="30 Adet" data-price="147.42">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="50x1&quot;" data-paket="30 Adet" data-box="30 Adet" data-price="147.42">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1243,7 +1243,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="50x1 1/4&quot;" data-paket="30 Adet" data-box="30 Adet" data-price="143.69">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="50x1 1/4&quot;" data-paket="30 Adet" data-box="30 Adet" data-price="143.69">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1260,7 +1260,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="50x1 1/2&quot;" data-paket="30 Adet" data-box="30 Adet" data-price="139.08">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="50x1 1/2&quot;" data-paket="30 Adet" data-box="30 Adet" data-price="139.08">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1277,7 +1277,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="50x2&quot;" data-paket="30 Adet" data-box="30 Adet" data-price="151.88">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="50x2&quot;" data-paket="30 Adet" data-box="30 Adet" data-price="151.88">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1294,7 +1294,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="63x1 1/4&quot;" data-paket="25 Adet" data-box="25 Adet" data-price="204.44">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="63x1 1/4&quot;" data-paket="25 Adet" data-box="25 Adet" data-price="204.44">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1311,7 +1311,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="63x1 1/2&quot;" data-paket="25 Adet" data-box="25 Adet" data-price="198.37">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="63x1 1/2&quot;" data-paket="25 Adet" data-box="25 Adet" data-price="198.37">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1328,7 +1328,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="63x2&quot;" data-paket="25 Adet" data-box="25 Adet" data-price="192.29">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="63x2&quot;" data-paket="25 Adet" data-box="25 Adet" data-price="192.29">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1345,7 +1345,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="63x2 1/2&quot;" data-paket="15 Adet" data-box="15 Adet" data-price="198.05">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="63x2 1/2&quot;" data-paket="15 Adet" data-box="15 Adet" data-price="198.05">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1362,7 +1362,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="75x2&quot;" data-paket="12 Adet" data-box="12 Adet" data-price="398.84">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="75x2&quot;" data-paket="12 Adet" data-box="12 Adet" data-price="398.84">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1379,7 +1379,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="75x2 1/2&quot;" data-paket="12 Adet" data-box="12 Adet" data-price="386.69">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="75x2 1/2&quot;" data-paket="12 Adet" data-box="12 Adet" data-price="386.69">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1396,7 +1396,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="90x2&quot;" data-paket="7 Adet" data-box="7 Adet" data-price="593.24">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="90x2&quot;" data-paket="7 Adet" data-box="7 Adet" data-price="593.24">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1413,7 +1413,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="90x2 1/2&quot;" data-paket="7 Adet" data-box="7 Adet" data-price="576.48">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="90x2 1/2&quot;" data-paket="7 Adet" data-box="7 Adet" data-price="576.48">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1430,7 +1430,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="90x3&quot;" data-paket="7 Adet" data-box="7 Adet" data-price="558.90">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="90x3&quot;" data-paket="7 Adet" data-box="7 Adet" data-price="558.90">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1447,7 +1447,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="110x2&quot;" data-paket="6 Adet" data-box="6 Adet" data-price="1021.57">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="110x2&quot;" data-paket="6 Adet" data-box="6 Adet" data-price="1021.57">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1464,7 +1464,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="110x2 1/2&quot;" data-paket="6 Adet" data-box="6 Adet" data-price="991.20">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="110x2 1/2&quot;" data-paket="6 Adet" data-box="6 Adet" data-price="991.20">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1481,7 +1481,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="110x3&quot;" data-paket="6 Adet" data-box="6 Adet" data-price="962.20">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="110x3&quot;" data-paket="6 Adet" data-box="6 Adet" data-price="962.20">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1498,7 +1498,7 @@
                     </div>
                 </td>
                 <td>
-                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVÄ° DÄ°SÄ° KAPLÄ°N" data-size="110x4&quot;" data-paket="6 Adet" data-box="6 Adet" data-price="934.17">
+                    <button class="add-to-cart-btn btn-add-cart-custom" type="button" data-product="MAVİ DİSİ KAPLİN" data-size="110x4&quot;" data-paket="6 Adet" data-box="6 Adet" data-price="934.17">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
                     </button>
                 </td>
@@ -1511,13 +1511,13 @@
 </main>
 
     <footer>
-        &copy; 2025 BAYRAKÃ‡I SULAMA VE YAPI MALZEMELERÄ° - TÃ¼m haklarÄ± saklÄ±dÄ±r.
+        &copy; 2025 BAYRAKÇI SULAMA VE YAPI MALZEMELERİ - Tüm hakları saklıdır.
     </footer>
     <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum." class="whatsapp-button" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
     
-    <script src="cart.js?v=639209483160111406"></script>
+    <script src="cart.js?v=1019"></script>
 
 
 
@@ -1545,34 +1545,34 @@
     <div id="kvkkModalBackdrop" class="kvkk-modal-backdrop">
         <div class="kvkk-modal-content">
             <span class="kvkk-modal-close" onclick="closeKvkkModal()">&times;</span>
-            <h2 style="color:#004797; margin-top:0;"><i class="fas fa-user-shield"></i> KVKK AydÄ±nlatma Metni</h2>
+            <h2 style="color:#004797; margin-top:0;"><i class="fas fa-user-shield"></i> KVKK Aydınlatma Metni</h2>
             <hr style="border:0; border-top:1px solid #E2E8F0; margin:15px 0;">
             <div style="font-size:14px; line-height:1.7; color:#334155;">
-                <p><strong>BAYRAKÃ‡I SULAMA VE YAPI MALZEMELERÄ°</strong> olarak kiÅŸisel verilerinizin gÃ¼venliÄŸi hususuna azami hassasiyet gÃ¶stermekteyiz. 6698 sayÄ±lÄ± KiÅŸisel Verilerin KorunmasÄ± Kanunu (â€œKVKKâ€) uyarÄ±nca, web sitemizi ziyaret eden ve hizmetlerimizden faydalanan tÃ¼m kullanÄ±cÄ±larÄ±mÄ±zÄ±n kiÅŸisel verileri yasal mevzuata uygun olarak iÅŸlenmektedir.</p>
-                <h4 style="color:#0288d1; margin-top:15px;">1. Ä°ÅŸlenen KiÅŸisel Veriler ve AmaÃ§larÄ±</h4>
-                <p>Sitemizde sipariÅŸ verme, whatsapp ile iletiÅŸim kurma ve teklif alma sÃ¼reÃ§lerinde paylaÅŸtÄ±ÄŸÄ±nÄ±z ad, soyad, telefon numarasÄ± ve adres bilgileri yalnÄ±zca sipariÅŸinizin tamamlanmasÄ±, teslimatÄ±n yapÄ±lmasÄ± ve mÃ¼ÅŸteri memnuniyeti amacÄ±yla iÅŸlenir.</p>
-                <h4 style="color:#0288d1; margin-top:15px;">2. KiÅŸisel Verilerin AktarÄ±lmasÄ±</h4>
-                <p>KiÅŸisel verileriniz 3. ÅŸahÄ±slara veya kurumlar ile ticari amaÃ§la kesinlikle paylaÅŸÄ±lmaz. YalnÄ±zca yasal zorunluluk hallerinde yetkili kamu kurumlarÄ±na aktarÄ±labilir.</p>
-                <h4 style="color:#0288d1; margin-top:15px;">3. KVKK KapsamÄ±ndaki HaklarÄ±nÄ±z</h4>
-                <p>KVKK'nÄ±n 11. maddesi uyarÄ±nca bize baÅŸvurarak kiÅŸisel verilerinizin iÅŸlenip iÅŸlenmediÄŸini Ã¶ÄŸrenme, silinmesini veya dÃ¼zeltilmesini talep etme hakkÄ±na sahipsiniz.</p>
-                <p style="margin-top:20px; text-align:right;"><button onclick="closeKvkkModal()" style="background:#0288d1; color:#fff; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer;">AnladÄ±m, Kapat</button></p>
+                <p><strong>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ</strong> olarak kişisel verilerinizin güvenliği hususuna azami hassasiyet göstermekteyiz. 6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) uyarınca, web sitemizi ziyaret eden ve hizmetlerimizden faydalanan tüm kullanıcılarımızın kişisel verileri yasal mevzuata uygun olarak işlenmektedir.</p>
+                <h4 style="color:#0288d1; margin-top:15px;">1. İşlenen Kişisel Veriler ve Amaçları</h4>
+                <p>Sitemizde sipariş verme, whatsapp ile iletişim kurma ve teklif alma süreçlerinde paylaştığınız ad, soyad, telefon numarası ve adres bilgileri yalnızca siparişinizin tamamlanması, teslimatın yapılması ve müşteri memnuniyeti amacıyla işlenir.</p>
+                <h4 style="color:#0288d1; margin-top:15px;">2. Kişisel Verilerin Aktarılması</h4>
+                <p>Kişisel verileriniz 3. şahıslara veya kurumlar ile ticari amaçla kesinlikle paylaşılmaz. Yalnızca yasal zorunluluk hallerinde yetkili kamu kurumlarına aktarılabilir.</p>
+                <h4 style="color:#0288d1; margin-top:15px;">3. KVKK Kapsamındaki Haklarınız</h4>
+                <p>KVKK'nın 11. maddesi uyarınca bize başvurarak kişisel verilerinizin işlenip işlenmediğini öğrenme, silinmesini veya düzeltilmesini talep etme hakkına sahipsiniz.</p>
+                <p style="margin-top:20px; text-align:right;"><button onclick="closeKvkkModal()" style="background:#0288d1; color:#fff; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer;">Anladım, Kapat</button></p>
             </div>
         </div>
     </div></main>
 
     <footer>
-        &copy; 2026 <strong>BAYRAKÃ‡I SULAMA VE YAPI MALZEMELERÄ°</strong> - TÃ¼m HaklarÄ± SaklÄ±dÄ±r.
+        &copy; 2026 <strong>BAYRAKÇI SULAMA VE YAPI MALZEMELERİ</strong> - Tüm Hakları Saklıdır.
     </footer>
 
     <!-- WhatsApp Floating Action -->
     <div class="whatsapp-float-wrapper">
         <div class="whatsapp-tooltip">
-            ğŸ’¬ Fiyat Teklifi AlÄ±n!
+            ?? Fiyat Teklifi Alın!
         </div>
-        <a href="https://wa.me/905533973603?text=Merhaba,%20Baysu%20Yap%C4%B1%20web%20sitenizden%20Ã¼rÃ¼nleriniz%20hakkÄ±nda%20bilgi%20almak%20istiyorum." class="whatsapp-button" target="_blank" title="WhatsApp ile Ä°letiÅŸime GeÃ§in">
+        <a href="https://wa.me/905533973603?text=Merhaba,%20Baysu%20Yap%C4%B1%20web%20sitenizden%20ürünleriniz%20hakkında%20bilgi%20almak%20istiyorum." class="whatsapp-button" target="_blank" title="WhatsApp ile İletişime Geçin">
             <i class="fab fa-whatsapp"></i>
         </a>
-    <script src="cart.js?v=11"></script>
+    <script src="cart.js?v=1019"></script>
     <script>
         (function() {
             const mainMenuContainer = document.getElementById('mainMenuContainer');
@@ -1663,7 +1663,7 @@
                 }
             });
 
-            // Sayfa dÄ±ÅŸÄ±na tÄ±klandÄ±ÄŸÄ±nda menÃ¼yÃ¼ ve arama sonuÃ§larÄ±nÄ± kapat
+            // Sayfa dışına tıklandığında menüyü ve arama sonuçlarını kapat
             window.addEventListener('click', (e) => {
                 if (!mainMenuContainer.contains(e.target) && !e.target.closest('.nav-bar') && !e.target.closest('#heroCatalogBtn')) {
                     if (mainMenuContainer.classList.contains('active')) {
@@ -1675,7 +1675,7 @@
                 }
             });
 
-            // CanlÄ± Arama (Instant Live Search)
+            // Canlı Arama (Instant Live Search)
             if (searchInput && searchResults) {
                 searchInput.addEventListener('input', (e) => {
                     const query = e.target.value.toLowerCase().trim();
@@ -1698,7 +1698,7 @@
                     } else {
                         searchResults.innerHTML = `
                             <div class="search-result-item" style="color: #94A3B8; justify-content: center;">
-                                AradÄ±ÄŸÄ±nÄ±z Ã¼rÃ¼n bulunamadÄ±.
+                                Aradığınız ürün bulunamadı.
                             </div>
                         `;
                         searchResults.classList.add('active');
