@@ -1,4 +1,16 @@
 (function () {
+    window.changeIpcQty = function(btn, delta) {
+        var input = btn.parentElement.querySelector('.ipc-qty-input');
+        var val = parseInt(input.value) || 1;
+        val += delta;
+        if (val < 1) val = 1;
+        input.value = val;
+    };
+    window.getIpcQty = function(btn) {
+        var input = btn.parentElement.parentElement.querySelector('.ipc-qty-input');
+        return parseInt(input.value) || 1;
+    };
+
     function getPageName(path) {
         if (!path || path === '' || path === '/' || path === 'index.html') return 'Ana Sayfa';
         var name = path.replace('.html', '').replace(/-/g, ' ');
@@ -188,83 +200,27 @@
             path += '.html';
         }
 
-        // Stateless check: if the page already has content elements (like headers, menus, or navs),
-        // then the document has already been written. Do not write again, just bind event listeners!
-        if (document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container') || document.querySelector('header')) {
-            window._baysuSetupAccordion();
-            window._baysuSetupProductCards();
-            return;
-        }
-
         if (path !== 'admin.html') { logVisit(path); }
 
-        if (window.PAGE_DATA && window.PAGE_DATA[path]) {
+        if (path !== 'index.html' && window.PAGE_DATA && window.PAGE_DATA[path]) {
             try {
                 var rawHtml = decodeURIComponent(escape(atob(window.PAGE_DATA[path])));
-                var noCacheMeta = '\n<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />\n<meta http-equiv="Pragma" content="no-cache" />\n<meta http-equiv="Expires" content="0" />\n';
-                var headIndex = rawHtml.indexOf('<head>');
-                if (headIndex > -1) {
-                    rawHtml = rawHtml.substring(0, headIndex + 6) + noCacheMeta + rawHtml.substring(headIndex + 6);
+                var doc = new DOMParser().parseFromString(rawHtml, "text/html");
+                var newMain = doc.querySelector('main');
+                var currentMain = document.querySelector('main');
+                
+                if (newMain && currentMain) {
+                    currentMain.innerHTML = newMain.innerHTML;
+                    document.title = doc.title;
+                    window.scrollTo(0, 0);
+                } else {
+                    console.error("Main content missing.");
                 }
-
-                window.__baysu_written = true;
-                document.open();
-                document.write(rawHtml);
-                document.close();
-
-                // Re-define after document.write
-                window.toggleCatalogMenu = function(e) {
-                    if (e) { 
-                        try { e.preventDefault(); } catch(err){}
-                        try { e.stopPropagation(); } catch(err){}
-                    }
-                    var menu = document.getElementById('mainMenuContainer') || document.querySelector('.main-menu-container');
-                    if (!menu) return;
-                    menu.classList.toggle('active');
-                    if (menu.classList.contains('active')) {
-                        menu.style.setProperty('display', 'block', 'important');
-                        menu.style.setProperty('z-index', '999999', 'important');
-                    } else {
-                        menu.style.setProperty('display', 'none', 'important');
-                    }
-                };
-
-                window.baysuToggleMenu = window.toggleCatalogMenu;
-
-                window.baysuToggleAccordion = function(element, e) {
-                    if (e && e.target && (e.target.tagName === 'A' || e.target.closest('a'))) return;
-                    if (e) {
-                        try { e.preventDefault(); } catch(err){}
-                        try { e.stopPropagation(); } catch(err){}
-                    }
-                    element.classList.toggle('active');
-                    var kaplinlerMenu = document.getElementById('kaplinler-menu');
-                    if (kaplinlerMenu) kaplinlerMenu.classList.toggle('active');
-                };
-
-                window.baysuToggleSubAccordion = function(element, e) {
-                    if (e) {
-                        try { e.preventDefault(); } catch(err){}
-                        try { e.stopPropagation(); } catch(err){}
-                    }
-                    var item = element.closest('.category-item');
-                    if (!item) return;
-                    
-                    var targetList = item.querySelector('.product-list');
-                    if (targetList) {
-                        var isActive = item.classList.toggle('active');
-                        if (isActive) {
-                            targetList.classList.add('active');
-                        } else {
-                            targetList.classList.remove('active');
-                        }
-                    }
-                };
 
                 window._baysuSetupAccordion();
                 window._baysuSetupProductCards();
             } catch (e) {
-                console.error(e);
+                console.error("Failed to render page content", e);
             }
         } else {
             window._baysuSetupAccordion();

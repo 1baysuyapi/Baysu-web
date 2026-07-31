@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="data.js"></script>
+    <script>
+        window.onload = function() {
+            try {
+                var b64 = window.PAGE_DATA['mavi-disi-kaplin.html'];
+                var rawHtml = decodeURIComponent(escape(atob(b64)));
+                document.getElementById('out').innerText = "SUCCESS! Length: " + rawHtml.length;
+            } catch(e) {
+                document.getElementById('out').innerText = "ERROR: " + e.toString();
+            }
+        };
+    </script>
+</head>
+<body>
+    <pre id="out">Running...</pre>
+</body>
+</html>
