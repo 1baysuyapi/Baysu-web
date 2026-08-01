@@ -481,9 +481,21 @@ window.toggleProductFeatures = function(btn) {
 // Quantity Stepper
 window.incrementQty = function(btn) {
     var input = btn.previousElementSibling;
-    if (input) input.value = parseInt(input.value || 1) + 1;
+    if (input) {
+        var step = parseInt(input.getAttribute('step')) || 1;
+        input.value = parseInt(input.value || 0) + step;
+    }
 };
 window.decrementQty = function(btn) {
     var input = btn.nextElementSibling;
-    if (input && parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
+    if (input) {
+        var step = parseInt(input.getAttribute('step')) || 1;
+        var min = parseInt(input.getAttribute('min')) || step;
+        var current = parseInt(input.value || 0);
+        if (current - step >= min) {
+            input.value = current - step;
+        } else {
+            input.value = min;
+        }
+    }
 };
