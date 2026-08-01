@@ -204,7 +204,16 @@
 
         if (path !== 'index.html' && window.PAGE_DATA && window.PAGE_DATA[path]) {
             try {
-                var rawHtml = decodeURIComponent(escape(atob(window.PAGE_DATA[path])));
+                var base64Str = window.PAGE_DATA[path];
+                var rawHtml = '';
+                try {
+                    var binStr = atob(base64Str);
+                    var bytes = new Uint8Array(binStr.length);
+                    for (var i = 0; i < binStr.length; i++) { bytes[i] = binStr.charCodeAt(i); }
+                    rawHtml = new TextDecoder('utf-8').decode(bytes);
+                } catch(e) {
+                    rawHtml = decodeURIComponent(escape(atob(base64Str)));
+                }
                 var doc = new DOMParser().parseFromString(rawHtml, "text/html");
                 var newMain = doc.querySelector('main');
                 var currentMain = document.querySelector('main');
@@ -261,3 +270,4 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
