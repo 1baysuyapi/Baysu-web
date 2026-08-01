@@ -1,4 +1,4 @@
-function parsePrice(str) {
+﻿function parsePrice(str) {
     if (!str) return 0;
     var cleaned = str.toString().replace(/[^0-9.,]/g, '');
     if (cleaned.indexOf('.') > -1 && cleaned.indexOf(',') > -1) {
@@ -13,14 +13,14 @@ function parsePrice(str) {
    ========================================================= */
 
 (function () {
-    const ACTIVE_STORAGE_KEY = 'baysu_user_cart';
-    const ARCHIVE_LIST_KEY = 'baysu_archived_orders_list';
-    const OLD_SINGLE_ARCHIVE_KEY = 'baysu_archived_order';
+    var ACTIVE_STORAGE_KEY = 'baysu_user_cart';
+    var ARCHIVE_LIST_KEY = 'baysu_archived_orders_list';
+    var OLD_SINGLE_ARCHIVE_KEY = 'baysu_archived_order';
 
     // Cihaza özel aktif sepeti getir
     function getCart() {
         try {
-            const data = localStorage.getItem(ACTIVE_STORAGE_KEY);
+            var data = localStorage.getItem(ACTIVE_STORAGE_KEY);
             return data ? JSON.parse(data) : [];
         } catch (e) {
             console.error('LocalStorage okuma hatası:', e);
@@ -41,13 +41,13 @@ function parsePrice(str) {
     // Tüm arşivlenmiş geçmiş siparişleri getir
     function getArchivedOrders() {
         try {
-            const listData = localStorage.getItem(ARCHIVE_LIST_KEY);
-            let list = listData ? JSON.parse(listData) : [];
+            var listData = localStorage.getItem(ARCHIVE_LIST_KEY);
+            var list = listData ? JSON.parse(listData) : [];
             
-            const oldData = localStorage.getItem(OLD_SINGLE_ARCHIVE_KEY);
+            var oldData = localStorage.getItem(OLD_SINGLE_ARCHIVE_KEY);
             if (oldData) {
                 try {
-                    const parsedOld = JSON.parse(oldData);
+                    var parsedOld = JSON.parse(oldData);
                     if (parsedOld && parsedOld.items) {
                         list.unshift(parsedOld);
                     }
@@ -66,7 +66,7 @@ function parsePrice(str) {
     // Yeni siparişi geçmiş siparişler arşivine ekle
     function saveArchivedOrder(orderData) {
         try {
-            let list = getArchivedOrders();
+            var list = getArchivedOrders();
             list.unshift(orderData);
             if (list.length > 50) list = list.slice(0, 50);
             localStorage.setItem(ARCHIVE_LIST_KEY, JSON.stringify(list));
@@ -76,16 +76,16 @@ function parsePrice(str) {
     }
 
     function getFormattedTimestamp() {
-        const now = new Date();
-        const months = [
+        var now = new Date();
+        var months = [
             'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
             'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'
         ];
-        const day = String(now.getDate()).padStart(2, '0');
-        const month = months[now.getMonth()];
-        const year = now.getFullYear();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
+        var day = String(now.getDate()).padStart(2, '0');
+        var month = months[now.getMonth()];
+        var year = now.getFullYear();
+        var hours = String(now.getHours()).padStart(2, '0');
+        var minutes = String(now.getMinutes()).padStart(2, '0');
 
         return `${day} ${month} ${year} - ${hours}:${minutes}`;
     }
@@ -101,7 +101,7 @@ function parsePrice(str) {
     function injectCartUI() {
         if (document.getElementById('cartDrawerOverlay')) return;
 
-        const triggerHtml = `
+        var triggerHtml = `
             <div class="floating-cart-trigger" id="floatingCartBtn" title="Sepetimi Görüntüle">
                 <i class="fas fa-shopping-basket" style="font-size: 18px;"></i>
                 <span style="font-weight: 600;">Sepetim</span>
@@ -109,7 +109,7 @@ function parsePrice(str) {
             </div>
         `;
 
-        const drawerHtml = `
+        var drawerHtml = `
             <div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
             <div class="cart-drawer" id="cartDrawer">
                 <div class="cart-header">
@@ -168,9 +168,9 @@ function parsePrice(str) {
     }
 
     function updateCartUI() {
-        const cart = getCart();
-        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-        const badge = document.getElementById('cartBadge');
+        var cart = getCart();
+        var totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        var badge = document.getElementById('cartBadge');
         if (badge) {
             badge.textContent = totalItems;
         }
@@ -178,13 +178,13 @@ function parsePrice(str) {
     }
 
     function renderCartItems() {
-        const cartBody = document.getElementById('cartBody');
-        const cartTotalAmount = document.getElementById('cartTotalAmount');
+        var cartBody = document.getElementById('cartBody');
+        var cartTotalAmount = document.getElementById('cartTotalAmount');
         if (!cartBody) return;
 
-        const cart = getCart();
-        let totalSum = 0;
-        let html = '';
+        var cart = getCart();
+        var totalSum = 0;
+        var html = '';
 
         if (cart.length === 0) {
             html += `
@@ -195,12 +195,12 @@ function parsePrice(str) {
                 </div>
             `;
         } else {
-            html += cart.map((item, index) => {
-                const itemTotal = (item.price * item.quantity).toFixed(2);
+            html += cart.map(function(item, index) {
+                var itemTotal = (item.price * item.quantity).toFixed(2);
                 totalSum += parseFloat(itemTotal);
-                const cleanSize = sanitizeAttr(item.size);
+                var cleanSize = sanitizeAttr(item.size);
 
-                let qtyMeta = '';
+                var qtyMeta = '';
                 if (item.paketQty && item.paketQty !== '-') {
                     qtyMeta += `Paket: <strong>${item.paketQty}</strong> | `;
                 }
@@ -236,14 +236,14 @@ function parsePrice(str) {
     }
 
     function addItem(productName, size, boxQty, price, quantity, code, stepVal, paketQty) {
-        let cart = getCart();
-        const cleanName = sanitizeAttr(productName);
-        const cleanSize = sanitizeAttr(size);
-        const step = parseInt(stepVal) || 1;
-        const min = step;
-        const parsedQty = Math.max(min, parseInt(quantity) || min);
+        var cart = getCart();
+        var cleanName = sanitizeAttr(productName);
+        var cleanSize = sanitizeAttr(size);
+        var step = parseInt(stepVal) || 1;
+        var min = step;
+        var parsedQty = Math.max(min, parseInt(quantity) || min);
 
-        const existingIndex = cart.findIndex(item => sanitizeAttr(item.productName) === cleanName && sanitizeAttr(item.size) === cleanSize);
+        var existingIndex = cart.findIndex(item => sanitizeAttr(item.productName) === cleanName && sanitizeAttr(item.size) === cleanSize);
 
         if (existingIndex > -1) {
             cart[existingIndex].quantity += parsedQty;
@@ -268,7 +268,7 @@ function parsePrice(str) {
     }
 
     function changeQty(index, delta) {
-        let cart = getCart();
+        var cart = getCart();
         if (cart[index]) {
             var step = cart[index].step || 1;
             var min = cart[index].min || step;
@@ -283,7 +283,7 @@ function parsePrice(str) {
     }
 
     window.baysuRemoveItem = function(index) {
-        let cart = getCart();
+        var cart = getCart();
         if (cart[index]) {
             cart.splice(index, 1);
             saveCart(cart);
@@ -291,15 +291,15 @@ function parsePrice(str) {
     };
 
     function sendWhatsAppOrder() {
-        const cart = getCart();
+        var cart = getCart();
         if (cart.length === 0) {
             alert('Aktif sepetiniz boş! Lütfen önce sipariş verilecek ürünleri ekleyin.');
             return;
         }
 
-        const timestamp = getFormattedTimestamp();
+        var timestamp = getFormattedTimestamp();
 
-        let text = `📋 *BAYRAKÇI SULAMA VE YAPI MALZEMELERİ*\n`;
+        var text = `📋 *BAYRAKÇI SULAMA VE YAPI MALZEMELERİ*\n`;
         text += `*İSKONTOLU FİYAT TEKLİFİ VE SİPARİŞ TALEBİ*\n`;
         text += `--------------------------------------------------\n`;
         text += `📅 *Tarih:* ${timestamp}\n`;
@@ -307,10 +307,10 @@ function parsePrice(str) {
         text += `*ÜRÜN İSMİ | EBAT | LİSTE FİYATI | MİKTAR | TUTAR*\n`;
         text += `--------------------------------------------------\n`;
 
-        let totalSum = 0;
+        var totalSum = 0;
 
-        cart.forEach((item, i) => {
-            const itemTotal = item.price * item.quantity;
+        cart.forEach(function(item, i) {
+            var itemTotal = item.price * item.quantity;
             totalSum += itemTotal;
             if (item.code) {
                 text += `*${item.code}* | ${item.productName} | ${item.price.toFixed(2)} TL | ${item.quantity} Adet | ${itemTotal.toFixed(2)} TL\n`;
@@ -324,8 +324,8 @@ function parsePrice(str) {
         text += `--------------------------------------------------\n`;
         text += `⚠️ *Not:* Yukarıdaki tutar liste fiyatıdır. Sipariş miktarımıza göre özel toptan iskonto teklifinizi rica ederiz.`;
 
-        const encodedText = encodeURIComponent(text);
-        const whatsappUrl = `https://wa.me/905533973603?text=${encodedText}`;
+        var encodedText = encodeURIComponent(text);
+        var whatsappUrl = `https://wa.me/905533973603?text=${encodedText}`;
 
         saveArchivedOrder({
             id: 'ORD-' + Date.now(),
@@ -337,20 +337,20 @@ function parsePrice(str) {
         window.open(whatsappUrl, '_blank');
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', function() {
         injectCartUI();
         updateCartUI();
 
-        document.body.addEventListener('click', (e) => {
+        document.body.addEventListener('click', function(e) {
             if (e._handledByBaysuCart) return;
 
-            const drawerBtn = e.target.closest('.drawer-qty-btn');
+            var drawerBtn = e.target.closest('.drawer-qty-btn');
             if (drawerBtn) {
                 e.preventDefault();
                 e.stopPropagation();
                 e._handledByBaysuCart = true;
-                const idx = parseInt(drawerBtn.getAttribute('data-index'));
-                const action = drawerBtn.getAttribute('data-action');
+                var idx = parseInt(drawerBtn.getAttribute('data-index'));
+                var action = drawerBtn.getAttribute('data-action');
                 if (!isNaN(idx)) {
                     changeQty(idx, action === 'plus' ? 1 : -1);
                 }
@@ -358,7 +358,7 @@ function parsePrice(str) {
             }
 
 
-            const tableQtyBtn = e.target.closest('.qty-selector .qty-btn, .qty-stepper .qty-btn');
+            var tableQtyBtn = e.target.closest('.qty-selector .qty-btn, .qty-stepper .qty-btn');
             if (tableQtyBtn) {
                 // Skip if button already has inline onclick (prevent double increment)
                 if (tableQtyBtn.hasAttribute('onclick')) return;
@@ -366,12 +366,12 @@ function parsePrice(str) {
                 e.stopPropagation();
                 e._handledByBaysuCart = true;
 
-                const selector = tableQtyBtn.closest('.qty-selector, .qty-stepper');
-                const input = selector ? selector.querySelector('.qty-input') : null;
+                var selector = tableQtyBtn.closest('.qty-selector, .qty-stepper');
+                var input = selector ? selector.querySelector('.qty-input') : null;
                 if (input) {
-                    let step = parseInt(input.getAttribute('step')) || 1;
-                    let min = parseInt(input.getAttribute('min')) || step;
-                    let currentVal = parseInt(input.value) || step;
+                    var step = parseInt(input.getAttribute('step')) || 1;
+                    var min = parseInt(input.getAttribute('min')) || step;
+                    var currentVal = parseInt(input.value) || step;
 
                     if (tableQtyBtn.classList.contains('qty-plus') || tableQtyBtn.textContent.trim() === '+') {
                         input.value = currentVal + step;
@@ -386,7 +386,7 @@ function parsePrice(str) {
                 return;
             }
 
-            const addBtn = e.target.closest('.add-to-cart-btn');
+            var addBtn = e.target.closest('.add-to-cart-btn');
             if (addBtn) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -395,26 +395,26 @@ function parsePrice(str) {
                 if (addBtn.disabled) return;
                 addBtn.disabled = true;
 
-                const productName = addBtn.getAttribute('data-product');
-                const size = addBtn.getAttribute('data-size');
-                const boxQty = addBtn.getAttribute('data-box');
-                const paketQty = addBtn.getAttribute('data-paket');
-                const price = addBtn.getAttribute('data-price');
-                const code = addBtn.getAttribute('data-code');
-                const row = addBtn.closest('tr');
-                const qtyInput = row ? row.querySelector('.qty-input') : null;
+                var productName = addBtn.getAttribute('data-product');
+                var size = addBtn.getAttribute('data-size');
+                var boxQty = addBtn.getAttribute('data-box');
+                var paketQty = addBtn.getAttribute('data-paket');
+                var price = addBtn.getAttribute('data-price');
+                var code = addBtn.getAttribute('data-code');
+                var row = addBtn.closest('tr');
+                var qtyInput = row ? row.querySelector('.qty-input') : null;
 
-                const stepAttr = qtyInput ? qtyInput.getAttribute('step') : null;
-                const stepVal = parseInt(stepAttr) || 1;
-                const quantity = qtyInput ? (parseInt(qtyInput.value) || stepVal) : stepVal;
+                var stepAttr = qtyInput ? qtyInput.getAttribute('step') : null;
+                var stepVal = parseInt(stepAttr) || 1;
+                var quantity = qtyInput ? (parseInt(qtyInput.value) || stepVal) : stepVal;
 
                 addItem(productName, size, boxQty, price, quantity, code, stepVal, paketQty);
 
-                const originalText = addBtn.innerHTML;
+                var originalText = addBtn.innerHTML;
                 addBtn.classList.add('added');
                 addBtn.innerHTML = `<i class="fas fa-check"></i> Eklendi!`;
 
-                setTimeout(() => {
+                setTimeout(function() {
                     addBtn.classList.remove('added');
                     addBtn.innerHTML = originalText;
                     addBtn.disabled = false;
@@ -430,9 +430,10 @@ function parsePrice(str) {
         }
     } catch (e) {}
 
-    document.querySelectorAll('a[target="_blank"]').forEach(a => {
-        a.setAttribute('rel', 'noopener noreferrer');
-    });
+    var targetLinks = document.querySelectorAll('a[target="_blank"]');
+    for (var j = 0; j < targetLinks.length; j++) {
+        targetLinks[j].setAttribute('rel', 'noopener noreferrer');
+    }
 
     window.BaysuCart = {
         addItem,
@@ -446,20 +447,20 @@ function parsePrice(str) {
 
 // KVKK Modal Logic
 window.openKvkkModal = function() {
-    const modal = document.getElementById('kvkkModalBackdrop');
+    var modal = document.getElementById('kvkkModalBackdrop');
     if (modal) modal.classList.add('active');
 };
 
 // Image Product Add to Cart Logic
 window.baysuAddToCartImageProduct = function(code, name, price, boxQty, packaging, quantity) {
-    const qty = quantity || 1;
+    var qty = quantity || 1;
     if (window.BaysuCart && window.BaysuCart.addItem) {
         window.BaysuCart.addItem(name, packaging, boxQty, price, qty, code, 1, 1);
         alert(name + " (" + qty + " adet) sepete eklendi!");
     }
 };
 window.closeKvkkModal = function() {
-    const modal = document.getElementById('kvkkModalBackdrop');
+    var modal = document.getElementById('kvkkModalBackdrop');
     if (modal) modal.classList.remove('active');
 };
 
@@ -499,3 +500,4 @@ window.decrementQty = function(btn) {
         }
     }
 };
+
