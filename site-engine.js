@@ -220,7 +220,8 @@
                 
                 if (newMain && currentMain) {
                     currentMain.innerHTML = newMain.innerHTML;
-                    document.title = doc.title;
+                    document.title = "BAYRAKÇI SULAMA VE YAPI MALZEMELERİ";
+                    document.body.className = 'route-' + path.replace(/\//g, '');
                     window.scrollTo(0, 0);
                 } else {
                     console.error("Main content missing.");

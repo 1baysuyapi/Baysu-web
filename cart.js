@@ -453,7 +453,7 @@ window.baysuAddToCartImageProduct = function(code, name, price, boxQty, packagin
     var qty = quantity || 1;
     if (window.BaysuCart && window.BaysuCart.addItem) {
         window.BaysuCart.addItem(name, packaging, boxQty, price, qty, code, 1, 1);
-        alert(name + " (" + qty + " adet) sepete eklendi!");
+        // alert(name + " (" + qty + " adet) sepete eklendi!");
     }
 };
 window.closeKvkkModal = function() {

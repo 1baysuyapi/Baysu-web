@@ -1,0 +1,2040 @@
+﻿
+
+<main class="page-content">
+<style>
+    .hero-banner {
+        background: linear-gradient(135deg, #004797 0%, #0066CC 100%);
+        border-radius: 12px;
+        padding: 60px 40px;
+        margin: 30px 0;
+        color: #ffffff;
+        text-align: center;
+        box-shadow: 0 15px 30px rgba(0, 71, 151, 0.18);
+        position: relative;
+        overflow: visible;}
+
+    .hero-banner::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 3%;
+        transform: translateY(-50%);
+        width: 450px;
+        height: 90%;
+        background: url('WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png') no-repeat center center / contain;
+        opacity: 0.18;
+        filter: brightness(0) invert(1);
+        pointer-events: none;
+    }
+
+    .hero-banner h1 {
+        font-size: 2.4rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 15px;
+        letter-spacing: -0.5px;
+    }
+
+    .hero-banner p {
+        font-size: 1.15rem;
+        max-width: 750px;
+        margin: 0 auto 30px auto;
+        opacity: 0.92;
+        line-height: 1.7;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .product-card {
+        background: #FFFFFF;
+        border-radius: 12px;
+        border: 1px solid #E0E0E0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: visible;}
+
+    .product-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 25px rgba(0, 71, 151, 0.15);
+        border-color: rgba(0, 71, 151, 0.2);
+    }
+
+    .product-code-badge {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: #004797;
+        color: #FFFFFF;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 5px 12px;
+        border-radius: 20px;
+        letter-spacing: 0.5px;
+        box-shadow: 0 2px 8px rgba(0, 71, 151, 0.3);
+    }
+
+    .product-card img {
+        width: 160px;
+        height: 160px;
+        object-fit: contain;
+        margin: 25px 0 15px 0;
+        transition: transform 0.3s ease;
+    }
+
+    .product-card:hover img {
+        transform: scale(1.06);
+    }
+
+    .product-card h3 {
+        font-size: 1.1rem;
+        color: #333333;
+        margin: 10px 0 15px 0;
+        font-weight: 600;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .product-hover-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+        background: #F8FAFC;
+        border-top: 1px solid transparent;
+        padding: 0 12px;
+        font-size: 0.9rem;
+        color: #475569;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        box-sizing: border-box;
+        width: 100%;
+        border-radius: 0 0 12px 12px;
+    }
+
+    .product-card:hover .product-hover-details {
+        max-height: 250px;
+        padding: 15px 12px;
+        border-top-color: #E2E8F0;
+    }
+
+    .hover-info-row {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+    }
+
+    .hover-info-row span {
+        color: #004797;
+        font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+        .product-hover-details {
+            max-height: none;
+            padding: 12px;
+            background: #F8FAFC;
+            border-top-color: #E2E8F0;
+        }
+    }
+
+    .product-price {
+        font-size: 1.25rem;
+        color: #004797;
+        font-weight: 800;
+        margin-bottom: 10px;
+    }
+
+    .cart-action-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #E2E8F0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .qty-selector {
+        display: flex;
+        align-items: center;
+        border: 1px solid #E2E8F0;
+        border-radius: 6px;
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .qty-selector button {
+        background: #F8FAFC;
+        border: none;
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #475569;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+    }
+    
+    .qty-selector button:hover {
+        background: #E2E8F0;
+    }
+
+    .qty-selector input {
+        width: 32px;
+        height: 28px;
+        border: none;
+        border-left: 1px solid #E2E8F0;
+        border-right: 1px solid #E2E8F0;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 600;
+        color: #333333;
+        padding: 0;
+        outline: none;
+    }
+
+    .btn-add-to-cart {
+        background: #004797;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 0 14px;
+        height: 30px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        z-index: 5;
+        position: relative;
+    }
+
+    .btn-add-to-cart:hover {
+        background: #003370;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0, 71, 151, 0.2);
+    }
+    
+    .hero-slider-container {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        border-radius: 12px;
+        overflow: hidden;
+        margin: 25px 0 45px 0;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    .hero-slider {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+        .hero-slide {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        background-size: cover;
+        background-position: center;
+        animation: slide-fade 15s infinite;
+    }
+
+    @keyframes slide-fade {
+        0%, 100% { opacity: 0; }
+        3%, 14% { opacity: 1; }
+        17% { opacity: 0; }
+    }
+        5%, 25% { opacity: 1; }
+        30% { opacity: 0; }
+    }
+</style>
+        <div class="page-header" style="text-align: center; margin: 30px 0 15px 0;">
+        <h1 style="font-size: 2.8rem; color: #004797; margin-bottom: 10px; font-weight: 800; letter-spacing: -0.5px;">Bahçe Ekipmanları</h1>
+        <p style="font-size: 1.15rem; color: #475569; max-width: 800px; margin: 0 auto;">Bahçenizin ihtiyacı olan en kaliteli bahçe sulama süzekleri ve fıskiyeleri tek bir yerde.</p>
+    </div>
+
+    <div class="hero-slider-container">
+                <div class="hero-slider">
+            <div class="hero-slide" style="background-image: url('bahce-ekipmanlari-img/watering-slider1.jpg'); animation-delay: 0s;"></div>
+            <div class="hero-slide" style="background-image: url('bahce-ekipmanlari-img/watering-slider2.jpg'); animation-delay: 2.5s;"></div>
+            <div class="hero-slide" style="background-image: url('bahce-ekipmanlari-img/watering-slider3.jpg'); animation-delay: 5s;"></div>
+            <div class="hero-slide" style="background-image: url('bahce-ekipmanlari-img/watering-slider4.jpg'); animation-delay: 7.5s;"></div>
+            <div class="hero-slide" style="background-image: url('bahce-ekipmanlari-img/watering-slider5.jpg'); animation-delay: 10s;"></div>
+            <div class="hero-slide" style="background-image: url('bahce-ekipmanlari-img/watering-slider6.jpg'); animation-delay: 12.5s;"></div>
+        </div>
+    </div>
+
+    <div class="products-grid">        <div class="product-card">
+            <div class="product-code-badge">129</div>
+            <img src="bahce-ekipmanlari-img/Jumbo El Süzeği.png" alt="Jumbo El Süzeği" loading="lazy">
+            <h3>Jumbo El Süzeği</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">130</div>
+            <img src="bahce-ekipmanlari-img/El Süzeği.png" alt="El Süzeği" loading="lazy">
+            <h3>El Süzeği</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">131</div>
+            <img src="bahce-ekipmanlari-img/Uzun El Süzeği Dirsekli.png" alt="Uzun El Süzeği Dirsekli" loading="lazy">
+            <h3>Uzun El Süzeği Dirsekli</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">132</div>
+            <img src="bahce-ekipmanlari-img/Lüks El Süzeği.png" alt="Lüks El Süzeği" loading="lazy">
+            <h3>Lüks El Süzeği</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">133</div>
+            <img src="bahce-ekipmanlari-img/Uzun El Süzeği.png" alt="Uzun El Süzeği" loading="lazy">
+            <h3>Uzun El Süzeği</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">134</div>
+            <img src="bahce-ekipmanlari-img/Büyük Uzun El Süzeği.png" alt="Büyük Uzun El Süzeği" loading="lazy">
+            <h3>Büyük Uzun El Süzeği</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">135</div>
+            <img src="bahce-ekipmanlari-img/Büyük Uzun El Süzeği Dirsekli.png" alt="Büyük Uzun El Süzeği Dirsekli" loading="lazy">
+            <h3>Büyük Uzun El Süzeği Dirsekli</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">136</div>
+            <img src="bahce-ekipmanlari-img/Süzek Kafası.png" alt="Süzek Kafası" loading="lazy">
+            <h3>Süzek Kafası</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">137</div>
+            <img src="bahce-ekipmanlari-img/İki Kollu Çim Fıskiyesi.png" alt="İki Kollu Çim Fıskiyesi" loading="lazy">
+            <h3>İki Kollu Çim Fıskiyesi</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">138</div>
+            <img src="bahce-ekipmanlari-img/Üç Kollu Çim Fıskiyesi.png" alt="Üç Kollu Çim Fıskiyesi" loading="lazy">
+            <h3>Üç Kollu Çim Fıskiyesi</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">139</div>
+            <img src="bahce-ekipmanlari-img/Dört Kollu Çim Fıskiyesi.png" alt="Dört Kollu Çim Fıskiyesi" loading="lazy">
+            <h3>Dört Kollu Çim Fıskiyesi</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">140</div>
+            <img src="bahce-ekipmanlari-img/Beş Kollu Çim Fıskiyesi.png" alt="Beş Kollu Çim Fıskiyesi" loading="lazy">
+            <h3>Beş Kollu Çim Fıskiyesi</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">141</div>
+            <img src="bahce-ekipmanlari-img/Süper Üç Kollu Çim Fıskiyesi.png" alt="Süper Üç Kollu Çim Fıskiyesi" loading="lazy">
+            <h3>Süper Üç Kollu Çim Fıskiyesi</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">142</div>
+            <img src="bahce-ekipmanlari-img/Turbo Üç Kollu Çim Fıskiyesi.png" alt="Turbo Üç Kollu Çim Fıskiyesi" loading="lazy">
+            <h3>Turbo Üç Kollu Çim Fıskiyesi</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">143</div>
+            <img src="bahce-ekipmanlari-img/Uzun Meme Üç Kollu Çim Fıskiyesi.png" alt="Uzun Meme Üç Kollu Çim Fıskiyesi" loading="lazy">
+            <h3>Uzun Meme Üç Kollu Çim Fıskiyesi</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">144</div>
+            <img src="bahce-ekipmanlari-img/Madeni Döner Çim Fıskiyesi.png" alt="Madeni Döner Çim Fıskiyesi" loading="lazy">
+            <h3>Madeni Döner Çim Fıskiyesi</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">145</div>
+            <img src="bahce-ekipmanlari-img/Sehpa Turbo Üç Kollu Fıskiye.png" alt="Sehpa Turbo Üç Kollu Fıskiye" loading="lazy">
+            <h3>Sehpa Turbo Üç Kollu Fıskiye</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">146</div>
+            <img src="bahce-ekipmanlari-img/Sehpa Beş Kollu Çim Fıskiye.png" alt="Sehpa Beş Kollu Çim Fıskiye" loading="lazy">
+            <h3>Sehpa Beş Kollu Çim Fıskiye</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">147</div>
+            <img src="bahce-ekipmanlari-img/Plastik Tarla Sulama Fıskiye.png" alt="Plastik Tarla Sulama Fıskiye" loading="lazy">
+            <h3>Plastik Tarla Sulama Fıskiye</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">148</div>
+            <img src="bahce-ekipmanlari-img/Metal Tarla Sulama Fıskiye.png" alt="Metal Tarla Sulama Fıskiye" loading="lazy">
+            <h3>Metal Tarla Sulama Fıskiye</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">149</div>
+            <img src="bahce-ekipmanlari-img/Açılı Plastik Tarla Sulama Fıskiye.png" alt="Açılı Plastik Tarla Sulama Fıskiye" loading="lazy">
+            <h3>Açılı Plastik Tarla Sulama Fıskiye</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">150</div>
+            <img src="bahce-ekipmanlari-img/Açılı Fıskiye  Yerli Turuncu.png" alt="Açılı Fıskiye Yerli Turuncu" loading="lazy">
+            <h3>Açılı Fıskiye Yerli Turuncu</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">151</div>
+            <img src="bahce-ekipmanlari-img/Açılı Fıskiye   Yerli Siyah.png" alt="Açılı Fıskiye Yerli Siyah" loading="lazy">
+            <h3>Açılı Fıskiye Yerli Siyah</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">152</div>
+            <img src="bahce-ekipmanlari-img/Jumbo Açılı Fıskiye.png" alt="Jumbo Açılı Fıskiye" loading="lazy">
+            <h3>Jumbo Açılı Fıskiye</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">153</div>
+            <img src="bahce-ekipmanlari-img/İthal Açılı Metal Fıskiye.png" alt="İthal Açılı Metal Fıskiye" loading="lazy">
+            <h3>İthal Açılı Metal Fıskiye</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">154</div>
+            <img src="bahce-ekipmanlari-img/Açısız Çat Çat Fıskiye.png" alt="Açısız Çat Çat Fıskiye" loading="lazy">
+            <h3>Açısız Çat Çat Fıskiye</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">155</div>
+            <img src="bahce-ekipmanlari-img/Kazıklı Açılı Fıskiye.png" alt="Kazıklı Açılı Fıskiye" loading="lazy">
+            <h3>Kazıklı Açılı Fıskiye</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">156</div>
+            <img src="bahce-ekipmanlari-img/Su Tabancası.png" alt="Su Tabancası" loading="lazy">
+            <h3>Su Tabancası</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">157</div>
+            <img src="bahce-ekipmanlari-img/Süzek Tabanca.png" alt="Süzek Tabanca" loading="lazy">
+            <h3>Süzek Tabanca</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">158</div>
+            <img src="bahce-ekipmanlari-img/Metal Su Tabancası.png" alt="Metal Su Tabancası" loading="lazy">
+            <h3>Metal Su Tabancası</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">159</div>
+            <img src="bahce-ekipmanlari-img/Krom 6 Nozul Tabanca.png" alt="Krom 6 Nozul Tabanca" loading="lazy">
+            <h3>Krom 6 Nozul Tabanca</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">160</div>
+            <img src="bahce-ekipmanlari-img/Lüks Rekorlu 6 Nozul Tabanca.png" alt="Lüks Rekorlu 6 Nozul Tabanca" loading="lazy">
+            <h3>Lüks Rekorlu 6 Nozul Tabanca</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">161</div>
+            <img src="bahce-ekipmanlari-img/İthal 6 Nozul Tabanca.png" alt="İthal 6 Nozul Tabanca" loading="lazy">
+            <h3>İthal 6 Nozul Tabanca</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">162</div>
+            <img src="bahce-ekipmanlari-img/İthal 6 Nozul Metal Tabanca.png" alt="İthal 6 Nozul Metal Tabanca" loading="lazy">
+            <h3>İthal 6 Nozul Metal Tabanca</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">163</div>
+            <img src="bahce-ekipmanlari-img/6 Fonksiyonlu Su Tabancası Seti.png" alt="6 Fonksiyonlu Su Tabancası Seti" loading="lazy">
+            <h3>6 Fonksiyonlu Su Tabancası Seti</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">164</div>
+            <img src="bahce-ekipmanlari-img/1-2" Lüks Rekorlu Su Tabancası.png" alt="1/2" loading="lazy">
+            <h3>1/2</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">165</div>
+            <img src="bahce-ekipmanlari-img/3-4" Lüks Rekorlu Su Tabancası.png" alt="3/4" loading="lazy">
+            <h3>3/4</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">166</div>
+            <img src="bahce-ekipmanlari-img/1-2" Lüks Rekorlu Süzek Tabanca.png" alt="1/2" loading="lazy">
+            <h3>1/2</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">167</div>
+            <img src="bahce-ekipmanlari-img/3-4" Lüks Rekorlu Süzek Tabanca.png" alt="3/4" loading="lazy">
+            <h3>3/4</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">168</div>
+            <img src="bahce-ekipmanlari-img/Tetikli Su Tabancası Rekorlu.png" alt="Tetikli Su Tabancası Rekorlu" loading="lazy">
+            <h3>Tetikli Su Tabancası Rekorlu</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">169</div>
+            <img src="bahce-ekipmanlari-img/Tetikli Su Tabancası Jaklı.png" alt="Tetikli Su Tabancası Jaklı" loading="lazy">
+            <h3>Tetikli Su Tabancası Jaklı</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">170</div>
+            <img src="bahce-ekipmanlari-img/Tetikli Su Tabancası 1-2" Lüks Rekorlu.png" alt="Tetikli Su Tabancası 1/2" loading="lazy">
+            <h3>Tetikli Su Tabancası 1/2</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">171</div>
+            <img src="bahce-ekipmanlari-img/Tetikli Su Tabancası 3-4" Lüks Rekorlu.png" alt="Tetikli Su Tabancası 3/4" loading="lazy">
+            <h3>Tetikli Su Tabancası 3/4</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">172</div>
+            <img src="bahce-ekipmanlari-img/Tetikli Süzek Tabancası Rekorlu.png" alt="Tetikli Süzek Tabancası Rekorlu" loading="lazy">
+            <h3>Tetikli Süzek Tabancası Rekorlu</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">173</div>
+            <img src="bahce-ekipmanlari-img/Tetikli Süzek Tabancası Jaklı.png" alt="Tetikli Süzek Tabancası Jaklı" loading="lazy">
+            <h3>Tetikli Süzek Tabancası Jaklı</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">174</div>
+            <img src="bahce-ekipmanlari-img/Tetikli Süzek Tabancası 1-2" Lüks Rekorlu.png" alt="Tetikli Süzek Tabancası 1/2" loading="lazy">
+            <h3>Tetikli Süzek Tabancası 1/2</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">175</div>
+            <img src="bahce-ekipmanlari-img/Tetikli Süzek Tabancası 3-4" Lüks Rekorlu.png" alt="Tetikli Süzek Tabancası 3/4" loading="lazy">
+            <h3>Tetikli Süzek Tabancası 3/4</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">176</div>
+            <img src="bahce-ekipmanlari-img/İthal Tetikli Su Tabancası.png" alt="İthal Tetikli Su Tabancası" loading="lazy">
+            <h3>İthal Tetikli Su Tabancası</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">177</div>
+            <img src="bahce-ekipmanlari-img/Hortum Lansı.png" alt="Hortum Lansı" loading="lazy">
+            <h3>Hortum Lansı</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">178</div>
+            <img src="bahce-ekipmanlari-img/1-2 Ayarlı Hortum Lansı.png" alt="1/2" loading="lazy">
+            <h3>1/2</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">179</div>
+            <img src="bahce-ekipmanlari-img/3-4" Ayarlı Hortum Lansı.png" alt="3/4" loading="lazy">
+            <h3>3/4</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">180</div>
+            <img src="bahce-ekipmanlari-img/Ayarlı Lans Seti.png" alt="Ayarlı Lans Seti" loading="lazy">
+            <h3>Ayarlı Lans Seti</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">181</div>
+            <img src="bahce-ekipmanlari-img/1-2" Lüks Rekor.png" alt="1/2" loading="lazy">
+            <h3>1/2</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">182</div>
+            <img src="bahce-ekipmanlari-img/3-4" • 1-2" Lüks Rekor.png" alt="3/4" loading="lazy">
+            <h3>3/4</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">183</div>
+            <img src="bahce-ekipmanlari-img/3-4" Jak Adaptörü.png" alt="3/4" loading="lazy">
+            <h3>3/4</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">184</div>
+            <img src="bahce-ekipmanlari-img/Çift Taraflı Jak Adaptör.png" alt="Çift Taraflı Jak Adaptör" loading="lazy">
+            <h3>Çift Taraflı Jak Adaptör</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">185</div>
+            <img src="bahce-ekipmanlari-img/1-2" PVC Maşon.png" alt="1/2" loading="lazy">
+            <h3>1/2</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">186</div>
+            <img src="bahce-ekipmanlari-img/1-2" PVC Nipel.png" alt="1/2" loading="lazy">
+            <h3>1/2</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">187</div>
+            <img src="bahce-ekipmanlari-img/1-2" Uzatma Borusu.png" alt="1/2" loading="lazy">
+            <h3>1/2</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">188</div>
+            <img src="bahce-ekipmanlari-img/1-2" • 5-8" Hortum Y.png" alt="1/2" loading="lazy">
+            <h3>1/2</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">189</div>
+            <img src="bahce-ekipmanlari-img/1-2" • 3-4" • 1" 2'li Jak Dağıtıcı.png" alt="2'li Jak Dağıtıcı" loading="lazy">
+            <h3>2'li Jak Dağıtıcı</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">190</div>
+            <img src="bahce-ekipmanlari-img/1-2" • 3-4" • 1" 4'lü Jak Dağıtıcı.png" alt="4'lü Jak Dağıtıcı" loading="lazy">
+            <h3>4'lü Jak Dağıtıcı</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">191</div>
+            <img src="bahce-ekipmanlari-img/Kazık Ayak.png" alt="Kazık Ayak" loading="lazy">
+            <h3>Kazık Ayak</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">192</div>
+            <img src="bahce-ekipmanlari-img/Jaklı Kazık Ayak.png" alt="Jaklı Kazık Ayak" loading="lazy">
+            <h3>Jaklı Kazık Ayak</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">193</div>
+            <img src="bahce-ekipmanlari-img/Sehpa Ayak.png" alt="Sehpa Ayak" loading="lazy">
+            <h3>Sehpa Ayak</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">194</div>
+            <img src="bahce-ekipmanlari-img/Jumbo Ayak.png" alt="Jumbo Ayak" loading="lazy">
+            <h3>Jumbo Ayak</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">195</div>
+            <img src="bahce-ekipmanlari-img/Metal Fıskiye Kazığı.png" alt="Metal Fıskiye Kazığı" loading="lazy">
+            <h3>Metal Fıskiye Kazığı</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">196</div>
+            <img src="bahce-ekipmanlari-img/Çift Taraflı Plastik Kazık.png" alt="Çift Taraflı Plastik Kazık" loading="lazy">
+            <h3>Çift Taraflı Plastik Kazık</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">197</div>
+            <img src="bahce-ekipmanlari-img/1-2" Klima Çatalı.png" alt="1/2" loading="lazy">
+            <h3>1/2</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">198</div>
+            <img src="bahce-ekipmanlari-img/Klepe.png" alt="Klepe" loading="lazy">
+            <h3>Klepe</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">199</div>
+            <img src="bahce-ekipmanlari-img/Damlama Filtresi.png" alt="Damlama Filtresi" loading="lazy">
+            <h3>Damlama Filtresi</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">200</div>
+            <img src="bahce-ekipmanlari-img/PVC Bidon Musluğu.png" alt="PVC Bidon Musluğu" loading="lazy">
+            <h3>PVC Bidon Musluğu</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">201</div>
+            <img src="bahce-ekipmanlari-img/Plastik Hortum Askısı.png" alt="Plastik Hortum Askısı" loading="lazy">
+            <h3>Plastik Hortum Askısı</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">202</div>
+            <img src="bahce-ekipmanlari-img/Metal Hortum Askısı.png" alt="Metal Hortum Askısı" loading="lazy">
+            <h3>Metal Hortum Askısı</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">203</div>
+            <img src="bahce-ekipmanlari-img/Duvar Tipi Hortum Askısı.png" alt="Duvar Tipi Hortum Askısı" loading="lazy">
+            <h3>Duvar Tipi Hortum Askısı</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">204</div>
+            <img src="bahce-ekipmanlari-img/Hortum Arabası   Cabbar.png" alt="Hortum Arabası Cabbar" loading="lazy">
+            <h3>Hortum Arabası Cabbar</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">205</div>
+            <img src="bahce-ekipmanlari-img/Hortum Tanburu.png" alt="Hortum Tanburu" loading="lazy">
+            <h3>Hortum Tanburu</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">206</div>
+            <img src="bahce-ekipmanlari-img/Fide Kazığı Plastik.png" alt="Fide Kazığı Plastik" loading="lazy">
+            <h3>Fide Kazığı Plastik</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">207</div>
+            <img src="bahce-ekipmanlari-img/Bitki Destek Çubuğu.png" alt="Bitki Destek Çubuğu" loading="lazy">
+            <h3>Bitki Destek Çubuğu</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">208</div>
+            <img src="bahce-ekipmanlari-img/Plastik Çim Ayırıcı.png" alt="Plastik Çim Ayırıcı" loading="lazy">
+            <h3>Plastik Çim Ayırıcı</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">209</div>
+            <img src="bahce-ekipmanlari-img/3-4" Vantuz.png" alt="3/4" loading="lazy">
+            <h3>3/4</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>        <div class="product-card">
+            <div class="product-code-badge">210</div>
+            <img src="bahce-ekipmanlari-img/1" Vantuz.png" alt="1" loading="lazy">
+            <h3>1</h3>
+                        <div class="product-hover-details">
+                <div class="product-price" style="margin-top:5px; margin-bottom:15px; font-size: 1.25rem; color: #004797; font-weight: 800;">₺ 0.00</div>
+                
+                <div class="hover-info-row">Koli Adedi: <span>25</span></div>
+                <div class="hover-info-row">Ambalaj: <span>-</span></div>
+            
+                <div class="cart-action-row" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #E2E8F0; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="qty-selector">
+                        <button type="button" onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value || 1) - 1)">-</button>
+                        <input type="text" value="1">
+                        <button type="button" onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value || 1) + 1">+</button>
+                    </div>
+                    <button class="btn-add-to-cart" onclick="const card = this.closest('.product-card'); window.baysuAddToCartImageProduct(card.querySelector('.product-code-badge').innerText.trim(), card.querySelector('h3').innerText.trim(), card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim(), card.querySelectorAll('.hover-info-row span')[0].innerText.trim(), card.querySelectorAll('.hover-info-row span')[1].innerText.trim(), card.querySelector('.qty-selector input').value);">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>    </div>
+</main>
+
+
+<script>
+document.addEventListener('click', function(e) {
+    if (e.target.closest('.btn-add-to-cart')) {
+        const btn = e.target.closest('.btn-add-to-cart');
+        const card = btn.closest('.product-card');
+        if (!card) return;
+        
+        const code = card.querySelector('.product-code-badge').innerText.trim();
+        const name = card.querySelector('h3').innerText.trim();
+        const priceText = card.querySelector('.product-price').innerText.trim().replace('â‚º', '').trim();
+        const boxQty = card.querySelectorAll('.hover-info-row span')[0].innerText.trim();
+        const packaging = card.querySelectorAll('.hover-info-row span')[1].innerText.trim();
+        const qty = card.querySelector('.qty-selector input').value;
+        
+        if (window.baysuAddToCartImageProduct) {
+            window.baysuAddToCartImageProduct(code, name, priceText, boxQty, packaging, qty);
+        } else {
+            console.error("Cart function not found!");
+        }
+    }
+});
+</script>
