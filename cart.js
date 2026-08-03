@@ -1,4 +1,4 @@
-﻿function parsePrice(str) {
+function parsePrice(str) {
     if (!str) return 0;
     var cleaned = str.toString().replace(/[^0-9.,]/g, '');
     if (cleaned.indexOf('.') > -1 && cleaned.indexOf(',') > -1) {
@@ -87,7 +87,7 @@
         var hours = String(now.getHours()).padStart(2, '0');
         var minutes = String(now.getMinutes()).padStart(2, '0');
 
-        return `${day} ${month} ${year} - ${hours}:${minutes}`;
+        return String(day) + " " + String(month) + " " + String(year) + " - " + String(hours) + ":" + String(minutes);
     }
 
     function sanitizeAttr(str) {
@@ -101,43 +101,43 @@
     function injectCartUI() {
         if (document.getElementById('cartDrawerOverlay')) return;
 
-        var triggerHtml = `
-            <div class="floating-cart-trigger" id="floatingCartBtn" title="Sepetimi Görüntüle">
-                <i class="fas fa-shopping-basket" style="font-size: 18px;"></i>
-                <span style="font-weight: 600;">Sepetim</span>
-                <span class="cart-count-badge" id="cartBadge">0</span>
-            </div>
-        `;
+        var triggerHtml = "\n" +
+"            <div class=\"floating-cart-trigger\" id=\"floatingCartBtn\" title=\"Sepetimi Görüntüle\">\n" +
+"                <i class=\"fas fa-shopping-basket\" style=\"font-size: 18px;\"></i>\n" +
+"                <span style=\"font-weight: 600;\">Sepetim</span>\n" +
+"                <span class=\"cart-count-badge\" id=\"cartBadge\">0</span>\n" +
+"            </div>\n" +
+"        ";
 
-        var drawerHtml = `
-            <div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
-            <div class="cart-drawer" id="cartDrawer">
-                <div class="cart-header">
-                    <h3><i class="fas fa-shopping-cart"></i> Sipariş Sepetim</h3>
-                    <button class="cart-close-btn" id="cartCloseBtn">&times;</button>
-                </div>
-                <div class="cart-timestamp-bar">
-                    <i class="far fa-clock"></i>
-                    <span>Tarih: <strong id="cartTimestamp">${getFormattedTimestamp()}</strong></span>
-                </div>
-                <div class="cart-body" id="cartBody">
-                    <!-- Dinamik Sepet İçeriği -->
-                </div>
-                <div class="cart-footer">
-                    <div class="cart-total-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-top: 1px solid #E2E8F0;">
-                        <span style="font-weight: 600; color: #1E293B;">Liste Fiyatı Toplamı:</span>
-                        <span class="cart-total-amount" id="cartTotalAmount" style="font-weight: 700; color: #1D4ED8; font-size: 1.15rem;">0.00 ₺</span>
-                    </div>
-                    <div style="background: #EFF6FF; border: 1px dashed #3B82F6; border-radius: 8px; padding: 10px 12px; margin: 10px 0; font-size: 12px; color: #1E40AF; text-align: center; line-height: 1.4;">
-                         <strong>Toptan İskonto Fırsatı:</strong> Bu tutar liste fiyatıdır. Sipariş miktarınıza göre <strong>yüksek iskonto</strong> düşülecektir!
-                    </div>
-                    <button class="whatsapp-order-btn" id="sendWhatsAppOrderBtn" style="background: #25D366; color: #fff; border: none; padding: 14px; border-radius: 10px; font-weight: 700; width: 100%; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);">
-                        <i class="fab fa-whatsapp" style="font-size: 22px;"></i> İskontolu Fiyat Teklifi Al (WhatsApp)
-                    </button>
-                    <button class="clear-cart-btn" id="clearCartBtn">Sepeti Temizle</button>
-                </div>
-            </div>
-        `;
+        var drawerHtml = "\n" +
+"            <div class=\"cart-drawer-overlay\" id=\"cartDrawerOverlay\"></div>\n" +
+"            <div class=\"cart-drawer\" id=\"cartDrawer\">\n" +
+"                <div class=\"cart-header\">\n" +
+"                    <h3><i class=\"fas fa-shopping-cart\"></i> Sipariş Sepetim</h3>\n" +
+"                    <button class=\"cart-close-btn\" id=\"cartCloseBtn\">&times;</button>\n" +
+"                </div>\n" +
+"                <div class=\"cart-timestamp-bar\">\n" +
+"                    <i class=\"far fa-clock\"></i>\n" +
+"                    <span>Tarih: <strong id=\"cartTimestamp\">" + String(getFormattedTimestamp()) + "</strong></span>\n" +
+"                </div>\n" +
+"                <div class=\"cart-body\" id=\"cartBody\">\n" +
+"                    <!-- Dinamik Sepet İçeriği -->\n" +
+"                </div>\n" +
+"                <div class=\"cart-footer\">\n" +
+"                    <div class=\"cart-total-row\" style=\"display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-top: 1px solid #E2E8F0;\">\n" +
+"                        <span style=\"font-weight: 600; color: #1E293B;\">Liste Fiyatı Toplamı:</span>\n" +
+"                        <span class=\"cart-total-amount\" id=\"cartTotalAmount\" style=\"font-weight: 700; color: #1D4ED8; font-size: 1.15rem;\">0.00 ₺</span>\n" +
+"                    </div>\n" +
+"                    <div style=\"background: #EFF6FF; border: 1px dashed #3B82F6; border-radius: 8px; padding: 10px 12px; margin: 10px 0; font-size: 12px; color: #1E40AF; text-align: center; line-height: 1.4;\">\n" +
+"                         <strong>Toptan İskonto Fırsatı:</strong> Bu tutar liste fiyatıdır. Sipariş miktarınıza göre <strong>yüksek iskonto</strong> düşülecektir!\n" +
+"                    </div>\n" +
+"                    <button class=\"whatsapp-order-btn\" id=\"sendWhatsAppOrderBtn\" style=\"background: #25D366; color: #fff; border: none; padding: 14px; border-radius: 10px; font-weight: 700; width: 100%; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);\">\n" +
+"                        <i class=\"fab fa-whatsapp\" style=\"font-size: 22px;\"></i> İskontolu Fiyat Teklifi Al (WhatsApp)\n" +
+"                    </button>\n" +
+"                    <button class=\"clear-cart-btn\" id=\"clearCartBtn\">Sepeti Temizle</button>\n" +
+"                </div>\n" +
+"            </div>\n" +
+"        ";
 
         document.body.insertAdjacentHTML('beforeend', triggerHtml);
         document.body.insertAdjacentHTML('beforeend', drawerHtml);
@@ -146,7 +146,7 @@
         document.getElementById('cartCloseBtn').addEventListener('click', closeCartDrawer);
         document.getElementById('cartDrawerOverlay').addEventListener('click', closeCartDrawer);
         document.getElementById('sendWhatsAppOrderBtn').addEventListener('click', sendWhatsAppOrder);
-        document.getElementById('clearCartBtn').addEventListener('click', () => {
+        document.getElementById('clearCartBtn').addEventListener('click', function() {
             if (confirm('Sepetinizdeki tüm ürünler silinecek. Onaylıyor musunuz?')) {
                 saveCart([]);
             }
@@ -169,7 +169,7 @@
 
     function updateCartUI() {
         var cart = getCart();
-        var totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        var totalItems = cart.reduce(function(sum, item) { return sum + item.quantity; }, 0);
         var badge = document.getElementById('cartBadge');
         if (badge) {
             badge.textContent = totalItems;
@@ -187,13 +187,13 @@
         var html = '';
 
         if (cart.length === 0) {
-            html += `
-                <div class="cart-empty-state">
-                    <i class="fas fa-shopping-basket"></i>
-                    <p style="font-weight: 600; color: #64748B;">Aktif sepetiniz boş.</p>
-                    <p style="font-size: 13px;">Ürün sayfalarından ölçü seçip "Sepete Ekle" butonuna basarak sipariş oluşturabilirsiniz.</p>
-                </div>
-            `;
+            html += "\n" +
+"                <div class=\"cart-empty-state\">\n" +
+"                    <i class=\"fas fa-shopping-basket\"></i>\n" +
+"                    <p style=\"font-weight: 600; color: #64748B;\">Aktif sepetiniz boş.</p>\n" +
+"                    <p style=\"font-size: 13px;\">Ürün sayfalarından ölçü seçip \"Sepete Ekle\" butonuna basarak sipariş oluşturabilirsiniz.</p>\n" +
+"                </div>\n" +
+"            ";
         } else {
             html += cart.map(function(item, index) {
                 var itemTotal = (item.price * item.quantity).toFixed(2);
@@ -202,36 +202,36 @@
 
                 var qtyMeta = '';
                 if (item.paketQty && item.paketQty !== '-') {
-                    qtyMeta += `Paket: <strong>${item.paketQty}</strong> | `;
+                    qtyMeta += "Paket: <strong>" + String(item.paketQty) + "</strong> | ";
                 }
-                qtyMeta += `Koli: <strong>${item.boxQty || '-'}</strong>`;
+                qtyMeta += "Koli: <strong>" + String(item.boxQty || '-') + "</strong>";
 
-                return `
-                    <div class="cart-item">
-                        <div class="cart-item-info">
-                            <h4>${sanitizeAttr(item.productName)}</h4>
-                            <div class="cart-item-meta">Ebat: <strong>${cleanSize}</strong> | ${qtyMeta}</div>
-                            <div class="cart-item-price">${item.quantity} Adet x ${item.price.toFixed(2)} TL = <strong>${itemTotal} TL</strong></div>
-                        </div>
-                        <div class="cart-item-actions">
-                            <div class="drawer-qty-selector" style="display: inline-flex; align-items: center; background: #F1F5F9; border-radius: 8px; padding: 2px; border: 1px solid #CBD5E1;">
-                                <button type="button" class="drawer-qty-btn" data-action="minus" data-index="${index}" style="width: 28px; height: 28px; border: none; background: #fff; border-radius: 6px; font-weight: bold; cursor: pointer;">-</button>
-                                <span style="padding: 0 8px; font-weight: 700; font-size: 13px;">${item.quantity}</span>
-                                <button type="button" class="drawer-qty-btn" data-action="plus" data-index="${index}" style="width: 28px; height: 28px; border: none; background: #fff; border-radius: 6px; font-weight: bold; cursor: pointer;">+</button>
-                            </div>
-                            <button type="button" class="remove-cart-item" onclick="window.baysuRemoveItem(${index})" style="background: none; border: none; color: #EF4444; cursor: pointer; font-size: 16px; margin-left: 8px;" title="Sil">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
+                return "\n" +
+"                    <div class=\"cart-item\">\n" +
+"                        <div class=\"cart-item-info\">\n" +
+"                            <h4>" + String(sanitizeAttr(item.productName)) + "</h4>\n" +
+"                            <div class=\"cart-item-meta\">Ebat: <strong>" + String(cleanSize) + "</strong> | " + String(qtyMeta) + "</div>\n" +
+"                            <div class=\"cart-item-price\">" + String(item.quantity) + " Adet x " + String(item.price.toFixed(2)) + " TL = <strong>" + String(itemTotal) + " TL</strong></div>\n" +
+"                        </div>\n" +
+"                        <div class=\"cart-item-actions\">\n" +
+"                            <div class=\"drawer-qty-selector\" style=\"display: inline-flex; align-items: center; background: #F1F5F9; border-radius: 8px; padding: 2px; border: 1px solid #CBD5E1;\">\n" +
+"                                <button type=\"button\" class=\"drawer-qty-btn\" data-action=\"minus\" data-index=\"" + String(index) + "\" style=\"width: 28px; height: 28px; border: none; background: #fff; border-radius: 6px; font-weight: bold; cursor: pointer;\">-</button>\n" +
+"                                <span style=\"padding: 0 8px; font-weight: 700; font-size: 13px;\">" + String(item.quantity) + "</span>\n" +
+"                                <button type=\"button\" class=\"drawer-qty-btn\" data-action=\"plus\" data-index=\"" + String(index) + "\" style=\"width: 28px; height: 28px; border: none; background: #fff; border-radius: 6px; font-weight: bold; cursor: pointer;\">+</button>\n" +
+"                            </div>\n" +
+"                            <button type=\"button\" class=\"remove-cart-item\" onclick=\"window.baysuRemoveItem(" + String(index) + ")\" style=\"background: none; border: none; color: #EF4444; cursor: pointer; font-size: 16px; margin-left: 8px;\" title=\"Sil\">\n" +
+"                                <i class=\"fas fa-trash\"></i>\n" +
+"                            </button>\n" +
+"                        </div>\n" +
+"                    </div>\n" +
+"                ";
             }).join('');
         }
 
         cartBody.innerHTML = html;
 
         if (cartTotalAmount) {
-            cartTotalAmount.textContent = `${totalSum.toFixed(2)} ₺`;
+            cartTotalAmount.textContent = String(totalSum.toFixed(2)) + " ₺";
         }
     }
 
@@ -243,7 +243,7 @@
         var min = step;
         var parsedQty = Math.max(min, parseInt(quantity) || min);
 
-        var existingIndex = cart.findIndex(item => sanitizeAttr(item.productName) === cleanName && sanitizeAttr(item.size) === cleanSize);
+        var existingIndex = cart.findIndex(function(item) { return sanitizeAttr(item.productName) === cleanName && sanitizeAttr(item.size) === cleanSize; });
 
         if (existingIndex > -1) {
             cart[existingIndex].quantity += parsedQty;
@@ -299,33 +299,30 @@
 
         var timestamp = getFormattedTimestamp();
 
-        var text = `📋 *BAYRAKÇI SULAMA VE YAPI MALZEMELERİ*\n`;
-        text += `*İSKONTOLU FİYAT TEKLİFİ VE SİPARİŞ TALEBİ*\n`;
-        text += `--------------------------------------------------\n`;
-        text += `📅 *Tarih:* ${timestamp}\n`;
-        text += `--------------------------------------------------\n\n`;
-        text += `*ÜRÜN İSMİ | EBAT | LİSTE FİYATI | MİKTAR | TUTAR*\n`;
-        text += `--------------------------------------------------\n`;
+        var text = "📋 *BAYRAKÇI SULAMA VE YAPI MALZEMELERİ*\n";
+        text += "*İSKONTOLU FİYAT TEKLİFİ VE SİPARİŞ TALEBİ*\n";
+        text += "--------------------------------------------------\n";
+        text += "📅 *Tarih:* " + String(timestamp) + "\n";
+        text += "--------------------------------------------------\n\n";
+        text += "*ÜRÜN İSMİ | EBAT | LİSTE FİYATI | MİKTAR | TUTAR*\n";
+        text += "--------------------------------------------------\n";
 
         var totalSum = 0;
 
         cart.forEach(function(item, i) {
             var itemTotal = item.price * item.quantity;
             totalSum += itemTotal;
-            if (item.code) {
-                text += `*${item.code}* | ${item.productName} | ${item.price.toFixed(2)} TL | ${item.quantity} Adet | ${itemTotal.toFixed(2)} TL\n`;
-            } else {
-                text += `*${item.size}* | ${item.productName} | ${item.price.toFixed(2)} TL | ${item.quantity} Adet | ${itemTotal.toFixed(2)} TL\n`;
-            }
+            var identifier = item.code ? item.code : item.size;
+            text += String(identifier) + " | " + String(item.productName) + " | " + String(item.quantity) + " ADET | " + String(itemTotal.toFixed(2)) + " TL\n";
         });
 
-        text += `--------------------------------------------------\n`;
-        text += `💰 *TOPLAM LİSTE TUTARI:* *${totalSum.toFixed(2)} TL*\n`;
-        text += `--------------------------------------------------\n`;
-        text += `⚠️ *Not:* Yukarıdaki tutar liste fiyatıdır. Sipariş miktarımıza göre özel toptan iskonto teklifinizi rica ederiz.`;
+        text += "--------------------------------------------------\n";
+        text += "💰 *TOPLAM LİSTE TUTARI:* *" + String(totalSum.toFixed(2)) + " TL*\n";
+        text += "--------------------------------------------------\n";
+        text += "⚠️ *Not:* Yukarıdaki tutar liste fiyatıdır. Sipariş miktarımıza göre özel toptan iskonto teklifinizi rica ederiz.";
 
         var encodedText = encodeURIComponent(text);
-        var whatsappUrl = `https://wa.me/905533973603?text=${encodedText}`;
+        var whatsappUrl = "https://wa.me/905533973603?text=" + String(encodedText);
 
         saveArchivedOrder({
             id: 'ORD-' + Date.now(),
@@ -412,7 +409,7 @@
 
                 var originalText = addBtn.innerHTML;
                 addBtn.classList.add('added');
-                addBtn.innerHTML = `<i class="fas fa-check"></i> Eklendi!`;
+                addBtn.innerHTML = "<i class=\"fas fa-check\"></i> Eklendi!";
 
                 setTimeout(function() {
                     addBtn.classList.remove('added');
@@ -436,12 +433,12 @@
     }
 
     window.BaysuCart = {
-        addItem,
-        changeQty,
-        removeItem,
-        sendWhatsAppOrder,
-        getCart,
-        getArchivedOrders,
+        addItem: addItem,
+        changeQty: changeQty,
+        removeItem: window.baysuRemoveItem,
+        sendWhatsAppOrder: sendWhatsAppOrder,
+        getCart: getCart,
+        getArchivedOrders: getArchivedOrders
     };
 })();
 
