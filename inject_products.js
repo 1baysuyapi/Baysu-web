@@ -1,7 +1,7 @@
-ï»¿const fs = require('fs');
+const fs = require('fs');
 const path = require('path');
 
-const srcDir = 'C:\\Users\\kopya\\Pictures\\ÃœZÃœMCÃœ\\BahÃ§e EkipmanlarÄ±';
+const srcDir = 'C:\\Users\\kopya\\Pictures\\ÜZÜMCÜ\\Bahçe Ekipmanlarý';
 const destDir = path.join(__dirname, 'resimler', 'bahce_ekipmanlari');
 
 if (!fs.existsSync(destDir)) {
@@ -33,7 +33,7 @@ products.forEach(p => {
     const boxDisplay = (p.box && p.box !== '-') ? p.box : '-';
     
     let parsedPrice = parseFloat(p.price);
-    const priceDisplay = (p.price && p.price !== '-' && !isNaN(parsedPrice)) ? 'â‚º ' + parsedPrice.toFixed(2) : 'â‚º 0.00';
+    const priceDisplay = (p.price && p.price !== '-' && !isNaN(parsedPrice)) ? '? ' + parsedPrice.toFixed(2) : '? 0.00';
 
     productCards += 
         '<div class="product-card" data-category="bahce" data-name="' + p.name + '">' +
@@ -93,7 +93,7 @@ const pageContent =
                 'z-index: 2;' +
             '}' +
             '.hero-slide::after {' +
-                'content: \\'\\';' +
+                'content: \"\";' +
                 'position: absolute;' +
                 'top: 0; left: 0; width: 100%; height: 100%;' +
                 'background: linear-gradient(to right, rgba(0,71,151,0.7) 0%, rgba(0,71,151,0.2) 100%);' +
@@ -239,8 +239,8 @@ const pageContent =
             '<!-- Hero Slider -->' +
             '<div class="hero-slider-container">' +
                 '<div class="hero-text">' +
-                    '<h1>BahÃ§e EkipmanlarÄ±</h1>' +
-                    '<p>BahÃ§enizin ihtiyacÄ± olan en kaliteli bahÃ§e sulama sÃ¼zekleri ve fÄ±skiyeleri tek bir yerde.</p>' +
+                    '<h1>Bahçe Ekipmanlarý</h1>' +
+                    '<p>Bahçenizin ihtiyacý olan en kaliteli bahçe sulama süzekleri ve fýskiyeleri tek bir yerde.</p>' +
                 '</div>' +
                 '<!-- Using aesthetic Unsplash images for garden/irrigation, no humans -->' +
                 '<div class="hero-slide active" style="background-image: url(\'https://images.unsplash.com/photo-1599839619722-39751411ea63?q=80&w=1200&auto=format&fit=crop\');"></div>' +
@@ -270,7 +270,7 @@ const scriptTags = '\n    <script src="security.js" defer></script>\n    <script
 
 let finalHtml = header + pageContent + footer;
 finalHtml = finalHtml.replace('</head>', scriptTags + '</head>');
-finalHtml = finalHtml.replace(/<title>[^<]*<\/title>/, '<title>BahÃ§e EkipmanlarÄ± - BAYRAKÃ‡I SULAMA VE YAPI MALZEMELERÄ°</title>');
+finalHtml = finalHtml.replace(/<title>[^<]*<\/title>/, '<title>Bahçe Ekipmanlarý - BAYRAKÇI SULAMA VE YAPI MALZEMELERÝ</title>');
 finalHtml = finalHtml.replace(/cart\.js\?v=\d+/g, 'cart.js?v=' + timestamp);
 
 const base64Encoded = Buffer.from(unescape(encodeURIComponent(finalHtml)), 'binary').toString('base64');
