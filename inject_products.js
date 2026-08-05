@@ -94,33 +94,6 @@ const pageContent = `
                 opacity: 1;
                 z-index: 2;
             }
-            .hero-slide::after {
-                content: '';
-                position: absolute;
-                top: 0; left: 0; width: 100%; height: 100%;
-                background: linear-gradient(to right, rgba(0,71,151,0.7) 0%, rgba(0,71,151,0.2) 100%);
-            }
-            .hero-text {
-                position: absolute;
-                top: 15%;
-                left: 50%;
-                transform: translateX(-50%);
-                z-index: 3;
-                text-align: center;
-                color: #fff;
-                width: 90%;
-            }
-            .hero-text h1 {
-                font-size: 2.5rem;
-                font-weight: 800;
-                margin-bottom: 15px;
-                text-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            }
-            .hero-text p {
-                font-size: 1.2rem;
-                font-weight: 500;
-                text-shadow: 0 2px 5px rgba(0,0,0,0.3);
-            }
 
             .product-card {
                 position: relative;
@@ -240,12 +213,14 @@ const pageContent = `
 
         <section id="bahce-ekipmanlari" class="page-content active" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
             
+            <!-- Page Header (Outside Slider) -->
+            <div style="text-align: center; margin-bottom: 25px;">
+                <h1 style="font-size: 2.5rem; font-weight: 800; color: var(--primary-color); margin-bottom: 10px;">Bahçe Ekipmanları</h1>
+                <p style="font-size: 1.1rem; color: var(--text-color);">Bahçenizin ihtiyacı olan en kaliteli bahçe sulama süzekleri ve fıskiyeleri tek bir yerde.</p>
+            </div>
+
             <!-- Hero Slider -->
             <div class="hero-slider-container">
-                <div class="hero-text">
-                    <h1>Bahçe Ekipmanları</h1>
-                    <p>Bahçenizin ihtiyacı olan en kaliteli bahçe sulama süzekleri ve fıskiyeleri tek bir yerde.</p>
-                </div>
                 <!-- 6 images, no humans, garden/irrigation products -->
                 <div class="hero-slide active" style="background-image: url('resimler/slider/1.jpg');"></div>
                 <div class="hero-slide" style="background-image: url('resimler/slider/2.jpg');"></div>
