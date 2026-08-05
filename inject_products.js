@@ -37,6 +37,24 @@ products.forEach(p => {
     let parsedPrice = parseFloat(p.price);
     const priceDisplay = (p.price && p.price !== '-' && !isNaN(parsedPrice)) ? `₺ ${parsedPrice.toFixed(2)}` : '₺ 0.00';
 
+    let perfTableHtml = '';
+    if (p.performanceTable) {
+        let rows = '';
+        p.performanceTable.forEach(row => {
+            rows += `<tr><td>${row.bar}</td><td>${row.m}</td><td>${row.lh}</td></tr>`;
+        });
+        perfTableHtml = `
+            <table class="perf-table">
+                <thead>
+                    <tr><th>Bar</th><th>m</th><th>l/h</th></tr>
+                </thead>
+                <tbody>
+                    ${rows}
+                </tbody>
+            </table>
+        `;
+    }
+
     productCards += `
         <div class="product-card" data-category="bahce" data-name="${p.name}">
             <span class="badge">${codeDisplay}</span>
@@ -44,6 +62,7 @@ products.forEach(p => {
             <h3>${p.name}</h3>
             
             <div class="card-hover-details">
+                ${perfTableHtml}
                 <div class="price-display">${priceDisplay}</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>${boxDisplay}</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>${packDisplay}</strong></div>
@@ -203,6 +222,30 @@ const pageContent = `
             }
             .add-to-cart-btn:hover { background: var(--primary-hover); }
             
+            .perf-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 10px;
+                font-size: 0.8rem;
+                text-align: center;
+                background: #f8fafc;
+                border: 1px solid #e2e8f0;
+            }
+            .perf-table th {
+                background: #F38562; /* Approximate orange color from screenshot */
+                color: #000;
+                padding: 4px;
+                font-weight: 700;
+                border: 1px solid #e2e8f0;
+            }
+            .perf-table td {
+                padding: 4px;
+                border: 1px solid #e2e8f0;
+                background: #FBD6C8; /* Lighter orange for rows */
+                color: #000;
+                font-weight: 600;
+            }
+
             .products-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));

@@ -844,8 +844,8 @@
     </style>
 
     <script src="security.js" defer></script>
-    <script src="data.js?v=1785926887964" defer></script>
-    <script src="site-engine.js?v=1785926887964" defer></script>
+    <script src="data.js?v=1785927539969" defer></script>
+    <script src="site-engine.js?v=1785927539969" defer></script>
 </head>
 <body>
 
@@ -1187,6 +1187,30 @@
             }
             .add-to-cart-btn:hover { background: var(--primary-hover); }
             
+            .perf-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 10px;
+                font-size: 0.8rem;
+                text-align: center;
+                background: #f8fafc;
+                border: 1px solid #e2e8f0;
+            }
+            .perf-table th {
+                background: #F38562; /* Approximate orange color from screenshot */
+                color: #000;
+                padding: 4px;
+                font-weight: 700;
+                border: 1px solid #e2e8f0;
+            }
+            .perf-table td {
+                padding: 4px;
+                border: 1px solid #e2e8f0;
+                background: #FBD6C8; /* Lighter orange for rows */
+                color: #000;
+                font-weight: 600;
+            }
+
             .products-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -1217,12 +1241,97 @@
 
             <div class="products-grid">
                 
+        <div class="product-card" data-category="bahce" data-name="Jumbo El Süzeği">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/Jumbo_El_Szei.png" alt="Jumbo El Süzeği" onerror="this.src='resimler/placeholder.png'">
+            <h3>Jumbo El Süzeği</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="Jumbo El Süzeği" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="Uzun El Süzeği Dirsekli">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/Uzun_El_Szei_Dirsekli.png" alt="Uzun El Süzeği Dirsekli" onerror="this.src='resimler/placeholder.png'">
+            <h3>Uzun El Süzeği Dirsekli</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="Uzun El Süzeği Dirsekli" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="Lüks El Süzeği">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/Lks_El_Szei.png" alt="Lüks El Süzeği" onerror="this.src='resimler/placeholder.png'">
+            <h3>Lüks El Süzeği</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="Lüks El Süzeği" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="product-card" data-category="bahce" data-name="İki Kollu Çim Fıskiyesi">
             <span class="badge">138</span>
             <img src="resimler/bahce_ekipmanlari/ki_Kollu_im_Fskiyesi.png" alt="İki Kollu Çim Fıskiyesi" onerror="this.src='resimler/placeholder.png'">
             <h3>İki Kollu Çim Fıskiyesi</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 80.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>100</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1250,6 +1359,7 @@
             <h3>Üç Kollu Çim Fıskiyesi</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 88.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>90</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1277,6 +1387,7 @@
             <h3>Dört Kollu Çim Fıskiyesi</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 95.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>75</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1304,6 +1415,7 @@
             <h3>Süper Üç Kollu Çim Fıskiyesi</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 100.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>75</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1331,6 +1443,7 @@
             <h3>Sehpa Ayak</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 125.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>80</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1358,6 +1471,7 @@
             <h3>Jumbo Ayak</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 200.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>50</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1385,6 +1499,7 @@
             <h3>Kazık Ayak</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 26.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>300</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1412,6 +1527,7 @@
             <h3>Jaklı Kazık Ayak</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 32.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>300</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1439,6 +1555,7 @@
             <h3>Çift Taraflı Plastik Kazık</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 95.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>250</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1466,6 +1583,7 @@
             <h3>Uzun El Süzeği</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 100.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>75</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1493,6 +1611,7 @@
             <h3>Büyük Uzun El Süzeği</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 200.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>40</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1520,6 +1639,7 @@
             <h3>Büyük Uzun El Süzeği Dirsekli</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 215.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>40</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1541,12 +1661,41 @@
                 </div>
             </div>
         </div>
+        <div class="product-card" data-category="bahce" data-name="PVC Döner Çim Fıskiyesi">
+            <span class="badge">134</span>
+            <img src="resimler/bahce_ekipmanlari/PVC_Dner_im_Fskiyesi.png" alt="PVC Döner Çim Fıskiyesi" onerror="this.src='resimler/placeholder.png'">
+            <h3>PVC Döner Çim Fıskiyesi</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="PVC Döner Çim Fıskiyesi" 
+                        data-price="-" 
+                        data-code="134" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="product-card" data-category="bahce" data-name="Turbo Üç Kollu Çim Fıskiyesi">
             <span class="badge">142</span>
             <img src="resimler/bahce_ekipmanlari/Turbo__Kollu_im_Fskiyesi.png" alt="Turbo Üç Kollu Çim Fıskiyesi" onerror="this.src='resimler/placeholder.png'">
             <h3>Turbo Üç Kollu Çim Fıskiyesi</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 100.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>60</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1574,6 +1723,7 @@
             <h3>Beş Kollu Çim Fıskiyesi</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 135.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>50</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1601,6 +1751,7 @@
             <h3>Uzun Meme Üç Kollu Çim Fıskiyesi</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 95.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>75</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1628,6 +1779,7 @@
             <h3>Madeni Döner Çim Fıskiyesi</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 270.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>150</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1655,6 +1807,7 @@
             <h3>Jumbo Açılı Fıskiye</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 430.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>40</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1682,6 +1835,7 @@
             <h3>Sehpa Turbo Üç Kollu Fıskiye</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 200.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>60</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1709,6 +1863,7 @@
             <h3>Sehpa Beş Kollu Çim Fıskiye</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 235.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>50</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1736,6 +1891,7 @@
             <h3>1/2" Ayarlı Hortum Lansı</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 68.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>250</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>10</strong></div>
@@ -1763,6 +1919,7 @@
             <h3>3/4" Ayarlı Hortum Lansı</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 90.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>150</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>10</strong></div>
@@ -1790,6 +1947,7 @@
             <h3>1" Ayarlı Hortum Lansı</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 280.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>100</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1817,6 +1975,7 @@
             <h3>Krom 6 Nozul Tabanca</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 650.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>25</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1844,6 +2003,7 @@
             <h3>İthal 6 Nozul Metal Tabanca</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 1200.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>24</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1871,6 +2031,7 @@
             <h3>Metal Su Tabancası</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 750.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>48</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1898,6 +2059,7 @@
             <h3>Tetikli Su Tabancası Jaklı</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 190.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>40</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1925,6 +2087,7 @@
             <h3>Tetikli Süzek Tabancası Jaklı</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 190.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>30</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1952,6 +2115,7 @@
             <h3>Tetikli Su Tabancası 3/4" Lüks Rekorlu</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 210.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>75</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -1979,6 +2143,7 @@
             <h3>Tetikli Süzek Tabanca 3/4" Lüks Rekorlu</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 210.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>60</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2006,6 +2171,7 @@
             <h3>Süzek Tabanca</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 105.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>75</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2033,6 +2199,7 @@
             <h3>1/2" Lüks Rekorlu Süzek Tabanca</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 115.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>75</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2060,6 +2227,7 @@
             <h3>Lüks Rekorlu 6 Nozul Tabanca</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 315.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>25</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2087,6 +2255,7 @@
             <h3>6 Fonksiyonlu Su Tabancası Seti</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 440.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>20</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2114,6 +2283,7 @@
             <h3>İthal Tetikli Su Tabancası</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 600.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>48</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2141,6 +2311,7 @@
             <h3>İthal 6 Nozul Tabanca</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 650.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>48</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2168,6 +2339,7 @@
             <h3>Tetikli Su Tabancası Rekorlu</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 190.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>40</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2195,6 +2367,7 @@
             <h3>Tetikli Süzek Tabancası Rekorlu</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 190.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>30</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2222,6 +2395,7 @@
             <h3>Tetikli Su Tabancası 1/2" Lüks Rekorlu</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 190.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>40</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2249,6 +2423,7 @@
             <h3>Tetikli Süzek Tabancası 1/2" Lüks Rekorlu</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 190.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>30</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2270,39 +2445,13 @@
                 </div>
             </div>
         </div>
-        <div class="product-card" data-category="bahce" data-name="Hortum Lansı">
-            <span class="badge">350</span>
-            <img src="resimler/bahce_ekipmanlari/Hortum_Lans.png" alt="Hortum Lansı" onerror="this.src='resimler/placeholder.png'">
-            <h3>Hortum Lansı</h3>
-            
-            <div class="card-hover-details">
-                <div class="price-display">₺ 11.00</div>
-                <div class="info-row"><span>Koli Adedi:</span> <strong>1400</strong></div>
-                <div class="info-row"><span>Ambalaj:</span> <strong>50</strong></div>
-                
-                <div class="card-actions">
-                    <div class="qty-selector">
-                        <button type="button" class="qty-btn qty-minus">-</button>
-                        <input type="number" class="qty-input" value="1" min="1" step="1">
-                        <button type="button" class="qty-btn qty-plus">+</button>
-                    </div>
-                    <button type="button" class="add-to-cart-btn" 
-                        data-product="Hortum Lansı" 
-                        data-price="11.00" 
-                        data-code="350" 
-                        data-box="1400"
-                        data-paket="50">
-                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
-                    </button>
-                </div>
-            </div>
-        </div>
         <div class="product-card" data-category="bahce" data-name="3/4" Lüks Rekorlu Süzek Tabanca">
             <span class="badge">357</span>
             <img src="resimler/bahce_ekipmanlari/Szek_Tabanca.png" alt="3/4" Lüks Rekorlu Süzek Tabanca" onerror="this.src='resimler/placeholder.png'">
             <h3>3/4" Lüks Rekorlu Süzek Tabanca</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 125.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>75</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2330,6 +2479,7 @@
             <h3>Su Tabancası</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 105.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>100</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2357,6 +2507,7 @@
             <h3>1/2" Lüks Rekorlu Su Tabancası</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 115.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>100</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2384,6 +2535,7 @@
             <h3>3/4" Lüks Rekorlu Su Tabancası</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 125.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>100</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2411,6 +2563,16 @@
             <h3>Açılı Fıskiye / Yerli Turuncu</h3>
             
             <div class="card-hover-details">
+                
+            <table class="perf-table">
+                <thead>
+                    <tr><th>Bar</th><th>m</th><th>l/h</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>2,1</td><td>12,5</td><td>570</td></tr><tr><td>2,8</td><td>12,8</td><td>635</td></tr><tr><td>3,5</td><td>13,1</td><td>725</td></tr><tr><td>4,2</td><td>13,1</td><td>795</td></tr>
+                </tbody>
+            </table>
+        
                 <div class="price-display">₺ 180.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>150</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2438,6 +2600,16 @@
             <h3>Açılı Fıskiye / Yerli Siyah</h3>
             
             <div class="card-hover-details">
+                
+            <table class="perf-table">
+                <thead>
+                    <tr><th>Bar</th><th>m</th><th>l/h</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>2,1</td><td>12,5</td><td>570</td></tr><tr><td>2,8</td><td>12,8</td><td>635</td></tr><tr><td>3,5</td><td>13,1</td><td>725</td></tr><tr><td>4,2</td><td>13,1</td><td>795</td></tr>
+                </tbody>
+            </table>
+        
                 <div class="price-display">₺ 170.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>150</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2465,6 +2637,16 @@
             <h3>İthal Açılı Metal Fıskiye</h3>
             
             <div class="card-hover-details">
+                
+            <table class="perf-table">
+                <thead>
+                    <tr><th>Bar</th><th>m</th><th>l/h</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>2,1</td><td>12,5</td><td>570</td></tr><tr><td>2,8</td><td>12,8</td><td>635</td></tr><tr><td>3,5</td><td>13,1</td><td>725</td></tr><tr><td>4,2</td><td>13,1</td><td>795</td></tr>
+                </tbody>
+            </table>
+        
                 <div class="price-display">₺ 1000.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>50</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2492,6 +2674,7 @@
             <h3>Plastik Tarla Sulama Fıskiye</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 185.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>75</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2519,6 +2702,7 @@
             <h3>Metal Tarla Sulama Fıskiye</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 1000.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>50</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2546,6 +2730,7 @@
             <h3>Kazıklı Açılı Fıskiye</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 290.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>30</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2573,6 +2758,7 @@
             <h3>Açısız Çat Çat Fıskiye</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 125.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>150</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2600,6 +2786,7 @@
             <h3>Açılı Plastik Tarla Sulama Fıskiye</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 215.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>50</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2627,6 +2814,7 @@
             <h3>Hortum Tanburu</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 1950.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>5</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2654,6 +2842,7 @@
             <h3>Duvar Tipi Hortum Askısı</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 195.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>6</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2675,12 +2864,41 @@
                 </div>
             </div>
         </div>
+        <div class="product-card" data-category="bahce" data-name="1/2” Lüks Rekor">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/1-2_Lks_Rekor.png" alt="1/2” Lüks Rekor" onerror="this.src='resimler/placeholder.png'">
+            <h3>1/2” Lüks Rekor</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="1/2” Lüks Rekor" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="product-card" data-category="bahce" data-name="PVC Bidon Musluğu">
             <span class="badge">240</span>
             <img src="resimler/bahce_ekipmanlari/PVC_Bidon_Musluu.png" alt="PVC Bidon Musluğu" onerror="this.src='resimler/placeholder.png'">
             <h3>PVC Bidon Musluğu</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 100.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>350</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>25</strong></div>
@@ -2708,6 +2926,7 @@
             <h3>Süzek Kafası</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 38.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>250</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2735,6 +2954,7 @@
             <h3>Çift Taraflı Jak Adaptör</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 32.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>1250</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>125</strong></div>
@@ -2756,12 +2976,41 @@
                 </div>
             </div>
         </div>
+        <div class="product-card" data-category="bahce" data-name="3/4” Jak Adaptörü">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/3-4_Jak_Adaptr.png" alt="3/4” Jak Adaptörü" onerror="this.src='resimler/placeholder.png'">
+            <h3>3/4” Jak Adaptörü</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="3/4” Jak Adaptörü" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="product-card" data-category="bahce" data-name="Metal Hortum Askısı">
             <span class="badge">182</span>
             <img src="resimler/bahce_ekipmanlari/Metal_Hortum_Asks.png" alt="Metal Hortum Askısı" onerror="this.src='resimler/placeholder.png'">
             <h3>Metal Hortum Askısı</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 400.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>30</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2789,6 +3038,7 @@
             <h3>Plastik Hortum Askısı</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 185.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>48</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2816,6 +3066,7 @@
             <h3>Ayarlı Lans Seti</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 280.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>48</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2837,12 +3088,153 @@
                 </div>
             </div>
         </div>
+        <div class="product-card" data-category="bahce" data-name="3/4” Vantuz">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/3-4_Vantuz.png" alt="3/4” Vantuz" onerror="this.src='resimler/placeholder.png'">
+            <h3>3/4” Vantuz</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="3/4” Vantuz" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="1/2” Uzatma Borusu">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/1-2_Uzatma_Borusu.png" alt="1/2” Uzatma Borusu" onerror="this.src='resimler/placeholder.png'">
+            <h3>1/2” Uzatma Borusu</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="1/2” Uzatma Borusu" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="1/2” PVC Maşon">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/1-2_PVC_Maon.png" alt="1/2” PVC Maşon" onerror="this.src='resimler/placeholder.png'">
+            <h3>1/2” PVC Maşon</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="1/2” PVC Maşon" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="1/2” PVC Nipel">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/1-2_PVC_Nipel.png" alt="1/2” PVC Nipel" onerror="this.src='resimler/placeholder.png'">
+            <h3>1/2” PVC Nipel</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="1/2” PVC Nipel" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="Hortum Lansı">
+            <span class="badge">350</span>
+            <img src="resimler/bahce_ekipmanlari/Hortum_Lans.png" alt="Hortum Lansı" onerror="this.src='resimler/placeholder.png'">
+            <h3>Hortum Lansı</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 11.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>1400</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>50</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="Hortum Lansı" 
+                        data-price="11.00" 
+                        data-code="350" 
+                        data-box="1400"
+                        data-paket="50">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="product-card" data-category="bahce" data-name="PVC Klepe 1"">
             <span class="badge">K001</span>
             <img src="resimler/bahce_ekipmanlari/Klepe.png" alt="PVC Klepe 1"" onerror="this.src='resimler/placeholder.png'">
             <h3>PVC Klepe 1"</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 455.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>25</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2870,6 +3262,7 @@
             <h3>PVC Klepe 1 1/4"</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 470.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>25</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2897,6 +3290,7 @@
             <h3>PVC Klepe 1 1/2"</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 540.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>25</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2924,6 +3318,7 @@
             <h3>PVC Klepe 2"</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 545.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>25</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2951,6 +3346,7 @@
             <h3>PVC Klepe 2 1/2"</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 1450.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>5</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -2978,6 +3374,7 @@
             <h3>PVC Klepe 3"</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 1460.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>5</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -3005,6 +3402,7 @@
             <h3>PVC Klepe 4"</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 1600.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>5</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -3032,6 +3430,7 @@
             <h3>Bitki Destek Çubuğu 9mmx60cm</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 0.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -3059,6 +3458,7 @@
             <h3>Bitki Destek Çubuğu 9mmx75cm</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 0.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -3086,6 +3486,7 @@
             <h3>Bitki Destek Çubuğu 9mmx90cm</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 0.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -3113,6 +3514,7 @@
             <h3>Bitki Destek Çubuğu 9mmx120cm</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 0.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -3140,6 +3542,7 @@
             <h3>Bitki Destek Çubuğu 11mmx150cm</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 0.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -3167,6 +3570,7 @@
             <h3>Bitki Destek Çubuğu 11mmx180cm</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 0.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -3194,6 +3598,7 @@
             <h3>Bitki Destek Çubuğu 16mmx210cm</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 0.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -3221,6 +3626,7 @@
             <h3>Plastik Çim Ayırıcı - Yeşil</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 95.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>25 mt.</strong></div>
@@ -3248,6 +3654,7 @@
             <h3>Plastik Çim Ayırıcı - Siyah</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 95.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>25 mt.</strong></div>
@@ -3275,6 +3682,7 @@
             <h3>Plastik Çim Ayırıcı - Beyaz</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 100.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>25 mt.</strong></div>
@@ -3302,6 +3710,7 @@
             <h3>Plastik Çim Ayırıcı - Kahverengi</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 100.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>25 mt.</strong></div>
@@ -3323,12 +3732,13 @@
                 </div>
             </div>
         </div>
-        <div class="product-card" data-category="bahce" data-name="PVC Döner Çim Fıskiyesi">
-            <span class="badge">134</span>
-            <img src="resimler/bahce_ekipmanlari/PVC_Dner_im_Fskiyesi.png" alt="PVC Döner Çim Fıskiyesi" onerror="this.src='resimler/placeholder.png'">
-            <h3>PVC Döner Çim Fıskiyesi</h3>
+        <div class="product-card" data-category="bahce" data-name="1/2 Ayarlı Hortum Lansı">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/1-2_Ayarl_Hortum_Lans.png" alt="1/2 Ayarlı Hortum Lansı" onerror="this.src='resimler/placeholder.png'">
+            <h3>1/2 Ayarlı Hortum Lansı</h3>
             
             <div class="card-hover-details">
+                
                 <div class="price-display">₺ 0.00</div>
                 <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
                 <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
@@ -3340,9 +3750,485 @@
                         <button type="button" class="qty-btn qty-plus">+</button>
                     </div>
                     <button type="button" class="add-to-cart-btn" 
-                        data-product="PVC Döner Çim Fıskiyesi" 
+                        data-product="1/2 Ayarlı Hortum Lansı" 
                         data-price="-" 
-                        data-code="134" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="1/2” Klima Çatalı">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/1-2_Klima_atal.png" alt="1/2” Klima Çatalı" onerror="this.src='resimler/placeholder.png'">
+            <h3>1/2” Klima Çatalı</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="1/2” Klima Çatalı" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="1/2” Lüks Rekorlu Su Tabancası">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/1-2_Lks_Rekorlu_Su_Tabancas.png" alt="1/2” Lüks Rekorlu Su Tabancası" onerror="this.src='resimler/placeholder.png'">
+            <h3>1/2” Lüks Rekorlu Su Tabancası</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="1/2” Lüks Rekorlu Su Tabancası" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="1/2” Lüks Rekorlu Süzek Tabanca">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/1-2_Lks_Rekorlu_Szek_Tabanca.png" alt="1/2” Lüks Rekorlu Süzek Tabanca" onerror="this.src='resimler/placeholder.png'">
+            <h3>1/2” Lüks Rekorlu Süzek Tabanca</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="1/2” Lüks Rekorlu Süzek Tabanca" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="1/2” • 3/4” • 1” 2’li Jak Dağıtıcı">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/1-2__3-4__1_2li_Jak_Datc.png" alt="1/2” • 3/4” • 1” 2’li Jak Dağıtıcı" onerror="this.src='resimler/placeholder.png'">
+            <h3>1/2” • 3/4” • 1” 2’li Jak Dağıtıcı</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="1/2” • 3/4” • 1” 2’li Jak Dağıtıcı" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="1/2” • 3/4” • 1” 4’lü Jak Dağıtıcı">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/1-2__3-4__1_4l_Jak_Datc.png" alt="1/2” • 3/4” • 1” 4’lü Jak Dağıtıcı" onerror="this.src='resimler/placeholder.png'">
+            <h3>1/2” • 3/4” • 1” 4’lü Jak Dağıtıcı</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="1/2” • 3/4” • 1” 4’lü Jak Dağıtıcı" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="1/2” • 5/8” Hortum Y">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/1-2__5-8_Hortum_Y.png" alt="1/2” • 5/8” Hortum Y" onerror="this.src='resimler/placeholder.png'">
+            <h3>1/2” • 5/8” Hortum Y</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="1/2” • 5/8” Hortum Y" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="1” Vantuz">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/1_Vantuz.png" alt="1” Vantuz" onerror="this.src='resimler/placeholder.png'">
+            <h3>1” Vantuz</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="1” Vantuz" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="3/4” Ayarlı Hortum Lansı">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/3-4_Ayarl_Hortum_Lans.png" alt="3/4” Ayarlı Hortum Lansı" onerror="this.src='resimler/placeholder.png'">
+            <h3>3/4” Ayarlı Hortum Lansı</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="3/4” Ayarlı Hortum Lansı" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="3/4” Lüks Rekorlu Su Tabancası">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/3-4_Lks_Rekorlu_Su_Tabancas.png" alt="3/4” Lüks Rekorlu Su Tabancası" onerror="this.src='resimler/placeholder.png'">
+            <h3>3/4” Lüks Rekorlu Su Tabancası</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="3/4” Lüks Rekorlu Su Tabancası" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="3/4” Lüks Rekorlu Süzek Tabanca">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/3-4_Lks_Rekorlu_Szek_Tabanca.png" alt="3/4” Lüks Rekorlu Süzek Tabanca" onerror="this.src='resimler/placeholder.png'">
+            <h3>3/4” Lüks Rekorlu Süzek Tabanca</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="3/4” Lüks Rekorlu Süzek Tabanca" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="3/4” • 1/2” Lüks Rekor">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/3-4__1-2_Lks_Rekor.png" alt="3/4” • 1/2” Lüks Rekor" onerror="this.src='resimler/placeholder.png'">
+            <h3>3/4” • 1/2” Lüks Rekor</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="3/4” • 1/2” Lüks Rekor" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="Damlama Filtresi">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/Damlama_Filtresi.png" alt="Damlama Filtresi" onerror="this.src='resimler/placeholder.png'">
+            <h3>Damlama Filtresi</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="Damlama Filtresi" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="Metal Fıskiye Kazığı">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/Metal_Fskiye_Kaz.png" alt="Metal Fıskiye Kazığı" onerror="this.src='resimler/placeholder.png'">
+            <h3>Metal Fıskiye Kazığı</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="Metal Fıskiye Kazığı" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="Tetikli Su Tabancası 1/2” Lüks Rekorlu">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/Tetikli_Su_Tabancas_1-2_Lks_Rekorlu.png" alt="Tetikli Su Tabancası 1/2” Lüks Rekorlu" onerror="this.src='resimler/placeholder.png'">
+            <h3>Tetikli Su Tabancası 1/2” Lüks Rekorlu</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="Tetikli Su Tabancası 1/2” Lüks Rekorlu" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="Tetikli Su Tabancası 3/4” Lüks Rekorlu">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/Tetikli_Su_Tabancas_3-4_Lks_Rekorlu.png" alt="Tetikli Su Tabancası 3/4” Lüks Rekorlu" onerror="this.src='resimler/placeholder.png'">
+            <h3>Tetikli Su Tabancası 3/4” Lüks Rekorlu</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="Tetikli Su Tabancası 3/4” Lüks Rekorlu" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="Tetikli Süzek Tabanca 3/4” Lüks Rekorlu">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/Tetikli_Szek_Tabanca_3-4_Lks_Rekorlu.png" alt="Tetikli Süzek Tabanca 3/4” Lüks Rekorlu" onerror="this.src='resimler/placeholder.png'">
+            <h3>Tetikli Süzek Tabanca 3/4” Lüks Rekorlu</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="Tetikli Süzek Tabanca 3/4” Lüks Rekorlu" 
+                        data-price="-" 
+                        data-code="-" 
+                        data-box="-"
+                        data-paket="-">
+                        <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="bahce" data-name="Tetikli Süzek Tabancası 1/2” Lüks Rekorlu">
+            <span class="badge">-</span>
+            <img src="resimler/bahce_ekipmanlari/Tetikli_Szek_Tabancas_1-2_Lks_Rekorlu.png" alt="Tetikli Süzek Tabancası 1/2” Lüks Rekorlu" onerror="this.src='resimler/placeholder.png'">
+            <h3>Tetikli Süzek Tabancası 1/2” Lüks Rekorlu</h3>
+            
+            <div class="card-hover-details">
+                
+                <div class="price-display">₺ 0.00</div>
+                <div class="info-row"><span>Koli Adedi:</span> <strong>-</strong></div>
+                <div class="info-row"><span>Ambalaj:</span> <strong>-</strong></div>
+                
+                <div class="card-actions">
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn qty-minus">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" step="1">
+                        <button type="button" class="qty-btn qty-plus">+</button>
+                    </div>
+                    <button type="button" class="add-to-cart-btn" 
+                        data-product="Tetikli Süzek Tabancası 1/2” Lüks Rekorlu" 
+                        data-price="-" 
+                        data-code="-" 
                         data-box="-"
                         data-paket="-">
                         <i class="fas fa-shopping-cart"></i> Sepete Ekle
@@ -3399,7 +4285,7 @@
         </div>
     </div>
 
-    <script src="cart.js?v=1785926887964"></script>
+    <script src="cart.js?v=1785927539969"></script>
         <script>
         // HakkÄ±mÄ±zda ve Ä°letiÅŸim linklerini sadece ana sayfada gÃ¶ster
         document.addEventListener('DOMContentLoaded', () => {

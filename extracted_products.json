@@ -1,5 +1,35 @@
 [
   {
+    "code": "-",
+    "name": "Jumbo El Süzeği",
+    "searchName": "jumbo el süzeği",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "Jumbo El Süzeği",
+    "actualImageFile": "Jumbo El Süzeği.png"
+  },
+  {
+    "code": "-",
+    "name": "Uzun El Süzeği Dirsekli",
+    "searchName": "uzun el süzeği dirsekli",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "Uzun El Süzeği Dirsekli",
+    "actualImageFile": "Uzun El Süzeği Dirsekli.png"
+  },
+  {
+    "code": "-",
+    "name": "Lüks El Süzeği",
+    "searchName": "lüks el süzeği",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "Lüks El Süzeği",
+    "actualImageFile": "Lüks El Süzeği.png"
+  },
+  {
     "code": "138",
     "name": "İki Kollu Çim Fıskiyesi",
     "searchName": "i̇ki kollu çim fıskiyesi",
@@ -106,6 +136,15 @@
     "box": "40",
     "pack": "",
     "image": "Büyük Uzun El Süzeği Dirsekli"
+  },
+  {
+    "code": "134",
+    "name": "PVC Döner Çim Fıskiyesi",
+    "searchName": "pvc döner çim fıskiyesi",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "PVC Döner Çim Fıskiyesi"
   },
   {
     "code": "142",
@@ -360,15 +399,6 @@
     "image": "Süzek Tabanca"
   },
   {
-    "code": "350",
-    "name": "Hortum Lansı",
-    "searchName": "hortum lansı",
-    "price": "11.00",
-    "box": "1400",
-    "pack": "50",
-    "image": "Hortum Lansı"
-  },
-  {
     "code": "357",
     "name": "3/4\" Lüks Rekorlu Süzek Tabanca",
     "searchName": "3 4\" lüks rekorlu süzek tabanca",
@@ -411,7 +441,29 @@
     "price": "180.00",
     "box": "150",
     "pack": "",
-    "image": "Açılı Fıskiye  Yerli Turuncu"
+    "image": "Açılı Fıskiye  Yerli Turuncu",
+    "performanceTable": [
+      {
+        "bar": "2,1",
+        "m": "12,5",
+        "lh": "570"
+      },
+      {
+        "bar": "2,8",
+        "m": "12,8",
+        "lh": "635"
+      },
+      {
+        "bar": "3,5",
+        "m": "13,1",
+        "lh": "725"
+      },
+      {
+        "bar": "4,2",
+        "m": "13,1",
+        "lh": "795"
+      }
+    ]
   },
   {
     "code": "439",
@@ -420,7 +472,29 @@
     "price": "170.00",
     "box": "150",
     "pack": "",
-    "image": "Açılı Fıskiye   Yerli Siyah"
+    "image": "Açılı Fıskiye   Yerli Siyah",
+    "performanceTable": [
+      {
+        "bar": "2,1",
+        "m": "12,5",
+        "lh": "570"
+      },
+      {
+        "bar": "2,8",
+        "m": "12,8",
+        "lh": "635"
+      },
+      {
+        "bar": "3,5",
+        "m": "13,1",
+        "lh": "725"
+      },
+      {
+        "bar": "4,2",
+        "m": "13,1",
+        "lh": "795"
+      }
+    ]
   },
   {
     "code": "153",
@@ -429,7 +503,29 @@
     "price": "1000.00",
     "box": "50",
     "pack": "",
-    "image": "İthal Açılı Metal Fıskiye"
+    "image": "İthal Açılı Metal Fıskiye",
+    "performanceTable": [
+      {
+        "bar": "2,1",
+        "m": "12,5",
+        "lh": "570"
+      },
+      {
+        "bar": "2,8",
+        "m": "12,8",
+        "lh": "635"
+      },
+      {
+        "bar": "3,5",
+        "m": "13,1",
+        "lh": "725"
+      },
+      {
+        "bar": "4,2",
+        "m": "13,1",
+        "lh": "795"
+      }
+    ]
   },
   {
     "code": "154",
@@ -495,6 +591,16 @@
     "image": "Duvar Tipi Hortum Askısı"
   },
   {
+    "code": "-",
+    "name": "1/2” Lüks Rekor",
+    "searchName": "1/2” lüks rekor",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "1-2” Lüks Rekor",
+    "actualImageFile": "1-2” Lüks Rekor.png"
+  },
+  {
     "code": "240",
     "name": "PVC Bidon Musluğu",
     "searchName": "pvc bidon musluğu",
@@ -520,6 +626,16 @@
     "box": "1250",
     "pack": "125",
     "image": "Çift Taraflı Jak Adaptör"
+  },
+  {
+    "code": "-",
+    "name": "3/4” Jak Adaptörü",
+    "searchName": "3/4” jak adaptörü",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "3-4” Jak Adaptörü",
+    "actualImageFile": "3-4” Jak Adaptörü.png"
   },
   {
     "code": "182",
@@ -549,6 +665,16 @@
     "image": "Ayarlı Lans Seti"
   },
   {
+    "code": "-",
+    "name": "3/4” Vantuz",
+    "searchName": "3/4” vantuz",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "3-4” Vantuz",
+    "actualImageFile": "3-4” Vantuz.png"
+  },
+  {
     "code": "284",
     "name": "1\" Vantuz",
     "searchName": "1\" vantuz",
@@ -556,6 +682,45 @@
     "box": "100",
     "pack": "",
     "image": "1\" Vantuz"
+  },
+  {
+    "code": "-",
+    "name": "1/2” Uzatma Borusu",
+    "searchName": "1/2” uzatma borusu",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "1-2” Uzatma Borusu",
+    "actualImageFile": "1-2” Uzatma Borusu.png"
+  },
+  {
+    "code": "-",
+    "name": "1/2” PVC Maşon",
+    "searchName": "1/2” pvc maşon",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "1-2” PVC Maşon",
+    "actualImageFile": "1-2” PVC Maşon.png"
+  },
+  {
+    "code": "-",
+    "name": "1/2” PVC Nipel",
+    "searchName": "1/2” pvc nipel",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "1-2” PVC Nipel",
+    "actualImageFile": "1-2” PVC Nipel.png"
+  },
+  {
+    "code": "350",
+    "name": "Hortum Lansı",
+    "searchName": "hortum lansı",
+    "price": "11.00",
+    "box": "1400",
+    "pack": "50",
+    "image": "Hortum Lansı"
   },
   {
     "code": "K001",
@@ -720,12 +885,183 @@
     "image": "Plastik Çim Ayırıcı"
   },
   {
-    "code": "134",
-    "name": "PVC Döner Çim Fıskiyesi",
-    "searchName": "pvc döner çim fıskiyesi",
+    "code": "-",
+    "name": "1/2 Ayarlı Hortum Lansı",
+    "searchName": "1/2 ayarlı hortum lansı",
     "price": "-",
     "box": "-",
     "pack": "-",
-    "image": "PVC Döner Çim Fıskiyesi"
+    "image": "1-2 Ayarlı Hortum Lansı",
+    "actualImageFile": "1-2 Ayarlı Hortum Lansı.png"
+  },
+  {
+    "code": "-",
+    "name": "1/2” Klima Çatalı",
+    "searchName": "1/2” klima çatalı",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "1-2” Klima Çatalı",
+    "actualImageFile": "1-2” Klima Çatalı.png"
+  },
+  {
+    "code": "-",
+    "name": "1/2” Lüks Rekorlu Su Tabancası",
+    "searchName": "1/2” lüks rekorlu su tabancası",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "1-2” Lüks Rekorlu Su Tabancası",
+    "actualImageFile": "1-2” Lüks Rekorlu Su Tabancası.png"
+  },
+  {
+    "code": "-",
+    "name": "1/2” Lüks Rekorlu Süzek Tabanca",
+    "searchName": "1/2” lüks rekorlu süzek tabanca",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "1-2” Lüks Rekorlu Süzek Tabanca",
+    "actualImageFile": "1-2” Lüks Rekorlu Süzek Tabanca.png"
+  },
+  {
+    "code": "-",
+    "name": "1/2” • 3/4” • 1” 2’li Jak Dağıtıcı",
+    "searchName": "1/2” • 3/4” • 1” 2’li jak dağıtıcı",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "1-2” • 3-4” • 1” 2’li Jak Dağıtıcı",
+    "actualImageFile": "1-2” • 3-4” • 1” 2’li Jak Dağıtıcı.png"
+  },
+  {
+    "code": "-",
+    "name": "1/2” • 3/4” • 1” 4’lü Jak Dağıtıcı",
+    "searchName": "1/2” • 3/4” • 1” 4’lü jak dağıtıcı",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "1-2” • 3-4” • 1” 4’lü Jak Dağıtıcı",
+    "actualImageFile": "1-2” • 3-4” • 1” 4’lü Jak Dağıtıcı.png"
+  },
+  {
+    "code": "-",
+    "name": "1/2” • 5/8” Hortum Y",
+    "searchName": "1/2” • 5/8” hortum y",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "1-2” • 5-8” Hortum Y",
+    "actualImageFile": "1-2” • 5-8” Hortum Y.png"
+  },
+  {
+    "code": "-",
+    "name": "1” Vantuz",
+    "searchName": "1” vantuz",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "1” Vantuz",
+    "actualImageFile": "1” Vantuz.png"
+  },
+  {
+    "code": "-",
+    "name": "3/4” Ayarlı Hortum Lansı",
+    "searchName": "3/4” ayarlı hortum lansı",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "3-4” Ayarlı Hortum Lansı",
+    "actualImageFile": "3-4” Ayarlı Hortum Lansı.png"
+  },
+  {
+    "code": "-",
+    "name": "3/4” Lüks Rekorlu Su Tabancası",
+    "searchName": "3/4” lüks rekorlu su tabancası",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "3-4” Lüks Rekorlu Su Tabancası",
+    "actualImageFile": "3-4” Lüks Rekorlu Su Tabancası.png"
+  },
+  {
+    "code": "-",
+    "name": "3/4” Lüks Rekorlu Süzek Tabanca",
+    "searchName": "3/4” lüks rekorlu süzek tabanca",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "3-4” Lüks Rekorlu Süzek Tabanca",
+    "actualImageFile": "3-4” Lüks Rekorlu Süzek Tabanca.png"
+  },
+  {
+    "code": "-",
+    "name": "3/4” • 1/2” Lüks Rekor",
+    "searchName": "3/4” • 1/2” lüks rekor",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "3-4” • 1-2” Lüks Rekor",
+    "actualImageFile": "3-4” • 1-2” Lüks Rekor.png"
+  },
+  {
+    "code": "-",
+    "name": "Damlama Filtresi",
+    "searchName": "damlama filtresi",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "Damlama Filtresi",
+    "actualImageFile": "Damlama Filtresi.png"
+  },
+  {
+    "code": "-",
+    "name": "Metal Fıskiye Kazığı",
+    "searchName": "metal fıskiye kazığı",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "Metal Fıskiye Kazığı",
+    "actualImageFile": "Metal Fıskiye Kazığı.png"
+  },
+  {
+    "code": "-",
+    "name": "Tetikli Su Tabancası 1/2” Lüks Rekorlu",
+    "searchName": "tetikli su tabancası 1/2” lüks rekorlu",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "Tetikli Su Tabancası 1-2” Lüks Rekorlu",
+    "actualImageFile": "Tetikli Su Tabancası 1-2” Lüks Rekorlu.png"
+  },
+  {
+    "code": "-",
+    "name": "Tetikli Su Tabancası 3/4” Lüks Rekorlu",
+    "searchName": "tetikli su tabancası 3/4” lüks rekorlu",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "Tetikli Su Tabancası 3-4” Lüks Rekorlu",
+    "actualImageFile": "Tetikli Su Tabancası 3-4” Lüks Rekorlu.png"
+  },
+  {
+    "code": "-",
+    "name": "Tetikli Süzek Tabanca 3/4” Lüks Rekorlu",
+    "searchName": "tetikli süzek tabanca 3/4” lüks rekorlu",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "Tetikli Süzek Tabanca 3-4” Lüks Rekorlu",
+    "actualImageFile": "Tetikli Süzek Tabanca 3-4” Lüks Rekorlu.png"
+  },
+  {
+    "code": "-",
+    "name": "Tetikli Süzek Tabancası 1/2” Lüks Rekorlu",
+    "searchName": "tetikli süzek tabancası 1/2” lüks rekorlu",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "Tetikli Süzek Tabancası 1-2” Lüks Rekorlu",
+    "actualImageFile": "Tetikli Süzek Tabancası 1-2” Lüks Rekorlu.png"
   }
 ]
