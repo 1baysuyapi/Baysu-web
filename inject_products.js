@@ -247,12 +247,12 @@ const pageContent = `
                     <p>Bahçenizin ihtiyacı olan en kaliteli bahçe sulama süzekleri ve fıskiyeleri tek bir yerde.</p>
                 </div>
                 <!-- 6 images, no humans, garden/irrigation products -->
-                <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1599839619722-39751411ea63?q=80&w=1200&auto=format&fit=crop');"></div>
-                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1416879598553-61f2510b65bf?q=80&w=1200&auto=format&fit=crop');"></div>
-                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1592424001815-568393e3d231?q=80&w=1200&auto=format&fit=crop');"></div>
-                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1530267981375-f0de7061d4a0?q=80&w=1200&auto=format&fit=crop');"></div>
-                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1470058869958-2a77ade41c02?q=80&w=1200&auto=format&fit=crop');"></div>
-                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1581007871115-f14cb0169f41?q=80&w=1200&auto=format&fit=crop');"></div>
+                <div class="hero-slide active" style="background-image: url('resimler/slider/1.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/2.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/3.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/4.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/5.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/6.jpg');"></div>
             </div>
 
             <div class="products-grid">
