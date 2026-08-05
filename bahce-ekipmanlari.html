@@ -844,8 +844,8 @@
     </style>
 
     <script src="security.js" defer></script>
-    <script src="data.js?v=1785923542108" defer></script>
-    <script src="site-engine.js?v=1785923542108" defer></script>
+    <script src="data.js?v=1785924346270" defer></script>
+    <script src="site-engine.js?v=1785924346270" defer></script>
 </head>
 <body>
 
@@ -3957,7 +3957,7 @@
         </div>
     </div>
 
-    <script src="cart.js?v=1785923542108"></script>
+    <script src="cart.js?v=1785924346270"></script>
         <script>
         // HakkÄ±mÄ±zda ve Ä°letiÅŸim linklerini sadece ana sayfada gÃ¶ster
         document.addEventListener('DOMContentLoaded', () => {
@@ -4112,17 +4112,17 @@
 
                     if (filtered.length > 0) {
                         searchResults.innerHTML = filtered.slice(0, 8).map(p => 
-                            `<a href="${p.url}" class="search-result-item">
+                            <a href="$"{p.url}" class="search-result-item">
                                 <i class="fas fa-cube"></i>
-                                <span class="search-result-title">${p.name}</span>
-                            </a>`
+                                <span class="search-result-title">$"{p.name}</span>
+                            </a>
                         ).join('');
                         searchResults.classList.add('active');
                     } else {
                         searchResults.innerHTML = 
-                            `<div class="search-result-item" style="color: #94A3B8; justify-content: center;">
+                            <div class="search-result-item" style="color: #94A3B8; justify-content: center;">
                                 AradÄ±ÄŸÄ±nÄ±z Ã¼rÃ¼n bulunamadÄ±.
-                            </div>`
+                            </div>
                         ;
                         searchResults.classList.add('active');
                     }
@@ -4134,4 +4134,34 @@
     <script src="data.js?v=1024"></script>
     <script src="site-engine.js?v=1027"></script>
 </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
 </html>
+
+
