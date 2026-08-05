@@ -215,12 +215,13 @@
                     rawHtml = decodeURIComponent(escape(atob(base64Str)));
                 }
                 var doc = new DOMParser().parseFromString(rawHtml, "text/html");
-                var newMain = doc.querySelector('main');
+                var newMain = doc.querySelector('main') || doc.querySelector('body');
                 var currentMain = document.querySelector('main');
                 
                 if (newMain && currentMain) {
                     currentMain.innerHTML = newMain.innerHTML;
-                    document.title = "BAYRAKÇI SULAMA VE YAPI MALZEMELERİ";
+                    var newTitle = doc.querySelector('title');
+                    document.title = newTitle ? newTitle.textContent : "BAYRAKÇI SULAMA VE YAPI MALZEMELERİ";
                     document.body.className = 'route-' + path.replace(/\//g, '');
                     window.scrollTo(0, 0);
                 } else {
