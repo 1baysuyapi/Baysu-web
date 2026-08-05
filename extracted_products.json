@@ -1,0 +1,731 @@
+[
+  {
+    "code": "138",
+    "name": "İki Kollu Çim Fıskiyesi",
+    "searchName": "i̇ki kollu çim fıskiyesi",
+    "price": "80.00",
+    "box": "100",
+    "pack": "",
+    "image": "İki Kollu Çim Fıskiyesi"
+  },
+  {
+    "code": "139",
+    "name": "Üç Kollu Çim Fıskiyesi",
+    "searchName": "üç kollu çim fıskiyesi",
+    "price": "88.00",
+    "box": "90",
+    "pack": "",
+    "image": "Üç Kollu Çim Fıskiyesi"
+  },
+  {
+    "code": "140",
+    "name": "Dört Kollu Çim Fıskiyesi",
+    "searchName": "dört kollu çim fıskiyesi",
+    "price": "95.00",
+    "box": "75",
+    "pack": "",
+    "image": "Dört Kollu Çim Fıskiyesi"
+  },
+  {
+    "code": "141",
+    "name": "Süper Üç Kollu Çim Fıskiyesi",
+    "searchName": "süper üç kollu çim fıskiyesi",
+    "price": "100.00",
+    "box": "75",
+    "pack": "",
+    "image": "Süper Üç Kollu Çim Fıskiyesi"
+  },
+  {
+    "code": "162",
+    "name": "Sehpa Ayak",
+    "searchName": "sehpa ayak",
+    "price": "125.00",
+    "box": "80",
+    "pack": "",
+    "image": "Sehpa Ayak"
+  },
+  {
+    "code": "163",
+    "name": "Jumbo Ayak",
+    "searchName": "jumbo ayak",
+    "price": "200.00",
+    "box": "50",
+    "pack": "",
+    "image": "Jumbo Ayak"
+  },
+  {
+    "code": "164",
+    "name": "Kazık Ayak",
+    "searchName": "kazık ayak",
+    "price": "26.00",
+    "box": "300",
+    "pack": "",
+    "image": "Kazık Ayak"
+  },
+  {
+    "code": "198",
+    "name": "Jaklı Kazık Ayak",
+    "searchName": "jaklı kazık ayak",
+    "price": "32.00",
+    "box": "300",
+    "pack": "",
+    "image": "Jaklı Kazık Ayak"
+  },
+  {
+    "code": "151",
+    "name": "Çift Taraflı Plastik Kazık",
+    "searchName": "çift taraflı plastik kazık",
+    "price": "95.00",
+    "box": "250",
+    "pack": "",
+    "image": "Çift Taraflı Plastik Kazık"
+  },
+  {
+    "code": "133",
+    "name": "Uzun El Süzeği",
+    "searchName": "uzun el süzeği",
+    "price": "100.00",
+    "box": "75",
+    "pack": "",
+    "image": "Uzun El Süzeği"
+  },
+  {
+    "code": "136",
+    "name": "Büyük Uzun El Süzeği",
+    "searchName": "büyük uzun el süzeği",
+    "price": "200.00",
+    "box": "40",
+    "pack": "",
+    "image": "Büyük Uzun El Süzeği"
+  },
+  {
+    "code": "137",
+    "name": "Büyük Uzun El Süzeği Dirsekli",
+    "searchName": "büyük uzun el süzeği dirsekli",
+    "price": "215.00",
+    "box": "40",
+    "pack": "",
+    "image": "Büyük Uzun El Süzeği Dirsekli"
+  },
+  {
+    "code": "142",
+    "name": "Turbo Üç Kollu Çim Fıskiyesi",
+    "searchName": "turbo üç kollu çim fıskiyesi",
+    "price": "100.00",
+    "box": "60",
+    "pack": "",
+    "image": "Turbo Üç Kollu Çim Fıskiyesi"
+  },
+  {
+    "code": "143",
+    "name": "Beş Kollu Çim Fıskiyesi",
+    "searchName": "beş kollu çim fıskiyesi",
+    "price": "135.00",
+    "box": "50",
+    "pack": "",
+    "image": "Beş Kollu Çim Fıskiyesi"
+  },
+  {
+    "code": "144",
+    "name": "Uzun Meme Üç Kollu Çim Fıskiyesi",
+    "searchName": "uzun meme üç kollu çim fıskiyesi",
+    "price": "95.00",
+    "box": "75",
+    "pack": "",
+    "image": "Uzun Meme Üç Kollu Çim Fıskiyesi"
+  },
+  {
+    "code": "135",
+    "name": "Madeni Döner Çim Fıskiyesi",
+    "searchName": "madeni döner çim fıskiyesi",
+    "price": "270.00",
+    "box": "150",
+    "pack": "",
+    "image": "Madeni Döner Çim Fıskiyesi"
+  },
+  {
+    "code": "197",
+    "name": "Metal Fıskiye Kazığı",
+    "searchName": "metal fıskiye kazığı",
+    "price": "380.00",
+    "box": "250",
+    "pack": "",
+    "image": "Metal Fıskiye Kazı"
+  },
+  {
+    "code": "145",
+    "name": "Jumbo Açılı Fıskiye",
+    "searchName": "jumbo açılı fıskiye",
+    "price": "430.00",
+    "box": "40",
+    "pack": "",
+    "image": "Jumbo Açılı Fıskiye"
+  },
+  {
+    "code": "146",
+    "name": "Sehpa Turbo Üç Kollu Fıskiye",
+    "searchName": "sehpa turbo üç kollu fıskiye",
+    "price": "200.00",
+    "box": "60",
+    "pack": "",
+    "image": "Sehpa Turbo Üç Kollu Fıskiye"
+  },
+  {
+    "code": "147",
+    "name": "Sehpa Beş Kollu Çim Fıskiye",
+    "searchName": "sehpa beş kollu çim fıskiye",
+    "price": "235.00",
+    "box": "50",
+    "pack": "",
+    "image": "Sehpa Beş Kollu Çim Fıskiye"
+  },
+  {
+    "code": "125",
+    "name": "1/2\" Ayarlı Hortum Lansı",
+    "searchName": "1 2\" ayarlı hortum lansı",
+    "price": "68.00",
+    "box": "250",
+    "pack": "10",
+    "image": "Hortum Lansı"
+  },
+  {
+    "code": "126",
+    "name": "3/4\" Ayarlı Hortum Lansı",
+    "searchName": "3 4\" ayarlı hortum lansı",
+    "price": "90.00",
+    "box": "150",
+    "pack": "10",
+    "image": "Hortum Lansı"
+  },
+  {
+    "code": "127",
+    "name": "1\" Ayarlı Hortum Lansı",
+    "searchName": "1\" ayarlı hortum lansı",
+    "price": "280.00",
+    "box": "100",
+    "pack": "",
+    "image": "Hortum Lansı"
+  },
+  {
+    "code": "152",
+    "name": "Krom 6 Nozul Tabanca",
+    "searchName": "krom 6 nozul tabanca",
+    "price": "650.00",
+    "box": "25",
+    "pack": "",
+    "image": "Krom 6 Nozul Tabanca"
+  },
+  {
+    "code": "194",
+    "name": "İthal 6 Nozul Metal Tabanca",
+    "searchName": "i̇thal 6 nozul metal tabanca",
+    "price": "1200.00",
+    "box": "24",
+    "pack": "",
+    "image": "İthal 6 Nozul Metal Tabanca"
+  },
+  {
+    "code": "199",
+    "name": "Metal Su Tabancası",
+    "searchName": "metal su tabancası",
+    "price": "750.00",
+    "box": "48",
+    "pack": "",
+    "image": "Metal Su Tabancası"
+  },
+  {
+    "code": "172",
+    "name": "Tetikli Su Tabancası Jaklı",
+    "searchName": "tetikli su tabancası jaklı",
+    "price": "190.00",
+    "box": "40",
+    "pack": "",
+    "image": "Tetikli Su Tabancası Jaklı"
+  },
+  {
+    "code": "173",
+    "name": "Tetikli Süzek Tabancası Jaklı",
+    "searchName": "tetikli süzek tabancası jaklı",
+    "price": "190.00",
+    "box": "30",
+    "pack": "",
+    "image": "Tetikli Süzek Tabancası Jaklı"
+  },
+  {
+    "code": "348",
+    "name": "Tetikli Su Tabancası 3/4\" Lüks Rekorlu",
+    "searchName": "tetikli su tabancası 3 4\" lüks rekorlu",
+    "price": "210.00",
+    "box": "75",
+    "pack": "",
+    "image": "Su Tabancası"
+  },
+  {
+    "code": "349",
+    "name": "Tetikli Süzek Tabanca 3/4\" Lüks Rekorlu",
+    "searchName": "tetikli süzek tabanca 3 4\" lüks rekorlu",
+    "price": "210.00",
+    "box": "60",
+    "pack": "",
+    "image": "Süzek Tabanca"
+  },
+  {
+    "code": "355",
+    "name": "Süzek Tabanca",
+    "searchName": "süzek tabanca",
+    "price": "105.00",
+    "box": "75",
+    "pack": "",
+    "image": "Süzek Tabanca"
+  },
+  {
+    "code": "356",
+    "name": "1/2\" Lüks Rekorlu Süzek Tabanca",
+    "searchName": "1 2\" lüks rekorlu süzek tabanca",
+    "price": "115.00",
+    "box": "75",
+    "pack": "",
+    "image": "Süzek Tabanca"
+  },
+  {
+    "code": "178",
+    "name": "Lüks Rekorlu 6 Nozul Tabanca",
+    "searchName": "lüks rekorlu 6 nozul tabanca",
+    "price": "315.00",
+    "box": "25",
+    "pack": "",
+    "image": "Lüks Rekorlu 6 Nozul Tabanca"
+  },
+  {
+    "code": "179",
+    "name": "6 Fonksiyonlu Su Tabancası Seti",
+    "searchName": "6 fonksiyonlu su tabancası seti",
+    "price": "440.00",
+    "box": "20",
+    "pack": "",
+    "image": "6 Fonksiyonlu Su Tabancası Seti"
+  },
+  {
+    "code": "188",
+    "name": "İthal Tetikli Su Tabancası",
+    "searchName": "i̇thal tetikli su tabancası",
+    "price": "600.00",
+    "box": "48",
+    "pack": "",
+    "image": "İthal Tetikli Su Tabancası"
+  },
+  {
+    "code": "430",
+    "name": "İthal 6 Nozul Tabanca",
+    "searchName": "i̇thal 6 nozul tabanca",
+    "price": "650.00",
+    "box": "48",
+    "pack": "",
+    "image": "İthal 6 Nozul Tabanca"
+  },
+  {
+    "code": "174",
+    "name": "Tetikli Su Tabancası Rekorlu",
+    "searchName": "tetikli su tabancası rekorlu",
+    "price": "190.00",
+    "box": "40",
+    "pack": "",
+    "image": "Tetikli Su Tabancası Rekorlu"
+  },
+  {
+    "code": "175",
+    "name": "Tetikli Süzek Tabancası Rekorlu",
+    "searchName": "tetikli süzek tabancası rekorlu",
+    "price": "190.00",
+    "box": "30",
+    "pack": "",
+    "image": "Tetikli Süzek Tabancası Rekorlu"
+  },
+  {
+    "code": "176",
+    "name": "Tetikli Su Tabancası 1/2\" Lüks Rekorlu",
+    "searchName": "tetikli su tabancası 1 2\" lüks rekorlu",
+    "price": "190.00",
+    "box": "40",
+    "pack": "",
+    "image": "Su Tabancası"
+  },
+  {
+    "code": "177",
+    "name": "Tetikli Süzek Tabancası 1/2\" Lüks Rekorlu",
+    "searchName": "tetikli süzek tabancası 1 2\" lüks rekorlu",
+    "price": "190.00",
+    "box": "30",
+    "pack": "",
+    "image": "Süzek Tabanca"
+  },
+  {
+    "code": "350",
+    "name": "Hortum Lansı",
+    "searchName": "hortum lansı",
+    "price": "11.00",
+    "box": "1400",
+    "pack": "50",
+    "image": "Hortum Lansı"
+  },
+  {
+    "code": "357",
+    "name": "3/4\" Lüks Rekorlu Süzek Tabanca",
+    "searchName": "3 4\" lüks rekorlu süzek tabanca",
+    "price": "125.00",
+    "box": "75",
+    "pack": "",
+    "image": "Süzek Tabanca"
+  },
+  {
+    "code": "358",
+    "name": "Su Tabancası",
+    "searchName": "su tabancası",
+    "price": "105.00",
+    "box": "100",
+    "pack": "",
+    "image": "Su Tabancası"
+  },
+  {
+    "code": "359",
+    "name": "1/2\" Lüks Rekorlu Su Tabancası",
+    "searchName": "1 2\" lüks rekorlu su tabancası",
+    "price": "115.00",
+    "box": "100",
+    "pack": "",
+    "image": "Su Tabancası"
+  },
+  {
+    "code": "360",
+    "name": "3/4\" Lüks Rekorlu Su Tabancası",
+    "searchName": "3 4\" lüks rekorlu su tabancası",
+    "price": "125.00",
+    "box": "100",
+    "pack": "",
+    "image": "Su Tabancası"
+  },
+  {
+    "code": "149",
+    "name": "Açılı Fıskiye / Yerli Turuncu",
+    "searchName": "açılı fıskiye yerli turuncu",
+    "price": "180.00",
+    "box": "150",
+    "pack": "",
+    "image": "Açılı Fıskiye  Yerli Turuncu"
+  },
+  {
+    "code": "439",
+    "name": "Açılı Fıskiye / Yerli Siyah",
+    "searchName": "açılı fıskiye yerli siyah",
+    "price": "170.00",
+    "box": "150",
+    "pack": "",
+    "image": "Açılı Fıskiye   Yerli Siyah"
+  },
+  {
+    "code": "153",
+    "name": "İthal Açılı Metal Fıskiye",
+    "searchName": "i̇thal açılı metal fıskiye",
+    "price": "1000.00",
+    "box": "50",
+    "pack": "",
+    "image": "İthal Açılı Metal Fıskiye"
+  },
+  {
+    "code": "154",
+    "name": "Plastik Tarla Sulama Fıskiye",
+    "searchName": "plastik tarla sulama fıskiye",
+    "price": "185.00",
+    "box": "75",
+    "pack": "",
+    "image": "Plastik Tarla Sulama Fıskiye"
+  },
+  {
+    "code": "155",
+    "name": "Metal Tarla Sulama Fıskiye",
+    "searchName": "metal tarla sulama fıskiye",
+    "price": "1000.00",
+    "box": "50",
+    "pack": "",
+    "image": "Metal Tarla Sulama Fıskiye"
+  },
+  {
+    "code": "312",
+    "name": "Kazıklı Açılı Fıskiye",
+    "searchName": "kazıklı açılı fıskiye",
+    "price": "290.00",
+    "box": "30",
+    "pack": "",
+    "image": "Kazıklı Açılı Fıskiye"
+  },
+  {
+    "code": "313",
+    "name": "Açısız Çat Çat Fıskiye",
+    "searchName": "açısız çat çat fıskiye",
+    "price": "125.00",
+    "box": "150",
+    "pack": "",
+    "image": "Açısız Çat Çat Fıskiye"
+  },
+  {
+    "code": "535",
+    "name": "Açılı Plastik Tarla Sulama Fıskiye",
+    "searchName": "açılı plastik tarla sulama fıskiye",
+    "price": "215.00",
+    "box": "50",
+    "pack": "",
+    "image": "Açılı Plastik Tarla Sulama Fıskiye"
+  },
+  {
+    "code": "186",
+    "name": "Hortum Tanburu",
+    "searchName": "hortum tanburu",
+    "price": "1950.00",
+    "box": "5",
+    "pack": "",
+    "image": "Hortum Tanburu"
+  },
+  {
+    "code": "181",
+    "name": "Duvar Tipi Hortum Askısı",
+    "searchName": "duvar tipi hortum askısı",
+    "price": "195.00",
+    "box": "6",
+    "pack": "",
+    "image": "Duvar Tipi Hortum Askısı"
+  },
+  {
+    "code": "240",
+    "name": "PVC Bidon Musluğu",
+    "searchName": "pvc bidon musluğu",
+    "price": "100.00",
+    "box": "350",
+    "pack": "25",
+    "image": "PVC Bidon Musluğu"
+  },
+  {
+    "code": "196",
+    "name": "Süzek Kafası",
+    "searchName": "süzek kafası",
+    "price": "38.00",
+    "box": "250",
+    "pack": "",
+    "image": "Süzek Kafası"
+  },
+  {
+    "code": "316",
+    "name": "Çift Taraflı Jak Adaptör",
+    "searchName": "çift taraflı jak adaptör",
+    "price": "32.00",
+    "box": "1250",
+    "pack": "125",
+    "image": "Çift Taraflı Jak Adaptör"
+  },
+  {
+    "code": "182",
+    "name": "Metal Hortum Askısı",
+    "searchName": "metal hortum askısı",
+    "price": "400.00",
+    "box": "30",
+    "pack": "",
+    "image": "Metal Hortum Askısı"
+  },
+  {
+    "code": "185",
+    "name": "Plastik Hortum Askısı",
+    "searchName": "plastik hortum askısı",
+    "price": "185.00",
+    "box": "48",
+    "pack": "",
+    "image": "Plastik Hortum Askısı"
+  },
+  {
+    "code": "189",
+    "name": "Ayarlı Lans Seti",
+    "searchName": "ayarlı lans seti",
+    "price": "280.00",
+    "box": "48",
+    "pack": "",
+    "image": "Ayarlı Lans Seti"
+  },
+  {
+    "code": "284",
+    "name": "1\" Vantuz",
+    "searchName": "1\" vantuz",
+    "price": "130.00",
+    "box": "100",
+    "pack": "",
+    "image": "1\" Vantuz"
+  },
+  {
+    "code": "K001",
+    "name": "PVC Klepe 1\"",
+    "searchName": "pvc klepe 1\"",
+    "price": "455.00",
+    "box": "25",
+    "pack": "",
+    "image": "Klepe"
+  },
+  {
+    "code": "K002",
+    "name": "PVC Klepe 1 1/4\"",
+    "searchName": "pvc klepe 1 1 4\"",
+    "price": "470.00",
+    "box": "25",
+    "pack": "",
+    "image": "Klepe"
+  },
+  {
+    "code": "K003",
+    "name": "PVC Klepe 1 1/2\"",
+    "searchName": "pvc klepe 1 1 2\"",
+    "price": "540.00",
+    "box": "25",
+    "pack": "",
+    "image": "Klepe"
+  },
+  {
+    "code": "K004",
+    "name": "PVC Klepe 2\"",
+    "searchName": "pvc klepe 2\"",
+    "price": "545.00",
+    "box": "25",
+    "pack": "",
+    "image": "Klepe"
+  },
+  {
+    "code": "K005",
+    "name": "PVC Klepe 2 1/2\"",
+    "searchName": "pvc klepe 2 1 2\"",
+    "price": "1450.00",
+    "box": "5",
+    "pack": "",
+    "image": "Klepe"
+  },
+  {
+    "code": "K006",
+    "name": "PVC Klepe 3\"",
+    "searchName": "pvc klepe 3\"",
+    "price": "1460.00",
+    "box": "5",
+    "pack": "",
+    "image": "Klepe"
+  },
+  {
+    "code": "K007",
+    "name": "PVC Klepe 4\"",
+    "searchName": "pvc klepe 4\"",
+    "price": "1600.00",
+    "box": "5",
+    "pack": "",
+    "image": "Klepe"
+  },
+  {
+    "code": "470",
+    "name": "Bitki Destek Çubuğu 9mmx60cm",
+    "searchName": "bitki destek çubuğu 9mmx60cm",
+    "price": "Fiyat Sorunuz",
+    "box": "",
+    "pack": "",
+    "image": "Bitki Destek Çubuğu"
+  },
+  {
+    "code": "471",
+    "name": "Bitki Destek Çubuğu 9mmx75cm",
+    "searchName": "bitki destek çubuğu 9mmx75cm",
+    "price": "Fiyat Sorunuz",
+    "box": "",
+    "pack": "",
+    "image": "Bitki Destek Çubuğu"
+  },
+  {
+    "code": "472",
+    "name": "Bitki Destek Çubuğu 9mmx90cm",
+    "searchName": "bitki destek çubuğu 9mmx90cm",
+    "price": "Fiyat Sorunuz",
+    "box": "",
+    "pack": "",
+    "image": "Bitki Destek Çubuğu"
+  },
+  {
+    "code": "473",
+    "name": "Bitki Destek Çubuğu 9mmx120cm",
+    "searchName": "bitki destek çubuğu 9mmx120cm",
+    "price": "Fiyat Sorunuz",
+    "box": "",
+    "pack": "",
+    "image": "Bitki Destek Çubuğu"
+  },
+  {
+    "code": "474",
+    "name": "Bitki Destek Çubuğu 11mmx150cm",
+    "searchName": "bitki destek çubuğu 11mmx150cm",
+    "price": "Fiyat Sorunuz",
+    "box": "",
+    "pack": "",
+    "image": "Bitki Destek Çubuğu"
+  },
+  {
+    "code": "475",
+    "name": "Bitki Destek Çubuğu 11mmx180cm",
+    "searchName": "bitki destek çubuğu 11mmx180cm",
+    "price": "Fiyat Sorunuz",
+    "box": "",
+    "pack": "",
+    "image": "Bitki Destek Çubuğu"
+  },
+  {
+    "code": "476",
+    "name": "Bitki Destek Çubuğu 16mmx210cm",
+    "searchName": "bitki destek çubuğu 16mmx210cm",
+    "price": "Fiyat Sorunuz",
+    "box": "",
+    "pack": "",
+    "image": "Bitki Destek Çubuğu"
+  },
+  {
+    "code": "395",
+    "name": "Plastik Çim Ayırıcı - Yeşil",
+    "searchName": "plastik çim ayırıcı yeşil",
+    "price": "95.00 / 1 mt.",
+    "box": "",
+    "pack": "25 mt.",
+    "image": "Plastik Çim Ayırıcı"
+  },
+  {
+    "code": "396",
+    "name": "Plastik Çim Ayırıcı - Siyah",
+    "searchName": "plastik çim ayırıcı siyah",
+    "price": "95.00 / 1 mt.",
+    "box": "",
+    "pack": "25 mt.",
+    "image": "Plastik Çim Ayırıcı"
+  },
+  {
+    "code": "397",
+    "name": "Plastik Çim Ayırıcı - Beyaz",
+    "searchName": "plastik çim ayırıcı beyaz",
+    "price": "100.00 / 1 mt.",
+    "box": "",
+    "pack": "25 mt.",
+    "image": "Plastik Çim Ayırıcı"
+  },
+  {
+    "code": "398",
+    "name": "Plastik Çim Ayırıcı - Kahverengi",
+    "searchName": "plastik çim ayırıcı kahverengi",
+    "price": "100.00 / 1 mt.",
+    "box": "",
+    "pack": "25 mt.",
+    "image": "Plastik Çim Ayırıcı"
+  },
+  {
+    "code": "134",
+    "name": "PVC Döner Çim Fıskiyesi",
+    "searchName": "pvc döner çim fıskiyesi",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "PVC Döner Çim Fıskiyesi"
+  }
+]
