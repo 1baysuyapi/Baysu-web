@@ -228,6 +228,7 @@ const pageContent = `
                 <div class="hero-slide" style="background-image: url('resimler/slider/4.jpg');"></div>
                 <div class="hero-slide" style="background-image: url('resimler/slider/5.jpg');"></div>
                 <div class="hero-slide" style="background-image: url('resimler/slider/6.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/7.jpg');"></div>
             </div>
 
             <div class="products-grid">
