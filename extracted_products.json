@@ -11,6 +11,16 @@
   },
   {
     "code": "-",
+    "name": "Lüks El Süzeği",
+    "searchName": "lüks el süzeği",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "Lüks El Süzeği",
+    "actualImageFile": "Lüks El Süzeği.png"
+  },
+  {
+    "code": "-",
     "name": "Uzun El Süzeği Dirsekli",
     "searchName": "uzun el süzeği dirsekli",
     "price": "-",
@@ -20,14 +30,13 @@
     "actualImageFile": "Uzun El Süzeği Dirsekli.png"
   },
   {
-    "code": "-",
-    "name": "Lüks El Süzeği",
-    "searchName": "lüks el süzeği",
-    "price": "-",
-    "box": "-",
-    "pack": "-",
-    "image": "Lüks El Süzeği",
-    "actualImageFile": "Lüks El Süzeği.png"
+    "code": "133",
+    "name": "Uzun El Süzeği",
+    "searchName": "uzun el süzeği",
+    "price": "100.00",
+    "box": "75",
+    "pack": "",
+    "image": "Uzun El Süzeği"
   },
   {
     "code": "138",
@@ -109,15 +118,6 @@
     "box": "250",
     "pack": "",
     "image": "Çift Taraflı Plastik Kazık"
-  },
-  {
-    "code": "133",
-    "name": "Uzun El Süzeği",
-    "searchName": "uzun el süzeği",
-    "price": "100.00",
-    "box": "75",
-    "pack": "",
-    "image": "Uzun El Süzeği"
   },
   {
     "code": "136",
@@ -601,6 +601,16 @@
     "actualImageFile": "1-2” Lüks Rekor.png"
   },
   {
+    "code": "-",
+    "name": "3/4” • 1/2” Lüks Rekor",
+    "searchName": "3/4” • 1/2” lüks rekor",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "3-4” • 1-2” Lüks Rekor",
+    "actualImageFile": "3-4” • 1-2” Lüks Rekor.png"
+  },
+  {
     "code": "240",
     "name": "PVC Bidon Musluğu",
     "searchName": "pvc bidon musluğu",
@@ -636,6 +646,26 @@
     "pack": "-",
     "image": "3-4” Jak Adaptörü",
     "actualImageFile": "3-4” Jak Adaptörü.png"
+  },
+  {
+    "code": "-",
+    "name": "1/2” • 3/4” • 1” 2’li Jak Dağıtıcı",
+    "searchName": "1/2” • 3/4” • 1” 2’li jak dağıtıcı",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "1-2” • 3-4” • 1” 2’li Jak Dağıtıcı",
+    "actualImageFile": "1-2” • 3-4” • 1” 2’li Jak Dağıtıcı.png"
+  },
+  {
+    "code": "-",
+    "name": "1/2” • 3/4” • 1” 4’lü Jak Dağıtıcı",
+    "searchName": "1/2” • 3/4” • 1” 4’lü jak dağıtıcı",
+    "price": "-",
+    "box": "-",
+    "pack": "-",
+    "image": "1-2” • 3-4” • 1” 4’lü Jak Dağıtıcı",
+    "actualImageFile": "1-2” • 3-4” • 1” 4’lü Jak Dağıtıcı.png"
   },
   {
     "code": "182",
@@ -714,15 +744,6 @@
     "actualImageFile": "1-2” PVC Nipel.png"
   },
   {
-    "code": "350",
-    "name": "Hortum Lansı",
-    "searchName": "hortum lansı",
-    "price": "11.00",
-    "box": "1400",
-    "pack": "50",
-    "image": "Hortum Lansı"
-  },
-  {
     "code": "K001",
     "name": "PVC Klepe 1\"",
     "searchName": "pvc klepe 1\"",
@@ -730,6 +751,33 @@
     "box": "25",
     "pack": "",
     "image": "Klepe"
+  },
+  {
+    "code": "470",
+    "name": "Bitki Destek Çubuğu 9mmx60cm",
+    "searchName": "bitki destek çubuğu 9mmx60cm",
+    "price": "Fiyat Sorunuz",
+    "box": "",
+    "pack": "",
+    "image": "Bitki Destek Çubuğu"
+  },
+  {
+    "code": "395",
+    "name": "Plastik Çim Ayırıcı - Yeşil",
+    "searchName": "plastik çim ayırıcı yeşil",
+    "price": "95.00 / 1 mt.",
+    "box": "",
+    "pack": "25 mt.",
+    "image": "Plastik Çim Ayırıcı"
+  },
+  {
+    "code": "350",
+    "name": "Hortum Lansı",
+    "searchName": "hortum lansı",
+    "price": "11.00",
+    "box": "1400",
+    "pack": "50",
+    "image": "Hortum Lansı"
   },
   {
     "code": "K002",
@@ -786,15 +834,6 @@
     "image": "Klepe"
   },
   {
-    "code": "470",
-    "name": "Bitki Destek Çubuğu 9mmx60cm",
-    "searchName": "bitki destek çubuğu 9mmx60cm",
-    "price": "Fiyat Sorunuz",
-    "box": "",
-    "pack": "",
-    "image": "Bitki Destek Çubuğu"
-  },
-  {
     "code": "471",
     "name": "Bitki Destek Çubuğu 9mmx75cm",
     "searchName": "bitki destek çubuğu 9mmx75cm",
@@ -847,15 +886,6 @@
     "box": "",
     "pack": "",
     "image": "Bitki Destek Çubuğu"
-  },
-  {
-    "code": "395",
-    "name": "Plastik Çim Ayırıcı - Yeşil",
-    "searchName": "plastik çim ayırıcı yeşil",
-    "price": "95.00 / 1 mt.",
-    "box": "",
-    "pack": "25 mt.",
-    "image": "Plastik Çim Ayırıcı"
   },
   {
     "code": "396",
@@ -926,26 +956,6 @@
   },
   {
     "code": "-",
-    "name": "1/2” • 3/4” • 1” 2’li Jak Dağıtıcı",
-    "searchName": "1/2” • 3/4” • 1” 2’li jak dağıtıcı",
-    "price": "-",
-    "box": "-",
-    "pack": "-",
-    "image": "1-2” • 3-4” • 1” 2’li Jak Dağıtıcı",
-    "actualImageFile": "1-2” • 3-4” • 1” 2’li Jak Dağıtıcı.png"
-  },
-  {
-    "code": "-",
-    "name": "1/2” • 3/4” • 1” 4’lü Jak Dağıtıcı",
-    "searchName": "1/2” • 3/4” • 1” 4’lü jak dağıtıcı",
-    "price": "-",
-    "box": "-",
-    "pack": "-",
-    "image": "1-2” • 3-4” • 1” 4’lü Jak Dağıtıcı",
-    "actualImageFile": "1-2” • 3-4” • 1” 4’lü Jak Dağıtıcı.png"
-  },
-  {
-    "code": "-",
     "name": "1/2” • 5/8” Hortum Y",
     "searchName": "1/2” • 5/8” hortum y",
     "price": "-",
@@ -993,16 +1003,6 @@
     "pack": "-",
     "image": "3-4” Lüks Rekorlu Süzek Tabanca",
     "actualImageFile": "3-4” Lüks Rekorlu Süzek Tabanca.png"
-  },
-  {
-    "code": "-",
-    "name": "3/4” • 1/2” Lüks Rekor",
-    "searchName": "3/4” • 1/2” lüks rekor",
-    "price": "-",
-    "box": "-",
-    "pack": "-",
-    "image": "3-4” • 1-2” Lüks Rekor",
-    "actualImageFile": "3-4” • 1-2” Lüks Rekor.png"
   },
   {
     "code": "-",
