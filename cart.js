@@ -398,8 +398,8 @@ function parsePrice(str) {
                 var paketQty = addBtn.getAttribute('data-paket');
                 var price = addBtn.getAttribute('data-price');
                 var code = addBtn.getAttribute('data-code');
-                var row = addBtn.closest('tr');
-                var qtyInput = row ? row.querySelector('.qty-input') : null;
+                var container = addBtn.closest('tr') || addBtn.closest('.product-card');
+                var qtyInput = container ? container.querySelector('.qty-input') : null;
 
                 var stepAttr = qtyInput ? qtyInput.getAttribute('step') : null;
                 var stepVal = parseInt(stepAttr) || 1;

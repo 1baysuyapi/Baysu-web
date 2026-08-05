@@ -102,9 +102,9 @@ const pageContent = `
             }
             .hero-text {
                 position: absolute;
-                top: 50%;
+                top: 15%;
                 left: 50%;
-                transform: translate(-50%, -50%);
+                transform: translateX(-50%);
                 z-index: 3;
                 text-align: center;
                 color: #fff;
