@@ -99,6 +99,16 @@
                         }
                     }
                 });
+                card.addEventListener('mouseenter', function(e) {
+                    if (window.matchMedia("(hover: hover)").matches) {
+                        card.classList.add('card-active');
+                    }
+                });
+                card.addEventListener('mouseleave', function(e) {
+                    if (window.matchMedia("(hover: hover)").matches) {
+                        card.classList.remove('card-active');
+                    }
+                });
             })(cards[i]);
         }
     };
