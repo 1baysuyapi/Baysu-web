@@ -215,7 +215,18 @@
                     rawHtml = decodeURIComponent(escape(atob(base64Str)));
                 }
                 var doc = new DOMParser().parseFromString(rawHtml, "text/html");
-                var newMain = doc.querySelector('main') || doc.querySelector('body');
+                var newMain = doc.querySelector('main');
+                if (!newMain) {
+                    var b = doc.querySelector('body');
+                    if (b) {
+                        var elemsToRemove = b.querySelectorAll('header, footer, nav, .top-nav-bar, .main-menu-container, .whatsapp-button');
+                        for(var i = 0; i < elemsToRemove.length; i++) {
+                            elemsToRemove[i].remove();
+                        }
+                        newMain = document.createElement('main');
+                        newMain.innerHTML = b.innerHTML;
+                    }
+                }
                 var currentMain = document.querySelector('main');
                 
                 if (newMain && currentMain) {
