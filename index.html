@@ -186,8 +186,10 @@
         }
         
         .nav-links {
-            display: none;
-            gap: 30px;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            gap: 20px;
         }
 
         .nav-links a {
@@ -753,17 +755,7 @@
         /* Responsive Tasarım */
         @media (min-width: 769px) {
             .nav-links {
-                display: flex;
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .menu-toggle {
-                display: none;
-            }
-            
-            .nav-content {
-                justify-content: center;
+                gap: 30px;
             }
 
             .main-menu-container {
@@ -865,10 +857,6 @@
             <div class="nav-links">
                 <a href='/'><i class="fas fa-home" style="margin-right: 6px;"></i>Ana Sayfa</a>
                 <a href="javascript:void(0)" id="menuToggleDesktop" onclick="event.preventDefault(); event.stopPropagation(); var m = document.getElementById('mainMenuContainer'); if(m) { var isActive = m.classList.toggle('active'); m.style.setProperty('display', isActive ? 'block' : 'none', 'important'); m.style.setProperty('z-index', '999999', 'important'); }"><i class="fas fa-th-large" style="margin-right: 6px;"></i>Ürün Kataloğu</a>
-            </div>
-            <div class="menu-toggle" id="menuToggle" onclick="window.baysuToggleMenu(event)">
-                <i class="fas fa-bars"></i>
-                <span id="menuText">Tüm Ürün Kataloğu</span>
             </div>
         </div>
         <div class="main-menu-container" id="mainMenuContainer">
