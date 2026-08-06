@@ -92,11 +92,25 @@
                     var wasActive = card.classList.contains('card-active');
                     var allCards = document.querySelectorAll('.product-card.card-active');
                     for (var j = 0; j < allCards.length; j++) { allCards[j].classList.remove('card-active'); }
-                    if (!wasActive) { card.classList.add('card-active'); }
+                    if (!wasActive) { 
+                        card.classList.add('card-active'); 
+                        if (window.history && window.history.pushState) {
+                            window.history.pushState({cardOpen: true}, "");
+                        }
+                    }
                 });
             })(cards[i]);
         }
     };
+    
+    window.addEventListener('popstate', function(e) {
+        var activeCards = document.querySelectorAll('.product-card.card-active');
+        if (activeCards.length > 0) {
+            for (var j = 0; j < activeCards.length; j++) {
+                activeCards[j].classList.remove('card-active');
+            }
+        }
+    });
 
     // =============================================
     // FULL ACCORDION SETUP
@@ -219,7 +233,7 @@
                 if (!newMain) {
                     var b = doc.querySelector('body');
                     if (b) {
-                        var elemsToRemove = b.querySelectorAll('header, footer, nav, .top-nav-bar, .main-menu-container, .whatsapp-button');
+                        var elemsToRemove = b.querySelectorAll('header, footer, nav.nav-bar, .main-menu-container, .whatsapp-button');
                         for(var i = 0; i < elemsToRemove.length; i++) {
                             elemsToRemove[i].remove();
                         }
