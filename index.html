@@ -167,7 +167,7 @@
         
         /* Navigasyon Çubuğu */
         .nav-bar {
-            background: #004797;
+            background: linear-gradient(135deg, #0b1727 0%, #002952 100%);
             padding: 0 20px;
             width: 100%;
             position: sticky;
@@ -190,6 +190,7 @@
             width: 100%;
             justify-content: center;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
@@ -765,6 +766,14 @@
         }
         
         @media (max-width: 768px) {
+            .nav-links {
+                gap: 10px;
+                row-gap: 5px;
+            }
+            .nav-links a {
+                font-size: 13px;
+                padding: 10px 0;
+            }
             .logo {
                 max-width: 160px;
             }
@@ -857,6 +866,8 @@
             <div class="nav-links">
                 <a href='/'><i class="fas fa-home" style="margin-right: 6px;"></i>Ana Sayfa</a>
                 <a href="javascript:void(0)" id="menuToggleDesktop" onclick="event.preventDefault(); event.stopPropagation(); var m = document.getElementById('mainMenuContainer'); if(m) { var isActive = m.classList.toggle('active'); m.style.setProperty('display', isActive ? 'block' : 'none', 'important'); m.style.setProperty('z-index', '999999', 'important'); }"><i class="fas fa-th-large" style="margin-right: 6px;"></i>Ürün Kataloğu</a>
+                <a href="#about-section"><i class="fas fa-info-circle" style="margin-right: 6px;"></i>Hakkımızda</a>
+                <a href="#contact-section"><i class="fas fa-envelope" style="margin-right: 6px;"></i>İletişim</a>
             </div>
         </div>
         <div class="main-menu-container" id="mainMenuContainer">
