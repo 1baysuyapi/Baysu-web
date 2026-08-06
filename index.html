@@ -181,13 +181,29 @@
         
         /* Navigasyon Çubuğu */
         .nav-bar {
-            background: #004797;
+            background: linear-gradient(135deg, #0b1727 0%, #002952 100%);
             padding: 0 20px;
             width: 100%;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Override injected kaplin nav-bar */
+        .top-nav-bar {
+            background: linear-gradient(135deg, #0b1727 0%, #002952 100%) !important;
+            padding: 15px 20px !important;
+            border-bottom: 2px solid #004797 !important;
+        }
+        .top-nav-bar .nav-pill-btn {
+            background: rgba(255, 255, 255, 0.1) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        }
+        .top-nav-bar .nav-pill-btn:hover {
+            background: #ffffff !important;
+            color: #0b1727 !important;
         }
 
         .nav-content {
@@ -546,7 +562,14 @@
             overflow: hidden;
         }
 
-        .product-card:hover {
+        @media (hover: hover) {
+            .product-card:hover {
+                transform: translateY(-6px);
+                box-shadow: var(--hover-shadow);
+                border-color: rgba(0, 71, 151, 0.2);
+            }
+        }
+        .product-card.card-active {
             transform: translateY(-6px);
             box-shadow: var(--hover-shadow);
             border-color: rgba(0, 71, 151, 0.2);
@@ -574,7 +597,12 @@
             transition: transform 0.3s ease;
         }
 
-        .product-card:hover img {
+        @media (hover: hover) {
+            .product-card:hover img {
+                transform: scale(1.06);
+            }
+        }
+        .product-card.card-active img {
             transform: scale(1.06);
         }
 
@@ -605,7 +633,13 @@
             gap: 8px;
         }
 
-        .product-card:hover .card-btn {
+        @media (hover: hover) {
+            .product-card:hover .card-btn {
+                background: var(--primary-color);
+                color: #ffffff;
+            }
+        }
+        .product-card.card-active .card-btn {
             background: var(--primary-color);
             color: #ffffff;
         }
@@ -780,6 +814,9 @@
         }
         
         @media (max-width: 768px) {
+            .hide-on-mobile {
+                display: none !important;
+            }
             .nav-links {
                 gap: 10px;
                 row-gap: 5px;
@@ -841,7 +878,14 @@
             background-color: #ffffff;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        body.route-bahce-ekipmanlari .product-card:hover {
+        @media (hover: hover) {
+            body.route-bahce-ekipmanlari .product-card:hover {
+                transform: translateY(-8px) scale(1.02);
+                box-shadow: 0 12px 25px rgba(16, 185, 129, 0.3);
+                border-color: #34d399;
+            }
+        }
+        body.route-bahce-ekipmanlari .product-card.card-active {
             transform: translateY(-8px) scale(1.02);
             box-shadow: 0 12px 25px rgba(16, 185, 129, 0.3);
             border-color: #34d399;
@@ -879,7 +923,9 @@
         <div class="nav-content">
             <div class="nav-links">
                 <a href='/'><i class="fas fa-home" style="margin-right: 6px;"></i>Ana Sayfa</a>
-                <a href="javascript:void(0)" id="menuToggleDesktop" onclick="event.preventDefault(); event.stopPropagation(); var m = document.getElementById('mainMenuContainer'); if(m) { var isActive = m.classList.toggle('active'); m.style.setProperty('display', isActive ? 'block' : 'none', 'important'); m.style.setProperty('z-index', '999999', 'important'); }"><i class="fas fa-th-large" style="margin-right: 6px;"></i>Ürünlerimiz</a>
+                <a href="javascript:void(0)" id="menuToggleDesktop" onclick="event.preventDefault(); event.stopPropagation(); var m = document.getElementById('mainMenuContainer'); if(m) { var isActive = m.classList.toggle('active'); m.style.setProperty('display', isActive ? 'block' : 'none', 'important'); m.style.setProperty('z-index', '999999', 'important'); }"><i class="fas fa-th-large" style="margin-right: 6px;"></i>Ürün Kataloğu</a>
+                <a href="#about-section" class="hide-on-mobile"><i class="fas fa-info-circle" style="margin-right: 6px;"></i>Hakkımızda</a>
+                <a href="#contact-section" class="hide-on-mobile"><i class="fas fa-envelope" style="margin-right: 6px;"></i>İletişim</a>
             </div>
         </div>
         <div class="main-menu-container" id="mainMenuContainer">
