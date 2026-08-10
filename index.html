@@ -1068,6 +1068,54 @@
                     </ul>
                 </li>
             </ul>
+            <div class="main-category-item" onclick="if(event.target.closest('a'))return; event.preventDefault(); event.stopPropagation(); this.classList.toggle('active'); var m = document.getElementById('rekorlar-menu'); if(m) { m.classList.toggle('active'); m.style.setProperty('display', m.classList.contains('active') ? 'grid' : 'none', 'important'); }">
+                <h3>REKORLAR <span class="arrow-icon">&#9658;</span></h3>
+            </div>
+            <ul class="category-group" id="rekorlar-menu">
+                <li class="category-item">
+                    <a href="/cift-tarafli-depo-rekoru" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+                        <div class="category-header">
+                            <h3>Çift Taraflı Depo Rekoru</h3>
+                        </div>
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="/depo-rekoru-ters-dis" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+                        <div class="category-header">
+                            <h3>Depo Rekoru (Ters Diş)</h3>
+                        </div>
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="/sintine-rekoru-ters-dis" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+                        <div class="category-header">
+                            <h3>Sintine Rekoru (Ters Diş)</h3>
+                        </div>
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="/pvc-hortum-rekoru" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+                        <div class="category-header">
+                            <h3>PVC Hortum Rekoru</h3>
+                        </div>
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="/galvanizli-hortum-rekoru" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+                        <div class="category-header">
+                            <h3>Galvanizli Hortum Rekoru</h3>
+                        </div>
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="/ozel-depo-rekoru" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+                        <div class="category-header">
+                            <h3>Özel Depo Rekoru</h3>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
             
             <div class="main-category-item" onclick="if(event.target.closest('a'))return; event.preventDefault(); event.stopPropagation(); this.classList.toggle('active'); var m = document.getElementById('bahce-menu'); if(m) { m.classList.toggle('active'); m.style.setProperty('display', m.classList.contains('active') ? 'grid' : 'none', 'important'); }">
                 <h3>BAHÇE SULAMA SİSTEMLERİ <span class="arrow-icon">&#9658;</span></h3>
@@ -1080,13 +1128,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="category-item">
-                    <a href="/depo-rekorlari" style="text-decoration: none; color: inherit; display: block; width: 100%;">
-                        <div class="category-header">
-                            <h3>Rekorlar</h3>
-                        </div>
-                    </a>
-                </li>
+                
                 <li class="category-item">
                     <a href="/hortum-ek-parcalari" style="text-decoration: none; color: inherit; display: block; width: 100%;">
                         <div class="category-header">
@@ -1439,7 +1481,7 @@
         });
     </script>
     <script src="security.js?v=1024"></script>
-    <script src="data.js?v=1786395791754"></script>
+    <script src="data.js?v=1786396191776"></script>
     <script src="site-engine.js?v=1028"></script>
 </body>
 
