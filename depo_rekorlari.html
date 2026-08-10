@@ -1,113 +1,129 @@
 
-<div class="category-header">
-    <button class="back-btn" onclick="window.history.back()">
+<div class="category-header" style="display:flex; align-items:center; gap:15px; padding: 20px;">
+    <button class="back-btn" onclick="window.history.back()" style="background:none; border:none; color:#1d374f; font-weight:bold; cursor:pointer; display:flex; align-items:center; gap:5px;">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M19 12H5M12 19l-7-7 7-7"/>
         </svg>
         Geri
     </button>
-    <h2>Depo Rekorlar</h2>
+    <h2 style="color:#0a3d7c; margin:0; font-size:24px;">Rekorlar - Ölçü ve Fiyat Listesi</h2>
 </div>
 
 <style>
 .grouped-products-container {
     display: flex;
     flex-direction: column;
-    gap: 40px;
-    padding: 20px 0;
+    padding: 0 20px 40px 20px;
+    background: #fdfdfd;
 }
-.product-group-card {
-    display: flex;
+
+/* ACCORDION STYLES */
+.accordion-item {
     background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    overflow: hidden;
+    border-radius: 8px;
     border: 1px solid #eaeaea;
-}
-.group-image-col {
-    flex: 0 0 250px;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    border-right: 1px solid #eaeaea;
-}
-.group-image-col img {
-    max-width: 100%;
-    height: auto;
-    max-height: 220px;
-    object-fit: contain;
     margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
-.group-image-col h3 {
-    margin: 0;
-    color: #0a3d7c;
-    font-size: 1.2rem;
-    text-align: center;
+.accordion-header {
+    width: 100%;
+    padding: 20px 25px;
+    background: linear-gradient(135deg, #002244 0%, #005599 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 18px;
     font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s, border-radius 0.3s;
 }
-.group-table-col {
-    flex: 1;
+.accordion-header:hover {
+    background: linear-gradient(135deg, #001a33 0%, #004480 100%);
+}
+.accordion-item.active .accordion-header {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.accordion-content {
+    display: none;
+    background: #fff;
+    border-top: 1px solid #002244;
+}
+.accordion-item.active .accordion-content {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+.arrow-icon {
+    font-size: 14px;
+    transition: transform 0.3s;
+}
+.accordion-item.active .arrow-icon {
+    transform: rotate(90deg);
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* PREMIUM BLUE TABLE */
+.table-wrapper {
     overflow-x: auto;
 }
 .premium-table {
     width: 100%;
     border-collapse: collapse;
-    font-family: inherit;
+    font-family: Arial, sans-serif;
+    color: #333;
+    text-align: center;
 }
-.premium-table thead {
-    background-color: #0a3d7c;
-    color: #ffffff;
-}
-.premium-table th {
-    padding: 16px 20px;
-    text-align: left;
-    font-weight: 700;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-}
-.premium-table td {
-    padding: 16px 20px;
-    text-align: left;
-    border-bottom: 1px solid #f0f0f0;
+.premium-table th, .premium-table td {
+    padding: 16px 12px;
     vertical-align: middle;
 }
+.premium-table th {
+    background: linear-gradient(135deg, #002244 0%, #005599 100%);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 14px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+.premium-table th:last-child {
+    border-right: none;
+}
+.premium-table tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+}
 .premium-table tbody tr:nth-child(even) {
-    background-color: #fafbfc;
+    background-color: #f9fbfc;
 }
 .premium-table tbody tr:hover {
     background-color: #f1f6fa;
+}
+.premium-table td {
+    font-size: 15px;
 }
 
 /* EBAT PILL */
 .ebat-pill {
     display: inline-block;
-    border: 1.5px solid #cce0ff;
+    border: 1px solid #cce0ff;
     background-color: #f0f7ff;
-    color: #0a3d7c;
-    border-radius: 20px;
-    padding: 6px 16px;
+    color: #0056b3;
+    border-radius: 6px;
+    padding: 6px 14px;
     font-weight: 700;
     font-size: 14px;
     white-space: nowrap;
 }
-
-/* KOLI TEXT */
-.koli-text {
-    color: #666;
-    font-weight: 600;
-    font-size: 14px;
-}
-
-/* FIYAT TEXT */
+.koli-text { color: #555; font-weight: 500; }
 .fiyat-text {
     color: #0a3d7c;
-    font-weight: 800;
-    font-size: 16px;
+    font-weight: 700;
+    font-size: 15px;
     white-space: nowrap;
 }
 
@@ -119,33 +135,27 @@
     border-radius: 6px;
     overflow: hidden;
     background: #fff;
+    height: 34px;
 }
 .stepper-btn {
     background: #f8f9fa;
     color: #0a3d7c;
     border: none;
     width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 100%;
     cursor: pointer;
     font-weight: bold;
     font-size: 16px;
-    transition: background 0.2s;
-}
-.stepper-btn:hover {
-    background: #e9ecef;
 }
 .stepper-btn.minus { border-right: 1px solid #ced4da; }
 .stepper-btn.plus { border-left: 1px solid #ced4da; }
+.stepper-btn:hover { background: #e9ecef; }
 .qty-stepper input {
-    width: 45px;
-    height: 32px;
+    width: 40px;
+    height: 100%;
     border: none;
     text-align: center;
     font-weight: 700;
-    font-size: 14px;
     color: #333;
     -moz-appearance: textfield;
 }
@@ -155,344 +165,808 @@
     margin: 0;
 }
 
-/* ADD TO CART BTN */
+/* CART BTN */
 .cart-btn {
-    background-color: #0a3d7c;
-    color: white;
+    background: linear-gradient(135deg, #003366 0%, #005599 100%);
+    color: #fff;
     border: none;
     border-radius: 6px;
-    padding: 10px 18px;
-    font-weight: 700;
-    font-size: 14px;
+    padding: 8px 16px;
+    font-weight: bold;
+    font-size: 13px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: background 0.2s, transform 0.1s;
-    box-shadow: 0 2px 4px rgba(10, 61, 124, 0.2);
+    transition: 0.2s;
     white-space: nowrap;
 }
 .cart-btn:hover {
-    background-color: #082d5e;
-}
-.cart-btn:active {
-    transform: scale(0.97);
-}
-.cart-btn svg {
-    width: 16px;
-    height: 16px;
-    fill: currentColor;
-}
-
-@media (max-width: 768px) {
-    .product-group-card {
-        flex-direction: column;
-    }
-    .group-image-col {
-        flex: auto;
-        border-right: none;
-        border-bottom: 1px solid #eaeaea;
-        padding: 20px;
-    }
-    .premium-table th, .premium-table td {
-        padding: 12px 10px;
-    }
+    background: linear-gradient(135deg, #001a33 0%, #004480 100%);
 }
 </style>
 
 <div class="grouped-products-container">
 
-    <!-- GROUP 1: ift Tarafl Depo Rekoru -->
-    <div class="product-group-card">
-        <div class="group-image-col">
-            <img src="resimler/depo_rekorlari/cift_tarafli_depo_rekoru.png" alt="ift Tarafl Depo Rekoru">
-            <h3>ift Tarafl Depo Rekoru</h3>
-        </div>
-        <div class="group-table-col">
-            <table class="premium-table">
-                <thead>
-                    <tr>
-                        <th>EBAT</th>
-                        <th>KOD & KOLI ADEDI</th>
-                        <th>FYAT (TL)</th>
-                        <th>MKTAR</th>
-                        <th>LEM</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><span class="ebat-pill">1/2"</span></td>
-                        <td><span class="koli-text">Kod: 326 (Koli: -)</span></td>
-                        <td><span class="fiyat-text">65,00 TL</span></td>
-                        <td>
-                            <div class="qty-stepper">
-                                <button class="stepper-btn minus" onclick="stepQty('qty-326', -1)">-</button>
-                                <input type="number" id="qty-326" value="1" min="1">
-                                <button class="stepper-btn plus" onclick="stepQty('qty-326', 1)">+</button>
-                            </div>
-                        </td>
-                        <td>
-                            <button class="cart-btn" onclick="addToCartMulti('ift Tarafl Depo Rekoru 1/2&quot;', 65.00, '326', '-', 'qty-326')">
-                                <svg viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
-                                Sepete Ekle
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="ebat-pill">3/4"</span></td>
-                        <td><span class="koli-text">Kod: 327 (Koli: -)</span></td>
-                        <td><span class="fiyat-text">72,00 TL</span></td>
-                        <td>
-                            <div class="qty-stepper">
-                                <button class="stepper-btn minus" onclick="stepQty('qty-327', -1)">-</button>
-                                <input type="number" id="qty-327" value="1" min="1">
-                                <button class="stepper-btn plus" onclick="stepQty('qty-327', 1)">+</button>
-                            </div>
-                        </td>
-                        <td>
-                            <button class="cart-btn" onclick="addToCartMulti('ift Tarafl Depo Rekoru 3/4&quot;', 72.00, '327', '-', 'qty-327')">
-                                <svg viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
-                                Sepete Ekle
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="ebat-pill">1"</span></td>
-                        <td><span class="koli-text">Kod: 328 (Koli: -)</span></td>
-                        <td><span class="fiyat-text">78,00 TL</span></td>
-                        <td>
-                            <div class="qty-stepper">
-                                <button class="stepper-btn minus" onclick="stepQty('qty-328', -1)">-</button>
-                                <input type="number" id="qty-328" value="1" min="1">
-                                <button class="stepper-btn plus" onclick="stepQty('qty-328', 1)">+</button>
-                            </div>
-                        </td>
-                        <td>
-                            <button class="cart-btn" onclick="addToCartMulti('ift Tarafl Depo Rekoru 1&quot;', 78.00, '328', '-', 'qty-328')">
-                                <svg viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
-                                Sepete Ekle
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+            Çift Taraflı Depo Rekoru <span class="arrow-icon">&#9658;</span>
+        </button>
+        <div class="accordion-content">
+            <div class="table-wrapper">
+                <table class="premium-table">
+                    <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
+                    <tbody><tr>
+            <td style="font-weight:bold;">326</td>
+            <td><span class="ebat-pill">1/2"</span></td>
+            <td><span class="koli-text">-</span></td>
+            <td><span class="fiyat-text">65,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-326'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-326" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-326'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-326').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Çift Taraflı Depo Rekoru 1/2&quot;', 65.00, '326', '-'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">327</td>
+            <td><span class="ebat-pill">3/4"</span></td>
+            <td><span class="koli-text">-</span></td>
+            <td><span class="fiyat-text">72,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-327'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-327" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-327'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-327').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Çift Taraflı Depo Rekoru 3/4&quot;', 72.00, '327', '-'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">328</td>
+            <td><span class="ebat-pill">1"</span></td>
+            <td><span class="koli-text">-</span></td>
+            <td><span class="fiyat-text">78,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-328'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-328" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-328'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-328').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Çift Taraflı Depo Rekoru 1&quot;', 78.00, '328', '-'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr></tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-    <!-- GROUP 2: Depo Rekoru - Ters Di -->
-    <div class="product-group-card">
-        <div class="group-image-col">
-            <img src="resimler/depo_rekorlari/depo_rekoru_ters_dis.png" alt="Depo Rekoru Ters Di">
-            <h3>Depo Rekoru (Ters Di)</h3>
-        </div>
-        <div class="group-table-col">
-            <table class="premium-table">
-                <thead>
-                    <tr><th>EBAT</th><th>KOD & KOLI ADEDI</th><th>FYAT (TL)</th><th>MKTAR</th><th>LEM</th></tr>
-                </thead>
-                <tbody id="group2-body">
-                </tbody>
-            </table>
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+            Depo Rekoru (Ters Diş) <span class="arrow-icon">&#9658;</span>
+        </button>
+        <div class="accordion-content">
+            <div class="table-wrapper">
+                <table class="premium-table">
+                    <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
+                    <tbody><tr>
+            <td style="font-weight:bold;">275</td>
+            <td><span class="ebat-pill">1/2"</span></td>
+            <td><span class="koli-text">400 Adet</span></td>
+            <td><span class="fiyat-text">83,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-275'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-275" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-275'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-275').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Depo Rekoru Ters Diş 1/2&quot;', 83.00, '275', '400'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">276</td>
+            <td><span class="ebat-pill">3/4"</span></td>
+            <td><span class="koli-text">400 Adet</span></td>
+            <td><span class="fiyat-text">83,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-276'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-276" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-276'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-276').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Depo Rekoru Ters Diş 3/4&quot;', 83.00, '276', '400'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">277</td>
+            <td><span class="ebat-pill">1"</span></td>
+            <td><span class="koli-text">250 Adet</span></td>
+            <td><span class="fiyat-text">90,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-277'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-277" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-277'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-277').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Depo Rekoru Ters Diş 1&quot;', 90.00, '277', '250'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">278</td>
+            <td><span class="ebat-pill">1 1/4"</span></td>
+            <td><span class="koli-text">125 Adet</span></td>
+            <td><span class="fiyat-text">135,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-278'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-278" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-278'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-278').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Depo Rekoru Ters Diş 1 1/4&quot;', 135.00, '278', '125'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">279</td>
+            <td><span class="ebat-pill">1 1/2"</span></td>
+            <td><span class="koli-text">125 Adet</span></td>
+            <td><span class="fiyat-text">150,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-279'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-279" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-279'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-279').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Depo Rekoru Ters Diş 1 1/2&quot;', 150.00, '279', '125'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">280</td>
+            <td><span class="ebat-pill">2"</span></td>
+            <td><span class="koli-text">75 Adet</span></td>
+            <td><span class="fiyat-text">185,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-280'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-280" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-280'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-280').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Depo Rekoru Ters Diş 2&quot;', 185.00, '280', '75'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">281</td>
+            <td><span class="ebat-pill">3"</span></td>
+            <td><span class="koli-text">25 Adet</span></td>
+            <td><span class="fiyat-text">420,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-281'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-281" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-281'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-281').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Depo Rekoru Ters Diş 3&quot;', 420.00, '281', '25'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">282</td>
+            <td><span class="ebat-pill">4"</span></td>
+            <td><span class="koli-text">18 Adet</span></td>
+            <td><span class="fiyat-text">540,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-282'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-282" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-282'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-282').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Depo Rekoru Ters Diş 4&quot;', 540.00, '282', '18'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr></tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-    <!-- GROUP 3: Sintine Rekoru - Ters Di -->
-    <div class="product-group-card">
-        <div class="group-image-col">
-            <img src="resimler/depo_rekorlari/sintine_rekoru_ters_dis.png" alt="Sintine Rekoru Ters Di">
-            <h3>Sintine Rekoru (Ters Di)</h3>
-        </div>
-        <div class="group-table-col">
-            <table class="premium-table">
-                <thead>
-                    <tr><th>EBAT</th><th>KOD & KOLI ADEDI</th><th>FYAT (TL)</th><th>MKTAR</th><th>LEM</th></tr>
-                </thead>
-                <tbody id="group3-body">
-                </tbody>
-            </table>
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+            Sintine Rekoru (Ters Diş) <span class="arrow-icon">&#9658;</span>
+        </button>
+        <div class="accordion-content">
+            <div class="table-wrapper">
+                <table class="premium-table">
+                    <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
+                    <tbody><tr>
+            <td style="font-weight:bold;">236</td>
+            <td><span class="ebat-pill">3/4"</span></td>
+            <td><span class="koli-text">350 Adet</span></td>
+            <td><span class="fiyat-text">80,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-236'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-236" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-236'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-236').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Sintine Rekoru Ters Diş 3/4&quot;', 80.00, '236', '350'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">237</td>
+            <td><span class="ebat-pill">1"</span></td>
+            <td><span class="koli-text">200 Adet</span></td>
+            <td><span class="fiyat-text">80,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-237'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-237" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-237'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-237').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Sintine Rekoru Ters Diş 1&quot;', 80.00, '237', '200'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">238</td>
+            <td><span class="ebat-pill">1 1/4"</span></td>
+            <td><span class="koli-text">125 Adet</span></td>
+            <td><span class="fiyat-text">115,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-238'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-238" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-238'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-238').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Sintine Rekoru Ters Diş 1 1/4&quot;', 115.00, '238', '125'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">239</td>
+            <td><span class="ebat-pill">1 1/2"</span></td>
+            <td><span class="koli-text">125 Adet</span></td>
+            <td><span class="fiyat-text">130,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-239'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-239" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-239'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-239').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Sintine Rekoru Ters Diş 1 1/2&quot;', 130.00, '239', '125'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr></tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-    <!-- GROUP 4: PVC Hortum Rekoru -->
-    <div class="product-group-card">
-        <div class="group-image-col">
-            <img src="resimler/depo_rekorlari/pvc_hortum_rekoru.png" alt="PVC Hortum Rekoru">
-            <h3>PVC Hortum Rekoru</h3>
-        </div>
-        <div class="group-table-col">
-            <table class="premium-table">
-                <thead>
-                    <tr><th>EBAT</th><th>KOD & KOLI ADEDI</th><th>FYAT (TL)</th><th>MKTAR</th><th>LEM</th></tr>
-                </thead>
-                <tbody id="group4-body">
-                </tbody>
-            </table>
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+            PVC Hortum Rekoru <span class="arrow-icon">&#9658;</span>
+        </button>
+        <div class="accordion-content">
+            <div class="table-wrapper">
+                <table class="premium-table">
+                    <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
+                    <tbody><tr>
+            <td style="font-weight:bold;">241</td>
+            <td><span class="ebat-pill">1/2"</span></td>
+            <td><span class="koli-text">1250 Adet</span></td>
+            <td><span class="fiyat-text">13,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-241'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-241" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-241'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-241').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('PVC Hortum Rekoru 1/2&quot;', 13.00, '241', '1250'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">242</td>
+            <td><span class="ebat-pill">3/4"</span></td>
+            <td><span class="koli-text">1000 Adet</span></td>
+            <td><span class="fiyat-text">14,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-242'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-242" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-242'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-242').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('PVC Hortum Rekoru 3/4&quot;', 14.00, '242', '1000'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">243</td>
+            <td><span class="ebat-pill">1"</span></td>
+            <td><span class="koli-text">500 Adet</span></td>
+            <td><span class="fiyat-text">27,50 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-243'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-243" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-243'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-243').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('PVC Hortum Rekoru 1&quot;', 27.50, '243', '500'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">244</td>
+            <td><span class="ebat-pill">1 1/4"</span></td>
+            <td><span class="koli-text">300 Adet</span></td>
+            <td><span class="fiyat-text">32,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-244'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-244" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-244'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-244').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('PVC Hortum Rekoru 1 1/4&quot;', 32.00, '244', '300'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">245</td>
+            <td><span class="ebat-pill">1 1/2"</span></td>
+            <td><span class="koli-text">200 Adet</span></td>
+            <td><span class="fiyat-text">40,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-245'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-245" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-245'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-245').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('PVC Hortum Rekoru 1 1/2&quot;', 40.00, '245', '200'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">246</td>
+            <td><span class="ebat-pill">2"</span></td>
+            <td><span class="koli-text">120 Adet</span></td>
+            <td><span class="fiyat-text">67,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-246'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-246" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-246'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-246').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('PVC Hortum Rekoru 2&quot;', 67.00, '246', '120'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">247</td>
+            <td><span class="ebat-pill">2 1/2"</span></td>
+            <td><span class="koli-text">75 Adet</span></td>
+            <td><span class="fiyat-text">90,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-247'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-247" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-247'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-247').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('PVC Hortum Rekoru 2 1/2&quot;', 90.00, '247', '75'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">248</td>
+            <td><span class="ebat-pill">3"</span></td>
+            <td><span class="koli-text">40 Adet</span></td>
+            <td><span class="fiyat-text">145,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-248'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-248" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-248'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-248').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('PVC Hortum Rekoru 3&quot;', 145.00, '248', '40'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">249</td>
+            <td><span class="ebat-pill">4"</span></td>
+            <td><span class="koli-text">25 Adet</span></td>
+            <td><span class="fiyat-text">200,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-249'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-249" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-249'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-249').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('PVC Hortum Rekoru 4&quot;', 200.00, '249', '25'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr></tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-    <!-- GROUP 5: Galvanizli Hortum Rekoru -->
-    <div class="product-group-card">
-        <div class="group-image-col">
-            <img src="resimler/depo_rekorlari/galvanizli_hortum_rekoru.png" alt="Galvanizli Hortum Rekoru">
-            <h3>Galvanizli Hortum Rekoru</h3>
-        </div>
-        <div class="group-table-col">
-            <table class="premium-table">
-                <thead>
-                    <tr><th>EBAT</th><th>KOD & KOLI ADEDI</th><th>FYAT (TL)</th><th>MKTAR</th><th>LEM</th></tr>
-                </thead>
-                <tbody id="group5-body">
-                </tbody>
-            </table>
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+            Galvanizli Hortum Rekoru <span class="arrow-icon">&#9658;</span>
+        </button>
+        <div class="accordion-content">
+            <div class="table-wrapper">
+                <table class="premium-table">
+                    <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
+                    <tbody><tr>
+            <td style="font-weight:bold;">251</td>
+            <td><span class="ebat-pill">1/2"</span></td>
+            <td><span class="koli-text">500 Adet</span></td>
+            <td><span class="fiyat-text">70,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-251'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-251" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-251'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-251').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Galvanizli Hortum Rekoru 1/2&quot;', 70.00, '251', '500'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">252</td>
+            <td><span class="ebat-pill">3/4"</span></td>
+            <td><span class="koli-text">300 Adet</span></td>
+            <td><span class="fiyat-text">80,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-252'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-252" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-252'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-252').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Galvanizli Hortum Rekoru 3/4&quot;', 80.00, '252', '300'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">253</td>
+            <td><span class="ebat-pill">1"</span></td>
+            <td><span class="koli-text">200 Adet</span></td>
+            <td><span class="fiyat-text">95,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-253'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-253" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-253'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-253').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Galvanizli Hortum Rekoru 1&quot;', 95.00, '253', '200'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">254</td>
+            <td><span class="ebat-pill">1 1/4"</span></td>
+            <td><span class="koli-text">100 Adet</span></td>
+            <td><span class="fiyat-text">110,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-254'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-254" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-254'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-254').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Galvanizli Hortum Rekoru 1 1/4&quot;', 110.00, '254', '100'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">255</td>
+            <td><span class="ebat-pill">1 1/2"</span></td>
+            <td><span class="koli-text">100 Adet</span></td>
+            <td><span class="fiyat-text">130,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-255'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-255" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-255'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-255').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Galvanizli Hortum Rekoru 1 1/2&quot;', 130.00, '255', '100'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">256</td>
+            <td><span class="ebat-pill">2"</span></td>
+            <td><span class="koli-text">60 Adet</span></td>
+            <td><span class="fiyat-text">175,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-256'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-256" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-256'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-256').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Galvanizli Hortum Rekoru 2&quot;', 175.00, '256', '60'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">257</td>
+            <td><span class="ebat-pill">2 1/2"</span></td>
+            <td><span class="koli-text">30 Adet</span></td>
+            <td><span class="fiyat-text">215,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-257'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-257" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-257'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-257').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Galvanizli Hortum Rekoru 2 1/2&quot;', 215.00, '257', '30'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">258</td>
+            <td><span class="ebat-pill">3"</span></td>
+            <td><span class="koli-text">24 Adet</span></td>
+            <td><span class="fiyat-text">320,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-258'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-258" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-258'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-258').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Galvanizli Hortum Rekoru 3&quot;', 320.00, '258', '24'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">259</td>
+            <td><span class="ebat-pill">4"</span></td>
+            <td><span class="koli-text">30 Adet</span></td>
+            <td><span class="fiyat-text">530,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-259'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-259" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-259'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-259').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Galvanizli Hortum Rekoru 4&quot;', 530.00, '259', '30'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr></tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-    <!-- GROUP 6: zel Depo Rekoru -->
-    <div class="product-group-card">
-        <div class="group-image-col">
-            <img src="resimler/depo_rekorlari/ozel_depo_rekoru.png" alt="zel Depo Rekoru">
-            <h3>zel Depo Rekoru</h3>
-        </div>
-        <div class="group-table-col">
-            <table class="premium-table">
-                <thead>
-                    <tr><th>EBAT</th><th>KOD & KOLI ADEDI</th><th>FYAT (TL)</th><th>MKTAR</th><th>LEM</th></tr>
-                </thead>
-                <tbody id="group6-body">
-                </tbody>
-            </table>
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+            Özel Depo Rekoru <span class="arrow-icon">&#9658;</span>
+        </button>
+        <div class="accordion-content">
+            <div class="table-wrapper">
+                <table class="premium-table">
+                    <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
+                    <tbody><tr>
+            <td style="font-weight:bold;">318</td>
+            <td><span class="ebat-pill">1/2"</span></td>
+            <td><span class="koli-text">200 Adet</span></td>
+            <td><span class="fiyat-text">65,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-318'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-318" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-318'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-318').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Özel Depo Rekoru 1/2&quot;', 65.00, '318', '200'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">319</td>
+            <td><span class="ebat-pill">3/4"</span></td>
+            <td><span class="koli-text">200 Adet</span></td>
+            <td><span class="fiyat-text">65,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-319'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-319" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-319'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-319').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Özel Depo Rekoru 3/4&quot;', 65.00, '319', '200'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">320</td>
+            <td><span class="ebat-pill">1"</span></td>
+            <td><span class="koli-text">200 Adet</span></td>
+            <td><span class="fiyat-text">65,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-320'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-320" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-320'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-320').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Özel Depo Rekoru 1&quot;', 65.00, '320', '200'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">321</td>
+            <td><span class="ebat-pill">1 1/4"</span></td>
+            <td><span class="koli-text">180 Adet</span></td>
+            <td><span class="fiyat-text">65,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-321'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-321" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-321'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-321').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Özel Depo Rekoru 1 1/4&quot;', 65.00, '321', '180'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">322</td>
+            <td><span class="ebat-pill">1 1/2"</span></td>
+            <td><span class="koli-text">160 Adet</span></td>
+            <td><span class="fiyat-text">65,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-322'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-322" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-322'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-322').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Özel Depo Rekoru 1 1/2&quot;', 65.00, '322', '160'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">323</td>
+            <td><span class="ebat-pill">2"</span></td>
+            <td><span class="koli-text">150 Adet</span></td>
+            <td><span class="fiyat-text">65,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-323'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-323" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-323'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-323').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Özel Depo Rekoru 2&quot;', 65.00, '323', '150'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">324</td>
+            <td><span class="ebat-pill">2 1/2" (l)</span></td>
+            <td><span class="koli-text">-</span></td>
+            <td><span class="fiyat-text">220,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-324'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-324" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-324'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-324').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Özel Depo Rekoru 2 1/2&quot; (l)', 220.00, '324', '-'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr><tr>
+            <td style="font-weight:bold;">325</td>
+            <td><span class="ebat-pill">3" (l)</span></td>
+            <td><span class="koli-text">-</span></td>
+            <td><span class="fiyat-text">235,00 TL</span></td>
+            <td>
+                <div class="qty-stepper" onclick="event.stopPropagation()">
+                    <button type="button" class="stepper-btn minus" onclick="var inp=document.getElementById('qty-325'); if(inp.value>1) inp.value--">-</button>
+                    <input type="number" id="qty-325" value="1" min="1">
+                    <button type="button" class="stepper-btn plus" onclick="var inp=document.getElementById('qty-325'); inp.value++">+</button>
+                </div>
+            </td>
+            <td>
+                <button class="cart-btn" type="button" onclick="var q=parseInt(document.getElementById('qty-325').value)||1; if(window.addToCart){ for(var i=0;i<q;i++) window.addToCart('Özel Depo Rekoru 3&quot; (l)', 235.00, '325', '-'); alert(q + ' adet sepete eklendi!'); } else { alert('Sepet sistemi hazır değil'); }">
+                    <svg viewBox="0 0 576 512" style="width:14px; height:14px; fill:currentColor;"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Sepete Ekle
+                </button>
+            </td>
+        </tr></tbody>
+                </table>
+            </div>
         </div>
     </div>
 
 </div>
-
-<script>
-// Data arrays
-const grp2 = [
-    {kod:'275', ebat:'1/2"', fiyat:'83.00', koli:'400'},
-    {kod:'276', ebat:'3/4"', fiyat:'83.00', koli:'400'},
-    {kod:'277', ebat:'1"', fiyat:'90.00', koli:'250'},
-    {kod:'278', ebat:'1 1/4"', fiyat:'135.00', koli:'125'},
-    {kod:'279', ebat:'1 1/2"', fiyat:'150.00', koli:'125'},
-    {kod:'280', ebat:'2"', fiyat:'185.00', koli:'75'},
-    {kod:'281', ebat:'3"', fiyat:'420.00', koli:'25'},
-    {kod:'282', ebat:'4"', fiyat:'540.00', koli:'18'}
-];
-const grp3 = [
-    {kod:'236', ebat:'3/4"', fiyat:'80.00', koli:'350'},
-    {kod:'237', ebat:'1"', fiyat:'80.00', koli:'200'},
-    {kod:'238', ebat:'1 1/4"', fiyat:'115.00', koli:'125'},
-    {kod:'239', ebat:'1 1/2"', fiyat:'130.00', koli:'125'}
-];
-const grp4 = [
-    {kod:'241', ebat:'1/2"', fiyat:'13.00', koli:'1250'},
-    {kod:'242', ebat:'3/4"', fiyat:'14.00', koli:'1000'},
-    {kod:'243', ebat:'1"', fiyat:'27.50', koli:'500'},
-    {kod:'244', ebat:'1 1/4"', fiyat:'32.00', koli:'300'},
-    {kod:'245', ebat:'1 1/2"', fiyat:'40.00', koli:'200'},
-    {kod:'246', ebat:'2"', fiyat:'67.00', koli:'120'},
-    {kod:'247', ebat:'2 1/2"', fiyat:'90.00', koli:'75'},
-    {kod:'248', ebat:'3"', fiyat:'145.00', koli:'40'},
-    {kod:'249', ebat:'4"', fiyat:'200.00', koli:'25'}
-];
-const grp5 = [
-    {kod:'251', ebat:'1/2"', fiyat:'70.00', koli:'500'},
-    {kod:'252', ebat:'3/4"', fiyat:'80.00', koli:'300'},
-    {kod:'253', ebat:'1"', fiyat:'95.00', koli:'200'},
-    {kod:'254', ebat:'1 1/4"', fiyat:'110.00', koli:'100'},
-    {kod:'255', ebat:'1 1/2"', fiyat:'130.00', koli:'100'},
-    {kod:'256', ebat:'2"', fiyat:'175.00', koli:'60'},
-    {kod:'257', ebat:'2 1/2"', fiyat:'215.00', koli:'30'},
-    {kod:'258', ebat:'3"', fiyat:'320.00', koli:'24'},
-    {kod:'259', ebat:'4"', fiyat:'530.00', koli:'30'}
-];
-const grp6 = [
-    {kod:'318', ebat:'1/2"', fiyat:'65.00', koli:'200'},
-    {kod:'319', ebat:'3/4"', fiyat:'65.00', koli:'200'},
-    {kod:'320', ebat:'1"', fiyat:'65.00', koli:'200'},
-    {kod:'321', ebat:'1 1/4"', fiyat:'65.00', koli:'180'},
-    {kod:'322', ebat:'1 1/2"', fiyat:'65.00', koli:'160'},
-    {kod:'323', ebat:'2"', fiyat:'65.00', koli:'150'},
-    {kod:'324', ebat:'2 1/2" (l)', fiyat:'220.00', koli:'-'},
-    {kod:'325', ebat:'3" (l)', fiyat:'235.00', koli:'-'}
-];
-
-const svgIcon = '<svg viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>';
-
-function renderTable(groupArr, tbodyId, namePrefix) {
-    const tbody = document.getElementById(tbodyId);
-    if(!tbody) return;
-    
-    let html = '';
-    groupArr.forEach(item => {
-        let fmtFiyat = item.fiyat.replace('.', ',') + ' TL';
-        html += `<tr>
-            <td><span class="ebat-pill">${item.ebat}</span></td>
-            <td><span class="koli-text">Kod: ${item.kod} (Koli: ${item.koli})</span></td>
-            <td><span class="fiyat-text">${fmtFiyat}</span></td>
-            <td>
-                <div class="qty-stepper">
-                    <button class="stepper-btn minus" onclick="stepQty('qty-${item.kod}', -1)">-</button>
-                    <input type="number" id="qty-${item.kod}" value="1" min="1">
-                    <button class="stepper-btn plus" onclick="stepQty('qty-${item.kod}', 1)">+</button>
-                </div>
-            </td>
-            <td>
-                <button class="cart-btn" onclick="addToCartMulti('${namePrefix} ${item.ebat.replace(/"/g, '&quot;')}', ${item.fiyat}, '${item.kod}', '${item.koli}', 'qty-${item.kod}')">
-                    ${svgIcon} Sepete Ekle
-                </button>
-            </td>
-        </tr>`;
-    });
-    tbody.innerHTML = html;
-}
-
-// Ensure DOM is ready, though this script is at the bottom of the snippet
-setTimeout(() => {
-    renderTable(grp2, 'group2-body', 'Depo Rekoru Ters Di');
-    renderTable(grp3, 'group3-body', 'Sintine Rekoru Ters Di');
-    renderTable(grp4, 'group4-body', 'PVC Hortum Rekoru');
-    renderTable(grp5, 'group5-body', 'Galvanizli Hortum Rekoru');
-    renderTable(grp6, 'group6-body', 'zel Depo Rekoru');
-}, 0);
-
-window.stepQty = function(inputId, step) {
-    const inp = document.getElementById(inputId);
-    if(inp) {
-        let val = parseInt(inp.value, 10) || 1;
-        val += step;
-        if(val < 1) val = 1;
-        inp.value = val;
-    }
-};
-
-window.addToCartMulti = function(name, price, code, box, inputId) {
-    const qtyInput = document.getElementById(inputId);
-    let qty = 1;
-    if (qtyInput && qtyInput.value) {
-        qty = parseInt(qtyInput.value, 10) || 1;
-    }
-    
-    if (typeof window.addToCart === 'function') {
-        for (let i = 0; i < qty; i++) {
-            window.addToCart(name, price, code, box);
-        }
-        
-        const alertBox = document.createElement('div');
-        alertBox.style.position = 'fixed';
-        alertBox.style.top = '20px';
-        alertBox.style.right = '20px';
-        alertBox.style.background = '#0a3d7c';
-        alertBox.style.color = 'white';
-        alertBox.style.padding = '15px 25px';
-        alertBox.style.borderRadius = '5px';
-        alertBox.style.boxShadow = '0 4px 6px rgba(0,0,0,0.2)';
-        alertBox.style.zIndex = '999999';
-        alertBox.innerHTML = `${qty} adet '${name}' sepete eklendi!`;
-        document.body.appendChild(alertBox);
-        setTimeout(() => alertBox.remove(), 2500);
-    } else {
-        alert("Sepet sistemi hazr deil!");
-    }
-};
-</script>
