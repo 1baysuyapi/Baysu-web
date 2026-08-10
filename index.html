@@ -933,8 +933,8 @@
             <div class="nav-links">
                 <a href='/'><i class="fas fa-home" style="margin-right: 6px;"></i>Ana Sayfa</a>
                 <a href="javascript:void(0)" id="menuToggleDesktop" onclick="event.preventDefault(); event.stopPropagation(); var m = document.getElementById('mainMenuContainer'); if(m) { var isActive = m.classList.toggle('active'); m.style.setProperty('display', isActive ? 'block' : 'none', 'important'); m.style.setProperty('z-index', '999999', 'important'); }"><i class="fas fa-th-large" style="margin-right: 6px;"></i>Ürün Kataloğu</a>
-                <a href="#about-section" class="hide-on-mobile"><i class="fas fa-info-circle" style="margin-right: 6px;"></i>Hakkımızda</a>
-                <a href="#contact-section" class="hide-on-mobile"><i class="fas fa-envelope" style="margin-right: 6px;"></i>İletişim</a>
+                <a href="/#about-section" class="hide-on-mobile"><i class="fas fa-info-circle" style="margin-right: 6px;"></i>Hakkımızda</a>
+                <a href="/#contact-section" class="hide-on-mobile"><i class="fas fa-envelope" style="margin-right: 6px;"></i>İletişim</a>
             </div>
         </div>
         <div class="main-menu-container" id="mainMenuContainer">
@@ -1286,12 +1286,7 @@
     <script src="cart.js?v=1785927697338"></script>
         <script>
         // HakkÄ±mÄ±zda ve Ä°letiÅŸim linklerini sadece ana sayfada gÃ¶ster
-        document.addEventListener('DOMContentLoaded', () => {
-            const path = window.location.pathname;
-            if (path !== '/' && path !== '/index.html' && !path.endsWith('/Baysu-web/') && !path.endsWith('/Baysu-web/index.html')) {
-                document.querySelectorAll('a[href="#about-section"], a[href="#contact-section"]').forEach(el => el.style.display = 'none');
-            }
-        });
+        
 
         // Global function for Menu Toggle
         window.baysuToggleMenu = function(e) {
@@ -1457,7 +1452,7 @@
         });
     </script>
     <script src="security.js?v=1024"></script>
-    <script src="data.js?v=1786397175312"></script>
+    <script src="data.js?v=1786397359786"></script>
     <script src="site-engine.js?v=1028"></script>
 </body>
 
