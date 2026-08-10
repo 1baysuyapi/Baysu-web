@@ -97,56 +97,73 @@ const htmlDoc = `
         </svg>
         Geri
     </button>
-    <h2 style="color:#0a3d7c; margin:0; font-size:24px;">Ölçü ve Fiyat Listesi</h2>
+    <h2 style="color:#0a3d7c; margin:0; font-size:24px;">Rekorlar - Ölçü ve Fiyat Listesi</h2>
 </div>
 
 <style>
 .grouped-products-container {
     display: flex;
     flex-direction: column;
-    gap: 40px;
-    padding: 20px;
+    padding: 0 20px 40px 20px;
     background: #fdfdfd;
 }
-.product-group-card {
-    display: flex;
-    flex-direction: row;
+
+/* ACCORDION STYLES */
+.accordion-item {
     background: #fff;
     border-radius: 8px;
-    overflow: hidden;
     border: 1px solid #eaeaea;
+    margin-bottom: 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
-.group-image-col {
-    flex: 0 0 250px;
-    padding: 20px;
+.accordion-header {
+    width: 100%;
+    padding: 20px 25px;
+    background: linear-gradient(135deg, #002244 0%, #005599 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    border-right: 1px solid #eaeaea;
-    background: #ffffff;
+    transition: background 0.3s, border-radius 0.3s;
 }
-.group-image-col img {
-    max-width: 100%;
-    height: auto;
-    max-height: 200px;
-    object-fit: contain;
-    margin-bottom: 15px;
+.accordion-header:hover {
+    background: linear-gradient(135deg, #001a33 0%, #004480 100%);
 }
-.group-image-col h3 {
-    margin: 0;
-    color: #0a3d7c;
-    font-size: 1.1rem;
-    text-align: center;
-    font-weight: bold;
+.accordion-item.active .accordion-header {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
-.group-table-col {
-    flex: 1;
-    overflow-x: auto;
+.accordion-content {
+    display: none;
+    background: #fff;
+    border-top: 1px solid #002244;
+}
+.accordion-item.active .accordion-content {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+.arrow-icon {
+    font-size: 14px;
+    transition: transform 0.3s;
+}
+.accordion-item.active .arrow-icon {
+    transform: rotate(90deg);
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* PREMIUM BLUE TABLE */
+.table-wrapper {
+    overflow-x: auto;
+}
 .premium-table {
     width: 100%;
     border-collapse: collapse;
@@ -159,11 +176,11 @@ const htmlDoc = `
     vertical-align: middle;
 }
 .premium-table th {
-    background-color: #003e82;
+    background: linear-gradient(135deg, #002244 0%, #005599 100%);
     color: #ffffff;
     font-weight: 700;
     font-size: 14px;
-    border-right: 1px solid #144e91;
+    border-right: 1px solid rgba(255,255,255,0.1);
 }
 .premium-table th:last-child {
     border-right: none;
@@ -241,7 +258,7 @@ const htmlDoc = `
 
 /* CART BTN */
 .cart-btn {
-    background-color: #0a4f9e;
+    background: linear-gradient(135deg, #003366 0%, #005599 100%);
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -256,91 +273,93 @@ const htmlDoc = `
     white-space: nowrap;
 }
 .cart-btn:hover {
-    background-color: #083b7a;
-}
-@media (max-width: 768px) {
-    .product-group-card { flex-direction: column; }
-    .group-image-col { border-right: none; border-bottom: 1px solid #eaeaea; }
+    background: linear-gradient(135deg, #001a33 0%, #004480 100%);
 }
 </style>
 
 <div class="grouped-products-container">
 
-    <div class="product-group-card">
-        <div class="group-image-col">
-            <img src="resimler/depo_rekorlari/cift_tarafli_depo_rekoru.png" alt="Çift Taraflı Depo Rekoru">
-            <h3>Çift Taraflı Depo Rekoru</h3>
-        </div>
-        <div class="group-table-col">
-            <table class="premium-table">
-                <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
-                <tbody>${generateTableHtml(grp1, 'Çift Taraflı Depo Rekoru')}</tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="product-group-card">
-        <div class="group-image-col">
-            <img src="resimler/depo_rekorlari/depo_rekoru_ters_dis.png" alt="Depo Rekoru (Ters Diş)">
-            <h3>Depo Rekoru (Ters Diş)</h3>
-        </div>
-        <div class="group-table-col">
-            <table class="premium-table">
-                <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
-                <tbody>${generateTableHtml(grp2, 'Depo Rekoru Ters Diş')}</tbody>
-            </table>
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+            Çift Taraflı Depo Rekoru <span class="arrow-icon">&#9658;</span>
+        </button>
+        <div class="accordion-content">
+            <div class="table-wrapper">
+                <table class="premium-table">
+                    <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
+                    <tbody>${generateTableHtml(grp1, 'Çift Taraflı Depo Rekoru')}</tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-    <div class="product-group-card">
-        <div class="group-image-col">
-            <img src="resimler/depo_rekorlari/sintine_rekoru_ters_dis.png" alt="Sintine Rekoru (Ters Diş)">
-            <h3>Sintine Rekoru (Ters Diş)</h3>
-        </div>
-        <div class="group-table-col">
-            <table class="premium-table">
-                <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
-                <tbody>${generateTableHtml(grp3, 'Sintine Rekoru Ters Diş')}</tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="product-group-card">
-        <div class="group-image-col">
-            <img src="resimler/depo_rekorlari/pvc_hortum_rekoru.png" alt="PVC Hortum Rekoru">
-            <h3>PVC Hortum Rekoru</h3>
-        </div>
-        <div class="group-table-col">
-            <table class="premium-table">
-                <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
-                <tbody>${generateTableHtml(grp4, 'PVC Hortum Rekoru')}</tbody>
-            </table>
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+            Depo Rekoru (Ters Diş) <span class="arrow-icon">&#9658;</span>
+        </button>
+        <div class="accordion-content">
+            <div class="table-wrapper">
+                <table class="premium-table">
+                    <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
+                    <tbody>${generateTableHtml(grp2, 'Depo Rekoru Ters Diş')}</tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-    <div class="product-group-card">
-        <div class="group-image-col">
-            <img src="resimler/depo_rekorlari/galvanizli_hortum_rekoru.png" alt="Galvanizli Hortum Rekoru">
-            <h3>Galvanizli Hortum Rekoru</h3>
-        </div>
-        <div class="group-table-col">
-            <table class="premium-table">
-                <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
-                <tbody>${generateTableHtml(grp5, 'Galvanizli Hortum Rekoru')}</tbody>
-            </table>
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+            Sintine Rekoru (Ters Diş) <span class="arrow-icon">&#9658;</span>
+        </button>
+        <div class="accordion-content">
+            <div class="table-wrapper">
+                <table class="premium-table">
+                    <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
+                    <tbody>${generateTableHtml(grp3, 'Sintine Rekoru Ters Diş')}</tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-    <div class="product-group-card">
-        <div class="group-image-col">
-            <img src="resimler/depo_rekorlari/ozel_depo_rekoru.png" alt="Özel Depo Rekoru">
-            <h3>Özel Depo Rekoru</h3>
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+            PVC Hortum Rekoru <span class="arrow-icon">&#9658;</span>
+        </button>
+        <div class="accordion-content">
+            <div class="table-wrapper">
+                <table class="premium-table">
+                    <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
+                    <tbody>${generateTableHtml(grp4, 'PVC Hortum Rekoru')}</tbody>
+                </table>
+            </div>
         </div>
-        <div class="group-table-col">
-            <table class="premium-table">
-                <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
-                <tbody>${generateTableHtml(grp6, 'Özel Depo Rekoru')}</tbody>
-            </table>
+    </div>
+
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+            Galvanizli Hortum Rekoru <span class="arrow-icon">&#9658;</span>
+        </button>
+        <div class="accordion-content">
+            <div class="table-wrapper">
+                <table class="premium-table">
+                    <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
+                    <tbody>${generateTableHtml(grp5, 'Galvanizli Hortum Rekoru')}</tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="this.parentElement.classList.toggle('active')">
+            Özel Depo Rekoru <span class="arrow-icon">&#9658;</span>
+        </button>
+        <div class="accordion-content">
+            <div class="table-wrapper">
+                <table class="premium-table">
+                    <thead><tr><th>KOD</th><th>EBAT</th><th>KOLİ ADEDİ</th><th>FİYAT (TL)</th><th>MİKTAR</th><th>İŞLEM</th></tr></thead>
+                    <tbody>${generateTableHtml(grp6, 'Özel Depo Rekoru')}</tbody>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -348,4 +367,4 @@ const htmlDoc = `
 `;
 
 fs.writeFileSync('depo_rekorlari.html', htmlDoc);
-console.log("Static HTML file generated with images and exact blue premium layout.");
+console.log("Static HTML file generated with accordion layout and gradient theme.");
