@@ -259,6 +259,15 @@
                     document.title = newTitle ? newTitle.textContent : "BAYRAKÇI SULAMA VE YAPI MALZEMELERİ";
                     document.body.className = 'route-' + path.replace(/\//g, '');
                     window.scrollTo(0, 0);
+                    // Toggle visibility of Hakkimizda and Iletisim based on route
+                    var links = document.querySelectorAll('.nav-links a');
+                    var isHomePage = (path === '/' || path === '/index.html' || path === '');
+                    for (var i = 0; i < links.length; i++) {
+                        if (links[i].textContent.indexOf('Hakkımızda') > -1 || links[i].textContent.indexOf('İletişim') > -1) {
+                            links[i].style.display = isHomePage ? '' : 'none';
+                        }
+                    }
+
                 } else {
                     console.error("Main content missing.");
                 }

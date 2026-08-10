@@ -1393,7 +1393,7 @@
 
             // Sayfa dÄ±ÅŸÄ±na tÄ±klandÄ±ÄŸÄ±nda menÃ¼yÃ¼ kapat
             if (mainMenuContainer && mainMenuContainer.classList.contains('active')) {
-                if (!mainMenuContainer.contains(e.target) && !e.target.closest('.nav-bar') && !e.target.closest('#heroCatalogBtn')) {
+                if (!mainMenuContainer.contains(e.target) && !e.target.closest('#menuToggleDesktop') && !e.target.closest('.menu-toggle') && !e.target.closest('#heroCatalogBtn')) {
                     mainMenuContainer.classList.remove('active');
                 }
             }
