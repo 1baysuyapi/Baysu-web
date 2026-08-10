@@ -486,10 +486,23 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="https://wa.me/905533973603?text=Merhaba,%20Baysu%20Yap%C4%B1%20web%20sitenizden%20159%20kodlu%201%2F2%22%20Ayarl%C4%B1%20Hortum%20TE%20%C3%BCr%C3%BCn%C3%BCnden%20sipari%C5%9F%20vermek%20istiyorum." 
-                                   target="_blank" class="add-btn">
-                                    Siparişe Ekle
-                                </a>
+                                <button class="add-btn" type="button" onclick="
+    var row = this.closest('tr');
+    var code = row.cells[0].innerText.trim();
+    var ebat = row.cells[1].innerText.trim();
+    var priceStr = row.cells[4].innerText.trim().replace('₺', '').replace(',', '.').trim();
+    var price = parseFloat(priceStr);
+    var q = parseInt(row.querySelector('.qty-input').value) || 1;
+    var name = document.querySelector('.product-title').innerText.trim() + ' (' + ebat + ') - Kod: ' + code;
+    if(window.addToCart){
+        for(var i=0;i<q;i++) window.addToCart(name, price, code, '-');
+        alert(q + ' adet sepete eklendi!');
+    } else {
+        alert('Sepet sistemi hazır değil');
+    }
+">
+    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i> Sepete Ekle
+</button>
                             </td>
                         </tr>
                         <tr>
@@ -506,10 +519,23 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="https://wa.me/905533973603?text=Merhaba,%20Baysu%20Yap%C4%B1%20web%20sitenizden%20160%20kodlu%20Ayarl%C4%B1%20Hortum%20TE%20%C3%BCr%C3%BCn%C3%BCnden%20sipari%C5%9F%20vermek%20istiyorum." 
-                                   target="_blank" class="add-btn">
-                                    Siparişe Ekle
-                                </a>
+                                <button class="add-btn" type="button" onclick="
+    var row = this.closest('tr');
+    var code = row.cells[0].innerText.trim();
+    var ebat = row.cells[1].innerText.trim();
+    var priceStr = row.cells[4].innerText.trim().replace('₺', '').replace(',', '.').trim();
+    var price = parseFloat(priceStr);
+    var q = parseInt(row.querySelector('.qty-input').value) || 1;
+    var name = document.querySelector('.product-title').innerText.trim() + ' (' + ebat + ') - Kod: ' + code;
+    if(window.addToCart){
+        for(var i=0;i<q;i++) window.addToCart(name, price, code, '-');
+        alert(q + ' adet sepete eklendi!');
+    } else {
+        alert('Sepet sistemi hazır değil');
+    }
+">
+    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i> Sepete Ekle
+</button>
                             </td>
                         </tr>
                         <tr>
@@ -526,10 +552,23 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="https://wa.me/905533973603?text=Merhaba,%20Baysu%20Yap%C4%B1%20web%20sitenizden%20161%20kodlu%203%2F4%22%20Ayarl%C4%B1%20Hortum%20TE%20%C3%BCr%C3%BCn%C3%BCnden%20sipari%C5%9F%20vermek%20istiyorum." 
-                                   target="_blank" class="add-btn">
-                                    Siparişe Ekle
-                                </a>
+                                <button class="add-btn" type="button" onclick="
+    var row = this.closest('tr');
+    var code = row.cells[0].innerText.trim();
+    var ebat = row.cells[1].innerText.trim();
+    var priceStr = row.cells[4].innerText.trim().replace('₺', '').replace(',', '.').trim();
+    var price = parseFloat(priceStr);
+    var q = parseInt(row.querySelector('.qty-input').value) || 1;
+    var name = document.querySelector('.product-title').innerText.trim() + ' (' + ebat + ') - Kod: ' + code;
+    if(window.addToCart){
+        for(var i=0;i<q;i++) window.addToCart(name, price, code, '-');
+        alert(q + ' adet sepete eklendi!');
+    } else {
+        alert('Sepet sistemi hazır değil');
+    }
+">
+    <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i> Sepete Ekle
+</button>
                             </td>
                         </tr>
                     </tbody>
