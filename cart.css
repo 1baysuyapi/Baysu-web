@@ -1563,3 +1563,9 @@ html, body {
     background: #002d62;
 }
 
+
+
+/* Ensure nav-bar is always dark gradient on all pages */
+.nav-bar {
+    background: linear-gradient(135deg, #0b1727 0%, #002952 100%) !important;
+}
