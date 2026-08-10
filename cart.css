@@ -1661,3 +1661,9 @@ html, body {
     border-radius: 20px;
     display: inline-block;
 }
+
+/* SADECE URUN SAYFALARINDA HAKKIMIZDA VE ILETISIM LINKLERINI GIZLE */
+.is-product-page .nav-links a[href="/#about-section"],
+.is-product-page .nav-links a[href="/#contact-section"] {
+    display: none !important;
+}
