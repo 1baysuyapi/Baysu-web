@@ -88,8 +88,8 @@ const products = [
             {kod:'321', ebat:'1 1/4"', fiyat:'65.00', koli:'180'},
             {kod:'322', ebat:'1 1/2"', fiyat:'65.00', koli:'160'},
             {kod:'323', ebat:'2"', fiyat:'65.00', koli:'150'},
-            {kod:'324', ebat:'2 1/2" (l)', fiyat:'220.00', koli:'-'},
-            {kod:'325', ebat:'3" (l)', fiyat:'235.00', koli:'-'}
+            {kod:'324', ebat:'2 1/2"', fiyat:'220.00', koli:'-'},
+            {kod:'325', ebat:'3"', fiyat:'235.00', koli:'-'}
         ]
     }
 ];
