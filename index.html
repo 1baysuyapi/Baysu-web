@@ -1105,12 +1105,17 @@
 
                 
                 
-                <li class="category-item">
-                    <a href="/hortum-ek-parcalari" style="text-decoration: none; color: inherit; display: block; width: 100%;">
-                        <div class="category-header">
-                            <h3>Hortum Ek Parçaları</h3>
-                        </div>
-                    </a>
+                                <li class="category-item">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
+                        <h3>Hortum Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="/ayarli-hortum-eki">Ayarlı Hortum Eki</a></li>
+                        <li><a href="/ayarli-hortum-te">Ayarlı Hortum TE</a></li>
+                        <li><a href="/hortum-eki">Hortum Eki</a></li>
+                        <li><a href="/hortum-reduksiyonu">Hortum Redüksiyonu</a></li>
+                        <li><a href="/hortum-te">Hortum TE</a></li>
+                    </ul>
                 </li>
                 <li class="category-item">
                     <a href="/musluk-jaki" style="text-decoration: none; color: inherit; display: block; width: 100%;">
@@ -1461,7 +1466,7 @@
         });
     </script>
     <script src="security.js?v=1024"></script>
-    <script src="data.js?v=1786397501765"></script>
+    <script src="data.js?v=1786398046746"></script>
     <script src="site-engine.js?v=1028"></script>
 </body>
 
