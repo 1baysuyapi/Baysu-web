@@ -116,7 +116,7 @@ function parsePrice(str) {
 "                    <h3><i class=\"fas fa-shopping-cart\"></i> Sipariş Sepetim</h3>\n" +
 "                    <button class=\"cart-close-btn\" id=\"cartCloseBtn\">&times;</button>\n" +
 "                </div>\n" +
-"                <div class=\"cart-timestamp-bar\">\n" +
+"\n" + "                    <button class=\"history-order-btn\" id=\"openHistoryBtn\" style=\"background: #1E293B; color: #fff; border: none; padding: 12px; border-radius: 10px; font-weight: 700; width: 100%; margin-bottom: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: 0.2s;\"><i class=\"fas fa-history\"></i> GEÇMİŞ SİPARİŞLERİM</button>" + "\n                <div class=\"cart-timestamp-bar\">\n" +
 "                    <i class=\"far fa-clock\"></i>\n" +
 "                    <span>Tarih: <strong id=\"cartTimestamp\">" + String(getFormattedTimestamp()) + "</strong></span>\n" +
 "                </div>\n" +
