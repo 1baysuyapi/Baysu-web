@@ -1,27 +1,14 @@
 const fs = require('fs');
-let content = fs.readFileSync('cart.js', 'utf-8');
+let c = fs.readFileSync('cart.js', 'utf8');
 
-// Fix double escaped newlines
-content = content.replace(/\\\\n/g, '\\n');
+// 1. Revert the earlier adapter change for productName
+c = c.replace(/productName = match\[1\]\.trim\(\) \+ \(match\[2\]\.trim\(\) \? ' \(' \+ match\[2\]\.trim\(\) \+ '\)' : ''\);/, "productName = match[1].trim();");
 
-// Replace the sendWhatsAppOrder string formatting
-const oldForeach = `        cart.forEach(function(item, i) {
-            var itemTotal = item.price * item.quantity;
-            totalSum += itemTotal;
-            if (item.code) {
-                text += "*" + String(item.code) + "* | " + String(item.productName) + " | " + String(item.price.toFixed(2)) + " TL | " + String(item.quantity) + " Adet | " + String(itemTotal.toFixed(2)) + " TL\\n";
-            } else {
-                text += "*" + String(item.size) + "* | " + String(item.productName) + " | " + String(item.price.toFixed(2)) + " TL | " + String(item.quantity) + " Adet | " + String(itemTotal.toFixed(2)) + " TL\\n";
-            }
-        });`;
+// 2. Fix the WhatsApp exporter to append size if it exists and is different from code
+const oldTextLine = 'text += String(identifier) + " | " + String(item.productName) + " | " + String(item.quantity) + " ADET | " + String(itemTotal.toFixed(2)) + " TL\\n";';
+const newTextLine = `var finalName = item.productName + (item.size && item.size !== item.code ? ' (' + item.size + ')' : '');\n            text += String(identifier) + " | " + String(finalName) + " | " + String(item.quantity) + " ADET | " + String(itemTotal.toFixed(2)) + " TL\\n";`;
 
-const newForeach = `        cart.forEach(function(item, i) {
-            var itemTotal = item.price * item.quantity;
-            totalSum += itemTotal;
-            var identifier = item.code ? item.code : item.size;
-            text += String(identifier) + " | " + String(item.productName) + " | " + String(item.quantity) + " ADET | " + String(itemTotal.toFixed(2)) + " TL\\n";
-        });`;
+c = c.replace(oldTextLine, newTextLine);
 
-content = content.replace(oldForeach, newForeach);
-
-fs.writeFileSync('cart.js', content, 'utf-8');
+fs.writeFileSync('cart.js', c);
+console.log('Fixed WhatsApp exporter');

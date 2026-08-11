@@ -1,3 +1,4 @@
+* { touch-action: manipulation; }
 
         #mainMenuContainer, .main-menu-container {
             display: none !important;
