@@ -1510,3 +1510,11 @@
             .category-group.active { display: flex !important; flex-direction: column !important; }
         }
     
+\n
+/* Mobile Only Font Scaling (Touch Devices) */
+@media (pointer: coarse) {
+    .nav-links a { font-size: 18px !important; }
+    .main-category-header h3 { font-size: 1.15rem !important; }
+    .category-header h3 { font-size: 1.1rem !important; }
+    .product-list li a { font-size: 16px !important; }
+}
