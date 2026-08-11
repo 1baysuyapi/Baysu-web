@@ -1410,7 +1410,7 @@
             const searchInput = document.getElementById('searchInput');
             const searchResults = document.getElementById('searchResults');
             if (searchResults && searchResults.classList.contains('active')) {
-                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                if (e.target !== searchInput && !searchResults.contains(e.target)) {
                     searchResults.classList.remove('active');
                 }
             }
@@ -1433,7 +1433,7 @@
         });
 
         // CanlÄ± Arama (Instant Live Search)
-        document.addEventListener('DOMContentLoaded', () => {
+        (function() {
             const searchInput = document.getElementById('searchInput');
             const searchResults = document.getElementById('searchResults');
             if (searchInput && searchResults) {
@@ -1451,7 +1451,7 @@
                         return;
                     }
 
-                    const filtered = productsData.filter(p => p.name.toLowerCase().includes(query));
+                    const filtered = productsData.filter(p => p.name.toLocaleLowerCase('tr-TR').includes(query.toLocaleLowerCase('tr-TR')));
 
                     if (filtered.length > 0) {
                         searchResults.innerHTML = filtered.slice(0, 8).map(p => \`
@@ -1471,7 +1471,7 @@
                     }
                 });
             }
-        });
+        })();
     </script>
     <script src="security.js?v=1024"></script>
     <script src="data.js?v=1786404319875"></script>
