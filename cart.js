@@ -312,7 +312,7 @@ function parsePrice(str) {
         cart.forEach(function(item, i) {
             var itemTotal = item.price * item.quantity;
             totalSum += itemTotal;
-            var identifier = item.code ? item.code : item.size;
+            var identifier = (item.code && item.code !== "-" && item.code.trim() !== "") ? item.code : item.size;
             var finalName = item.productName + (item.size && item.size !== item.code ? ' (' + item.size + ')' : '');
             text += String(identifier) + " | " + String(finalName) + " | " + String(item.quantity) + " ADET | " + String(itemTotal.toFixed(2)) + " TL\n";
         });
