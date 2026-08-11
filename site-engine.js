@@ -94,7 +94,7 @@
                     if (e.target.closest('.qty-btn') || e.target.closest('.qty-input') || e.target.closest('.btn-add-cart-custom')) return;
                     
                     e.preventDefault();
-                    var btn = card.querySelector('.btn-add-cart-custom');
+                    var btn = card.querySelector('.btn-add-cart-custom, .add-to-cart-btn');
                     if (btn) {
                         var code = btn.getAttribute('data-code');
                         var size = btn.getAttribute('data-size');

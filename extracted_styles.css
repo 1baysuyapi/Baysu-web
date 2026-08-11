@@ -1,3 +1,10 @@
+
+/* Prevent Mobile Browsers from artificially boosting font sizes (Fixes iPhone vs Android differences) */
+html, body {
+    -webkit-text-size-adjust: 100% !important;
+    -moz-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+}
 * { touch-action: manipulation; }
 
         #mainMenuContainer, .main-menu-container {
