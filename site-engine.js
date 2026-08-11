@@ -86,13 +86,19 @@
     window._baysuSetupProductCards = function() {
         var cards = document.querySelectorAll('.product-card');
         for (var i = 0; i < cards.length; i++) {
+            if (cards[i]._hasCardListener) continue;
+            cards[i]._hasCardListener = true;
+            
             (function(card) {
                 card.addEventListener('click', function(e) {
                     if (e.target.closest('.qty-btn') || e.target.closest('.qty-input') || e.target.closest('.btn-add-cart-custom')) return;
-                    var wasActive = card.classList.contains('card-active');
+                    
+                    var isActive = card.classList.contains('card-active');
+                    
                     var allCards = document.querySelectorAll('.product-card.card-active');
                     for (var j = 0; j < allCards.length; j++) { allCards[j].classList.remove('card-active'); }
-                    if (!wasActive) { 
+                    
+                    if (!isActive) { 
                         card.classList.add('card-active'); 
                         if (window.history && window.history.pushState) {
                             window.history.pushState({cardOpen: true}, "");
@@ -110,6 +116,19 @@
                     }
                 });
             })(cards[i]);
+        }
+        
+        // Add a document listener to close cards when clicking outside
+        if (!window._baysuGlobalCardListener) {
+            window._baysuGlobalCardListener = true;
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.product-card')) {
+                    var activeCards = document.querySelectorAll('.product-card.card-active');
+                    for (var j = 0; j < activeCards.length; j++) {
+                        activeCards[j].classList.remove('card-active');
+                    }
+                }
+            });
         }
     };
     
