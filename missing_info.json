@@ -1,0 +1,814 @@
+[
+  {
+    "category": "index",
+    "name": "Mavi Seri",
+    "code": "-",
+    "price": "-",
+    "koli": "-"
+  },
+  {
+    "category": "index",
+    "name": "Siyah Seri",
+    "code": "-",
+    "price": "-",
+    "koli": "-"
+  },
+  {
+    "category": "index",
+    "name": "Kilitli Bağlantı Parçaları",
+    "code": "-",
+    "price": "-",
+    "koli": "-"
+  },
+  {
+    "category": "index",
+    "name": "Priz Kolyeler",
+    "code": "-",
+    "price": "-",
+    "koli": "-"
+  },
+  {
+    "category": "index",
+    "name": "Dişli Sulama Ek Parçaları",
+    "code": "-",
+    "price": "-",
+    "koli": "-"
+  },
+  {
+    "category": "index",
+    "name": "Nipelli Seri",
+    "code": "-",
+    "price": "-",
+    "koli": "-"
+  },
+  {
+    "category": "index",
+    "name": "Vanalar",
+    "code": "-",
+    "price": "-",
+    "koli": "-"
+  },
+  {
+    "category": "index",
+    "name": "Vana Kutuları",
+    "code": "-",
+    "price": "-",
+    "koli": "-"
+  },
+  {
+    "category": "index",
+    "name": "Damlama Ek Parçaları",
+    "code": "-",
+    "price": "-",
+    "koli": "-"
+  },
+  {
+    "category": "index",
+    "name": "Yedek Parçalar",
+    "code": "-",
+    "price": "-",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Jumbo El Süzeği",
+    "code": "-",
+    "price": "₺ 320.00",
+    "koli": "25"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Uzun El Süzeği Dirsekli",
+    "code": "-",
+    "price": "₺ 115.00",
+    "koli": "75"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Lüks El Süzeği",
+    "code": "-",
+    "price": "₺ 75.00",
+    "koli": "144"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "İki Kollu Çim Fıskiyesi",
+    "code": "-",
+    "price": "₺ 80.00",
+    "koli": "100"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Üç Kollu Çim Fıskiyesi",
+    "code": "-",
+    "price": "₺ 88.00",
+    "koli": "90"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Dört Kollu Çim Fıskiyesi",
+    "code": "-",
+    "price": "₺ 95.00",
+    "koli": "75"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Süper Üç Kollu Çim Fıskiyesi",
+    "code": "-",
+    "price": "₺ 100.00",
+    "koli": "75"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Sehpa Ayak",
+    "code": "-",
+    "price": "₺ 125.00",
+    "koli": "80"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Jumbo Ayak",
+    "code": "-",
+    "price": "₺ 200.00",
+    "koli": "50"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Kazık Ayak",
+    "code": "-",
+    "price": "₺ 26.00",
+    "koli": "300"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Jaklı Kazık Ayak",
+    "code": "-",
+    "price": "₺ 32.00",
+    "koli": "300"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Çift Taraflı Plastik Kazık",
+    "code": "-",
+    "price": "₺ 95.00",
+    "koli": "250"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Uzun El Süzeği",
+    "code": "-",
+    "price": "₺ 100.00",
+    "koli": "75"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Büyük Uzun El Süzeği",
+    "code": "-",
+    "price": "₺ 200.00",
+    "koli": "40"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Büyük Uzun El Süzeği Dirsekli",
+    "code": "-",
+    "price": "₺ 215.00",
+    "koli": "40"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "PVC Döner Çim Fıskiyesi",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Turbo Üç Kollu Çim Fıskiyesi",
+    "code": "-",
+    "price": "₺ 100.00",
+    "koli": "60"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Beş Kollu Çim Fıskiyesi",
+    "code": "-",
+    "price": "₺ 135.00",
+    "koli": "50"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Uzun Meme Üç Kollu Çim Fıskiyesi",
+    "code": "-",
+    "price": "₺ 95.00",
+    "koli": "75"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Madeni Döner Çim Fıskiyesi",
+    "code": "-",
+    "price": "₺ 270.00",
+    "koli": "150"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Jumbo Açılı Fıskiye",
+    "code": "-",
+    "price": "₺ 430.00",
+    "koli": "40"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Sehpa Turbo Üç Kollu Fıskiye",
+    "code": "-",
+    "price": "₺ 200.00",
+    "koli": "60"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Sehpa Beş Kollu Çim Fıskiye",
+    "code": "-",
+    "price": "₺ 235.00",
+    "koli": "50"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "1/2\" Ayarlı Hortum Lansı",
+    "code": "-",
+    "price": "₺ 68.00",
+    "koli": "250"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "3/4\" Ayarlı Hortum Lansı",
+    "code": "-",
+    "price": "₺ 90.00",
+    "koli": "150"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "1\" Ayarlı Hortum Lansı",
+    "code": "-",
+    "price": "₺ 280.00",
+    "koli": "100"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Krom 6 Nozul Tabanca",
+    "code": "-",
+    "price": "₺ 650.00",
+    "koli": "25"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "İthal 6 Nozul Metal Tabanca",
+    "code": "-",
+    "price": "₺ 1200.00",
+    "koli": "24"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Metal Su Tabancası",
+    "code": "-",
+    "price": "₺ 750.00",
+    "koli": "48"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Tetikli Su Tabancası Jaklı",
+    "code": "-",
+    "price": "₺ 190.00",
+    "koli": "40"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Tetikli Süzek Tabancası Jaklı",
+    "code": "-",
+    "price": "₺ 190.00",
+    "koli": "30"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Tetikli Su Tabancası 3/4\" Lüks Rekorlu",
+    "code": "-",
+    "price": "₺ 210.00",
+    "koli": "75"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Tetikli Süzek Tabanca 3/4\" Lüks Rekorlu",
+    "code": "-",
+    "price": "₺ 210.00",
+    "koli": "60"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Süzek Tabanca",
+    "code": "-",
+    "price": "₺ 105.00",
+    "koli": "75"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "1/2\" Lüks Rekorlu Süzek Tabanca",
+    "code": "-",
+    "price": "₺ 115.00",
+    "koli": "75"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Lüks Rekorlu 6 Nozul Tabanca",
+    "code": "-",
+    "price": "₺ 315.00",
+    "koli": "25"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "6 Fonksiyonlu Su Tabancası Seti",
+    "code": "-",
+    "price": "₺ 440.00",
+    "koli": "20"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "İthal Tetikli Su Tabancası",
+    "code": "-",
+    "price": "₺ 600.00",
+    "koli": "48"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "İthal 6 Nozul Tabanca",
+    "code": "-",
+    "price": "₺ 650.00",
+    "koli": "48"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Tetikli Su Tabancası Rekorlu",
+    "code": "-",
+    "price": "₺ 190.00",
+    "koli": "40"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Tetikli Süzek Tabancası Rekorlu",
+    "code": "-",
+    "price": "₺ 190.00",
+    "koli": "30"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Tetikli Su Tabancası 1/2\" Lüks Rekorlu",
+    "code": "-",
+    "price": "₺ 190.00",
+    "koli": "40"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Tetikli Süzek Tabancası 1/2\" Lüks Rekorlu",
+    "code": "-",
+    "price": "₺ 190.00",
+    "koli": "30"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "3/4\" Lüks Rekorlu Süzek Tabanca",
+    "code": "-",
+    "price": "₺ 125.00",
+    "koli": "75"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Su Tabancası",
+    "code": "-",
+    "price": "₺ 105.00",
+    "koli": "100"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "1/2\" Lüks Rekorlu Su Tabancası",
+    "code": "-",
+    "price": "₺ 115.00",
+    "koli": "100"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "3/4\" Lüks Rekorlu Su Tabancası",
+    "code": "-",
+    "price": "₺ 125.00",
+    "koli": "100"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Açılı Fıskiye / Yerli Turuncu",
+    "code": "-",
+    "price": "₺ 180.00",
+    "koli": "150"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Açılı Fıskiye / Yerli Siyah",
+    "code": "-",
+    "price": "₺ 170.00",
+    "koli": "150"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "İthal Açılı Metal Fıskiye",
+    "code": "-",
+    "price": "₺ 1000.00",
+    "koli": "50"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Plastik Tarla Sulama Fıskiye",
+    "code": "-",
+    "price": "₺ 185.00",
+    "koli": "75"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Metal Tarla Sulama Fıskiye",
+    "code": "-",
+    "price": "₺ 1000.00",
+    "koli": "50"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Kazıklı Açılı Fıskiye",
+    "code": "-",
+    "price": "₺ 290.00",
+    "koli": "30"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Açısız Çat Çat Fıskiye",
+    "code": "-",
+    "price": "₺ 125.00",
+    "koli": "150"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Açılı Plastik Tarla Sulama Fıskiye",
+    "code": "-",
+    "price": "₺ 215.00",
+    "koli": "50"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Hortum Tanburu",
+    "code": "-",
+    "price": "₺ 1950.00",
+    "koli": "5"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Duvar Tipi Hortum Askısı",
+    "code": "-",
+    "price": "₺ 195.00",
+    "koli": "6"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "1/2” Lüks Rekor",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "PVC Bidon Musluğu",
+    "code": "-",
+    "price": "₺ 100.00",
+    "koli": "350"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Süzek Kafası",
+    "code": "-",
+    "price": "₺ 38.00",
+    "koli": "250"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Çift Taraflı Jak Adaptör",
+    "code": "-",
+    "price": "₺ 32.00",
+    "koli": "1250"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "3/4” Jak Adaptörü",
+    "code": "-",
+    "price": "₺ 30.00",
+    "koli": "1600"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Metal Hortum Askısı",
+    "code": "-",
+    "price": "₺ 400.00",
+    "koli": "30"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Plastik Hortum Askısı",
+    "code": "-",
+    "price": "₺ 185.00",
+    "koli": "48"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Ayarlı Lans Seti",
+    "code": "-",
+    "price": "₺ 280.00",
+    "koli": "48"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "3/4” Vantuz",
+    "code": "-",
+    "price": "₺ 130.00",
+    "koli": "100"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "1/2” Uzatma Borusu",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "1/2” PVC Maşon",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "1/2” PVC Nipel",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Hortum Lansı",
+    "code": "-",
+    "price": "₺ 11.00",
+    "koli": "1400"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "PVC Klepe 1\"",
+    "code": "-",
+    "price": "₺ 455.00",
+    "koli": "25"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "PVC Klepe 1 1/4\"",
+    "code": "-",
+    "price": "₺ 470.00",
+    "koli": "25"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "PVC Klepe 1 1/2\"",
+    "code": "-",
+    "price": "₺ 540.00",
+    "koli": "25"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "PVC Klepe 2\"",
+    "code": "-",
+    "price": "₺ 545.00",
+    "koli": "25"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "PVC Klepe 2 1/2\"",
+    "code": "-",
+    "price": "₺ 1450.00",
+    "koli": "5"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "PVC Klepe 3\"",
+    "code": "-",
+    "price": "₺ 1460.00",
+    "koli": "5"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "PVC Klepe 4\"",
+    "code": "-",
+    "price": "₺ 1600.00",
+    "koli": "5"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Bitki Destek Çubuğu 9mmx60cm",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Bitki Destek Çubuğu 9mmx75cm",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Bitki Destek Çubuğu 9mmx90cm",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Bitki Destek Çubuğu 9mmx120cm",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Bitki Destek Çubuğu 11mmx150cm",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Bitki Destek Çubuğu 11mmx180cm",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Bitki Destek Çubuğu 16mmx210cm",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Plastik Çim Ayırıcı - Yeşil",
+    "code": "-",
+    "price": "₺ 95.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Plastik Çim Ayırıcı - Siyah",
+    "code": "-",
+    "price": "₺ 95.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Plastik Çim Ayırıcı - Beyaz",
+    "code": "-",
+    "price": "₺ 100.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Plastik Çim Ayırıcı - Kahverengi",
+    "code": "-",
+    "price": "₺ 100.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "1/2 Ayarlı Hortum Lansı",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "1/2” Klima Çatalı",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "1/2” Lüks Rekorlu Su Tabancası",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "1/2” Lüks Rekorlu Süzek Tabanca",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "1/2” • 3/4” • 1” 2’li Jak Dağıtıcı",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "1/2” • 3/4” • 1” 4’lü Jak Dağıtıcı",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "1/2” • 5/8” Hortum Y",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "1” Vantuz",
+    "code": "-",
+    "price": "₺ 130.00",
+    "koli": "100"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "3/4” Ayarlı Hortum Lansı",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "3/4” Lüks Rekorlu Su Tabancası",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "3/4” Lüks Rekorlu Süzek Tabanca",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "3/4” • 1/2” Lüks Rekor",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Damlama Filtresi",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Metal Fıskiye Kazığı",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Tetikli Su Tabancası 1/2” Lüks Rekorlu",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Tetikli Su Tabancası 3/4” Lüks Rekorlu",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Tetikli Süzek Tabanca 3/4” Lüks Rekorlu",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  },
+  {
+    "category": "bahce-ekipmanlari",
+    "name": "Tetikli Süzek Tabancası 1/2” Lüks Rekorlu",
+    "code": "-",
+    "price": "₺ 0.00",
+    "koli": "-"
+  }
+]
