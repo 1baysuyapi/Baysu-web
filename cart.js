@@ -313,7 +313,8 @@ function parsePrice(str) {
             var itemTotal = item.price * item.quantity;
             totalSum += itemTotal;
             var identifier = item.code ? item.code : item.size;
-            text += String(identifier) + " | " + String(item.productName) + " | " + String(item.quantity) + " ADET | " + String(itemTotal.toFixed(2)) + " TL\n";
+            var finalName = item.productName + (item.size && item.size !== item.code ? ' (' + item.size + ')' : '');
+            text += String(identifier) + " | " + String(finalName) + " | " + String(item.quantity) + " ADET | " + String(itemTotal.toFixed(2)) + " TL\n";
         });
 
         text += "--------------------------------------------------\n";
@@ -498,3 +499,37 @@ window.decrementQty = function(btn) {
     }
 };
 
+
+
+// Rekorlar ve Hortum Ek Parcalari Adapter
+window.addToCart = function(rawName, price, code, boxQty) {
+    if (window.BaysuCart && window.BaysuCart.addItem) {
+        let productName = rawName;
+        let ebat = '';
+        const match = rawName.match(/^(.*?)\s*\((.*?)\)\s*-\s*Kod:/);
+        if (match) {
+            productName = match[1].trim();
+            ebat = match[2].trim();
+        } else {
+            const dashIndex = rawName.indexOf(' - Kod:');
+            if (dashIndex !== -1) {
+                productName = rawName.substring(0, dashIndex).trim();
+            }
+        }
+        if (!ebat || ebat === '') {
+            ebat = code; 
+        }
+        window.BaysuCart.addItem(productName, ebat, boxQty || '-', price, 1, code, 1, '-');
+    }
+};
+
+window.baysuAnimateCartBtn = function(btn) {
+    if (!btn) return;
+    var originalText = btn.innerHTML;
+    btn.classList.add('added');
+    btn.innerHTML = '<i class="fas fa-check"></i> Eklendi!';
+    setTimeout(function() {
+        btn.classList.remove('added');
+        btn.innerHTML = originalText;
+    }, 800);
+};
