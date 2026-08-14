@@ -91,9 +91,21 @@
             
             (function(card) {
                 card.addEventListener('click', function(e) {
-                    if (e.target.closest('.qty-btn') || e.target.closest('.qty-input') || e.target.closest('.btn-add-cart-custom')) return;
+                    if (e.target.closest('.qty-btn') || e.target.closest('.qty-input') || e.target.closest('.btn-add-cart-custom') || e.target.closest('.add-to-cart-btn')) return;
                     
                     e.preventDefault();
+                    
+                    // On Desktop, don't open the mobile modal
+                    if (window.matchMedia("(hover: hover)").matches && window.innerWidth > 992) {
+                        var wasActive = card.classList.contains('card-active');
+                        var activeCards = document.querySelectorAll('.product-card.card-active');
+                        for (var j = 0; j < activeCards.length; j++) {
+                            activeCards[j].classList.remove('card-active');
+                        }
+                        if (!wasActive) card.classList.add('card-active');
+                        return;
+                    }
+                    
                     var btn = card.querySelector('.btn-add-cart-custom, .add-to-cart-btn');
                     if (btn) {
                         var code = btn.getAttribute('data-code');
