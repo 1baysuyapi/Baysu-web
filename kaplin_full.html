@@ -1402,227 +1402,220 @@
     <nav class="nav-bar">
         <div class="nav-content">
             <div class="nav-links">
-                <a href="index.html"><i class="fas fa-home"></i> Ana Sayfa</a>
-                <a href="javascript:void(0)" class="dropdown-toggle" id="menuToggleDesktop" onclick="toggleCatalogMenu(event)"><i class="fas fa-th-large"></i> Ürünlerimiz</a>
-            </div>
-            <div class="menu-toggle" id="menuToggle">
-                <span id="menuText">Ürünlerimiz</span>
-                <i class="fas fa-bars"></i>
+                <a href='/'><i class="fas fa-home" style="margin-right: 6px;"></i>Ana Sayfa</a>
+                <a href="javascript:void(0)" id="menuToggleDesktop" onclick="event.preventDefault(); event.stopPropagation(); var m = document.getElementById('mainMenuContainer'); if(m) { var isActive = m.classList.toggle('active'); m.style.setProperty('display', isActive ? 'block' : 'none', 'important'); m.style.setProperty('z-index', '999999', 'important'); }"><i class="fas fa-th-large" style="margin-right: 6px;"></i>Ürün Kataloğu</a>
+                <a href="/#about-section" class="hide-on-mobile"><i class="fas fa-info-circle" style="margin-right: 6px;"></i>Hakkımızda</a>
+                <a href="/#contact-section" class="hide-on-mobile"><i class="fas fa-envelope" style="margin-right: 6px;"></i>İletişim</a>
             </div>
         </div>
         <div class="main-menu-container" id="mainMenuContainer">
-            <!-- MAIN CATEGORY 1: KAPLİNLER VE EK PARÇALARI (CLOSED BY DEFAULT) -->
-            <div class="main-category-header">
+            <div class="main-category-item" onclick="if(event.target.closest('a'))return; event.preventDefault(); event.stopPropagation(); this.classList.toggle('active'); var m = document.getElementById('kaplinler-menu'); if(m) { m.classList.toggle('active'); m.style.setProperty('display', m.classList.contains('active') ? 'block' : 'none', 'important'); }">
                 <h3>KAPLİNLER VE EK PARÇALARI <span class="arrow-icon">&#9658;</span></h3>
             </div>
-            <ul class="category-group" id="kaplinler-group">
+            <ul class="category-group" id="kaplinler-menu">
                 <li class="category-item">
-                    <div class="category-header">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
                         <h3>Mavi Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href="mavi-disi-kaplin.html">Mavi Seri Dişi Kaplin</a></li>
-                        <li><a href="mavi-erkek-kaplin.html">Mavi Seri Erkek Kaplin</a></li>
-                        <li><a href="mavi-dirsek-kaplin.html">Mavi Seri Dirsek Kaplin</a></li>
-                        <li><a href="mavi-disi-dirsek.html">Mavi Seri Dişi Dirsek</a></li>
-                        <li><a href="mavi-erkek-dirsek.html">Mavi Seri Erkek Dirsek</a></li>
-                        <li><a href="mavi-manson.html">Mavi Seri Manşon</a></li>
-                        <li><a href="mavi-tapa.html">Mavi Seri Tapa</a></li>
-                        <li><a href="mavi-erkek-te.html">Mavi Seri Erkek Te</a></li>
-                        <li><a href="mavi-disi-te.html">Mavi Seri Dişi Te</a></li>
-                        <li><a href="mavi-reduksiyon-te.html">Mavi Seri Redüksiyon Te</a></li>
-                        <li><a href="mavi-reduksiyon.html">Mavi Seri Redüksiyon</a></li>
-                        <li><a href="mavi-te.html">Mavi Seri Te</a></li>
+                        <li><a href='/mavi-disi-kaplin'>Mavi Seri Dişi Kaplin</a></li>
+                        <li><a href='/mavi-erkek-kaplin'>Mavi Seri Erkek Kaplin</a></li>
+                        <li><a href='/mavi-dirsek-kaplin'>Mavi Seri Dirsek Kaplin</a></li>
+                        <li><a href='/mavi-disi-dirsek'>Mavi Seri Dişi Dirsek</a></li>
+                        <li><a href='/mavi-erkek-dirsek'>Mavi Seri Erkek Dirsek</a></li>
+                        <li><a href='/mavi-manson'>Mavi Seri Manşon</a></li>
+                        <li><a href='/mavi-tapa'>Mavi Seri Tapa</a></li>
+                        <li><a href='/mavi-erkek-te'>Mavi Seri Erkek Te</a></li>
+                        <li><a href='/mavi-disi-te'>Mavi Seri Dişi Te</a></li>
+                        <li><a href='/mavi-reduksiyon-te'>Mavi Seri Redüksiyon Te</a></li>
+                        <li><a href='/mavi-reduksiyon'>Mavi Seri Redüksiyon</a></li>
+                        <li><a href='/mavi-te'>Mavi Seri Te</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
                         <h3>Siyah Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href="siyah-disi.html">Siyah Seri Dişi Kaplin</a></li>
-                        <li><a href="siyah-erkek-kaplin.html">Siyah Seri Erkek Kaplin</a></li>
-                        <li><a href="siyah-dirsek.html">Siyah Seri Dirsek Kaplin</a></li>
-                        <li><a href="siyah-disi-dirsek.html">Siyah Seri Dişi Dirsek</a></li>
-                        <li><a href="siyah-erkek-dirsek.html">Siyah Seri Erkek Dirsek</a></li>
-                        <li><a href="siyah-manson.html">Siyah Seri Manşon</a></li>
-                        <li><a href="siyah-tapa.html">Siyah Seri Tapa</a></li>
-                        <li><a href="siyah-erkek-te.html">Siyah Seri Erkek Te</a></li>
-                        <li><a href="siyah-disi-te.html">Siyah Seri Dişi Te</a></li>
-                        <li><a href="siyah-reduksiyon-te.html">Siyah Seri Redüksiyon Te</a></li>
-                        <li><a href="siyah-reduksiyon.html">Siyah Seri Redüksiyon</a></li>
-                        <li><a href="siyah-te.html">Siyah Seri Te</a></li>
+                        <li><a href='/siyah-disi'>Siyah Seri Dişi Kaplin</a></li>
+                        <li><a href='/siyah-erkek-kaplin'>Siyah Seri Erkek Kaplin</a></li>
+                        <li><a href='/siyah-dirsek'>Siyah Seri Dirsek Kaplin</a></li>
+                        <li><a href='/siyah-disi-dirsek'>Siyah Seri Dişi Dirsek</a></li>
+                        <li><a href='/siyah-erkek-dirsek'>Siyah Seri Erkek Dirsek</a></li>
+                        <li><a href='/siyah-manson'>Siyah Seri Manşon</a></li>
+                        <li><a href='/siyah-tapa'>Siyah Seri Tapa</a></li>
+                        <li><a href='/siyah-erkek-te'>Siyah Seri Erkek Te</a></li>
+                        <li><a href='/siyah-disi-te'>Siyah Seri Dişi Te</a></li>
+                        <li><a href='/siyah-reduksiyon-te'>Siyah Seri Redüksiyon Te</a></li>
+                        <li><a href='/siyah-reduksiyon'>Siyah Seri Redüksiyon</a></li>
+                        <li><a href='/siyah-te'>Siyah Seri Te</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
                         <h3>Kilitli Bağlantı Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href="kilitli-erkek-adaptor.html">Kilitli Bağlantı Erkek Adaptör</a></li>
-                        <li><a href="kilitli-erkek-dirsek.html">Kilitli Bağlantı Erkek Dirsek</a></li>
-                        <li><a href="kilitli-dirsek.html">Kilitli Bağlantı Dirsek</a></li>
-                        <li><a href="kilitli-reduksiyon-dirsek.html">Kilitli Bağlantı Redüksiyon Dirsek</a></li>
-                        <li><a href="kilitli-te.html">Kilitli Bağlantı TE</a></li>
-                        <li><a href="kilitli-erkek-te.html">Kilitli Bağlantı Erkek TE</a></li>
+                        <li><a href="kilitli-erkek-adaptör.html">Kilitli Bağlantı Erkek Adaptör</a></li>
+                        <li><a href='/kilitli-erkek-dirsek'>Kilitli Bağlantı Erkek Dirsek</a></li>
+                        <li><a href='/kilitli-dirsek'>Kilitli Bağlantı Dirsek</a></li>
+                        <li><a href='/kilitli-reduksiyon-dirsek'>Kilitli Bağlantı Redüksiyon Dirsek</a></li>
+                        <li><a href='/kilitli-te'>Kilitli Bağlantı TE</a></li>
+                        <li><a href='/kilitli-erkek-te'>Kilitli Bağlantı Erkek TE</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
                         <h3>Dişli Sulama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href="disli-disi-dirsek.html">Dişli Dişi Dirsek</a></li>
-                        <li><a href="disli-disi-nipel.html">Dişli Dişi Nipel</a></li>
-                        <li><a href="disli-disi-reduksiyon-dirsek.html">Dişli Dişi Redüksiyon Dirsek</a></li>
-                        <li><a href="erkek-disli-kor-tapa.html">Erkek Dişli Kör Tapa</a></li>
+                        <li><a href='/disli-disi-dirsek'>Dişli Dişi Dirsek</a></li>
+                        <li><a href='/disli-disi-nipel'>Dişli Dişi Nipel</a></li>
+                        <li><a href='/disli-disi-reduksiyon-dirsek'>Dişli Dişi Redüksiyon Dirsek</a></li>
+                        <li><a href='/erkek-disli-kor-tapa'>Erkek Dişli Kör Tapa</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
                         <h3>Priz Kolyeler <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href="priz-kolye.html">Priz Kolye</a></li>
-                        <li><a href="disi-nipelli-priz-kolye.html">Dişi Nipelli Priz Kolye</a></li>
-                        <li><a href="erkek-nipelli-priz-kolye.html">Erkek Nipelli Priz Kolye</a></li>
-                        <li><a href="kizakli-priz-kolye.html">Kızaklı Priz Kolye</a></li>
-                        <li><a href="cift-cikisli-priz-kolye.html">Çift Çıkışlı Priz Kolye</a></li>
+                        <li><a href='/priz-kolye'>Priz Kolye</a></li>
+                        <li><a href='/disi-nipelli-priz-kolye'>Dişi Nipelli Priz Kolye</a></li>
+                        <li><a href='/erkek-nipelli-priz-kolye'>Erkek Nipelli Priz Kolye</a></li>
+                        <li><a href='/kizakli-priz-kolye'>Kızaklı Priz Kolye</a></li>
+                        <li><a href='/cift-cikisli-priz-kolye'>Çift Çıkışlı Priz Kolye</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
                         <h3>Nipelli Seri <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href="nipelli-disi-priz-kolye.html">Dişi Nipelli Priz Kolye</a></li>
-                        <li><a href="nipelli-erkek-priz-kolye.html">Erkek Nipelli Priz Kolye</a></li>
-                        <li><a href="nipelli-erkek-te.html">Nipelli Erkek TE</a></li>
-                        <li><a href="nipelli-disi-dirsek.html">Nipelli Dişi Dirsek</a></li>
+                        <li><a href='/nipelli-disi-priz-kolye'>Dişi Nipelli Priz Kolye</a></li>
+                        <li><a href='/nipelli-erkek-priz-kolye'>Erkek Nipelli Priz Kolye</a></li>
+                        <li><a href='/nipelli-erkek-te'>Nipelli Erkek TE</a></li>
+                        <li><a href='/nipelli-disi-dirsek'>Nipelli Dişi Dirsek</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
-                        <h3>Vanalar Ve Kutular <span class="arrow-icon">&#9658;</span></h3>
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
+                        <h3>Vanalar <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href="disi-disi-vana.html">Dişi Dişi Vana</a></li>
-                        <li><a href="erkek-disi-vana.html">Erkek Dişi Vana</a></li>
-                        <li><a href="kaplin-disi-vana.html">Kaplin Dişi Vana</a></li>
-                        <li><a href="kaplin-erkek-vana.html">Kaplin Erkek Vana</a></li>
-                        <li><a href="cikis-mini-vana.html">Çıkış Mini Vana</a></li>
-                        <li><a href="6-inc-vana-kutusu.html">6" Vana Kutusu</a></li>
-                        <li><a href="10-inc-vana-kutusu.html">10" Vana Kutusu</a></li>
-                        <li><a href="12-inc-vana-kutusu.html">12" Vana Kutusu</a></li>
-                        <li><a href="14-inc-vana-kutusu.html">14" Vana Kutusu</a></li>
+                        <li><a href='/disi-disi-vana'>Dişi Dişi Vana</a></li>
+                        <li><a href='/erkek-disi-vana'>Erkek Dişi Vana</a></li>
+                        <li><a href='/kaplin-disi-vana'>Kaplin Dişi Vana</a></li>
+                        <li><a href='/kaplin-erkek-vana'>Kaplin Erkek Vana</a></li>
                     </ul>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
-                        <h3>Damla Sulama Ve Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
+                        <h3>Vana Kutuları <span class="arrow-icon">&#9658;</span></h3>
                     </div>
                     <ul class="product-list">
-                        <li><a href="debi-ayarli-damlatici-yesil.html">Debi Ayarlı Damlatıcı (Yeşil)</a></li>
-                        <li><a href="debi-ayarli-damlatici-kirmizi.html">Debi Ayarlı Damlatıcı (Kırmızı)</a></li>
-                        <li><a href="debi-ayarli-damlatici-genis.html">Debi Ayarlı Damlatıcı (Geniş)</a></li>
-                        <li><a href="duz-damlama-conta.html">Düz Damlama Conta</a></li>
-                        <li><a href="kanalli-conta.html">Kanallı Conta</a></li>
-                        <li><a href="kaplin-sikma-anahtari.html">Kaplin Sıkma Anahtarı</a></li>
-                        <li><a href="pah-acma-aparati.html">Pah Açma Aparatı</a></li>
-                        <li><a href="o-ring.html">O-Ring</a></li>
-                        <li><a href="abot-ustu-kaplin-dagitici.html">Abot Üstü Kaplin Dağıtıcı</a></li>
+                        <li><a href='/6-inc-vana-kutusu'>6" Vana Kutusu</a></li>
+                        <li><a href='/10-inc-vana-kutusu'>10" Vana Kutusu</a></li>
+                        <li><a href='/12-inc-vana-kutusu'>12" Vana Kutusu</a></li>
+                        <li><a href='/14-inc-vana-kutusu'>14" Vana Kutusu</a></li>
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
+                        <h3>Damlama Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href='/cikis-mini-vana'>Çıkış Mini Vana</a></li>
+                        <li><a href='/debi-ayarli-damlatici-genis'>Debi Ayarlı Damlatıcı Geniş Boşaltım</a></li>
+                        <li><a href='/debi-ayarli-damlatici-kirmizi'>Debi Ayarlı Damlatıcı Kırmızı</a></li>
+                        <li><a href='/debi-ayarli-damlatici-yesil'>Debi Ayarlı Damlatıcı Yeşil</a></li>
+                        <li><a href='/duz-damlama-conta'>Düz Damlama Conta</a></li>
+                        <li><a href='/kanalli-conta'>Kanallı Conta</a></li>
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
+                        <h3>Yedek Parçalar <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href='/kaplin-sikma-anahtari'>Kaplin Sıkma Anahtarı</a></li>
+                        <li><a href='/pah-acma-aparati'>Pah Açma Aparatı</a></li>
+                        <li><a href='/o-ring'>O-Ring</a></li>
+                        <li><a href='/abot-ustu-kaplin-dagitici'>Abot Üstü Kaplin Dağıtıcı</a></li>
                     </ul>
                 </li>
             </ul>
+            
 
-            <!-- MAIN CATEGORY 2: BAHÇE SULAMA EKİPMANLARI (CLOSED BY DEFAULT) -->
-            <div class="main-category-header">
-                <h3>BAHÇE SULAMA EKİPMANLARI <span class="arrow-icon">&#9658;</span></h3>
+            
+            <div class="main-category-item" onclick="if(event.target.closest('a'))return; event.preventDefault(); event.stopPropagation(); this.classList.toggle('active'); var m = document.getElementById('bahce-menu'); if(m) { m.classList.toggle('active'); m.style.setProperty('display', m.classList.contains('active') ? 'block' : 'none', 'important'); }">
+                <h3>BAHÇE SULAMA SİSTEMLERİ <span class="arrow-icon">&#9658;</span></h3>
             </div>
-            <ul class="category-group" id="bahce-sulama-group">
-                <li class="category-item-direct" style="list-style: none !important;">
-                    <a href="bahce-ekipmanlari.html" style="text-decoration: none !important; display: block !important; width: 100% !important;">
-                        <div class="category-header-direct" style="padding: 12px 30px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; background: #FFFFFF !important; user-select: none !important; border-bottom: 1px solid #E2E8F0 !important; cursor: pointer !important;" onmouseover="this.style.background='#F1F5F9'" onmouseout="this.style.background='#FFFFFF'">
-                            <h3 style="margin: 0 !important; font-size: 14px !important; font-weight: 700 !important; color: #004797 !important; font-family: 'Poppins', sans-serif !important;">Bahçe Ekipmanları</h3>
+            <ul class="category-group" id="bahce-menu">
+<li class="category-item">
+                    <a href="/bahce-ekipmanlari" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+                        <div class="category-header">
+                            <h3>Bahçe Ekipmanları</h3>
+                        </div>
+                    </a>
+                </li>
+<li class="category-item">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
+                        <h3>Rekorlar <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="/cift-tarafli-depo-rekoru">Çift Taraflı Depo Rekoru</a></li>
+                        <li><a href="/depo-rekoru-ters-dis">Depo Rekoru (Ters Diş)</a></li>
+                        <li><a href="/sintine-rekoru-ters-dis">Sintine Rekoru (Ters Diş)</a></li>
+                        <li><a href="/pvc-hortum-rekoru">PVC Hortum Rekoru</a></li>
+                        <li><a href="/galvanizli-hortum-rekoru">Galvanizli Hortum Rekoru</a></li>
+                        <li><a href="/ozel-depo-rekoru">Özel Depo Rekoru</a></li>
+                    </ul>
+                </li>
+                
+
+                
+                
+                                <li class="category-item">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
+                        <h3>Hortum Ek Parçaları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        <li><a href="/ayarli-hortum-eki">Ayarlı Hortum Eki</a></li>
+                        <li><a href="/ayarli-hortum-te">Ayarlı Hortum TE</a></li>
+                        <li><a href="/hortum-eki">Hortum Eki</a></li>
+                        <li><a href="/hortum-reduksiyonu">Hortum Redüksiyonu</a></li>
+                        <li><a href="/hortum-te">Hortum TE</a></li>
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <div class="category-header" onclick="event.preventDefault(); event.stopPropagation(); var item = this.closest('.category-item'); var list = item.querySelector('.product-list'); if(list) { item.classList.toggle('active'); list.classList.toggle('active'); list.style.setProperty('display', list.classList.contains('active') ? 'block' : 'none', 'important'); }">
+                        <h3>Musluk Jakı Ve Rekorları <span class="arrow-icon">&#9658;</span></h3>
+                    </div>
+                    <ul class="product-list">
+                        
+                    </ul>
+                </li>
+                <li class="category-item">
+                    <a href="/kuresel-vana" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+                        <div class="category-header">
+                            <h3>Küresel Vana</h3>
                         </div>
                     </a>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
-                        <h3>Depo Rekorları <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                    <ul class="product-list">
-                        <li><a href="ozel-depo-rekoru.html">Özel Depo Rekoru</a></li>
-                        <li><a href="depo-rekoru.html">Depo Rekoru</a></li>
-                        <li><a href="sintine-depo-rekoru.html">Sintine Depo Rekoru</a></li>
-                        <li><a href="cift-tarafli-depo-rekoru.html">Çift Taraflı Depo Rekoru</a></li>
-                    </ul>
+                    <a href="/kuresel-vana" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+                        <div class="category-header">
+                            <h3>Küresel Vana</h3>
+                        </div>
+                    </a>
                 </li>
                 <li class="category-item">
-                    <div class="category-header">
-                        <h3>PVC Hortum Rekorları <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                    <ul class="product-list">
-                        <li><a href="pvc-hortum-rekoru.html">PVC Hortum Rekoru</a></li>
-                    </ul>
-                </li>
-                <li class="category-item">
-                    <div class="category-header">
-                        <h3>Hortum Ekipmanları <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                    <ul class="product-list">
-                        <li><a href="hortum-ekipmanlari.html">Hortum Ekipmanları</a></li>
-                    </ul>
-                </li>
-                <li class="category-item">
-                    <div class="category-header">
-                        <h3>PVC Küresel Vana <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                    <ul class="product-list">
-                        <li><a href="pvc-kuresel-vana.html">PVC Küresel Vana</a></li>
-                    </ul>
-                </li>
-                <li class="category-item">
-                    <div class="category-header">
-                        <h3>Filtreler <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                    <ul class="product-list">
-                        <li><a href="filtreler.html">Filtreler</a></li>
-                    </ul>
-                </li>
-                <li class="category-item">
-                    <div class="category-header">
-                        <h3>Fiskiyeler <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                    <ul class="product-list">
-                        <li><a href="fiskiyeler.html">Fiskiyeler</a></li>
-                    </ul>
-                </li>
-                <li class="category-item">
-                    <div class="category-header">
-                        <h3>Tabancalar <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                    <ul class="product-list">
-                        <li><a href="tabancalar.html">Tabancalar</a></li>
-                    </ul>
-                </li>
-                <li class="category-item">
-                    <div class="category-header">
-                        <h3>Damlatıcılar <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                    <ul class="product-list">
-                        <li><a href="debi-ayarli-damlatici-kirmizi.html">Debi Ayarlı Damlatıcı (Kırmızı)</a></li>
-                        <li><a href="debi-ayarli-damlatici-yesil.html">Debi Ayarlı Damlatıcı (Yeşil)</a></li>
-                        <li><a href="debi-ayarli-damlatici-genis.html">Debi Ayarlı Damlatıcı (Geniş)</a></li>
-                    </ul>
-                </li>
-                <li class="category-item">
-                    <div class="category-header">
-                        <h3>Mini Vanalar <span class="arrow-icon">&#9658;</span></h3>
-                    </div>
-                    <ul class="product-list">
-                        <li><a href="cikis-mini-vana.html">Çıkış Mini Vana</a></li>
-                    </ul>
+                    <a href="/kuresel-vana" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+                        <div class="category-header">
+                            <h3>Küresel Vana</h3>
+                        </div>
+                    </a>
                 </li>
             </ul>
         </div>
