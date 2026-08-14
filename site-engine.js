@@ -249,8 +249,8 @@
     // Inject Quick View Modal
     if (!document.getElementById('quickViewModal')) {
         var qvHtml = `
-        <div id="quickViewModal" class="baysu-cart-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999999; backdrop-filter: blur(5px); align-items: center; justify-content: center;">
-            <div style="background: #fff; width: 90%; max-width: 450px; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); position: relative; max-height: 90vh; overflow-y: auto;">
+        <div id="quickViewModal" class="baysu-cart-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999999; backdrop-filter: blur(5px); align-items: center; justify-content: center; touch-action: manipulation;">
+            <div style="background: #fff; width: 90%; max-width: 450px; border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); position: relative; max-height: 90vh; overflow-y: auto; touch-action: manipulation;">
                 <button onclick="closeQuickViewModal()" style="position: absolute; top: 15px; right: 15px; background: #F1F5F9; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748B; font-size: 18px; transition: all 0.2s;"><i class="fas fa-times"></i></button>
                 
                 <div style="text-align: center; margin-bottom: 20px;">
@@ -326,10 +326,12 @@
                         originalInput.value = qty;
                     }
                 }
-                if (window.baysuAnimateCartBtn) {
-                    window.baysuAnimateCartBtn(btn);
-                    closeQuickViewModal();
-                }
+                
+                // Gerçek sepete ekleme işlemini tetikle
+                btn.click();
+                
+                // Modal'ı kapat
+                closeQuickViewModal();
             }
         };
 
