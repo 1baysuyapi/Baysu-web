@@ -1144,8 +1144,6 @@
             <div class="nav-links">
                 <a href='/'><i class="fas fa-home" style="margin-right: 6px;"></i>Ana Sayfa</a>
                 <a href="javascript:void(0)" id="menuToggleDesktop" onclick="event.preventDefault(); event.stopPropagation(); var m = document.getElementById('mainMenuContainer'); if(m) { var isActive = m.classList.toggle('active'); m.style.setProperty('display', isActive ? 'block' : 'none', 'important'); m.style.setProperty('z-index', '999999', 'important'); }"><i class="fas fa-th-large" style="margin-right: 6px;"></i>Ürün Kataloğu</a>
-                
-                
             </div>
         </div>
         <div class="main-menu-container" id="mainMenuContainer">
@@ -1395,21 +1393,7 @@
                                 </div>
                             </td>
                             <td>
-                                <button class="add-btn" type="button" onclick="
-    var row = this.closest('tr');
-    var code = row.cells[0].innerText.trim();
-    var ebat = row.cells[1].innerText.trim();
-    var priceStr = row.cells[4].innerText.trim().replace('₺', '').replace(',', '.').trim();
-    var price = parseFloat(priceStr);
-    var q = parseInt(row.querySelector('.qty-input').value) || 1;
-    var name = document.querySelector('.product-title').innerText.trim() + ' (' + ebat + ') - Kod: ' + code;
-    if(window.addToCart){
-        for(var i=0;i<q;i++) window.addToCart(name, price, code, '-');
-        alert(q + ' adet sepete eklendi!');
-    } else {
-        alert('Sepet sistemi hazır değil');
-    }
-">
+                                <button class="add-btn" type="button" onclick="addTableRowToCart(this)">
     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i> Sepete Ekle
 </button>
                             </td>
@@ -1428,21 +1412,7 @@
                                 </div>
                             </td>
                             <td>
-                                <button class="add-btn" type="button" onclick="
-    var row = this.closest('tr');
-    var code = row.cells[0].innerText.trim();
-    var ebat = row.cells[1].innerText.trim();
-    var priceStr = row.cells[4].innerText.trim().replace('₺', '').replace(',', '.').trim();
-    var price = parseFloat(priceStr);
-    var q = parseInt(row.querySelector('.qty-input').value) || 1;
-    var name = document.querySelector('.product-title').innerText.trim() + ' (' + ebat + ') - Kod: ' + code;
-    if(window.addToCart){
-        for(var i=0;i<q;i++) window.addToCart(name, price, code, '-');
-        alert(q + ' adet sepete eklendi!');
-    } else {
-        alert('Sepet sistemi hazır değil');
-    }
-">
+                                <button class="add-btn" type="button" onclick="addTableRowToCart(this)">
     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i> Sepete Ekle
 </button>
                             </td>
@@ -1461,21 +1431,7 @@
                                 </div>
                             </td>
                             <td>
-                                <button class="add-btn" type="button" onclick="
-    var row = this.closest('tr');
-    var code = row.cells[0].innerText.trim();
-    var ebat = row.cells[1].innerText.trim();
-    var priceStr = row.cells[4].innerText.trim().replace('₺', '').replace(',', '.').trim();
-    var price = parseFloat(priceStr);
-    var q = parseInt(row.querySelector('.qty-input').value) || 1;
-    var name = document.querySelector('.product-title').innerText.trim() + ' (' + ebat + ') - Kod: ' + code;
-    if(window.addToCart){
-        for(var i=0;i<q;i++) window.addToCart(name, price, code, '-');
-        alert(q + ' adet sepete eklendi!');
-    } else {
-        alert('Sepet sistemi hazır değil');
-    }
-">
+                                <button class="add-btn" type="button" onclick="addTableRowToCart(this)">
     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i> Sepete Ekle
 </button>
                             </td>
@@ -1495,6 +1451,60 @@
         </a>
     </div>
 
-    <script src="site-engine.js?v=1786398031435"></script>
+    <script src="cart.js"></script>
+<script src="site-engine.js"></script>
+
+    <!-- Sepet Çekmecesi (Cart Drawer) -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Sepetim</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Dynamically populated -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Toplam Tutar:</span>
+                <strong id="cartTotal">₺ 0.00</strong>
+            </div>
+            <div class="cart-actions-drawer">
+                <button class="clear-cart-btn" id="clearCartBtn">Sepeti Temizle</button>
+                <a href="https://wa.me/905533973603" id="whatsappCheckoutBtn" target="_blank" class="checkout-btn">
+                    <i class="fab fa-whatsapp"></i> Sipariş Ver (WhatsApp)
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+function addTableRowToCart(btn) {
+    var row = btn.closest('tr');
+    if (!row) return;
+    var code = row.cells[0] ? row.cells[0].innerText.trim() : '-';
+    var ebatCell = row.cells[1];
+    var ebatText = ebatCell ? ebatCell.innerText.replace(/\s+/g, ' ').trim() : '';
+    var priceCell = row.cells[4];
+    var priceStr = priceCell ? priceCell.innerText.replace('₺', '').replace(',', '.').trim() : '0';
+    var price = parseFloat(priceStr) || 0;
+    var qtyInput = row.querySelector('.qty-input');
+    var q = qtyInput ? (parseInt(qtyInput.value) || 1) : 1;
+    
+    var titleEl = document.querySelector('.product-title') || document.querySelector('h1') || document.querySelector('h2');
+    const pageTitle = titleEl ? titleEl.innerText.trim() : 'Ürün';
+    var productName = pageTitle + ' (' + ebatText + ')';
+    
+    if (window.addToCart) {
+        for (var i = 0; i < q; i++) {
+            window.addToCart(productName, price, code, '-');
+        }
+    } else {
+        alert('Sepet yükleniyor...');
+    }
+}
+</script>
+
 </body>
 </html>

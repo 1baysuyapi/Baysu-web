@@ -547,8 +547,6 @@
             <div class="nav-links">
                 <a href='/'><i class="fas fa-home" style="margin-right: 6px;"></i>Ana Sayfa</a>
                 <a href="javascript:void(0)" id="menuToggleDesktop" onclick="event.preventDefault(); event.stopPropagation(); var m = document.getElementById('mainMenuContainer'); if(m) { var isActive = m.classList.toggle('active'); m.style.setProperty('display', isActive ? 'block' : 'none', 'important'); m.style.setProperty('z-index', '999999', 'important'); }"><i class="fas fa-th-large" style="margin-right: 6px;"></i>Ürün Kataloğu</a>
-                <a href="#about-section" class="hide-on-mobile"><i class="fas fa-info-circle" style="margin-right: 6px;"></i>Hakkımızda</a>
-                <a href="#contact-section" class="hide-on-mobile"><i class="fas fa-envelope" style="margin-right: 6px;"></i>İletişim</a>
             </div>
         </div>
         <div class="main-menu-container" id="mainMenuContainer">
@@ -833,186 +831,36 @@
     <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum." class="whatsapp-button" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const mainMenuContainer = document.getElementById('mainMenuContainer');
-            const menuToggleMobile = document.getElementById('menuToggle');
-            const menuToggleDesktop = document.getElementById('menuToggleDesktop');
-            const mainCategoryItem = document.querySelector('.main-category-item');
-            const kaplinlerMenu = document.getElementById('kaplinler-menu');
-            const subCategoryItems = document.querySelectorAll('#kaplinler-menu > .category-item');
+        <script>
+        (function() {
             const searchInput = document.getElementById('searchInput');
-            const searchResultsContainer = document.getElementById('searchResults');
-            // Tüm ürünlerin listesi (tüm sayfalarda aynı olmalı)
-            const allProducts = [
-                // Mavi Seri
-                { name: "Mavi Dişi Kaplin", url: "mavi-disi-kaplin.html" },
-                { name: "Mavi Erkek Kaplin", url: "mavi-erkek-kaplin.html" },
-                { name: "Mavi Dirsek Kaplin", url: "mavi-dirsek-kaplin.html" },
-                { name: "Mavi Dişi Dirsek", url: "mavi-disi-dirsek.html" },
-                { name: "Mavi Erkek Dirsek", url: "mavi-erkek-dirsek.html" },
-                { name: "Mavi Manşon", url: "mavi-manson.html" },
-                { name: "Mavi Tapa", url: "mavi-tapa.html" },
-                { name: "Mavi Erkek Te", url: "mavi-erkek-te.html" },
-                { name: "Mavi Dişi Te", url: "mavi-disi-te.html" },
-                { name: "Mavi Redüksiyon Te", url: "mavi-reduksiyon-te.html" },
-                { name: "Mavi Redüksiyon", url: "mavi-reduksiyon.html" },
-                { name: "Mavi Te", url: "mavi-te.html" },
-                // Siyah Seri
-                { name: "Siyah Dişi Kaplin", url: "siyah-disi.html" },
-                { name: "Siyah Erkek Kaplin", url: "siyah-erkek-kaplin.html" },
-                { name: "Siyah Dirsek Kaplin", url: "siyah-dirsek.html" },
-                { name: "Siyah Dişi Dirsek", url: "siyah-disi-dirsek.html" },
-                { name: "Siyah Erkek Dirsek", url: "siyah-erkek-dirsek.html" },
-                { name: "Siyah Manşon", url: "siyah-manson.html" },
-                { name: "Siyah Tapa", url: "siyah-tapa.html" },
-                { name: "Siyah Erkek Te", url: "siyah-erkek-te.html" },
-                { name: "Siyah Dişi Te", url: "siyah-disi-te.html" },
-                { name: "Siyah Redüksiyon Te", url: "siyah-reduksiyon-te.html" },
-                { name: "Siyah Redüksiyon", url: "siyah-reduksiyon.html" },
-                { name: "Siyah Te", url: "siyah-te.html" },
-                // Diğerleri
-                { name: "Kilitli Bağlantı Erkek Dirsek", url: "kilitli-erkek-dirsek.html" },
-                { name: "Kilitli Bağlantı Dirsek", url: "kilitli-dirsek.html" },
-                { name: "Kilitli Bağlantı Redüksiyon Dirsek", url: "kilitli-reduksiyon-dirsek.html" },
-                { name: "Kilitli Bağlantı TE", url: "kilitli-te.html" },
-                { name: "Kilitli Bağlantı Erkek TE", url: "kilitli-erkek-te.html" },
-                { name: "Dişli Dişi Dirsek", url: "disli-disi-dirsek.html" },
-                { name: "Dişli Dişi Nipel", url: "disli-disi-nipel.html" },
-                { name: "Dişli Dişi Redüksiyon Dirsek", url: "disli-disi-reduksiyon-dirsek.html" },
-                { name: "Erkek Dişli Kör Tapa", url: "erkek-disli-kor-tapa.html" },
-                { name: "Priz Kolye", url: "priz-kolye.html" },
-                { name: "Dişi Nipelli Priz Kolye", url: "disi-nipelli-priz-kolye.html" },
-                { name: "Erkek Nipelli Priz Kolye", url: "erkek-nipelli-priz-kolye.html" },
-                { name: "Kızaklı Priz Kolye", url: "kizakli-priz-kolye.html" },
-                { name: "Çift Çıkışlı Priz Kolye", url: "cift-cikisli-priz-kolye.html" },
-                { name: "Nipelli Erkek TE", url: "nipelli-erkek-te.html" },
-                { name: "Nipelli Dişi Dirsek", url: "nipelli-disi-dirsek.html" },
-                { name: "Dişi Dişi Vana", url: "disi-disi-vana.html" },
-                { name: "Erkek Dişi Vana", url: "erkek-disi-vana.html" },
-                { name: "Kaplin Dişi Vana", url: "kaplin-disi-vana.html" },
-                { name: "Kaplin Erkek Vana", url: "kaplin-erkek-vana.html" },
-                { name: "6\" Vana Kutusu", url: "6-inc-vana-kutusu.html" },
-                { name: "10\" Vana Kutusu", url: "10-inc-vana-kutusu.html" },
-                { name: "12\" Vana Kutusu", url: "12-inc-vana-kutusu.html" },
-                { name: "14\" Vana Kutusu", url: "14-inc-vana-kutusu.html" },
-                { name: "Çıkış Mini Vana", url: "cikis-mini-vana.html" },
-                { name: "Debi Ayarlı Damlatıcı Geniş Boşaltım", url: "debi-ayarli-damlatici-genis.html" },
-                { name: "Debi Ayarlı Damlatıcı Kırmızı", url: "debi-ayarli-damlatici-kirmizi.html" },
-                { name: "Debi Ayarlı Damlatıcı Yeşil", url: "debi-ayarli-damlatici-yesil.html" },
-                { name: "Düz Damlama Conta", url: "duz-damlama-conta.html" },
-                { name: "Kanallı Conta", url: "kanalli-conta.html" },
-                { name: "Kaplin Sıkma Anahtarı", url: "kaplin-sikma-anahtari.html" },
-                { name: "Pah Açma Aparatı", url: "pah-acma-aparati.html" },
-                { name: "O-Ring", url: "o-ring.html" },
-                { name: "Abot Üstü Kaplin Dağıtıcı", url: "abot-ustu-kaplin-dagitici.html" }
-            ];
-            const toggleMainMenu = () => {
-                mainMenuContainer.classList.toggle('active');
-            };
-            if (menuToggleDesktop) {
-                menuToggleDesktop.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    toggleMainMenu();
-                });
-            }
-            if (menuToggleMobile) {
-                menuToggleMobile.addEventListener('click', () => {
-                    toggleMainMenu();
-                });
-            }
-            // Ana kategoriye tıklayınca alt menüyü açma/kapama
-            mainCategoryItem.addEventListener('click', (e) => {
-                e.preventDefault();
-                mainCategoryItem.classList.toggle('active');
-                kaplinlerMenu.classList.toggle('active');
-            });
-            // Alt kategorilere tıklayınca ürün listesini açma/kapama
-            subCategoryItems.forEach(item => {
-                const header = item.querySelector('.category-header');
-                const productList = item.querySelector('.product-list');
-                if (header && productList) {
-                    header.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        item.classList.toggle('active');
-                        productList.classList.toggle('active');
-                        // Diğer açık alt kategorileri kapatma
-                        subCategoryItems.forEach(otherItem => {
-                            if (otherItem !== item) {
-                                otherItem.classList.remove('active');
-                                const otherList = otherItem.querySelector('.product-list');
-                                if (otherList) {
-                                    otherList.classList.remove('active');
-                                }
-                            }
-                        });
-                    });
-                }
-            });
-            window.addEventListener('click', (e) => {
-                if (!mainMenuContainer.contains(e.target) && !e.target.closest('.nav-bar')) {
-                    const isMenuOpen = mainMenuContainer.classList.contains('active');
-                    if (isMenuOpen) {
-                        mainMenuContainer.classList.remove('active');
-                        mainCategoryItem.classList.remove('active');
-                        kaplinlerMenu.classList.remove('active');
-                        subCategoryItems.forEach(item => {
-                            item.classList.remove('active');
-                            const productList = item.querySelector('.product-list');
-                            if (productList) {
-                                productList.classList.remove('active');
-                            }
-                        });
+            const searchResults = document.getElementById('searchResults');
+            if (searchInput && searchResults) {
+                searchInput.addEventListener('input', function() {
+                    const query = this.value.trim().toLowerCase();
+                    if (!query) {
+                        searchResults.innerHTML = '';
+                        searchResults.classList.remove('active');
+                        return;
                     }
-                }
-            });
-            window.addEventListener('resize', () => {
-                if (window.innerWidth >= 769) {
-                    mainMenuContainer.classList.remove('active');
-                    mainCategoryItem.classList.remove('active');
-                    kaplinlerMenu.classList.remove('active');
-                    subCategoryItems.forEach(item => {
-                        item.classList.remove('active');
-                        const productList = item.querySelector('.product-list');
-                        if (productList) {
-                            productList.classList.remove('active');
+                    if (typeof productsData !== 'undefined' && Array.isArray(productsData)) {
+                        const filtered = productsData.filter(p => p.name && p.name.toLowerCase().includes(query));
+                        if (filtered.length > 0) {
+                            searchResults.innerHTML = filtered.slice(0, 8).map(p =>
+                                '<a href="' + p.url + '" class="search-result-item">' +
+                                '<i class="fas fa-cube"></i>' +
+                                '<span class="search-result-title">' + p.name + '</span>' +
+                                '</a>'
+                            ).join('');
+                            searchResults.classList.add('active');
+                        } else {
+                            searchResults.innerHTML = '<div class="search-result-item" style="color: #94A3B8; justify-content: center;">Aradığınız ürün bulunamadı.</div>';
+                            searchResults.classList.add('active');
                         }
-                    });
-                }
-            });
-            // Geliştirilmiş Arama Fonksiyonu
-            searchInput.addEventListener('keyup', () => {
-                const searchTerm = searchInput.value.toLowerCase();
-                searchResultsContainer.innerHTML = '';
-                if (searchTerm.length > 1) {
-                    const filteredProducts = allProducts.filter(product => product.name.toLowerCase().includes(searchTerm));
-                    if (filteredProducts.length > 0) {
-                        filteredProducts.forEach(product => {
-                            const resultItem = document.createElement('a');
-                            resultItem.href = product.url;
-                            resultItem.textContent = product.name;
-                            searchResultsContainer.appendChild(resultItem);
-                        });
-                        searchResultsContainer.classList.add('active');
-                    } else {
-                        searchResultsContainer.classList.remove('active');
                     }
-                } else {
-                    searchResultsContainer.classList.remove('active');
-                }
-            });
-            // Arama çubuğu odak dışına çıkınca sonuçları kapatma
-            searchInput.addEventListener('blur', () => {
-                setTimeout(() => {
-                    searchResultsContainer.classList.remove('active');
-                }, 200);
-            });
-            searchInput.addEventListener('focus', () => {
-                if (searchInput.value.length > 1) {
-                    searchResultsContainer.classList.add('active');
-                }
-            });
-        });
+                });
+            }
+        })();
     </script>
     <script src="cart.js?v=11"></script>
 <script>
@@ -1087,5 +935,32 @@ document.addEventListener('DOMContentLoaded', function() {
 })();
 </script>
 
+
+    <!-- Sepet Çekmecesi (Cart Drawer) -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Sepetim</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Dynamically populated -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Toplam Tutar:</span>
+                <strong id="cartTotal">₺ 0.00</strong>
+            </div>
+            <div class="cart-actions-drawer">
+                <button class="clear-cart-btn" id="clearCartBtn">Sepeti Temizle</button>
+                <a href="https://wa.me/905533973603" id="whatsappCheckoutBtn" target="_blank" class="checkout-btn">
+                    <i class="fab fa-whatsapp"></i> Sipariş Ver (WhatsApp)
+                </a>
+            </div>
+        </div>
+    </div>
+
+<script src="cart.js"></script>
+<script src="site-engine.js"></script>
 </body>
 </html>

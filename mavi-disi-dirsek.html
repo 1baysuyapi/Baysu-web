@@ -1349,8 +1349,6 @@
             <div class="nav-links">
                 <a href='/'><i class="fas fa-home" style="margin-right: 6px;"></i>Ana Sayfa</a>
                 <a href="javascript:void(0)" id="menuToggleDesktop" onclick="event.preventDefault(); event.stopPropagation(); var m = document.getElementById('mainMenuContainer'); if(m) { var isActive = m.classList.toggle('active'); m.style.setProperty('display', isActive ? 'block' : 'none', 'important'); m.style.setProperty('z-index', '999999', 'important'); }"><i class="fas fa-th-large" style="margin-right: 6px;"></i>Ürün Kataloğu</a>
-                <a href="#about-section" class="hide-on-mobile"><i class="fas fa-info-circle" style="margin-right: 6px;"></i>Hakkımızda</a>
-                <a href="#contact-section" class="hide-on-mobile"><i class="fas fa-envelope" style="margin-right: 6px;"></i>İletişim</a>
             </div>
         </div>
         <div class="main-menu-container" id="mainMenuContainer">
@@ -3134,5 +3132,32 @@
             .category-group.active { display: flex !important; flex-direction: column !important; }
         }
     </style>
+
+    <!-- Sepet Çekmecesi (Cart Drawer) -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Sepetim</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Dynamically populated -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Toplam Tutar:</span>
+                <strong id="cartTotal">₺ 0.00</strong>
+            </div>
+            <div class="cart-actions-drawer">
+                <button class="clear-cart-btn" id="clearCartBtn">Sepeti Temizle</button>
+                <a href="https://wa.me/905533973603" id="whatsappCheckoutBtn" target="_blank" class="checkout-btn">
+                    <i class="fab fa-whatsapp"></i> Sipariş Ver (WhatsApp)
+                </a>
+            </div>
+        </div>
+    </div>
+
+<script src="cart.js"></script>
+<script src="site-engine.js"></script>
 </body>
 </html>
