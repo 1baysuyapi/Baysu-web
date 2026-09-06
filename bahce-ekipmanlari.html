@@ -2153,7 +2153,44 @@
         </style>
 
         <section id="bahce-ekipmanlari" class="page-content active" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
-        <div class="products-grid">
+            
+            <!-- Page Header Title and Subtitle -->
+            <div style="text-align: center; margin: 20px 0 25px 0;">
+                <h1 style="font-size: 2.5rem; font-weight: 800; color: var(--primary-color, #0b1727); margin-bottom: 10px;">Bahçe Ekipmanları</h1>
+                <p style="font-size: 1.1rem; color: var(--light-text-color, #64748B); margin: 0;">Bahçenizin ihtiyacı olan en kaliteli bahçe sulama süzekleri ve fıskiyeleri tek bir yerde.</p>
+            </div>
+
+            <!-- Hero Banner Image Slider -->
+            <div class="hero-slider-container">
+                <div class="hero-slide active" style="background-image: url('resimler/slider/1.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/2.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/3.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/4.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/5.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/6.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/7.jpg');"></div>
+            </div>
+
+            <div class="products-grid">
+            
+            <!-- Page Header Title and Subtitle -->
+            <div style="text-align: center; margin: 20px 0 25px 0;">
+                <h1 style="font-size: 2.5rem; font-weight: 800; color: var(--primary-color, #0b1727); margin-bottom: 10px;">Bahçe Ekipmanları</h1>
+                <p style="font-size: 1.1rem; color: var(--light-text-color, #64748B); margin: 0;">Bahçenizin ihtiyacı olan en kaliteli bahçe sulama süzekleri ve fıskiyeleri tek bir yerde.</p>
+            </div>
+
+            <!-- Hero Banner Image Slider -->
+            <div class="hero-slider-container">
+                <div class="hero-slide active" style="background-image: url('resimler/slider/1.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/2.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/3.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/4.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/5.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/6.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('resimler/slider/7.jpg');"></div>
+            </div>
+
+            <div class="products-grid">
         <div class="product-card" data-category="bahce" data-name="Jumbo El Süzeği">
             <span class="badge">129</span>
             <img src="resimler/bahce_ekipmanlari/Jumbo_El_Szei.png" alt="Jumbo El Süzeği" onerror="this.src='resimler/placeholder.png'">
@@ -4675,6 +4712,20 @@
         </div>
     
         </div>
+    
+        <script>
+            (function() {
+                let currentSlide = 0;
+                const slides = document.querySelectorAll('.hero-slide');
+                if (slides && slides.length > 0) {
+                    setInterval(() => {
+                        slides[currentSlide].classList.remove('active');
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        slides[currentSlide].classList.add('active');
+                    }, 3500);
+                }
+            })();
+        </script>
     </section>
 </main>
 
