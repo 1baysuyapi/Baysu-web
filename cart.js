@@ -409,8 +409,8 @@ function parsePrice(str) {
                 addItem(productName, size, boxQty, price, quantity, code, stepVal, paketQty);
 
                 var originalText = addBtn.innerHTML;
-                addBtn.classList.add('added');
-                addBtn.innerHTML = "<i class=\"fas fa-check\"></i> Eklendi!";
+                // addBtn.classList.add("added"); // disabled
+                // Notification removed;
 
                 setTimeout(function() {
                     addBtn.classList.remove('added');
