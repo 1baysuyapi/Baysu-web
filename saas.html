@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My app</title>
+    <meta name="viewport" content="width=1000" />
+    <meta charset="utf-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+      <script src="security.js" defer></script>
+<style>
+.main-menu-container { z-index: 99999 !important; }
+.main-menu-container.active { display: block !important; z-index: 99999 !important; }
+</style>
+
+<style id="baysu-mega-menu-css">
+.main-menu-container {
+    display: none;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    background: #0F172A !important;
+    border-bottom: 3px solid #38BDF8 !important;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6) !important;
+    z-index: 999999 !important;
+    padding: 20px 30px !important;
+    box-sizing: border-box !important;
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+}
+
+.main-menu-container.active {
+    display: block !important;
+}
+
+.main-menu-container .kaplinler-menu,
+.main-menu-container.active .kaplinler-menu {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    gap: 20px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.main-menu-container .product-list,
+.main-menu-container.active .product-list {
+    display: block !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 8px 0 0 0 !important;
+    list-style: none !important;
+}
+
+.main-menu-container .category-item {
+    background: #1E293B !important;
+    border: 1px solid #334155 !important;
+    border-radius: 10px !important;
+    padding: 14px !important;
+}
+
+.main-menu-container .category-header h3 {
+    color: #38BDF8 !important;
+    font-size: 15px !important;
+    margin: 0 !important;
+    padding-bottom: 8px !important;
+    border-bottom: 1px solid #334155 !important;
+}
+
+.main-menu-container .product-list li a {
+    color: #CBD5E1 !important;
+    font-size: 13px !important;
+    padding: 6px 0 !important;
+    display: block !important;
+    text-decoration: none !important;
+    transition: color 0.2s, transform 0.2s !important;
+}
+
+.main-menu-container .product-list li a:hover {
+    color: #38BDF8 !important;
+    transform: translateX(4px) !important;
+}
+
+.main-category-item h2 {
+    display: none !important;
+}
+</style>
+
+</head>
+  <body class="flex justify-center items-center h-screen overflow-hidden bg-white font-sans text-center px-6" oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+    <div class="w-full">
+      <span class="text-xs rounded-full mb-2 inline-block px-2 py-1 border border-amber-500/15 bg-amber-500/15 text-amber-500">🔥 New version dropped!</span>
+      <h1 class="text-4xl lg:text-6xl font-bold font-sans">
+        <span class="text-2xl lg:text-4xl text-gray-400 block font-medium">I'm ready to work,</span>
+        Ask me anything.
+      </h1>
+    </div>
+      <img src="https://enzostvs-deepsite.hf.space/arrow.svg" class="absolute bottom-8 left-0 w-[100px] transform rotate-[30deg]" />
+    <script></script>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+    var btnDesktop = document.getElementById('menuToggleDesktop');
+    var btnMobile = document.getElementById('menuToggleMobile');
+    var menuContainer = document.getElementById('mainMenuContainer');
+    
+    function toggleMenu(e) {
+        if(e) e.preventDefault();
+        if(menuContainer) {
+            menuContainer.classList.toggle('active');
+            if(menuContainer.classList.contains('active')) {
+                menuContainer.style.display = 'block';
+                menuContainer.style.zIndex = '99999';
+            } else {
+                menuContainer.style.display = 'none';
+            }
+        }
+    }
+
+    if(btnDesktop) {
+        btnDesktop.addEventListener('click', toggleMenu);
+    }
+    if(btnMobile) {
+        btnMobile.addEventListener('click', toggleMenu);
+    }
+});
+</script>
+
+<script id="baysu-mega-menu-js">
+(function(){
+    function initBaysuMenu() {
+        var triggers = document.querySelectorAll('#menuToggleDesktop, #menuToggleMobile, .dropdown-toggle, a[href*="#products"]');
+        var menu = document.getElementById('mainMenuContainer');
+
+        if(!menu) return;
+
+        triggers.forEach(function(btn){
+            btn.addEventListener('click', function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                if(menu.classList.contains('active')) {
+                    menu.classList.remove('active');
+                } else {
+                    menu.classList.add('active');
+                }
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e){
+            if(menu && menu.classList.contains('active')) {
+                var isClickInside = menu.contains(e.target);
+                var isClickTrigger = false;
+                triggers.forEach(function(btn){
+                    if(btn.contains(e.target)) isClickTrigger = true;
+                });
+
+                if(!isClickInside && !isClickTrigger) {
+                    menu.classList.remove('active');
+                }
+            }
+        });
+    }
+
+    if(document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initBaysuMenu);
+    } else {
+        initBaysuMenu();
+    }
+})();
+</script>
+
+</body>
+</html>

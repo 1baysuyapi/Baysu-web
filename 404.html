@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Sayfa Bulunamadı</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #004797;
+            --background-color: #F8F9FA;
+            --text-color: #333333;
+            --light-text-color: #666666;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            background: #fff;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        .error-code {
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0;
+            line-height: 1;
+        }
+        .error-message {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 10px 0 20px 0;
+        }
+        .error-description {
+            font-size: 1.1rem;
+            color: var(--light-text-color);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .home-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .home-button:hover {
+            background-color: #003672;
+        }
+        .logo {
+            width: 180px;
+            margin-bottom: 25px;
+        }
+        
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            font-size: 35px;
+        }
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+    <script src="security.js" defer></script>
+<style>
+.main-menu-container { z-index: 99999 !important; }
+.main-menu-container.active { display: block !important; z-index: 99999 !important; }
+</style>
+
+<style id="baysu-mega-menu-css">
+.main-menu-container {
+    display: none;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    background: #0F172A !important;
+    border-bottom: 3px solid #38BDF8 !important;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6) !important;
+    z-index: 999999 !important;
+    padding: 20px 30px !important;
+    box-sizing: border-box !important;
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+}
+
+.main-menu-container.active {
+    display: block !important;
+}
+
+.main-menu-container .kaplinler-menu,
+.main-menu-container.active .kaplinler-menu {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    gap: 20px !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.main-menu-container .product-list,
+.main-menu-container.active .product-list {
+    display: block !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 8px 0 0 0 !important;
+    list-style: none !important;
+}
+
+.main-menu-container .category-item {
+    background: #1E293B !important;
+    border: 1px solid #334155 !important;
+    border-radius: 10px !important;
+    padding: 14px !important;
+}
+
+.main-menu-container .category-header h3 {
+    color: #38BDF8 !important;
+    font-size: 15px !important;
+    margin: 0 !important;
+    padding-bottom: 8px !important;
+    border-bottom: 1px solid #334155 !important;
+}
+
+.main-menu-container .product-list li a {
+    color: #CBD5E1 !important;
+    font-size: 13px !important;
+    padding: 6px 0 !important;
+    display: block !important;
+    text-decoration: none !important;
+    transition: color 0.2s, transform 0.2s !important;
+}
+
+.main-menu-container .product-list li a:hover {
+    color: #38BDF8 !important;
+    transform: translateX(4px) !important;
+}
+
+.main-category-item h2 {
+    display: none !important;
+}
+</style>
+
+</head>
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+    <div class="container">
+        <img src="WhatsApp Image 2025-07-25 at 23.57.21 (1)-Photoroom.png" alt="BAYRAKÇI LOGO" class="logo">
+        <div class="error-code">404</div>
+        <div class="error-message">Sayfa Bulunamadı</div>
+        <div class="error-description">
+            Aradığınız sayfa mevcut değil veya taşınmış olabilir. Lütfen URL'yi kontrol edin veya aşağıdaki butonu kullanarak ana sayfaya geri dönün.
+        </div>
+        <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Ana Sayfaya Dön
+        </a>
+    </div>
+    <a href="https://wa.me/905533973603?text=%C3%9Cr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%C2%A0istiyorum." class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var btnDesktop = document.getElementById('menuToggleDesktop');
+    var btnMobile = document.getElementById('menuToggleMobile');
+    var menuContainer = document.getElementById('mainMenuContainer');
+    
+    function toggleMenu(e) {
+        if(e) e.preventDefault();
+        if(menuContainer) {
+            menuContainer.classList.toggle('active');
+            if(menuContainer.classList.contains('active')) {
+                menuContainer.style.display = 'block';
+                menuContainer.style.zIndex = '99999';
+            } else {
+                menuContainer.style.display = 'none';
+            }
+        }
+    }
+
+    if(btnDesktop) {
+        btnDesktop.addEventListener('click', toggleMenu);
+    }
+    if(btnMobile) {
+        btnMobile.addEventListener('click', toggleMenu);
+    }
+});
+</script>
+
+<script id="baysu-mega-menu-js">
+(function(){
+    function initBaysuMenu() {
+        var triggers = document.querySelectorAll('#menuToggleDesktop, #menuToggleMobile, .dropdown-toggle, a[href*="#products"]');
+        var menu = document.getElementById('mainMenuContainer');
+
+        if(!menu) return;
+
+        triggers.forEach(function(btn){
+            btn.addEventListener('click', function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                if(menu.classList.contains('active')) {
+                    menu.classList.remove('active');
+                } else {
+                    menu.classList.add('active');
+                }
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e){
+            if(menu && menu.classList.contains('active')) {
+                var isClickInside = menu.contains(e.target);
+                var isClickTrigger = false;
+                triggers.forEach(function(btn){
+                    if(btn.contains(e.target)) isClickTrigger = true;
+                });
+
+                if(!isClickInside && !isClickTrigger) {
+                    menu.classList.remove('active');
+                }
+            }
+        });
+    }
+
+    if(document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initBaysuMenu);
+    } else {
+        initBaysuMenu();
+    }
+})();
+</script>
+
+</body>
+</html>
